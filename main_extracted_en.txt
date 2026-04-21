@@ -1,0 +1,316 @@
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ApJ
+A A
+ApJL
+ApJS
+MNRAS
+JCAP
+PASA
+AJ
+ARA A
+Nature
+Phys. Rev. D
+Space Sci. Rev.
+RMxAA
+New Astron
+J. Quant. Spec. Radiat. Transf.
+Phys. Rep.
+PASJ 
+
+
+
+
+The Impact of Small-scale enhanced Primordial Power Spectrum on Nonlinear Structure Formation
+
+Haina Huang0009-0004-4765-0358
+ Contact Author
+hhuan155@link.cuhk.edu.hk 
+
+ Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China
+
+Tsang Keung Chan 0000-0003-2544-054X
+ Contact Author
+tsangkeungchan@cuhk.edu.hk
+
+ Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China
+
+Jianhao Wu 0009-0000-7431-7885
+ Contact Author
+jianhao.wu@wisc.edu
+jianhao.wu@link.cuhk.edu.hk
+
+ Department of Physics, University of Wisconsin-Madison, Madison, WI, USA
+
+
+ Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China
+
+
+
+
+
+
+
+
+
+
+
+
+Using high-resolution cosmological simulations, we investigate the effects of a blue-tilted primordial power spectrum—the enhanced power on small-scale (<1Mpc)—on dark matter halos and their substructures. Initial conditions were generated from a standard power-law spectrum or two blue-tilted variants and subsequently evolved using a high-performance N-body code. We find that blue-tilted models significantly increase the abundance of low-mass ( solar mass) halos. The amplification of the nonlinear power spectrum is stronger at high redshift and weakens at low redshift. We find halos in the blue-tilted models form earlier and have higher central densities. These results demonstrate that modifications to the primordial spectrum produce pronounced and redshift-dependent nonlinear effects, offering a theoretical basis for probing early-universe physics, for example, like strong and weak gravitational lensing observations. They further yield quantitative predictions for the abundance and internal structure of low-mass halos that can be confronted with galaxy observations, including high-redshift galaxy number counts and local dwarf-galaxy constraints.
+
+
+Introduction
+The standard cosmological model, combining single-field slow-roll inflation with the  Cold Dark Matter (CDM) paradigm, has achieved remarkable success in describing the large-scale structure of the Universe. Observations of the cosmic microwave background, large-scale galaxy surveys, and the Lyman- forest are all in excellent agreement with predictions based on a nearly scale-invariant primordial power spectrum (PPS). However, on smaller scales (corresponding to wavenumbers ), the model faces a series of challenges, including the "missing satellites", "core-cusp", and "too-big-to-fail" problems. Recently, the James Webb Space Telescope (JWST) has detected a substantial number of massive galaxies at high redshifts (), whose abundance may exceed the predictions of the standard model (e.g.), further intensifying the theoretical tension on small scales.
+
+In response to these challenges, various models that modify the primordial power spectrum on small scales have been proposed. Among these, the blue-tilted (BT) model emerges as a natural extension. Crucially, the model introduces a pivot scale  (typically ) that separates the well-measured large scales from the unconstrained small scales. On large scales (), the spectral index retains the red-tilted value  precisely measured by Planck, ensuring full consistency with CMB observations. Only on small scales () does the spectral index become blue (), boosting the small-scale power without disturbing the observationally successful large-scale predictions. This "decoupling" feature allows the BT model to address small-scale tensions while remaining firmly anchored to the established cosmological framework.
+Beyond high-redshift galaxies, distinguishing between different primordial power spectrum models requires other independent cosmological probes. Flux-ratio anomalies in strong gravitational lensing systems may reflect the abundance of dark matter subhalos within lens galaxies, a quantity that standard CDM simulations might underproduce. Furthermore, the density profiles, abundance, and spatial distribution of nearby dwarf galaxies provide crucial information for constraining both the primordial power spectrum and the physics of galaxy formation.
+
+Within this context, this study aims to provide, for the first time via high-resolution cosmological simulations, a systematic and quantitative investigation of the impact of a blue-tilted primordial power spectrum on the internal structure and statistics of dark matter halos. Rather than relying on a single summary statistic, we examine a set of complementary diagnostics, including the halo mass function, half-mass assembly redshift, halo density profile, concentration-mass relation, and nonlinear matter power spectrum. Taken together, these probes allow us to isolate robust signatures of blue-tilted initial conditions and to establish a theoretical framework for confronting such models with future observations from JWST, Euclid, LSST, and strong-lensing surveys.
+
+
+Theoretical Overview
+
+This study investigates the imprints of a modified primordial power spectrum (PPS) on the late-time distribution of dark matter halos and subhalos. The theoretical framework connects the physics of the early universe, set during inflation, to the nonlinear structure formation observed today, and motivates the specific models we simulate.
+
+From Primordial Perturbations to Cosmic Structure
+The statistical properties of the density field in the late universe are seeded by quantum fluctuations amplified during the inflationary epoch. These initial conditions are characterized by the primordial power spectrum, . In the standard CDM cosmology, a nearly scale-invariant spectrum,  with , is assumed. This spectrum undergoes linear evolution described by the transfer function  and growth factor  to yield the linear matter power spectrum, . The subsequent gravitational collapse and nonlinear evolution of overdensities lead to the formation of a hierarchical network of dark matter halos, whose internal structure and abundance serve as fundamental probes of the underlying cosmology.
+
+The Blue-Tilted Power Spectrum Model
+We consider a phenomenological extension to the standard PPS, the blue-tilted (BT) model, defined by a broken power-law form:
+
+where  is a pivot wavenumber and  is the spectral index on scales . This model preserves consistency with large-scale CMB and galaxy survey constraints (), while enhancing power on smaller scales () when  (blue tilt). The case  corresponds to a red-tilted model.
+Numerical Methods
+
+initial conditions (IC)
+We generate the initial conditions with Music2-MonofonIC, adopting the Eisenstein  Hu transfer function together with the primordial power spectra described in Section . For the PL model, the primordial spectrum follows the standard power-law form. For the BT models, we replace the small-scale part of the spectrum with the broken power-law prescription in Eq. (1), so that the large-scale modes remain unchanged while the power at  is enhanced. In this way, the three simulation suites differ only in their primordial power spectra, enabling a controlled comparison of the resulting nonlinear structure formation.
+Simulation code
+We evolve the initial conditions with the cosmological -body code SWIFT. In the dark-matter-only mode used here, SWIFT combines accurate short-range gravity with a long-range Particle Mesh treatment for periodic boxes, enabling efficient calculations over the full dynamic range of our simulations. Since all runs adopt the same numerical setup and background cosmology, the differences discussed in this paper can be attributed directly to the modified primordial power spectra rather than to changes in the gravity solver or simulation configuration.
+Cosmological parameters
+
+For all the cosmological simulations in this paper, 
+
+
+    Universe density parameters , , .
+    Hubble constant 
+    Scalar spectral index 
+    Root-mean-square matter fluctuation averaged over a sphere of radius , .
+
+
+*[t]
+
+Summary of cosmological N-body simulation parameters. PL models use standard power-law power spectra, while Blue Tilted models have enhanced power on small scales.  is the wavenumber where the power spectrum enhancement begins,  is the spectral index (tilt slope),  is the number of dark matter particles, Box size is the comoving side length of the simulation volume,  is the dark matter particle mass, and  is the gravitational softening length. All simulations use the same background cosmology with varying initial conditions to study the effects of small-scale power on structure formation.
+
+
+
+Halo finder and halo property post-processor
+In the main text, halos and merger trees are identified with HBT+, a particle-tracking halo finder well suited to following bound structures and their progenitors across snapshots. We require a minimum of 20 particles for an object to be retained as a halo candidate. The halo center is defined as the position of the most bound particle. Based on the HBT+ catalogs, we then use SOAP (Spherical Overdensity and Aperture Processor) to compute spherical-overdensity properties such as , , and the corresponding structural quantities used below. This separation between halo identification and property measurement allows us to retain the tracking information from HBT+ while adopting a consistent spherical-overdensity definition for the profile and concentration analyses.
+
+
+Simulation Suite and Terminology
+We run nine simulations using the numerical pipeline described above. Their numerical settings are listed in Table . The six fiducial-resolution simulations are used to compare the BT and the PL models. In the discussion below, we use PL to denote the standard power-law primordial power spectrum, while BTsoft and BTdeep denote the two blue-tilted variants adopted for the main comparisons.
+
+Numerical Robustness and Convergence
+To assess the numerical robustness of the main results, we performed a set of convergence tests spanning both mass resolution and box size, as summarized in Table . These tests are intended to establish the ranges over which the halo abundance, internal structure, and clustering statistics are numerically reliable, and to distinguish physical trends caused by the modified primordial power spectrum from numerical artifacts. In practice, three classes of effects are particularly important: particle discreteness at the low-mass end, finite-volume suppression at the high-mass and large-scale ends, and force-softening effects in the inner regions of halos.
+
+For halo abundance statistics, the most conservative limitation arises from the minimum number of particles required to define a robust object. Although we retain halo candidates above 20 particles in the catalog construction, the scientific interpretation of the halo mass function is restricted to a higher effective threshold, because quantities such as the FOF mass and derived abundance become increasingly sensitive to discreteness and halo-finding noise near the formal detection limit. Our fiducial analysis therefore focuses on the mass interval where the production runs and the convergence-test runs show qualitatively stable behavior under changes in resolution. Similarly, the high-mass end is limited by the finite simulation volume, which reduces the number of rare objects and amplifies sample variance.
+
+For internal halo structure, convergence is more restrictive in radius than in total mass. The density profile and concentration measurements are expected to be most sensitive to force softening, particle number, and centering uncertainties in the inner halo. Accordingly, the trends emphasized in the main text should be interpreted as robust only outside the innermost numerically unresolved region and for halo masses that are sufficiently well sampled by particles. In future revisions, these limits will be quantified explicitly using resolution-comparison panels and radial convergence criteria. The present analysis should therefore be viewed as establishing the qualitative and intermediate-scale structural response of halos to blue-tilted initial conditions, rather than claiming percent-level convergence at the smallest radii.
+
+For the nonlinear matter power spectrum, the usable dynamic range is bounded on large scales by the simulation box size and on small scales by force resolution, particle sampling, and grid-assignment effects in the power-spectrum estimator. The interpretation of the highest- bins should therefore be understood as indicative of a strong enhancement trend rather than as a precision measurement at arbitrarily small scales. A full production version of this paper should include an explicit summary table of the trusted mass, radius, and wavenumber intervals adopted for each statistic.
+
+Results
+
+We compare the PL, BTdeep, and BTsoft simulations in the following order: the initial power spectrum, the projected simulation maps, the halo mass function, the half-mass redshift, the halo profiles, and the nonlinear power spectrum.
+
+Initial Power Spectrum
+We focus on two specific BT models, with parameters adopted from previous BT studies on JWST early massive galaxies and enhancing MW substructures:
+
+    BTsoft: A model with a relatively low pivot scale ( Mpc) and moderate enhancement ().
+    BTdeep: A model with a higher pivot scale ( Mpc) and similar spectral tilt.
+These two models allow us to explore the scale dependence of the BT modification's effects. For comparison, we also simulate the standard power-law (PL) model (), which serves as our baseline.
+
+
+            Illustrative comparison of the initial matter power spectra for the primordial models considered in this work. The figure shows how changing the small-scale tilt and pivot scale modifies the power spectrum only at high wavenumber, while leaving the large-scale behavior close to the standard power-law form. This localized enhancement at  defines the BT models and sets the initial conditions for the subsequent nonlinear evolution.
+    
+
+
+The parameters of all the chosen models.  is the wave vector at which the BT PPS would deviate from the PL PPS.  is the enhanced spectral index for , at the small scales. For other cosmological parameters, see subsub:cosmo_params.
+
+Simulation Maps
+The projected dark matter distribution maps from the PL, BTdeep, and BTsoft simulations show that the main halos remain broadly similar in projection. However, the BT model contains a significantly larger number of subhalos than the PL model, including both small and massive subhalos. In terms of spatial distribution, the substructures in the BT model are also more centrally concentrated compared to those in the PL model.
+
+*[t]
+            Projected dark matter density fields for the PL, BTsoft, and BTdeep simulations at . All three runs use a periodic box of  with  particles. The large-scale structure remains similar among the models, whereas the blue-tilted runs exhibit visibly richer small-scale substructure, consistent with the enhancement of primordial power at .
+    
+Halo Mass Function
+We utilize a set of high-resolution cosmological simulations to investigate the evolution of the halo mass function from high redshift (approximately ) to the present day, aiming to place constraints on models featuring a blue-tilted primordial power spectrum. The analysis is based on three representative cosmological simulation models: the PL model employing a standard power-law power spectrum serves as the baseline, while two blue-tilted power spectrum models with differing tilt strengths (BThard and BTsoft) are used for comparative study. To trace the history of structure formation, we sampled at nine distinct epochs from high to low redshift (corresponding to snapshot numbers 32 to 56).
+
+*[t]
+            Halo mass functions for the PL, BTsoft, and BTdeep models at representative redshifts between  and . Symbols show the simulation results and lines show the corresponding analytic expectations. The blue-tilted models predict a clear excess of low-mass halos relative to PL, particularly at high redshift, while the differences decrease toward the high-mass end and at later times.
+    
+Halo masses are defined using the Friends-of-Friends (FOF) algorithm, which links dark matter particles into halos via a given linking length (typically 0.2 times the mean particle separation). These FOF halo masses are extracted from the post-processing catalogs generated by the SWIFT simulation. To minimize binning noise, we evaluate the halo mass function with an integration-averaging procedure rather than a simple count-per-bin histogram. We partition the mass range in logarithmic space with a density of six bins per mass decade. Within each bin, we compute the integral of the halo count and the mass-weighted average mass. The mass function  is calculated via:
+
+Statistical errors are estimated based on Poisson statistics, given by , where  is the number of halos in the bin. The volume of the periodic simulation box is . At the low-particle end, raw FOF masses are known to be biased high because discreteness effects artificially inflate the measured halo size. To reduce this bias, we apply the Warren correction Warren_2006,
+
+before converting particle number to physical halo mass. After this correction, we keep halos in the range -, corresponding to the mass interval where the combination of particle resolution and box statistics remains reliable for our fiducial runs.
+
+For theoretical comparison, we compute predictions using the Colossus cosmology package. To ensure a fair comparison, we extended the Colossus package by implementing three new custom power spectrum models: eisenstein98bt, eisenstein98btsoft, and eisenstein98pl. These models are built upon the well-established Eisenstein  Hu (1998) transfer function but incorporate a segmented primordial power spectrum designed to produce a blue tilt on small scales. The core modification involves introducing a transition wavenumber , beyond which the primordial spectral index shifts from the large-scale value  to an enhanced value .
+
+Special attention was paid to numerical stability during the implementation of these models, ensuring the positivity of the power spectrum and handling potential overflow or underflow issues in the power-law calculations. Theoretical calculations strictly adopt the initial power spectrum matching each simulation model and specify the halo mass definition consistent with the simulations (i.e., selecting the parameter mdef='fof'). For the analytic comparison, we use the standard multiplicity-function framework,
+
+where  is the mean matter density,  is the linear variance of the smoothed density field, and  is the fitting function calibrated from simulations. In practice, we adopt the fitting formula from Reed_2007, evaluated using the linear power spectrum corresponding to each primordial model and then converted into physical units consistent with the simulation data.
+
+To quantify the differences between simulations and theory, we performed a detailed comparison. The theoretical curve is aligned to the mass positions of the simulation data points via one-dimensional interpolation, and the relative difference in each mass bin is calculated:
+
+where  is the mass function. The statistical errors from the simulations are propagated accordingly into the differences.
+
+The halo mass-function comparison across nine redshifts shows that, at the low-mass end and especially at high redshift (), the simulation results for the blue-tilted models significantly exceed the theoretical predictions of the standard model. Therefore, we can utilize the behavior of the mass function at the low-mass end to discriminate between different primordial power spectrum models. The predictions of the strong blue-tilt model and the standard model gradually converge at the high-mass end, consistent with their behavior on scales dominated by nonlinear evolution. Meanwhile, the predictions of the weak blue-tilt model lie between the two across the entire mass range, consistent with its moderate modification of the power spectrum.
+
+The reliable range of the mass function is determined by the simulation volume and resolution limits. In the middle and lower sub-panels (corresponding to intermediate and low redshift, ), within the statistically reliable range, the strong blue-tilt model consistently exhibits a higher abundance than the standard model at the low-mass end (), while at the high-mass end (), the predictions of all models gradually converge. This is also consistent with our theoretical expectation that blue-tilted models primarily affect small-scale structure. As redshift decreases, the differences between model predictions at the high-mass end gradually diminish, indicating that the formation of massive halos at late times is predominantly governed by later-stage nonlinear evolution.
+
+Half-Mass Redshift
+We compare the redshift at which halos reach half of their final mass () as a function of their  mass for three cosmological models: standard CDM (PL), the strongly blue-tilted model (BT, ), and the weakly blue-tilted model (BT, ). This quantity, also known as the half-mass epoch, serves as a fundamental indicator of halo assembly history, characterizing when the bulk of a halo's final mass was accreted. Our analysis is based on the mass evolution tracks of individual halos extracted from HBT+ halo merger trees across four initial mass bins spanning  to  in units of .
+
+*[t]
+            Half-mass assembly redshift  as a function of halo mass at  for the PL, BTsoft, and BTdeep simulations. Each point gives the mean  of halos in a mass bin, where  is defined from the main progenitor branch of the merger tree; error bars indicate the standard deviation within the bin. Halos in the blue-tilted models reach half of their final mass systematically earlier than their PL counterparts, especially at intermediate masses.
+    
+The computation of  follows a robust methodology: for each halo, we first determine its mass at  (). We then follow the mass of its main progenitor branch backward in time through 21 discrete redshift outputs (from  to ), and linearly interpolate between adjacent snapshots to identify the redshift at which the main progenitor first reaches . Halos that do not reach half of their final mass within the redshift range are excluded from the analysis.
+
+To establish the mass dependence of the assembly history, halos are partitioned into distinct mass bins based on their  mass in logarithmic space. The lowest mass bin ( to ) is treated as a single partition due to limited statistics, while each of the three higher mass bins is subdivided into five equally spaced logarithmic sub-bins. For each resulting mass bin, we compute the mean and standard deviation of  across all member halos.
+
+The comparison reveals a clear mass-dependent assembly trend across all models: low-mass halos () assemble the majority of their mass earlier (higher ) compared to their high-mass counterparts (), consistent with hierarchical structure formation. However, the blue-tilted models exhibit systematic offsets relative to the standard CDM model. The strongly blue-tilted model (BT, ) shows the highest  values across nearly all mass bins, indicating that halos in this model assemble their mass earlier. The weakly blue-tilted model (BT, ) generally falls between the other two models, though it approaches the standard CDM predictions at the highest masses. These differences are most pronounced at intermediate masses (), where the enhanced small-scale power in blue-tilted models promotes earlier halo formation and mass assembly.
+This systematic shift in assembly history provides complementary evidence for the impact of blue-tilted primordial power spectra on structure formation, independent of halo abundance and density profile analyses. The earlier assembly of halos, particularly at intermediate masses, may have significant implications for the formation timescales of galaxies and the thermal history of the intergalactic medium in these models.
+
+Halo Profiles
+Halo Density Profile
+Based on the analysis of our simulation data, we systematically compare the density profiles of dark matter halos across the standard Cold Dark Matter (CDM) model, the strongly blue-tilted model (), and the weakly blue-tilted model (). The results indicate that the internal structure of halos is highly sensitive to the blue-tilted modification of the primordial power spectrum, and its response exhibits a significant radial dichotomy and mass dependence.
+
+*[t]
+            Stacked halo density profiles for the PL, BTsoft, and BTdeep models in a sequence of halo-mass bins. Radii are normalized by , and each panel compares halos within a narrow mass interval. Relative to PL, the blue-tilted models exhibit higher central densities, with the strongest effect appearing in the low- and intermediate-mass regimes.
+    
+In the inner regions (), the strongly blue-tilted model () shows the most pronounced density enhancement across almost the entire mass range, followed by the weakly blue-tilted model (), while the CDM model predicts the lowest central density. This suggests that the extra power on small scales in the blue-tilted power spectrum efficiently promotes the early collapse and mass concentration in the halo cores.
+
+In the outer regions (), the differences between models display a clear evolution with mass. For high-mass halos (), the density profiles of all three models converge and are nearly indistinguishable. Moving into the intermediate mass range (), the outer density of the strongly blue-tilted model begins to fall systematically below that of the CDM and weakly blue-tilted models, with this density deficit increasing progressively as the halo mass decreases. At the low-mass end (), the behavior of the three models becomes distinctly stratified: the strongly blue-tilted model exhibits the most extreme signature of high inner density coupled with low outer density; the weakly blue-tilted model shows intermediate densities at all radii; whereas the CDM model is characterized by the lowest inner density but the relatively highest outer density.
+This unique radial anti-correlation-inner enhancement paired with outer suppression-reveals that the blue-tilted modification not only directly affects the early formation and central collapse of halos by enhancing small-scale power but also modulates their subsequent mass accretion history in a complex, mass-dependent manner. The systematic reduction of outer density in intermediate and low-mass halos may be linked to the increased subhalo abundance, and differences in the large-scale matter distribution in blue-tilted models, the specific mechanisms of which warrant further investigation. These findings provide a novel theoretical perspective for using the global density structure of halos to precisely discriminate between and constrain different models of the primordial power spectrum.
+
+Concentration-Mass Relation
+The concentration-mass relation is derived from halo catalogs generated by the hbt+ halo finder applied to the outputs of the Blue-tilted and CDM simulations. We extract the halo mass  and the corresponding concentration  from the SO/200crit group of the HDF5 file. The masses are converted to solar masses by multiplying the stored values by the unit factor . Only halos with positive masses are retained, and the mass is transformed to logarithmic scale, .
+
+To characterize the median concentration as a function of mass, we bin the halos in logarithmic mass bins. The mass range from  to  is divided into 100 equally spaced bins. Within each bin, we compute the median concentration as well as the 16th and 84th percentiles. The lower and upper error bars for the median are then defined as  and , respectively. These percentiles provide an estimate of the scatter in the concentration-mass relation.
+
+Theoretical predictions for the concentration-mass relation are obtained using the colossus Python package. We adopt two widely used models: the Diemer  Joyce (2019) model and the Ishiyama et al. (2021) model. For each model, we compute the median concentration at the same redshifts as the simulation snapshots. The models require an input mass definition of , which we adopt. Additionally, the power spectrum used in the model is specified via the psargs parameter. To match the two cosmological scenarios, we employ two different power spectra: the Eisenstein  Hu (1998) transfer function with the default power-law primordial spectrum (eisenstein98pl) for the CDM case, and a modified version with a blue-tilted primordial spectrum (eisenstein98bt) for the Blue-tilted simulation. The cosmological parameters are set consistently with the simulations: , , , , and . The theoretical curves are then plotted over the same mass range as the binned simulation data, allowing a direct comparison between the simulated concentration-mass relations and the analytic predictions.
+In these analytic models, the concentration is not fitted independently in each mass bin; instead, it is predicted from the collapse history encoded in the linear density field. The underlying assumption is that halo concentration is primarily determined by the characteristic density of the Universe at the epoch when the inner part of the halo assembled. As a result, once the linear power spectrum and cosmological parameters are specified, the concentration-mass relation can be predicted semi-analytically and compared directly with the simulation output.
+
+*[t]
+            Concentration-mass relations for the PL, BTsoft (, ), and BTdeep (, ) models at four representative redshifts. Symbols show the simulation measurements and solid curves show the corresponding semi-analytic predictions. The lower panels give the concentration ratios relative to the PL model. At fixed mass, halos in the blue-tilted models are systematically more concentrated, with the strongest differences occurring in the low-mass regime.
+    
+We compare the halo concentration-mass relation across four key epochs, from high redshift () to the present day (), for three distinct cosmological models: the standard Cold Dark Matter (CDM) model (PL), the strongly blue-tilted model (BT, ), and the weakly blue-tilted model (BT, ). The concentration is defined as , where  is the spherical overdensity radius with respect to the critical density and  is the scale radius of the NFW profile.
+
+The analysis reveals a clear mass and redshift dependence in the concentration enhancement predicted by blue-tilted models. While all models exhibit the expected anti-correlation between concentration and halo mass, the divergence between the blue-tilted and standard models is most pronounced at low redshift. At , the concentration of low-mass halos () in the strongly blue-tilted model () is a factor of 2 to 3 higher than in the standard CDM model. The weakly blue-tilted model () also shows significant enhancement, though to a lesser degree. This difference diminishes progressively with increasing redshift.
+
+The redshift evolution of this effect follows a specific pattern: although the concentrations in blue-tilted models remain several times higher than in the standard model even at high redshift (), the relative magnitude of the divergence is greatest at . This trend indicates that the distinct initial conditions set by the blue-tilted power spectrum are subsequently amplified through cosmic time. The nonlinear growth, merger history, and mass accretion processes that dominate structure formation at low redshifts act to solidify and magnify the differences in the internal structure of halos across the models. The ratio curves quantitatively confirm this evolution, showing the highest and steepest profiles (strongly mass-dependent) at  and flatter, lower profiles at high redshift.
+
+Theoretical predictions are in good overall agreement with the simulation trends, validating the implementation of the custom power spectra. Residual discrepancies at the high-redshift, low-mass end are likely attributable to simulation resolution limits or simplifications in the analytical concentration model under extreme conditions. The established evolutionary pattern-whereby concentration differences expand with cosmic time and peak at low redshift-provides a distinctive signature of blue-tilted primordial power spectra. It underscores that the impact of enhanced small-scale power is not only imprinted at halo formation but is also systematically leveraged by later nonlinear evolution. Consequently, observational constraints on the concentration of low-mass halos at low redshift will serve as a powerful probe for testing deviations from the standard scale-invariant primordial power spectrum.
+
+Power Spectrum
+The nonlinear matter power spectrum provides a complementary summary of how the modified primordial spectrum propagates through structure formation. In combination with the halo-based statistics above, it directly captures the redistribution of clustering power across scales and redshifts. Compared with one-point halo statistics, the power spectrum is particularly informative because it measures the cumulative clustering response over a broad range of scales. In blue-tilted models, the enhancement of small-scale primordial fluctuations first appears in the linear regime and is then reprocessed by nonlinear evolution, halo formation, and merger-driven mode coupling. We therefore expect the largest deviations from the PL model at high wavenumber, together with a redshift dependence that reflects the time available for nonlinear amplification. The comparison presented below is intended to test this picture directly and to connect the halo-scale differences discussed above with the global clustering signal of the matter field.
+
+The nonlinear matter power spectrum is measured directly from the particle distribution in the simulations at the selected output snapshots. Operationally, the dark matter particles are assigned to a regular mesh, the Fourier-space density field is constructed, and the isotropically averaged power spectrum is computed in bins of wavenumber. In a finalized version of the analysis, the precise estimator settings should be documented explicitly, including the mesh size, mass-assignment scheme, shot-noise treatment, and any deconvolution or window-function corrections applied to the raw spectrum. These technical choices affect the quantitative reliability of the spectrum at the highest resolved wavenumbers and therefore need to be stated clearly for reproducibility.
+
+The interpretation of the measured power spectrum also requires a clear statement of its trusted scale range. At small , the finite simulation volume limits the number of independent long-wavelength modes and increases sample variance. At large , force softening, discreteness, and estimator choices can bias the recovered power. The curves shown below should therefore be interpreted as reliable over an intermediate dynamic range whose exact boundaries are determined by the numerical setup. In the final manuscript, we plan to report these adopted scale cuts explicitly and, where appropriate, compare them against convergence-test runs.
+
+From a physical perspective, the power-spectrum statistic provides an important bridge between the halo-based diagnostics and the global clustering field. If the blue-tilted initial condition primarily boosts low-mass halo formation and inner halo concentrations, then one expects a corresponding increase in power at high wavenumber, with a redshift dependence reflecting the growth of nonlinear mode coupling. This makes the power spectrum a particularly useful summary statistic for connecting our simulation results to future weak-lensing and small-scale clustering constraints.
+
+*[t]
+            width=0.92
+    Nonlinear matter power spectra at  for the PL, BTsoft, and BTdeep models. The upper panel shows the dimensionless power spectrum , while the lower panels give the ratios of the blue-tilted models relative to PL. In both BT cases, the excess primordial small-scale power is converted into an enhancement of nonlinear clustering at large , with the magnitude of the effect depending on the pivot scale of the initial spectrum.
+    
+Discussion and Limitations
+
+Physical Interpretation of the Main Trends
+Taken together, the results in Sections  point toward a coherent physical picture. Enhancing the primordial power on sufficiently small scales causes low-mass perturbations to collapse earlier, which in turn increases the abundance of low-mass halos at high redshift, shifts their half-mass assembly redshifts upward, and raises their central densities and concentrations. The nonlinear matter power spectrum provides a complementary global signature of the same process: the initial enhancement in small-scale fluctuations is amplified by nonlinear structure formation and reappears as excess clustering power at large wavenumber. The consistency of these independent diagnostics is one of the strongest pieces of evidence that the measured trends originate from the modified initial conditions rather than from any single analysis choice.
+
+At the same time, the results suggest that the impact of a blue-tilted primordial spectrum is highly scale- and epoch-dependent. The strongest departures from the standard PL model appear first in low-mass halos and high- clustering, and become less pronounced at the high-mass end where later nonlinear evolution tends to erase memory of the small-scale initial conditions. This scale dependence is important because it identifies where observational discrimination is most likely to succeed: low-mass halo abundance, inner halo structure, and small-scale matter clustering are all more sensitive probes of the primordial model than the properties of the rarest massive halos.
+
+Numerical and Modeling Limitations
+Several limitations should be kept in mind when interpreting the present results. First, all simulations analyzed here are dark-matter-only runs. This choice is appropriate for isolating the gravitational imprint of the primordial power spectrum, but it also means that baryonic processes such as gas cooling, stellar feedback, and reionization are absent. Since these processes can alter halo density profiles, subhalo survival, and the galaxy-halo connection, our results should be interpreted as predictions for the underlying dark matter field rather than as direct predictions for observed galaxy populations.
+
+Second, different summary statistics are limited by different numerical systematics. Halo counts at the low-mass end are affected by particle discreteness and halo-finder thresholds; density profiles and concentrations are sensitive to the innermost resolved radius and centering uncertainties; and the nonlinear power spectrum depends on box size, force resolution, and estimator details. Although the broad trends are consistent across multiple diagnostics, a final publication-quality version of this study should present explicit convergence figures and adopted reliability cuts for every measured quantity.
+
+Third, the theoretical comparisons used in the halo mass function and concentration analyses are intentionally simplified. They are valuable because they provide a controlled baseline tied to the same input linear power spectrum, but they should not be interpreted as exact predictions in the strongly nonlinear regime. Residual discrepancies between simulation and analytic models may therefore reflect both genuine nonlinear physics and the limited calibration range of the fitting formulae employed.
+
+Connection to Observations
+An important next step is to translate these simulation-level signatures into observation-facing predictions. The most promising avenues appear to be those that directly probe low-mass structure: high-redshift galaxy number counts, strong-lensing flux anomalies, satellite-galaxy statistics, and possibly weak-lensing measurements of small-scale clustering. However, each of these observables introduces additional astrophysical and selection-model uncertainties. The value of the present work is therefore not that it delivers a one-to-one observational constraint already, but that it identifies a physically motivated set of statistics and scale ranges where departures from the standard primordial spectrum are likely to be largest.
+
+In this sense, the main scientific contribution of the paper is to establish a theoretical benchmark for future constraint studies. Once baryonic modeling, survey selection functions, and forward modeling are included, the diagnostics presented here can be mapped onto actual likelihood analyses. Among them, the halo mass function, concentration-mass relation, and nonlinear matter power spectrum appear especially promising because they encode complementary aspects of the same primordial enhancement and can therefore provide cross-validation in future observational work.
+
+CONCLUSIONS
+Halo Mass Function
+The blue-tilted models predict a significantly higher abundance of low-mass halos () at high redshifts (), indicating that enhanced small-scale power promotes the earlier collapse of low-mass structures. While the predictions of all models converge at the high-mass end towards lower redshifts, the abundance excess in blue-tilted models persists at the low-mass end, remaining a factor of 2-3 higher than the standard model at .
+
+Dark Matter Power Spectrum
+A pronounced enhancement in small-scale power () is present in the blue-tilted model across all redshifts. Crucially, this initial difference is dramatically amplified by non-linear evolution. By , the non-linear matter power spectrum of the blue-tilted model exceeds that of the standard CDM model by over an order of magnitude at scales around .
+
+Half-Mass Epoch-Redshift Relation
+Halos of a given  mass reach half of their final mass at a higher redshift in blue-tilted models compared to the standard model. This indicates an earlier formation epoch and a more rapid mass assembly history for halos in these models, with the effect being most pronounced for halos in the intermediate mass range ().
+
+Concentration-Mass Relation
+The blue-tilted models systematically produce halos with higher concentrations, with the effect being strongest at low redshift and for low-mass halos. At , the concentration of low-mass halos can be 2-3 times higher than in the standard model. This enhancement weakens with increasing redshift, demonstrating that non-linear evolution acts to amplify the differences imprinted by the initial power spectrum.
+
+Halo Density Profile
+The density enhancement in blue-tilted models is primarily confined to the inner regions of halos (), while the outer density profiles remain similar to those in the standard model. This "cuspy core" structure suggests that the modified power spectrum predominantly affects the early collapse and central condensation of the halo.
+
+Synthesis: The Dark Matter Halo Population
+Collectively, these findings paint a coherent picture: a blue-tilted primordial power spectrum gives rise to a halo population that is more abundant at the low-mass end, forms earlier, and possesses denser, more concentrated inner structures. These effects point towards a universe where structure growth on small scales is accelerated and non-linear evolution is both advanced and intensified.
+
+
+
+
+
+
+Acknowledgments
+We will acknowledge funding support, computational resources, and relevant collaborative discussions in the final version of the manuscript. In particular, this section should specify the computing facilities used for generating the initial conditions, evolving the simulations, and carrying out the post-processing analysis.
+
+
+
+
+apsrev4-1-JHEPfix
+
+
+
+
+
+Additional Numerical Details
+This appendix can be used in the final manuscript to collect technical material that supports, but would otherwise interrupt, the flow of the main text. Natural candidates include: the explicit implementation details of the modified primordial power spectrum in the initial-condition generator and in the custom Colossus modules; additional convergence plots for the halo mass function, density profile, concentration-mass relation, and nonlinear matter power spectrum; and tables summarizing the adopted trusted mass, radial, and wavenumber ranges for the main analyses.
+

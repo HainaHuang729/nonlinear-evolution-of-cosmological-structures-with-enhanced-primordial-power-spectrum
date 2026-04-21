@@ -1,0 +1,179 @@
+%merlin.mbs apsrev4-1-JHEPfix.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+%Control: key (0)
+%Control: author (72) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (1) required
+%Control: page (1) range
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{10}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {{Bullock}}\ and\ \citenamefont
+  {{Boylan-Kolchin}}(2017)}]{Bullock17smallscalechallenges}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~S.}\ \bibnamefont
+  {{Bullock}}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {{Boylan-Kolchin}}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {{Small-Scale Challenges to the {\ensuremath{\Lambda}}CDM Paradigm}},}\
+  }\href {\doibase 10.1146/annurev-astro-091916-055313} {\bibfield  {journal}
+  {\bibinfo  {journal} {\araa}\ }\textbf {\bibinfo {volume} {55}},\ \bibinfo
+  {pages} {343--387} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Sales}}\ \emph {et~al.}(2022)\citenamefont
+  {{Sales}}, \citenamefont {{Wetzel}},\ and\ \citenamefont
+  {{Fattahi}}}]{Sales22challenges}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~V.}\ \bibnamefont
+  {{Sales}}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Wetzel}}},
+  and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Fattahi}}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {{Baryonic solutions and
+  challenges for cosmological models of dwarf galaxies}},}\ }\href {\doibase
+  10.1038/s41550-022-01689-w} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nature Astronomy}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages}
+  {897--910} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Hirano}}\ and\ \citenamefont
+  {{Yoshida}}(2024)}]{Hira24bluetilt}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {{Hirano}}}\ and\ \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {{Yoshida}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Early
+  Structure Formation from Primordial Density Fluctuations with a Blue, Tilted
+  Power Spectrum: High-redshift Galaxies}},}\ }\href {\doibase
+  10.3847/1538-4357/ad22e0} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\
+  }\textbf {\bibinfo {volume} {963}},\ \bibinfo {eid} {2} (\bibinfo {year}
+  {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Wu}}\ \emph {et~al.}(2025)\citenamefont {{Wu}},
+  \citenamefont {{Chan}},\ and\ \citenamefont {{Forouhar Moreno}}}]{Wu25BT}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {{Wu}}}, \bibinfo {author} {\bibfnamefont {T.~K.}\ \bibnamefont {{Chan}}},
+  and\ \bibinfo {author} {\bibfnamefont {V.~J.}\ \bibnamefont {{Forouhar
+  Moreno}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Cosmological
+  zoom-in simulations of Milky Way host mass dark matter halos with a
+  blue-tilted primordial power spectrum}},}\ }\href {\doibase
+  10.1103/59fw-974t} {\bibfield  {journal} {\bibinfo  {journal} {\prd}\
+  }\textbf {\bibinfo {volume} {112}},\ \bibinfo {eid} {023512} (\bibinfo {year}
+  {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Warren}\ \emph {et~al.}(2006)\citenamefont {Warren},
+  \citenamefont {Abazajian}, \citenamefont {Holz},\ and\ \citenamefont
+  {Teodoro}}]{Warren_2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~S.}\ \bibnamefont
+  {Warren}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Abazajian}},
+  \bibinfo {author} {\bibfnamefont {D.~E.}\ \bibnamefont {Holz}}, and\ \bibinfo
+  {author} {\bibfnamefont {L.}~\bibnamefont {Teodoro}},\ }\bibfield  {title}
+  {\enquote {\bibinfo {title} {Precision determination of the mass function of
+  dark matter halos},}\ }\href {\doibase 10.1086/504962} {\bibfield  {journal}
+  {\bibinfo  {journal} {The Astrophysical Journal}\ }\textbf {\bibinfo {volume}
+  {646}},\ \bibinfo {pages} {881–885} (\bibinfo {year} {2006})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Reed}\ \emph {et~al.}(2007)\citenamefont {Reed},
+  \citenamefont {Bower}, \citenamefont {Frenk}, \citenamefont {Jenkins},\ and\
+  \citenamefont {Theuns}}]{Reed_2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~S.}\ \bibnamefont
+  {Reed}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Bower}},
+  \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont {Frenk}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Jenkins}}, and\ \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Theuns}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {The halo mass function from the dark ages through the
+  present day},}\ }\href {\doibase 10.1111/j.1365-2966.2006.11204.x} {\bibfield
+   {journal} {\bibinfo  {journal} {Monthly Notices of the Royal Astronomical
+  Society}\ }\textbf {\bibinfo {volume} {374}},\ \bibinfo {pages} {2–15}
+  (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Diemer}}(2018)}]{Diemer2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {{Diemer}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{COLOSSUS: A
+  Python Toolkit for Cosmology, Large-scale Structure, and Dark Matter
+  Halos}},}\ }\href {\doibase 10.3847/1538-4365/aaee8c} {\bibfield  {journal}
+  {\bibinfo  {journal} {\apjs}\ }\textbf {\bibinfo {volume} {239}},\ \bibinfo
+  {eid} {35} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Diemer}}\ and\ \citenamefont
+  {{Joyce}}(2019)}]{Diemer2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {{Diemer}}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {{Joyce}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{An Accurate
+  Physical Model for Halo Concentrations}},}\ }\href {\doibase
+  10.3847/1538-4357/aafad6} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\
+  }\textbf {\bibinfo {volume} {871}},\ \bibinfo {eid} {168} (\bibinfo {year}
+  {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Ishiyama}}\ \emph {et~al.}(2021)\citenamefont
+  {{Ishiyama}}, \citenamefont {{Prada}}, \citenamefont {{Klypin}},
+  \citenamefont {{Sinha}}, \citenamefont {{Metcalf}}, \citenamefont {{Jullo}},
+  \citenamefont {{Altieri}}, \citenamefont {{Cora}}, \citenamefont {{Croton}},
+  \citenamefont {{de la Torre}}, \citenamefont {{Millan-Calero}}, \citenamefont
+  {{Oogi}}, \citenamefont {{Ruedas}},\ and\ \citenamefont
+  {{Vega-Martinez}}}]{Ishiyama2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {{Ishiyama}}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {{Prada}}},
+  \bibinfo {author} {\bibfnamefont {A.~A.}\ \bibnamefont {{Klypin}}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {{Sinha}}}, \bibinfo {author}
+  {\bibfnamefont {R.~B.}\ \bibnamefont {{Metcalf}}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {{Jullo}}}, \bibinfo {author} {\bibfnamefont
+  {B.}~\bibnamefont {{Altieri}}}, \bibinfo {author} {\bibfnamefont {S.~A.}\
+  \bibnamefont {{Cora}}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {{Croton}}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {{de la
+  Torre}}}, \bibinfo {author} {\bibfnamefont {D.~E.}\ \bibnamefont
+  {{Millan-Calero}}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {{Oogi}}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {{Ruedas}}},
+  and\ \bibinfo {author} {\bibfnamefont {C.~A.}\ \bibnamefont
+  {{Vega-Martinez}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{The
+  Uchuu simulations: Data Release 1 and dark matter halo concentrations}},}\
+  }\href {\doibase 10.1093/mnras/stab1755} {\bibfield  {journal} {\bibinfo
+  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {506}},\ \bibinfo {pages}
+  {4210--4228} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Eisenstein}}\ and\ \citenamefont
+  {{Hu}}(1999)}]{Eisenstein1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
+  {{Eisenstein}}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {{Hu}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Power Spectra for
+  Cold Dark Matter and Its Variants}},}\ }\href {\doibase 10.1086/306640}
+  {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf {\bibinfo
+  {volume} {511}},\ \bibinfo {pages} {5--15} (\bibinfo {year}
+  {1999})}\BibitemShut {NoStop}%
+\end{thebibliography}%

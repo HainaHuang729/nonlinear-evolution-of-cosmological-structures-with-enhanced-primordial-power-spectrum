@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: apsrev4-1-JHEPfix.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: mainNotes.bib
+Database file #2: main.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+merlin.mbs apsrev4-1-JHEPfix.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+Control: key (0) 
+Control: author (72) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (1) required
+Control: page (1) range
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+You've used 10 entries,
+            6017 wiz_defined-function locations,
+            2459 strings with 26239 characters,
+and the built_in function-call counts, 11702 in all, are:
+= -- 745
+> -- 344
+< -- 64
++ -- 100
+- -- 76
+* -- 1929
+:= -- 1117
+add.period$ -- 20
+call.type$ -- 10
+change.case$ -- 50
+chr.to.int$ -- 10
+cite$ -- 10
+duplicate$ -- 1047
+empty$ -- 826
+format.name$ -- 189
+if$ -- 2309
+int.to.chr$ -- 1
+int.to.str$ -- 18
+missing$ -- 158
+newline$ -- 82
+num.names$ -- 30
+pop$ -- 381
+preamble$ -- 1
+purify$ -- 50
+quote$ -- 0
+skip$ -- 398
+stack$ -- 0
+substring$ -- 268
+swap$ -- 1107
+text.length$ -- 38
+text.prefix$ -- 0
+top$ -- 8
+type$ -- 148
+warning$ -- 0
+while$ -- 26
+width$ -- 0
+write$ -- 142
