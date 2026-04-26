@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1776662303.95798 "main.aux" "main.bbl" "main" 1776696663.63238 0
+["bibtex main"] 1777185416.74526 "main.aux" "main.bbl" "main" 1777185429.54512 0
   "./apsrev4-1-JHEPfix.bst" 1776073661.14961 75316 c6f4b938856e5f2f44ef2428d5fe2a0c ""
-  "./main.bib" 1776408199.01137 27990 d9f066d887291284d5e79636b6ac2686 ""
-  "./mainNotes.bib" 1776696656.66054 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "main.aux" 1776696663.11712 16633 945ca914f44352b830c9fac3373ccdb0 "pdflatex"
+  "./main.bib" 1777184406.66293 32213 1de2fcfaa399de83af5b435ba9f0ca99 ""
+  "./mainNotes.bib" 1777185417.90628 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "main.aux" 1777185428.72139 17492 289c11c947c51687997ef88d52f8ae71 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1776696655.97181 "main.tex" "main.pdf" "main" 1776696663.63255 0
+["pdflatex"] 1777185416.93626 "main.tex" "main.pdf" "main" 1777185429.54588 0
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -250,10 +250,10 @@
   "halfmass-redshift.png" 1776656367.65451 184492 ef29e76f3256901366a2578ca4c6400f ""
   "halo-density.png" 1776661310.16585 573872 ea3a9448e168aa0c087cc3c1cd2552f8 ""
   "input-power-spectrum.png" 1776665402.81064 170373 a4ea073e638e0d613de1409eaa75b237 ""
-  "main.aux" 1776696663.11712 16633 945ca914f44352b830c9fac3373ccdb0 "pdflatex"
-  "main.bbl" 1776662304.10414 10129 ef817a242ac43ef7aa7ed8506aa36f44 "bibtex main"
-  "main.out" 1776696663.11835 6845 05b8013da1d4b27ff2e05e19d5e29003 "pdflatex"
-  "main.tex" 1776696610.91285 55639 d57b8accde493410d766b8587b56494c ""
+  "main.aux" 1777185428.72139 17492 289c11c947c51687997ef88d52f8ae71 "pdflatex"
+  "main.bbl" 1777185416.93061 18399 92a5648e93ed192b28e72d9b27490486 "bibtex main"
+  "main.out" 1777185428.72331 5782 1aa7455d8cf8ee138a35ac546a110504 "pdflatex"
+  "main.tex" 1777185396.92313 60494 471e945877121c052c305ca8b5ff073a ""
   "mass-function.png" 1776662191.46974 908282 b86b9bb6075d0c3fa6b8f9aec7713675 ""
   "power-spectrum.png" 1776662182.50043 912286 8c25ef6e829120bd1587012fde04f08c ""
   "projection.png" 1776686589.93121 21331680 9fa85033941d442bf32336d8e5e75ee3 ""

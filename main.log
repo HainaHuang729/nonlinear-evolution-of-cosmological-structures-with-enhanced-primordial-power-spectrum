@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.13)  20 APR 2026 22:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.13)  26 APR 2026 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -921,14 +921,14 @@ tex)
 Package hyperref Info: Option `pdfnewwindow' set `true' on input line 82.
 Package hyperref Info: Option `colorlinks' set `true' on input line 82.
 Class revtex4-1 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 113.
+lass! (Proceeding with fingers crossed.) on input line 114.
 
 
 Class revtex4-1 Warning: Repair the float package.
 
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 113.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 113.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 113.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 114.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 114.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 114.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count365
@@ -936,24 +936,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
 
 (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -975,116 +975,124 @@ Package caption Info: subfigure package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 113.
+Package hyperref Info: Link coloring ON on input line 114.
  (./main.out) (./main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 113.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 114.
 Class revtex4-1 Info: Overriding lineo.sty, restoring output routine, on input 
-line 113.
-Class revtex4-1 Info: Line numbering not turned on yet on input line 113.
+line 114.
+Class revtex4-1 Info: Line numbering not turned on yet on input line 114.
 \openout3 = `mainNotes.bib'.
 
-Class revtex4-1 Info: Overriding \@LN@LLerror on input line 113.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 156
+Class revtex4-1 Info: Overriding \@LN@LLerror on input line 114.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 157
 .
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 156
+LaTeX Font Info:    Trying to load font information for U+msb on input line 157
 .
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr
 /local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Underfull \hbox (badness 1253) in paragraph at lines 192--193
+Underfull \hbox (badness 1253) in paragraph at lines 196--197
 [][]\T1/cmr/m/n/10 We gen-er-ate the ini-tial con-di-tions with \T1/cmr/m/sc/10
  Music2-
  []
 
-
-Underfull \hbox (badness 3657) in paragraph at lines 204--205
+[2]
+Underfull \hbox (badness 3657) in paragraph at lines 208--209
  []\T1/cmr/m/n/10 Root-mean-square mat-ter fluc-tu-a-tion av-er-aged
  []
 
-[2] [3]
-<input-power-spectrum.png, id=217, 246.4407pt x 183.20445pt>
+[3]
+<input-power-spectrum.png, id=209, 246.4407pt x 183.20445pt>
 File: input-power-spectrum.png Graphic file (type png)
 <use input-power-spectrum.png>
-Package pdftex.def Info: input-power-spectrum.png  used on input line 280.
+Package pdftex.def Info: input-power-spectrum.png  used on input line 284.
 (pdftex.def)             Requested size: 246.0pt x 182.87692pt.
-<projection.png, id=220, 1228.22865pt x 1228.22865pt>
-File: projection.png Graphic file (type png)
-<use projection.png>
-Package pdftex.def Info: projection.png  used on input line 312.
-(pdftex.def)             Requested size: 438.60115pt x 438.60115pt.
-<mass-function.png, id=221, 503.36055pt x 490.7133pt>
-File: mass-function.png Graphic file (type png)
-<use mass-function.png>
-Package pdftex.def Info: mass-function.png  used on input line 324.
-(pdftex.def)             Requested size: 459.00352pt x 447.47078pt.
  [4{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
 c} <./input-power-spectrum.png>]
-Underfull \hbox (badness 1460) in paragraph at lines 342--343
+<projection.png, id=225, 1228.22865pt x 1228.22865pt>
+File: projection.png Graphic file (type png)
+<use projection.png>
+Package pdftex.def Info: projection.png  used on input line 316.
+(pdftex.def)             Requested size: 438.60115pt x 438.60115pt.
+<mass-function.png, id=226, 503.36055pt x 490.7133pt>
+File: mass-function.png Graphic file (type png)
+<use mass-function.png>
+Package pdftex.def Info: mass-function.png  used on input line 328.
+(pdftex.def)             Requested size: 459.00352pt x 447.47078pt.
+
+Underfull \hbox (badness 1460) in paragraph at lines 346--347
 []\T1/cmr/m/n/10 For the an-a-lytic com-par-i-son, we use the stan-dard
  []
 
-[5 <./projection.png>] [6 <./mass-function.png>]
-<halfmass-redshift.png, id=253, 226.08466pt x 177.7842pt>
+[5]
+<halfmass-redshift.png, id=240, 226.08466pt x 177.7842pt>
 File: halfmass-redshift.png Graphic file (type png)
 <use halfmass-redshift.png>
-Package pdftex.def Info: halfmass-redshift.png  used on input line 364.
+Package pdftex.def Info: halfmass-redshift.png  used on input line 368.
 (pdftex.def)             Requested size: 448.84259pt x 352.95236pt.
+ [6 <./projection.png>] [7 <./mass-function.png>]
 <halo-density.png, id=254, 494.44725pt x 353.03896pt>
 File: halo-density.png Graphic file (type png)
 <use halo-density.png>
-Package pdftex.def Info: halo-density.png  used on input line 384.
+Package pdftex.def Info: halo-density.png  used on input line 388.
 (pdftex.def)             Requested size: 469.20164pt x 335.0134pt.
- [7] [8 <./halfmass-redshift.png>]
-<concentration-qc.png, id=270, 487.8225pt x 398.56905pt>
+ [8 <./halfmass-redshift.png>] [9 <./halo-density.png>]
+<concentration-qc.png, id=271, 487.8225pt x 398.56905pt>
 File: concentration-qc.png Graphic file (type png)
 <use concentration-qc.png>
-Package pdftex.def Info: concentration-qc.png  used on input line 406.
+Package pdftex.def Info: concentration-qc.png  used on input line 410.
 (pdftex.def)             Requested size: 469.20494pt x 383.35782pt.
 
-Underfull \hbox (badness 1275) in paragraph at lines 412--413
+Underfull \hbox (badness 1275) in paragraph at lines 416--417
 []\T1/cmr/m/n/10 We com-pare the halo concentration-mass re-la-tion
  []
 
-[9 <./halo-density.png>] [10 <./concentration-qc.png>]
-Underfull \hbox (badness 1418) in paragraph at lines 429--431
+[10]
+Underfull \hbox (badness 1418) in paragraph at lines 433--435
 []\T1/cmr/m/n/10 From a phys-i-cal per-spec-tive, the power-spectrum
  []
 
-<power-spectrum.png, id=287, 514.5624pt x 374.8404pt>
+[11 <./concentration-qc.png>]
+<power-spectrum.png, id=286, 514.5624pt x 374.8404pt>
 File: power-spectrum.png Graphic file (type png)
 <use power-spectrum.png>
-Package pdftex.def Info: power-spectrum.png  used on input line 435.
+Package pdftex.def Info: power-spectrum.png  used on input line 439.
 (pdftex.def)             Requested size: 469.2261pt x 341.81451pt.
-[11]
-Underfull \hbox (badness 4805) in paragraph at lines 466--467
+ [12]
+Underfull \hbox (badness 4805) in paragraph at lines 471--472
 []\T1/cmr/m/n/10 An im-por-tant next step is to trans-late these
  []
 
-[12 <./power-spectrum.png>] (./main.bbl [13]) [14] [15] (./main.aux)
+
+Underfull \hbox (badness 1087) in paragraph at lines 471--472
+\T1/cmr/m/n/10 satellite-galaxy statis-tics, and weak-lensing mea-sure-
+ []
+
+[13 <./power-spectrum.png>] (./main.bbl [14]) [15] [16] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 05B8013DA1D4B27FF2E05E19D5E29003;6845.
+(rerunfilecheck)             Checksum: 1AA7455D8CF8EE138A35AC546A110504;5782.
  ) 
 Here is how much of TeX's memory you used:
- 26883 strings out of 467525
- 488158 string characters out of 5418982
- 895863 words of memory out of 5000000
- 55219 multiletter control sequences out of 15000+600000
+ 26905 strings out of 467525
+ 488826 string characters out of 5418982
+ 898659 words of memory out of 5000000
+ 55237 multiletter control sequences out of 15000+600000
  649389 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,118p,1381b,766s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,118p,1506b,766s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
@@ -1110,10 +1118,10 @@ t/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2026/texmf-dist/
 fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fo
 nts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2026/texmf-dist/font
 s/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (15 pages, 14394207 bytes).
+Output written on main.pdf (16 pages, 14399458 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 370 compressed objects within 4 object streams
- 82 named destinations out of 1000 (max. 500000)
- 336 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 479 PDF objects out of 1000 (max. 8388607)
+ 391 compressed objects within 4 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 296 words of extra memory for PDF output out of 10000 (max. 10000000)
 
