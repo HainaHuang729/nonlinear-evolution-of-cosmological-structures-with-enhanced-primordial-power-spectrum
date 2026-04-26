@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.13)  26 APR 2026 14:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.13)  26 APR 2026 15:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1001,79 +1001,88 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr
 /local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 Underfull \hbox (badness 1253) in paragraph at lines 196--197
-[][]\T1/cmr/m/n/10 We gen-er-ate the ini-tial con-di-tions with \T1/cmr/m/sc/10
- Music2-
+[]\T1/cmr/m/n/10 We gen-er-ate the ini-tial con-di-tions with \T1/cmr/m/sc/10 M
+usic2-
  []
 
 [2]
-Underfull \hbox (badness 3657) in paragraph at lines 208--209
- []\T1/cmr/m/n/10 Root-mean-square mat-ter fluc-tu-a-tion av-er-aged
+Underfull \hbox (badness 1990) in paragraph at lines 256--257
+[]\T1/cmr/m/n/10 The sim-u-la-tion suite is sum-ma-rized in Ta-ble [][]I[][].
  []
 
 [3]
 <input-power-spectrum.png, id=209, 246.4407pt x 183.20445pt>
 File: input-power-spectrum.png Graphic file (type png)
 <use input-power-spectrum.png>
-Package pdftex.def Info: input-power-spectrum.png  used on input line 284.
+Package pdftex.def Info: input-power-spectrum.png  used on input line 283.
 (pdftex.def)             Requested size: 246.0pt x 182.87692pt.
- [4{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
-c} <./input-power-spectrum.png>]
-<projection.png, id=225, 1228.22865pt x 1228.22865pt>
+<projection.png, id=212, 1228.22865pt x 1228.22865pt>
 File: projection.png Graphic file (type png)
 <use projection.png>
-Package pdftex.def Info: projection.png  used on input line 316.
+Package pdftex.def Info: projection.png  used on input line 315.
 (pdftex.def)             Requested size: 438.60115pt x 438.60115pt.
+ [4{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
+c} <./input-power-spectrum.png>]
 <mass-function.png, id=226, 503.36055pt x 490.7133pt>
 File: mass-function.png Graphic file (type png)
 <use mass-function.png>
-Package pdftex.def Info: mass-function.png  used on input line 328.
+Package pdftex.def Info: mass-function.png  used on input line 327.
 (pdftex.def)             Requested size: 459.00352pt x 447.47078pt.
-
-Underfull \hbox (badness 1460) in paragraph at lines 346--347
+ [5 <./projection.png>]
+Underfull \hbox (badness 1460) in paragraph at lines 345--346
 []\T1/cmr/m/n/10 For the an-a-lytic com-par-i-son, we use the stan-dard
  []
 
-[5]
-<halfmass-redshift.png, id=240, 226.08466pt x 177.7842pt>
+[6 <./mass-function.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 346.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 346.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+<halfmass-redshift.png, id=248, 226.08466pt x 177.7842pt>
 File: halfmass-redshift.png Graphic file (type png)
 <use halfmass-redshift.png>
-Package pdftex.def Info: halfmass-redshift.png  used on input line 368.
+Package pdftex.def Info: halfmass-redshift.png  used on input line 367.
 (pdftex.def)             Requested size: 448.84259pt x 352.95236pt.
- [6 <./projection.png>] [7 <./mass-function.png>]
-<halo-density.png, id=254, 494.44725pt x 353.03896pt>
+[7]
+<halo-density.png, id=258, 494.44725pt x 353.03896pt>
 File: halo-density.png Graphic file (type png)
 <use halo-density.png>
-Package pdftex.def Info: halo-density.png  used on input line 388.
+Package pdftex.def Info: halo-density.png  used on input line 387.
 (pdftex.def)             Requested size: 469.20164pt x 335.0134pt.
  [8 <./halfmass-redshift.png>] [9 <./halo-density.png>]
-<concentration-qc.png, id=271, 487.8225pt x 398.56905pt>
+<concentration-qc.png, id=275, 487.8225pt x 398.56905pt>
 File: concentration-qc.png Graphic file (type png)
 <use concentration-qc.png>
-Package pdftex.def Info: concentration-qc.png  used on input line 410.
+Package pdftex.def Info: concentration-qc.png  used on input line 409.
 (pdftex.def)             Requested size: 469.20494pt x 383.35782pt.
 
-Underfull \hbox (badness 1275) in paragraph at lines 416--417
+Underfull \hbox (badness 1275) in paragraph at lines 415--416
 []\T1/cmr/m/n/10 We com-pare the halo concentration-mass re-la-tion
  []
 
 [10]
-Underfull \hbox (badness 1418) in paragraph at lines 433--435
+Underfull \hbox (badness 1418) in paragraph at lines 432--434
 []\T1/cmr/m/n/10 From a phys-i-cal per-spec-tive, the power-spectrum
  []
 
 [11 <./concentration-qc.png>]
-<power-spectrum.png, id=286, 514.5624pt x 374.8404pt>
+<power-spectrum.png, id=290, 514.5624pt x 374.8404pt>
 File: power-spectrum.png Graphic file (type png)
 <use power-spectrum.png>
-Package pdftex.def Info: power-spectrum.png  used on input line 439.
+Package pdftex.def Info: power-spectrum.png  used on input line 438.
 (pdftex.def)             Requested size: 469.2261pt x 341.81451pt.
  [12]
-Underfull \hbox (badness 4805) in paragraph at lines 471--472
+Underfull \hbox (badness 4805) in paragraph at lines 470--471
 []\T1/cmr/m/n/10 An im-por-tant next step is to trans-late these
  []
 
 
-Underfull \hbox (badness 1087) in paragraph at lines 471--472
+Underfull \hbox (badness 1087) in paragraph at lines 470--471
 \T1/cmr/m/n/10 satellite-galaxy statis-tics, and weak-lensing mea-sure-
  []
 
@@ -1083,14 +1092,14 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1AA7455D8CF8EE138A35AC546A110504;5782.
+(rerunfilecheck)             Checksum: 56087E3EAAB15C762121BE537D18963D;6035.
  ) 
 Here is how much of TeX's memory you used:
- 26905 strings out of 467525
- 488826 string characters out of 5418982
- 898659 words of memory out of 5000000
+ 26903 strings out of 467525
+ 488785 string characters out of 5418982
+ 898609 words of memory out of 5000000
  55237 multiletter control sequences out of 15000+600000
- 649389 words of font info for 99 fonts, out of 8000000 for 9000
+ 650170 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,118p,1506b,766s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -1100,28 +1109,32 @@ usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
 r/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
 local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lo
 cal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
-exlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
-ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
-/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
-2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/20
-26/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2026/t
-exmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/20
-26/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/local/texlive/2026
-/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2026/t
-exmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2026/tex
-mf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2026/texmf
--dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2026/texmf-d
-ist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2026/texmf-dis
-t/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2026/texmf-dist/
-fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fo
-nts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2026/texmf-dist/font
-s/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (16 pages, 14399458 bytes).
+l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
+exlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
+26/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
+6/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2026/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2026/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026/te
+xmf-dist/fonts/type1/public/cm-super/sfbx0700.pfb></usr/local/texlive/2026/texm
+f-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/local/texlive/2026/texmf-
+dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2026/texmf-di
+st/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2026/texmf-dist
+/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2026/texmf-dist/f
+onts/type1/public/cm-super/sfrm0500.pfb></usr/local/texlive/2026/texmf-dist/fon
+ts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2026/texmf-dist/fonts
+/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2026/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2026/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1
+/public/cm-super/sfti0900.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/p
+ublic/cm-super/sftt1000.pfb>
+Output written on main.pdf (16 pages, 14446203 bytes).
 PDF statistics:
- 479 PDF objects out of 1000 (max. 8388607)
- 391 compressed objects within 4 object streams
- 86 named destinations out of 1000 (max. 500000)
- 296 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 499 PDF objects out of 1000 (max. 8388607)
+ 402 compressed objects within 5 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 304 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -193,77 +193,76 @@ where $k_p$ is a pivot wavenumber and $m_s$ is the spectral index on scales $k >
 \label{sec:numerical}
 
 \subsection{Initial Conditions}
-\blue{We generate the initial conditions with \textsc{Music2-MonofonIC}, adopting the Eisenstein \& Hu transfer function together with the primordial power spectra described in Section~\ref{sec:theory}. For the PL model, the primordial spectrum follows the standard power-law form. For the BT models, we replace the small-scale part of the spectrum with the broken power-law prescription in Eq.~(1), so that the large-scale modes remain unchanged while the power at $k>k_p$ is enhanced. In this way, the three simulation suites differ only in their primordial power spectra, enabling a controlled comparison of the resulting nonlinear structure formation.}
+We generate the initial conditions with \textsc{Music2-MonofonIC}, adopting the Eisenstein \& Hu transfer function together with the primordial power spectra described in Section~\ref{sec:theory}. For the PL model, the primordial spectrum follows the standard power-law form. For the BT models, we replace the small-scale part of the spectrum with the broken power-law prescription, so that the large-scale modes remain unchanged while the power at $k>k_p$ is enhanced. For each fixed box size and particle number, the background cosmology and numerical settings are kept identical across the compared models; the intended controlled variable is therefore the shape of the primordial power spectrum.
+
 \subsection{Simulation Code}
-\blue{We evolve the initial conditions with the cosmological $N$-body code \textsc{SWIFT}. In the dark-matter-only mode used here, \textsc{SWIFT} combines accurate short-range gravity with a long-range Particle Mesh treatment for periodic boxes, enabling efficient calculations over the full dynamic range of our simulations. Since all runs adopt the same numerical setup and background cosmology, the differences discussed in this paper can be attributed directly to the modified primordial power spectra rather than to changes in the gravity solver or simulation configuration.}
+We evolve the initial conditions with the cosmological $N$-body code \textsc{SWIFT}. In the dark-matter-only mode used here, \textsc{SWIFT} combines short-range gravitational forces with a long-range Particle Mesh treatment for periodic boxes. This setup is appropriate for isolating the gravitational response of the dark matter field to the modified initial spectrum, without introducing baryonic physics or galaxy-formation prescriptions.
+
 \subsubsection{Cosmological Parameters}
 \label{subsub:cosmo_params}
 
-For all the cosmological simulations in this paper, 
-
-\begin{enumerate}
-    \item Universe density parameters $\Omega_m=0.3153$, $\Omega_b=0.0493$, $\Omega_L= 0.6847$.
-    \item Hubble constant $H_0 = 67.36 \ \rm{km}\ \rm{s}^{-1}\ \rm{cMpc}^{-1}$
-    \item Scalar spectral index $n_s = 0.9649$
-    \item Root-mean-square matter fluctuation averaged over a sphere of radius $8 h^{-1}~\rm{cMpc}$, $\sigma_8 = 0.8111$.
-\end{enumerate}
+All simulations adopt the same background cosmology: $\Omega_{\rm m}=0.3153$, $\Omega_{\rm b}=0.0493$, $\Omega_{\Lambda}=0.6847$, $H_0=67.36\,{\rm km}\,{\rm s}^{-1}\,{\rm Mpc}^{-1}$, $n_s=0.9649$, and $\sigma_8=0.8111$, where $\sigma_8$ is the root-mean-square matter fluctuation in spheres of radius $8\,h^{-1}{\rm Mpc}$. The BT models modify the small-scale primordial tilt while keeping these background parameters fixed.
 
 
 \begin{table*}[t]
 \centering
-\small
-\setlength{\tabcolsep}{4pt}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.25}
-\begin{tabular}{l c c c c c c}
+\begin{tabular}{l l c c c c c c}
 \hline
 \hline
-Model & $k_p$ & $m_s$ & $N$ & Box size & $m_{\text{DM}}$ & $\epsilon$ \\
- & $[h\,\text{Mpc}^{-1}]$ & & & $[h^{-1}\,\text{Mpc}]$ & $[h^{-1}M_\odot]$ & $[h^{-1}\,\text{Mpc}]$ \\
+Role & Model & $k_p$ & $m_s$ & $N$ & Box size & $m_{\text{DM}}$ & $\epsilon$ \\
+ & & $[h\,\text{Mpc}^{-1}]$ & & & $[h^{-1}\,\text{Mpc}]$ & $[h^{-1}M_\odot]$ & $[h^{-1}\,\text{Mpc}]$ \\
 \hline
-\textbf{Production Runs (N=1024)} \\
+\multicolumn{8}{l}{\textbf{Main comparison runs}} \\
 \hline
-pl\_25\_1024   & -- & -- & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
-kp\_1\_ms\_1.5\_25\_1024  & 1  & 1.5 & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
-kp\_1\_ms\_2.0\_25\_1024  & 1  & 2.0 & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
-kp\_10\_ms\_1.5\_25\_1024 & 10 & 1.5 & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
-kp\_10\_ms\_2.0\_25\_1024 & 10 & 2.0 & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
-kp\_1\_ms\_1.5\_5\_1024   & 1  & 1.5 & $1024^3$ & 5 & $1.3\times 10^6$ & 0.000029 \\
-kp\_1\_ms\_1.5\_2.5\_1024 & 1  & 1.5 & $1024^3$ & 2.5 & $1.6\times 10^5$ & 0.0000145 \\
-
+PL & pl\_25\_1024   & -- & -- & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
+BT\_soft & kp\_1\_ms\_1.5\_25\_1024  & 1  & 1.5 & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
+BT\_deep & kp\_10\_ms\_1.5\_25\_1024 & 10 & 1.5 & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
 \hline
-\textbf{Convergence Test Runs} \\
+\multicolumn{8}{l}{\textbf{Additional BT variants}} \\
 \hline
-pl\_25\_512    & -- & -- & $512^3$  & 25 & $6.5\times 10^8$ & 0.00029 \\
-pl\_25\_256    & -- & -- & $256^3$  & 25 & $5.2\times 10^9$ & 0.00058 \\
-pl\_50\_512    & -- & -- & $512^3$  & 50 & $5.2\times 10^9$ & 0.00058 \\
-pl\_256\_1024  & -- & -- & $1024^3$ & 256 & $1.4\times 10^{10}$ & 0.00148 \\
-pl\_256\_512   & -- & -- & $512^3$  & 256 & $1.1\times 10^{11}$ & 0.00296 \\
+Steeper BT & kp\_1\_ms\_2.0\_25\_1024  & 1  & 2.0 & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
+Steeper BT & kp\_10\_ms\_2.0\_25\_1024 & 10 & 2.0 & $1024^3$ & 25 & $8.1\times 10^7$ & 0.000145 \\
+Small-box BT & kp\_1\_ms\_1.5\_5\_1024   & 1  & 1.5 & $1024^3$ & 5 & $1.3\times 10^6$ & 0.000029 \\
+Small-box BT & kp\_1\_ms\_1.5\_2.5\_1024 & 1  & 1.5 & $1024^3$ & 2.5 & $1.6\times 10^5$ & 0.0000145 \\
+\hline
+\multicolumn{8}{l}{\textbf{PL convergence and volume tests}} \\
+\hline
+Resolution & pl\_25\_512    & -- & -- & $512^3$  & 25 & $6.5\times 10^8$ & 0.00029 \\
+Resolution & pl\_25\_256    & -- & -- & $256^3$  & 25 & $5.2\times 10^9$ & 0.00058 \\
+Volume & pl\_50\_512    & -- & -- & $512^3$  & 50 & $5.2\times 10^9$ & 0.00058 \\
+Volume & pl\_256\_1024  & -- & -- & $1024^3$ & 256 & $1.4\times 10^{10}$ & 0.00148 \\
+Volume & pl\_256\_512   & -- & -- & $512^3$  & 256 & $1.1\times 10^{11}$ & 0.00296 \\
 \hline
 \end{tabular}
-\caption{Summary of cosmological N-body simulation parameters. PL models use standard power-law power spectra, while Blue Tilted models have enhanced power on small scales. $k_p$ is the wavenumber where the power spectrum enhancement begins, $m_s$ is the spectral index (tilt slope), $N$ is the number of dark matter particles, Box size is the comoving side length of the simulation volume, $m_{\text{DM}}$ is the dark matter particle mass, and $\epsilon$ is the gravitational softening length. All simulations use the same background cosmology with varying initial conditions to study the effects of small-scale power on structure formation.}
+\caption{Summary of cosmological $N$-body simulation parameters. The main comparison uses the PL, BT\_soft, and BT\_deep runs with identical box size, particle number, particle mass, and force softening. Additional BT variants explore stronger tilts or smaller boxes, while the PL resolution and volume tests provide numerical reference cases. Here $k_p$ is the wavenumber where the primordial spectrum changes slope, $m_s$ is the small-scale spectral index, $N$ is the number of dark matter particles, $m_{\text{DM}}$ is the particle mass, and $\epsilon$ is the gravitational softening length.}
 \label{tab:simulation_parameters}
 \end{table*}
 
 
 
 \subsection{Halo Finder and Halo Property Post-processor}
-\blue{In the main text, halos and merger trees are identified with \textsc{HBT+}, a particle-tracking halo finder well suited to following bound structures and their progenitors across snapshots. We require a minimum of 20 particles for an object to be retained as a halo candidate. The halo center is defined as the position of the most bound particle. Based on the \textsc{HBT+} catalogs, we then use \textsc{SOAP} (Spherical Overdensity and Aperture Processor) to compute spherical-overdensity properties such as $M_{200c}$, $R_{200c}$, and the corresponding structural quantities used below. This separation between halo identification and property measurement allows us to retain the tracking information from \textsc{HBT+} while adopting a consistent spherical-overdensity definition for the profile and concentration analyses.}
+Halos and merger trees are identified with \textsc{HBT+}, a particle-tracking halo finder designed to follow bound structures and their progenitors across snapshots. We require a minimum of 20 particles for an object to be retained as a halo candidate, and define the halo center as the position of the most bound particle. Based on the \textsc{HBT+} catalogs, we then use \textsc{SOAP} (Spherical Overdensity and Aperture Processor) to compute spherical-overdensity properties such as $M_{200c}$, $R_{200c}$, and the structural quantities used below. This separation between halo identification and property measurement retains the tracking information from \textsc{HBT+} while adopting a consistent spherical-overdensity definition for the profile and concentration analyses.
+
+\subsection{Mass Definitions and Analysis Samples}
+Different statistics use different halo mass definitions. For the halo mass function, we use Friends-of-Friends (FOF) halo masses and compare them to analytic predictions evaluated with the same FOF mass definition. For internal-structure diagnostics, including stacked density profiles and the concentration--mass relation, we use the spherical-overdensity quantities measured by \textsc{SOAP}, primarily $M_{200c}$ and $R_{200c}$. We therefore avoid directly mixing FOF and $M_{200c}$ masses when interpreting a single statistic.
+
+The 20-particle threshold is a catalog-construction threshold, not a precision threshold. In the fiducial $25\,h^{-1}{\rm Mpc}$, $1024^3$ runs, it corresponds to a formal mass of approximately $1.6\times10^9\,h^{-1}M_\odot$. More conservative thresholds of 100 and 300 particles correspond to approximately $8.1\times10^9\,h^{-1}M_\odot$ and $2.4\times10^{10}\,h^{-1}M_\odot$, respectively. The lowest-mass bins should therefore be treated as resolution-sensitive unless they are explicitly supported by the higher-resolution small-box runs.
 
 
 \subsection{Simulation Suite and Terminology\label{subsec:Terminology}}
-We run nine simulations using the numerical pipeline described above. Their numerical settings are listed in Table~\ref{tab:simulation_parameters}. The six fiducial-resolution simulations are used to compare the BT and the PL models. In the discussion below, we use PL to denote the standard power-law primordial power spectrum, while BT\_soft and BT\_deep denote the two blue-tilted variants adopted for the main comparisons.
+The simulation suite is summarized in Table~\ref{tab:simulation_parameters}. The main results compare three runs with the same $25\,h^{-1}{\rm Mpc}$ box, $1024^3$ particles, particle mass, and softening length: PL, BT\_soft, and BT\_deep. PL denotes the standard power-law primordial power spectrum. BT\_soft denotes the blue-tilted model with $k_p=1\,h\,{\rm Mpc}^{-1}$ and $m_s=1.5$, while BT\_deep denotes the blue-tilted model with $k_p=10\,h\,{\rm Mpc}^{-1}$ and $m_s=1.5$. The additional $m_s=2.0$ and small-box BT runs are kept separate from the main comparison and are used only when explicitly stated.
 
 \subsection{Numerical Robustness and Convergence}
-\begingroup
-\color{red}
 To assess the numerical robustness of the main results, we performed a set of convergence tests spanning both mass resolution and box size, as summarized in Table~\ref{tab:simulation_parameters}. These tests are intended to establish the ranges over which the halo abundance, internal structure, and clustering statistics are numerically reliable, and to distinguish physical trends caused by the modified primordial power spectrum from numerical artifacts. In practice, three classes of effects are particularly important: particle discreteness at the low-mass end, finite-volume suppression at the high-mass and large-scale ends, and force-softening effects in the inner regions of halos.
 
-For halo abundance statistics, the most conservative limitation arises from the minimum number of particles required to define a robust object. Although we retain halo candidates above 20 particles in the catalog construction, the scientific interpretation of the halo mass function is restricted to a higher effective threshold, because quantities such as the FOF mass and derived abundance become increasingly sensitive to discreteness and halo-finding noise near the formal detection limit. Our fiducial analysis therefore focuses on the mass interval where the production runs and the convergence-test runs show qualitatively stable behavior under changes in resolution. Similarly, the high-mass end is limited by the finite simulation volume, which reduces the number of rare objects and amplifies sample variance.
+For halo abundance statistics, the main low-mass limitation is particle discreteness. Although we retain halo candidates above 20 particles in the catalog construction, the scientific interpretation of the halo mass function is restricted to masses that are sufficiently above this formal detection threshold. Quantities such as the FOF mass and derived abundance become increasingly sensitive to discreteness and halo-finding noise near the low-particle limit. Similarly, the high-mass end is limited by the finite simulation volume, which reduces the number of rare objects and amplifies sample variance.
 
-For internal halo structure, convergence is more restrictive in radius than in total mass. The density profile and concentration measurements are expected to be most sensitive to force softening, particle number, and centering uncertainties in the inner halo. Accordingly, the trends emphasized in the main text should be interpreted as robust only outside the innermost numerically unresolved region and for halo masses that are sufficiently well sampled by particles. In future revisions, these limits will be quantified explicitly using resolution-comparison panels and radial convergence criteria. The present analysis should therefore be viewed as establishing the qualitative and intermediate-scale structural response of halos to blue-tilted initial conditions, rather than claiming percent-level convergence at the smallest radii.
+For internal halo structure, convergence is more restrictive in radius than in total mass. Density profiles and concentrations are sensitive to force softening, particle number, and centering uncertainties in the inner halo. The structural trends discussed below should therefore be interpreted outside the innermost numerically unresolved region and for halo masses that are sufficiently well sampled by particles.
 
-For the nonlinear matter power spectrum, the usable dynamic range is bounded on large scales by the simulation box size and on small scales by force resolution, particle sampling, and grid-assignment effects in the power-spectrum estimator. The interpretation of the highest-$k$ bins should therefore be understood as indicative of a strong enhancement trend rather than as a precision measurement at arbitrarily small scales. A full production version of this paper should include an explicit summary table of the trusted mass, radius, and wavenumber intervals adopted for each statistic.
-\endgroup
+For the nonlinear matter power spectrum, the usable dynamic range is bounded on large scales by the simulation box size and on small scales by force resolution, particle sampling, and grid-assignment effects in the power-spectrum estimator. The highest-$k$ bins should therefore be interpreted with caution unless they are shown to be stable against changes in resolution and estimator settings. Throughout the analysis, we distinguish qualitative trends that appear consistently across diagnostics from precision claims that require stricter convergence cuts.
 
 \section{Results}
 \label{sec:results}
