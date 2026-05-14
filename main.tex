@@ -176,13 +176,13 @@ We consider a phenomenological extension to the standard PPS, the blue-tilted (B
 \end{equation}
 where $k_p$ is a pivot wavenumber and $m_s$ is the spectral index on scales $k > k_p$. {\color{blue}In this work the large-scale normalization is kept fixed; only the small-scale slope above $k_p$ is varied, so the model description can be specified by $k_p$ and $m_s$ for the present comparison.} This model preserves consistency with large-scale CMB and galaxy survey constraints ($k < k_p$), while enhancing power on smaller scales ($k > k_p$) when $m_s > n_s$ (blue-tilt). The case $m_s < n_s$ corresponds to a red-tilted (RT) model.
 
-\subsection{Model Selection and Cosmological Motivation}
-We focus on two specific BT models, with parameters adopted from previous BT studies on JWST early massive galaxies\cite{Hira24bluetilt} and enhancing MW substructures \citep{Wu25BT}:
-\begin{itemize}
-    \item \textbf{BT\_soft}: A model with a relatively low pivot scale ($k_p \approx 1.0$ Mpc$^{-1}$) and moderate enhancement ($m_s \approx 1.5$).
-    \item \textbf{BT\_deep}: A model with a higher pivot scale ($k_p \approx 10$ Mpc$^{-1}$) and similar spectral tilt.
-\end{itemize}
-These two models allow us to explore the scale-dependence of the BT modification's effects. For comparison, we also simulate the standard power-law (PL) model ($m_s = n_s$), which serves as our baseline.
+\section{Numerical Methods}
+\label{sec:numerical}
+
+\subsection{Simulation Suite and Model Definitions}
+\label{subsec:simulation_suite}
+
+{\color{blue}We compare a standard power-law primordial spectrum, denoted PL, with two blue-tilted benchmark spectra, denoted BT\_soft and BT\_deep. The two BT runs use the same small-scale spectral index but different pivot scales, as summarized in Table~\ref{tab:Params_all_models}. BT\_soft affects a broader range of mildly nonlinear scales, whereas BT\_deep confines the enhancement to smaller scales. This pair of models lets us test how the nonlinear response depends on the range of modes whose primordial power is enhanced.}
 
 %\begin{figure*}[h]
 %    \centering
@@ -213,28 +213,18 @@ BT\_soft &    $k_p = 0.702 \ \rm{cMpc}^{-1}$ & $ m_s = 1.5$   \\
 \label{tab:Params_all_models}
 \end{table}
 
-
-\begin{figure*}
-    \centering
-    \includegraphics[width=0.88\textwidth,height=0.66\textheight,keepaspectratio]{zhalf-vs-m0-qc.png}
-    \caption{{\color{blue}Half-mass assembly redshift $z_{1/2}$ as a function of final tree mass $M_0$ at $z=0$ for the PL, BT\_soft, and BT\_deep simulations. Points show individual halo measurements and the solid curves show the binned trend for each model, where $z_{1/2}$ is defined from the main progenitor branch of the merger tree. Halos in the blue-tilted models reach half of their final mass systematically earlier than their PL counterparts, especially at lower masses.}}
-    \label{fig:half_mass_redshift}
-\end{figure*}
-\section{Numerical Methods}
-\label{sec:numerical}
-
-\subsection{initial conditions (IC)}
-We select the public code Music2-MonofonIC (Multi-Scale Initial Conditions for Cosmological Simulations []) to generate the initial conditions for our cosmological zoom-in simulations. We adopt the Eisenstein and Hu [] transfer function, modifying it according to the method described in Section II to simulate the blue-tilted primordial power spectrum. {\color{blue}The initial-condition generation step therefore uses the same background cosmology for the PL and BT runs while changing only the input primordial spectrum.}
+\subsection{Initial Conditions}
+{\color{blue}We generate the initial conditions with \textsc{Music2-MonofonIC}, adopting the Eisenstein \& Hu transfer function together with the primordial power spectra described in Section~\ref{sec:theory}. For the PL model, the primordial spectrum follows the standard power-law form. For the BT models, we replace the small-scale part of the spectrum with the broken power-law prescription, so that the large-scale modes remain unchanged while the power at $k>k_p$ is enhanced. For each fixed box size and particle number, the background cosmology and numerical settings are kept identical across the compared models; the intended controlled variable is therefore the shape of the primordial power spectrum.}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\columnwidth]{input-power-spectrum.png}
-    \caption{Matter power spectrum comparison for different spectral index parameters ($m_s$) and pivot scales ($k_p$) within the $\Lambda$CDM cosmological framework. The four curves represent: (1) Reference $\Lambda$CDM model with $m_s=0.9665$ and $k_p=0.05$ Mpc$^{-1}$ (purple solid line), (2) Modified spectral index with $m_s=1.0$ and $k_p=0.05$ Mpc$^{-1}$ (red dashed line), (3) Adjusted pivot scale with $m_s=0.9665$ and $k_p=0.02$ Mpc$^{-1}$ (blue dotted line), and (4) Combined variation with $m_s=1.0$ and $k_p=0.02$ Mpc$^{-1}$ (green dash-dotted line). The power spectrum $P(k)$ is shown across scales from $k=10^{-3}$ to $10^{1}$ Mpc$^{-1}$, demonstrating how variations in primordial power spectrum parameters affect structure formation at different scales. The dashed vertical line indicates the pivot scale $k_p=0.05$ Mpc$^{-1}$ for reference. {\color{blue}The spectra are evaluated at the initial redshift, $z=200$.}}
+    \caption{{\color{blue}Input linear matter power spectra used to generate the PL, BT\_soft, and BT\_deep initial conditions. The PL spectrum provides the standard power-law baseline, while the BT spectra keep the large-scale normalization fixed and depart from PL only above their respective pivot scales. BT\_soft departs from PL over a broader range of mildly nonlinear modes, whereas BT\_deep confines the modification to smaller scales. The spectra are evaluated at the initial redshift, $z=200$.}}
     \label{fig:power_spectrum_comparison}
 \end{figure}
 
-\subsection{Simulation code}
-We perform several simulations using the state-of-the-art cosmological simulation code SWIFT []. For N-body simulations, SWIFT uses the Fast Multipole Method (FMM) at small scales [68], which can reduce the complexity of gravity calculation (including both the potential and force calculation) to O(N ). The Particle Mesh Method is also coupled at large scales to handle periodic volumes []. {\color{blue}This moves the simulation-code description from the Introduction into the Numerical Methods section, where the initial-condition generation and dynamical evolution pipeline are specified together.}
+\subsection{Simulation Code}
+{\color{blue}We evolve the initial conditions with the cosmological $N$-body code \textsc{SWIFT} \citep{Schaller2024SWIFT}. In the dark-matter-only, collisionless mode used here, \textsc{SWIFT}'s gravity solver uses a fast-multipole method, optionally coupled to a Fourier-space Particle-Mesh solver for periodic volumes. The PL and BT simulations use the same numerical setup listed in Table~\ref{tab:simulation_parameters}; the intended controlled variable is therefore the input primordial spectrum rather than the dynamical evolution algorithm.}
 \subsubsection{Cosmological parameters}
 \label{subsub:cosmo_params}
 
@@ -342,6 +332,13 @@ f(\sigma)
 \subsection{Half-Mass Redshift\label{subsub:HMR}}
 {\color{blue}The half-mass assembly redshift, \(z_{1/2}\), provides a complementary view of the abundance signal by asking when each \(z=0\) halo first assembled half of its final main-progenitor mass. Figure~\ref{fig:half_mass_redshift} uses the HBT+ merger-tree tracks over 21 snapshots between \(z\simeq8.5\) and \(z=0\). The plotted points show the mean \(z_{1/2}\) in each mass bin, and the error bars show the standard deviation of the halo-to-halo distribution.}
 
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.88\textwidth,height=0.66\textheight,keepaspectratio]{zhalf-vs-m0-qc.png}
+    \caption{{\color{blue}Half-mass assembly redshift $z_{1/2}$ as a function of final tree mass $M_0$ at $z=0$ for the PL, BT\_soft, and BT\_deep simulations. Points show individual halo measurements and the solid curves show the binned trend for each model, where $z_{1/2}$ is defined from the main progenitor branch of the merger tree. Halos in the blue-tilted models reach half of their final mass systematically earlier than their PL counterparts, especially at lower masses.}}
+    \label{fig:half_mass_redshift}
+\end{figure*}
+
 {\color{blue}The assembly shift is largest in BT\_soft. Around \(M_{z=0}\simeq1.3\times10^9\,M_\odot\), the mean \(z_{1/2}\) is \(2.40\) for PL, \(4.43\) for BT\_soft, and \(2.72\) for BT\_deep. Around \(M_{z=0}\simeq7.5\)--\(8.0\times10^9\,M_\odot\), the corresponding means are \(1.89\), \(3.37\), and \(1.96\). At \(M_{z=0}\simeq2\times10^{11}\,M_\odot\), the difference is smaller: \(1.36\) for PL, \(1.85\) for BT\_soft, and \(1.35\) for BT\_deep. Thus, the same model that gives the largest high-redshift HMF enhancement also shifts halo assembly earlier, especially below \(\sim10^{10}\,M_\odot\).}
 \subsection{Halo Profiles}
 
@@ -401,25 +398,14 @@ At \(z=0\), the fiducial \(25\,h^{-1}\mathrm{Mpc}\) BT\_soft/PL ratio is close t
     \label{fig:power_spectra_ratio_z0}
 \end{figure*}
 
-\section{CONCLUSIONS}
+\section{Conclusions}
 \label{sec:conclusion}
-\subsection{Halo Mass Function}
-The blue-tilted models predict a significantly higher abundance of low-mass halos ($M < 10^{10} M_\odot$) at high redshifts ($z > 5$), indicating that enhanced small-scale power promotes the earlier collapse of low-mass structures. While the predictions of all models converge at the high-mass end towards lower redshifts, the abundance excess in blue-tilted models persists at the low-mass end, remaining a factor of 2--3 higher than the standard model at $z=0$.
 
-\subsection{Dark Matter Power Spectrum}
-A pronounced enhancement in small-scale power ($k > 1 \ h\mathrm{Mpc}^{-1}$) is present in the blue-tilted model across all redshifts. Crucially, this initial difference is dramatically amplified by non-linear evolution. By $z=0$, the non-linear matter power spectrum of the blue-tilted model exceeds that of the standard CDM model by over an order of magnitude at scales around $k \sim 10 \ h\mathrm{Mpc}^{-1}$.
+{\color{blue}We have used dark-matter-only cosmological $N$-body simulations to quantify how enhanced small-scale primordial power is transformed by nonlinear structure formation. By comparing a standard power-law primordial spectrum with two blue-tilted benchmark models, we isolated the gravitational response to the modified initial conditions before introducing baryonic physics, galaxy formation, or observational selection.
 
-\subsection{Half-Mass Epoch--Redshift Relation}
-Halos of a given $z=0$ mass reach half of their final mass at a higher redshift in blue-tilted models compared to the standard model. This indicates an \textbf{earlier formation epoch} and a more rapid mass assembly history for halos in these models, with the effect being most pronounced for halos in the intermediate mass range ($10^9 \lesssim M_h \lesssim 10^{11} M_\odot$).
+The simulations show four main effects. First, enhanced small-scale power increases the abundance of low-mass halos, especially at high redshift. In the BT\_soft model, the FOF halo abundance exceeds PL by factors of $4.81$ and $6.55$ at $z=8.52$ for $M\simeq1.21\times10^9$ and $1.21\times10^{10}\,M_\odot$, respectively; by $z=0$, the corresponding ratios have decreased to $1.42$ and $1.47$. Second, halos assemble earlier. Near $M_{z=0}\simeq1.3\times10^9\,M_\odot$, the mean half-mass redshift changes from $2.40$ in PL to $4.43$ in BT\_soft and $2.72$ in BT\_deep. Third, the earlier formation history produces a measurable internal-structure response: at $z=0$, the median concentration in the $10^9$--$10^{9.5}\,M_\odot$ bin is higher than PL by factors of $3.20$ for BT\_soft and $1.35$ for BT\_deep. Fourth, the available BT\_soft nonlinear matter power spectra show a coherent high-$k$ excess, reaching $P_{\rm BT}/P_{\rm PL}=1.17$ at $k=20\,h\,\mathrm{Mpc}^{-1}$ in the fiducial box.
 
-\subsection{Concentration-Mass Relation}
-The blue-tilted models systematically produce halos with higher concentrations, with the effect being strongest at \textbf{low redshift} and for \textbf{low-mass halos}. At $z=0$, the concentration of low-mass halos can be 2--3 times higher than in the standard model. This enhancement weakens with increasing redshift, demonstrating that non-linear evolution acts to amplify the differences imprinted by the initial power spectrum.
-
-\subsection{Halo Density Profile}
-The density enhancement in blue-tilted models is primarily confined to the \textbf{inner regions} of halos ($r < 0.1 R_{200}$), while the outer density profiles remain similar to those in the standard model. This "cuspy core" structure suggests that the modified power spectrum predominantly affects the early collapse and central condensation of the halo.
-
-\subsection{Synthesis: The Dark Matter Halo Population}
-Collectively, these findings paint a coherent picture: a blue-tilted primordial power spectrum gives rise to a halo population that is \textbf{more abundant} at the low-mass end, forms \textbf{earlier}, and possesses \textbf{denser, more concentrated inner structures}. These effects point towards a universe where structure growth on small scales is accelerated and non-linear evolution is both advanced and intensified.
+These trends are strongest in the low-mass, high-redshift, and high-wavenumber regimes, and they weaken toward massive halos and late times. The present results are simulation-level benchmarks rather than direct observational constraints. They are relevant to JWST-era high-redshift galaxy studies, dwarf-galaxy structure, strong-lensing probes of low-mass structure, 21 cm forecasts, and small-scale clustering measurements, but each application requires additional modeling of baryons, reionization, galaxy selection, and survey response.}
 
 
 

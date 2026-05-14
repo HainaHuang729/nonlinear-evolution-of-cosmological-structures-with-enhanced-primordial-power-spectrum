@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99e (TeX Live 2026)
+This is BibTeX, Version 0.99d (TeX Live 2025)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: apsrev4-1-JHEPfix.bst
@@ -21,44 +21,44 @@ Control: production of article title (1) required
 Control: page (1) range
 Control: year (1) truncated
 Control: production of eprint (0) enabled
-You've used 18 entries,
+You've used 9 entries,
             6017 wiz_defined-function locations,
-            2526 strings with 28518 characters,
-and the built_in function-call counts, 22559 in all, are:
-= -- 1369
-> -- 736
-< -- 128
-+ -- 210
-- -- 170
-* -- 3804
-:= -- 2101
-add.period$ -- 36
-call.type$ -- 18
-change.case$ -- 90
-chr.to.int$ -- 18
-cite$ -- 18
-duplicate$ -- 2002
-empty$ -- 1603
-format.name$ -- 405
-if$ -- 4500
+            2448 strings with 26117 characters,
+and the built_in function-call counts, 10766 in all, are:
+= -- 680
+> -- 320
+< -- 59
++ -- 95
+- -- 72
+* -- 1776
+:= -- 1031
+add.period$ -- 18
+call.type$ -- 9
+change.case$ -- 45
+chr.to.int$ -- 9
+cite$ -- 9
+duplicate$ -- 955
+empty$ -- 762
+format.name$ -- 174
+if$ -- 2122
 int.to.chr$ -- 1
-int.to.str$ -- 26
-missing$ -- 300
-newline$ -- 106
-num.names$ -- 54
-pop$ -- 717
+int.to.str$ -- 17
+missing$ -- 143
+newline$ -- 79
+num.names$ -- 27
+pop$ -- 345
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 45
 quote$ -- 0
-skip$ -- 740
+skip$ -- 359
 stack$ -- 0
-substring$ -- 530
-swap$ -- 2148
-text.length$ -- 85
+substring$ -- 269
+swap$ -- 1010
+text.length$ -- 35
 text.prefix$ -- 0
 top$ -- 8
-type$ -- 283
+type$ -- 134
 warning$ -- 0
-while$ -- 49
+while$ -- 24
 width$ -- 0
-write$ -- 213
+write$ -- 133
