@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.5.5)  15 MAY 2026 23:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.5.5)  16 MAY 2026 00:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -794,48 +794,49 @@ File: projection.png Graphic file (type png)
 <use projection.png>
 Package pdftex.def Info: projection.png  used on input line 296.
 (pdftex.def)             Requested size: 282.2332pt x 282.2332pt.
-[4]
-Underfull \hbox (badness 1603) in paragraph at lines 325--327
+
+Underfull \hbox (badness 1603) in paragraph at lines 324--326
 [][]\T1/cmr/m/n/10 where $[]$ is the mean mat-ter den-sity, $\OML/cmm/m/it/10 ^^[\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 M; z\OT1/cmr/m/n/10 )$ \T1/cmr/m/n/10 is
  []
 
+[4]
 <mass-function.png, id=237, 747.5127pt x 507.5763pt>
 File: mass-function.png Graphic file (type png)
 <use mass-function.png>
-Package pdftex.def Info: mass-function.png  used on input line 330.
+Package pdftex.def Info: mass-function.png  used on input line 329.
 (pdftex.def)             Requested size: 438.59917pt x 297.81773pt.
 <zhalf-vs-m0-qc.png, id=240, 578.16pt x 361.35pt>
 File: zhalf-vs-m0-qc.png Graphic file (type png)
 <use zhalf-vs-m0-qc.png>
-Package pdftex.def Info: zhalf-vs-m0-qc.png  used on input line 342.
+Package pdftex.def Info: zhalf-vs-m0-qc.png  used on input line 341.
 (pdftex.def)             Requested size: 336.59457pt x 210.37161pt.
-[5 <./projection.png>]
-<halo-density.png, id=250, 502.5174pt x 357.85695pt>
-File: halo-density.png Graphic file (type png)
-<use halo-density.png>
-Package pdftex.def Info: halo-density.png  used on input line 358.
-(pdftex.def)             Requested size: 191.8797pt x 136.6423pt.
-[6 <./mass-function.png> <./halo-density.png>]
-Underfull \hbox (badness 6445) in paragraph at lines 368--369
-[]\T1/cmr/m/n/10 Figure X presents a com-par-i-son of the halo
+
+Underfull \hbox (badness 1097) in paragraph at lines 349--350
+\T1/cmr/m/n/10 equivalent ra-dial den-sity pro-files re-con-structed from
  []
 
-[7 <./zhalf-vs-m0-qc.png>]
-<concentration-qc.png, id=273, 494.3268pt x 401.3394pt>
+[5 <./projection.png>]
+<halo-density.png, id=254, 502.5174pt x 357.85695pt>
+File: halo-density.png Graphic file (type png)
+<use halo-density.png>
+Package pdftex.def Info: halo-density.png  used on input line 357.
+(pdftex.def)             Requested size: 191.8797pt x 136.6423pt.
+[6 <./mass-function.png> <./halo-density.png>] [7 <./zhalf-vs-m0-qc.png>]
+<concentration-qc.png, id=285, 494.3268pt x 401.3394pt>
 File: concentration-qc.png Graphic file (type png)
 <use concentration-qc.png>
-Package pdftex.def Info: concentration-qc.png  used on input line 387.
+Package pdftex.def Info: concentration-qc.png  used on input line 384.
 (pdftex.def)             Requested size: 196.80075pt x 159.77966pt.
-<power-spectrum.png, id=275, 604.1772pt x 418.6842pt>
+<power-spectrum.png, id=287, 604.1772pt x 418.6842pt>
 File: power-spectrum.png Graphic file (type png)
 <use power-spectrum.png>
-Package pdftex.def Info: power-spectrum.png  used on input line 400.
+Package pdftex.def Info: power-spectrum.png  used on input line 397.
 (pdftex.def)             Requested size: 177.1203pt x 122.73775pt.
 [8 <./concentration-qc.png> <./power-spectrum.png>] [9] (./main.bbl [10]) [11]
-<mass-function-m200c-bocquet16.png, id=342, 747.39224pt x 502.87875pt>
+<mass-function-m200c-bocquet16.png, id=359, 747.39224pt x 502.87875pt>
 File: mass-function-m200c-bocquet16.png Graphic file (type png)
 <use mass-function-m200c-bocquet16.png>
-Package pdftex.def Info: mass-function-m200c-bocquet16.png  used on input line 466.
+Package pdftex.def Info: mass-function-m200c-bocquet16.png  used on input line 463.
 (pdftex.def)             Requested size: 484.49911pt x 325.99255pt.
 [12] [13 <./mass-function-m200c-bocquet16.png>] (./main.aux)
  ***********
@@ -846,18 +847,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 3032329AC90C5B21E635EEFA8B23B0DE;5556.
  ) 
 Here is how much of TeX's memory you used:
- 26546 strings out of 475171
- 504386 string characters out of 5760918
- 878233 words of memory out of 5000000
- 48983 multiletter control sequences out of 15000+600000
- 580488 words of font info for 95 fonts, out of 8000000 for 9000
+ 26563 strings out of 475171
+ 504794 string characters out of 5760918
+ 878775 words of memory out of 5000000
+ 48995 multiletter control sequences out of 15000+600000
+ 581163 words of font info for 96 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,11n,105p,1890b,762s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0700.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0500.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (13 pages, 17322938 bytes).
+ 99i,11n,105p,1910b,762s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0700.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0500.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on main.pdf (13 pages, 17324161 bytes).
 PDF statistics:
- 905 PDF objects out of 1000 (max. 8388607)
- 414 compressed objects within 5 object streams
- 81 named destinations out of 1000 (max. 500000)
+ 931 PDF objects out of 1000 (max. 8388607)
+ 435 compressed objects within 5 object streams
+ 85 named destinations out of 1000 (max. 500000)
  285 words of extra memory for PDF output out of 10000 (max. 10000000)
 
