@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.5.5)  14 MAY 2026 14:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.5.5)  15 MAY 2026 23:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -379,8 +379,6 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@cntb=\count307
 \multirow@dima=\skip61
 \bigstrutjot=\dimen171
-) (/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/tex/latex/placeins/placeins.sty
-Package: placeins 2005/04/18  v 2.2
 ) (/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigtopskip=\skip62
@@ -766,146 +764,100 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 147.
 (/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 1253) in paragraph at lines 217--218
+Underfull \hbox (badness 1253) in paragraph at lines 211--212
 []\T1/cmr/m/n/10 We gen-er-ate the ini-tial con-di-tions with \T1/cmr/m/sc/10 Music2-
  []
 
-<input-power-spectrum.png, id=153, 535.40025pt x 361.47044pt>
+<input-power-spectrum.png, id=189, 535.40025pt x 361.47044pt>
 File: input-power-spectrum.png Graphic file (type png)
 <use input-power-spectrum.png>
-Package pdftex.def Info: input-power-spectrum.png  used on input line 221.
+Package pdftex.def Info: input-power-spectrum.png  used on input line 215.
 (pdftex.def)             Requested size: 246.0pt x 166.08536pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 216.
+See the caption package documentation for explanation.
 
-
-Underfull \hbox (badness 3657) in paragraph at lines 237--238
+[2]
+Underfull \hbox (badness 3657) in paragraph at lines 231--232
  []\T1/cmr/m/n/10 Root-mean-square mat-ter fluc-tu-a-tion av-er-aged
  []
 
-[2]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 238.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 269.
+See the caption package documentation for explanation.
 
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 238.
-
-
-Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
-<projection.png, id=170, 1228.3491pt x 1228.3491pt>
+[3 <./input-power-spectrum.png>]
+<projection.png, id=221, 1228.3491pt x 1228.3491pt>
 File: projection.png Graphic file (type png)
 <use projection.png>
-Package pdftex.def Info: projection.png  used on input line 294.
-(pdftex.def)             Requested size: 438.58794pt x 438.58794pt.
-[3 <./input-power-spectrum.png>]
-<mass-function.png, id=189, 747.5127pt x 507.5763pt>
-File: mass-function.png Graphic file (type png)
-<use mass-function.png>
-Package pdftex.def Info: mass-function.png  used on input line 316.
-(pdftex.def)             Requested size: 458.99329pt x 311.66576pt.
-
-Class revtex4-1 Warning: Float cannot be placed.
-
-
-Underfull \hbox (badness 1603) in paragraph at lines 329--331
+Package pdftex.def Info: projection.png  used on input line 296.
+(pdftex.def)             Requested size: 282.2332pt x 282.2332pt.
+[4]
+Underfull \hbox (badness 1603) in paragraph at lines 325--327
 [][]\T1/cmr/m/n/10 where $[]$ is the mean mat-ter den-sity, $\OML/cmm/m/it/10 ^^[\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 M; z\OT1/cmr/m/n/10 )$ \T1/cmr/m/n/10 is
  []
 
-<zhalf-vs-m0-qc.png, id=193, 578.16pt x 361.35pt>
+<mass-function.png, id=237, 747.5127pt x 507.5763pt>
+File: mass-function.png Graphic file (type png)
+<use mass-function.png>
+Package pdftex.def Info: mass-function.png  used on input line 330.
+(pdftex.def)             Requested size: 438.59917pt x 297.81773pt.
+<zhalf-vs-m0-qc.png, id=240, 578.16pt x 361.35pt>
 File: zhalf-vs-m0-qc.png Graphic file (type png)
 <use zhalf-vs-m0-qc.png>
-Package pdftex.def Info: zhalf-vs-m0-qc.png  used on input line 337.
-(pdftex.def)             Requested size: 448.80159pt x 280.50099pt.
-<halo-density.png, id=194, 502.5174pt x 357.85695pt>
+Package pdftex.def Info: zhalf-vs-m0-qc.png  used on input line 342.
+(pdftex.def)             Requested size: 336.59457pt x 210.37161pt.
+[5 <./projection.png>]
+<halo-density.png, id=250, 502.5174pt x 357.85695pt>
 File: halo-density.png Graphic file (type png)
 <use halo-density.png>
-Package pdftex.def Info: halo-density.png  used on input line 348.
-(pdftex.def)             Requested size: 469.20728pt x 334.13588pt.
-
-Class revtex4-1 Warning: Float cannot be placed.
-
-[4] [5 <./projection.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 357.
-
-[6 <./mass-function.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 357.
-
-
-Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
-<concentration-qc.png, id=218, 494.3268pt x 401.3394pt>
-File: concentration-qc.png Graphic file (type png)
-<use concentration-qc.png>
-Package pdftex.def Info: concentration-qc.png  used on input line 365.
-(pdftex.def)             Requested size: 469.20801pt x 380.9457pt.
-
-Class revtex4-1 Warning: Float cannot be placed.
-
-
-Underfull \hbox (badness 6445) in paragraph at lines 370--371
+Package pdftex.def Info: halo-density.png  used on input line 358.
+(pdftex.def)             Requested size: 191.8797pt x 136.6423pt.
+[6 <./mass-function.png> <./halo-density.png>]
+Underfull \hbox (badness 6445) in paragraph at lines 368--369
 []\T1/cmr/m/n/10 Figure X presents a com-par-i-son of the halo
  []
 
 [7 <./zhalf-vs-m0-qc.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 376.
-
-[8 <./halo-density.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 376.
-
-
-Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
-<power-spectrum.png, id=236, 604.1772pt x 418.6842pt>
+<concentration-qc.png, id=273, 494.3268pt x 401.3394pt>
+File: concentration-qc.png Graphic file (type png)
+<use concentration-qc.png>
+Package pdftex.def Info: concentration-qc.png  used on input line 387.
+(pdftex.def)             Requested size: 196.80075pt x 159.77966pt.
+<power-spectrum.png, id=275, 604.1772pt x 418.6842pt>
 File: power-spectrum.png Graphic file (type png)
 <use power-spectrum.png>
-Package pdftex.def Info: power-spectrum.png  used on input line 395.
-(pdftex.def)             Requested size: 469.2097pt x 325.1541pt.
-(./main.bbl [9]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 64.
-
-[10 <./concentration-qc.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 64.
-
-
-Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
-) [11 <./power-spectrum.png>]
-<mass-function-m200c-bocquet16.png, id=270, 747.39224pt x 502.87875pt>
+Package pdftex.def Info: power-spectrum.png  used on input line 400.
+(pdftex.def)             Requested size: 177.1203pt x 122.73775pt.
+[8 <./concentration-qc.png> <./power-spectrum.png>] [9] (./main.bbl [10]) [11]
+<mass-function-m200c-bocquet16.png, id=342, 747.39224pt x 502.87875pt>
 File: mass-function-m200c-bocquet16.png Graphic file (type png)
 <use mass-function-m200c-bocquet16.png>
-Package pdftex.def Info: mass-function-m200c-bocquet16.png  used on input line 436.
+Package pdftex.def Info: mass-function-m200c-bocquet16.png  used on input line 466.
 (pdftex.def)             Requested size: 484.49911pt x 325.99255pt.
-
-Class revtex4-1 Warning: Float cannot be placed.
-
 [12] [13 <./mass-function-m200c-bocquet16.png>] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 21893BE2EBE30C622346C8142824F870;4479.
+(rerunfilecheck)             Checksum: 3032329AC90C5B21E635EEFA8B23B0DE;5556.
  ) 
 Here is how much of TeX's memory you used:
- 26514 strings out of 475171
- 503983 string characters out of 5760918
- 874796 words of memory out of 5000000
- 48963 multiletter control sequences out of 15000+600000
- 579394 words of font info for 93 fonts, out of 8000000 for 9000
+ 26546 strings out of 475171
+ 504386 string characters out of 5760918
+ 878233 words of memory out of 5000000
+ 48983 multiletter control sequences out of 15000+600000
+ 580488 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,12n,105p,1869b,762s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (13 pages, 17261385 bytes).
+ 99i,11n,105p,1890b,762s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0700.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0500.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0900.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></oss06/data/project/tkcastrosim/HNHuang/project_big_sim/envs/overleaf_TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on main.pdf (13 pages, 17322938 bytes).
 PDF statistics:
- 734 PDF objects out of 1000 (max. 8388607)
- 327 compressed objects within 4 object streams
- 67 named destinations out of 1000 (max. 500000)
- 253 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 905 PDF objects out of 1000 (max. 8388607)
+ 414 compressed objects within 5 object streams
+ 81 named destinations out of 1000 (max. 500000)
+ 285 words of extra memory for PDF output out of 10000 (max. 10000000)
 
