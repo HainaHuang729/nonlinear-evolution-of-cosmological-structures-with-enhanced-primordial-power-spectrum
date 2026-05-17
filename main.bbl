@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{23}%
+\begin{thebibliography}{26}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -88,6 +88,9 @@
 \bibitem [{\citenamefont {{Zhu}}\ \emph {et~al.}(2026)\citenamefont {{Zhu}}, \citenamefont {{Liu}}, \citenamefont {{Yue}},\ and\ \citenamefont {{Chen}}}]{Zhu26SKAPPS}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {{Zhu}}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {{Liu}}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {{Yue}}}, and\ \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {{Chen}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Probing power spectrum enhancement at small scales with SKA}},}\ }\href {\doibase 10.48550/arXiv.2602.24117} {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ ,\ \bibinfo {eid} {arXiv:2602.24117}} (\bibinfo {year} {2026})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Eisenstein}}\ and\ \citenamefont {{Hu}}(1999)}]{Eisenstein1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont {{Eisenstein}}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {{Hu}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Power Spectra for Cold Dark Matter and Its Variants}},}\ }\href {\doibase 10.1086/306640} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf {\bibinfo {volume} {511}},\ \bibinfo {pages} {5--15} (\bibinfo {year} {1999})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Schaller}}\ \emph {et~al.}(2024)\citenamefont {{Schaller}}, \citenamefont {{Borrow}}, \citenamefont {{Draper}} \emph {et~al.}}]{Schaller2024SWIFT}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {{Schaller}}}\  \emph {et~al.},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{SWIFT: A modern highly parallel gravity and smoothed particle hydrodynamics solver for astrophysical and cosmological applications}},}\ }\href {\doibase 10.1093/mnras/stae922} {\bibfield  {journal} {\bibinfo  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {530}},\ \bibinfo {pages} {2378--2419} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
@@ -97,6 +100,12 @@
 \bibitem [{\citenamefont {Reed}\ \emph {et~al.}(2007)\citenamefont {Reed}, \citenamefont {Bower}, \citenamefont {Frenk}, \citenamefont {Jenkins},\ and\ \citenamefont {Theuns}}]{Reed_2007}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~S.}\ \bibnamefont {Reed}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Bower}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont {Frenk}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Jenkins}}, and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Theuns}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {The halo mass function from the dark ages through the present day},}\ }\href {\doibase 10.1111/j.1365-2966.2006.11204.x} {\bibfield  {journal} {\bibinfo  {journal} {Monthly Notices of the Royal Astronomical Society}\ }\textbf {\bibinfo {volume} {374}},\ \bibinfo {pages} {2–15} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Boylan-Kolchin}}\ \emph {et~al.}(2009)\citenamefont {{Boylan-Kolchin}}, \citenamefont {{Springel}}, \citenamefont {{White}}, \citenamefont {{Jenkins}},\ and\ \citenamefont {{Lemson}}}]{BoylanKolchin2009MSII}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {{Boylan-Kolchin}}}, \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {{Springel}}}, \bibinfo {author} {\bibfnamefont {S.~D.~M.}\ \bibnamefont {{White}}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Jenkins}}}, and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {{Lemson}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Resolving cosmic structure formation with the Millennium-II Simulation}},}\ }\href {\doibase 10.1111/j.1365-2966.2009.15191.x} {\bibfield  {journal} {\bibinfo  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {398}},\ \bibinfo {pages} {1150--1164} (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hellwing}\ \emph {et~al.}(2016)\citenamefont {Hellwing}, \citenamefont {Frenk}, \citenamefont {Cautun}, \citenamefont {Bose}, \citenamefont {Helly}, \citenamefont {Jenkins}, \citenamefont {Sawala},\ and\ \citenamefont {Cytowski}}]{Hellwing16cocoproject}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.~A.}\ \bibnamefont {Hellwing}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont {Frenk}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Cautun}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Bose}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Helly}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Jenkins}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Sawala}}, and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Cytowski}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{The Copernicus Complexio: a high-resolution view of the small-scale Universe}},}\ }\href {\doibase 10.1093/mnras/stw214} {\bibfield  {journal} {\bibinfo  {journal} {Monthly Notices of the Royal Astronomical Society}\ }\textbf {\bibinfo {volume} {457}},\ \bibinfo {pages} {3492--3509} (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Navarro}}\ \emph {et~al.}(1996)\citenamefont {{Navarro}}, \citenamefont {{Frenk}},\ and\ \citenamefont {{White}}}]{Navarro1996NFW}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~F.}\ \bibnamefont {{Navarro}}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont {{Frenk}}}, and\ \bibinfo {author} {\bibfnamefont {S.~D.~M.}\ \bibnamefont {{White}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{The Structure of Cold Dark Matter Halos}},}\ }\href {\doibase 10.1086/177173} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf {\bibinfo {volume} {462}},\ \bibinfo {pages} {563} (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
