@@ -851,18 +851,18 @@ Underfull \hbox (badness 1484) in paragraph at lines 170--171
  []
 
 
-Underfull \hbox (badness 1087) in paragraph at lines 187--188
+Underfull \hbox (badness 1087) in paragraph at lines 188--189
 \T1/lmr/m/n/10 mat-ter spec-trum, de-noted PL, with two blue-tilted
  []
 
 [2]
-Underfull \hbox (badness 1231) in paragraph at lines 212--213
+Underfull \hbox (badness 1231) in paragraph at lines 213--214
 []\T1/lmr/m/n/10 We gen-er-ate the ini-tial con-di-tions with \T1/lmr/m/sc/10 M
 usic2-
  []
 
 
-Underfull \hbox (badness 2205) in paragraph at lines 214--215
+Underfull \hbox (badness 2205) in paragraph at lines 215--216
 \OT1/cmr/m/n/10 1024[]$ \T1/lmr/m/n/10 runs, the par-ti-cle Nyquist scale is $\
 OML/cmm/m/it/10 k[] \OMS/cmsy/m/n/10 '
  []
@@ -871,24 +871,24 @@ File: input-power-spectrum.png Graphic file (type bmp)
 <input-power-spectrum.png>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 219.
+(caption)                particular \caption on input line 220.
 See the caption package documentation for explanation.
 
 [3]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 272.
+(caption)                particular \caption on input line 273.
 See the caption package documentation for explanation.
 
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-83.
+84.
 (t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 File: projection.png Graphic file (type bmp)
 <projection.png>
  [4]
-Underfull \hbox (badness 1596) in paragraph at lines 322--324
+Underfull \hbox (badness 1596) in paragraph at lines 324--326
 [][]\T1/lmr/m/n/10 where $[]$ is the mean mat-ter den-sity, $\OML/cmm/m/it/10 ^
 ^[\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 M; z\OT1/cmr/m/n/10 )$ \T1/lmr/m/n/10 is
  []
@@ -905,68 +905,91 @@ File: concentration-qc.png Graphic file (type bmp)
 <concentration-qc.png>
 File: power-spectrum.png Graphic file (type bmp)
 <power-spectrum.png>
- [9] [10] (main.bbl [11]) [12]
+ [9] [10]
+Underfull \hbox (badness 1308) in paragraph at lines 450--451
+ \T1/lmr/m/n/10 i-cal or-der-ing. The NFW-equivalent com-pact-
+ []
+
+
+Underfull \hbox (badness 2495) in paragraph at lines 450--451
+ \T1/lmr/m/n/10 ness di-ag-nos-tic (Sec-tion [][]IVD1[][]; Fig. [][]5[][]) and
+ []
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 451--452
+ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 17$ \T1/lmr/m/n/10 at $\OML
+/cmm/m/it/10 k \OT1/cmr/m/n/10 = 20 \OML/cmm/m/it/10 h [][]$ \T1/lmr/m/n/10 and
+ $\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 34$ \T1/lmr/m/n/10 at $\OM
+L/cmm/m/it/10 k \OT1/cmr/m/n/10 =
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 454--455
+\T1/lmr/m/n/10 ry-ing for-ward from this bench-mark are the tested,
+ []
+
+(main.bbl [11] [12]) [13]
 File: mass-function-m200c-bocquet16.png Graphic file (type bmp)
 <mass-function-m200c-bocquet16.png>
 
-Underfull \hbox (badness 1616) in paragraph at lines 469--470
+Underfull \hbox (badness 1616) in paragraph at lines 483--484
 \T1/lmr/m/n/10 FOF masses along HBT+ tracks. This is use-ful
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 469--470
+Underfull \hbox (badness 1048) in paragraph at lines 483--484
 \T1/lmr/m/n/10 for com-par-ing PL, BT_soft, and BT_deep with a
  []
 
 
-Underfull \hbox (badness 1859) in paragraph at lines 469--470
+Underfull \hbox (badness 1859) in paragraph at lines 483--484
 \T1/lmr/m/n/10 HBT+ \T1/lmtt/m/n/10 TrackId \T1/lmr/m/n/10 and re-main self-bou
 nd, yet for a
  []
 
 
-Underfull \hbox (badness 2582) in paragraph at lines 469--470
+Underfull \hbox (badness 2582) in paragraph at lines 483--484
 \T1/lmr/m/n/10 cat-a-log this ap-pears as \T1/lmtt/m/n/10 InputHalos/FOF/Masses
 \T1/lmr/m/n/10 =0
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 469--470
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
 \T1/lmr/m/n/10 and \T1/lmtt/m/n/10 InputHalos/FOF/Sizes\T1/lmr/m/n/10 =0 in the
  ob-ject's
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 469--470
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
 \T1/lmr/m/n/10 own row, while \T1/lmtt/m/n/10 InputHalos/IsCentral\T1/lmr/m/n/1
 0 =0 and
  []
 
 
-Underfull \hbox (badness 2698) in paragraph at lines 469--470
+Underfull \hbox (badness 2698) in paragraph at lines 483--484
 \T1/lmtt/m/n/10 InputHalos/HBTplus/HostFOFId \T1/lmr/m/n/10 points to a larger
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 473--474
+Underfull \hbox (badness 1281) in paragraph at lines 487--488
 []\T1/lmr/m/n/10 This be-hav-ior is im-por-tant for FOF-based mass-
  []
 
 
-Underfull \hbox (badness 2529) in paragraph at lines 478--479
+Underfull \hbox (badness 2529) in paragraph at lines 492--493
  []\T1/lmr/m/n/10 Follow the same HBT+ \T1/lmtt/m/n/10 TrackId \T1/lmr/m/n/10 o
 ver snap-
  []
 
 
-Underfull \hbox (badness 3240) in paragraph at lines 478--479
+Underfull \hbox (badness 3240) in paragraph at lines 492--493
  \T1/lmr/m/n/10 shots 0021--0056 and record Warren-corrected
  []
 
 File: halfmass-redshift-fof-gap-stitching.png Graphic file (type bmp)
 <halfmass-redshift-fof-gap-stitching.png>
-[13] [14] [15] (main.aux)
+[14] [15] [16] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 180A905053EFEBE06C890332068D894D;5960.
  )
-Output written on main.xdv (15 pages, 131524 bytes).
+Output written on main.xdv (16 pages, 137516 bytes).

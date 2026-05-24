@@ -169,6 +169,7 @@ longbibliography
 \subsection{\textcolor{blue}{The Blue-Tilted Input-Power Model}}
 {\color{blue}We consider a phenomenological blue-tilted (BT) input-power model, specified by the target enhancement of the linear matter power spectrum relative to PL:}
 \begin{equation}
+    \label{eq:bt_input_power}
     \frac{P_{\rm lin}^{\rm BT}(k)}{P_{\rm lin}^{\rm PL}(k)}
     =
     \begin{cases}
@@ -313,6 +314,7 @@ For all the cosmological simulations in this paper,
 
 {\color{blue}Following the multiplicity-function convention used for the Reed07 fitting formula \citep{Reed_2007}, the analytic halo mass function can be written as}
 \begin{equation}
+\label{eq:hmf_multiplicity}
 \color{blue}
 \frac{dn}{d\ln M}
 =
@@ -366,15 +368,19 @@ The simulation points in Fig.~\ref{fig:concentration_comparison} show the median
 
 {\color{blue}The measured medians show a clear mass- and redshift-dependent concentration response. At \(z=0\), the median concentration in the \(10^9\)--\(10^{9.5}\,M_\odot\) bin is higher than PL by factors of \(3.20\) for BT\_soft and \(1.35\) for BT\_deep. The larger BT\_soft response is consistent with the HMF and assembly-history results because its transfer-function-modified input spectrum enhances a broader range of resolved modes. More generally, halo concentrations are known to encode formation history and to respond to changes in the linear power spectrum in non-standard small-scale-power simulations \citep{Ludlow2016WDMConcentration,Brown2020HaloPPS}. We therefore interpret the concentration enhancement as the structural counterpart of earlier assembly, not as an independent fitted input-power parameter.}
 {\color{blue}The semi-analytic curves should be interpreted as published concentration--mass mappings rather than independent fits to our binned simulation points. In these comparisons,
-\[
+\begin{equation}
+\label{eq:colossus_concentration}
 c_{200c}^{\rm th}(M,z)=\mathcal{C}_{\rm model}\!\left[M_{200c},z;P_{\rm lin}(k),\boldsymbol{\theta}_{\rm cosmo}\right],
-\]
+\end{equation}
 where \(\mathcal{C}_{\rm model}\) denotes the Diemer--Joyce or Ishiyama prescription implemented in \textsc{colossus}, \(P_{\rm lin}(k)\) is the PL or BT linear matter power spectrum, and \(\boldsymbol{\theta}_{\rm cosmo}\) denotes the shared background cosmological parameters. The mass and concentration are defined with the same spherical-overdensity convention used for the simulation points,
-\[
+\begin{equation}
+\label{eq:m200c_c200c_definitions}
+\begin{gathered}
 M_{200c}=\frac{4\pi}{3}\,200\rho_{\rm crit}(z)R_{200c}^{3},
 \qquad
 c_{200c}=\frac{R_{200c}}{r_s}.
-\]
+\end{gathered}
+\end{equation}
 The underlying assumption is that halo concentration is primarily tied to the collapse history encoded in the linear density field. The blue-tilted models therefore change the predicted concentration through the input power spectrum, not through a refit of the analytic curves to the simulation measurements.}
 
 \begin{figure}[!htbp]
@@ -437,7 +443,15 @@ The main value of the present work is therefore to identify where an initial-pow
 
 {\color{blue}We have used dark-matter-only cosmological $N$-body simulations to quantify how enhanced small-scale power in the initial-condition matter spectrum is transformed by nonlinear structure formation. By comparing a standard power-law input matter spectrum with two blue-tilted benchmark models generated through modified transfer functions, we isolated the gravitational response to the modified initial conditions before introducing baryonic physics, galaxy formation, or observational selection.
 
-The simulations show four main effects. First, enhanced small-scale power increases the abundance of low-mass halos, especially at high redshift. In the BT\_soft model, the FOF halo abundance exceeds PL by factors of $4.81$ and $6.55$ at $z=8.52$ for $M\simeq1.21\times10^9$ and $1.21\times10^{10}\,M_\odot$, respectively; by $z=0$, the corresponding ratios have decreased to $1.42$ and $1.47$. Second, halos assemble earlier. Near \(M_{z=0}\simeq1.25\times10^9\,M_\odot\), the mean half-mass redshift changes from \(2.28\) in PL to \(4.24\) in BT\_soft and \(2.61\) in BT\_deep in the raw same-\texttt{TrackId} diagnostic. Third, the earlier formation history produces a measurable internal-structure response: at $z=0$, the median concentration in the $10^9$--$10^{9.5}\,M_\odot$ bin is higher than PL by factors of $3.20$ for BT\_soft and $1.35$ for BT\_deep. Fourth, the matched PL and BT\_soft nonlinear matter-power comparison shows a coherent high-$k$ excess, reaching $P_{\rm BT}/P_{\rm PL}=1.17$ at $k=20\,h\,\mathrm{Mpc}^{-1}$ in the fiducial box.
+The main conclusions, with the corresponding result sections and figures, are as follows:
+\begin{enumerate}
+    \item The halo-abundance response is strongest at low mass and high redshift. In the FOF halo mass function (Section~\ref{subsub:HMF}; Fig.~\ref{fig:mass_function}), BT\_soft exceeds PL by factors of \(4.81\) and \(6.55\) at \(z=8.52\) for \(M_{\rm FOF}\simeq1.21\times10^9\) and \(1.21\times10^{10}\,M_\odot\), respectively, while the corresponding \(z=0\) ratios are \(1.42\) and \(1.47\). The \(M_{200c}\) cross-check with spherical-overdensity masses gives the same qualitative conclusion (Appendix~\ref{app:m200c_hmf}; Fig.~\ref{fig:m200c_bocquet16_hmf}).
+    \item Enhanced small-scale input power shifts halo assembly earlier. In the raw same-\texttt{TrackId} half-mass diagnostic (Section~\ref{subsub:HMR}; Fig.~\ref{fig:half_mass_redshift}), the mean \(z_{1/2}\) near \(M_{z=0}\simeq1.25\times10^9\,M_\odot\) changes from \(2.28\) in PL to \(4.24\) in BT\_soft and \(2.61\) in BT\_deep. This is the catalog-level assembly counterpart of the high-redshift abundance enhancement.
+    \item The structural response follows the same physical ordering. The NFW-equivalent compactness diagnostic (Section~\ref{subsub:DensityProfile}; Fig.~\ref{fig:halo_density_analysis}) and the concentration--mass relation (Section~\ref{subsub:concentration}; Fig.~\ref{fig:concentration_comparison}) both show stronger low-mass compactness in the blue-tilted runs. At \(z=0\), the median \(c_{200c}\) in the \(10^9\)--\(10^{9.5}\,M_\odot\) bin is higher than PL by factors of \(3.20\) for BT\_soft and \(1.35\) for BT\_deep.
+    \item The nonlinear matter power spectrum gives a coherent but more modest field-level signal. In the matched \(25\,h^{-1}\mathrm{Mpc}\) fiducial comparison (Section~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}), BT\_soft reaches \(P_{\rm BT}/P_{\rm PL}=1.17\) at \(k=20\,h\,\mathrm{Mpc}^{-1}\) and \(1.34\) at \(k=40\,h\,\mathrm{Mpc}^{-1}\). The direction of the response is consistent with the halo diagnostics, but its amplitude is more sensitive to box size and high-\(k\) estimator choices.
+\end{enumerate}
+
+The analytic ingredients that we recommend carrying forward from this benchmark are the tested, model-matched prescriptions rather than new fits to the present simulation points. These are: the transfer-function-modified BT input-power ratio in Eq.~(\ref{eq:bt_input_power}); the Reed07 FOF halo mass-function prescription evaluated with the corresponding PL or BT \(P_{\rm lin}(k)\), using the multiplicity-function form in Eq.~(\ref{eq:hmf_multiplicity}) and the same FOF mass definition as Fig.~\ref{fig:mass_function}; the Bocquet16 \(M_{200c}\) mass-function prescription as an SO-mass cross-check (Appendix~\ref{app:m200c_hmf}; Fig.~\ref{fig:m200c_bocquet16_hmf}); and the Diemer--Joyce and Ishiyama concentration--mass mappings implemented in \textsc{colossus}, evaluated as in Eq.~(\ref{eq:colossus_concentration}) with the definitions in Eq.~(\ref{eq:m200c_c200c_definitions}). We do not recommend using the projected maps as subhalo-count evidence or adopting a standalone nonlinear-power fitting formula from this work; those applications require additional calibration beyond the tests performed here.
 
 These trends are strongest in the low-mass, high-redshift, and high-wavenumber regimes, and they weaken toward massive halos and late times. The present results are simulation-level benchmarks rather than direct observational constraints. They are relevant to JWST-era high-redshift galaxy studies, dwarf-galaxy structure, strong-lensing probes of low-mass structure, 21 cm forecasts, and small-scale clustering measurements, but each application requires additional modeling of baryons, reionization, galaxy selection, and survey response.}
 \vspace{-0.75em}
