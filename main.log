@@ -900,22 +900,12 @@ File: halfmass-redshift-trackid-no-envelope.png Graphic file (type bmp)
 <halfmass-redshift-trackid-no-envelope.png>
 File: halo-density.png Graphic file (type bmp)
 <halo-density.png>
- [6] [7]
+ [6] [7] [8]
 File: concentration-qc.png Graphic file (type bmp)
 <concentration-qc.png>
- [8]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 390.
-
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 390.
-
-
-Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
 File: power-spectrum.png Graphic file (type bmp)
 <power-spectrum.png>
-[9] [10] (main.bbl [11]) [12]
+ [9] [10] (main.bbl [11]) [12]
 File: mass-function-m200c-bocquet16.png Graphic file (type bmp)
 <mass-function-m200c-bocquet16.png>
 
@@ -979,4 +969,4 @@ File: halfmass-redshift-fof-gap-stitching.png Graphic file (type bmp)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 180A905053EFEBE06C890332068D894D;5960.
  )
-Output written on main.xdv (15 pages, 132308 bytes).
+Output written on main.xdv (15 pages, 131432 bytes).
