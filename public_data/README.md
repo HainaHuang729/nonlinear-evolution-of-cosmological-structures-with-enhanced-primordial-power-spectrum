@@ -1,0 +1,32 @@
+# Public Data Package
+
+This directory contains reduced data products supporting the manuscript figures
+and quantitative comparisons. The files are organized by figure-level analysis
+product rather than by raw simulation output.
+
+## Contents
+
+- `MANIFEST.csv`: file-by-file inventory with descriptions and source paths.
+- `figure_data/metadata/`: simulation-suite and figure-file manifests.
+- `figure_data/input_power_spectra/`: input linear matter spectra.
+- `figure_data/fof_hmf/`: binned FoF halo mass-function points.
+- `figure_data/m200c_hmf/`: binned `M200c` halo mass-function points.
+- `figure_data/halfmass_redshift/`: same-TrackId half-mass redshift points and summaries.
+- `figure_data/halo_density/`: NFW-equivalent density-profile curves and mass-bin summaries.
+- `figure_data/concentration/`: binned `c200c` concentration-mass data.
+- `figure_data/nonlinear_power_spectrum/`: nonlinear matter power spectra and BT/PL ratios.
+- `figure_data/appendix_fof_gap_stitching/`: appendix gap-stitching data and notes.
+- `scripts/`: provenance copies of the plotting and reduction scripts used to generate the figure products.
+
+## Scope
+
+The package is intended to make the plotted trends and quoted figure-level
+statistics reproducible without requiring the full raw simulation snapshots.
+The raw SWIFT snapshots and complete HBT+/SOAP catalogs are much larger than
+the manuscript source package; the reduced files here are the data products
+used for the manuscript figures and numerical comparisons.
+
+Paths recorded in `MANIFEST.csv` point to the local project locations from
+which the reduced products were assembled. The copied scripts in `scripts/`
+preserve the analysis logic, but some hard-coded paths may need adaptation if
+the package is moved outside the original project workspace.
