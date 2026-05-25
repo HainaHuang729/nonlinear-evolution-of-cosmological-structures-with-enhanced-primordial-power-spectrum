@@ -145,20 +145,17 @@
 {\color{blue}The simulation inputs are specified by the linear matter power spectrum at the initial redshift. In a complete early-universe model, this spectrum would be obtained by combining a primordial curvature spectrum with a transfer function and growth factor. Here, however, we do not introduce an independently normalized curvature-spectrum model. Instead, we describe the relevant small-scale modification directly through the shape of the initial-condition linear matter power spectrum used by the initial-condition generator. Up to a common normalization fixed by the shared background cosmology, the input linear spectrum can be written schematically as \(P_{\mathrm{lin}}(k,a)\propto D^2(a)T^2(k)k^{n_s}\), where \(D(a)\) is the growth factor and \(T(k)\) is the transfer function used by the initial-condition calculation. In the PL case, \(T(k)\) is the Eisenstein--Hu transfer function. In the BT cases, the code modifies the transfer function above a pivot scale \(k_p\), producing the target small-scale enhancement in the resulting input matter power spectrum. The subsequent gravitational collapse and nonlinear evolution of overdensities lead to the formation of a hierarchical network of dark matter halos, whose internal structure and abundance serve as fundamental probes of the underlying cosmology.}
 
 \subsection{\textcolor{blue}{The Blue-Tilted Input-Power Model}}
-{\color{blue}We consider a phenomenological blue-tilted (BT) input-power model, specified by the target enhancement of the linear matter power spectrum relative to PL:}
+{\color{blue}We consider a phenomenological blue-tilted (BT) input-power model, specified directly as a broken-power-law shape for the input linear matter power spectrum:}
 \begin{equation}
     \label{eq:bt_input_power}
-    \frac{P_{\rm lin}^{\rm BT}(k,z_i)}
-         {P_{\rm lin}^{\rm PL}(k,z_i)}
-    \equiv
-    \mathcal{E}(k;k_p,m_s)
-    =
+    P_{\rm lin}(k,z_i)
+    \propto
     \begin{cases}
-        1, & k \le k_p,\\[4pt]
-        \left(k/k_p\right)^{m_s-n_s}, & k > k_p
+        k^{n_s}, & k \le k_p,\\[4pt]
+        k^{n_s}\left(k/k_p\right)^{m_s-n_s}, & k > k_p
     \end{cases}
 \end{equation}
-{\color{blue}where \(z_i=200\), \(k_p\) is the pivot wavenumber, \(\mathcal{E}\) is the imposed enhancement factor, and $m_s$ controls the target high-\(k\) slope of the resulting input matter spectrum. Operationally, this target is implemented by modifying the transfer function used in the power-spectrum calculation, so that \(P_{\rm lin}\propto T^2(k)k^{n_s}\) acquires the enhancement above \(k_p\). Equivalently, the transfer-function ratio corresponding to the target matter-power ratio is \(T_{\rm BT}(k)/T_{\rm PL}(k)=1\) for \(k\le k_p\) and \(T_{\rm BT}(k)/T_{\rm PL}(k)=(k/k_p)^{(m_s-n_s)/2}\) for \(k>k_p\). In this work the large-scale normalization is kept fixed; only the effective small-scale shape above $k_p$ is varied, so the model description can be specified by $k_p$ and $m_s$ for the present comparison. The BT spectra are therefore controlled transfer-function modifications of the initial-condition matter spectrum. The parameters $k_p$ and $m_s$ should not be interpreted as a complete inflationary parameterization or as independently constrained curvature-spectrum parameters in this paper. By construction, the model leaves the large-scale input spectrum unchanged while enhancing power on smaller scales ($k > k_p$) when $m_s > n_s$ (blue tilt).}
+{\color{blue}where \(z_i=200\), \(k_p\) is the pivot wavenumber, and $m_s$ controls the target high-\(k\) slope of the resulting input matter spectrum. This form reduces to the PL shape when \(m_s=n_s\), while \(m_s>n_s\) gives a blue-tilted enhancement above \(k_p\). Operationally, this target is implemented by modifying the transfer function used in the power-spectrum calculation, so that \(P_{\rm lin}\propto T^2(k)k^{n_s}\) follows the broken-power-law form above \(k_p\). Equivalently, the transfer-function ratio needed to realize Eq.~(\ref{eq:bt_input_power}) is \(T_{\rm BT}(k)/T_{\rm PL}(k)=1\) for \(k\le k_p\) and \(T_{\rm BT}(k)/T_{\rm PL}(k)=(k/k_p)^{(m_s-n_s)/2}\) for \(k>k_p\). In this work the large-scale normalization is kept fixed; only the effective small-scale shape above $k_p$ is varied, so the model description can be specified by $k_p$ and $m_s$ for the present comparison. The BT spectra are therefore controlled transfer-function modifications of the initial-condition matter spectrum. The parameters $k_p$ and $m_s$ should not be interpreted as a complete inflationary parameterization or as independently constrained curvature-spectrum parameters in this paper.}
 
 \section{Numerical Methods}
 \label{sec:numerical}
@@ -215,27 +212,16 @@ For all the cosmological simulations in this paper,
 \caption{{\color{blue}Summary of cosmological $N$-body simulation parameters. The main comparison uses only the PL, BT\_soft, and BT\_deep $25\,h^{-1}\mathrm{Mpc}$, $1024^3$ runs. Additional BT variants are not used to support the main quantitative claims unless explicitly stated. The PL resolution and volume runs provide numerical checks. Here $k_p$ is reported in $h\,\mathrm{Mpc}^{-1}$, $m_s$ is the small-scale spectral index, $m_{\text{DM}}$ is measured from the snapshot mass table, and $\epsilon_{\rm Pl}$ is the Plummer-equivalent softening length in physical kpc at $z=0$.}}
 \label{tab:simulation_parameters}
 \centering
-\scriptsize
-\setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{1.18}
 \begin{ruledtabular}
-\begin{tabular}{l p{1.6in} c c c c c c}
-{\color{blue}Role} & {\color{blue}Model} & {\color{blue}$k_p$} & {\color{blue}$m_s$} & {\color{blue}$N$} & {\color{blue}Box} & {\color{blue}$m_{\text{DM}}$} & {\color{blue}$\epsilon_{\rm Pl}$} \\
+\begin{tabular}{llcccccc}
+{\color{blue}Set} & {\color{blue}Run label} & {\color{blue}$k_p$} & {\color{blue}$m_s$} & {\color{blue}$N$} & {\color{blue}$L_{\rm box}$} & {\color{blue}$m_{\text{DM}}$} & {\color{blue}$\epsilon_{\rm Pl}$} \\
  & & {\color{blue}$[h\,\text{Mpc}^{-1}]$} & & & {\color{blue}$[h^{-1}\,\text{Mpc}]$} & {\color{blue}$[h^{-1}M_\odot]$} & {\color{blue}[kpc]} \\
 \colrule
-\multicolumn{8}{l}{{\color{blue}\textbf{Main comparison runs}}} \\
-\colrule
-{\color{blue}PL} & {\color{blue}pl\_25\_1024} & {\color{blue}--} & {\color{blue}--} & {\color{blue}$1024^3$} & {\color{blue}25} & {\color{blue}$1.27\times 10^6$} & {\color{blue}0.725} \\
-{\color{blue}BT\_soft} & {\color{blue}kp\_1\_ms\_1.5\_25\_1024} & {\color{blue}1} & {\color{blue}1.5} & {\color{blue}$1024^3$} & {\color{blue}25} & {\color{blue}$1.27\times 10^6$} & {\color{blue}0.725} \\
-{\color{blue}BT\_deep} & {\color{blue}kp\_10\_ms\_1.5\_25\_1024} & {\color{blue}10} & {\color{blue}1.5} & {\color{blue}$1024^3$} & {\color{blue}25} & {\color{blue}$1.27\times 10^6$} & {\color{blue}0.725} \\
-\colrule
-\multicolumn{8}{l}{{\color{blue}\textbf{Additional BT variants}}} \\
-\colrule
-{\color{blue}Small-box BT} & {\color{blue}kp\_1\_ms\_1.5\_5\_1024} & {\color{blue}1} & {\color{blue}1.5} & {\color{blue}$1024^3$} & {\color{blue}5} & {\color{blue}$1.02\times 10^4$} & {\color{blue}0.145} \\
-{\color{blue}Small-box BT} & {\color{blue}kp\_1\_ms\_1.5\_2.5\_1024} & {\color{blue}1} & {\color{blue}1.5} & {\color{blue}$1024^3$} & {\color{blue}2.5} & {\color{blue}$1.59\times 10^3$} & {\color{blue}0.072} \\
-\colrule
-\multicolumn{8}{l}{{\color{blue}\textbf{PL convergence and volume tests}}} \\
-\colrule
+{\color{blue}Main} & {\color{blue}pl\_25\_1024} & {\color{blue}--} & {\color{blue}--} & {\color{blue}$1024^3$} & {\color{blue}25} & {\color{blue}$1.27\times 10^6$} & {\color{blue}0.725} \\
+{\color{blue}Main} & {\color{blue}kp\_1\_ms\_1.5\_25\_1024} & {\color{blue}1} & {\color{blue}1.5} & {\color{blue}$1024^3$} & {\color{blue}25} & {\color{blue}$1.27\times 10^6$} & {\color{blue}0.725} \\
+{\color{blue}Main} & {\color{blue}kp\_10\_ms\_1.5\_25\_1024} & {\color{blue}10} & {\color{blue}1.5} & {\color{blue}$1024^3$} & {\color{blue}25} & {\color{blue}$1.27\times 10^6$} & {\color{blue}0.725} \\
+{\color{blue}BT check} & {\color{blue}kp\_1\_ms\_1.5\_5\_1024} & {\color{blue}1} & {\color{blue}1.5} & {\color{blue}$1024^3$} & {\color{blue}5} & {\color{blue}$1.02\times 10^4$} & {\color{blue}0.145} \\
+{\color{blue}BT check} & {\color{blue}kp\_1\_ms\_1.5\_2.5\_1024} & {\color{blue}1} & {\color{blue}1.5} & {\color{blue}$1024^3$} & {\color{blue}2.5} & {\color{blue}$1.59\times 10^3$} & {\color{blue}0.072} \\
 {\color{blue}Resolution} & {\color{blue}pl\_25\_512} & {\color{blue}--} & {\color{blue}--} & {\color{blue}$512^3$} & {\color{blue}25} & {\color{blue}$1.02\times 10^7$} & {\color{blue}1.45} \\
 {\color{blue}Resolution} & {\color{blue}pl\_25\_256} & {\color{blue}--} & {\color{blue}--} & {\color{blue}$256^3$} & {\color{blue}25} & {\color{blue}$8.15\times 10^7$} & {\color{blue}2.90} \\
 {\color{blue}Volume} & {\color{blue}pl\_50\_512} & {\color{blue}--} & {\color{blue}--} & {\color{blue}$512^3$} & {\color{blue}50} & {\color{blue}$8.15\times 10^7$} & {\color{blue}2.90} \\
@@ -332,12 +318,12 @@ f(\sigma)
 
 {\color{blue}At larger radii (\(r>0.3R_{200}\)), the differences are weaker and more mass dependent. In the highest-mass bins shown, the reconstructed profiles converge within the visual precision of the plotted curves. We therefore interpret the NFW-equivalent diagnostic as a compactness signal associated with earlier collapse, not as evidence for a different subhalo population. A subhalo interpretation would require host-controlled subhalo mass functions, radial number-density profiles, and explicit subhalo resolution cuts, which are outside the scope of this work.}
 
-\begin{figure}[t]
+\begin{figure*}[t]
     \centering
-    \includegraphics[width=\columnwidth]{halo-density.png}
+    \includegraphics[width=\textwidth]{halo-density.png}
     \caption{{\color{blue}NFW-equivalent halo density profiles reconstructed from \textsc{SOAP} \texttt{SO/200\_mean} masses, radii, and concentrations for the PL, BT\_soft, and BT\_deep models. The solid lines labeled ``mean-\(c\) NFW'' use the mean concentration and radius of the halos in each mass bin to draw one NFW profile, whereas the open markers labeled ``median-\(c\) NFW'' show median profiles obtained by evaluating the same NFW form halo by halo from the catalog concentrations on a common \(r/R_{200}\) grid. The markers therefore do not denote individual halos. Radii are normalized by $R_{200}$, and each panel compares halos within a \(\pm20\%\) interval around \(M_{200m}=10^8,10^9,10^{10},\) and \(10^{11}\,M_\odot\). The panel labels report the approximate particle count at the bin center, and the dashed vertical marker shows \(\epsilon_{\rm Pl}/R_{200}\) when it lies inside the plotted radial range. For the main-run particle mass, these bin centers correspond approximately to 50, \(5\times10^2\), \(5\times10^3\), and \(5\times10^4\) particles, respectively; the \(10^8\,M_\odot\) panel is therefore closest to the resolution boundary and is interpreted qualitatively. Because both the line and marker profiles are reconstructed from catalog concentrations rather than direct particle-count stacks, they should be read as concentration-based compactness diagnostics. In this NFW-equivalent reconstruction, the blue-tilted models exhibit higher central densities than PL, with the strongest effect appearing in the low- and intermediate-mass regimes.}}
     \label{fig:halo_density_analysis}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Concentration-Mass Relation\label{subsub:concentration}}
 {\color{blue}The concentration--mass relation provides a compact summary of the halo structural response. We use the \textsc{SOAP} \texttt{SO/200\_crit} catalogs associated with the \textsc{hbt+} halo catalogs, taking \(M_{200c}\), \(c_{200c}\), and the number of dark-matter particles for each halo. Catalog masses are converted to solar masses using the stored unit factor \(10^{10}\,M_{\odot}\). We require finite positive masses and concentrations, impose \(c_{200c}<500\), and retain only halos with at least 100 dark-matter particles, corresponding to \(M_{200c}\simeq1.9\times10^8\,M_\odot\) for the main-run particle mass.
@@ -431,7 +417,7 @@ The main conclusions, with the corresponding result sections and figures, are as
     \item The nonlinear matter power spectrum gives a coherent but more modest field-level signal. In the matched \(25\,h^{-1}\mathrm{Mpc}\) fiducial comparison (Section~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}), BT\_soft reaches \(P_{\rm BT}/P_{\rm PL}=1.17\) at \(k=20\,h\,\mathrm{Mpc}^{-1}\) and \(1.34\) at \(k=40\,h\,\mathrm{Mpc}^{-1}\). The direction of the response is consistent with the halo diagnostics, but its amplitude is more sensitive to box size and high-\(k\) estimator choices.
 \end{enumerate}
 
-The analytic ingredients that we recommend carrying forward from this benchmark are the tested, model-matched prescriptions rather than new fits to the present simulation points. These are: the transfer-function-modified BT input-power ratio in Eq.~(\ref{eq:bt_input_power}); the Reed07 FOF halo mass-function prescription evaluated with the corresponding PL or BT \(P_{\rm lin}(k)\), using the multiplicity-function form in Eq.~(\ref{eq:hmf_multiplicity}) and the same FOF mass definition as Fig.~\ref{fig:mass_function}; the B16 \(M_{200c}\) mass-function prescription as an SO-mass cross-check (Fig.~\ref{fig:m200c_bocquet16_hmf}); and the Diemer--Joyce and Ishiyama concentration--mass mappings implemented in \textsc{colossus}, evaluated as in Eq.~(\ref{eq:colossus_concentration}) with the definitions in Eq.~(\ref{eq:m200c_c200c_definitions}). We do not recommend using the projected maps as subhalo-count evidence or adopting a standalone nonlinear-power fitting formula from this work; those applications require additional calibration beyond the tests performed here.
+The analytic ingredients that we recommend carrying forward from this benchmark are the tested, model-matched prescriptions rather than new fits to the present simulation points. These are: the transfer-function-modified BT broken-power-law input spectrum in Eq.~(\ref{eq:bt_input_power}); the Reed07 FOF halo mass-function prescription evaluated with the corresponding PL or BT \(P_{\rm lin}(k)\), using the multiplicity-function form in Eq.~(\ref{eq:hmf_multiplicity}) and the same FOF mass definition as Fig.~\ref{fig:mass_function}; the B16 \(M_{200c}\) mass-function prescription as an SO-mass cross-check (Fig.~\ref{fig:m200c_bocquet16_hmf}); and the Diemer--Joyce and Ishiyama concentration--mass mappings implemented in \textsc{colossus}, evaluated as in Eq.~(\ref{eq:colossus_concentration}) with the definitions in Eq.~(\ref{eq:m200c_c200c_definitions}). We do not recommend using the projected maps as subhalo-count evidence or adopting a standalone nonlinear-power fitting formula from this work; those applications require additional calibration beyond the tests performed here.
 
 These trends are strongest in the low-mass, high-redshift, and high-wavenumber regimes, and they weaken toward massive halos and late times. The present results are simulation-level benchmarks rather than direct observational constraints. They are relevant to JWST-era high-redshift galaxy studies, dwarf-galaxy structure, strong-lensing probes of low-mass structure, 21 cm forecasts, and small-scale clustering measurements, but each application requires additional modeling of baryons, reionization, galaxy selection, and survey response.}
 % ====== bib ====== %
