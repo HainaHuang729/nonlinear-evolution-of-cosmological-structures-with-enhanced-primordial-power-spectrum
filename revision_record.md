@@ -194,3 +194,37 @@ Result:
 - No undefined references were found.
 - No LaTeX fatal errors were found.
 - Remaining warnings are non-blocking layout or package warnings, mainly underfull hbox and caption/revtex warnings.
+
+## 10. Submission-Cleanup and Numerical-Robustness Pass
+
+Date: 2026-05-26
+
+Location: `main.tex`
+
+Changes:
+
+- Removed visible blue revision markup from title, abstract, section headings, body text, equations, and appendix text.
+- Removed the unused `BLUE` color alias left over from revision markup.
+- Removed unused template macros and the unused `ulem` package after confirming they were not referenced in the manuscript body.
+- Added an adopted numerical interpretation-range table summarizing the mass, particle-count, and wavenumber ranges used for quantitative claims.
+- Expanded the nonlinear matter power-spectrum methods description using the actual `powerspectrum/scripts/compute_sim_power_spectrum.py` settings:
+  - `1024^3` mesh;
+  - `swiftsimio` `render_to_deposit` with `project="masses"`;
+  - `deposition_to_power_spectrum` with `folding=0`, `cross_deposition=None`, `wavenumber_bins=None`, and `shot_noise_norm=n_particles`;
+  - unit conversion from Mpc to `h^{-1} Mpc`;
+  - log-binned plotting using geometric-mean wavenumber and median power.
+- Clarified that the `256 h^{-1} Mpc` box power-spectrum ratios are interpreted only up to its mesh Nyquist scale, `k_Ny ~= 12.6 h Mpc^{-1}`.
+- Replaced ambiguous "density-profile" wording with "NFW-equivalent compactness" where the figure is reconstructed from catalog concentrations rather than direct particle-count radial stacks.
+- Added a compact single-column response-summary table for representative BT_soft and BT_deep effects relative to PL.
+- Added Data Availability wording noting that copied provenance scripts may require local path adaptation outside the original project directory layout.
+- Tightened and shortened the abstract while preserving the key quantitative results and resolved-range single-realization caveat.
+- Added an explicit conclusion pointer to the compact response-summary table.
+- Converted the response-summary table from a wide two-column float to a compact single-column table to reduce the risk of deferred-float placement warnings near the end of the paper.
+- Standardized the remaining lowercase `hbt+` occurrence to `HBT+`.
+
+Verification:
+
+- Static text check found no remaining `\color{...}` or `\textcolor{...}` revision markup in `main.tex`.
+- Brace counts and LaTeX `\begin`/`\end` counts are balanced.
+- `git diff --check -- main.tex` passed.
+- Local PDF compilation was not rerun in this environment because no TeX engine (`latexmk`, `pdflatex`, `xelatex`, `lualatex`, or `tectonic`) was available on `PATH`.
