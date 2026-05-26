@@ -26,12 +26,30 @@ from pathlib import Path
 from colossus.cosmology import cosmology
 from colossus.halo import profile_nfw
 
-PROJECT_ROOT = next(
-    (p for p in Path(__file__).resolve().parents if (p / "cosmology_plot_style.py").exists()),
+SCRIPT_PATH = Path(__file__).resolve()
+WORKSPACE_ROOT = next(
+    (
+        p
+        for p in (SCRIPT_PATH.parent, *SCRIPT_PATH.parents, Path.cwd(), *Path.cwd().parents)
+        if p.name == "project_big_sim" and (p / "data" / "PL").exists()
+    ),
     Path.cwd(),
 )
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+STYLE_ROOT = next(
+    (
+        p
+        for p in (
+            SCRIPT_PATH.parent,
+            *SCRIPT_PATH.parents,
+            WORKSPACE_ROOT,
+            WORKSPACE_ROOT.parent / "tools",
+        )
+        if (p / "cosmology_plot_style.py").exists()
+    ),
+    WORKSPACE_ROOT,
+)
+if str(STYLE_ROOT) not in sys.path:
+    sys.path.insert(0, str(STYLE_ROOT))
 
 from cosmology_plot_style import JOURNAL_COLORS, apply_journal_style, format_axes, save_publication_figure
 
@@ -44,10 +62,18 @@ cosmo = cosmology.setCosmology('planck18')
 H0 = 67.4  # 哈勃常数 (km/s/Mpc)
 omega_m = 0.315  # 物质密度参数 (Planck 2018)
 
-# 文件路径
-WORKSPACE_ROOT = PROJECT_ROOT / "project_big_sim"
 DATA_ROOT = WORKSPACE_ROOT / "data"
-PAPERPLOT_ROOT = WORKSPACE_ROOT / "analysis" / "paperplot"
+PAPERPLOT_ROOT = next(
+    (
+        p
+        for p in (
+            WORKSPACE_ROOT / "analysis" / "_used_by_article_nonlinear_evolution_pps" / "paperplot",
+            WORKSPACE_ROOT / "analysis" / "paperplot",
+        )
+        if p.exists()
+    ),
+    WORKSPACE_ROOT / "analysis" / "paperplot",
+)
 CDM_SOAP_PATH = DATA_ROOT / "PL/PL_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
 BT_SOAP_PATH = DATA_ROOT / "bluetilted/kp_1_ms_1.5_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
 BT_KP10_SOAP_PATH = DATA_ROOT / "bluetilted/kp_10_ms_1.5_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
@@ -307,20 +333,20 @@ def plot_halo_profiles(cdm_data, bt_data, bt_kp10_data):
             legend_handles,
             legend_labels,
             loc='upper center',
-            bbox_to_anchor=(0.5, 0.995),
+            bbox_to_anchor=(0.5, 0.985),
             ncol=4,
-            fontsize=7.2,
+            fontsize=6.8,
             frameon=True,
             framealpha=0.78,
             edgecolor='none',
-            borderpad=0.25,
-            labelspacing=0.18,
-            handlelength=1.35,
-            columnspacing=0.85,
-            handletextpad=0.35,
+            borderpad=0.18,
+            labelspacing=0.10,
+            handlelength=1.20,
+            columnspacing=0.70,
+            handletextpad=0.28,
         )
 
-    fig.subplots_adjust(top=0.84, bottom=0.07, left=0.10, right=0.99, hspace=0.04, wspace=0.04)
+    fig.subplots_adjust(top=0.88, bottom=0.07, left=0.10, right=0.99, hspace=0.04, wspace=0.04)
     save_publication_figure(fig, PAPERPLOT_ROOT / "figures" / "halo-density.png")
     print("Figure saved: halo-density.png")
 

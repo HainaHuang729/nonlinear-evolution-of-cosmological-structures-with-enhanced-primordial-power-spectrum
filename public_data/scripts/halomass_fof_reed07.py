@@ -5,19 +5,43 @@ import matplotlib.pyplot as plt
 import h5py
 from pathlib import Path
 from matplotlib.legend_handler import HandlerTuple
+from matplotlib.ticker import FixedLocator, FuncFormatter, LogFormatterMathtext, LogLocator, NullFormatter
 from scipy.interpolate import interp1d
 import matplotlib.gridspec as gridspec
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 ARTICLE_ANALYSIS_ROOT = SCRIPT_DIR.parent
-PROJECT_ROOT = SCRIPT_DIR.parents[2]
+
+
+def find_project_root(script_dir):
+    for parent in script_dir.parents:
+        if (parent / "data").exists() and (parent / "software" / "colossus").exists():
+            return parent
+    return script_dir.parents[2]
+
+
+PROJECT_ROOT = find_project_root(SCRIPT_DIR)
 WORKSPACE_ROOT = PROJECT_ROOT
 CACHE_DIR = SCRIPT_DIR / "output" / "fof_reed07_highz_cache"
 COLOSSUS_ROOT = PROJECT_ROOT / "software" / "colossus"
-if COLOSSUS_ROOT.exists() and str(COLOSSUS_ROOT) not in sys.path:
+
+
+def colossus_has_project_models():
+    try:
+        from colossus.cosmology import power_spectrum as colossus_power_spectrum
+    except Exception:
+        return False
+    required = {"eisenstein98_pl", "eisenstein98_bt", "eisenstein98_bt_soft"}
+    return required.issubset(colossus_power_spectrum.models)
+
+
+if not colossus_has_project_models() and COLOSSUS_ROOT.exists() and str(COLOSSUS_ROOT) not in sys.path:
     sys.path.insert(0, str(COLOSSUS_ROOT))
+STYLE_CANDIDATES = list(Path(__file__).resolve().parents) + [
+    PROJECT_ROOT / "papers" / "article_nonlinear_evolution_pps" / "public_data" / "scripts"
+]
 STYLE_ROOT = next(
-    (p for p in Path(__file__).resolve().parents if (p / "cosmology_plot_style.py").exists()),
+    (p for p in STYLE_CANDIDATES if (p / "cosmology_plot_style.py").exists()),
     WORKSPACE_ROOT,
 )
 if str(STYLE_ROOT) not in sys.path:
@@ -66,10 +90,41 @@ HMF_N20_MASS_MSUN = 20.0 * MAIN_PARTICLE_MASS_MSUN
 HMF_CATALOG_CUT_MSUN = 1.0e8
 HMF_XMIN_MSUN = 5.0e7
 HMF_BINS_PER_DEX = 6
+HMF_X_MAJOR_TICKS = 10.0 ** np.arange(8, 12)
+HMF_RATIO_TICK_POOL = np.array([0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0])
 
 
 def hmf_log_edges(bins_per_dex=HMF_BINS_PER_DEX):
     return np.arange(8.0, 13.0 + 1.0 / bins_per_dex, 1.0 / bins_per_dex)
+
+
+def plain_ratio_tick_label(value, _pos):
+    return f"{value:g}"
+
+
+def set_hmf_log_ticks(ax, *, y_decades=None, ratio_axis=False):
+    ax.xaxis.set_major_locator(FixedLocator(HMF_X_MAJOR_TICKS))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.xaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
+    ax.xaxis.set_minor_formatter(NullFormatter())
+
+    if y_decades is not None:
+        y_ticks = 10.0 ** np.arange(y_decades[0], y_decades[1] + 1)
+        ax.yaxis.set_major_locator(FixedLocator(y_ticks))
+        ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    elif ratio_axis:
+        ymin, ymax = ax.get_ylim()
+        if ymax / ymin > 30:
+            y_ticks = 10.0 ** np.arange(np.floor(np.log10(ymin)), np.ceil(np.log10(ymax)) + 1)
+            y_ticks = y_ticks[(y_ticks >= ymin) & (y_ticks <= ymax)]
+        else:
+            y_ticks = HMF_RATIO_TICK_POOL[(HMF_RATIO_TICK_POOL >= ymin) & (HMF_RATIO_TICK_POOL <= ymax)]
+        if len(y_ticks) >= 2:
+            ax.yaxis.set_major_locator(FixedLocator(y_ticks))
+            ax.yaxis.set_major_formatter(FuncFormatter(plain_ratio_tick_label))
+
+    ax.yaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
+    ax.yaxis.set_minor_formatter(NullFormatter())
 
 
 def mark_hmf_resolution(ax, annotate=False):
@@ -504,6 +559,7 @@ for idx, snap_num in enumerate(snap_numbers):
     format_axes(ax_upper, grid=True)
     y_min = 1e-7 if redshift is not None and redshift >= 8.0 else 1e-4
     ax_upper.set(xscale='log', yscale='log', xlim=(HMF_XMIN_MSUN, 2e11), ylim=(y_min, 1e2))
+    set_hmf_log_ticks(ax_upper, y_decades=(int(np.log10(y_min)), 2))
     mark_hmf_resolution(ax_upper, annotate=False)
 
     panel_label(ax_upper, rf'$z={format_redshift(redshift, 2)}$', loc=(0.95, 0.92), ha="right", fontsize=12.4)
@@ -533,6 +589,7 @@ for idx, snap_num in enumerate(snap_numbers):
     ax_ratio.axhline(y=2.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
     ax_ratio.axhline(y=5.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
     ax_ratio.set(xscale='log', yscale='log', xlim=(HMF_XMIN_MSUN, 2e11), ylim=bt_pl_ratio_ylims[row])
+    set_hmf_log_ticks(ax_ratio, ratio_axis=True)
     mark_hmf_resolution(ax_ratio, annotate=(idx == 0))
 
     # 只在最后一行的下子图显示x轴标签
@@ -593,7 +650,7 @@ fig.axes[0].legend(
     handletextpad=0.35,
 )
 
-fof_output_path = PAPERPLOT_ROOT / "figures" / "mass-function.png"
+fof_output_path = Path(os.environ.get("FOF_OUTPUT_PATH", PAPERPLOT_ROOT / "figures" / "mass-function.png"))
 print(f"Saving FoF/Reed07 figure: {fof_output_path}", flush=True)
 fof_output_path.parent.mkdir(parents=True, exist_ok=True)
 fig.savefig(fof_output_path, dpi=320, bbox_inches="tight", pad_inches=0.08)

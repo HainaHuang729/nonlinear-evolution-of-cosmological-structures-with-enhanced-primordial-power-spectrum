@@ -5,15 +5,37 @@ Bocquet et al. (2016) mass function using the corresponding PL/BT power
 spectra. It writes only to the HALOMASS plot directory.
 """
 
+import os
+import shutil
 from pathlib import Path
 import sys
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 ARTICLE_ANALYSIS_ROOT = SCRIPT_DIR.parent
-PROJECT_ROOT = SCRIPT_DIR.parents[2]
+
+
+def find_project_root(script_dir):
+    for parent in script_dir.parents:
+        if (parent / "data").exists() and (parent / "software" / "colossus").exists():
+            return parent
+    return script_dir.parents[2]
+
+
+PROJECT_ROOT = find_project_root(SCRIPT_DIR)
 WORKSPACE_ROOT = PROJECT_ROOT
 COLOSSUS_ROOT = PROJECT_ROOT / "software" / "colossus"
-if COLOSSUS_ROOT.exists() and str(COLOSSUS_ROOT) not in sys.path:
+
+
+def colossus_has_project_models():
+    try:
+        from colossus.cosmology import power_spectrum as colossus_power_spectrum
+    except Exception:
+        return False
+    required = {"eisenstein98_pl", "eisenstein98_bt", "eisenstein98_bt_soft"}
+    return required.issubset(colossus_power_spectrum.models)
+
+
+if not colossus_has_project_models() and COLOSSUS_ROOT.exists() and str(COLOSSUS_ROOT) not in sys.path:
     sys.path.insert(0, str(COLOSSUS_ROOT))
 
 import h5py
@@ -21,6 +43,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from matplotlib.legend_handler import HandlerTuple
+from matplotlib.ticker import FixedLocator, FuncFormatter, LogFormatterMathtext, LogLocator, NullFormatter
 from scipy.interpolate import interp1d
 
 from colossus import settings
@@ -28,8 +51,11 @@ from colossus.cosmology import cosmology
 from colossus.lss import mass_function
 
 
+STYLE_CANDIDATES = list(SCRIPT_DIR.parents) + [
+    PROJECT_ROOT / "papers" / "article_nonlinear_evolution_pps" / "public_data" / "scripts"
+]
 STYLE_ROOT = next(
-    (p for p in SCRIPT_DIR.parents if (p / "cosmology_plot_style.py").exists()),
+    (p for p in STYLE_CANDIDATES if (p / "cosmology_plot_style.py").exists()),
     WORKSPACE_ROOT,
 )
 if str(STYLE_ROOT) not in sys.path:
@@ -60,6 +86,8 @@ SNAPSHOTS = ["0056", "0040", "0032", "0030", "0027", "0024"]
 PANEL_COLUMNS = 3
 MASS_BINS_MSUN = 10 ** np.arange(8.0, 13.85, 0.15)
 THEORY_MASS_MSUN = 10 ** np.linspace(8.0, 13.8, 400)
+HMF_X_MAJOR_TICKS = 10.0 ** np.arange(8, 12)
+HMF_RATIO_TICK_POOL = np.array([0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0])
 
 MODELS = {
     "PL": {
@@ -105,6 +133,41 @@ def setup_cosmology():
             "relspecies": False,
         },
     )
+
+
+def set_hmf_x_ticks(ax):
+    ax.xaxis.set_major_locator(FixedLocator(HMF_X_MAJOR_TICKS))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.xaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
+    ax.xaxis.set_minor_formatter(NullFormatter())
+
+
+def set_hmf_log_ticks(ax, *, y_decades):
+    set_hmf_x_ticks(ax)
+    y_ticks = 10.0 ** np.arange(y_decades[0], y_decades[1] + 1)
+    ax.yaxis.set_major_locator(FixedLocator(y_ticks))
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.yaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
+    ax.yaxis.set_minor_formatter(NullFormatter())
+
+
+def plain_ratio_tick_label(value, _pos):
+    return f"{value:g}"
+
+
+def set_hmf_ratio_ticks(ax):
+    set_hmf_x_ticks(ax)
+    ymin, ymax = ax.get_ylim()
+    if ymax / ymin > 30:
+        y_ticks = 10.0 ** np.arange(np.floor(np.log10(ymin)), np.ceil(np.log10(ymax)) + 1)
+        y_ticks = y_ticks[(y_ticks >= ymin) & (y_ticks <= ymax)]
+    else:
+        y_ticks = HMF_RATIO_TICK_POOL[(HMF_RATIO_TICK_POOL >= ymin) & (HMF_RATIO_TICK_POOL <= ymax)]
+    if len(y_ticks) >= 2:
+        ax.yaxis.set_major_locator(FixedLocator(y_ticks))
+        ax.yaxis.set_major_formatter(FuncFormatter(plain_ratio_tick_label))
+    ax.yaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
+    ax.yaxis.set_minor_formatter(NullFormatter())
 
 
 def apply_completeness_cut(centers, hmf, err):
@@ -185,6 +248,28 @@ def interpolate_ratio(sim_mass, sim_hmf, sim_err, theory_mass, theory_hmf):
     return sim_mass[valid], sim_hmf[valid] / theory_at_sim[valid] - 1.0, sim_err[valid] / theory_at_sim[valid]
 
 
+def bt_to_pl_ratio(bt_data, pl_data):
+    pl_lookup = {
+        round(float(np.log10(mass)), 10): (hmf, err)
+        for mass, hmf, err in zip(pl_data["mass"], pl_data["hmf"], pl_data["err"])
+        if np.isfinite(mass) and np.isfinite(hmf) and np.isfinite(err) and hmf > 0.0
+    }
+    masses = []
+    ratios = []
+    errors = []
+    for mass, hmf, err in zip(bt_data["mass"], bt_data["hmf"], bt_data["err"]):
+        key = round(float(np.log10(mass)), 10)
+        if key not in pl_lookup or not (np.isfinite(hmf) and np.isfinite(err) and hmf > 0.0):
+            continue
+        pl_hmf, pl_err = pl_lookup[key]
+        ratio = hmf / pl_hmf
+        ratio_err = ratio * np.sqrt((err / hmf) ** 2 + (pl_err / pl_hmf) ** 2)
+        masses.append(mass)
+        ratios.append(ratio)
+        errors.append(ratio_err)
+    return np.asarray(masses), np.asarray(ratios), np.asarray(errors)
+
+
 def collect_results():
     sim_results = {name: {} for name in MODELS}
     theory_results = {name: {} for name in MODELS}
@@ -251,6 +336,36 @@ def plot_results(sim_results, theory_results):
     n_panels = len(SNAPSHOTS)
     n_cols = min(PANEL_COLUMNS, n_panels)
     n_rows = int(np.ceil(n_panels / n_cols))
+    bt_pl_ratio_results = {name: {} for name in ("BT_soft", "BT_deep")}
+    bt_pl_ratio_values_by_row = {row: [] for row in range(n_rows)}
+
+    for idx, snap in enumerate(SNAPSHOTS):
+        row = idx // n_cols
+        pl_data = sim_results.get("PL", {}).get(snap)
+        if pl_data is None:
+            continue
+        for name in ("BT_soft", "BT_deep"):
+            bt_data = sim_results.get(name, {}).get(snap)
+            if bt_data is None:
+                continue
+            ratio_mass, ratio, ratio_err = bt_to_pl_ratio(bt_data, pl_data)
+            bt_pl_ratio_results[name][snap] = {
+                "mass": ratio_mass,
+                "ratio": ratio,
+                "ratio_err": ratio_err,
+            }
+            bt_pl_ratio_values_by_row[row].extend(ratio[np.isfinite(ratio) & (ratio > 0.0)])
+
+    bt_pl_ratio_ylims = {}
+    for row in range(n_rows):
+        row_values = np.asarray(bt_pl_ratio_values_by_row.get(row, []), dtype=float)
+        row_values = row_values[np.isfinite(row_values) & (row_values > 0.0)]
+        if len(row_values):
+            ymin = max(0.3, min(0.75, np.nanmin(row_values) * 0.8))
+            ymax = min(1.0e3, 10 ** np.ceil(np.log10(max(2.0, np.nanmax(row_values) * 1.15))))
+            bt_pl_ratio_ylims[row] = (ymin, ymax)
+        else:
+            bt_pl_ratio_ylims[row] = (0.75, 10.0)
 
     fig = plt.figure(figsize=(3.20 * n_cols, 3.45 * n_rows))
     outer = gridspec.GridSpec(
@@ -267,7 +382,7 @@ def plot_results(sim_results, theory_results):
 
     for idx, snap in enumerate(SNAPSHOTS):
         inner = gridspec.GridSpecFromSubplotSpec(
-            2, 1, subplot_spec=outer[idx], height_ratios=[4, 1], hspace=0.08
+            2, 1, subplot_spec=outer[idx], height_ratios=[4.0, 1.25], hspace=0.08
         )
         ax_upper = fig.add_subplot(inner[0])
         ax_lower = fig.add_subplot(inner[1], sharex=ax_upper)
@@ -302,10 +417,15 @@ def plot_results(sim_results, theory_results):
                     markeredgewidth=0.7,
                     elinewidth=0.65,
                 )
+
+        for name in ("BT_soft", "BT_deep"):
+            if snap in bt_pl_ratio_results[name]:
+                ratio_data = bt_pl_ratio_results[name][snap]
+                model = MODELS[name]
                 ax_lower.errorbar(
-                    sim["ratio_mass"],
-                    sim["ratio"],
-                    yerr=sim["ratio_err"],
+                    ratio_data["mass"],
+                    ratio_data["ratio"],
+                    yerr=ratio_data["ratio_err"],
                     fmt=model["marker"],
                     color=model["color"],
                     markersize=3.3,
@@ -320,10 +440,12 @@ def plot_results(sim_results, theory_results):
         format_axes(ax_lower, grid=True)
         y_min = 1.0e-8 if redshift is not None and redshift >= 8.0 else 1.0e-7
         ax_upper.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=(y_min, 1.0e2))
-        ax_lower.set(xscale="log", xlim=(1.0e8, 2.0e11), ylim=(-1.05, 1.05))
-        ax_lower.axhline(0.0, color="black", linewidth=0.7, alpha=0.65)
-        ax_lower.axhline(0.1, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
-        ax_lower.axhline(-0.1, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
+        ax_lower.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=bt_pl_ratio_ylims[row])
+        set_hmf_log_ticks(ax_upper, y_decades=(int(np.log10(y_min)), 2))
+        set_hmf_ratio_ticks(ax_lower)
+        ax_lower.axhline(1.0, color="black", linewidth=0.7, alpha=0.65)
+        ax_lower.axhline(2.0, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
+        ax_lower.axhline(5.0, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
 
         if redshift is not None:
             panel_label(
@@ -342,7 +464,7 @@ def plot_results(sim_results, theory_results):
 
         if col == 0:
             ax_upper.set_ylabel(r"$dn/d\ln M_{200c}\,[{\rm Mpc}^{-3}]$")
-            ax_lower.set_ylabel(r"$\mathrm{sim}/\mathrm{B16}-1$")
+            ax_lower.set_ylabel(r"$f_{\rm BT}/f_{\rm PL}$")
         else:
             ax_upper.tick_params(labelleft=False)
             ax_lower.tick_params(labelleft=False)
@@ -384,13 +506,20 @@ def plot_results(sim_results, theory_results):
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     PAPERPLOT_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    print(f"Saving: {OUTPUT_PATH}", flush=True)
-    fig.savefig(OUTPUT_PATH, dpi=320, bbox_inches="tight", pad_inches=0.08)
-    print(f"Saving: {PAPERPLOT_OUTPUT_PATH}", flush=True)
-    fig.savefig(PAPERPLOT_OUTPUT_PATH, dpi=320, bbox_inches="tight", pad_inches=0.08)
+    output_path = Path(os.environ.get("M200C_HMF_OUTPUT_PATH", OUTPUT_PATH))
+    paperplot_output_path = Path(
+        os.environ.get("M200C_HMF_PAPERPLOT_OUTPUT_PATH", PAPERPLOT_OUTPUT_PATH)
+    )
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    paperplot_output_path.parent.mkdir(parents=True, exist_ok=True)
+    print(f"Saving: {output_path}", flush=True)
+    fig.savefig(output_path, dpi=320, bbox_inches="tight", pad_inches=0.08)
+    if output_path.resolve() != paperplot_output_path.resolve():
+        print(f"Copying: {paperplot_output_path}", flush=True)
+        shutil.copy2(output_path, paperplot_output_path)
     plt.close(fig)
-    print(f"Saved: {OUTPUT_PATH}")
-    print(f"Saved: {PAPERPLOT_OUTPUT_PATH}")
+    print(f"Saved: {output_path}")
+    print(f"Saved: {paperplot_output_path}")
 
 
 def main():

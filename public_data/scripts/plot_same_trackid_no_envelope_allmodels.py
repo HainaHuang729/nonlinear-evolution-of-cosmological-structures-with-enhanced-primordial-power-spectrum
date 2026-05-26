@@ -320,9 +320,8 @@ def plot(points: pd.DataFrame) -> None:
     ax.set_xscale("log")
     ax.set_ylabel(r"$z_{1/2}$")
     rax.set_ylabel(r"$\Delta z_{1/2}$")
-    rax.set_xlabel(r"$M_{\rm FOF,0}\,[M_\odot]$")
+    rax.set_xlabel(r"$M_{\rm FOF}(z=0)\,[M_\odot]$")
     ax.legend(loc="upper right", fontsize=6.6, ncol=1)
-    rax.legend(loc="lower left", fontsize=6.4, ncol=1)
     for axis in (ax, rax):
         axis.set_xlim(9.0e7, 1.2e12)
         format_axes(axis, grid=True)

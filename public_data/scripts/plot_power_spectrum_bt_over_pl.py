@@ -15,11 +15,36 @@ from scipy.interpolate import interp1d
 SCRIPT_PATH = Path(__file__).resolve()
 ANALYSIS_ROOT = next(
     (p for p in SCRIPT_PATH.parents if (p / "paperplot").exists() and (p / "powerspectrum").exists()),
+    next(
+        (
+            p / "analysis" / "_used_by_article_nonlinear_evolution_pps"
+            for p in SCRIPT_PATH.parents
+            if (
+                p
+                / "analysis"
+                / "_used_by_article_nonlinear_evolution_pps"
+                / "powerspectrum"
+            ).exists()
+        ),
+        Path.cwd(),
+    ),
+)
+WORKSPACE_ROOT = next(
+    (p for p in SCRIPT_PATH.parents if (p / "data" / "PL").exists()),
     Path.cwd(),
 )
 STYLE_ROOT = next(
-    (p for p in SCRIPT_PATH.parents if (p / "cosmology_plot_style.py").exists()),
-    ANALYSIS_ROOT,
+    (
+        p
+        for p in (
+            SCRIPT_PATH.parent,
+            *SCRIPT_PATH.parents,
+            WORKSPACE_ROOT,
+            WORKSPACE_ROOT.parent / "tools",
+        )
+        if (p / "cosmology_plot_style.py").exists()
+    ),
+    WORKSPACE_ROOT,
 )
 if str(STYLE_ROOT) not in sys.path:
     sys.path.insert(0, str(STYLE_ROOT))
@@ -65,7 +90,7 @@ THEORY_STYLES = {
     "BT_kp10": {
         "kp": 10.0,
         "ms": 1.5,
-        "color": JOURNAL_COLORS["orange"],
+        "color": JOURNAL_COLORS["green"],
         "linestyle": "-.",
         "label": r"BT $k_p=10$ theory",
     },
@@ -91,7 +116,7 @@ BOX_MODELS = {
                 "ratio_label": r"BT $k_p=10$ 25 / PL 25",
                 "bt_template": DATA_DIR / "bluetilted_kp10_ms1.5_25_snap{}.npz",
                 "bt_marker": "v",
-                "bt_color": JOURNAL_COLORS["orange"],
+                "bt_color": JOURNAL_COLORS["green"],
                 "optional": True,
             },
         },
@@ -115,7 +140,7 @@ BOX_MODELS = {
                 "ratio_label": r"BT $k_p=10$ 256 / PL 256",
                 "bt_template": DATA_DIR / "bluetilted_kp10_ms1.5_256_snap{}.npz",
                 "bt_marker": "P",
-                "bt_color": JOURNAL_COLORS["yellow"],
+                "bt_color": JOURNAL_COLORS["green"],
                 "optional": True,
             },
         },
