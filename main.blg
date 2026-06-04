@@ -1,9 +1,20 @@
-This is BibTeX, Version 0.99d
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: apsrev4-1-JHEPfix.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: mainNotes.bib
 Database file #2: main.bib
+Warning--entry type for "Hahn2020MUSIC2monofonIC" isn't style-file defined
+--line 711 of file main.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 merlin.mbs apsrev4-1-JHEPfix.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
 Control: key (0) 
 Control: author (72) initials jnrlst
@@ -12,3 +23,45 @@ Control: production of article title (1) required
 Control: page (1) range
 Control: year (1) truncated
 Control: production of eprint (0) enabled
+You've used 48 entries,
+            6017 wiz_defined-function locations,
+            2778 strings with 36016 characters,
+and the built_in function-call counts, 56983 in all, are:
+= -- 3624
+> -- 1782
+< -- 301
++ -- 512
+- -- 408
+* -- 9450
+:= -- 5402
+add.period$ -- 95
+call.type$ -- 48
+change.case$ -- 239
+chr.to.int$ -- 48
+cite$ -- 48
+duplicate$ -- 5086
+empty$ -- 4105
+format.name$ -- 969
+if$ -- 11369
+int.to.chr$ -- 1
+int.to.str$ -- 56
+missing$ -- 762
+newline$ -- 196
+num.names$ -- 144
+pop$ -- 1851
+preamble$ -- 1
+purify$ -- 240
+quote$ -- 0
+skip$ -- 1893
+stack$ -- 0
+substring$ -- 1433
+swap$ -- 5357
+text.length$ -- 201
+text.prefix$ -- 0
+top$ -- 8
+type$ -- 730
+warning$ -- 0
+while$ -- 145
+width$ -- 0
+write$ -- 479
+(There was 1 warning)

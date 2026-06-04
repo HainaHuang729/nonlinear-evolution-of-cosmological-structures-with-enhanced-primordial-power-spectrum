@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>按老板评论逐条说明修改内容</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">html {
+color: #1f2933;
+background: #f6f8fb;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Noto Sans SC", sans-serif;
+line-height: 1.58;
+}
+body {
+max-width: 1080px;
+margin: 0 auto;
+padding: 40px 28px 64px;
+}
+h1,
+h2,
+h3 {
+color: #101828;
+line-height: 1.25;
+}
+h1 {
+margin: 0 0 20px;
+font-size: 30px;
+}
+h2 {
+margin-top: 44px;
+padding-top: 18px;
+border-top: 2px solid #d7dee8;
+font-size: 23px;
+}
+h3 {
+margin-top: 30px;
+padding: 14px 16px;
+border-left: 5px solid #2f6fed;
+background: #ffffff;
+border-radius: 6px;
+font-size: 18px;
+}
+p,
+li {
+font-size: 16px;
+}
+code {
+font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+font-size: 0.94em;
+}
+pre {
+overflow-x: auto;
+padding: 16px;
+border: 1px solid #d7dee8;
+border-radius: 8px;
+background: #0f172a;
+color: #e5e7eb;
+}
+pre code {
+color: inherit;
+font-size: 13px;
+white-space: pre;
+}
+blockquote {
+margin: 18px 0;
+padding: 12px 16px;
+border-left: 4px solid #8aa4d6;
+background: #eef4ff;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 20px 0 32px;
+background: #ffffff;
+border: 1px solid #d7dee8;
+border-radius: 8px;
+overflow: hidden;
+}
+thead {
+background: #eaf1ff;
+}
+th,
+td {
+padding: 10px 12px;
+border-bottom: 1px solid #d7dee8;
+vertical-align: top;
+text-align: left;
+font-size: 14px;
+}
+tbody tr:nth-child(even) {
+background: #f9fbff;
+}
+tbody tr:hover {
+background: #eef4ff;
+}
+a {
+color: #1d4ed8;
+}
+strong {
+color: #111827;
+}
+hr {
+border: 0;
+border-top: 1px solid #d7dee8;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">按老板评论逐条说明修改内容</h1>
+</header>
+<h1 id="按老板评论逐条说明修改内容">按老板评论逐条说明修改内容</h1>
+<p>说明：</p>
+<ul>
+<li>这个版本的逻辑不是“修改前/修改后”，而是“老板每条评论 -&gt;
+我们做了什么 -&gt; 改在什么地方”。</li>
+<li>行号基于当前本地稿件 <code>main.tex</code>。</li>
+<li><code>已修改</code> 表示正文里已经有对应改动；<code>部分修改</code>
+表示已经处理了一部分但还不够；<code>未修改</code>
+表示正文还没有按该评论改；<code>需要数据/图</code>
+表示不能只靠文字修改解决；<code>需原文锚点</code> 表示导出的 Overleaf
+评论没有包含原高亮位置，无法准确判断。</li>
+</ul>
+<h2 id="原文和修改后正文对照">原文和修改后正文对照</h2>
+<p>注意：Overleaf
+导出的评论文本没有保留每条评论对应的原始高亮范围。因此，下面分两类：</p>
+<ul>
+<li><strong>已可精确恢复</strong>：能从当前 Git diff
+或红字占位中确定原文和修改后文本。</li>
+<li><strong>建议下一轮修改</strong>：正文当前还没改，但我根据老板评论列出“当前原文”和“建议修改后”。</li>
+</ul>
+<h3 id="评论-3-红字-quantify摘要中量化-nonlinear-matter-power-response">评论
+3 / 红字 <code>quantify</code>：摘要中量化 nonlinear matter-power
+response</h3>
+<p>老板评论：</p>
+<pre class="text"><code>I think these can be more qualitative in the abstract</code></pre>
+<p>后续红字要求：</p>
+<pre class="text"><code>quantify</code></pre>
+<p>原文：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>While the blue-tilted model significantly boosts the non-linear matter power spectrum for <span class="ss">$k&gt; k_p$</span>, the enhancement diminishes significantly at low redshift. {<span class="fu">\color</span>{red} quantify}</span></code></pre></div>
+<p>修改后：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{For the field-level statistic, the nonlinear matter-power response is more modest but measurable: in the fiducial <span class="ss">\(25</span><span class="sc">\,</span><span class="ss">h^{-1}{</span><span class="sc">\rm</span><span class="ss"> Mpc}\)</span> box at <span class="ss">\(z=0\)</span>, BT<span class="fu">\_</span>soft reaches <span class="ss">\(P_{</span><span class="sc">\rm</span><span class="ss"> BT}/P_{</span><span class="sc">\rm</span><span class="ss"> PL}=1.17\)</span> at <span class="ss">\(k=20</span><span class="sc">\,</span><span class="ss">h</span><span class="sc">\,</span><span class="ss">{</span><span class="sc">\rm</span><span class="ss"> Mpc}^{-1}\)</span> and <span class="ss">\(1.34\)</span> at <span class="ss">\(k=40</span><span class="sc">\,</span><span class="ss">h</span><span class="sc">\,</span><span class="ss">{</span><span class="sc">\rm</span><span class="ss"> Mpc}^{-1}\)</span>, whereas BT<span class="fu">\_</span>deep remains close to unity at both wavenumbers.}{While the blue-tilted model significantly boosts the non-linear matter power spectrum for <span class="ss">\(k&gt;k_p\)</span>, the enhancement diminishes significantly at low redshift.}</span></code></pre></div>
+<p>位置：<code>main.tex:111</code>。<br />
+剩余问题：<code>field-level statistic</code> 仍需按评论 53-54 改成
+summary-statistic 表达。</p>
+<h3 id="评论-4-6introduction-高红移jwst-动机重写">评论 4-6：Introduction
+高红移/JWST 动机重写</h3>
+<p>老板评论：</p>
+<pre class="text"><code>these are obsoletes. But there are new higher redshift tensions.
+Add more relevant reference.
+need rewrite</code></pre>
+<p>原文：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>The standard cosmological model, combining a nearly power-law primordial power spectrum with the <span class="ss">$</span><span class="sc">\Lambda</span><span class="ss">$</span> Cold Dark Matter (<span class="ss">$</span><span class="sc">\Lambda</span><span class="ss">$</span>CDM) paradigm, provides an accurate description of the Universe on large scales (<span class="ss">$&gt;1 {</span><span class="sc">\rm</span><span class="ss"> Mpc})$</span>. Measurements of the cosmic microwave background, galaxy clustering, and the Lyman-<span class="ss">$</span><span class="sc">\alpha</span><span class="ss">$</span> forest are consistent with the standard cosmological model <span class="kw">\citep</span>{<span class="ex">Planck20CMB,Blanton17SDSSsurvey,Chabanier19LyalphaPS</span>}. On the other hand, the constraints on small scales are weaker. For example, there are potential small-scale tensions in cosmology model such as the missing-satellites, core-cusp, and too-big-to-fail problems <span class="kw">\citep</span>{<span class="ex">Bullock17smallscalechallenges,Sales22challenges</span>}, although they are subject to the uncertainties in baryonic physics <span class="kw">\citep</span>{<span class="ex">Benson2002reionization,Chan2015corecusp</span>}. At the same time, early JWST measurements have revealed unexpectedly abundant and potentially massive galaxy candidates at <span class="ss">$z</span><span class="sc">\gtrsim</span><span class="ss"> 8$</span>--<span class="ss">$10$</span> <span class="kw">\citep</span>{<span class="ex">Labbe23MassiveGalaxies,Donnan23UVLF</span>}. These observations have motivated renewed interest in enhanced small-scale primordial matter power <span class="kw">\cite</span>{<span class="ex">Parashari23JWSTPPS,Hira24bluetilt</span>},but high redshift baryonic physics is also potential solutions, e.g., evolving star-formation efficiency, weak feedback, dust, UV emission efficiency, and selection effects <span class="kw">\citep</span>{<span class="ex">Lovell23JWSTExtreme</span>}.</span></code></pre></div>
+<p>修改后：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionblue</span>{The standard cosmological model, combining a nearly power-law primordial power spectrum with the <span class="ss">\(</span><span class="sc">\Lambda</span><span class="ss">\)</span> Cold Dark Matter (<span class="ss">\(</span><span class="sc">\Lambda</span><span class="ss">\)</span>CDM) paradigm, provides an accurate description of the Universe on large scales (<span class="ss">\(&gt;1</span><span class="sc">\,</span><span class="ss">{</span><span class="sc">\rm</span><span class="ss"> Mpc}\)</span>). Measurements of the cosmic microwave background, galaxy clustering, and the Lyman-<span class="ss">\(</span><span class="sc">\alpha</span><span class="ss">\)</span> forest are consistent with this picture <span class="kw">\citep</span>{<span class="ex">Planck20CMB,Blanton17SDSSsurvey,Chabanier19LyalphaPS</span>}. On smaller scales, however, constraints are weaker. Potential small-scale tensions such as the missing-satellites, core-cusp, and too-big-to-fail problems have motivated departures from the simplest cold-dark-matter picture <span class="kw">\citep</span>{<span class="ex">Bullock17smallscalechallenges,Sales22challenges</span>}, although baryonic physics can substantially affect these comparisons <span class="kw">\citep</span>{<span class="ex">Benson2002reionization,Chan2015corecusp</span>}. Early JWST measurements have also revealed unexpectedly abundant and potentially massive galaxy candidates at <span class="ss">\(z</span><span class="sc">\gtrsim</span><span class="ss"> 8\)</span>--<span class="ss">\(10\)</span> <span class="kw">\citep</span>{<span class="ex">Labbe23MassiveGalaxies,Donnan23UVLF</span>}. These observations have motivated renewed interest in enhanced small-scale primordial matter power <span class="kw">\citep</span>{<span class="ex">Parashari23JWSTPPS,Hira24bluetilt</span>}; however, high-redshift baryonic physics and observational effects remain plausible explanations, including evolving star-formation efficiency, weak feedback, dust, UV emission efficiency, and selection effects <span class="kw">\citep</span>{<span class="ex">Lovell23JWSTExtreme</span>}.}</span></code></pre></div>
+<p>位置：<code>main.tex:126</code>。</p>
+<h3 id="评论-5补充-enhanced-small-scale-power-的理论来源和引用">评论
+5：补充 enhanced small-scale power 的理论来源和引用</h3>
+<p>老板红字原文：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>{<span class="fu">\color</span>{red} add motivations for enhanced power spectrum: e.g. ``the enhanced small-scale power spectrum can stem from a wide range of alternative cosmological theories, including warm inflation <span class="kw">\citep</span>{<span class="ex">Arya20WarmInflation</span>}, axion models with hyperbolic field-space geometry <span class="kw">\cite</span>{<span class="ex">Sai26BlueTilt</span>}, and multi-field hybrid inflation models that can naturally generate a broken power-law, blue-tilted spectrum <span class="kw">\citep</span>{<span class="ex">Linde94Hybridinflation, Wang24BTinflationtheory, Wang25HybridInflation</span>}. The discreteness of primordial black holes can also induce an isocurvature term that enhances especially the small-scale spectrum <span class="kw">\cite</span>{<span class="ex">Inman2019PBHBT</span>}.&#39;&#39; need rephase. }</span></code></pre></div>
+<p>修改后：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionblue</span>{Enhanced small-scale power can arise in several classes of beyond-minimal early-Universe scenarios. Examples include warm-inflation models that amplify curvature perturbations <span class="kw">\citep</span>{<span class="ex">Arya20WarmInflation</span>}, axion models with nontrivial field-space geometry that can generate blue spectra <span class="kw">\citep</span>{<span class="ex">Sai26BlueTilt</span>}, and multi-field or hybrid-inflation constructions capable of producing broken-power-law enhancements <span class="kw">\citep</span>{<span class="ex">Linde94Hybridinflation,Wang24BTinflationtheory,Wang25HybridInflation</span>}. A distinct route is provided by a discrete population of primordial black holes (PBHs), whose Poisson fluctuations source an isocurvature contribution to the small-scale matter power spectrum <span class="kw">\citep</span>{<span class="ex">Inman2019PBHBT</span>}. In this work we do not attempt to distinguish among these mechanisms; instead, we use the blue-tilted spectrum as a phenomenological input model for testing the gravitational response to enhanced small-scale power.}</span></code></pre></div>
+<p>位置：<code>main.tex:133</code>；新增参考文献：<code>main.bib</code>
+中 <code>Inman2019PBHBT</code>。</p>
+<h3 id="评论-6解释-blue-tilted-是什么">评论 6：解释 blue-tilted
+是什么</h3>
+<p>老板红字原文：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>We use a blue-tilted (BT) power spectrum following the previous literatures <span class="kw">\citep</span>[e.g.][]{<span class="ex">Hirano15BlueTiltedPPS,Parashari23JWSTPPS,Hira24bluetilt,Tkac24BumpyPPS,deKruijf25DarkAges,Dekker25DwarfPPS,Wu25BT</span>}. {<span class="fu">\color</span>{red} need to describe what blue tilted is.} Note that the BT models are phenomenological models instead of directly deriving from, e.g., any inflationary model.</span></code></pre></div>
+<p>修改后：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionblue</span>{Following previous literature <span class="kw">\citep</span>[e.g.][]{<span class="ex">Hirano15BlueTiltedPPS,Parashari23JWSTPPS,Hira24bluetilt,Tkac24BumpyPPS,deKruijf25DarkAges,Dekker25DwarfPPS,Wu25BT</span>}, we use ``blue-tilted&#39;&#39; (BT) to denote a broken-power-law input spectrum whose large-scale part follows the standard nearly scale-invariant slope, while above a pivot wavenumber <span class="ss">\(k_p\)</span> the effective high-<span class="ss">\(k\)</span> slope is increased to <span class="ss">\(m_s&gt;n_s\)</span>. In this sense the tilt is ``blue&#39;&#39; because power is shifted toward shorter wavelengths, or larger <span class="ss">\(k\)</span>, increasing the small-scale primordial matter power relative to PL. The BT models are phenomenological benchmarks rather than direct fits to any one inflationary model.}</span></code></pre></div>
+<p>位置：<code>main.tex:138</code>。</p>
+<h3 id="红字补充论文结构-roadmap">红字：补充论文结构 roadmap</h3>
+<p>原文：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>{<span class="fu">\color</span>{red} State what we do in different sections}</span></code></pre></div>
+<p>修改后：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionblue</span>{The rest of this paper is organized as follows. Section~<span class="kw">\ref</span>{<span class="ex">sec:theory</span>} defines the PL and BT input spectra and explains how the pivot scale changes the initial matter field. Section~<span class="kw">\ref</span>{<span class="ex">sec:numerical</span>} describes the simulation suite, halo catalog construction, analysis definitions, and numerical interpretation ranges. Section~<span class="kw">\ref</span>{<span class="ex">sec:results</span>} presents the halo abundance, assembly, concentration, and nonlinear-power responses. Section~<span class="kw">\ref</span>{<span class="ex">sec:discussion</span>} discusses the main numerical and modeling limitations and connects the benchmark diagnostics to observations. Section~<span class="kw">\ref</span>{<span class="ex">sec:conclusion</span>} summarizes the quantitative trends and the analytic ingredients that should be carried forward.}</span></code></pre></div>
+<p>位置：<code>main.tex:151</code>。</p>
+<h3 id="表格命名修正-blue-tiled">表格命名：修正
+<code>Blue-tiled</code></h3>
+<p>原文：</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Blue-tiled Soft (BT<span class="fu">\_</span>soft) &amp; 1 &amp; 1.5 <span class="fu">\\</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Blue-tiled Deep (BT<span class="fu">\_</span>deep) &amp; 10 &amp; 1.5 <span class="fu">\\</span></span></code></pre></div>
+<p>修改后：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{Blue-tilted Soft (BT<span class="fu">\_</span>soft)}{Blue-tiled Soft (BT<span class="fu">\_</span>soft)} &amp; 1 &amp; 1.5 <span class="fu">\\</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{Blue-tilted Deep (BT<span class="fu">\_</span>deep)}{Blue-tiled Deep (BT<span class="fu">\_</span>deep)} &amp; 10 &amp; 1.5 <span class="fu">\\</span></span></code></pre></div>
+<p>位置：<code>main.tex:223-224</code>。</p>
+<h3 id="评论-10-11sigma8-是否相同">评论 10-11：sigma8 是否相同</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>The BT spectra use the same background cosmology and large-scale normalization as PL; their matter power differs only above the pivot scale <span class="ss">\(k_p\)</span>. Thus, <span class="ss">\(</span><span class="sc">\sigma</span><span class="ss">_8\)</span> is quoted here as the baseline normalization rather than as an independently refitted parameter for each BT spectrum.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{The PL and BT initial conditions use the same <span class="ss">\(</span><span class="sc">\sigma</span><span class="ss">_8=0.8111\)</span> normalization and the same background cosmology; the BT runs differ from PL only through the transfer-function modification above <span class="ss">\(k_p\)</span>. Thus, <span class="ss">\(</span><span class="sc">\sigma</span><span class="ss">_8\)</span> is held fixed across the compared models rather than independently refitted for each BT spectrum.}{The BT spectra use the same background cosmology and large-scale normalization as PL; their matter power differs only above the pivot scale <span class="ss">\(k_p\)</span>. Thus, <span class="ss">\(</span><span class="sc">\sigma</span><span class="ss">_8\)</span> is quoted here as the baseline normalization rather than as an independently refitted parameter for each BT spectrum.}</span></code></pre></div>
+<p>位置：<code>main.tex:209</code>。<br />
+注意：应用前需要确认 MonofonIC 设置确实是 same sigma8。</p>
+<h3 id="评论-14用主动语态-we-modify">评论 14：用主动语态
+<code>we modify</code></h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>For the BT models, the implementation modifies the transfer function above <span class="ss">\(k_p\)</span>, rather than introducing a separate explicitly normalized curvature-spectrum amplitude, so that the resulting input linear matter power spectrum at <span class="ss">\(z_i=200\)</span> follows the broken-power-law enhancement described in Section~<span class="kw">\ref</span>{<span class="ex">sec:theory</span>}.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{For the BT models, we modify the transfer function above <span class="ss">\(k_p\)</span>, rather than introducing a separate explicitly normalized curvature-spectrum amplitude, so that the resulting input linear matter power spectrum at <span class="ss">\(z_i=200\)</span> follows the broken-power-law enhancement described in Section~<span class="kw">\ref</span>{<span class="ex">sec:theory</span>}.}{For the BT models, the implementation modifies the transfer function above <span class="ss">\(k_p\)</span>, rather than introducing a separate explicitly normalized curvature-spectrum amplitude, so that the resulting input linear matter power spectrum at <span class="ss">\(z_i=200\)</span> follows the broken-power-law enhancement described in Section~<span class="kw">\ref</span>{<span class="ex">sec:theory</span>}.}</span></code></pre></div>
+<p>位置：<code>main.tex:235</code>。</p>
+<h3 id="评论-27direct-model-response-不清楚">评论
+27：<code>direct model response</code> 不清楚</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>The lower ratio panels show the direct model response, <span class="ss">\(f_{</span><span class="sc">\rm</span><span class="ss"> BT}(M)/f_{</span><span class="sc">\rm</span><span class="ss"> PL}(M)\)</span>, computed in the same FOF mass bins and plotted where both the BT and PL bins are populated.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{The lower ratio panels show the BT abundance relative to PL, <span class="ss">\(f_{</span><span class="sc">\rm</span><span class="ss"> BT}(M)/f_{</span><span class="sc">\rm</span><span class="ss"> PL}(M)\)</span>, computed in the same FOF mass bins and plotted where both the BT and PL bins are populated.}{The lower ratio panels show the direct model response, <span class="ss">\(f_{</span><span class="sc">\rm</span><span class="ss"> BT}(M)/f_{</span><span class="sc">\rm</span><span class="ss"> PL}(M)\)</span>, computed in the same FOF mass bins and plotted where both the BT and PL bins are populated.}</span></code></pre></div>
+<p>位置：<code>main.tex:337</code>。</p>
+<h3 id="评论-37-40nfw-diagnostic-名称和图注">评论 37-40：NFW diagnostic
+名称和图注</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\subsubsection</span>{NFW-Equivalent Compactness Diagnostic<span class="fu">\label</span>{subsub:DensityProfile}}</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\subsubsection</span>{Concentration-Derived NFW Density Profiles<span class="fu">\label</span>{subsub:DensityProfile}}</span></code></pre></div>
+<p>当前图注原文：</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>NFW-equivalent compactness curves reconstructed from <span class="fu">\textsc</span>{SOAP} <span class="fu">\texttt</span>{SO/200<span class="fu">\_</span>mean} masses, radii, and concentrations for the PL, BT<span class="fu">\_</span>soft, and BT<span class="fu">\_</span>deep models.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{Concentration-derived NFW density profiles reconstructed from <span class="fu">\textsc</span>{SOAP} <span class="fu">\texttt</span>{SO/200<span class="fu">\_</span>mean} masses, radii, and catalog concentrations for the PL, BT<span class="fu">\_</span>soft, and BT<span class="fu">\_</span>deep models.}{NFW-equivalent compactness curves reconstructed from <span class="fu">\textsc</span>{SOAP} <span class="fu">\texttt</span>{SO/200<span class="fu">\_</span>mean} masses, radii, and concentrations for the PL, BT<span class="fu">\_</span>soft, and BT<span class="fu">\_</span>deep models.}</span></code></pre></div>
+<p>位置：<code>main.tex:382</code>, <code>391</code>。</p>
+<h3 id="评论-47-50discussion-physical-interpretation-句子不自然">评论
+47-50：Discussion physical interpretation 句子不自然</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Increasing the small-scale input matter power at <span class="ss">\(z_i=200\)</span> raises the initial amplitude of low-mass density fluctuations, so these perturbations cross the collapse threshold earlier than in the PL model. This earlier collapse first appears as a high-redshift abundance excess and then leaves a lower-redshift structural imprint.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{The enhanced primordial power spectrum increases the amplitude of small-scale density fluctuations in the initial conditions. These early density fluctuations trigger earlier collapse at high redshift, producing an excess of low-mass halos first and leaving a later imprint on halo assembly histories and concentrations.}{Increasing the small-scale input matter power at <span class="ss">\(z_i=200\)</span> raises the initial amplitude of low-mass density fluctuations, so these perturbations cross the collapse threshold earlier than in the PL model. This earlier collapse first appears as a high-redshift abundance excess and then leaves a lower-redshift structural imprint.}</span></code></pre></div>
+<p>位置：<code>main.tex:447</code>。</p>
+<h3 id="评论-51uniform-rescaling-不清楚">评论
+51：<code>uniform rescaling</code> 不清楚</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>The signal is not simply a uniform rescaling of all nonlinear statistics.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{The response is not the same for every diagnostic: it depends on pivot scale, redshift, halo mass, and whether the statistic measures abundance, assembly, concentration, or <span class="ss">\(P(k)\)</span>.}{The signal is not simply a uniform rescaling of all nonlinear statistics.}</span></code></pre></div>
+<p>位置：<code>main.tex:449</code>。</p>
+<h3 id="评论-53-54power-spectrum-不是-field-level而是-summary-statistic">评论
+53-54：power spectrum 不是 field-level，而是 summary statistic</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>The nonlinear matter power spectrum provides a complementary field-level view.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{The nonlinear matter power spectrum provides a complementary summary statistic measured from the particle density field.}{The nonlinear matter power spectrum provides a complementary field-level view.}</span></code></pre></div>
+<p>位置：<code>main.tex:451</code>。<br />
+同类位置还包括：<code>main.tex:111</code>, <code>289</code>,
+<code>294</code>, <code>429</code>, <code>438</code>, <code>467</code>,
+<code>505</code>。</p>
+<h3 id="评论-60-62response-table-应放入-conclusion-bullet-points">评论
+60-62：response table 应放入 conclusion bullet points</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Table~<span class="kw">\ref</span>{<span class="ex">tab:main_response_summary</span>} collects representative response amplitudes for the same trends. The main conclusions, with the corresponding result sections and figures, are as follows:</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{The main conclusions, with representative response amplitudes and the corresponding result sections and figures, are as follows:}{Table~<span class="kw">\ref</span>{<span class="ex">tab:main_response_summary</span>} collects representative response amplitudes for the same trends. The main conclusions, with the corresponding result sections and figures, are as follows:}</span></code></pre></div>
+<p>位置：<code>main.tex:500</code>。<br />
+还需要删除或注释掉 <code>tab:main_response_summary</code>
+表格：<code>main.tex:477-493</code>，并把表里的数值合并进 bullet
+points。</p>
+<h3 id="评论-66equation-reference-不要括号">评论 66：equation reference
+不要括号</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Eq.~(<span class="kw">\ref</span>{<span class="ex">eq:bt_input_power</span>})</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Eq.~<span class="kw">\ref</span>{<span class="ex">eq:bt_input_power</span>}</span></code></pre></div>
+<p>位置：<code>main.tex:508</code> 及全文所有类似位置。</p>
+<h3 id="评论-80final-sentence-太弱">评论 80：final sentence 太弱</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>They are relevant to JWST-era high-redshift galaxy studies, dwarf-galaxy structure, strong-lensing probes of low-mass structure, 21 cm forecasts, and small-scale clustering measurements, but each application requires additional modeling of baryons, reionization, galaxy selection, and survey response.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{By identifying the halo masses, redshifts, and wavenumbers where the dark-matter response is largest, these simulations provide a concrete target set for future hydrodynamic simulations, semi-analytic modeling, and multi-probe tests of enhanced small-scale primordial power.}{They are relevant to JWST-era high-redshift galaxy studies, dwarf-galaxy structure, strong-lensing probes of low-mass structure, 21 cm forecasts, and small-scale clustering measurements, but each application requires additional modeling of baryons, reionization, galaxy selection, and survey response.}</span></code></pre></div>
+<p>位置：<code>main.tex:510</code>。</p>
+<h3 id="评论-81-82data-availability-加-githubzenodo">评论 81-82：Data
+Availability 加 GitHub/Zenodo</h3>
+<p>当前原文：</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>The reduced data products supporting the figures and quantitative comparisons in this article are openly available in the <span class="fu">\texttt</span>{public<span class="fu">\_</span>data/} directory accompanying this manuscript.</span></code></pre></div>
+<p>建议修改后：</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\revisionreplace</span>{The reduced data products supporting the figures and quantitative comparisons in this article are available in the project GitHub repository at <span class="fu">\url</span>{&lt;GITHUB_URL&gt;} and will be archived on Zenodo at <span class="fu">\url</span>{&lt;ZENODO_URL&gt;} if a DOI is assigned.}{The reduced data products supporting the figures and quantitative comparisons in this article are openly available in the <span class="fu">\texttt</span>{public<span class="fu">\_</span>data/} directory accompanying this manuscript.}</span></code></pre></div>
+<p>位置：<code>main.tex:514</code>。<br />
+需要你提供真实 GitHub/Zenodo 地址，或者先使用占位符。</p>
+<h2 id="快速总览">快速总览</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">编号</th>
+<th>老板评论</th>
+<th>状态</th>
+<th>已经修改了什么</th>
+<th>位置</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td><code>primordial matter power spectrum</code></td>
+<td>部分修改</td>
+<td>文中保留并使用了该概念，但和
+<code>primordial power spectrum</code>、<code>input matter power spectrum</code>
+仍混用</td>
+<td><code>main.tex:109</code>, <code>126</code>, <code>147</code>,
+<code>149</code></td>
+<td>做术语统一 pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td><code>primordial power spectrum</code></td>
+<td>部分修改</td>
+<td>Introduction 和理论部分已有该表达</td>
+<td><code>main.tex:109</code>, <code>126</code>, <code>147</code></td>
+<td>明确何时用 <code>primordial power spectrum</code>，何时用 simulation
+input</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>abstract 可更 qualitative</td>
+<td>备注</td>
+<td>后续又有 <code>quantify</code> 要求，目前摘要改成带数值</td>
+<td><code>main.tex:111</code></td>
+<td>不建议删数值；可把第一句写得更 qualitative</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>旧 tension 过时，需要高红移 tension</td>
+<td>已修改</td>
+<td>Introduction 改为突出 JWST
+高红移星系候选体，同时保留小尺度问题背景</td>
+<td><code>main.tex:126</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>Add more relevant reference</td>
+<td>已修改</td>
+<td>增加 JWST、BT/PPS、baryonic caveat、PBH、观测探针等引用</td>
+<td><code>main.tex:126</code>, <code>133</code>, <code>138</code>,
+<code>147</code>；<code>main.bib</code></td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td>need rewrite</td>
+<td>部分修改</td>
+<td>Introduction 多段已重写为蓝色；但 Discussion/Conclusion
+还有不自然句子</td>
+<td><code>main.tex:126</code>, <code>133</code>, <code>138</code>,
+<code>151</code></td>
+<td>继续改评论 47-52、60-62、80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td>We haven’t shown these in our paper</td>
+<td>部分修改</td>
+<td>已补充说明 projection map 只作视觉比较，不用来声称 subhalo
+abundance/concentration</td>
+<td><code>main.tex:322</code>, <code>327</code></td>
+<td>如果原锚点不是 subhalo，需要回 Overleaf 确认</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td>MonofonIC 后 matter spectrum/seed 表述不准确</td>
+<td>部分修改</td>
+<td>IC 段说明通过 MonofonIC/transfer function，且 matched seed/same
+phases</td>
+<td><code>main.tex:235</code></td>
+<td>还需更谨慎地区分 primordial PPS 和 <code>z_i=200</code> input</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td>need rewrite</td>
+<td>部分修改</td>
+<td>IC 段已加长说明，但仍略笨重</td>
+<td><code>main.tex:235</code></td>
+<td>重写为更直接版本</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td>sigma8 是否相同</td>
+<td>部分修改</td>
+<td>写了 PL baseline <code>sigma_8=0.8111</code>，BT 与 PL
+同背景和大尺度归一化</td>
+<td><code>main.tex:207-209</code></td>
+<td>需明确写 “PL 和 BT 使用同一 sigma8”，前提是确认事实</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td>正确做法是 PL/BT same sigma8</td>
+<td>部分修改</td>
+<td>同上</td>
+<td><code>main.tex:207-209</code></td>
+<td>同上</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td>表格可和 simulation table 合并，参考 arXiv:1112.0330v2</td>
+<td>未修改</td>
+<td>只修了模型表拼写，未合并表格</td>
+<td><code>main.tex:213-227</code></td>
+<td>合并 input-power model table 和 simulation table</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td>句子 clumsy/strange</td>
+<td>部分修改</td>
+<td>若指 Introduction，已有重写；若指后文，仍有 clumsy 句子</td>
+<td>多处</td>
+<td>需要 prose pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td>用 “we modify”，不要 “implementation modifies”</td>
+<td>未修改</td>
+<td>当前仍写 <code>the implementation modifies</code></td>
+<td><code>main.tex:235</code></td>
+<td>改为 <code>For the BT models, we modify...</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td><code>input matter power spectrum</code> 用法不一致</td>
+<td>未修改</td>
+<td>当前仍多处混用</td>
+<td><code>main.tex:149</code>, <code>214</code>, <code>235</code>,
+<code>337</code>, <code>447</code></td>
+<td>做全文术语统一</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td><code>the shape of primordial power spectrum</code> 更好</td>
+<td>部分修改</td>
+<td>相关概念已出现，但还没按该规则统一替换</td>
+<td><code>main.tex:147</code>, <code>149</code></td>
+<td>结合评论 15/45 一起改</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td>句子 strange，需要更直接</td>
+<td>部分修改</td>
+<td>部分段落已经更直接，但缺原锚点</td>
+<td>可能是 <code>main.tex:235</code> 或 <code>149</code></td>
+<td>需按原锚点确认</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td>“test the effect of enhanced primordial power spectrum, given same
+initial phases”</td>
+<td>部分修改</td>
+<td>已说明 same random seed/same phases，控制变量是 input spectrum
+shape</td>
+<td><code>main.tex:235</code></td>
+<td>可把这句话直接并入 IC 段</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td>比较 particle scale 和 enhancement scale</td>
+<td>部分修改</td>
+<td>已加 Nyquist scale 和 <code>Delta^2</code> consistency check</td>
+<td><code>main.tex:237</code>, figure caption near <code>240</code></td>
+<td>需要更直接比较 enhancement scale 与分辨率</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td>后面用了其他 mass definitions</td>
+<td>已修改</td>
+<td>增加 mass-definition 总说明，区分 FOF、M200m、M200c、power
+spectrum</td>
+<td><code>main.tex:289</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td>discuss binning</td>
+<td>已修改</td>
+<td>power-spectrum 方法段加入 mesh、binning、median/log-bin 说明</td>
+<td><code>main.tex:429</code></td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td>No need to mention</td>
+<td>需原文锚点</td>
+<td>无法确定原高亮文字</td>
+<td>不明</td>
+<td>需回 Overleaf 看锚点</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td>particle mass 已在表中显示</td>
+<td>需原文锚点</td>
+<td>当前正文/图注仍多次重复 particle mass</td>
+<td><code>main.tex:287</code>, <code>333</code>, <code>355</code>,
+<code>359</code>, <code>423</code></td>
+<td>删除冗余处，但保留 threshold 解释</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td>This is mentioned already</td>
+<td>需原文锚点</td>
+<td>不确定重复对象</td>
+<td>不明</td>
+<td>需回 Overleaf 看锚点</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td>mentioned already, wording strange</td>
+<td>需原文锚点</td>
+<td>不确定重复对象</td>
+<td>不明</td>
+<td>需回 Overleaf 看锚点</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+<td>define M200c</td>
+<td>已修改</td>
+<td>定义并说明 M200c/R200c/c200c 与 SOAP SO/200crit</td>
+<td><code>main.tex:287</code>, <code>289</code>, <code>359</code>,
+<code>397-412</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27</td>
+<td>ratio between PL and BT，<code>direct model response</code>
+不清楚</td>
+<td>未修改</td>
+<td>当前仍写 <code>direct model response</code></td>
+<td><code>main.tex:337</code>, <code>355</code>, <code>364</code>,
+<code>438</code></td>
+<td>改成 <code>BT abundance relative to PL</code> /
+<code>BT/PL ratio</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28</td>
+<td>define B16 in text</td>
+<td>已修改</td>
+<td>B16 定义为 Bocquet et al. fitting function</td>
+<td><code>main.tex:335</code>, <code>359</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29</td>
+<td>Not defined yet</td>
+<td>已修改</td>
+<td>likely 指 B16/M200c，当前均已定义</td>
+<td><code>main.tex:335</code>, <code>359</code></td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30</td>
+<td>Add mass accretion rate study</td>
+<td>需要数据/图</td>
+<td>正文还没有 mass-accretion-rate study</td>
+<td>无</td>
+<td>需要从 merger history 新算诊断</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31</td>
+<td>details can go in text or appendix</td>
+<td>部分修改</td>
+<td>HMR 细节已写清，并把 gap-stitching 系统误差放 Appendix</td>
+<td><code>main.tex:369</code>, Appendix</td>
+<td>可再压缩 caption/method 细节</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32</td>
+<td>between what and BK09</td>
+<td>部分修改</td>
+<td>图注说明 lower panel 是 relative to BK09</td>
+<td><code>main.tex:376</code></td>
+<td>仍需解释为什么和 BK09 比</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">33</td>
+<td>why compare to BK09</td>
+<td>未修改</td>
+<td>当前仍缺少比较 BK09 的理由</td>
+<td><code>main.tex:376</code></td>
+<td>加一句 BK09/COCO 是外部 reference relation 的理由，或删去 lower
+panel</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">34</td>
+<td>应比较 BT to PL</td>
+<td>部分修改</td>
+<td>文中有 BT 相对 PL 的数值，但图 lower panel 仍是相对 BK09</td>
+<td><code>main.tex:371</code>, <code>376</code></td>
+<td>改图或图注，突出 BT-PL comparison</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">35</td>
+<td>加 too-few-particles shaded region</td>
+<td>已修改</td>
+<td>HMF 图注解释 gray band 是 20-particle 到 adopted cut 区域</td>
+<td><code>main.tex:355</code></td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">36</td>
+<td>这只是 DM halo density profile 和 NFW profile</td>
+<td>部分修改</td>
+<td>已说明是 concentration-derived/reconstructed NFW profiles</td>
+<td><code>main.tex:383</code>, <code>391</code></td>
+<td>section title 仍需改名</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">37</td>
+<td><code>NFW-equivalent compactness curves</code> strange</td>
+<td>未修改</td>
+<td>该说法仍出现在标题、表格、图注、结论</td>
+<td><code>main.tex:309</code>, <code>382</code>, <code>391</code>,
+<code>504</code>, <code>514</code></td>
+<td>改为 <code>Concentration-derived NFW density profiles</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">38</td>
+<td>不是 radial profiles，是 fitted concentration 的 NFW profile</td>
+<td>已修改</td>
+<td>已明确不是 direct particle-count radial stacks</td>
+<td><code>main.tex:383</code>, <code>391</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">39</td>
+<td>容易误导 points/lines 含义</td>
+<td>部分修改</td>
+<td>图注说明 markers 不是 individual halos，line/marker 都由 catalog
+concentration 重建</td>
+<td><code>main.tex:391</code></td>
+<td>图本身 label 可能还要改</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">40</td>
+<td>读者想看 NFW 描述 BT 准确性</td>
+<td>部分修改</td>
+<td>当前只解释不是直接 profile-fit accuracy test</td>
+<td><code>main.tex:383</code>, <code>391</code></td>
+<td>若要真正回应，需新增 profile residual/fit accuracy</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">41</td>
+<td>figures 加 error bar</td>
+<td>已修改</td>
+<td>HMF 有 Poisson；HMR/concentration 有 16-84 percentile scatter</td>
+<td><code>main.tex:333</code>, <code>369</code>, <code>395</code>,
+<code>423</code></td>
+<td>NFW reconstructed profile 图若需 uncertainty band 另算</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">42</td>
+<td>add scatter in concentration</td>
+<td>部分修改</td>
+<td>concentration 图用 16-84 percentile scatter</td>
+<td><code>main.tex:395</code>, <code>423</code></td>
+<td>还没有单独讨论 scatter 结果</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">43</td>
+<td>define D19 and I21</td>
+<td>已修改</td>
+<td>已用 full names Diemer &amp; Joyce、Ishiyama et al.</td>
+<td><code>main.tex:395</code></td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">44</td>
+<td>shaded region represented?</td>
+<td>已修改</td>
+<td>power-spectrum 图注说明 gray high-k region 和 unity shaded band</td>
+<td><code>main.tex:438</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">45</td>
+<td>most input matter power -&gt; primordial power spectrum</td>
+<td>未修改</td>
+<td>仍有大量 <code>input matter/input linear matter</code> 表达</td>
+<td><code>main.tex:149</code>, <code>214</code>, <code>235</code>,
+<code>337</code>, <code>447</code>, <code>451</code></td>
+<td>全文术语 pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">46</td>
+<td>This is right</td>
+<td>备注</td>
+<td>正面评论，无需修改</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">47</td>
+<td>sentences unnatural</td>
+<td>未修改</td>
+<td>Discussion 物理解释仍不自然</td>
+<td><code>main.tex:447</code></td>
+<td>改写 physical interpretation</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48</td>
+<td>issue is not direct</td>
+<td>未修改</td>
+<td>当前 causal chain 仍写得比较直接</td>
+<td><code>main.tex:447</code></td>
+<td>软化为 “enhanced PPS -&gt; IC fluctuations -&gt; earlier
+collapse”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">49</td>
+<td><code>This earlier collapse first appears...</code> clumsy</td>
+<td>未修改</td>
+<td>原句仍在</td>
+<td><code>main.tex:447</code></td>
+<td>用评论 50 的思路替换</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50</td>
+<td>“These early density fluctuations…” clearer</td>
+<td>未修改</td>
+<td>建议句还未采用</td>
+<td><code>main.tex:447</code></td>
+<td>直接替换</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">51</td>
+<td><code>rescaling of all nonlinear statistics</code> unclear</td>
+<td>部分修改</td>
+<td>当前仍保留该句，但后一句解释了 redshift/mass/diagnostic
+dependence</td>
+<td><code>main.tex:449</code></td>
+<td>改成更具体的 diagnostic-dependent response</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">52</td>
+<td>This is not proved?</td>
+<td>部分修改</td>
+<td>当前用 <code>supports the interpretation</code>，但仍可能偏强</td>
+<td><code>main.tex:451</code></td>
+<td>进一步软化为 interpretation，不说 proof</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">53</td>
+<td>power spectrum 不是 field-level</td>
+<td>未修改</td>
+<td><code>field-level</code> 仍多处出现，包括新增 abstract 句</td>
+<td><code>main.tex:111</code>, <code>289</code>, <code>294</code>,
+<code>429</code>, <code>438</code>, <code>451</code>,
+<code>505</code></td>
+<td>全部改为 summary statistic / measured from density field</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">54</td>
+<td>它是 summary statistics</td>
+<td>未修改</td>
+<td>同评论 53</td>
+<td>同上</td>
+<td>同上</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">55</td>
+<td>True but strange</td>
+<td>部分修改</td>
+<td>observational connection 有改善，但表达仍偏散</td>
+<td><code>main.tex:455-475</code>, <code>510</code></td>
+<td>结合评论 56-59、80 改</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">56</td>
+<td>priority first: effect of enhanced PPS</td>
+<td>部分修改</td>
+<td>正文有暗示，但 Discussion/Conclusion 仍分散到多个观测方向</td>
+<td><code>main.tex:455-475</code>, <code>498-510</code></td>
+<td>先强调 enhanced PPS 对 DM halo statistics 的影响</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">57</td>
+<td>on dark matter halo</td>
+<td>部分修改</td>
+<td>HMF、assembly、concentration 是核心结果，但结论可更直接</td>
+<td><code>main.tex:498-505</code></td>
+<td>Conclusion 首句/最后一句强化 halo effect</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">58</td>
+<td>baryonic physics/galaxy formation/selection 放 conclusion 最后</td>
+<td>部分修改</td>
+<td>caveat 出现在 Introduction、Limitations、Observation、Conclusion
+多处</td>
+<td>多处</td>
+<td>保留必要 caveat，但不要抢主线</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">59</td>
+<td>DM halos 是最 dominant effect</td>
+<td>部分修改</td>
+<td>当前写 strongest responses include halo
+abundance/assembly/concentration</td>
+<td><code>main.tex:475</code>, <code>502-505</code></td>
+<td>更明确写 halo statistics 是首要结果</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">60</td>
+<td>table 放进 conclusion bullet points</td>
+<td>未修改</td>
+<td>response table 仍保留</td>
+<td><code>main.tex:477-493</code>, <code>500</code></td>
+<td>删除表或合并到 conclusion bullets</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">61</td>
+<td><code>collects representative response amplitudes...</code>
+不清楚</td>
+<td>未修改</td>
+<td>该句仍在</td>
+<td><code>main.tex:500</code></td>
+<td>删除表后该句也删除</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">62</td>
+<td>clumsy</td>
+<td>未修改</td>
+<td>同评论 61</td>
+<td><code>main.tex:500</code></td>
+<td>同上</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">63</td>
+<td>This is a good paragraph</td>
+<td>备注</td>
+<td>正面评论，无需修改</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">64</td>
+<td>use bullet points here</td>
+<td>已修改</td>
+<td>Conclusion 已用 enumerate bullet list</td>
+<td><code>main.tex:501-506</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">65</td>
+<td>这是 definition，不是 result</td>
+<td>部分修改</td>
+<td>analytic ingredients 段仍混合 definitions 和 recommendations</td>
+<td><code>main.tex:508</code></td>
+<td>缩短或移到前文/appendix</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">66</td>
+<td>equation references 不要括号</td>
+<td>未修改</td>
+<td>仍有 <code>Eq.~(\ref{...})</code></td>
+<td><code>main.tex:508</code></td>
+<td>全文改为 <code>Eq.~\ref{...}</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">67</td>
+<td>cite reference again here</td>
+<td>需原文锚点</td>
+<td>不知道具体指哪处</td>
+<td>不明</td>
+<td>回 Overleaf 看锚点</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">68</td>
+<td>use full name</td>
+<td>部分修改</td>
+<td>D19/I21 已改 full names；Reed07/B16 shorthand 仍在</td>
+<td><code>main.tex:335</code>, <code>355</code>, <code>359</code>,
+<code>395</code>, <code>508</code></td>
+<td>统一 first mention 用 full names</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">69</td>
+<td>Reed07/B16/D19 不一致</td>
+<td>部分修改</td>
+<td>D19/I21 改善；Reed07/B16 仍混用 shorthand/full citation</td>
+<td>多处</td>
+<td>建 notation rule</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">70</td>
+<td>need absolutely clear</td>
+<td>部分修改</td>
+<td>mass definitions 和 model definitions 更清楚，但 notation
+仍可统一</td>
+<td><code>main.tex:289</code>, <code>335</code>, <code>359</code>,
+<code>395</code></td>
+<td>同评论 69/71</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">71</td>
+<td>每节早定义 consistent notation</td>
+<td>部分修改</td>
+<td>有定义但不够系统</td>
+<td>多处</td>
+<td>每个 section 首次出现都 full name + shorthand</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">72</td>
+<td>cite reference again here</td>
+<td>需原文锚点</td>
+<td>不知道具体指哪处</td>
+<td>不明</td>
+<td>回 Overleaf 看锚点</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">73</td>
+<td>不懂，是否不是用 project plots 里的 counted halos?</td>
+<td>需原文锚点</td>
+<td>可能指 analytic ingredients 或 projected maps，但不确定</td>
+<td><code>main.tex:508</code> 或 <code>327</code></td>
+<td>需原锚点</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">74</td>
+<td>本文不提供 nonlinear power fitting formula</td>
+<td>已修改</td>
+<td>明确说不推荐 standalone nonlinear-power fitting formula</td>
+<td><code>main.tex:431</code>, <code>438</code>, <code>508</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">75</td>
+<td>没有 analytic model for nonlinear power spectrum?</td>
+<td>已修改</td>
+<td>写了 theory curves only for orientation/no calibrated formula</td>
+<td><code>main.tex:431</code>, <code>438</code>, <code>508</code></td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">76</td>
+<td>should mention earlier in conclusions</td>
+<td>部分修改</td>
+<td>目前在 analytic ingredients 段提到</td>
+<td><code>main.tex:508</code></td>
+<td>可移入 nonlinear-power bullet</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">77</td>
+<td>It sounds strange</td>
+<td>需原文锚点</td>
+<td>不知道具体句子</td>
+<td>不明</td>
+<td>回 Overleaf 看锚点</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">78</td>
+<td>one simulation, no cosmic variance，只提一次</td>
+<td>已修改</td>
+<td>Limitations 明确 one matched-seed realization；无 cosmic
+variance/realization scatter</td>
+<td><code>main.tex:465</code></td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">79</td>
+<td>不能提供 direct observational constraints，主要不是 cosmic
+variance</td>
+<td>部分修改</td>
+<td>Conclusion 说不是 direct observational constraints，需
+baryon/selection/survey modeling</td>
+<td><code>main.tex:510</code></td>
+<td>避免把限制归因过多放在 cosmic variance</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">80</td>
+<td>final sentence 太弱</td>
+<td>未修改</td>
+<td>结尾仍以 caveat 收尾</td>
+<td><code>main.tex:510</code></td>
+<td>改成更积极的 future target statement</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">81</td>
+<td>give a GitHub address</td>
+<td>未修改</td>
+<td>Data Availability 没有 GitHub URL</td>
+<td><code>main.tex:514</code></td>
+<td>补真实 GitHub 地址或占位符</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">82</td>
+<td>consider Zenodo for halo catalogs/SOAP output</td>
+<td>未修改</td>
+<td>Data Availability 没有 Zenodo/DOI</td>
+<td><code>main.tex:514</code></td>
+<td>补 Zenodo DOI/占位符</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">83</td>
+<td>full snapshots not possible</td>
+<td>已修改</td>
+<td>Data Availability 说明 raw snapshots 和完整 catalogs 太大</td>
+<td><code>main.tex:514</code></td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">84</td>
+<td>Add resolution study</td>
+<td>需要数据/图</td>
+<td>当前只有 trusted ranges，不是真正 resolution study</td>
+<td><code>main.tex:296-315</code>, <code>465-467</code></td>
+<td>需要已有 resolution/volume runs 支持，否则写 limitation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="已经真正落到正文里的主要修改">已经真正落到正文里的主要修改</h2>
+<ol type="1">
+<li><p><strong>摘要 power-spectrum 结论量化</strong><br />
+对应评论：3 及红字 <code>quantify</code>。<br />
+修改位置：<code>main.tex:111</code>。<br />
+当前用 <code>changes</code> 包标记为
+<code>\revisionreplace{新句}{旧句}</code>，PDF
+里旧句会被划线，新句为蓝色。</p></li>
+<li><p><strong>Introduction 高红移/JWST motivation 重写</strong><br />
+对应评论：4、5、6。<br />
+修改位置：<code>main.tex:126</code>。<br />
+修改内容：从旧的小尺度 tension
+叙述，改成大尺度约束可靠、小尺度约束较弱、JWST 高红移星系候选体引出
+enhanced small-scale primordial matter power，同时保留 baryonic
+caveat。</p></li>
+<li><p><strong>新增 enhanced power 的理论来源</strong><br />
+对应评论：5。<br />
+修改位置：<code>main.tex:133</code>，<code>main.bib</code> 中新增
+<code>Inman2019PBHBT</code>。<br />
+修改内容：加入 warm inflation、axion、multi-field/hybrid inflation、PBH
+Poisson fluctuation 等动机。</p></li>
+<li><p><strong>定义 blue-tilted</strong><br />
+对应评论：6 以及 “need to describe what blue tilted is”。<br />
+修改位置：<code>main.tex:138</code>。<br />
+修改内容：解释 BT 是 broken-power-law input
+spectrum，<code>k&gt;k_p</code> 后有效 high-k slope 增大，power
+向短波长/大 k 偏移。</p></li>
+<li><p><strong>增加论文 roadmap</strong><br />
+对应评论：<code>State what we do in different sections</code>。<br />
+修改位置：<code>main.tex:151</code>。<br />
+修改内容：逐节说明 theory、numerical、results、discussion、conclusion
+做什么。</p></li>
+<li><p><strong>修正模型表拼写</strong><br />
+对应评论：表格/命名问题。<br />
+修改位置：<code>main.tex:223-224</code>。<br />
+修改内容：<code>Blue-tiled</code> 改为 <code>Blue-tilted</code>，并用
+<code>\revisionreplace</code> 标记。</p></li>
+<li><p><strong>质量定义和 M200c/B16 说明</strong><br />
+对应评论：20、26、28、29、69-71。<br />
+修改位置：<code>main.tex:287-289</code>, <code>335</code>,
+<code>359</code>, <code>397-412</code>。<br />
+修改内容：区分 FOF、M200c、M200m、SO/200crit、SO/200mean，并定义 B16 和
+concentration model。</p></li>
+<li><p><strong>HMF 低粒子数 gray band 说明</strong><br />
+对应评论：35。<br />
+修改位置：<code>main.tex:355</code>。<br />
+修改内容：图注说明 gray band 是 20-particle threshold 到 adopted catalog
+cut 的区域。</p></li>
+<li><p><strong>HMR、concentration、power spectrum 的
+error/scatter/binning 说明</strong><br />
+对应评论：21、41、42、44。<br />
+修改位置：<code>main.tex:369</code>, <code>395</code>, <code>423</code>,
+<code>429</code>, <code>438</code>。<br />
+修改内容：写明 HMR/concentration scatter，power-spectrum
+mesh/binning，shaded regions 含义。</p></li>
+<li><p><strong>NFW profile 来源澄清</strong><br />
+对应评论：36、38、39。<br />
+修改位置：<code>main.tex:383</code>, <code>391</code>。<br />
+修改内容：说明这些不是 direct particle-count radial stacks，而是由 SOAP
+catalog concentration 重建的 NFW profile。</p></li>
+<li><p><strong>single realization / cosmic variance
+limitation</strong><br />
+对应评论：78。<br />
+修改位置：<code>main.tex:465</code>。<br />
+修改内容：说明每个模型一个 matched-seed realization，误差条不含 cosmic
+variance 或 realization-to-realization scatter。</p></li>
+<li><p><strong>Data Availability 对 full snapshots 的限制</strong><br />
+对应评论：83。<br />
+修改位置：<code>main.tex:514</code>。<br />
+修改内容：说明 raw snapshots 和完整 HBT-HERONS/SOAP catalogs
+太大，当前提供 reduced products。</p></li>
+</ol>
+<h2 id="仍然最需要下一步改的评论">仍然最需要下一步改的评论</h2>
+<ol type="1">
+<li>术语统一：评论 1、2、15、16、45。</li>
+<li><code>field-level</code> 全文替换：评论 53、54。</li>
+<li>Discussion physical interpretation 重写：评论 47-52。</li>
+<li>NFW diagnostic 改名：评论 36-40，尤其 37。</li>
+<li>response table 合并到 conclusion bullets：评论 60-62。</li>
+<li>sigma8/MonofonIC 表述更精确：评论 8、10、11、14、18。</li>
+<li>GitHub/Zenodo 数据可用性：评论 81、82。</li>
+<li>需要新分析的项目：mass accretion rate study（评论 30）和 resolution
+study（评论 84）。</li>
+</ol>
+</body>
+</html>

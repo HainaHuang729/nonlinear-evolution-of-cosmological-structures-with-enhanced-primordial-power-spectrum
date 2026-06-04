@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{34}%
+\begin{thebibliography}{48}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -102,6 +102,39 @@
   10.1038/s41550-022-01689-w} {\bibfield  {journal} {\bibinfo  {journal}
   {Nature Astronomy}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages}
   {897--910} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Benson}}\ \emph {et~al.}(2002)\citenamefont
+  {{Benson}}, \citenamefont {{Lacey}}, \citenamefont {{Baugh}}, \citenamefont
+  {{Cole}},\ and\ \citenamefont {{Frenk}}}]{Benson2002reionization}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
+  {{Benson}}}, \bibinfo {author} {\bibfnamefont {C.~G.}\ \bibnamefont
+  {{Lacey}}}, \bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont
+  {{Baugh}}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {{Cole}}},
+  and\ \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont {{Frenk}}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {{The effects of
+  photoionization on galaxy formation - I. Model and results at z=0}},}\ }\href
+  {\doibase 10.1046/j.1365-8711.2002.05387.x} {\bibfield  {journal} {\bibinfo
+  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {333}},\ \bibinfo {pages}
+  {156--176} (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Chan}}\ \emph {et~al.}(2015)\citenamefont {{Chan}},
+  \citenamefont {{Kere{\v{s}}}}, \citenamefont {{O{\~n}orbe}}, \citenamefont
+  {{Hopkins}}, \citenamefont {{Muratov}}, \citenamefont
+  {{Faucher-Gigu{\`e}re}},\ and\ \citenamefont
+  {{Quataert}}}]{Chan2015corecusp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.~K.}\ \bibnamefont
+  {{Chan}}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {{Kere{\v{s}}}}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {{O{\~n}orbe}}}, \bibinfo {author} {\bibfnamefont {P.~F.}\ \bibnamefont
+  {{Hopkins}}}, \bibinfo {author} {\bibfnamefont {A.~L.}\ \bibnamefont
+  {{Muratov}}}, \bibinfo {author} {\bibfnamefont {C.-A.}\ \bibnamefont
+  {{Faucher-Gigu{\`e}re}}}, and\ \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {{Quataert}}},\ }\bibfield  {title} {\enquote {\bibinfo
+  {title} {{The impact of baryonic physics on the structure of dark matter
+  haloes: the view from the FIRE cosmological simulations}},}\ }\href {\doibase
+  10.1093/mnras/stv2165} {\bibfield  {journal} {\bibinfo  {journal} {\mnras}\
+  }\textbf {\bibinfo {volume} {454}},\ \bibinfo {pages} {2981--3001} (\bibinfo
+  {year} {2015})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Labb{\'e}}}\ \emph {et~al.}(2023)\citenamefont
   {{Labb{\'e}}}, \citenamefont {{van Dokkum}}, \citenamefont {{Nelson}},
   \citenamefont {{Bezanson}}, \citenamefont {{Suess}}, \citenamefont {{Leja}},
@@ -151,44 +184,6 @@
   imaging}},}\ }\href {\doibase 10.1093/mnras/stac3472} {\bibfield  {journal}
   {\bibinfo  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {518}},\ \bibinfo
   {pages} {6011--6040} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Boylan-Kolchin}}(2023)}]{BoylanKolchin23JWSTStress}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {{Boylan-Kolchin}}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
-  {{Stress testing $\Lambda$CDM with high-redshift galaxy candidates}},}\
-  }\href {\doibase 10.1038/s41550-023-01937-7} {\bibfield  {journal} {\bibinfo
-  {journal} {Nature Astronomy}\ }\textbf {\bibinfo {volume} {7}},\ \bibinfo
-  {pages} {731--735} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Lovell}}\ \emph {et~al.}(2023)\citenamefont
-  {{Lovell}}, \citenamefont {{Harrison}}, \citenamefont {{Harikane}},
-  \citenamefont {{Tacchella}},\ and\ \citenamefont
-  {{Wilkins}}}]{Lovell23JWSTExtreme}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~C.}\ \bibnamefont
-  {{Lovell}}}, \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
-  {{Harrison}}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
-  {{Harikane}}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {{Tacchella}}}, and\ \bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont
-  {{Wilkins}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Extreme
-  value statistics of the halo and stellar mass distributions at high redshift:
-  are JWST results in tension with $\Lambda$CDM?}}}\ }\href {\doibase
-  10.1093/mnras/stac3224} {\bibfield  {journal} {\bibinfo  {journal} {\mnras}\
-  }\textbf {\bibinfo {volume} {518}},\ \bibinfo {pages} {2511--2520} (\bibinfo
-  {year} {2023})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Hirano}}\ \emph {et~al.}(2015)\citenamefont
-  {{Hirano}}, \citenamefont {{Zhu}}, \citenamefont {{Yoshida}}, \citenamefont
-  {{Spergel}},\ and\ \citenamefont {{Yorke}}}]{Hirano15BlueTiltedPPS}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {{Hirano}}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {{Zhu}}},
-  \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {{Yoshida}}}, \bibinfo
-  {author} {\bibfnamefont {D.}~\bibnamefont {{Spergel}}}, and\ \bibinfo
-  {author} {\bibfnamefont {H.~W.}\ \bibnamefont {{Yorke}}},\ }\bibfield
-  {title} {\enquote {\bibinfo {title} {{Early structure formation from
-  primordial density fluctuations with a blue-tilted power spectrum}},}\ }\href
-  {\doibase 10.1088/0004-637X/814/1/18} {\bibfield  {journal} {\bibinfo
-  {journal} {\apj}\ }\textbf {\bibinfo {volume} {814}},\ \bibinfo {eid} {18}
-  (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Parashari}}\ and\ \citenamefont
   {{Laha}}(2023)}]{Parashari23JWSTPPS}%
   \BibitemOpen
@@ -211,6 +206,98 @@
   10.3847/1538-4357/ad22e0} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\
   }\textbf {\bibinfo {volume} {963}},\ \bibinfo {eid} {2} (\bibinfo {year}
   {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Lovell}}\ \emph {et~al.}(2023)\citenamefont
+  {{Lovell}}, \citenamefont {{Harrison}}, \citenamefont {{Harikane}},
+  \citenamefont {{Tacchella}},\ and\ \citenamefont
+  {{Wilkins}}}]{Lovell23JWSTExtreme}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~C.}\ \bibnamefont
+  {{Lovell}}}, \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {{Harrison}}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {{Harikane}}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {{Tacchella}}}, and\ \bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont
+  {{Wilkins}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Extreme
+  value statistics of the halo and stellar mass distributions at high redshift:
+  are JWST results in tension with $\Lambda$CDM?}}}\ }\href {\doibase
+  10.1093/mnras/stac3224} {\bibfield  {journal} {\bibinfo  {journal} {\mnras}\
+  }\textbf {\bibinfo {volume} {518}},\ \bibinfo {pages} {2511--2520} (\bibinfo
+  {year} {2023})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Arya}}(2020)}]{Arya20WarmInflation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {{Arya}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Formation of
+  primordial black holes from warm inflation}},}\ }\href {\doibase
+  10.1088/1475-7516/2020/09/042} {\bibfield  {journal} {\bibinfo  {journal}
+  {\jcap}\ }\textbf {\bibinfo {volume} {2020}},\ \bibinfo {eid} {042} (\bibinfo
+  {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Chaitanya Tadepalli}}(2026)}]{Sai26BlueTilt}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {{Chaitanya Tadepalli}}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {{Axions on a Hyperbolic Ride: Geometric Suppression of CMB Isocurvature and
+  a Blue-Tilted Spectrum}},}\ }\href {\doibase 10.48550/arXiv.2601.22221}
+  {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ ,\ \bibinfo
+  {eid} {arXiv:2601.22221}} (\bibinfo {year} {2026})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Linde}}(1994)}]{Linde94Hybridinflation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {{Linde}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Hybrid
+  inflation}},}\ }\href {\doibase 10.1103/PhysRevD.49.748} {\bibfield
+  {journal} {\bibinfo  {journal} {\prd}\ }\textbf {\bibinfo {volume} {49}},\
+  \bibinfo {pages} {748--754} (\bibinfo {year} {1994})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Wang}}\ \emph {et~al.}(2024)\citenamefont {{Wang}},
+  \citenamefont {{Zhang}},\ and\ \citenamefont
+  {{Sasaki}}}]{Wang24BTinflationtheory}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {X.}~\bibnamefont
+  {{Wang}}}, \bibinfo {author} {\bibfnamefont {Y.-l.}\ \bibnamefont {{Zhang}}},
+  and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {{Sasaki}}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {{Enhanced curvature
+  perturbation and primordial black hole formation in two-stage inflation with
+  a break}},}\ }\href {\doibase 10.1088/1475-7516/2024/07/076} {\bibfield
+  {journal} {\bibinfo  {journal} {\jcap}\ }\textbf {\bibinfo {volume} {2024}},\
+  \bibinfo {eid} {076} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Cacciapaglia}}\ \emph {et~al.}(2025)\citenamefont
+  {{Cacciapaglia}}, \citenamefont {{Cheong}}, \citenamefont {{Deandrea}},
+  \citenamefont {{Isnard}}, \citenamefont {{Park}}, \citenamefont {{Wang}},\
+  and\ \citenamefont {{Zhang}}}]{Wang25HybridInflation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {{Cacciapaglia}}}, \bibinfo {author} {\bibfnamefont {D.~Y.}\ \bibnamefont
+  {{Cheong}}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {{Deandrea}}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {{Isnard}}}, \bibinfo {author} {\bibfnamefont {S.~C.}\ \bibnamefont
+  {{Park}}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {{Wang}}}, and\
+  \bibinfo {author} {\bibfnamefont {Y.-l.}\ \bibnamefont {{Zhang}}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {{Composite Hybrid Inflation
+  : Primordial Black Holes and Stochastic Gravitational Waves}},}\ }\href
+  {\doibase 10.48550/arXiv.2506.06655} {\bibfield  {journal} {\bibinfo
+  {journal} {arXiv e-prints}\ ,\ \bibinfo {eid} {arXiv:2506.06655}} (\bibinfo
+  {year} {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Inman}}\ and\ \citenamefont
+  {{Ali-Ha{\"i}moud}}(2019)}]{Inman2019PBHBT}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {{Inman}}}\ and\ \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {{Ali-Ha{\"i}moud}}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {{Early structure formation in primordial black hole cosmologies}},}\ }\href
+  {\doibase 10.1103/PhysRevD.100.083528} {\bibfield  {journal} {\bibinfo
+  {journal} {\prd}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo {eid}
+  {083528} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Hirano}}\ \emph {et~al.}(2015)\citenamefont
+  {{Hirano}}, \citenamefont {{Zhu}}, \citenamefont {{Yoshida}}, \citenamefont
+  {{Spergel}},\ and\ \citenamefont {{Yorke}}}]{Hirano15BlueTiltedPPS}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {{Hirano}}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {{Zhu}}},
+  \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {{Yoshida}}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {{Spergel}}}, and\ \bibinfo
+  {author} {\bibfnamefont {H.~W.}\ \bibnamefont {{Yorke}}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {{Early structure formation from
+  primordial density fluctuations with a blue-tilted power spectrum}},}\ }\href
+  {\doibase 10.1088/0004-637X/814/1/18} {\bibfield  {journal} {\bibinfo
+  {journal} {\apj}\ }\textbf {\bibinfo {volume} {814}},\ \bibinfo {eid} {18}
+  (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Tkachev}}\ \emph {et~al.}(2024)\citenamefont
   {{Tkachev}}, \citenamefont {{Pilipenko}}, \citenamefont {{Mikheeva}},\ and\
   \citenamefont {{Lukash}}}]{Tkac24BumpyPPS}%
@@ -322,6 +409,32 @@
   {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf {\bibinfo
   {volume} {511}},\ \bibinfo {pages} {5--15} (\bibinfo {year}
   {1999})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Hahn}}\ \emph {et~al.}(2020)\citenamefont {{Hahn}},
+  \citenamefont {{Michaux}}, \citenamefont {{Rampf}}, \citenamefont
+  {{Uhlemann}},\ and\ \citenamefont {{Angulo}}}]{Hahn2020MUSIC2monofonIC}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {{Hahn}}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {{Michaux}}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {{Rampf}}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {{Uhlemann}}}, and\ \bibinfo
+  {author} {\bibfnamefont {R.~E.}\ \bibnamefont {{Angulo}}},\ }\href@noop {}
+  {\enquote {\bibinfo {title} {{MUSIC2-monofonIC: 3LPT initial condition
+  generator}},}\ }\bibinfo {howpublished} {Astrophysics Source Code Library,
+  record ascl:2008.024} (\bibinfo {year} {2020}),\ \Eprint
+  {http://arxiv.org/abs/2008.024} {ascl:2008.024} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Michaux}}\ \emph {et~al.}(2021)\citenamefont
+  {{Michaux}}, \citenamefont {{Hahn}}, \citenamefont {{Rampf}},\ and\
+  \citenamefont {{Angulo}}}]{Michaux2021MUSIC2monofonIC}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {{Michaux}}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {{Hahn}}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {{Rampf}}}, and\ \bibinfo
+  {author} {\bibfnamefont {R.~E.}\ \bibnamefont {{Angulo}}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {{Accurate initial conditions for
+  cosmological N-body simulations: minimizing truncation and discreteness
+  errors}},}\ }\href {\doibase 10.1093/mnras/staa3149} {\bibfield  {journal}
+  {\bibinfo  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {500}},\ \bibinfo
+  {pages} {663--683} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Schaller}}\ \emph {et~al.}(2024)\citenamefont
   {{Schaller}}, \citenamefont {{Borrow}}, \citenamefont {{Draper}} \emph
   {et~al.}}]{Schaller2024SWIFT}%
@@ -333,6 +446,68 @@
   }\href {\doibase 10.1093/mnras/stae922} {\bibfield  {journal} {\bibinfo
   {journal} {\mnras}\ }\textbf {\bibinfo {volume} {530}},\ \bibinfo {pages}
   {2378--2419} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Dehnen}(2000)}]{Dehn00FMM}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {Dehnen}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {A very fast and
+  momentum-conserving tree code},}\ }\href {\doibase 10.1086/312724} {\bibfield
+   {journal} {\bibinfo  {journal} {The Astrophysical Journal}\ }\textbf
+  {\bibinfo {volume} {536}},\ \bibinfo {pages} {L39} (\bibinfo {year}
+  {2000})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Hockney}}\ and\ \citenamefont
+  {{Eastwood}}(1988)}]{Hock88PM}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~W.}\ \bibnamefont
+  {{Hockney}}}\ and\ \bibinfo {author} {\bibfnamefont {J.~W.}\ \bibnamefont
+  {{Eastwood}}},\ }\href@noop {} {\emph {\bibinfo {title} {{Computer simulation
+  using particles}}}}\ (\bibinfo  {publisher} {CRC Press},\ \bibinfo {year}
+  {1988})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Forouhar Moreno}}\ \emph {et~al.}(2025)\citenamefont
+  {{Forouhar Moreno}}, \citenamefont {{Helly}}, \citenamefont {{McGibbon}},
+  \citenamefont {{Schaye}}, \citenamefont {{Schaller}}, \citenamefont {{Han}},
+  \citenamefont {{Kugel}},\ and\ \citenamefont
+  {{Bah{\'e}}}}]{Victor25HBTHERONS}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.~J.}\ \bibnamefont
+  {{Forouhar Moreno}}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {{Helly}}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {{McGibbon}}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {{Schaye}}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {{Schaller}}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {{Han}}}, \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {{Kugel}}}, and\ \bibinfo {author} {\bibfnamefont {Y.~M.}\
+  \bibnamefont {{Bah{\'e}}}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {{Assessing subhalo finders in cosmological hydrodynamical simulations}},}\
+  }\href {\doibase 10.1093/mnras/staf1478} {\bibfield  {journal} {\bibinfo
+  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {543}},\ \bibinfo {pages}
+  {1339--1372} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{McGibbon}}\ \emph {et~al.}(2025)\citenamefont
+  {{McGibbon}}, \citenamefont {{Helly}}, \citenamefont {{Schaye}},
+  \citenamefont {{Schaller}},\ and\ \citenamefont
+  {{Vandenbroucke}}}]{McGibbon2025SOAP}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {{McGibbon}}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {{Helly}}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {{Schaye}}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {{Schaller}}}, and\ \bibinfo
+  {author} {\bibfnamefont {B.}~\bibnamefont {{Vandenbroucke}}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {{SOAP: A Python Package for Calculating
+  the Properties of Galaxies and Halos Formed in Cosmological Simulations}},}\
+  }\href {\doibase 10.21105/joss.08252} {\bibfield  {journal} {\bibinfo
+  {journal} {The Journal of Open Source Software}\ }\textbf {\bibinfo {volume}
+  {10}},\ \bibinfo {eid} {8252} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Davis}}\ \emph {et~al.}(1985)\citenamefont
+  {{Davis}}, \citenamefont {{Efstathiou}}, \citenamefont {{Frenk}},\ and\
+  \citenamefont {{White}}}]{Davis1985FOF}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {{Davis}}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {{Efstathiou}}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont
+  {{Frenk}}}, and\ \bibinfo {author} {\bibfnamefont {S.~D.~M.}\ \bibnamefont
+  {{White}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{The evolution
+  of large-scale structure in a universe dominated by cold dark matter}},}\
+  }\href {\doibase 10.1086/163168} {\bibfield  {journal} {\bibinfo  {journal}
+  {\apj}\ }\textbf {\bibinfo {volume} {292}},\ \bibinfo {pages} {371--394}
+  (\bibinfo {year} {1985})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Warren}\ \emph {et~al.}(2006)\citenamefont {Warren},
   \citenamefont {Abazajian}, \citenamefont {Holz},\ and\ \citenamefont
   {Teodoro}}]{Warren_2006}%
