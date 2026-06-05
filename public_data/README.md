@@ -12,10 +12,13 @@ product rather than by raw simulation output.
 - `figure_data/fof_hmf/`: binned FoF halo mass-function points.
 - `figure_data/m200c_hmf/`: binned `M200c` halo mass-function points.
 - `figure_data/halfmass_redshift/`: same-TrackId half-mass redshift points and summaries.
-- `figure_data/halo_density/`: NFW-equivalent density-profile curves and mass-bin summaries.
+- `figure_data/mass_accretion/`: same-TrackId FOF mass-accretion-rate summaries.
+- `figure_data/halo_density/`: concentration-derived NFW density-profile curves and mass-bin summaries.
+- `figure_data/halo_density_radial/`: direct particle-count radial density profiles and BT/PL ratios used in `halo-density-radial-n100-ludlow177.png`.
 - `figure_data/concentration/`: binned `c200c` concentration-mass data.
 - `figure_data/nonlinear_power_spectrum/`: nonlinear matter power spectra and BT/PL ratios.
 - `figure_data/appendix_fof_gap_stitching/`: appendix gap-stitching data and notes.
+- `figure_data/fof_hmf_resolution/`: appendix FOF mass-function resolution and volume check data.
 - `scripts/`: provenance copies of the plotting and reduction scripts used to generate the figure products.
 
 ## Scope

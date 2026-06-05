@@ -154,35 +154,33 @@ Status legend:
    Current location: `main.tex` around line 351.
 
 36. `DONE` -- "It is just dark matter halo density profile and NFW profile."
-   The live draft now frames this diagnostic as concentration-derived NFW density profiles reconstructed from catalog masses, radii, and concentrations.
-   Current locations: `main.tex` around lines 373-383.
+   Rechecked against the final replacement figure `halo-density-radial-n100-ludlow177.png`. The live draft now frames the diagnostic as direct particle radial density profiles in SOAP \(M_{200m}\) bins, with Diemer et al. NFW curves used only as dashed reference profiles.
+   Current locations: `main.tex` radial density-profile section and Fig. `halo-density-radial-n100-ludlow177.png`.
 
 37. `DONE` -- "NFW-equivalent compactness curves" is strange
-   The live text now uses plainer names such as "Concentration-derived NFW density profiles", "NFW density-profile reconstruction", and "concentration-derived NFW profile summaries".
+   The live text now uses the plain name "direct particle radial density profiles." The old phrase remains only inside struck/deleted revision text.
    Note: the old phrase still appears inside `\revisionreplace{new}{old}` deleted text so it will be visible as struck-through redline markup.
-   Current locations: `main.tex` around lines 280, 300, 373-383, 495, and 505.
+   Current locations: `main.tex` radial density-profile section, trusted-range table, conclusion, and Data Availability.
 
 38. `DONE` -- not radial profiles, but NFW profile from fitted concentration
-   The current text explicitly says these are reconstructed from catalog concentrations rather than direct particle-count radial stacks.
-   Current locations: `main.tex` around lines 379 and 388.
+   Superseded by the replacement figure. The current figure is now a direct particle-count radial stack, not a concentration-derived reconstruction. The mass-definition paragraph and caption now say this directly.
+   Current locations: `main.tex` mass-definition paragraph and radial density-profile figure caption.
 
 39. `DONE` -- misleading markers/lines
-   The caption states that markers do not denote individual halos and that both line and marker curves are reconstructed from catalog concentrations.
-   The figure legend itself uses "mean-c NFW" and "median-c NFW", which is consistent with the caption and does not call them direct particle stacks.
-   Current location: `main.tex` around line 383.
+   The caption now states that open symbols are median particle-count radial profiles for \(N=100\) halos per model and mass bin. The dashed curves are labelled as NFW reference profiles, not fits to the particle stacks.
+   Current location: `main.tex` radial density-profile figure caption.
 
 40. `DONE` -- "how accurate can NFW profile describes BT"
-   The draft now explicitly states that this diagnostic does not test NFW fit residuals for BT halo particle profiles; doing so would require direct particle-profile stacks and is outside the present comparison.
-   Current locations: `main.tex` around lines 374 and 383.
+   The live text now says the dashed NFW curves are reference profiles, not fits to the particle stacks. The figure therefore does not claim an NFW-fit accuracy test for BT halos.
+   Current locations: `main.tex` radial density-profile paragraph and figure caption.
 
 41. `DONE` -- add error bars
-   HMF has Poisson error bars; half-mass and concentration use 16th-84th percentile scatter.
-   Current locations: `main.tex` around lines 329, 365, 395, and figure captions.
-   Caveat: the NFW reconstructed-profile figure may still lack uncertainty bands.
+   The replacement radial-profile figure includes error bars and shaded ratio bands. The caption now states that these show bootstrap 16th--84th percentile intervals for the median stacks and BT/PL ratios.
+   Current location: `main.tex` radial density-profile figure caption.
 
 42. `DONE` -- add scatter in concentration
-   Concentration figure uses 16th-84th percentile scatter, and the text now notes the substantial halo-to-halo scatter and explains that the analysis relies on median trends and quoted bin ratios rather than individual-halo concentration fits.
-   Current locations: `main.tex` around lines 390 and 394.
+   Concentration figure uses 16th--84th percentile scatter, and the radial-profile figure now also includes uncertainty intervals. The text relies on median trends and quoted bin ratios rather than individual-halo fits.
+   Current locations: `main.tex` concentration section and radial density-profile caption.
 
 43. `DONE` -- define D19 and I21
    The current draft avoids D19/I21 abbreviations in the main description and uses full names Diemer & Joyce (2019) and Ishiyama et al. (2021).
@@ -355,5 +353,5 @@ Status legend:
 
 ## Highest-priority open items
 
-1. Re-check the temporarily deferred figure-caption group after the replacement figures are final: comments 36--42.
+1. No `OPEN` or `PARTIAL` items remain in this local audit after rechecking comments 36--42 against the replacement radial-profile figure.
 2. If a new Overleaf anchor appears for comment 17, verify that the now-direct initial-condition wording covers it.
