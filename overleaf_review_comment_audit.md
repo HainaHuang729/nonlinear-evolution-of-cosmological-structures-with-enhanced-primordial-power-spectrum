@@ -333,10 +333,9 @@ Status legend:
    Current location: `main.tex` around line 506.
    Remaining issue: it should avoid implying the main barrier is box/cosmic variance for Milky-Way-scale and smaller halo statistics.
 
-80. `OPEN` -- final sentence too weak
-   The final conclusion sentence remains cautious and ends on requirements for additional modeling.
-   Current location: `main.tex` around line 506.
-   Next action: rewrite to a more positive future-work statement while preserving caveats.
+80. `DONE` -- final sentence too weak
+   Rewrote the final conclusion sentence to state the central result positively and end on concrete resolved-scale benchmark targets for future hydrodynamic, semi-analytic, reionization, and multi-probe tests.
+   Current location: `main.tex` conclusion paragraph before Data Availability.
 
 81. `DONE` -- give GitHub address
    Data Availability now includes the manuscript source and reduced public-data GitHub URL.
