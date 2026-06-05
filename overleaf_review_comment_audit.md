@@ -351,10 +351,10 @@ Status legend:
    Data Availability says full raw snapshots and complete HBT-HERONS/SOAP catalogs are too large for the manuscript package.
    Current location: `main.tex` around line 510.
 
-84. `DATA/FIGURE` -- add resolution study too
-   Current draft has trusted numerical ranges and particle-threshold discussion, but no real resolution study.
-   Current locations: `main.tex` around lines 292-311 and 461-463.
-   Next action: add an actual resolution/volume comparison if suitable simulation outputs exist; otherwise explicitly describe it as a limitation, not a study.
+84. `DONE` -- add resolution study too
+   Added Appendix `FOF Mass-Function Resolution and Volume Check` with a PL FOF HMF comparison across PL-25-1024, PL-25-512, PL-25-256, and PL-50-512 at z=0 and z=8.52.
+   Current locations: `main.tex` trusted-range table/HMF section and Appendix `app:fof_hmf_resolution`.
+   Reduced data/script/figure: `public_data/figure_data/fof_hmf_resolution/`, `public_data/scripts/plot_fof_hmf_resolution.py`, and `fof-hmf-resolution-volume.png`.
 
 85. `OPEN` -- "Need to mention what theory lines are. I suppose ``halomodel''. Need to describe it in some details in the main text."
    Newly found in the live Overleaf Review panel on 2026-06-04; it was not present in the local 84-comment export.

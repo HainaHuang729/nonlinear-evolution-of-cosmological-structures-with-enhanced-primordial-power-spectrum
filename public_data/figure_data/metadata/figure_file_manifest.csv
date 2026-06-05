@@ -11,3 +11,4 @@ concentration-qc.png,True,1266865,Manuscript figure image; public_data/figure_da
 power-spectrum.png,True,1217953,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
 halfmass-redshift-fof-gap-stitching.png,True,628933,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
 power-spectrum-validation-theory.png,True,1615547,Appendix validation figure; public_data/figure_data/nonlinear_power_spectrum contains reduced power-spectrum measurements and public_data/scripts/plot_power_spectrum_halofit.py preserves the plotting logic.
+fof-hmf-resolution-volume.png,True,482999,Appendix resolution and volume check; public_data/figure_data/fof_hmf_resolution contains reduced FOF HMF points and summary metrics, and public_data/scripts/plot_fof_hmf_resolution.py preserves the plotting logic.
