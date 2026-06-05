@@ -354,14 +354,13 @@ Status legend:
    Current locations: `main.tex` trusted-range table/HMF section and Appendix `app:fof_hmf_resolution`.
    Reduced data/script/figure: `public_data/figure_data/fof_hmf_resolution/`, `public_data/scripts/plot_fof_hmf_resolution.py`, and `fof-hmf-resolution-volume.png`.
 
-85. `OPEN` -- "Need to mention what theory lines are. I suppose ``halomodel''. Need to describe it in some details in the main text."
+85. `DONE` -- "Need to mention what theory lines are. I suppose ``halomodel''. Need to describe it in some details in the main text."
    Newly found in the live Overleaf Review panel on 2026-06-04; it was not present in the local 84-comment export.
-   Current location: current-file Review panel near the nonlinear matter power-spectrum section and Fig.~\ref{fig:power_spectra_ratio_z0}.
-   Current draft says "corresponding nonlinear theory curves for orientation" and "BT-theory/PL-theory ratios" but does not define what theory calculation produced those curves.
-   Next action: identify the actual theory-line source from the plotting script/data products, then add a short main-text description and update the caption. Do not call it "halomodel" unless the plotted curves really come from a halo-model/Halofit calculation.
+   Current locations: `main.tex` nonlinear matter power-spectrum section and Fig.~\ref{fig:power_spectra_ratio_z0} caption.
+   The main text now identifies the curves as HMcode2020 dark-matter-only nonlinear predictions computed with `pyhmcode`, using a PL Eisenstein--Hu linear spectrum and BT spectra made by applying the broken-power-law enhancement above the relevant \(k_p\).
+   The caption now labels the overplotted curves as HMcode2020/`pyhmcode` reference curves and states that the lower-panel BT-theory/PL-theory curves are ratios of those predictions, not fits to the simulated ratios.
 
 ## Highest-priority open items
 
-1. Add or explicitly defer mass-accretion-rate and resolution studies: comments 30 and 84.
-2. Define the nonlinear power-spectrum theory lines: comment 85.
-3. Add Data Availability links/placeholders: comments 81-83.
+1. Revisit remaining prose-polish and emphasis comments: comments 6, 13, 17, 55--59, 65, 76, and 79.
+2. Re-check the temporarily deferred figure-caption group after the replacement figures are final: comments 36--42.
