@@ -10,3 +10,4 @@ halo-density-radial-n100-ludlow177.png,True,1087403,Manuscript figure image; pub
 concentration-qc.png,True,1266865,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
 power-spectrum.png,True,1217953,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
 halfmass-redshift-fof-gap-stitching.png,True,628933,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
+power-spectrum-validation-theory.png,True,1615547,Appendix validation figure; public_data/figure_data/nonlinear_power_spectrum contains reduced power-spectrum measurements and public_data/scripts/plot_power_spectrum_halofit.py preserves the plotting logic.

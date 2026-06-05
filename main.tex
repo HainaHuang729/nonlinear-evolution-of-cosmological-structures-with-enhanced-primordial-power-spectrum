@@ -430,7 +430,7 @@ Finally, the nonlinear matter power spectrum gives \revisionreplace{a matter pow
 
 \revisionblue{The nonlinear theory curves shown for orientation are generated separately from the simulations. The PL curve starts from an Eisenstein--Hu linear matter spectrum with the shared cosmological parameters. For each BT curve, we multiply that PL linear spectrum by the broken-power-law enhancement above the corresponding \(k_p\), then pass the PL or BT linear spectrum to the dark-matter-only HMcode2020 calculation through \texttt{pyhmcode}. These curves are reference predictions for the same input spectra, not fits to the simulation ratios.}
 
-Figure~\ref{fig:power_spectra_ratio_z0} emphasizes the physical response by showing matched BT/PL ratios for the \(k_p=1\) and \(k_p=10\), \(m_s=1.5\) variants in the \(25\) and \(256\,h^{-1}\mathrm{Mpc}\) boxes. We restrict the quantitative ratio analysis to matched PL and BT products with the same box size. No additional folding correction or external window-function deconvolution is applied outside the \textsc{swiftsimio} routine, so the highest-\(k\) points are interpreted as a consistency check on the small-scale trend rather than as a calibrated nonlinear-power fitting formula.
+Figure~\ref{fig:power_spectra_ratio_z0} emphasizes the physical response by showing matched BT/PL ratios for the \(k_p=1\) and \(k_p=10\), \(m_s=1.5\) variants in the \(25\) and \(256\,h^{-1}\mathrm{Mpc}\) boxes. We restrict the quantitative ratio analysis to matched PL and BT products with the same box size. No additional folding correction or external window-function deconvolution is applied outside the \textsc{swiftsimio} routine, so the highest-\(k\) points are interpreted as a consistency check on the small-scale trend rather than as a calibrated nonlinear-power fitting formula. \revisionblue{Appendix~\ref{app:power_spectrum_reliability} shows the separate simulation/theory validation plot used to visualize the box-size-dependent reliability ranges.}
 
 At \(z=0\), the fiducial \(25\,h^{-1}\mathrm{Mpc}\) BT\_soft/PL ratio is close to unity on large scales and rises gradually toward high \(k\): \(1.06\), \(1.10\), \(1.17\), and \(1.34\) at \(k=5\), \(10\), \(20\), and \(40\,h\,\mathrm{Mpc}^{-1}\), respectively. In the larger \(256\,h^{-1}\mathrm{Mpc}\) comparison, the response is weaker over its conservative mesh range, reaching \(1.06\) at \(k=10\,h\,\mathrm{Mpc}^{-1}\) and \(1.08\) near its mesh Nyquist scale, \(k_{\rm Ny}\simeq12.6\,h\,\mathrm{Mpc}^{-1}\). We therefore interpret the nonlinear power-spectrum result as a coherent high-\(k\) signal that is qualitatively consistent with the halo diagnostics, but whose exact amplitude remains sensitive to box size, estimator choices, and the high-\(k\) reliability range.
 
@@ -532,6 +532,42 @@ As a separate check on the failure mode, among the PL halos that are measurable 
     \includegraphics[width=\textwidth]{halfmass-redshift-fof-gap-stitching.png}
     \caption{PL half-mass assembly redshift under different treatments of temporary FOF group reassignment. All curves use the same \(z=0\) FOF halo sample and the same \textsc{HBT-HERONS} \texttt{TrackId} FOF mass histories; only the maximum number of consecutive non-FOF snapshots allowed for reconnection is varied. The strict \(N_{\rm gap}=0\) case terminates a history once the object is temporarily classified as a satellite or hostless entry with zero FOF mass/size in its own catalog row. Increasing \(N_{\rm gap}\) allows short FOF-zero episodes to be crossed, mimicking a simple fragmentation or temporary-reassignment correction. The lower panel shows the offset relative to the BK09 reference. The monotonic movement from the strict curve toward the all-gap curve shows that temporary assignment to another FOF group is a major source of the half-mass-history systematic.}
     \label{fig:fof_gap_stitching}
+\end{figure*}
+
+\clearpage
+
+\section{Power-Spectrum Box-Size Reliability}
+\label{app:power_spectrum_reliability}
+
+\revisionblue{Figure~\ref{fig:power_spectrum_validation_theory} provides the simulation/theory validation view used to judge the wavenumber ranges of the different power-spectrum boxes. The measured spectra are derived from the cached \texttt{.npz} products in \texttt{powerspectrum/sim\_power\_data/}, each of which stores the arrays \texttt{k}, \texttt{P}, and \texttt{z}. These caches were generated from the SWIFT snapshots with \texttt{compute\_sim\_power\_spectrum.py}: dark-matter particles are deposited on a \(1024^3\) mesh, the isotropically averaged power spectrum is computed with the \textsc{swiftsimio} power-spectrum utilities, and the output is converted to \(k\) in \(h\,{\rm Mpc}^{-1}\) and \(P(k)\) in \(({\rm Mpc}/h)^3\). The reduced public-data package contains the corresponding tabulated power-spectrum measurements in \texttt{public\_data/figure\_data/nonlinear\_power\_spectrum/}, together with provenance copies of \texttt{compute\_sim\_power\_spectrum.py} and \texttt{plot\_power\_spectrum\_halofit.py}.}
+
+\revisionblue{The validation plot is intentionally different from the main BT/PL response plot in Fig.~\ref{fig:power_spectra_ratio_z0}. The upper panels compare absolute measured spectra with reference nonlinear curves: the solid black curve is the PL reference, while the dashed blue curve is the BT\_soft reference obtained by applying the \(k_p=1\,h\,{\rm Mpc}^{-1}\), \(m_s=1.5\) broken-power-law modification to the linear spectrum and evolving it with the same HMcode2020 setup described in Section~\ref{subsub:PS}. The lower panels show simulation/theory ratios. PL boxes are divided by the PL theory curve, and BT\_soft boxes are divided by the BT\_soft theory curve. We use these ratios to identify where neighboring box sizes agree and where finite-volume or mesh effects become visible.}
+
+\revisionblue{The useful range is not set by a single hard cut. Large boxes anchor the low-\(k\) and intermediate-\(k\) regime because they contain more long-wavelength modes, whereas the \(5\) and \(2.5\,h^{-1}{\rm Mpc}\) boxes are used only as high-\(k\) extensions. At the high-\(k\) end, the vertical markers show the mesh Nyquist scales, \(k_{\rm Ny}=\pi N_{\rm mesh}/L_{\rm box}\), for \(N_{\rm mesh}=1024\). Points approaching \(k_{\rm Ny}\), and especially points beyond the conservative \(0.5k_{\rm Ny}\) caution scale, are interpreted as diagnostic rather than precision measurements. The gray high-\(k\) region in Fig.~\ref{fig:power_spectrum_validation_theory} marks this caution regime for the fiducial \(25\,h^{-1}{\rm Mpc}\) box.}
+
+\begin{table*}[t]
+    \centering
+    \caption{\revisionblue{Fourier scales relevant for interpreting the power-spectrum validation plot. The fundamental mode is \(k_{\rm fund}=2\pi/L_{\rm box}\), and the mesh Nyquist scale is \(k_{\rm Ny}=\pi N_{\rm mesh}/L_{\rm box}\) with \(N_{\rm mesh}=1024\). The \(0.5k_{\rm Ny}\) column is a conservative caution scale rather than a strict exclusion boundary; measurements between \(0.5k_{\rm Ny}\) and \(k_{\rm Ny}\) are shown to diagnose small-scale trends but are not used as precision-calibrated nonlinear-power measurements.}}
+    \label{tab:power_spectrum_reliability_ranges}
+    \begin{tabular}{cccc}
+        \hline
+        \(L_{\rm box}\,[h^{-1}{\rm Mpc}]\) & \(k_{\rm fund}\,[h\,{\rm Mpc}^{-1}]\) & \(k_{\rm Ny}\,[h\,{\rm Mpc}^{-1}]\) & \(0.5k_{\rm Ny}\,[h\,{\rm Mpc}^{-1}]\) \\
+        \hline
+        512 & 0.012 & 6.28 & 3.14 \\
+        256 & 0.025 & 12.57 & 6.28 \\
+        128 & 0.049 & 25.13 & 12.57 \\
+        25 & 0.251 & 128.68 & 64.34 \\
+        5 & 1.257 & 643.40 & 321.70 \\
+        2.5 & 2.513 & 1286.80 & 643.40 \\
+        \hline
+    \end{tabular}
+\end{table*}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{power-spectrum-validation-theory.png}
+    \caption{\revisionblue{Simulation/theory validation of the nonlinear matter power spectrum for different box sizes. Upper panels show absolute spectra at four redshifts. The solid black curve is the PL nonlinear reference, and the dashed blue curve is the BT\_soft reference. Open symbols show measured spectra from PL boxes with \(L_{\rm box}=25,128,256,\) and \(512\,h^{-1}{\rm Mpc}\), and from BT\_soft boxes with \(L_{\rm box}=2.5,5,25,\) and \(256\,h^{-1}{\rm Mpc}\). Lower panels show the corresponding simulation/theory ratios: PL measurements are divided by the PL reference, while BT\_soft measurements are divided by the BT\_soft reference. Vertical dotted or dashed markers indicate the mesh Nyquist scales of the plotted boxes, and the gray shading marks the high-\(k\) caution region for the \(25\,h^{-1}{\rm Mpc}\) box. The comparison is used to assign box-size-dependent reliability ranges; the large boxes anchor low and intermediate \(k\), while the smaller boxes are treated as high-\(k\) diagnostics.}}
+    \label{fig:power_spectrum_validation_theory}
 \end{figure*}
 
 \clearpage
