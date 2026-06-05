@@ -154,8 +154,8 @@ Status legend:
    Current location: `main.tex` around line 351.
 
 36. `DONE` -- "It is just dark matter halo density profile and NFW profile."
-   Rechecked against the final replacement figure `halo-density-radial-n100-ludlow177.png`. The live draft now frames the diagnostic as direct particle radial density profiles in SOAP \(M_{200m}\) bins, with Diemer et al. NFW curves used only as dashed reference profiles.
-   Current locations: `main.tex` radial density-profile section and Fig. `halo-density-radial-n100-ludlow177.png`.
+   Rechecked against the final replacement figure `halo-density-radial-n100-power.png`. The live draft now frames the diagnostic as direct particle radial density profiles in SOAP \(M_{200m}\) bins, with Diemer et al. NFW curves used only as dashed reference profiles.
+   Current locations: `main.tex` radial density-profile section and Fig. `halo-density-radial-n100-power.png`.
 
 37. `DONE` -- "NFW-equivalent compactness curves" is strange
    The live text now uses the plain name "direct particle radial density profiles." The old phrase remains only inside struck/deleted revision text.
