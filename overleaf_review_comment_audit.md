@@ -232,25 +232,21 @@ Status legend:
    The power-spectrum section, caption, limitations, and conclusion now frame \(P(k)\) as a summary statistic measured from the particle density field, with high-\(k\) points treated as estimator-sensitive checks rather than a calibrated fitting formula.
    Current locations: `main.tex` around lines 420, 429, 442, 458, and 496.
 
-55. `PARTIAL` -- "It is true but strange."
-   Likely about observational-connection wording. Current text is improved but still cautious and somewhat indirect.
-   Current locations: `main.tex` around lines 451-471 and 506.
+55. `DONE` -- "It is true but strange."
+   Rewrote the observational-connection wording so the paper first states the dark-matter quantities measured here, then explains how high-redshift galaxies, dwarf/strong-lensing probes, and 21 cm measurements connect to those quantities through later forward modeling.
+   Current locations: `main.tex` Relation to Previous Work, Connection to Observations, and conclusion.
 
-56. `PARTIAL` -- priority should be effect of enhanced PPS
-   Current draft discusses the dark-matter response, but observational paragraphs still diffuse the priority across JWST, dwarf galaxies, lensing, and 21 cm.
-   Next action: make the first priority the effect of enhanced PPS on dark matter halo statistics.
+56. `DONE` -- priority should be effect of enhanced PPS
+   The revised discussion and conclusion put the effect of enhanced small-scale primordial power on dark-matter halo statistics first, and treat observational applications as downstream uses of those halo-side benchmarks.
 
-57. `PARTIAL` -- "on dark matter halo"
-   The manuscript now emphasizes halo abundance, assembly, and concentration, but conclusion/observational framing can make this priority clearer.
+57. `DONE` -- "on dark matter halo"
+   The observational and conclusion framing now explicitly says the central result is a dark-matter result in low-mass halo abundance, assembly time, concentration/inner density, and high-\(k\) clustering.
 
-58. `PARTIAL` -- baryonic physics etc. only at very end of conclusion
-   Baryonic caveats appear in the introduction, discussion, limitations, observations, and conclusion.
-   Next action: keep necessary caveats but avoid letting them dominate the main result statements.
+58. `DONE` -- baryonic physics etc. only at very end of conclusion
+   The conclusion now leads with the dark-matter result and keeps baryonic, reionization, galaxy-selection, and survey-response modeling as the final observational-forward-modeling caveat. Necessary caveats remain in the limitations section.
 
-59. `PARTIAL` -- dark matter halos are dominant effect
-   Current text says the strongest responses are halo abundance, assembly, and concentrations.
-   Current location: `main.tex` around line 471.
-   Remaining issue: the conclusion could state this more directly.
+59. `DONE` -- dark matter halos are dominant effect
+   The discussion and conclusion now state directly that the strongest signals are high-redshift low-mass halo abundance, early assembly histories, low-mass halo concentrations/inner densities, and high-\(k\) matter clustering.
 
 60. `DONE` -- put response table into bullet points in conclusion
    Removed the separate response-summary table and folded its BT_deep HMF and nonlinear-power values into the conclusion bullets.
@@ -270,10 +266,9 @@ Status legend:
    Conclusion now uses an enumerated list.
    Current location: `main.tex` around lines 497-502.
 
-65. `PARTIAL` -- definition, not result
-   The conclusion still includes an "analytic ingredients" paragraph that mixes definitions and recommendations.
-   Current location: `main.tex` around line 504.
-   Next action: shorten or move definition-like material out of conclusions.
+65. `DONE` -- definition, not result
+   Replaced the conclusion's definition-like analytic-ingredients paragraph with a shorter result-oriented statement: the analytic curves are controlled reference checks, not new calibrations, and the projected maps/nonlinear-power curves should not be used as standalone evidence or fitting formulae.
+   Current location: `main.tex` conclusion.
 
 66. `DONE` -- no bracket needed for all equation
    The live analytic-ingredients paragraph now uses `Eq.~\ref{...}` style. The commented old draft line was also normalized.
@@ -315,10 +310,9 @@ Status legend:
    Current draft says nonlinear theory curves are for orientation and no calibrated nonlinear-power fitting formula is provided.
    Current locations: `main.tex` around lines 427, 434, and 504.
 
-76. `PARTIAL` -- mention earlier in conclusions
-   Current conclusion mentions no standalone nonlinear-power fitting formula in the analytic-ingredients paragraph.
-   Current location: `main.tex` around line 504.
-   Remaining issue: if the professor wants this earlier in the conclusion bullets, move it into the nonlinear-power bullet.
+76. `DONE` -- mention earlier in conclusions
+   The nonlinear-power conclusion bullet already states that no calibrated nonlinear-power fitting formula is provided; the following analytic-reference paragraph now repeats this as a controlled-reference limitation rather than a late afterthought.
+   Current location: `main.tex` conclusion bullet on nonlinear power and the following analytic-reference paragraph.
 
 77. `DONE` -- "It sounds strange."
    Anchor supplied by user: the conclusion sentence about resolved-range, single-realization benchmarks. Rewrote it as "These measurements are single-realization simulation benchmarks over the resolved mass and wavenumber ranges; they are not direct observational constraints."
@@ -328,10 +322,9 @@ Status legend:
    Current limitations section says there is one matched-seed realization per model and no cosmic variance/realization-to-realization scatter.
    Current location: `main.tex` around line 461.
 
-79. `PARTIAL` -- cannot provide direct observational constraints; mostly not cosmic variance
-   Current conclusion states these are not direct observational constraints and require baryonic/selection/survey modeling.
-   Current location: `main.tex` around line 506.
-   Remaining issue: it should avoid implying the main barrier is box/cosmic variance for Milky-Way-scale and smaller halo statistics.
+79. `DONE` -- cannot provide direct observational constraints; mostly not cosmic variance
+   The final conclusion now separates precision from observational interpretation: the single-realization design limits covariance-level precision, especially for rare halos and large-scale modes, but the main step to data is baryonic, reionization, galaxy-selection, and survey-response modeling.
+   Current location: `main.tex` final conclusion paragraph.
 
 80. `DONE` -- final sentence too weak
    Rewrote the final conclusion sentence to state the central result positively and end on concrete resolved-scale benchmark targets for future hydrodynamic, semi-analytic, reionization, and multi-probe tests.
@@ -362,5 +355,5 @@ Status legend:
 
 ## Highest-priority open items
 
-1. Revisit remaining prose-polish and emphasis comments: comments 6, 13, 17, 55--59, 65, 76, and 79.
+1. Revisit remaining prose-polish/anchor comments: comments 6, 13, 17, and 31.
 2. Re-check the temporarily deferred figure-caption group after the replacement figures are final: comments 36--42.
