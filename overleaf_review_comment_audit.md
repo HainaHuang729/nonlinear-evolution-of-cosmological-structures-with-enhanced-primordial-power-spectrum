@@ -35,9 +35,9 @@ Status legend:
    Several relevant references were added for JWST, blue-tilted/modified PPS work, baryonic caveats, PBHs, and observational probes.
    Current locations include `main.tex` around lines 122, 129, 134, and 143.
 
-6. `PARTIAL` -- "need rewrite"
-   Some introduction paragraphs were rewritten, but several later sentences remain awkward or flagged again by later comments.
-   Next action: handle together with comments 13, 17, 47, 49, 50, 51, 55, 61, 62, and 77.
+6. `DONE` -- "need rewrite"
+   Completed a final plain-language pass over the Introduction, Theoretical Overview, Initial Conditions, Discussion, and Conclusions. Long setup sentences were split into shorter statements, and the purpose paragraph now directly says that the paper isolates the dark-matter halo response before galaxy-formation or survey-selection modeling.
+   Current locations: `main.tex` Introduction, Theoretical Overview, Initial Conditions, Discussion, and Conclusions.
 
 7. `DONE` -- "We haven't shown these in our paper"
    Anchor supplied by user: the sentence about observational probes highlighting degeneracies. Rewrote it so the text says those studies motivate complementary probes, but those probes require astrophysical/observational modeling and do not by themselves isolate the dark-matter halo response.
@@ -61,9 +61,9 @@ Status legend:
    The separate input-power model table has been removed as a structural table, and its `k_p`/`m_s` information is now folded into the combined simulation summary table.
    Current location: `main.tex` around lines 216-217 and 247-275.
 
-13. `PARTIAL` -- clumsy sentence
-   Several clumsy sentences remain, especially in Discussion and Conclusions.
-   Next action: treat as a prose-polish item after structural comments are addressed.
+13. `DONE` -- clumsy sentence
+   Simplified the remaining awkward prose in Discussion and Conclusions. The revised wording uses direct subject-verb sentences, avoids phrases such as "complementary view" where simpler wording works, and states the central dark-matter result directly.
+   Current locations: `main.tex` Discussion and Conclusions.
 
 14. `DONE` -- "First, we modify, instead of implementation modify"
    The live revision now uses first-person active wording: "we modify the MonofonIC transfer-function plugin above \(k_p\)". The old passive wording only remains in the deleted/struck text for revision tracking.
@@ -78,9 +78,9 @@ Status legend:
    The theoretical framing now uses "the shape of the primordial power spectrum" and defines how that model-level template differs from the MonofonIC input linear matter power spectrum.
    Current location: `main.tex` around lines 159-160.
 
-17. `PARTIAL` -- "This sentence is also strange. We can be more direct:"
-   Current draft is more direct in places, but the specific sentence cannot be identified without the anchor.
-   Next action: likely merge with comment 18 wording.
+17. `DONE` -- "This sentence is also strange. We can be more direct:"
+   The exact Overleaf anchor is not available, but the likely target was the controlled-initial-phase statement near the initial-condition discussion. The live text now says directly that matched runs share the same initial phases and therefore measure the effect of enhancing the small-scale primordial power-spectrum template.
+   Current location: `main.tex` Initial Conditions.
 
 18. `DONE` -- "Therefore, we can test the effect of enhanced primordial power spectrum, given the same initial phases."
    Current draft now says the matched simulations share the same initial phases and that this lets us test the effect of enhancing the small-scale primordial-power template after it is passed through MonofonIC, rather than comparing different random realizations.
@@ -133,9 +133,9 @@ Status legend:
    Added same-TrackId Warren-corrected FOF mass-accretion-rate diagnostic, including raw adjacent and cumulative-envelope variants.
    Current locations: `main.tex` mass-accretion paragraph and Fig. `mass-accretion-rate-trackid.png`.
 
-31. `PARTIAL` -- detailed material can go in text or appendix
-   Current draft moved/added detailed method text, and Appendix is referenced for FOF gap-stitching.
-   Remaining issue: some method details may still crowd captions and main text.
+31. `DONE` -- detailed material can go in text or appendix
+   Shortened the main-text half-mass assembly method paragraph to the core same-TrackId rule and moved the detailed interpretation of temporary FOF bridge/split behavior to Appendix~\ref{app:fof_gap_stitching}. Other detailed reliability discussions are now in the relevant appendices.
+   Current locations: `main.tex` half-mass assembly section and Appendix~\ref{app:fof_gap_stitching}.
 
 32. `DONE` -- "between what and BK09"
    The caption now defines the lower-panel quantity explicitly as \(\Delta z_{1/2}=z_{1/2}^{\rm sim}-z_{1/2}^{\rm BK09}\), using the same binned simulation points as the upper panel.
@@ -355,5 +355,5 @@ Status legend:
 
 ## Highest-priority open items
 
-1. Revisit remaining prose-polish/anchor comments: comments 6, 13, 17, and 31.
-2. Re-check the temporarily deferred figure-caption group after the replacement figures are final: comments 36--42.
+1. Re-check the temporarily deferred figure-caption group after the replacement figures are final: comments 36--42.
+2. If a new Overleaf anchor appears for comment 17, verify that the now-direct initial-condition wording covers it.
