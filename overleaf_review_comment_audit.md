@@ -129,9 +129,9 @@ Status legend:
 29. `DONE` -- "Not defined yet"
    Likely the same B16/M200c issue. Both are now defined before use.
 
-30. `DATA/FIGURE` -- add mass accretion rate study
-   No mass-accretion-rate study is present.
-   Next action: requires new diagnostic, likely `dM/dz` or `d ln M / d ln a` from merger histories, plus figure/table or appendix.
+30. `DONE` -- add mass accretion rate study
+   Added same-TrackId Warren-corrected FOF mass-accretion-rate diagnostic, including raw adjacent and cumulative-envelope variants.
+   Current locations: `main.tex` mass-accretion paragraph and Fig. `mass-accretion-rate-trackid.png`.
 
 31. `PARTIAL` -- detailed material can go in text or appendix
    Current draft moved/added detailed method text, and Appendix is referenced for FOF gap-stitching.
@@ -338,14 +338,13 @@ Status legend:
    Current location: `main.tex` around line 506.
    Next action: rewrite to a more positive future-work statement while preserving caveats.
 
-81. `OPEN` -- give GitHub address
-   Data Availability does not include a GitHub URL.
-   Current location: `main.tex` around line 510.
+81. `DONE` -- give GitHub address
+   Data Availability now includes the manuscript source and reduced public-data GitHub URL.
+   Current location: `main.tex` Data Availability paragraph.
 
-82. `OPEN` -- consider Zenodo for halo catalogs and SOAP output
-   Data Availability does not mention Zenodo or a DOI.
-   Current location: `main.tex` around line 510.
-   Next action: add placeholder if no DOI exists, or add final DOI/URL if available.
+82. `DONE` -- consider Zenodo for halo catalogs and SOAP output
+   Data Availability now says no Zenodo DOI has yet been assigned for the full halo catalogs or SOAP outputs, and that a DOI will be added if those large products are archived publicly.
+   Current location: `main.tex` Data Availability paragraph.
 
 83. `DONE` -- full snapshots are not possible
    Data Availability says full raw snapshots and complete HBT-HERONS/SOAP catalogs are too large for the manuscript package.
