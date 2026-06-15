@@ -68,9 +68,8 @@ SNAPSHOTS = ["0056", "0048", "0040", "0032"]
 MASS_UNIT = 1e10
 NPART_MIN = 100
 MAIN_PARTICLE_MASS_MSUN = 1.89e6
-NPART_QUOTED = 500
-MASS_NPART_MIN_MSUN = NPART_MIN * MAIN_PARTICLE_MASS_MSUN
-MASS_NPART_QUOTED_MSUN = NPART_QUOTED * MAIN_PARTICLE_MASS_MSUN
+NPART_STRICT = 1000
+MASS_NPART_STRICT_MSUN = NPART_STRICT * MAIN_PARTICLE_MASS_MSUN
 CONC_MAX = 500.0
 SIMULATION_N_BINS = 22
 THEORY_MODELS = {
@@ -82,7 +81,7 @@ MODELS = {
     "PL": {
         "label": "PL",
         "template": BASE_PATH
-        / "PL/PL_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
+        / "PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
         "ps_model": "eisenstein98_pl",
         "color": JOURNAL_COLORS["black"],
         "marker": "o",
@@ -90,7 +89,7 @@ MODELS = {
     "BT_kp1": {
         "label": "BT(soft)",
         "template": BASE_PATH
-        / "bluetilted/kp_1_ms_1.5_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
+        / "bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
         "ps_model": "eisenstein98_bt",
         "color": JOURNAL_COLORS["blue"],
         "marker": "^",
@@ -98,7 +97,7 @@ MODELS = {
     "BT_kp10": {
         "label": "BT(deep)",
         "template": BASE_PATH
-        / "bluetilted/kp_10_ms_1.5_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
+        / "bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
         "ps_model": "eisenstein98_bt_soft",
         "color": JOURNAL_COLORS["green"],
         "marker": "s",
@@ -165,39 +164,9 @@ def bin_stats(log_mass, conc, n_bins=SIMULATION_N_BINS):
 
 
 def mark_particle_thresholds(ax, annotate=False):
-    """Show the structural selection and the safer quoted low-mass scale."""
-    x_min = np.log10(MASS_NPART_MIN_MSUN)
-    x_quoted = np.log10(MASS_NPART_QUOTED_MSUN)
-    ax.axvspan(8.0, x_min, color="0.82", alpha=0.20, lw=0, zorder=0)
-    ax.axvline(x_min, color="0.35", linestyle="--", linewidth=1.45, alpha=0.9, zorder=1)
-    ax.axvline(x_quoted, color="0.35", linestyle=":", linewidth=1.45, alpha=0.9, zorder=1)
-    if annotate:
-        ax.text(
-            x_min,
-            1.015,
-            r"$100$ p",
-            transform=ax.get_xaxis_transform(),
-            ha="center",
-            va="bottom",
-            fontsize=8.4,
-            fontweight="bold",
-            color="0.28",
-            clip_on=False,
-            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.85, "pad": 0.6},
-        )
-        ax.text(
-            x_quoted,
-            1.015,
-            r"$500$ p",
-            transform=ax.get_xaxis_transform(),
-            ha="center",
-            va="bottom",
-            fontsize=8.4,
-            fontweight="bold",
-            color="0.28",
-            clip_on=False,
-            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.85, "pad": 0.6},
-        )
+    """Show the low-particle structural caution region without line labels."""
+    x_strict = np.log10(MASS_NPART_STRICT_MSUN)
+    ax.axvspan(8.0, x_strict, color="0.78", alpha=0.16, lw=0, zorder=0)
 
 
 def plot_simulation(ax, snap, model):

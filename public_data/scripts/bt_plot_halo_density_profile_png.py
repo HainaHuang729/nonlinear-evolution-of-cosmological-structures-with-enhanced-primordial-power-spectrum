@@ -74,9 +74,9 @@ PAPERPLOT_ROOT = next(
     ),
     WORKSPACE_ROOT / "analysis" / "paperplot",
 )
-CDM_SOAP_PATH = DATA_ROOT / "PL/PL_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
-BT_SOAP_PATH = DATA_ROOT / "bluetilted/kp_1_ms_1.5_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
-BT_KP10_SOAP_PATH = DATA_ROOT / "bluetilted/kp_10_ms_1.5_25_1024/SOAP/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
+CDM_SOAP_PATH = DATA_ROOT / "PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
+BT_SOAP_PATH = DATA_ROOT / "bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
+BT_KP10_SOAP_PATH = DATA_ROOT / "bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
 
 # 物理参数
 MASS_TOLERANCE = 0.2

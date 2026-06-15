@@ -71,7 +71,9 @@ from cosmology_plot_style import (  # noqa: E402
 )
 
 
-settings.BASE_DIR = str(SCRIPT_DIR / "colossus_cache_bocquet16_m200c")
+settings.BASE_DIR = os.environ.get(
+    "COLOSSUS_CACHE_DIR", str(SCRIPT_DIR / "colossus_cache_bocquet16_m200c")
+)
 
 DATA_ROOT = PROJECT_ROOT / "data"
 OUTPUT_PATH = SCRIPT_DIR / "plot" / "mass_function_bocquet16_m200c_highz_3models.png"
@@ -80,6 +82,7 @@ CACHE_DIR = SCRIPT_DIR / "output" / "m200c_bocquet16_lowhigh_cache"
 
 H = 0.6736
 MASS_UNIT_MSUN = 1.0e10
+MAIN_PARTICLE_MASS_MSUN = 1.89e6
 NPART_MIN = 100
 M200C_COMPLETE_MIN_MSUN = 2.0e8
 SNAPSHOTS = ["0056", "0040", "0032", "0030", "0027", "0024"]
@@ -173,6 +176,24 @@ def set_hmf_ratio_ticks(ax):
 def apply_completeness_cut(centers, hmf, err):
     complete = centers >= M200C_COMPLETE_MIN_MSUN
     return centers[complete], hmf[complete], err[complete]
+
+
+def mark_m200c_resolution(ax, annotate=False):
+    """Mark the low-mass region below the plotted M200c completeness cut."""
+    ax.axvspan(1.0e8, M200C_COMPLETE_MIN_MSUN, color="0.82", alpha=0.22, lw=0, zorder=0)
+    ax.axvline(M200C_COMPLETE_MIN_MSUN, color="0.35", linestyle="--", linewidth=0.85, alpha=0.9, zorder=1)
+    if annotate:
+        ax.text(
+            0.045,
+            0.80,
+            r"$N_{\rm DM}\lesssim100$",
+            transform=ax.transAxes,
+            ha="left",
+            va="center",
+            fontsize=7.0,
+            color="0.35",
+            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.82, "pad": 0.8},
+        )
 
 
 def load_m200c_hmf_catalog(path, chunk_size=500_000, progress_label=None):
@@ -443,6 +464,8 @@ def plot_results(sim_results, theory_results):
         ax_lower.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=bt_pl_ratio_ylims[row])
         set_hmf_log_ticks(ax_upper, y_decades=(int(np.log10(y_min)), 2))
         set_hmf_ratio_ticks(ax_lower)
+        mark_m200c_resolution(ax_upper, annotate=False)
+        mark_m200c_resolution(ax_lower, annotate=(idx == 0))
         ax_lower.axhline(1.0, color="black", linewidth=0.7, alpha=0.65)
         ax_lower.axhline(2.0, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
         ax_lower.axhline(5.0, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)

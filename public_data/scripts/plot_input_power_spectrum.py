@@ -46,6 +46,42 @@ SPECTRA = [
     ),
 ]
 
+FIDUCIAL_BOX_HMPC = 25.0
+FIDUCIAL_MESH_N = 1024
+K_NY_FIDUCIAL = np.pi * FIDUCIAL_MESH_N / FIDUCIAL_BOX_HMPC
+K_HIGHK_CAUTION = 0.5 * K_NY_FIDUCIAL
+BT_PIVOTS = (1.0, 10.0)
+
+
+def mark_input_scale_reference(ax) -> None:
+    """Mark BT pivot positions and the fiducial particle-grid scale."""
+    ax.axvspan(K_HIGHK_CAUTION, K_NY_FIDUCIAL, color="0.75", alpha=0.10, lw=0, zorder=0)
+    ax.axvspan(K_NY_FIDUCIAL, 1.0e3, color="0.82", alpha=0.22, lw=0, zorder=0)
+    for pivot in BT_PIVOTS:
+        ax.axvline(pivot, color="0.35", linestyle=":", linewidth=0.8, alpha=0.85, zorder=1)
+    ax.axvline(K_NY_FIDUCIAL, color="0.25", linestyle="--", linewidth=0.9, alpha=0.9, zorder=1)
+    ax.text(
+        K_NY_FIDUCIAL,
+        1.8e-12,
+        r"$k_{\rm Ny}$",
+        rotation=90,
+        ha="right",
+        va="bottom",
+        fontsize=6.8,
+        color="0.25",
+    )
+    for pivot, label in zip(BT_PIVOTS, (r"$k_p=1$", r"$k_p=10$")):
+        ax.text(
+            pivot,
+            4.8e-13,
+            label,
+            rotation=90,
+            ha="right",
+            va="bottom",
+            fontsize=6.6,
+            color="0.30",
+        )
+
 
 def main() -> None:
     apply_journal_style(base_fontsize=8.8)
@@ -58,6 +94,7 @@ def main() -> None:
         mask = (k >= 1e-3) & (k <= 1e3)
         ax.loglog(k[mask], power[mask], label=label, **style)
 
+    mark_input_scale_reference(ax)
     ax.set_xlim(1e-3, 1e3)
     ax.set_ylim(1e-13, 1e-2)
     ax.xaxis.set_major_locator(FixedLocator(10.0 ** np.arange(-3, 4)))
