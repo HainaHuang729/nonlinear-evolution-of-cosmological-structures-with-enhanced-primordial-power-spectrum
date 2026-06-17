@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
 WORKSPACE = Path("/project/tkcastrosim/HNHuang")
 PROJECT = WORKSPACE / "project_big_sim"
 PAPERPLOT = PROJECT / "analysis/_used_by_article_nonlinear_evolution_pps/paperplot"
@@ -45,6 +46,8 @@ OUT_SUMMARY = DATA_DIR / "same_trackid_no_envelope_summary.csv"
 OUT_FIG = FIG_DIR / "halfmass-redshift-trackid-no-envelope.png"
 OUT_CANONICAL = PAPERPLOT_FIG_DIR / "halfmass-redshift-trackid-no-envelope.png"
 OUT_PAPER = PAPER_DIR / "halfmass-redshift-trackid-no-envelope.png"
+LOCAL_PUBLIC_POINTS = REPO_ROOT / "public_data/figure_data/halfmass_redshift/same_trackid_no_envelope_points.csv"
+LOCAL_OUT_FIG = REPO_ROOT / "halfmass-redshift-trackid-no-envelope.png"
 
 SNAPS = [f"{i:04d}" for i in range(21, 57)]
 MASS_EDGES_CODE = np.logspace(-2.0, 2.0, 21)
@@ -267,7 +270,7 @@ def summarize(points: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def plot(points: pd.DataFrame) -> None:
+def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
     apply_journal_style(base_fontsize=9.2)
     fig, (ax, rax) = plt.subplots(
         2,
@@ -277,16 +280,16 @@ def plot(points: pd.DataFrame) -> None:
         gridspec_kw={"height_ratios": [2.1, 1.0], "hspace": 0.05},
     )
     mgrid = np.logspace(8, 12, 300)
-    ax.plot(mgrid, bk09_original(mgrid), color="0.20", linewidth=1.45, label=r"BK09")
+    ax.plot(mgrid, bk09_original(mgrid), color="0.38", linewidth=1.45, linestyle="-.", label=r"BK09")
     ax.plot(
         mgrid,
         coco_hellwing16(mgrid),
-        color="0.45",
+        color="0.58",
         linewidth=1.45,
         linestyle="--",
         label=r"COCO/H16",
     )
-    rax.axhline(0.0, color="0.25", linewidth=0.9)
+    rax.axhline(0.0, color="0.45", linewidth=0.9)
 
     for model, info in MODELS.items():
         sub = points[points["model"] == model].sort_values("M0_mean_msun")
@@ -325,10 +328,20 @@ def plot(points: pd.DataFrame) -> None:
     for axis in (ax, rax):
         axis.set_xlim(9.0e7, 1.2e12)
         format_axes(axis, grid=True)
-    save_publication_figure(fig, OUT_FIG)
+    save_publication_figure(fig, output_path)
 
 
 def main() -> None:
+    if not all(info["dir"].exists() for info in MODELS.values()):
+        if not LOCAL_PUBLIC_POINTS.exists():
+            raise FileNotFoundError(
+                "Neither the original HDF5 catalogs nor the public half-mass CSV are available."
+            )
+        points = pd.read_csv(LOCAL_PUBLIC_POINTS)
+        plot(points, LOCAL_OUT_FIG)
+        print(LOCAL_OUT_FIG)
+        return
+
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     FIG_DIR.mkdir(parents=True, exist_ok=True)
     PAPERPLOT_FIG_DIR.mkdir(parents=True, exist_ok=True)

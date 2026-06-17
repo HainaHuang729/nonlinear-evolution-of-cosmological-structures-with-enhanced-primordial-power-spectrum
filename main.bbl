@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{48}%
+\begin{thebibliography}{49}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -257,7 +257,7 @@
   a break}},}\ }\href {\doibase 10.1088/1475-7516/2024/07/076} {\bibfield
   {journal} {\bibinfo  {journal} {\jcap}\ }\textbf {\bibinfo {volume} {2024}},\
   \bibinfo {eid} {076} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Cacciapaglia}}\ \emph {et~al.}(2025)\citenamefont
+\bibitem [{\citenamefont {{Cacciapaglia}}\ \emph {et~al.}(2026)\citenamefont
   {{Cacciapaglia}}, \citenamefont {{Cheong}}, \citenamefont {{Deandrea}},
   \citenamefont {{Isnard}}, \citenamefont {{Park}}, \citenamefont {{Wang}},\
   and\ \citenamefont {{Zhang}}}]{Wang25HybridInflation}%
@@ -269,11 +269,12 @@
   {{Isnard}}}, \bibinfo {author} {\bibfnamefont {S.~C.}\ \bibnamefont
   {{Park}}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {{Wang}}}, and\
   \bibinfo {author} {\bibfnamefont {Y.-l.}\ \bibnamefont {{Zhang}}},\
-  }\bibfield  {title} {\enquote {\bibinfo {title} {{Composite Hybrid Inflation
-  : Primordial Black Holes and Stochastic Gravitational Waves}},}\ }\href
-  {\doibase 10.48550/arXiv.2506.06655} {\bibfield  {journal} {\bibinfo
-  {journal} {arXiv e-prints}\ ,\ \bibinfo {eid} {arXiv:2506.06655}} (\bibinfo
-  {year} {2025})}\BibitemShut {NoStop}%
+  }\bibfield  {title} {\enquote {\bibinfo {title} {{Composite hybrid inflation:
+  primordial black holes and stochastic gravitational waves}},}\ }\href
+  {\doibase 10.1088/1475-7516/2026/03/054} {\bibfield  {journal} {\bibinfo
+  {journal} {Journal of Cosmology and Astroparticle Physics}\ }\textbf
+  {\bibinfo {volume} {2026}},\ \bibinfo {eid} {054} (\bibinfo {year}
+  {2026})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Inman}}\ and\ \citenamefont
   {{Ali-Ha{\"i}moud}}(2019)}]{Inman2019PBHBT}%
   \BibitemOpen
@@ -388,27 +389,18 @@
   {journal} {\prd}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo {pages}
   {063526} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Zhu}}\ \emph {et~al.}(2026)\citenamefont {{Zhu}},
-  \citenamefont {{Liu}}, \citenamefont {{Yue}},\ and\ \citenamefont
-  {{Chen}}}]{Zhu26SKAPPS}%
+  \citenamefont {{Yue}}, \citenamefont {{Xu}}, \citenamefont {{Chen}},\ and\
+  \citenamefont {{Huang}}}]{Zhu26SKAPPS}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {{Zhu}}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {{Liu}}},
-  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {{Yue}}}, and\ \bibinfo
-  {author} {\bibfnamefont {X.}~\bibnamefont {{Chen}}},\ }\bibfield  {title}
-  {\enquote {\bibinfo {title} {{Probing power spectrum enhancement at small
-  scales with SKA}},}\ }\href {\doibase 10.48550/arXiv.2602.24117} {\bibfield
-  {journal} {\bibinfo  {journal} {arXiv e-prints}\ ,\ \bibinfo {eid}
-  {arXiv:2602.24117}} (\bibinfo {year} {2026})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Eisenstein}}\ and\ \citenamefont
-  {{Hu}}(1999)}]{Eisenstein1998}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
-  {{Eisenstein}}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
-  {{Hu}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Power Spectra for
-  Cold Dark Matter and Its Variants}},}\ }\href {\doibase 10.1086/306640}
-  {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf {\bibinfo
-  {volume} {511}},\ \bibinfo {pages} {5--15} (\bibinfo {year}
-  {1999})}\BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {{Zhu}}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {{Yue}}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {{Xu}}}, \bibinfo {author}
+  {\bibfnamefont {X.}~\bibnamefont {{Chen}}}, and\ \bibinfo {author}
+  {\bibfnamefont {Z.}~\bibnamefont {{Huang}}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {{Probing power spectrum enhancement at small scales with
+  the SKA}},}\ }\href {\doibase 10.3847/1538-4357/ae4aa1} {\bibfield  {journal}
+  {\bibinfo  {journal} {The Astrophysical Journal}\ }\textbf {\bibinfo {volume}
+  {1001}},\ \bibinfo {eid} {25} (\bibinfo {year} {2026})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Hahn}}\ \emph {et~al.}(2020)\citenamefont {{Hahn}},
   \citenamefont {{Michaux}}, \citenamefont {{Rampf}}, \citenamefont
   {{Uhlemann}},\ and\ \citenamefont {{Angulo}}}]{Hahn2020MUSIC2monofonIC}%
@@ -435,6 +427,16 @@
   errors}},}\ }\href {\doibase 10.1093/mnras/staa3149} {\bibfield  {journal}
   {\bibinfo  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {500}},\ \bibinfo
   {pages} {663--683} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Eisenstein}}\ and\ \citenamefont
+  {{Hu}}(1999)}]{Eisenstein1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
+  {{Eisenstein}}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {{Hu}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Power Spectra for
+  Cold Dark Matter and Its Variants}},}\ }\href {\doibase 10.1086/306640}
+  {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf {\bibinfo
+  {volume} {511}},\ \bibinfo {pages} {5--15} (\bibinfo {year}
+  {1999})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Schaller}}\ \emph {et~al.}(2024)\citenamefont
   {{Schaller}}, \citenamefont {{Borrow}}, \citenamefont {{Draper}} \emph
   {et~al.}}]{Schaller2024SWIFT}%
@@ -521,6 +523,20 @@
   {\bibinfo  {journal} {The Astrophysical Journal}\ }\textbf {\bibinfo {volume}
   {646}},\ \bibinfo {pages} {881--885} (\bibinfo {year} {2006})}\BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {{Luki{\'c}}}\ \emph {et~al.}(2007)\citenamefont
+  {{Luki{\'c}}}, \citenamefont {{Heitmann}}, \citenamefont {{Habib}},
+  \citenamefont {{Bashinsky}},\ and\ \citenamefont {{Ricker}}}]{Lukic2007HMF}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont
+  {{Luki{\'c}}}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {{Heitmann}}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {{Habib}}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {{Bashinsky}}}, and\
+  \bibinfo {author} {\bibfnamefont {P.~M.}\ \bibnamefont {{Ricker}}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {{The Halo Mass Function:
+  High-Redshift Evolution and Universality}},}\ }\href {\doibase
+  10.1086/523083} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf
+  {\bibinfo {volume} {671}},\ \bibinfo {pages} {1160--1181} (\bibinfo {year}
+  {2007})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Reed}\ \emph {et~al.}(2007)\citenamefont {Reed},
   \citenamefont {Bower}, \citenamefont {Frenk}, \citenamefont {Jenkins},\ and\
   \citenamefont {Theuns}}]{Reed_2007}%
@@ -581,37 +597,6 @@
   {\bibinfo  {journal} {Monthly Notices of the Royal Astronomical Society}\
   }\textbf {\bibinfo {volume} {457}},\ \bibinfo {pages} {3492--3509} (\bibinfo
   {year} {2016})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Navarro}}\ \emph {et~al.}(1996)\citenamefont
-  {{Navarro}}, \citenamefont {{Frenk}},\ and\ \citenamefont
-  {{White}}}]{Navarro1996NFW}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~F.}\ \bibnamefont
-  {{Navarro}}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont
-  {{Frenk}}}, and\ \bibinfo {author} {\bibfnamefont {S.~D.~M.}\ \bibnamefont
-  {{White}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{The Structure
-  of Cold Dark Matter Halos}},}\ }\href {\doibase 10.1086/177173} {\bibfield
-  {journal} {\bibinfo  {journal} {\apj}\ }\textbf {\bibinfo {volume} {462}},\
-  \bibinfo {pages} {563} (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Navarro}}\ \emph {et~al.}(1997)\citenamefont
-  {{Navarro}}, \citenamefont {{Frenk}},\ and\ \citenamefont
-  {{White}}}]{Navarro1997NFW}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~F.}\ \bibnamefont
-  {{Navarro}}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont
-  {{Frenk}}}, and\ \bibinfo {author} {\bibfnamefont {S.~D.~M.}\ \bibnamefont
-  {{White}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{A Universal
-  Density Profile from Hierarchical Clustering}},}\ }\href {\doibase
-  10.1086/304888} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf
-  {\bibinfo {volume} {490}},\ \bibinfo {pages} {493--508} (\bibinfo {year}
-  {1997})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Diemer}}(2018)}]{Diemer2018}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
-  {{Diemer}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{COLOSSUS: A
-  Python Toolkit for Cosmology, Large-scale Structure, and Dark Matter
-  Halos}},}\ }\href {\doibase 10.3847/1538-4365/aaee8c} {\bibfield  {journal}
-  {\bibinfo  {journal} {\apjs}\ }\textbf {\bibinfo {volume} {239}},\ \bibinfo
-  {eid} {35} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Diemer}}\ and\ \citenamefont
   {{Joyce}}(2019)}]{Diemer2019}%
   \BibitemOpen
@@ -622,6 +607,14 @@
   10.3847/1538-4357/aafad6} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\
   }\textbf {\bibinfo {volume} {871}},\ \bibinfo {eid} {168} (\bibinfo {year}
   {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Diemer}}(2018)}]{Diemer2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {{Diemer}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{COLOSSUS: A
+  Python Toolkit for Cosmology, Large-scale Structure, and Dark Matter
+  Halos}},}\ }\href {\doibase 10.3847/1538-4365/aaee8c} {\bibfield  {journal}
+  {\bibinfo  {journal} {\apjs}\ }\textbf {\bibinfo {volume} {239}},\ \bibinfo
+  {eid} {35} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Ishiyama}}\ \emph {et~al.}(2021)\citenamefont
   {{Ishiyama}}, \citenamefont {{Prada}}, \citenamefont {{Klypin}},
   \citenamefont {{Sinha}}, \citenamefont {{Metcalf}}, \citenamefont {{Jullo}},
@@ -648,6 +641,29 @@
   }\href {\doibase 10.1093/mnras/stab1755} {\bibfield  {journal} {\bibinfo
   {journal} {\mnras}\ }\textbf {\bibinfo {volume} {506}},\ \bibinfo {pages}
   {4210--4228} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Navarro}}\ \emph {et~al.}(1996)\citenamefont
+  {{Navarro}}, \citenamefont {{Frenk}},\ and\ \citenamefont
+  {{White}}}]{Navarro1996NFW}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~F.}\ \bibnamefont
+  {{Navarro}}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont
+  {{Frenk}}}, and\ \bibinfo {author} {\bibfnamefont {S.~D.~M.}\ \bibnamefont
+  {{White}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{The Structure
+  of Cold Dark Matter Halos}},}\ }\href {\doibase 10.1086/177173} {\bibfield
+  {journal} {\bibinfo  {journal} {\apj}\ }\textbf {\bibinfo {volume} {462}},\
+  \bibinfo {pages} {563} (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Navarro}}\ \emph {et~al.}(1997)\citenamefont
+  {{Navarro}}, \citenamefont {{Frenk}},\ and\ \citenamefont
+  {{White}}}]{Navarro1997NFW}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~F.}\ \bibnamefont
+  {{Navarro}}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont
+  {{Frenk}}}, and\ \bibinfo {author} {\bibfnamefont {S.~D.~M.}\ \bibnamefont
+  {{White}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{A Universal
+  Density Profile from Hierarchical Clustering}},}\ }\href {\doibase
+  10.1086/304888} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\ }\textbf
+  {\bibinfo {volume} {490}},\ \bibinfo {pages} {493--508} (\bibinfo {year}
+  {1997})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Ludlow}}\ \emph {et~al.}(2016)\citenamefont
   {{Ludlow}}, \citenamefont {{Bose}}, \citenamefont {{Angulo}}, \citenamefont
   {{Wang}}, \citenamefont {{Hellwing}}, \citenamefont {{Navarro}},
