@@ -25,7 +25,9 @@ export POWER_KAPPA_THRESHOLD=0.6
 export RADIAL_OUTPUT_BASENAME=halo-density-radial-n100-power.png
 
 PYTHON=/project/tkcastrosim/HNHuang/envs/Miniconda3/envs/21cmfast/bin/python3.10
-SCRIPT=/project/tkcastrosim/HNHuang/project_21cmFast/paper/scripts/bluetilted/bt_plot_halo_density_radial_trial_png.py
+SCRIPT=/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/bt_plot_halo_density_radial_trial_png.py
+ARTICLE_DIR=/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps
+MASS_LIST=${RADIAL_MASS_LIST:-"1e10 3.1622776601683795e10 1e11 3.1622776601683795e11"}
 
 mkdir -p "$PAPERPLOT_ROOT/logs" "$MPLCONFIGDIR" "$RADIAL_PROFILE_CACHE_DIR"
 
@@ -33,7 +35,7 @@ cd /project/tkcastrosim/HNHuang/project_21cmFast
 echo "Start at $(date)"
 
 for label in "PL" "BT(soft)" "BT(deep)"; do
-  for mass in 1e8 1e9 1e10 1e11; do
+  for mass in $MASS_LIST; do
     echo "Computing cache: label=${label} mass=${mass}"
     RADIAL_ONLY_LABELS="$label" RADIAL_ONLY_MASSES="$mass" "$PYTHON" "$SCRIPT"
   done
@@ -43,6 +45,8 @@ echo "Drawing final cached figure"
 unset RADIAL_ONLY_LABELS
 unset RADIAL_ONLY_MASSES
 "$PYTHON" "$SCRIPT"
+cp -a "$PAPERPLOT_ROOT/figures/$RADIAL_OUTPUT_BASENAME" "$ARTICLE_DIR/$RADIAL_OUTPUT_BASENAME"
 
 echo "Figure: $PAPERPLOT_ROOT/figures/$RADIAL_OUTPUT_BASENAME"
+echo "Article copy: $ARTICLE_DIR/$RADIAL_OUTPUT_BASENAME"
 echo "End at $(date)"

@@ -25,7 +25,6 @@ if str(SCRIPT_PATH.parent) not in sys.path:
 from bt_plot_halo_density_profile_png import (  # noqa: E402
     DATA_ROOT,
     PAPERPLOT_ROOT,
-    TARGET_MASSES,
     PANEL_COLUMNS,
     H0,
     omega_m,
@@ -40,6 +39,8 @@ from bt_plot_halo_density_profile_png import (  # noqa: E402
     JOURNAL_COLORS,
 )
 
+
+TARGET_MASSES = [1e10, 10.0**10.5, 1e11, 10.0**11.5]
 
 MODEL_SPECS = [
     (
