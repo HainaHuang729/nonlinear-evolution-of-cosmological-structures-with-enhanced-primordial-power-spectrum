@@ -102,6 +102,34 @@
   10.1038/s41550-022-01689-w} {\bibfield  {journal} {\bibinfo  {journal}
   {Nature Astronomy}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages}
   {897--910} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Gilman}}\ \emph {et~al.}(2022)\citenamefont
+  {{Gilman}}, \citenamefont {{Benson}}, \citenamefont {{Bovy}}, \citenamefont
+  {{Birrer}}, \citenamefont {{Treu}},\ and\ \citenamefont
+  {{Nierenberg}}}]{Gilman22SubgalacticPPS}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {{Gilman}}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Benson}}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {{Bovy}}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {{Birrer}}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {{Treu}}}, and\ \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {{Nierenberg}}},\ }\bibfield  {title}
+  {\enquote {\bibinfo {title} {{The primordial matter power spectrum on
+  sub-galactic scales}},}\ }\href {\doibase 10.1093/mnras/stac670} {\bibfield
+  {journal} {\bibinfo  {journal} {Monthly Notices of the Royal Astronomical
+  Society}\ }\textbf {\bibinfo {volume} {512}},\ \bibinfo {pages} {3163--3188}
+  (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Mu{\~n}oz}}\ \emph {et~al.}(2020)\citenamefont
+  {{Mu{\~n}oz}}, \citenamefont {{Dvorkin}},\ and\ \citenamefont
+  {{Loeb}}}]{Munoz20SmallScale21cm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~B.}\ \bibnamefont
+  {{Mu{\~n}oz}}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {{Dvorkin}}}, and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {{Loeb}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Probing the
+  small-scale matter power spectrum with large-scale 21-cm data}},}\ }\href
+  {\doibase 10.1103/PhysRevD.101.063526} {\bibfield  {journal} {\bibinfo
+  {journal} {\prd}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo {pages}
+  {063526} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Benson}}\ \emph {et~al.}(2002)\citenamefont
   {{Benson}}, \citenamefont {{Lacey}}, \citenamefont {{Baugh}}, \citenamefont
   {{Cole}},\ and\ \citenamefont {{Frenk}}}]{Benson2002reionization}%
@@ -360,34 +388,6 @@
   Predictions}},}\ }\href {\doibase 10.1103/PhysRevLett.121.211302} {\bibfield
   {journal} {\bibinfo  {journal} {\prl}\ }\textbf {\bibinfo {volume} {121}},\
   \bibinfo {eid} {211302} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Gilman}}\ \emph {et~al.}(2022)\citenamefont
-  {{Gilman}}, \citenamefont {{Benson}}, \citenamefont {{Bovy}}, \citenamefont
-  {{Birrer}}, \citenamefont {{Treu}},\ and\ \citenamefont
-  {{Nierenberg}}}]{Gilman22SubgalacticPPS}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
-  {{Gilman}}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Benson}}},
-  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {{Bovy}}}, \bibinfo
-  {author} {\bibfnamefont {S.}~\bibnamefont {{Birrer}}}, \bibinfo {author}
-  {\bibfnamefont {T.}~\bibnamefont {{Treu}}}, and\ \bibinfo {author}
-  {\bibfnamefont {A.}~\bibnamefont {{Nierenberg}}},\ }\bibfield  {title}
-  {\enquote {\bibinfo {title} {{The primordial matter power spectrum on
-  sub-galactic scales}},}\ }\href {\doibase 10.1093/mnras/stac670} {\bibfield
-  {journal} {\bibinfo  {journal} {Monthly Notices of the Royal Astronomical
-  Society}\ }\textbf {\bibinfo {volume} {512}},\ \bibinfo {pages} {3163--3188}
-  (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Mu{\~n}oz}}\ \emph {et~al.}(2020)\citenamefont
-  {{Mu{\~n}oz}}, \citenamefont {{Dvorkin}},\ and\ \citenamefont
-  {{Loeb}}}]{Munoz20SmallScale21cm}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~B.}\ \bibnamefont
-  {{Mu{\~n}oz}}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
-  {{Dvorkin}}}, and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
-  {{Loeb}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Probing the
-  small-scale matter power spectrum with large-scale 21-cm data}},}\ }\href
-  {\doibase 10.1103/PhysRevD.101.063526} {\bibfield  {journal} {\bibinfo
-  {journal} {\prd}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo {pages}
-  {063526} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Zhu}}\ \emph {et~al.}(2026)\citenamefont {{Zhu}},
   \citenamefont {{Yue}}, \citenamefont {{Xu}}, \citenamefont {{Chen}},\ and\
   \citenamefont {{Huang}}}]{Zhu26SKAPPS}%
