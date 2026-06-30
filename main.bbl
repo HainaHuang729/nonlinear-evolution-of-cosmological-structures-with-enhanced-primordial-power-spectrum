@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{49}%
+\begin{thebibliography}{43}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -80,28 +80,28 @@
   {\doibase 10.1093/mnras/stz2310} {\bibfield  {journal} {\bibinfo  {journal}
   {\mnras}\ }\textbf {\bibinfo {volume} {489}},\ \bibinfo {pages} {2247--2253}
   (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Bullock}}\ and\ \citenamefont
-  {{Boylan-Kolchin}}(2017)}]{Bullock17smallscalechallenges}%
+\bibitem [{\citenamefont {{Dekker}}\ and\ \citenamefont
+  {{Kravtsov}}(2025)}]{Dekker25DwarfPPS}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~S.}\ \bibnamefont
-  {{Bullock}}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {{Boylan-Kolchin}}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
-  {{Small-Scale Challenges to the {\ensuremath{\Lambda}}CDM Paradigm}},}\
-  }\href {\doibase 10.1146/annurev-astro-091916-055313} {\bibfield  {journal}
-  {\bibinfo  {journal} {\araa}\ }\textbf {\bibinfo {volume} {55}},\ \bibinfo
-  {pages} {343--387} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Sales}}\ \emph {et~al.}(2022)\citenamefont
-  {{Sales}}, \citenamefont {{Wetzel}},\ and\ \citenamefont
-  {{Fattahi}}}]{Sales22challenges}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {{Dekker}}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {{Kravtsov}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Constraints
+  on blue and red tilted primordial power spectra using dwarf galaxy
+  properties}},}\ }\href {\doibase 10.1103/PhysRevD.111.063516} {\bibfield
+  {journal} {\bibinfo  {journal} {\prd}\ }\textbf {\bibinfo {volume} {111}},\
+  \bibinfo {pages} {063516} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Esteban}}\ \emph {et~al.}(2024)\citenamefont
+  {{Esteban}}, \citenamefont {{Peter}},\ and\ \citenamefont
+  {{Kim}}}]{Esteban2024lumpyDM}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~V.}\ \bibnamefont
-  {{Sales}}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Wetzel}}},
-  and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Fattahi}}},\
-  }\bibfield  {title} {\enquote {\bibinfo {title} {{Baryonic solutions and
-  challenges for cosmological models of dwarf galaxies}},}\ }\href {\doibase
-  10.1038/s41550-022-01689-w} {\bibfield  {journal} {\bibinfo  {journal}
-  {Nature Astronomy}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages}
-  {897--910} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {{Esteban}}}, \bibinfo {author} {\bibfnamefont {A.~H.~G.}\ \bibnamefont
+  {{Peter}}}, and\ \bibinfo {author} {\bibfnamefont {S.~Y.}\ \bibnamefont
+  {{Kim}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Milky Way
+  satellite velocities reveal the dark matter power spectrum at small
+  scales}},}\ }\href {\doibase 10.1103/PhysRevD.110.123013} {\bibfield
+  {journal} {\bibinfo  {journal} {\prd}\ }\textbf {\bibinfo {volume} {110}},\
+  \bibinfo {eid} {123013} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Gilman}}\ \emph {et~al.}(2022)\citenamefont
   {{Gilman}}, \citenamefont {{Benson}}, \citenamefont {{Bovy}}, \citenamefont
   {{Birrer}}, \citenamefont {{Treu}},\ and\ \citenamefont
@@ -130,126 +130,6 @@
   {\doibase 10.1103/PhysRevD.101.063526} {\bibfield  {journal} {\bibinfo
   {journal} {\prd}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo {pages}
   {063526} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Benson}}\ \emph {et~al.}(2002)\citenamefont
-  {{Benson}}, \citenamefont {{Lacey}}, \citenamefont {{Baugh}}, \citenamefont
-  {{Cole}},\ and\ \citenamefont {{Frenk}}}]{Benson2002reionization}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
-  {{Benson}}}, \bibinfo {author} {\bibfnamefont {C.~G.}\ \bibnamefont
-  {{Lacey}}}, \bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont
-  {{Baugh}}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {{Cole}}},
-  and\ \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont {{Frenk}}},\
-  }\bibfield  {title} {\enquote {\bibinfo {title} {{The effects of
-  photoionization on galaxy formation - I. Model and results at z=0}},}\ }\href
-  {\doibase 10.1046/j.1365-8711.2002.05387.x} {\bibfield  {journal} {\bibinfo
-  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {333}},\ \bibinfo {pages}
-  {156--176} (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Chan}}\ \emph {et~al.}(2015)\citenamefont {{Chan}},
-  \citenamefont {{Kere{\v{s}}}}, \citenamefont {{O{\~n}orbe}}, \citenamefont
-  {{Hopkins}}, \citenamefont {{Muratov}}, \citenamefont
-  {{Faucher-Gigu{\`e}re}},\ and\ \citenamefont
-  {{Quataert}}}]{Chan2015corecusp}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.~K.}\ \bibnamefont
-  {{Chan}}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
-  {{Kere{\v{s}}}}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {{O{\~n}orbe}}}, \bibinfo {author} {\bibfnamefont {P.~F.}\ \bibnamefont
-  {{Hopkins}}}, \bibinfo {author} {\bibfnamefont {A.~L.}\ \bibnamefont
-  {{Muratov}}}, \bibinfo {author} {\bibfnamefont {C.-A.}\ \bibnamefont
-  {{Faucher-Gigu{\`e}re}}}, and\ \bibinfo {author} {\bibfnamefont
-  {E.}~\bibnamefont {{Quataert}}},\ }\bibfield  {title} {\enquote {\bibinfo
-  {title} {{The impact of baryonic physics on the structure of dark matter
-  haloes: the view from the FIRE cosmological simulations}},}\ }\href {\doibase
-  10.1093/mnras/stv2165} {\bibfield  {journal} {\bibinfo  {journal} {\mnras}\
-  }\textbf {\bibinfo {volume} {454}},\ \bibinfo {pages} {2981--3001} (\bibinfo
-  {year} {2015})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Labb{\'e}}}\ \emph {et~al.}(2023)\citenamefont
-  {{Labb{\'e}}}, \citenamefont {{van Dokkum}}, \citenamefont {{Nelson}},
-  \citenamefont {{Bezanson}}, \citenamefont {{Suess}}, \citenamefont {{Leja}},
-  \citenamefont {{Brammer}}, \citenamefont {{Whitaker}}, \citenamefont
-  {{Mathews}}, \citenamefont {{Stefanon}},\ and\ \citenamefont
-  {{Wang}}}]{Labbe23MassiveGalaxies}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
-  {{Labb{\'e}}}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {{van
-  Dokkum}}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {{Nelson}}},
-  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {{Bezanson}}}, \bibinfo
-  {author} {\bibfnamefont {K.~A.}\ \bibnamefont {{Suess}}}, \bibinfo {author}
-  {\bibfnamefont {J.}~\bibnamefont {{Leja}}}, \bibinfo {author} {\bibfnamefont
-  {G.}~\bibnamefont {{Brammer}}}, \bibinfo {author} {\bibfnamefont
-  {K.}~\bibnamefont {{Whitaker}}}, \bibinfo {author} {\bibfnamefont
-  {E.}~\bibnamefont {{Mathews}}}, \bibinfo {author} {\bibfnamefont
-  {M.}~\bibnamefont {{Stefanon}}}, and\ \bibinfo {author} {\bibfnamefont
-  {B.}~\bibnamefont {{Wang}}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
-  {{A population of red candidate massive galaxies $\sim$600 Myr after the Big
-  Bang}},}\ }\href {\doibase 10.1038/s41586-023-05786-2} {\bibfield  {journal}
-  {\bibinfo  {journal} {\nat}\ }\textbf {\bibinfo {volume} {616}},\ \bibinfo
-  {pages} {266--269} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Donnan}}\ \emph {et~al.}(2023)\citenamefont
-  {{Donnan}}, \citenamefont {{McLeod}}, \citenamefont {{Dunlop}}, \citenamefont
-  {{McLure}}, \citenamefont {{Carnall}}, \citenamefont {{Begley}},
-  \citenamefont {{Cullen}}, \citenamefont {{Hamadouche}}, \citenamefont
-  {{Bowler}}, \citenamefont {{Magee}}, \citenamefont {{McCracken}},
-  \citenamefont {{Milvang-Jensen}}, \citenamefont {{Moneti}},\ and\
-  \citenamefont {{Targett}}}]{Donnan23UVLF}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~T.}\ \bibnamefont
-  {{Donnan}}}, \bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
-  {{McLeod}}}, \bibinfo {author} {\bibfnamefont {J.~S.}\ \bibnamefont
-  {{Dunlop}}}, \bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont
-  {{McLure}}}, \bibinfo {author} {\bibfnamefont {A.~C.}\ \bibnamefont
-  {{Carnall}}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {{Begley}}},
-  \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {{Cullen}}}, \bibinfo
-  {author} {\bibfnamefont {M.~L.}\ \bibnamefont {{Hamadouche}}}, \bibinfo
-  {author} {\bibfnamefont {R.~A.~A.}\ \bibnamefont {{Bowler}}}, \bibinfo
-  {author} {\bibfnamefont {D.}~\bibnamefont {{Magee}}}, \bibinfo {author}
-  {\bibfnamefont {H.~J.}\ \bibnamefont {{McCracken}}}, \bibinfo {author}
-  {\bibfnamefont {B.}~\bibnamefont {{Milvang-Jensen}}}, \bibinfo {author}
-  {\bibfnamefont {A.}~\bibnamefont {{Moneti}}}, and\ \bibinfo {author}
-  {\bibfnamefont {T.}~\bibnamefont {{Targett}}},\ }\bibfield  {title} {\enquote
-  {\bibinfo {title} {{The evolution of the galaxy UV luminosity function at
-  redshifts $z \simeq 8$--15 from deep JWST and ground-based near-infrared
-  imaging}},}\ }\href {\doibase 10.1093/mnras/stac3472} {\bibfield  {journal}
-  {\bibinfo  {journal} {\mnras}\ }\textbf {\bibinfo {volume} {518}},\ \bibinfo
-  {pages} {6011--6040} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Parashari}}\ and\ \citenamefont
-  {{Laha}}(2023)}]{Parashari23JWSTPPS}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
-  {{Parashari}}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
-  {{Laha}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Primordial
-  power spectrum in light of JWST observations of high redshift galaxies}},}\
-  }\href {\doibase 10.1093/mnrasl/slad107} {\bibfield  {journal} {\bibinfo
-  {journal} {Monthly Notices of the Royal Astronomical Society: Letters}\
-  }\textbf {\bibinfo {volume} {526}},\ \bibinfo {pages} {L63--L69} (\bibinfo
-  {year} {2023})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Hirano}}\ and\ \citenamefont
-  {{Yoshida}}(2024)}]{Hira24bluetilt}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {{Hirano}}}\ and\ \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
-  {{Yoshida}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Early
-  Structure Formation from Primordial Density Fluctuations with a Blue, Tilted
-  Power Spectrum: High-redshift Galaxies}},}\ }\href {\doibase
-  10.3847/1538-4357/ad22e0} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\
-  }\textbf {\bibinfo {volume} {963}},\ \bibinfo {eid} {2} (\bibinfo {year}
-  {2024})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Lovell}}\ \emph {et~al.}(2023)\citenamefont
-  {{Lovell}}, \citenamefont {{Harrison}}, \citenamefont {{Harikane}},
-  \citenamefont {{Tacchella}},\ and\ \citenamefont
-  {{Wilkins}}}]{Lovell23JWSTExtreme}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~C.}\ \bibnamefont
-  {{Lovell}}}, \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
-  {{Harrison}}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
-  {{Harikane}}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {{Tacchella}}}, and\ \bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont
-  {{Wilkins}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Extreme
-  value statistics of the halo and stellar mass distributions at high redshift:
-  are JWST results in tension with $\Lambda$CDM?}}}\ }\href {\doibase
-  10.1093/mnras/stac3224} {\bibfield  {journal} {\bibinfo  {journal} {\mnras}\
-  }\textbf {\bibinfo {volume} {518}},\ \bibinfo {pages} {2511--2520} (\bibinfo
-  {year} {2023})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Arya}}(2020)}]{Arya20WarmInflation}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
@@ -327,6 +207,28 @@
   {\doibase 10.1088/0004-637X/814/1/18} {\bibfield  {journal} {\bibinfo
   {journal} {\apj}\ }\textbf {\bibinfo {volume} {814}},\ \bibinfo {eid} {18}
   (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Parashari}}\ and\ \citenamefont
+  {{Laha}}(2023)}]{Parashari23JWSTPPS}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {{Parashari}}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {{Laha}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Primordial
+  power spectrum in light of JWST observations of high redshift galaxies}},}\
+  }\href {\doibase 10.1093/mnrasl/slad107} {\bibfield  {journal} {\bibinfo
+  {journal} {Monthly Notices of the Royal Astronomical Society: Letters}\
+  }\textbf {\bibinfo {volume} {526}},\ \bibinfo {pages} {L63--L69} (\bibinfo
+  {year} {2023})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Hirano}}\ and\ \citenamefont
+  {{Yoshida}}(2024)}]{Hira24bluetilt}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {{Hirano}}}\ and\ \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {{Yoshida}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Early
+  Structure Formation from Primordial Density Fluctuations with a Blue, Tilted
+  Power Spectrum: High-redshift Galaxies}},}\ }\href {\doibase
+  10.3847/1538-4357/ad22e0} {\bibfield  {journal} {\bibinfo  {journal} {\apj}\
+  }\textbf {\bibinfo {volume} {963}},\ \bibinfo {eid} {2} (\bibinfo {year}
+  {2024})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Tkachev}}\ \emph {et~al.}(2024)\citenamefont
   {{Tkachev}}, \citenamefont {{Pilipenko}}, \citenamefont {{Mikheeva}},\ and\
   \citenamefont {{Lukash}}}]{Tkac24BumpyPPS}%
@@ -353,16 +255,6 @@
   {\doibase 10.1103/PhysRevD.111.063507} {\bibfield  {journal} {\bibinfo
   {journal} {\prd}\ }\textbf {\bibinfo {volume} {111}},\ \bibinfo {pages}
   {063507} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Dekker}}\ and\ \citenamefont
-  {{Kravtsov}}(2025)}]{Dekker25DwarfPPS}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
-  {{Dekker}}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
-  {{Kravtsov}}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Constraints
-  on blue and red tilted primordial power spectra using dwarf galaxy
-  properties}},}\ }\href {\doibase 10.1103/PhysRevD.111.063516} {\bibfield
-  {journal} {\bibinfo  {journal} {\prd}\ }\textbf {\bibinfo {volume} {111}},\
-  \bibinfo {pages} {063516} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Wu}}\ \emph {et~al.}(2025)\citenamefont {{Wu}},
   \citenamefont {{Chan}},\ and\ \citenamefont {{Forouhar Moreno}}}]{Wu25BT}%
   \BibitemOpen
