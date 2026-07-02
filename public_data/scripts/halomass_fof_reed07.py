@@ -1,5 +1,6 @@
 import os
 import sys
+import csv
 import numpy as np
 import matplotlib.pyplot as plt
 import h5py
@@ -11,6 +12,8 @@ import matplotlib.gridspec as gridspec
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 ARTICLE_ANALYSIS_ROOT = SCRIPT_DIR.parent
+ARTICLE_ROOT = next((p for p in SCRIPT_DIR.parents if (p / "main.tex").exists()), SCRIPT_DIR.parent)
+PUBLIC_DATA_ROOT = ARTICLE_ROOT / "public_data" if (ARTICLE_ROOT / "public_data").exists() else SCRIPT_DIR.parent
 
 
 def find_project_root(script_dir):
@@ -22,7 +25,12 @@ def find_project_root(script_dir):
 
 PROJECT_ROOT = find_project_root(SCRIPT_DIR)
 WORKSPACE_ROOT = PROJECT_ROOT
-CACHE_DIR = SCRIPT_DIR / "output" / "fof_reed07_highz_cache"
+ANALYSIS_ROOT = PROJECT_ROOT / "analysis" / "_used_by_article_nonlinear_evolution_pps"
+DEFAULT_CACHE_DIR = ANALYSIS_ROOT / "HALOMASS" / "output" / "fof_reed07_highz_cache"
+CACHE_DIR = Path(os.environ.get(
+    "FOF_CACHE_DIR",
+    DEFAULT_CACHE_DIR if DEFAULT_CACHE_DIR.exists() else SCRIPT_DIR / "output" / "fof_reed07_highz_cache",
+))
 COLOSSUS_ROOT = PROJECT_ROOT / "software" / "colossus"
 
 
@@ -58,6 +66,10 @@ PANEL_COLUMNS = 3
 # 功率谱文件路径 - 更新为包含3个模型
 DATA_ROOT = PROJECT_ROOT / "data"
 PAPERPLOT_ROOT = ARTICLE_ANALYSIS_ROOT / "paperplot"
+HMF_RESIDUAL_CSV_PATH = Path(os.environ.get(
+    "FOF_RESIDUAL_CSV_PATH",
+    PUBLIC_DATA_ROOT / "figure_data" / "fof_hmf" / "fof_reed07_hmf_residuals.csv",
+))
 
 base_paths = {
     'BT_soft': {
@@ -76,8 +88,13 @@ base_paths = {
 
 sim_configs = {
     'PL': {'name': 'PL', 'color': JOURNAL_COLORS["black"], 'marker': 'o', 'linestyle': '-', 'markerfacecolor': 'white'},
-    'BT_soft': {'name': r'BT $k_p=1$', 'color': JOURNAL_COLORS["blue"], 'marker': '^', 'linestyle': '--', 'markerfacecolor': 'white'},
-    'BT_deep': {'name': r'BT $k_p=10$', 'color': JOURNAL_COLORS["green"], 'marker': 's', 'linestyle': '-.', 'markerfacecolor': 'white'}
+    'BT_soft': {'name': 'BTKP1', 'color': JOURNAL_COLORS["blue"], 'marker': '^', 'linestyle': '--', 'markerfacecolor': 'white'},
+    'BT_deep': {'name': 'BTKP10', 'color': JOURNAL_COLORS["green"], 'marker': 's', 'linestyle': '-.', 'markerfacecolor': 'white'}
+}
+MODEL_OUTPUT_NAMES = {
+    "PL": "PL",
+    "BT_soft": "BTKP1",
+    "BT_deep": "BTKP10",
 }
 
 cosmo_params = {
@@ -91,7 +108,7 @@ HMF_CATALOG_CUT_MSUN = 1.0e8
 HMF_XMIN_MSUN = 5.0e7
 HMF_BINS_PER_DEX = 6
 HMF_X_MAJOR_TICKS = 10.0 ** np.arange(8, 12)
-HMF_RATIO_TICK_POOL = np.array([0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0])
+HMF_RATIO_TICK_POOL = np.array([0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0])
 
 
 def hmf_log_edges(bins_per_dex=HMF_BINS_PER_DEX):
@@ -102,7 +119,7 @@ def plain_ratio_tick_label(value, _pos):
     return f"{value:g}"
 
 
-def set_hmf_log_ticks(ax, *, y_decades=None, ratio_axis=False):
+def set_hmf_log_ticks(ax, *, y_decades=None, ratio_axis=False, y_log_minor=True):
     ax.xaxis.set_major_locator(FixedLocator(HMF_X_MAJOR_TICKS))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10))
     ax.xaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
@@ -123,8 +140,22 @@ def set_hmf_log_ticks(ax, *, y_decades=None, ratio_axis=False):
             ax.yaxis.set_major_locator(FixedLocator(y_ticks))
             ax.yaxis.set_major_formatter(FuncFormatter(plain_ratio_tick_label))
 
-    ax.yaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
-    ax.yaxis.set_minor_formatter(NullFormatter())
+    if y_log_minor:
+        ax.yaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
+        ax.yaxis.set_minor_formatter(NullFormatter())
+
+
+def padded_ratio_ylim(values):
+    values = np.asarray(values, dtype=float)
+    values = values[np.isfinite(values) & (values > 0)]
+    if len(values) == 0:
+        return 0.5, 10.0
+    ymin = max(0.08, np.nanmin(values) * 0.82)
+    ymax = max(2.0, np.nanmax(values) * 1.18)
+    if ymax / ymin > 30:
+        ymin = 10 ** np.floor(np.log10(ymin))
+        ymax = 10 ** np.ceil(np.log10(ymax))
+    return ymin, ymax
 
 
 def mark_hmf_resolution(ax, annotate=False):
@@ -333,7 +364,7 @@ for idx, snap_num in enumerate(snap_numbers):
             sim_results[code][snap_num] = {
                 'redshift': sim_redshift, 'hmf': hmf, 'hmf_err': hmf_err,
                 'logM_centers': logM_centers, 'color': colors[idx],
-                'config': sim_configs[code]
+                'config': sim_configs[code], 'source_file': str(cache_file)
             }
 
             # 计算理论质量函数
@@ -347,7 +378,7 @@ for idx, snap_num in enumerate(snap_numbers):
                     mdef='fof',
                     model='reed07',
                     q_out='dndlnM',
-                    ps_args={'model': 'eisenstein98_bt'}  # 使用原来的BT功率谱
+                    ps_args={'model': 'eisenstein98_bt'}
                 )
             elif code == 'PL':
                 mfunc = mass_function.massFunction(
@@ -365,7 +396,7 @@ for idx, snap_num in enumerate(snap_numbers):
                     mdef='fof',
                     model='reed07',
                     q_out='dndlnM',
-                    ps_args={'model': 'eisenstein98_bt_soft'}  # 使用BT_soft功率谱
+                    ps_args={'model': 'eisenstein98_bt_soft'}
                 )
 
             theory_results[code][snap_num] = {
@@ -402,9 +433,65 @@ for code in sim_configs.keys():
 
             sim_data['diff_data'] = {
                 'mass': sim_mass[sim_valid][ratio_valid],
+                'sim_dndlog10M': sim_data['hmf'][sim_valid][ratio_valid],
+                'reed07_dndlog10M_interp': theory_hmf_interp[ratio_valid],
+                'model_ratio': sim_data['hmf'][sim_valid][ratio_valid] / theory_hmf_interp[ratio_valid],
+                'model_ratio_err': sim_data['hmf_err'][sim_valid][ratio_valid] / theory_hmf_interp[ratio_valid],
                 'relative_diff': sim_data['hmf'][sim_valid][ratio_valid] / theory_hmf_interp[ratio_valid] - 1,
-                'diff_err': sim_data['hmf_err'][sim_valid][ratio_valid] / theory_hmf_interp[ratio_valid]
+                'diff_err': sim_data['hmf_err'][sim_valid][ratio_valid] / theory_hmf_interp[ratio_valid],
+                'poisson_err': sim_data['hmf_err'][sim_valid][ratio_valid],
             }
+
+
+def write_residual_table(output_path):
+    rows = []
+    for code in sim_configs.keys():
+        for snap_num in snap_numbers:
+            sim_data = sim_results.get(code, {}).get(snap_num)
+            if sim_data is None or "diff_data" not in sim_data:
+                continue
+            diff_data = sim_data["diff_data"]
+            n_points = len(diff_data["mass"])
+            for i in range(n_points):
+                rows.append({
+                    "model": MODEL_OUTPUT_NAMES.get(code, code),
+                    "snapshot": f"{snap_num:04d}",
+                    "redshift": f"{sim_data['redshift']:.10e}",
+                    "reference_model": "Reed07_FOF",
+                    "log10_M_FOF_Msun": f"{np.log10(diff_data['mass'][i]):.10e}",
+                    "dn_dlog10M": f"{diff_data['sim_dndlog10M'][i]:.10e}",
+                    "poisson_err": f"{diff_data['poisson_err'][i]:.10e}",
+                    "reed07_dndlog10M_interp": f"{diff_data['reed07_dndlog10M_interp'][i]:.10e}",
+                    "sim_over_reed07": f"{diff_data['model_ratio'][i]:.10e}",
+                    "sim_over_reed07_minus_1": f"{diff_data['relative_diff'][i]:.10e}",
+                    "ratio_err": f"{diff_data['model_ratio_err'][i]:.10e}",
+                    "residual_err": f"{diff_data['diff_err'][i]:.10e}",
+                    "source_file": sim_data.get("source_file", ""),
+                })
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "model",
+                "snapshot",
+                "redshift",
+                "reference_model",
+                "log10_M_FOF_Msun",
+                "dn_dlog10M",
+                "poisson_err",
+                "reed07_dndlog10M_interp",
+                "sim_over_reed07",
+                "sim_over_reed07_minus_1",
+                "ratio_err",
+                "residual_err",
+                "source_file",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"Wrote FoF/Reed07 residual table: {output_path}", flush=True)
 
 n_panels = len(snap_numbers)
 n_cols = min(PANEL_COLUMNS, n_panels)
@@ -457,21 +544,25 @@ for idx, snap_num in enumerate(snap_numbers):
         }
         bt_pl_ratio_values_by_row[row].extend(ratio[np.isfinite(ratio) & (ratio > 0)])
 
-bt_pl_ratio_ylims = {}
-for row in range(n_rows):
-    row_values = np.asarray(bt_pl_ratio_values_by_row.get(row, []), dtype=float)
-    row_values = row_values[np.isfinite(row_values) & (row_values > 0)]
-    if len(row_values):
-        ymin = max(0.3, min(0.75, np.nanmin(row_values) * 0.8))
-        ymax = 10 ** np.ceil(np.log10(max(2.0, np.nanmax(row_values) * 1.15)))
-        bt_pl_ratio_ylims[row] = (ymin, ymax)
-    else:
-        bt_pl_ratio_ylims[row] = (0.75, 10.0)
+combined_ratio_values = []
+for values in bt_pl_ratio_values_by_row.values():
+    combined_ratio_values.extend(values)
+for idx, snap_num in enumerate(snap_numbers):
+    for code in sim_configs.keys():
+        sim_data = sim_results.get(code, {}).get(snap_num)
+        if sim_data is None or "diff_data" not in sim_data:
+            continue
+        values = np.asarray(sim_data["diff_data"]["model_ratio"], dtype=float)
+        combined_ratio_values.extend(values[np.isfinite(values) & (values > 0)])
+
+combined_ratio_ylim = padded_ratio_ylim(combined_ratio_values)
+
+write_residual_table(HMF_RESIDUAL_CSV_PATH)
 
 apply_journal_style(base_fontsize=12.8)
 
-# 创建主图形，每个单元格内包含质量函数和BT/PL比值两个子图
-fig = plt.figure(figsize=(3.20 * n_cols, 3.45 * n_rows))
+# 创建主图形，每个单元格内包含质量函数、BT/PL比值和simulation/Reed07比值三个子图
+fig = plt.figure(figsize=(2.85 * n_cols, 3.90 * n_rows))
 outer_grid = gridspec.GridSpec(
     n_rows,
     n_cols,
@@ -489,18 +580,19 @@ legend_elements_upper = []
 
 # 遍历所有快照
 for idx, snap_num in enumerate(snap_numbers):
-    # 创建内部网格：每个单元格内2行1列
+    # 创建内部网格：每个单元格内3行1列
     inner_grid = gridspec.GridSpecFromSubplotSpec(
-        2,
+        3,
         1,
         subplot_spec=outer_grid[idx],
-        height_ratios=[4.0, 1.25],
+        height_ratios=[4.0, 1.15, 1.25],
         hspace=0.08,
     )
 
-    # 获取两个子图
+    # 获取三个子图
     ax_upper = fig.add_subplot(inner_grid[0])  # 上：质量函数
     ax_ratio = fig.add_subplot(inner_grid[1], sharex=ax_upper)  # 下：BT/PL
+    ax_residual = fig.add_subplot(inner_grid[2], sharex=ax_upper)  # 最下：simulation/Reed07比值
 
     # 获取红移信息
     redshift = None
@@ -588,25 +680,59 @@ for idx, snap_num in enumerate(snap_numbers):
     ax_ratio.axhline(y=1.0, color='black', linestyle='-', linewidth=0.7, alpha=0.6)
     ax_ratio.axhline(y=2.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
     ax_ratio.axhline(y=5.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
-    ax_ratio.set(xscale='log', yscale='log', xlim=(HMF_XMIN_MSUN, 2e11), ylim=bt_pl_ratio_ylims[row])
+    ax_ratio.set(xscale='log', yscale='log', xlim=(HMF_XMIN_MSUN, 2e11), ylim=combined_ratio_ylim)
     set_hmf_log_ticks(ax_ratio, ratio_axis=True)
     mark_hmf_resolution(ax_ratio, annotate=(idx == 0))
 
+    # 绘制最下子图：simulation/Reed07比值
+    for code in sim_configs.keys():
+        sim_data = sim_results.get(code, {}).get(snap_num)
+        if sim_data is None or "diff_data" not in sim_data:
+            continue
+        diff_data = sim_data["diff_data"]
+        config = sim_data["config"]
+        ax_residual.errorbar(
+            diff_data["mass"],
+            diff_data["model_ratio"],
+            yerr=diff_data["model_ratio_err"],
+            fmt=config["marker"],
+            color=config["color"],
+            markersize=3.1,
+            capsize=1.4,
+            alpha=0.9,
+            markerfacecolor=config["markerfacecolor"],
+            markeredgecolor=config["color"],
+            markeredgewidth=0.75,
+            elinewidth=0.6,
+        )
+
+    format_axes(ax_residual, grid=True)
+    ax_residual.axhline(y=1.0, color='black', linestyle='-', linewidth=0.7, alpha=0.6)
+    ax_residual.axhline(y=2.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
+    ax_residual.axhline(y=5.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
+    ax_residual.set(xscale='log', yscale='log', xlim=(HMF_XMIN_MSUN, 2e11), ylim=combined_ratio_ylim)
+    set_hmf_log_ticks(ax_residual, ratio_axis=True)
+    mark_hmf_resolution(ax_residual, annotate=False)
+
     # 只在最后一行的下子图显示x轴标签
     if row == n_rows - 1:
-        ax_ratio.set_xlabel(r'$M_{\mathrm{FOF}}\,[M_\odot]$')
+        ax_residual.set_xlabel(r'$M_{\mathrm{FOF}}\,[M_\odot]$')
         ax_upper.tick_params(labelbottom=False)
+        ax_ratio.tick_params(labelbottom=False)
     else:
         ax_upper.tick_params(labelbottom=False)
         ax_ratio.tick_params(labelbottom=False)
+        ax_residual.tick_params(labelbottom=False)
 
     # 只在第一列的上子图显示y轴标签
     if col == 0:
         ax_upper.set_ylabel(r'$dn/d\log_{10}M\,[{\rm Mpc}^{-3}]$')
         ax_ratio.set_ylabel(r'$f_{\rm BT}/f_{\rm PL}$')
+        ax_residual.set_ylabel(r'$\mathrm{sim}/\mathrm{Reed07}$')
     else:
         ax_upper.tick_params(labelleft=False)
         ax_ratio.tick_params(labelleft=False)
+        ax_residual.tick_params(labelleft=False)
 
 model_handles = []
 model_labels = []
@@ -650,9 +776,9 @@ fig.axes[0].legend(
     handletextpad=0.35,
 )
 
-fof_output_path = Path(os.environ.get("FOF_OUTPUT_PATH", PAPERPLOT_ROOT / "figures" / "mass-function.png"))
+fof_output_path = Path(os.environ.get("FOF_OUTPUT_PATH", ARTICLE_ROOT / "mass-function.png"))
 print(f"Saving FoF/Reed07 figure: {fof_output_path}", flush=True)
 fof_output_path.parent.mkdir(parents=True, exist_ok=True)
-fig.savefig(fof_output_path, dpi=320, bbox_inches="tight", pad_inches=0.08)
+fig.savefig(fof_output_path, dpi=90, bbox_inches=None)
 plt.close(fig)
 print(f"Saved FoF/Reed07 figure: {fof_output_path}", flush=True)

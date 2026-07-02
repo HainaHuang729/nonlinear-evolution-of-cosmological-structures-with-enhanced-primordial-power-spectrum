@@ -379,7 +379,7 @@ for idx, snap in enumerate(snap_list):
         k_sim_bt_5, P_sim_bt_5, z_simbt5 = bt_5_data
         if abs(z_simbt5 - z_simbt25) > 1e-5:
             print(
-                f"Warning: redshift mismatch for snap {snap} BT 5: "
+                f"Warning: redshift mismatch for snap {snap} BTKP1 5: "
                 f"{z_simbt5}, reference {z_simbt25}"
             )
         P_bt_theory_at_bt_5 = 10**np.interp(
@@ -397,7 +397,7 @@ for idx, snap in enumerate(snap_list):
         k_sim_bt_2p5, P_sim_bt_2p5, z_simbt2p5 = bt_2p5_data
         if abs(z_simbt2p5 - z_simbt25) > 1e-5:
             print(
-                f"Warning: redshift mismatch for snap {snap} BT 2.5: "
+                f"Warning: redshift mismatch for snap {snap} BTKP1 2.5: "
                 f"{z_simbt2p5}, reference {z_simbt25}"
             )
         P_bt_theory_at_bt_2p5 = 10**np.interp(
@@ -421,7 +421,7 @@ for idx, snap in enumerate(snap_list):
     
     # ---- 上子图：功率谱 ----
     ax_top.loglog(k_h, P_pl_theory_25, '-', color=JOURNAL_COLORS["black"], lw=1.35, label='PL theory')
-    ax_top.loglog(k_h, P_bt_theory_full, '--', color=JOURNAL_COLORS["blue"], lw=1.35, label='BT(soft) theory')
+    ax_top.loglog(k_h, P_bt_theory_full, '--', color=JOURNAL_COLORS["blue"], lw=1.35, label='BTKP1 theory')
     # 修改：空心小标记
     ax_top.loglog(k_plot_256, P_plot_256, 'o', color=JOURNAL_COLORS["black"], ms=3.2, alpha=0.85,
                   markerfacecolor='none', markeredgewidth=0.7, label='PL 256')
@@ -452,7 +452,7 @@ for idx, snap in enumerate(snap_list):
             label='PL 128',
         )
     ax_top.loglog(k_plot_bt,  P_plot_bt,  '^', color=JOURNAL_COLORS["blue"], ms=3.2, alpha=0.85,
-                  markerfacecolor='none', markeredgewidth=0.7, label='BT(soft) 25')
+                  markerfacecolor='none', markeredgewidth=0.7, label='BTKP1 25')
     if bt_256_plot is not None:
         ax_top.loglog(
             bt_256_plot[0],
@@ -462,7 +462,7 @@ for idx, snap in enumerate(snap_list):
             ms=3.2,
             alpha=0.9,
             markeredgewidth=0.7,
-            label='BT(soft) 256',
+            label='BTKP1 256',
         )
     if bt_5_plot is not None:
         ax_top.loglog(
@@ -474,7 +474,7 @@ for idx, snap in enumerate(snap_list):
             alpha=0.9,
             markerfacecolor='none',
             markeredgewidth=0.7,
-            label='BT 5',
+            label='BTKP1 5',
         )
     if bt_2p5_plot is not None:
         ax_top.loglog(
@@ -486,7 +486,7 @@ for idx, snap in enumerate(snap_list):
             alpha=0.9,
             markerfacecolor='none',
             markeredgewidth=0.7,
-            label='BT 2.5',
+            label='BTKP1 2.5',
         )
     if outer_col == 0:
         ax_top.set_ylabel(r'$P(k)\,[(\mathrm{Mpc}/h)^3]$')
@@ -544,7 +544,7 @@ for idx, snap in enumerate(snap_list):
         )
     ax_bottom.semilogx(k_ratio_bt,  ratio_plot_bt,  '^', color=JOURNAL_COLORS["blue"], ms=3.2, alpha=0.85,
                        markerfacecolor='none', markeredgewidth=0.7,
-                       label='BT(soft) 25 / theory')
+                       label='BTKP1 25 / theory')
     if bt_256_plot is not None:
         ax_bottom.semilogx(
             bt_256_plot[2],
@@ -554,7 +554,7 @@ for idx, snap in enumerate(snap_list):
             ms=3.2,
             alpha=0.9,
             markeredgewidth=0.7,
-            label='BT(soft) 256 / theory',
+            label='BTKP1 256 / theory',
         )
     if bt_5_plot is not None:
         ax_bottom.semilogx(
@@ -566,7 +566,7 @@ for idx, snap in enumerate(snap_list):
             alpha=0.9,
             markerfacecolor='none',
             markeredgewidth=0.7,
-            label='BT 5 / theory',
+            label='BTKP1 5 / theory',
         )
     if bt_2p5_plot is not None:
         ax_bottom.semilogx(
@@ -578,7 +578,7 @@ for idx, snap in enumerate(snap_list):
             alpha=0.9,
             markerfacecolor='none',
             markeredgewidth=0.7,
-            label='BT 2.5 / theory',
+            label='BTKP1 2.5 / theory',
         )
     ax_bottom.axhline(y=1, color='0.45', linestyle='--', linewidth=0.7, alpha=0.8)
     mark_power_reliability(ax_top, ax_bottom, annotate=(idx == 0))

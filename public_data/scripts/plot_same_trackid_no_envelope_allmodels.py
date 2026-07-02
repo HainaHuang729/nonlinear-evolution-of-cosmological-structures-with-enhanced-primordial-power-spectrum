@@ -62,14 +62,14 @@ MODELS = {
         "dir": PROJECT / "data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
     },
     "BT_soft": {
-        "label": "BT(soft)",
+        "label": "BTKP1",
         "color": JOURNAL_COLORS["blue"],
         "marker": "^",
         "dir": PROJECT
         / "data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
     },
     "BT_deep": {
-        "label": "BT(deep)",
+        "label": "BTKP10",
         "color": JOURNAL_COLORS["green"],
         "marker": "s",
         "dir": PROJECT

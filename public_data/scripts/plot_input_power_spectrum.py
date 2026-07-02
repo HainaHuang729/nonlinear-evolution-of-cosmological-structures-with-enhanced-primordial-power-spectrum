@@ -35,12 +35,12 @@ SPECTRA = [
         {"color": JOURNAL_COLORS["black"], "linestyle": "-", "linewidth": 1.45},
     ),
     (
-        "BT(soft)",
+        "BTKP1",
         DATA_DIR / "input_powerspec_kp_1.0_ms_1.5_256.000000_0.0.txt",
         {"color": JOURNAL_COLORS["blue"], "linestyle": "--", "linewidth": 1.45},
     ),
     (
-        "BT(deep)",
+        "BTKP10",
         DATA_DIR / "input_powerspec_kp_10.0_ms_1.5_256.000000_0.0.txt",
         {"color": JOURNAL_COLORS["green"], "linestyle": "-.", "linewidth": 1.45},
     ),

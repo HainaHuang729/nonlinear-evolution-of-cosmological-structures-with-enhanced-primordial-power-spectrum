@@ -50,13 +50,13 @@ MODEL_SPECS = [
         JOURNAL_COLORS["black"],
     ),
     (
-        "BT(soft)",
+        "BTKP1",
         DATA_ROOT / "bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5",
         DATA_ROOT / "bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0056.hdf5",
         JOURNAL_COLORS["blue"],
     ),
     (
-        "BT(deep)",
+        "BTKP10",
         DATA_ROOT / "bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5",
         DATA_ROOT / "bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0056.hdf5",
         JOURNAL_COLORS["green"],
@@ -420,7 +420,7 @@ def plot_trial():
 
         pl_profile = panel_profiles.get("PL")
         if pl_profile is not None:
-            for label, color in [("BT(soft)", JOURNAL_COLORS["blue"]), ("BT(deep)", JOURNAL_COLORS["green"])]:
+            for label, color in [("BTKP1", JOURNAL_COLORS["blue"]), ("BTKP10", JOURNAL_COLORS["green"])]:
                 bt_profile = panel_profiles.get(label)
                 if bt_profile is None:
                     continue
@@ -444,7 +444,7 @@ def plot_trial():
         theory_pl = theory_profiles.get("PL")
         if theory_pl is not None:
             x_pl, rho_pl = theory_pl
-            for label, color in [("BT(soft)", JOURNAL_COLORS["blue"]), ("BT(deep)", JOURNAL_COLORS["green"])]:
+            for label, color in [("BTKP1", JOURNAL_COLORS["blue"]), ("BTKP10", JOURNAL_COLORS["green"])]:
                 theory_bt = theory_profiles.get(label)
                 if theory_bt is None:
                     continue
@@ -524,7 +524,7 @@ def plot_trial():
     )
     axes[0, 0].legend(
         stack_handles,
-        ["PL", "BT(soft)", "BT(deep)"],
+        ["PL", "BTKP1", "BTKP10"],
         title=sample_label_text(all_sample_counts),
         title_fontsize=6.1,
         **legend_kwargs,
@@ -533,8 +533,8 @@ def plot_trial():
         theory_handles,
         [
             "PL",
-            "BT(soft)",
-            "BT(deep)",
+            "BTKP1",
+            "BTKP10",
             rf"{POWER_CRITERION_LABEL} $\kappa={POWER_KAPPA_THRESHOLD:g}$",
         ],
         title=f"{THEORY_CONCENTRATION_LABEL} NFW",

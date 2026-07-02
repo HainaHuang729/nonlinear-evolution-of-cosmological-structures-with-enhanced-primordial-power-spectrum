@@ -34,7 +34,7 @@ mkdir -p "$PAPERPLOT_ROOT/logs" "$MPLCONFIGDIR" "$RADIAL_PROFILE_CACHE_DIR"
 cd /project/tkcastrosim/HNHuang/project_21cmFast
 echo "Start at $(date)"
 
-for label in "PL" "BT(soft)" "BT(deep)"; do
+for label in "PL" "BTKP1" "BTKP10"; do
   for mass in $MASS_LIST; do
     echo "Computing cache: label=${label} mass=${mass}"
     RADIAL_ONLY_LABELS="$label" RADIAL_ONLY_MASSES="$mass" "$PYTHON" "$SCRIPT"

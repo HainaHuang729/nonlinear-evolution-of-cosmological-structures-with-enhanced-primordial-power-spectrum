@@ -103,7 +103,7 @@ MODELS = {
         "linestyle": "-",
     },
     "BT_soft": {
-        "label": r"BT $k_p=1$",
+        "label": "BTKP1",
         "template": DATA_ROOT
         / "bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
         "ps_model": "eisenstein98_bt",
@@ -112,7 +112,7 @@ MODELS = {
         "linestyle": "--",
     },
     "BT_deep": {
-        "label": r"BT $k_p=10$",
+        "label": "BTKP10",
         "template": DATA_ROOT
         / "bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
         "ps_model": "eisenstein98_bt_soft",

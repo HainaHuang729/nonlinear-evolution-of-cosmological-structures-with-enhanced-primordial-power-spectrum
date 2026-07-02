@@ -2,6 +2,8 @@
 """Paperplot BT/PL nonlinear matter power-spectrum response."""
 
 from pathlib import Path
+import csv
+import os
 import sys
 
 import matplotlib.gridspec as gridspec
@@ -33,6 +35,11 @@ WORKSPACE_ROOT = next(
     (p for p in SCRIPT_PATH.parents if (p / "data" / "PL").exists()),
     Path.cwd(),
 )
+ARTICLE_ROOT = next(
+    (p for p in SCRIPT_PATH.parents if (p / "main.tex").exists()),
+    WORKSPACE_ROOT / "papers" / "article_nonlinear_evolution_pps",
+)
+PUBLIC_DATA_ROOT = ARTICLE_ROOT / "public_data"
 STYLE_ROOT = next(
     (
         p
@@ -41,6 +48,7 @@ STYLE_ROOT = next(
             *SCRIPT_PATH.parents,
             WORKSPACE_ROOT,
             WORKSPACE_ROOT.parent / "tools",
+            WORKSPACE_ROOT / "papers" / "article_nonlinear_evolution_pps" / "public_data" / "scripts",
         )
         if (p / "cosmology_plot_style.py").exists()
     ),
@@ -62,7 +70,11 @@ from cosmology_plot_style import (  # noqa: E402
 SNAP_LIST = ["0056", "0048", "0040", "0032"]
 N_PLOT_BINS = 42
 DATA_DIR = ANALYSIS_ROOT / "powerspectrum" / "sim_power_data"
-OUTPUT_PATH = ANALYSIS_ROOT / "paperplot" / "figures" / "power-spectrum.png"
+OUTPUT_PATH = Path(os.environ.get("POWER_SPECTRUM_OUTPUT_PATH", ARTICLE_ROOT / "power-spectrum.png"))
+POWER_RESIDUAL_CSV_PATH = Path(os.environ.get(
+    "POWER_RESIDUAL_CSV_PATH",
+    PUBLIC_DATA_ROOT / "figure_data" / "nonlinear_power_spectrum" / "power_spectrum_hmcode_residuals.csv",
+))
 BOX_LABEL = r"$25$ and $256\,h^{-1}\,\mathrm{Mpc}$ matched boxes"
 
 OMEGA_C = 0.26458
@@ -85,14 +97,14 @@ THEORY_STYLES = {
         "ms": 1.5,
         "color": JOURNAL_COLORS["blue"],
         "linestyle": "--",
-        "label": r"BT $k_p=1$ theory",
+        "label": "BTKP1 theory",
     },
     "BT_kp10": {
         "kp": 10.0,
         "ms": 1.5,
         "color": JOURNAL_COLORS["green"],
         "linestyle": "-.",
-        "label": r"BT $k_p=10$ theory",
+        "label": "BTKP10 theory",
     },
 }
 
@@ -104,16 +116,16 @@ BOX_MODELS = {
         "pl_color": JOURNAL_COLORS["black"],
         "bt_models": {
             "BT_kp1": {
-                "bt_label": r"BT $k_p=1$ 25",
-                "ratio_label": r"BT $k_p=1$ 25 / PL 25",
+                "bt_label": "BTKP1 25",
+                "ratio_label": "BTKP1 25 / PL 25",
                 "bt_template": DATA_DIR / "bluetilted_kp1_ms1.5_25_snap{}.npz",
                 "bt_marker": "^",
                 "bt_color": JOURNAL_COLORS["blue"],
                 "optional": False,
             },
             "BT_kp10": {
-                "bt_label": r"BT $k_p=10$ 25",
-                "ratio_label": r"BT $k_p=10$ 25 / PL 25",
+                "bt_label": "BTKP10 25",
+                "ratio_label": "BTKP10 25 / PL 25",
                 "bt_template": DATA_DIR / "bluetilted_kp10_ms1.5_25_snap{}.npz",
                 "bt_marker": "v",
                 "bt_color": JOURNAL_COLORS["green"],
@@ -128,16 +140,16 @@ BOX_MODELS = {
         "pl_color": JOURNAL_COLORS["gray"],
         "bt_models": {
             "BT_kp1": {
-                "bt_label": r"BT $k_p=1$ 256",
-                "ratio_label": r"BT $k_p=1$ 256 / PL 256",
+                "bt_label": "BTKP1 256",
+                "ratio_label": "BTKP1 256 / PL 256",
                 "bt_template": DATA_DIR / "bluetilted_kp1_ms1.5_256_snap{}.npz",
                 "bt_marker": "D",
                 "bt_color": JOURNAL_COLORS["sky"],
                 "optional": False,
             },
             "BT_kp10": {
-                "bt_label": r"BT $k_p=10$ 256",
-                "ratio_label": r"BT $k_p=10$ 256 / PL 256",
+                "bt_label": "BTKP10 256",
+                "ratio_label": "BTKP10 256 / PL 256",
                 "bt_template": DATA_DIR / "bluetilted_kp10_ms1.5_256_snap{}.npz",
                 "bt_marker": "P",
                 "bt_color": JOURNAL_COLORS["green"],
@@ -231,6 +243,24 @@ def theory_at_z(interpolator, z, k_values):
     return 10**logp
 
 
+def interpolate_power(k_values, k_ref, p_ref):
+    k_values = np.asarray(k_values)
+    k_ref = np.asarray(k_ref)
+    p_ref = np.asarray(p_ref)
+    valid_ref = np.isfinite(k_ref) & np.isfinite(p_ref) & (k_ref > 0) & (p_ref > 0)
+    valid_k = np.isfinite(k_values) & (k_values > 0)
+    result = np.full_like(k_values, np.nan, dtype=float)
+    if not np.any(valid_ref):
+        return result
+    in_range = valid_k & (k_values >= k_ref[valid_ref].min()) & (k_values <= k_ref[valid_ref].max())
+    result[in_range] = 10 ** np.interp(
+        np.log10(k_values[in_range]),
+        np.log10(k_ref[valid_ref]),
+        np.log10(p_ref[valid_ref]),
+    )
+    return result
+
+
 def load_power(template, snap):
     path = Path(str(template).format(snap))
     with np.load(path) as data:
@@ -309,6 +339,68 @@ def mark_reliability(ax_top, ax_ratio, annotate=False):
         )
 
 
+def mark_residual_reliability(ax, box_key):
+    if box_key == "25":
+        ax.axvline(K_NY_25, color="0.25", linestyle="--", linewidth=0.85, alpha=0.85, zorder=1)
+        ax.axvspan(K_NY_25, 1.0e3, color="0.82", alpha=0.16, lw=0, zorder=0)
+    else:
+        ax.axvline(K_NY_256, color="0.35", linestyle=":", linewidth=0.8, alpha=0.8, zorder=1)
+        ax.axvspan(K_NY_256, 1.0e3, color="0.82", alpha=0.16, lw=0, zorder=0)
+    ax.axhspan(0.9, 1.1, color="0.45", alpha=0.10, lw=0, zorder=0)
+
+
+def append_residual_rows(rows, *, box_key, model_key, label, snapshot, redshift, k_values,
+                         p_sim, p_theory, source_file):
+    valid = (
+        np.isfinite(k_values)
+        & np.isfinite(p_sim)
+        & np.isfinite(p_theory)
+        & (k_values > 0)
+        & (p_sim > 0)
+        & (p_theory > 0)
+    )
+    for k_val, p_val, p_ref in zip(k_values[valid], p_sim[valid], p_theory[valid]):
+        rows.append({
+            "box_hinv_Mpc": box_key,
+            "model": model_key,
+            "label": label,
+            "snapshot": snapshot,
+            "redshift": f"{redshift:.10e}",
+            "reference_model": "HMcode2020",
+            "k_hMpc": f"{k_val:.10e}",
+            "P_sim_Mpc_over_h_cubed": f"{p_val:.10e}",
+            "P_hmcode_Mpc_over_h_cubed": f"{p_ref:.10e}",
+            "sim_over_hmcode": f"{p_val / p_ref:.10e}",
+            "sim_over_hmcode_minus_1": f"{p_val / p_ref - 1.0:.10e}",
+            "source_file": str(source_file),
+        })
+
+
+def write_residual_table(rows, output_path):
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "box_hinv_Mpc",
+                "model",
+                "label",
+                "snapshot",
+                "redshift",
+                "reference_model",
+                "k_hMpc",
+                "P_sim_Mpc_over_h_cubed",
+                "P_hmcode_Mpc_over_h_cubed",
+                "sim_over_hmcode",
+                "sim_over_hmcode_minus_1",
+                "source_file",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"Wrote nonlinear-power HMcode residual table: {output_path}")
+
+
 def main():
     apply_journal_style(base_fontsize=9.0)
     z_targets = []
@@ -322,20 +414,21 @@ def main():
         if key != "PL" and (key == "BT_kp1" or series_is_available(key))
     ]
 
-    fig = plt.figure(figsize=(8.8, 6.2))
+    fig = plt.figure(figsize=(8.8, 8.9))
     outer_grid = gridspec.GridSpec(
         2,
         2,
         figure=fig,
         left=0.105,
         right=0.985,
-        bottom=0.105,
+        bottom=0.090,
         top=0.965,
         hspace=0.12,
         wspace=0.10,
     )
 
     source_paths = []
+    residual_rows = []
     for idx, snap in enumerate(SNAP_LIST):
         first_box = BOX_MODELS["25"]
         _, _, pl_z, _ = load_power(first_box["pl_template"], snap)
@@ -346,14 +439,17 @@ def main():
         }
 
         inner_grid = gridspec.GridSpecFromSubplotSpec(
-            2,
+            4,
             1,
             subplot_spec=outer_grid[idx],
-            height_ratios=[3, 1],
+            height_ratios=[3.0, 1.0, 0.92, 0.92],
             hspace=0.03,
         )
         ax_top = fig.add_subplot(inner_grid[0])
         ax_ratio = fig.add_subplot(inner_grid[1], sharex=ax_top)
+        ax_residual_25 = fig.add_subplot(inner_grid[2], sharex=ax_top)
+        ax_residual_256 = fig.add_subplot(inner_grid[3], sharex=ax_top)
+        residual_axes = {"25": ax_residual_25, "256": ax_residual_256}
 
         row = idx // 2
         col = idx % 2
@@ -388,10 +484,38 @@ def main():
                 label=style["label"].replace(" theory", r" theory / PL"),
             )
 
-        for box in BOX_MODELS.values():
+        residual_values = {box_key: [] for box_key in BOX_MODELS}
+        for box_key, box in BOX_MODELS.items():
             pl_k, pl_p, box_pl_z, pl_path = load_power(box["pl_template"], snap)
             k_pl, p_pl = log_bin_for_plot(pl_k, pl_p)
             source_paths.append(pl_path)
+            pl_theory_binned = interpolate_power(k_pl, K_THEORY, pl_theory_full)
+            pl_resid_valid = np.isfinite(pl_theory_binned) & (pl_theory_binned > 0) & np.isfinite(p_pl) & (p_pl > 0)
+            if np.any(pl_resid_valid):
+                pl_residual = p_pl[pl_resid_valid] / pl_theory_binned[pl_resid_valid]
+                residual_axes[box_key].semilogx(
+                    k_pl[pl_resid_valid],
+                    pl_residual,
+                    box["pl_marker"],
+                    color=box["pl_color"],
+                    markersize=2.8,
+                    markerfacecolor="none",
+                    markeredgewidth=0.75,
+                    alpha=0.9,
+                )
+                residual_values[box_key].extend(pl_residual)
+                append_residual_rows(
+                    residual_rows,
+                    box_key=box_key,
+                    model_key="PL",
+                    label=box["pl_label"],
+                    snapshot=snap,
+                    redshift=box_pl_z,
+                    k_values=k_pl[pl_resid_valid],
+                    p_sim=p_pl[pl_resid_valid],
+                    p_theory=pl_theory_binned[pl_resid_valid],
+                    source_file=pl_path,
+                )
 
             ax_top.loglog(
                 k_pl,
@@ -417,6 +541,38 @@ def main():
                 k_bt, p_bt = log_bin_for_plot(bt_k, bt_p)
                 k_ratio_raw, ratio_bt_pl = interpolate_ratio(bt_k, pl_k, pl_p, bt_p)
                 k_ratio, ratio_plot = log_bin_for_plot(k_ratio_raw, ratio_bt_pl)
+                bt_theory_binned = interpolate_power(k_bt, K_THEORY, bt_theory_full[bt_key])
+                bt_resid_valid = (
+                    np.isfinite(bt_theory_binned)
+                    & (bt_theory_binned > 0)
+                    & np.isfinite(p_bt)
+                    & (p_bt > 0)
+                )
+                if np.any(bt_resid_valid):
+                    bt_residual = p_bt[bt_resid_valid] / bt_theory_binned[bt_resid_valid]
+                    residual_axes[box_key].semilogx(
+                        k_bt[bt_resid_valid],
+                        bt_residual,
+                        bt_config["bt_marker"],
+                        color=bt_config["bt_color"],
+                        markersize=2.8,
+                        markerfacecolor="none",
+                        markeredgewidth=0.75,
+                        alpha=0.9,
+                    )
+                    residual_values[box_key].extend(bt_residual)
+                    append_residual_rows(
+                        residual_rows,
+                        box_key=box_key,
+                        model_key="BTKP1" if bt_key == "BT_kp1" else "BTKP10",
+                        label=bt_config["bt_label"],
+                        snapshot=snap,
+                        redshift=box_bt_z,
+                        k_values=k_bt[bt_resid_valid],
+                        p_sim=p_bt[bt_resid_valid],
+                        p_theory=bt_theory_binned[bt_resid_valid],
+                        source_file=bt_path,
+                    )
 
                 ax_top.loglog(
                     k_bt,
@@ -442,23 +598,54 @@ def main():
                 )
         ax_ratio.axhline(1.0, color="0.45", linestyle=":", linewidth=0.8)
         mark_reliability(ax_top, ax_ratio, annotate=(idx == 0))
+        for box_key, ax_residual in residual_axes.items():
+            ax_residual.axhline(1.0, color="0.45", linestyle=":", linewidth=0.8)
+            mark_residual_reliability(ax_residual, box_key)
+            panel_label(
+                ax_residual,
+                rf"${box_key}\,h^{{-1}}\,\mathrm{{Mpc}}$",
+                loc=(0.97, 0.84),
+                ha="right",
+                fontsize=6.7,
+            )
 
         ax_top.set_xlim(1e-2, 1e3)
         ax_top.set_ylim(1e-5, 1e5)
         ax_ratio.set_ylim(0.0, 7.2)
+        for box_key, ax_residual in residual_axes.items():
+            values = np.asarray(residual_values[box_key], dtype=float)
+            values = values[np.isfinite(values) & (values > 0)]
+            if len(values):
+                span = max(0.45, np.nanmax(values) - np.nanmin(values))
+                ax_residual.set_ylim(
+                    max(0.0, np.nanmin(values) - 0.08 * span),
+                    max(1.6, np.nanmax(values) + 0.08 * span),
+                )
+            else:
+                ax_residual.set_ylim(0.0, 2.0)
         format_axes(ax_top)
         format_axes(ax_ratio)
+        for ax_residual in residual_axes.values():
+            format_axes(ax_residual)
 
         if col == 0:
             ax_top.set_ylabel(r"$P(k)\,[(\mathrm{Mpc}/h)^3]$")
             ax_ratio.set_ylabel("BT/PL")
+            ax_residual_25.set_ylabel(r"sim/HM")
+            ax_residual_256.set_ylabel(r"sim/HM")
         else:
             ax_top.tick_params(labelleft=False)
             ax_ratio.tick_params(labelleft=False)
+            ax_residual_25.tick_params(labelleft=False)
+            ax_residual_256.tick_params(labelleft=False)
         if row == 1:
-            ax_ratio.set_xlabel(r"$k\,[h\,\mathrm{Mpc}^{-1}]$")
+            ax_residual_256.set_xlabel(r"$k\,[h\,\mathrm{Mpc}^{-1}]$")
+            ax_ratio.tick_params(labelbottom=False)
+            ax_residual_25.tick_params(labelbottom=False)
         else:
             ax_ratio.tick_params(labelbottom=False)
+            ax_residual_25.tick_params(labelbottom=False)
+            ax_residual_256.tick_params(labelbottom=False)
 
         panel_label(
             ax_top,
@@ -499,7 +686,9 @@ def main():
                 handlelength=1.5,
             )
 
-    save_publication_figure(fig, OUTPUT_PATH)
+    write_residual_table(residual_rows, POWER_RESIDUAL_CSV_PATH)
+    fig.savefig(OUTPUT_PATH, dpi=120, bbox_inches=None)
+    plt.close(fig)
     print(f"Saved {OUTPUT_PATH}")
     print("Sources:")
     for path in sorted(set(source_paths)):

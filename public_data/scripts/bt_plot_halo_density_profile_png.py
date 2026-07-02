@@ -109,8 +109,8 @@ THEORY_CONCENTRATION_MODEL = "diemer19"
 THEORY_CONCENTRATION_LABEL = "Diemer19"
 THEORY_PS_SPECS = [
     ("PL", {"model": "eisenstein98_pl"}),
-    ("BT(soft)", {"model": "eisenstein98_bt"}),
-    ("BT(deep)", {"model": "eisenstein98_bt_soft"}),
+    ("BTKP1", {"model": "eisenstein98_bt"}),
+    ("BTKP10", {"model": "eisenstein98_bt_soft"}),
 ]
 
 # ===================================================
@@ -304,7 +304,7 @@ def plot_halo_profiles(cdm_data, bt_data, bt_kp10_data):
     )
 
     colors = [JOURNAL_COLORS["black"], JOURNAL_COLORS["blue"], JOURNAL_COLORS["green"]]
-    labels = ['PL', 'BT(soft)', 'BT(deep)']
+    labels = ['PL', 'BTKP1', 'BTKP10']
     model_items = list(zip([cdm_data, bt_data, bt_kp10_data], colors, labels))
     stack_legend_handles = [
         Line2D([0], [0], color=colors[0], linestyle='none', marker='o',
@@ -316,8 +316,8 @@ def plot_halo_profiles(cdm_data, bt_data, bt_kp10_data):
     ]
     stack_legend_labels = [
         'PL median-c stack',
-        'BT(soft) median-c stack',
-        'BT(deep) median-c stack',
+        'BTKP1 median-c stack',
+        'BTKP10 median-c stack',
     ]
     theory_legend_handles = [
         Line2D([0], [0], color=colors[0], linestyle='--', linewidth=1.0),
@@ -327,8 +327,8 @@ def plot_halo_profiles(cdm_data, bt_data, bt_kp10_data):
     ]
     theory_legend_labels = [
         f'PL {THEORY_CONCENTRATION_LABEL} theory',
-        f'BT(soft) {THEORY_CONCENTRATION_LABEL} theory',
-        f'BT(deep) {THEORY_CONCENTRATION_LABEL} theory',
+        f'BTKP1 {THEORY_CONCENTRATION_LABEL} theory',
+        f'BTKP10 {THEORY_CONCENTRATION_LABEL} theory',
         r'$\epsilon/R_{200m}$ marker',
     ]
 
@@ -397,7 +397,7 @@ def plot_halo_profiles(cdm_data, bt_data, bt_kp10_data):
 
         pl_profile = panel_profiles.get('PL')
         if pl_profile is not None:
-            for label, color in [('BT(soft)', colors[1]), ('BT(deep)', colors[2])]:
+            for label, color in [('BTKP1', colors[1]), ('BTKP10', colors[2])]:
                 bt_profile = panel_profiles.get(label)
                 if bt_profile is None:
                     continue
@@ -423,7 +423,7 @@ def plot_halo_profiles(cdm_data, bt_data, bt_kp10_data):
         theory_pl = theory_profiles.get('PL')
         if theory_pl is not None:
             x_pl, rho_pl = theory_pl
-            for label, color in [('BT(soft)', colors[1]), ('BT(deep)', colors[2])]:
+            for label, color in [('BTKP1', colors[1]), ('BTKP10', colors[2])]:
                 theory_bt = theory_profiles.get(label)
                 if theory_bt is None:
                     continue
