@@ -117,8 +117,6 @@ Among the BT models considered here, the \(k_p=1\,h\,{\rm Mpc}^{-1}\), \(m_s=1.5
 \maketitle
 
 \section{Introduction\label{intro}}
-%\Tk{need to explain the standard model: power law and cold dark matter.}
-
 \revisionblue{On large scales, the standard \(\Lambda\)CDM model combines constant dark energy and cold dark matter with a nearly scale-invariant, close-to-power-law primordial power spectrum, \(P_{\rm prim}(k)\propto k^{n_s}\) with \(n_s\simeq0.965\). This framework is consistent with measurements of the cosmic microwave background, galaxy clustering, and the Lyman-\(\alpha\) forest \citep{Planck20CMB,Blanton17SDSSsurvey,Chabanier19LyalphaPS}. However, the small-scale ($\ll {\rm Mpc}$) primordial power spectrum is less directly constrained. Small-scale probes include satellite abundance and density profiles \citep{Dekker25DwarfPPS,Esteban2024lumpyDM}, strong-lensing flux-ratio and substructure measurements \citep{Gilman22SubgalacticPPS}, high-redshift galaxy counts, and future 21-cm observations \citep{Munoz20SmallScale21cm}. \Jc{These small scale tensions do not imply a small scale enhanced BT model, can consider others like flux ratio anomaly, over concentrated subhalos in strong lensing, JWST, and too-many-satellites problem. See the references I cited in the strong lensing paper's first paragraph.}}
 \Tk{Nevertheless, currently, there are not enough numerical cosmological simulations that have different small-scale primordial power spectrum that verify the (semi)-analytic models applied in these studies.}
 
@@ -175,7 +173,7 @@ where \(T(k)\) is the linear transfer function and \(D(z)\) is the linear growth
 
 %Equivalently, the transfer-function ratio needed to realize Eq.~\eqref{eq:bt_input_power} is \(T_{\rm BT}(k)/T_{\rm PL}(k)=1\) for \(k\le k_p\) and \(T_{\rm BT}(k)/T_{\rm PL}(k)=(k/k_p)^{(m_s-n_s)/2}\) for \(k>k_p\). In this work the large-scale normalization is kept fixed; only the effective small-scale shape above $k_p$ is varied, so the model description can be specified by $k_p$ and $m_s$ for the present comparison. The BT spectra are therefore controlled transfer-function modifications of the initial-condition matter spectrum. The parameters $k_p$ and $m_s$ should not be interpreted as a complete inflationary parameterization or as independently constrained curvature-spectrum parameters in this paper.
 
-\revisionblue{We compare a standard power-law primordial spectrum, denoted PL, with two broken-power-law BT models that we label \BTKPone{} and \BTKPten{}. Both BT models use \(m_s=1.5\), while \BTKPone{} has \(k_p=1\,h\,{\rm Mpc}^{-1}\) and \BTKPten{} has \(k_p=10\,h\,{\rm Mpc}^{-1}\). These names are labels used in this paper; they should not be read as identical to naming choices in any particular previous study. \BTKPone{} affects a broader range of mildly nonlinear scales, whereas \BTKPten{} confines the enhancement to smaller scales. This pair of models allows us to test how nonlinear structure formation changes with the range of modes whose primordial power is enhanced.} \Tk{These should be mentioned in the Theoretical overview section.}
+\revisionblue{We compare a standard power-law primordial spectrum, denoted PL, with two broken-power-law BT models that we label \BTKPone{} and \BTKPten{}. Both BT models use \(m_s=1.5\), while \BTKPone{} has \(k_p=1\,h\,{\rm Mpc}^{-1}\) and \BTKPten{} has \(k_p=10\,h\,{\rm Mpc}^{-1}\). These names are labels used in this paper; they should not be read as identical to naming choices in any particular previous study. \BTKPone{} affects a broader range of mildly nonlinear scales, whereas \BTKPten{} confines the enhancement to smaller scales. This pair of models allows us to test how nonlinear structure formation changes with the range of modes whose primordial power is enhanced.}
 
 \section{Numerical Methods}
 \label{sec:numerical}
@@ -187,7 +185,6 @@ This section describes the numerical setup, including the generation of matched 
 
 \revisionblue{All simulations use the following Planck 2018 background cosmology \citep{Planck20CMB}:}
 
-%\Tk{need to cite the reference for these parameters. I assume it is from Planck?} \Tk{also this section should move to numerical method?}
 \begin{enumerate}
     \item \revisionblue{Density parameters: \(\Omega_{\rm m}=0.3153\), \(\Omega_{\rm b}=0.0493\), and \(\Omega_\Lambda=0.6847\).}
     \item \revisionblue{Hubble constant: \(H_0=67.36\,{\rm km\,s^{-1}\,Mpc^{-1}}\), corresponding to \(h\equiv H_0/(100\,{\rm km\,s^{-1}\,Mpc^{-1}})=0.6736\).}
@@ -223,7 +220,7 @@ We evolve the initial conditions with the cosmological $N$-body code \small{SWIF
 Table~\ref{tab:simulation_parameters} defines the controlled simulation set. The main PL and BT simulations use the same box size, particle number, mass resolution, force softening, and matched initial phases. This design isolates the effect of the BT enhancement in the primordial power spectrum as generated through MonofonIC, not a change in the dynamical evolution algorithm.
 
 \begin{table*}[t]
-\caption{Combined primordial-power model and cosmological \(N\)-body simulation parameters. The \(k_p\) and \(m_s\) columns specify the PL/BT primordial power-spectrum model, while \(N_{\rm p}\), \(L_{\rm box}\), \(m_{\rm DM}\), and \(\epsilon_{\rm Pl}\) specify the numerical realization. The main comparison uses the matched PL, \BTKPone{}, and \BTKPten{} \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs. Additional BT and PL runs provide numerical \revisionblue{tests}. Here \(m_{\rm DM}\) is measured from the snapshot mass table, and \(\epsilon_{\rm Pl}\) is the Plummer-equivalent softening length in physical kpc at \(z=0\). \revisionblue{The Set column separates the main science runs, BT box-size tests, low-resolution tests, and volume tests.} \Jc{For the set column, I think the name can be more understandable; e.g. for the "Resolution" I think you are refering resolution check? Maybe it is better to call it something like Low-Res} \Tk{Since ms are the same, we can call them BT kp=1 and BT kp=10.}}
+\caption{Combined primordial-power model and cosmological \(N\)-body simulation parameters. The \(k_p\) and \(m_s\) columns specify the PL/BT primordial power-spectrum model, while \(N_{\rm p}\), \(L_{\rm box}\), \(m_{\rm DM}\), and \(\epsilon_{\rm Pl}\) specify the numerical realization. The main comparison uses the matched PL, \BTKPone{}, and \BTKPten{} \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs. Additional BT and PL runs provide numerical \revisionblue{tests}. Here \(m_{\rm DM}\) is measured from the snapshot mass table, and \(\epsilon_{\rm Pl}\) is the Plummer-equivalent softening length in physical kpc at \(z=0\). \revisionblue{The Set column separates the main science runs, BT box-size tests, low-resolution tests, and volume tests.}}
 \label{tab:simulation_parameters}
 \label{tab:Params_all_models}
 \centering
@@ -475,7 +472,7 @@ The authors acknowledge the computational resources and software infrastructure 
 \label{app:trusted_ranges}
 
 \begin{table*}[t]
-\caption{Adopted numerical interpretation ranges for the main \revisionblue{statistics}\Jc{"diagnostics" seem to be strange here}. These \revisionblue{ranges} define the intervals used for quantitative statements in the text; plotted points outside the conservative range, when shown, are used only as qualitative context.}
+\caption{Adopted numerical interpretation ranges for the main \revisionblue{statistics}. These \revisionblue{ranges} define the intervals used for quantitative statements in the text; plotted points outside the conservative range, when shown, are used only as qualitative context.}
 \label{tab:trusted_ranges}
 \centering
 \begingroup
@@ -489,7 +486,7 @@ The authors acknowledge the computational resources and software infrastructure 
 \tabcell{0.18\textwidth}{Assembly histories} & \tabcell{0.17\textwidth}{\(M_{\rm FOF}(z=0)\), \(z_{1/2}\), \(\Gamma\)} & \tabcell{0.20\textwidth}{Quoted trends use \(M_{\rm FOF}(z=0)\gtrsim10^9\,M_\odot\)} & \tabcell{0.36\textwidth}{Same-\texttt{TrackId} FOF histories are used without gap filling for \(z_{1/2}\); the mass-accretion-rate \revisionblue{measurement} also shows a cumulative-envelope variant to indicate the effect of temporary FOF mass decreases.} \\
 \tabcell{0.18\textwidth}{Direct radial halo density profiles} & \tabcell{0.17\textwidth}{Particle radial profiles in \(M_{200m}\) bins} & \tabcell{0.20\textwidth}{Plotted bins use \(10^{10}\)--\(10^{11.5}\,M_\odot\)} & \tabcell{0.36\textwidth}{Profiles are measured from particle radial stacks and compared with Diemer et al. NFW reference curves; the gray region marks the plotted convergence criterion.} \\
 \tabcell{0.18\textwidth}{Concentration--mass relation} & \tabcell{0.17\textwidth}{\(M_{200c}\), \(c_{200c}\)} & \tabcell{0.20\textwidth}{Plotted points require \(N_{\rm DM}\ge100\); quoted low-mass ratios use \(10^9\)--\(10^{9.5}\,M_\odot\)} & \tabcell{0.36\textwidth}{Concentrations must be finite and positive, with \(c_{200c}<500\); the quoted bin is near or above the \(\simeq500\)-particle scale.} \\
-\tabcell{0.18\textwidth}{Nonlinear matter power spectrum} & \tabcell{0.17\textwidth}{\revisionblue{\(P(k)\), \(P_{\rm BT}/P_{\rm PL}\)}\Jc{Do you mean P(k) here?}} & \tabcell{0.20\textwidth}{Matched-box ratios only; conservative mesh scales are \(k_{\rm Ny}\simeq129\) and \(12.6\,h\,{\rm Mpc}^{-1}\) for the 25 and \(256\,h^{-1}{\rm Mpc}\) boxes} & \tabcell{0.36\textwidth}{Matter power-spectrum statistic measured from the particle density field with no halo-particle cut; high-\(k\) ratios are not \revisionblue{used as} a calibrated nonlinear-power fitting formula.} \\
+\tabcell{0.18\textwidth}{Nonlinear matter power spectrum} & \tabcell{0.17\textwidth}{\revisionblue{\(P(k)\), \(P_{\rm BT}/P_{\rm PL}\)}} & \tabcell{0.20\textwidth}{Matched-box ratios only; conservative mesh scales are \(k_{\rm Ny}\simeq129\) and \(12.6\,h\,{\rm Mpc}^{-1}\) for the 25 and \(256\,h^{-1}{\rm Mpc}\) boxes} & \tabcell{0.36\textwidth}{Matter power-spectrum statistic measured from the particle density field with no halo-particle cut; high-\(k\) ratios are not \revisionblue{used as} a calibrated nonlinear-power fitting formula.} \\
 \bottomrule
 \end{tabular}
 \endgroup
