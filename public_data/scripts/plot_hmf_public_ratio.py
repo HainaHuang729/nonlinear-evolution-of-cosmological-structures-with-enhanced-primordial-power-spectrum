@@ -39,9 +39,9 @@ HMF_N20_MASS_MSUN = 20.0 * MAIN_PARTICLE_MASS_MSUN
 HMF_CATALOG_CUT_MSUN = 1.0e8
 RATIO_TICKS = np.array([0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000.0])
 RATIO_LABEL_TICKS = np.array([0.1, 1, 10, 100, 1000.0])
-BT_PL_LABEL_TICKS = np.array([0.1, 1, 10, 100, 1000.0])
-SIM_REED_YLIM = (0.2, 30.0)
-SIM_REED_LABEL_TICKS = np.array([0.3, 1, 3, 10, 30.0])
+BT_PL_LABEL_TICKS = np.array([0.1, 1, 10, 1000.0])
+SIM_REED_YLIM = (0.5, 1.5)
+SIM_REED_LABEL_TICKS = np.array([0.5, 1.0, 1.5])
 
 
 def normalize_snap(value):
@@ -142,6 +142,17 @@ def set_log_ticks(ax, ratio=False, ratio_ticks=None):
         ax.tick_params(axis="y", which="major", labelsize=8.0, pad=1.0)
         for tick_label in ax.get_yticklabels():
             tick_label.set_verticalalignment("center")
+    else:
+        ymin, ymax = ax.get_ylim()
+        y_ticks = 10.0 ** np.arange(np.floor(np.log10(ymin)), np.ceil(np.log10(ymax)) + 1)
+        y_ticks = y_ticks[(y_ticks >= ymin) & (y_ticks <= ymax)]
+        if y_ticks.size > 5:
+            keep = np.linspace(0, y_ticks.size - 1, 5).round().astype(int)
+            y_ticks = y_ticks[np.unique(keep)]
+        ax.yaxis.set_major_locator(FixedLocator(y_ticks))
+        ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+        ax.yaxis.set_minor_locator(LogLocator(base=10, subs=(2, 5), numticks=40))
+        ax.yaxis.set_minor_formatter(NullFormatter())
 
 
 def ratio_ylim(values):
@@ -259,7 +270,7 @@ def main():
         if col == 0:
             ax.set_ylabel(r"$dn/d\log_{10}M\,[{\rm Mpc}^{-3}]$", fontweight="bold", labelpad=5)
             ax_bt.set_ylabel(r"$f_{\rm BT}/f_{\rm PL}$", fontweight="bold", labelpad=5)
-            ax_model.set_ylabel(r"$\mathrm{sim}/\mathrm{Reed07}$", fontweight="bold", labelpad=5)
+            ax_model.set_ylabel(r"$\mathrm{Sim}/\mathrm{Reed07}$", fontweight="bold", labelpad=5)
         else:
             ax.tick_params(labelleft=False)
             ax_bt.tick_params(labelleft=False)

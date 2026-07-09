@@ -26,6 +26,9 @@ import pandas as pd
 
 
 SCRIPT_PATH = Path(__file__).resolve()
+ARTICLE_ROOT = next((p for p in SCRIPT_PATH.parents if (p / "main.tex").exists()), SCRIPT_PATH.parents[2])
+PUBLIC_MASS_ACCRETION_DIR = ARTICLE_ROOT / "public_data" / "figure_data" / "mass_accretion"
+PUBLIC_BYBIN_PATH = PUBLIC_MASS_ACCRETION_DIR / "mass_accretion_rate_bybin.csv"
 PROJECT_BIG_SIM_ENV = os.environ.get("PROJECT_BIG_SIM_ROOT")
 _ROOT_CANDIDATES: list[Path] = []
 if PROJECT_BIG_SIM_ENV:
@@ -92,13 +95,13 @@ MODEL_SPECS = {
         / "PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
     },
     "BT_soft": {
-        "label": "BTKP1",
+        "label": r"BT $k_p=1$",
         "color": JOURNAL_COLORS["blue"],
         "dir": DATA_ROOT
         / "bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
     },
     "BT_deep": {
-        "label": "BTKP10",
+        "label": r"BT $k_p=10$",
         "color": JOURNAL_COLORS["green"],
         "dir": DATA_ROOT
         / "bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
@@ -115,7 +118,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Compute Gamma=dlnM/dlna from same-TrackId Warren-corrected FOF histories "
-            "for PL, BT_soft, and BT_deep."
+            "for PL, BTKP1, and BTKP10."
         )
     )
     parser.add_argument(
@@ -137,13 +140,13 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-dir",
-        default=os.environ.get("BT_MAR_OUTPUT_DIR", "paper/data/tables"),
-        help="Directory for CSV outputs. Default: paper/data/tables.",
+        default=os.environ.get("BT_MAR_OUTPUT_DIR", str(PUBLIC_MASS_ACCRETION_DIR)),
+        help="Directory for CSV outputs. Default: public_data/figure_data/mass_accretion.",
     )
     parser.add_argument(
         "--figure-dir",
-        default=os.environ.get("BT_MAR_FIGURE_DIR", "paper/figures"),
-        help="Directory for the PNG output. Default: paper/figures.",
+        default=os.environ.get("BT_MAR_FIGURE_DIR", str(ARTICLE_ROOT)),
+        help="Directory for the PNG output. Default: article root.",
     )
     parser.add_argument(
         "--force",
@@ -469,62 +472,78 @@ def set_row_ylim(axes: np.ndarray, data: pd.DataFrame) -> None:
 
 def plot_bybin(bybin: pd.DataFrame, figure_path: Path) -> None:
     rep_bins = representative_mass_bins()
-    methods = ["raw_adjacent", "cumulative_envelope"]
-    plot_data = bybin.loc[bybin["mass_bin"].isin(rep_bins)]
-    z_values = plot_data["z_mid"].to_numpy(dtype=float)
+    method = "raw_adjacent"
+    plot_data = bybin.loc[(bybin["method"] == method) & bybin["mass_bin"].isin(rep_bins)].copy()
+    plot_data["z_plot"] = 1.0 / plot_data["a_mid"].to_numpy(dtype=float) - 1.0
+    z_values = plot_data["z_plot"].to_numpy(dtype=float)
     z_values = z_values[np.isfinite(z_values)]
     z_left = float(np.nanmax(z_values) * 1.02) if z_values.size else 1.0
     z_right = 0.0
     apply_journal_style(base_fontsize=8.9)
     fig, axes = plt.subplots(
-        len(methods),
-        len(rep_bins),
-        figsize=(7.25, 4.85),
+        2,
+        2,
+        figsize=(5.9, 5.9),
         sharex=True,
+        sharey=True,
         squeeze=False,
     )
 
-    for row, method in enumerate(methods):
-        row_data = bybin.loc[(bybin["method"] == method) & (bybin["mass_bin"].isin(rep_bins))]
-        for col, bin_id in enumerate(rep_bins):
-            ax = axes[row, col]
-            ax.axhline(0.0, color="0.60", linewidth=0.7, linestyle=":")
-            panel = row_data.loc[row_data["mass_bin"] == bin_id]
-            for model, info in MODEL_SPECS.items():
-                sub = panel.loc[panel["model"] == model].sort_values("z_mid")
-                if sub.empty:
-                    continue
-                x = sub["z_mid"].to_numpy(dtype=float)
-                y = sub["Gamma_median"].to_numpy(dtype=float)
-                lo = sub["Gamma_q16"].to_numpy(dtype=float)
-                hi = sub["Gamma_q84"].to_numpy(dtype=float)
-                color = str(info["color"])
-                ax.plot(x, y, color=color, linewidth=1.25, label=str(info["label"]))
-                ax.fill_between(x, lo, hi, color=color, alpha=0.15, linewidth=0.0)
-            if row == 0:
-                ax.set_title(mass_bin_title(bin_id), fontsize=7.8)
-            if col == 0:
-                ax.set_ylabel(METHOD_LABELS[method] + "\n" + r"$\Gamma=d\ln M/d\ln a$")
-            if row == len(methods) - 1:
-                ax.set_xlabel("Redshift z")
-            ax.set_xlim(z_left, z_right)
-            format_axes(ax, grid=True)
-        set_row_ylim(axes[row, :], row_data)
+    row_data = plot_data
+    for panel_idx, bin_id in enumerate(rep_bins):
+        row, col = divmod(panel_idx, 2)
+        ax = axes[row, col]
+        ax.axhline(0.0, color="0.60", linewidth=0.7, linestyle=":")
+        panel = row_data.loc[row_data["mass_bin"] == bin_id]
+        for model, info in MODEL_SPECS.items():
+            sub = panel.loc[panel["model"] == model].sort_values("z_plot")
+            if sub.empty:
+                continue
+            x = sub["z_plot"].to_numpy(dtype=float)
+            y = sub["Gamma_median"].to_numpy(dtype=float)
+            lo = sub["Gamma_q16"].to_numpy(dtype=float)
+            hi = sub["Gamma_q84"].to_numpy(dtype=float)
+            color = str(info["color"])
+            ax.plot(x, y, color=color, linewidth=1.25, label=str(info["label"]))
+            ax.fill_between(x, lo, hi, color=color, alpha=0.15, linewidth=0.0)
+        ax.xaxis.set_label_position("bottom")
+        ax.xaxis.tick_bottom()
+        ax.tick_params(axis="x", top=True, labeltop=False, bottom=True, labelbottom=True, pad=2)
+        ax.text(
+            0.04,
+            0.94,
+            mass_bin_title(bin_id),
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=7.8,
+            bbox=dict(facecolor="white", edgecolor="none", alpha=0.78, pad=0.8),
+        )
+        if col == 0:
+            ax.set_ylabel(r"$\Gamma=d\ln M/d\ln a$")
+        if row == 1:
+            ax.set_xlabel("Redshift z", labelpad=3)
+        else:
+            ax.tick_params(axis="x", labelbottom=False)
+        ax.set_xlim(z_left, z_right)
+        ax.set_box_aspect(1)
+        format_axes(ax, grid=True)
+    set_row_ylim(axes.ravel(), row_data)
 
     handles, labels = axes[0, 0].get_legend_handles_labels()
     if handles:
-        fig.legend(
+        axes[0, 0].legend(
             handles,
             labels,
-            loc="upper center",
-            bbox_to_anchor=(0.53, 1.005),
-            ncol=3,
+            loc="upper right",
+            ncol=1,
             frameon=False,
-            fontsize=7.8,
-            handlelength=1.8,
-            columnspacing=1.3,
+            fontsize=7.2,
+            handlelength=1.6,
+            borderpad=0.1,
+            labelspacing=0.25,
         )
-    fig.subplots_adjust(top=0.90, bottom=0.11, left=0.095, right=0.99, hspace=0.16, wspace=0.10)
+    fig.subplots_adjust(top=0.985, bottom=0.085, left=0.13, right=0.99, hspace=0.08, wspace=0.08)
     save_publication_figure(fig, figure_path)
 
 
@@ -536,7 +555,10 @@ def main() -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     figure_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.combine_glob:
+    using_public_bybin = PUBLIC_BYBIN_PATH.exists() and not args.combine_glob and os.environ.get("BT_MAR_USE_CATALOG", "0") != "1"
+    if using_public_bybin:
+        bybin = pd.read_csv(PUBLIC_BYBIN_PATH)
+    elif args.combine_glob:
         import glob
 
         paths = [Path(path) for path in sorted(glob.glob(args.combine_glob))]
@@ -576,8 +598,10 @@ def main() -> None:
     figure_path = figure_dir / "mass-accretion-rate-trackid.png"
 
     summary = make_summary(bybin)
-    bybin.to_csv(bybin_path, index=False)
-    summary.to_csv(summary_path, index=False)
+    if not using_public_bybin or bybin_path.resolve() != PUBLIC_BYBIN_PATH.resolve():
+        bybin.to_csv(bybin_path, index=False)
+    if not using_public_bybin or summary_path.resolve() != (PUBLIC_MASS_ACCRETION_DIR / "mass_accretion_rate_summary.csv").resolve():
+        summary.to_csv(summary_path, index=False)
     if not args.no_plot:
         plot_bybin(bybin, figure_path)
 
@@ -594,7 +618,7 @@ def main() -> None:
             idx = focus["BT_soft_minus_PL_Gamma_median"].abs().idxmax()
             row = focus.loc[idx]
             print(
-                f"{method}: largest |BT_soft-PL| among representative bins = "
+                f"{method}: largest |BTKP1-PL| among representative bins = "
                 f"{row['BT_soft_minus_PL_Gamma_median']:.3g} at mass_bin={int(row['mass_bin'])}, "
                 f"z_mid={row['z_mid']:.3g}",
                 flush=True,

@@ -63,7 +63,17 @@ MODEL_SPECS = [
     ),
 ]
 
-RADIAL_MAX_HALOS_PER_BIN = int(os.environ.get("RADIAL_MAX_HALOS_PER_BIN", "12"))
+LEGACY_CACHE_LABELS = {
+    "BTKP1": "BTsoft",
+    "BTKP10": "BTdeep",
+}
+DISPLAY_LABELS = {
+    "PL": "PL",
+    "BTKP1": r"BT $k_p=1$",
+    "BTKP10": r"BT $k_p=10$",
+}
+
+RADIAL_MAX_HALOS_PER_BIN = int(os.environ.get("RADIAL_MAX_HALOS_PER_BIN", "100"))
 RADIAL_BINS = np.logspace(-2.0, 0.0, 21)
 RADIAL_X = np.sqrt(RADIAL_BINS[:-1] * RADIAL_BINS[1:])
 RADIAL_BOOTSTRAPS = int(os.environ.get("RADIAL_BOOTSTRAPS", "160"))
@@ -293,10 +303,11 @@ def profile_cache_path(label, target_mass):
     if RADIAL_PROFILE_CACHE_DIR is None:
         return None
     sample_tag = "centrals" if RADIAL_CENTRALS_ONLY else "all"
+    cache_label = LEGACY_CACHE_LABELS.get(label, label)
     return (
         RADIAL_PROFILE_CACHE_DIR
         / (
-            f"{safe_label(label)}_M{target_mass:.0e}_N{RADIAL_MAX_HALOS_PER_BIN}_"
+            f"{safe_label(cache_label)}_M{target_mass:.0e}_N{RADIAL_MAX_HALOS_PER_BIN}_"
             f"B{RADIAL_BOOTSTRAPS}{power_threshold_cache_tag()}{power_reference_cache_tag()}_{sample_tag}.npz"
         )
     )
@@ -355,7 +366,10 @@ def plot_trial():
     apply_journal_style(base_fontsize=11.2)
     catalogs = {}
     for label, soap_path, _, _ in MODEL_SPECS:
-        catalogs[label] = load_soap_catalog(soap_path)
+        have_all_cached = RADIAL_PROFILE_CACHE_DIR is not None and all(
+            load_cached_profile(label, target_mass)[0] is not None for target_mass in TARGET_MASSES
+        )
+        catalogs[label] = None if have_all_cached else load_soap_catalog(soap_path)
 
     n_panels = len(TARGET_MASSES)
     n_cols = min(PANEL_COLUMNS, n_panels)
@@ -524,7 +538,7 @@ def plot_trial():
     )
     axes[0, 0].legend(
         stack_handles,
-        ["PL", "BTKP1", "BTKP10"],
+        [DISPLAY_LABELS["PL"], DISPLAY_LABELS["BTKP1"], DISPLAY_LABELS["BTKP10"]],
         title=sample_label_text(all_sample_counts),
         title_fontsize=6.1,
         **legend_kwargs,
@@ -532,9 +546,9 @@ def plot_trial():
     axes[0, min(1, n_cols - 1)].legend(
         theory_handles,
         [
-            "PL",
-            "BTKP1",
-            "BTKP10",
+            DISPLAY_LABELS["PL"],
+            DISPLAY_LABELS["BTKP1"],
+            DISPLAY_LABELS["BTKP10"],
             rf"{POWER_CRITERION_LABEL} $\kappa={POWER_KAPPA_THRESHOLD:g}$",
         ],
         title=f"{THEORY_CONCENTRATION_LABEL} NFW",

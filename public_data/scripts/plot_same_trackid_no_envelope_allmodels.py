@@ -52,6 +52,9 @@ LOCAL_OUT_FIG = REPO_ROOT / "halfmass-redshift-trackid-no-envelope.png"
 SNAPS = [f"{i:04d}" for i in range(21, 57)]
 MASS_EDGES_CODE = np.logspace(-2.0, 2.0, 21)
 MASS_UNIT_MSUN = 1.0e10
+MAIN_PARTICLE_MASS_MSUN = 1.89e6
+N20_MASS_MSUN = 20.0 * MAIN_PARTICLE_MASS_MSUN
+N100_MASS_MSUN = 100.0 * MAIN_PARTICLE_MASS_MSUN
 MIN_HALOS = 20
 
 MODELS = {
@@ -62,14 +65,14 @@ MODELS = {
         "dir": PROJECT / "data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
     },
     "BT_soft": {
-        "label": "BTKP1",
+        "label": r"BT $k_p=1$",
         "color": JOURNAL_COLORS["blue"],
         "marker": "^",
         "dir": PROJECT
         / "data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
     },
     "BT_deep": {
-        "label": "BTKP10",
+        "label": r"BT $k_p=10$",
         "color": JOURNAL_COLORS["green"],
         "marker": "s",
         "dir": PROJECT
@@ -280,6 +283,9 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
         gridspec_kw={"height_ratios": [2.1, 1.0], "hspace": 0.05},
     )
     mgrid = np.logspace(8, 12, 300)
+    for axis in (ax, rax):
+        axis.axvspan(N20_MASS_MSUN, N100_MASS_MSUN, color="0.82", alpha=0.24, lw=0, zorder=0)
+        axis.axvline(N100_MASS_MSUN, color="0.45", linestyle="--", linewidth=0.85, alpha=0.9, zorder=1)
     ax.plot(mgrid, bk09_original(mgrid), color="0.38", linewidth=1.45, linestyle="-.", label=r"BK09")
     ax.plot(
         mgrid,
@@ -332,6 +338,12 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
 
 
 def main() -> None:
+    if LOCAL_PUBLIC_POINTS.exists() and os.environ.get("HALFMASS_USE_CATALOG", "0") != "1":
+        points = pd.read_csv(LOCAL_PUBLIC_POINTS)
+        plot(points, OUT_PAPER)
+        print(OUT_PAPER)
+        return
+
     if not all(info["dir"].exists() for info in MODELS.values()):
         if not LOCAL_PUBLIC_POINTS.exists():
             raise FileNotFoundError(
