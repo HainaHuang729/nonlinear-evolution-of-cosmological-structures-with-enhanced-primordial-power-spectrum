@@ -119,7 +119,7 @@ We also compare the simulated mass functions and concentration--mass relations w
 \section{Introduction\label{intro}}
 \revisionblue{On large scales, the standard \(\Lambda\)CDM model combines constant dark energy and cold dark matter with a nearly scale-invariant, close-to-power-law primordial power spectrum, \(P_{\rm prim}(k)\propto k^{n_s}\) with \(n_s\simeq0.965\). This framework is consistent with measurements of the cosmic microwave background, galaxy clustering, and the Lyman-\(\alpha\) forest \citep{Planck20CMB,Blanton17SDSSsurvey,Chabanier19LyalphaPS}. However, the small-scale ($\ll {\rm Mpc}$) primordial power spectrum is less directly constrained. Small-scale probes include satellite statistics and density profiles \citep{Wu25BT,Dekker25DwarfPPS,Esteban2024lumpyDM,Nadler2025enhanced}, strong-lensing flux-ratio and substructure measurements \citep{Gilman22SubgalacticPPS}, high-redshift galaxy counts, and future 21-cm observations \citep{Munoz20SmallScale21cm}.}
 
-However, dedicated numerical simulations of enhanced small-scale power spectrum are still limited, so the halo response to different small-scale primordial spectra is not yet well tested.
+\revisionblue{Previous studies have simulated enhanced small-scale power in high-redshift cosmological volumes and in zoom-in models of Milky Way--mass environments \citep{Hirano15BlueTiltedPPS,Wu25BT,Nadler2025enhanced}. However, systematic comparisons of halo abundance, assembly histories, internal structure, and nonlinear matter power across matched cosmological volumes remain limited.}
 \Tk{ For simulations, We have Jianhao paper and \cite{Nadler2025enhanced} (but for zoom-in) and \cite{Hirano15BlueTiltedPPS} (for high redshift) also has simulations, although they are not looking into halo statistics in detail.}
 
 
@@ -221,26 +221,28 @@ We evolve the initial conditions with the cosmological $N$-body code \small{SWIF
 Table~\ref{tab:simulation_parameters} defines the controlled simulation set. The main PL and BT simulations use the same box size, particle number, mass resolution, force softening, and matched initial phases. This design isolates the effect of the BT enhancement in the primordial power spectrum as generated through MonofonIC, not a change in the dynamical evolution algorithm.
 
 \begin{table*}[t]
-\caption{Combined primordial-power model and cosmological \(N\)-body simulation parameters. The \(k_p\) and \(m_s\) columns specify the PL/BT primordial power-spectrum model, while \(N_{\rm p}\), \(L_{\rm box}\), \(m_{\rm DM}\), and \(\epsilon_{\rm Pl}\) specify the numerical realization. The main comparison uses the matched PL, \BTKPone{}, and \BTKPten{} \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs. Additional BT and PL runs provide numerical tests. Here \(m_{\rm DM}\) is measured from the snapshot mass table, and \(\epsilon_{\rm Pl}\) is the Plummer-equivalent softening length in physical kpc at \(z=0\). The Set column separates the main science runs, BT box-size tests, low-resolution tests, and volume tests.}
+\caption{Combined primordial-power model and cosmological \(N\)-body simulation parameters. The \(k_p\) and \(m_s\) columns specify the PL/BT primordial power-spectrum model, while \(N_{\rm p}\), \(L_{\rm box}\), \(m_{\rm DM}\), and \(\epsilon_{\rm Pl}\) specify the numerical realization. The main comparison uses the matched PL, \BTKPone{}, and \BTKPten{} \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs. Additional BT and PL runs provide numerical tests. Here \(m_{\rm DM}\) is measured from the snapshot mass table, and \(\epsilon_{\rm Pl}\) is the Plummer-equivalent softening length in physical kpc at \(z=0\). The Set column separates the main science runs, BT box-size tests, low-resolution tests, and volume tests. \revisionblue{The Appendix analysis column identifies runs whose simulation data are used directly in the FOF mass-function resolution and volume check (HMF res.) or in the alternative concentration-prescription comparisons (Conc. refs.).}}
 \label{tab:simulation_parameters}
 \label{tab:Params_all_models}
 \centering
 \begin{ruledtabular}
-\begin{tabular}{llcccccc}
-Set & Model/run & \(k_p\) & \(m_s\) & \(N_{\rm p}\) & \(L_{\rm box}\) & \(m_{\rm DM}\) & \(\epsilon_{\rm Pl}\) \\
- & & \([h\,{\rm Mpc}^{-1}]\) & & & \([h^{-1}\,{\rm Mpc}]\) & \([h^{-1}M_\odot]\) & \([{\rm kpc}]\) \\
+\begin{tabular}{llccccccc}
+Set & Model/run & \(k_p\) & \(m_s\) & \(N_{\rm p}\) & \(L_{\rm box}\) & \(m_{\rm DM}\) & \(\epsilon_{\rm Pl}\) & \revisionblue{Appendix analysis} \\
+ & & \([h\,{\rm Mpc}^{-1}]\) & & & \([h^{-1}\,{\rm Mpc}]\) & \([h^{-1}M_\odot]\) & \([{\rm kpc}]\) & \\
 \colrule
-Main & PL & -- & -- & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 \\
-Main & \BTKPone{} & 1 & 1.5 & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 \\
-Main & \BTKPten{} & 10 & 1.5 & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 \\
-BT box-size test & \BTKPone{}-5 & 1 & 1.5 & \(1024^3\) & 5 & \(1.02\times 10^4\) & 0.145 \\
-BT box-size test & \BTKPone{}-2.5 & 1 & 1.5 & \(1024^3\) & 2.5 & \(1.59\times 10^3\) & 0.072 \\
-Low-res test & PL-25-512 & -- & -- & \(512^3\) & 25 & \(1.02\times 10^7\) & 1.45 \\
-Low-res test & PL-25-256 & -- & -- & \(256^3\) & 25 & \(8.15\times 10^7\) & 2.90 \\
-Volume & PL-50-512 & -- & -- & \(512^3\) & 50 & \(8.15\times 10^7\) & 2.90 \\
-Volume & PL-128-1024 & -- & -- & \(1024^3\) & 128 & \(1.71\times 10^8\) & 3.71 \\
-Volume & PL-256-1024 & -- & -- & \(1024^3\) & 256 & \(1.37\times 10^9\) & 7.42 \\
-Volume & PL-256-512 & -- & -- & \(512^3\) & 256 & \(1.09\times 10^{10}\) & 14.85 \\
+Main & PL & -- & -- & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 & \revisionblue{HMF res.; Conc. refs.} \\
+Main & \BTKPone{} & 1 & 1.5 & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 & \revisionblue{Conc. refs.} \\
+Main & \BTKPten{} & 10 & 1.5 & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 & \revisionblue{Conc. refs.} \\
+BT box-size test & \BTKPone{}-5 & 1 & 1.5 & \(1024^3\) & 5 & \(1.02\times 10^4\) & 0.145 & \revisionblue{--} \\
+BT box-size test & \BTKPone{}-2.5 & 1 & 1.5 & \(1024^3\) & 2.5 & \(1.59\times 10^3\) & 0.072 & \revisionblue{--} \\
+Low-res test & PL-25-512 & -- & -- & \(512^3\) & 25 & \(1.02\times 10^7\) & 1.45 & \revisionblue{HMF res.} \\
+Low-res test & PL-25-256 & -- & -- & \(256^3\) & 25 & \(8.15\times 10^7\) & 2.90 & \revisionblue{HMF res.} \\
+Volume & PL-50-512 & -- & -- & \(512^3\) & 50 & \(8.15\times 10^7\) & 2.90 & \revisionblue{HMF res.} \\
+Volume & PL-128-1024 & -- & -- & \(1024^3\) & 128 & \(1.71\times 10^8\) & 3.71 & \revisionblue{--} \\
+Volume & PL-256-1024 & -- & -- & \(1024^3\) & 256 & \(1.37\times 10^9\) & 7.42 & \revisionblue{--} \\
+\revisionblue{Volume} & \revisionblue{\BTKPone{}-256} & \revisionblue{1} & \revisionblue{1.5} & \revisionblue{\(1024^3\)} & \revisionblue{256} & \revisionblue{\(1.37\times 10^9\)} & \revisionblue{7.42} & \revisionblue{--} \\
+\revisionblue{Volume} & \revisionblue{\BTKPten{}-256} & \revisionblue{10} & \revisionblue{1.5} & \revisionblue{\(1024^3\)} & \revisionblue{256} & \revisionblue{\(1.37\times 10^9\)} & \revisionblue{7.42} & \revisionblue{--} \\
+Volume & PL-256-512 & -- & -- & \(512^3\) & 256 & \(1.09\times 10^{10}\) & 14.85 & \revisionblue{--} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}

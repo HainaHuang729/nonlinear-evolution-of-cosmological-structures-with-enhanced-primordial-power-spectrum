@@ -1,5 +1,5 @@
 file,format,n_rows,description,source
-public_data/figure_data/metadata/simulation_suite.csv,csv,11,Simulation suite parameters corresponding to manuscript Table 2.,/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/main.tex
+public_data/figure_data/metadata/simulation_suite.csv,csv,13,Simulation suite parameters corresponding to manuscript Table 1.,/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/main.tex
 public_data/figure_data/metadata/figure_file_manifest.csv,csv,13,Manifest of current figure images in the manuscript directory.,/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps
 public_data/figure_data/input_power_spectra/input_power_spectra.csv,csv,5556,Input linear matter spectra plotted in input-power-spectrum.png.,/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/initial_condition
 public_data/figure_data/fof_hmf/fof_reed07_hmf_points.csv,csv,810,Binned Warren-corrected FoF halo mass function simulation points used in mass-function.png.,/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/HALOMASS/output/fof_reed07_highz_cache
