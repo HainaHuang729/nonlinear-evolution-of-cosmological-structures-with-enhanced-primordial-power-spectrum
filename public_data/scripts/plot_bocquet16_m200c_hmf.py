@@ -93,7 +93,8 @@ THEORY_MASS_MSUN = 10 ** np.linspace(8.0, 13.8, 400)
 HMF_X_MAJOR_TICKS = 10.0 ** np.arange(8, 12)
 HMF_RATIO_TICK_POOL = np.array([0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0])
 BT_PL_LABEL_TICKS = np.array([0.1, 1.0, 10.0, 1000.0])
-SIM_B16_LABEL_TICKS = np.array([0.5, 1.0, 2.0])
+SIM_B16_LABEL_TICKS = np.array([0.5, 1.0, 1.5, 2.0])
+SIM_B16_TOP_ROW_YLIM = (0.5, 1.5)
 PUBLIC_MODEL_MAP = {"PL": "PL", "BT_soft": "BT_soft", "BT_deep": "BT_deep", "BTKP1": "BT_soft", "BTKP10": "BT_deep"}
 
 MODELS = {
@@ -481,6 +482,8 @@ def plot_results(sim_results, theory_results):
             expand_large_range=(row > 0),
         )
         sim_b16_ratio_ylims[row] = padded_ratio_ylim(sim_b16_values_by_row.get(row, []), fallback=(0.5, 2.0))
+        if row == 0:
+            sim_b16_ratio_ylims[row] = SIM_B16_TOP_ROW_YLIM
 
     fig = plt.figure(figsize=(3.20 * n_cols, 4.35 * n_rows))
     outer = gridspec.GridSpec(
