@@ -58,11 +58,15 @@ H_VAL = 0.6736
 MESH_N = 1024
 K_NY_25 = np.pi * MESH_N / 25.0
 K_NY_256 = np.pi * MESH_N / 256.0
-BOX_LABEL = r"$25$ and $256\,h^{-1}\,\mathrm{Mpc}$ matched boxes"
-POWER_RATIO_YLIM = (1.0e-2, 1.2e3)
-POWER_RATIO_TICKS = np.array([1.0e-2, 1.0, 1.0e2, 1.0e3])
+POWER_RATIO_YLIM = (0.5, 10.0)
+POWER_RATIO_TICKS = np.array([0.5, 1.0, 2.0, 5.0, 10.0])
 POWER_RESIDUAL_YLIM = (0.15, 2.0)
 POWER_RESIDUAL_TICKS = np.array([0.2, 0.5, 1, 2.0])
+TOP_MARKER_COUNT = 24
+RATIO_MARKER_COUNT = 24
+RESIDUAL_MARKER_COUNT = 16
+SIM_LINEWIDTH = 0.55
+SIM_ALPHA = 0.68
 
 MODEL_ALIASES = {
     "BT_soft": "BTKP1",
@@ -80,15 +84,22 @@ TEXT_ALIASES = {
     "BT deep": "BTKP10",
 }
 
+MODEL_COLORS = {
+    "PL": JOURNAL_COLORS["black"],
+    "BTKP1": JOURNAL_COLORS["blue"],
+    "BTKP10": JOURNAL_COLORS["green"],
+}
+MODEL_MARKERS = {"PL": "o", "BTKP1": "^", "BTKP10": "s"}
+
 THEORY_STYLES = {
-    "PL": {"color": JOURNAL_COLORS["black"], "linestyle": "-", "label": "PL theory"},
+    "PL": {"color": MODEL_COLORS["PL"], "linestyle": "-", "label": "PL theory"},
     "BTKP1": {
-        "color": JOURNAL_COLORS["blue"],
+        "color": MODEL_COLORS["BTKP1"],
         "linestyle": "--",
         "label": r"BT $k_p=1$ theory",
     },
     "BTKP10": {
-        "color": JOURNAL_COLORS["green"],
+        "color": MODEL_COLORS["BTKP10"],
         "linestyle": "-.",
         "label": r"BT $k_p=10$ theory",
     },
@@ -96,50 +107,52 @@ THEORY_STYLES = {
 
 BOX_MODELS = {
     "25": {
+        "filled_markers": True,
         "pl_family": "cdm_25",
         "pl_label": "PL (25)",
-        "pl_marker": "o",
-        "pl_color": JOURNAL_COLORS["black"],
+        "pl_marker": MODEL_MARKERS["PL"],
+        "pl_color": MODEL_COLORS["PL"],
         "bt_models": {
             "BTKP1": {
                 "family": "bluetilted_kp1_ms1.5_25",
                 "ratio_model": "BTKP1",
                 "bt_label": r"BT $k_p=1$ (25)",
                 "ratio_label": r"BT $k_p=1$ (25) / PL (25)",
-                "bt_marker": "^",
-                "bt_color": JOURNAL_COLORS["blue"],
+                "bt_marker": MODEL_MARKERS["BTKP1"],
+                "bt_color": MODEL_COLORS["BTKP1"],
             },
             "BTKP10": {
                 "family": "bluetilted_kp10_ms1.5_25",
                 "ratio_model": "BTKP10",
                 "bt_label": r"BT $k_p=10$ (25)",
                 "ratio_label": r"BT $k_p=10$ (25) / PL (25)",
-                "bt_marker": "v",
-                "bt_color": JOURNAL_COLORS["green"],
+                "bt_marker": MODEL_MARKERS["BTKP10"],
+                "bt_color": MODEL_COLORS["BTKP10"],
             },
         },
     },
     "256": {
+        "filled_markers": False,
         "pl_family": "new_PL_256_1024",
         "pl_label": "PL (256)",
-        "pl_marker": "s",
-        "pl_color": JOURNAL_COLORS["gray"],
+        "pl_marker": MODEL_MARKERS["PL"],
+        "pl_color": MODEL_COLORS["PL"],
         "bt_models": {
             "BTKP1": {
                 "family": "bluetilted_kp1_ms1.5_256",
                 "ratio_model": "BTKP1",
                 "bt_label": r"BT $k_p=1$ (256)",
                 "ratio_label": r"BT $k_p=1$ (256) / PL (256)",
-                "bt_marker": "D",
-                "bt_color": JOURNAL_COLORS["sky"],
+                "bt_marker": MODEL_MARKERS["BTKP1"],
+                "bt_color": MODEL_COLORS["BTKP1"],
             },
             "BTKP10": {
                 "family": "bluetilted_kp10_ms1.5_256",
                 "ratio_model": "BTKP10",
                 "bt_label": r"BT $k_p=10$ (256)",
                 "ratio_label": r"BT $k_p=10$ (256) / PL (256)",
-                "bt_marker": "P",
-                "bt_color": JOURNAL_COLORS["green"],
+                "bt_marker": MODEL_MARKERS["BTKP10"],
+                "bt_color": MODEL_COLORS["BTKP10"],
             },
         },
     },
@@ -184,6 +197,20 @@ def row_arrays(rows, y_key):
     return (
         np.asarray([row["k_hMpc"] for row in rows], dtype=float),
         np.asarray([row[y_key] for row in rows], dtype=float),
+    )
+
+
+def log_spaced_marker_indices(k_values, max_markers):
+    """Select visually even marker locations without dropping the plotted curve."""
+    k_values = np.asarray(k_values, dtype=float)
+    valid_indices = np.flatnonzero(np.isfinite(k_values) & (k_values > 0.0))
+    if valid_indices.size <= max_markers:
+        return valid_indices
+
+    log_k = np.log10(k_values[valid_indices])
+    targets = np.linspace(log_k.min(), log_k.max(), max_markers)
+    return np.unique(
+        [valid_indices[np.argmin(np.abs(log_k - target))] for target in targets]
     )
 
 
@@ -375,8 +402,39 @@ def redshift_for_snap(measurements, snap):
 def plot_power_spectrum():
     apply_journal_style(base_fontsize=9.0)
     measurements, ratios, residuals, theory_rows = read_public_tables()
-    ratio_legend_handles = None
-    ratio_legend_labels = None
+
+    model_legend_handles = [
+        plt.Line2D(
+            [0],
+            [0],
+            color=THEORY_STYLES[model]["color"],
+            linestyle=THEORY_STYLES[model]["linestyle"],
+            linewidth=1.25,
+            marker=MODEL_MARKERS[model],
+            markersize=4.0,
+            markerfacecolor=THEORY_STYLES[model]["color"],
+            markeredgewidth=0.7,
+        )
+        for model in ("PL", "BTKP1", "BTKP10")
+    ]
+    model_legend_labels = ["PL", r"BT $k_p=1$", r"BT $k_p=10$"]
+    box_legend_handles = [
+        plt.Line2D(
+            [0],
+            [0],
+            color="0.15",
+            linestyle="",
+            marker="o",
+            markersize=4.2,
+            markerfacecolor=facecolor,
+            markeredgewidth=0.8,
+        )
+        for facecolor in ("0.15", "none")
+    ]
+    box_legend_labels = [
+        r"$25\,h^{-1}\,\mathrm{Mpc}$ (filled)",
+        r"$256\,h^{-1}\,\mathrm{Mpc}$ (open)",
+    ]
 
     fig = plt.figure(figsize=(8.8, 8.9))
     outer_grid = gridspec.GridSpec(
@@ -449,13 +507,14 @@ def plot_power_spectrum():
                 ax_top.loglog(
                     k_vals,
                     p_vals,
-                    box["pl_marker"],
                     color=box["pl_color"],
-                    markersize=3.1,
-                    markerfacecolor="none",
+                    linestyle="",
+                    marker=box["pl_marker"],
+                    markevery=log_spaced_marker_indices(k_vals, TOP_MARKER_COUNT),
+                    markersize=3.4,
+                    markerfacecolor=box["pl_color"] if box["filled_markers"] else "none",
                     markeredgewidth=0.75,
-                    alpha=0.9,
-                    label=box["pl_label"],
+                    alpha=SIM_ALPHA,
                 )
 
             for bt_model, bt_config in box["bt_models"].items():
@@ -465,13 +524,14 @@ def plot_power_spectrum():
                     ax_top.loglog(
                         k_vals,
                         p_vals,
-                        bt_config["bt_marker"],
                         color=bt_config["bt_color"],
-                        markersize=3.1,
-                        markerfacecolor="none",
+                        linestyle="",
+                        marker=bt_config["bt_marker"],
+                        markevery=log_spaced_marker_indices(k_vals, TOP_MARKER_COUNT),
+                        markersize=3.4,
+                        markerfacecolor=bt_config["bt_color"] if box["filled_markers"] else "none",
                         markeredgewidth=0.75,
-                        alpha=0.9,
-                        label=bt_config["bt_label"],
+                        alpha=SIM_ALPHA,
                     )
 
                 ratio_rows = ratios.get((box_key, bt_config["ratio_model"], snap), [])
@@ -480,34 +540,41 @@ def plot_power_spectrum():
                     ax_ratio.semilogx(
                         k_vals,
                         ratio_vals,
-                        bt_config["bt_marker"],
                         color=bt_config["bt_color"],
-                        markersize=2.9,
-                        markerfacecolor="none",
+                        linestyle="",
+                        marker=bt_config["bt_marker"],
+                        markevery=log_spaced_marker_indices(k_vals, RATIO_MARKER_COUNT),
+                        markersize=3.2,
+                        markerfacecolor=bt_config["bt_color"] if box["filled_markers"] else "none",
                         markeredgewidth=0.75,
-                        alpha=0.9,
-                        label=bt_config["ratio_label"],
+                        alpha=SIM_ALPHA,
                     )
 
         for box_key, ax_residual in residual_axes.items():
+            box = BOX_MODELS[box_key]
             for model in ("PL", "BTKP1", "BTKP10"):
                 rows = residuals.get((box_key, model, snap), [])
                 if not rows:
                     continue
                 if model == "PL":
-                    marker = BOX_MODELS[box_key]["pl_marker"]
-                    color = BOX_MODELS[box_key]["pl_color"]
+                    marker = box["pl_marker"]
+                    color = box["pl_color"]
                 else:
-                    marker = BOX_MODELS[box_key]["bt_models"][model]["bt_marker"]
-                    color = BOX_MODELS[box_key]["bt_models"][model]["bt_color"]
+                    marker = box["bt_models"][model]["bt_marker"]
+                    color = box["bt_models"][model]["bt_color"]
+                k_vals, residual_ratio = row_arrays(rows, "sim_over_hmcode")
                 ax_residual.semilogx(
-                    *row_arrays(rows, "sim_over_hmcode"),
-                    marker,
+                    k_vals,
+                    residual_ratio,
                     color=color,
-                    markersize=2.8,
-                    markerfacecolor="none",
+                    linestyle="-",
+                    linewidth=SIM_LINEWIDTH,
+                    marker=marker,
+                    markevery=log_spaced_marker_indices(k_vals, RESIDUAL_MARKER_COUNT),
+                    markersize=3.1,
+                    markerfacecolor=color if box["filled_markers"] else "none",
                     markeredgewidth=0.75,
-                    alpha=0.9,
+                    alpha=SIM_ALPHA,
                 )
                 residual_values[box_key].extend(
                     row["sim_over_hmcode"] for row in rows
@@ -532,7 +599,7 @@ def plot_power_spectrum():
             ax_ratio,
             POWER_RATIO_YLIM,
             POWER_RATIO_TICKS,
-            decade_labels_only=True,
+            decade_labels_only=False,
         )
         for ax_residual in residual_axes.values():
             set_ratio_yaxis(ax_residual, POWER_RESIDUAL_YLIM, POWER_RESIDUAL_TICKS)
@@ -566,17 +633,14 @@ def plot_power_spectrum():
         plt.setp(ax_top.get_xticklabels(), visible=False)
 
         if idx == 0:
-            panel_label(
-                ax_top,
-                BOX_LABEL,
-                loc=(0.50, 0.90),
-                ha="center",
-                fontsize=8.7,
-            )
             ax_top.legend(
+                model_legend_handles,
+                model_legend_labels,
                 loc="lower left",
-                ncol=3,
-                fontsize=7.0,
+                ncol=1,
+                fontsize=7.2,
+                title="Model: theory line / Sim marker",
+                title_fontsize=6.8,
                 frameon=True,
                 framealpha=0.72,
                 edgecolor="none",
@@ -584,15 +648,16 @@ def plot_power_spectrum():
                 labelspacing=0.18,
                 handletextpad=0.35,
             )
-            ratio_legend_handles, ratio_legend_labels = ax_ratio.get_legend_handles_labels()
-        elif idx == 1 and ratio_legend_handles:
+        elif idx == 1:
             ax_top.legend(
-                ratio_legend_handles,
-                ratio_legend_labels,
+                box_legend_handles,
+                box_legend_labels,
                 loc="lower left",
                 bbox_to_anchor=(0.03, 0.05),
-                ncol=2,
-                fontsize=6.5,
+                ncol=1,
+                fontsize=7.0,
+                title="Simulation box",
+                title_fontsize=6.8,
                 frameon=True,
                 framealpha=0.72,
                 edgecolor="none",
@@ -603,7 +668,7 @@ def plot_power_spectrum():
             )
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(OUTPUT_PATH, dpi=120, bbox_inches=None)
+    fig.savefig(OUTPUT_PATH, dpi=300, bbox_inches=None)
     plt.close(fig)
     print(f"Saved {OUTPUT_PATH}")
 
