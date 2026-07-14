@@ -155,14 +155,14 @@ def set_log_ticks(ax, ratio=False, ratio_ticks=None):
         ax.yaxis.set_minor_formatter(NullFormatter())
 
 
-def ratio_ylim(values):
+def ratio_ylim(values, *, expand_large_range=True):
     values = np.asarray(values, dtype=float)
     values = values[np.isfinite(values) & (values > 0)]
     if len(values) == 0:
         return 0.5, 10.0
     ymin = max(0.08, values.min() * 0.82)
     ymax = max(2.0, values.max() * 1.18)
-    if ymax / ymin > 30:
+    if expand_large_range and ymax / ymin > 30:
         ymin = 10 ** np.floor(np.log10(ymin))
         ymax = 1.35 * 10 ** np.ceil(np.log10(ymax))
     return ymin, ymax
@@ -172,9 +172,11 @@ def main():
     apply_journal_style(base_fontsize=11.2)
     points, ratios = read_public_tables()
 
-    bt_pl_values = []
+    n_cols = 3
+    bt_pl_values_by_row = {row: [] for row in range(int(np.ceil(len(SNAPS) / n_cols)))}
     bt_pl_cache = {}
-    for snap in SNAPS:
+    for idx, snap in enumerate(SNAPS):
+        row = idx // n_cols
         pl = points.get((snap, "PL"), [])
         for model in ["BTKP1", "BTKP10"]:
             bt = points.get((snap, model), [])
@@ -193,8 +195,11 @@ def main():
             )
             mass = 10 ** (0.5 * (values(btn, "log10_M_FOF_Msun")[valid] + values(pln, "log10_M_FOF_Msun")[valid]))
             bt_pl_cache[(snap, model)] = (mass, ratio, err)
-            bt_pl_values.extend(ratio)
-    bt_pl_ylim = ratio_ylim(bt_pl_values)
+            bt_pl_values_by_row[row].extend(np.concatenate([ratio, ratio - err, ratio + err]))
+    bt_pl_ylims = {
+        row: ratio_ylim(row_values, expand_large_range=(row > 0))
+        for row, row_values in bt_pl_values_by_row.items()
+    }
     sim_reed_ylim = SIM_REED_YLIM
 
     fig = plt.figure(figsize=(8.6, 8.25))
@@ -253,7 +258,7 @@ def main():
             ratio_ax.set(xscale="log", yscale="log", xlim=(HMF_XMIN_MSUN, HMF_XMAX_MSUN))
             format_axes(ratio_ax, grid=True)
             mark_resolution(ratio_ax)
-        ax_bt.set_ylim(*bt_pl_ylim)
+        ax_bt.set_ylim(*bt_pl_ylims[row])
         ax_model.set_ylim(*sim_reed_ylim)
         set_log_ticks(ax_bt, ratio=True, ratio_ticks=BT_PL_LABEL_TICKS)
         set_log_ticks(ax_model, ratio=True, ratio_ticks=SIM_REED_LABEL_TICKS)

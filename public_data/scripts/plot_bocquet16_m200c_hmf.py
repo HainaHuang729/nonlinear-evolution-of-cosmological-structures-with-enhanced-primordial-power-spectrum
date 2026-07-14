@@ -429,14 +429,14 @@ def padded_ratio_ylim(values, fallback=(0.5, 2.0)):
     return ymin, ymax
 
 
-def ratio_ylim(values, fallback=(0.5, 10.0)):
+def ratio_ylim(values, fallback=(0.5, 10.0), *, expand_large_range=True):
     values = np.asarray(values, dtype=float)
     values = values[np.isfinite(values) & (values > 0.0)]
     if values.size == 0:
         return fallback
     ymin = max(0.08, values.min() * 0.82)
     ymax = max(2.0, values.max() * 1.18)
-    if ymax / ymin > 30.0:
+    if expand_large_range and ymax / ymin > 30.0:
         ymin = 10.0 ** np.floor(np.log10(ymin))
         ymax = 1.35 * 10.0 ** np.ceil(np.log10(ymax))
     return ymin, ymax
@@ -449,7 +449,7 @@ def plot_results(sim_results, theory_results):
     n_cols = min(PANEL_COLUMNS, n_panels)
     n_rows = int(np.ceil(n_panels / n_cols))
     bt_pl_ratio_results = {name: {} for name in ("BT_soft", "BT_deep")}
-    bt_pl_ratio_values = []
+    bt_pl_ratio_values_by_row = {row: [] for row in range(n_rows)}
     sim_b16_values_by_row = {row: [] for row in range(n_rows)}
 
     for idx, snap in enumerate(SNAPSHOTS):
@@ -467,15 +467,19 @@ def plot_results(sim_results, theory_results):
                 "ratio": ratio,
                 "ratio_err": ratio_err,
             }
-            bt_pl_ratio_values.extend(ratio[np.isfinite(ratio) & (ratio > 0.0)])
+            bt_pl_ratio_values_by_row[row].extend(np.concatenate([ratio, ratio - ratio_err, ratio + ratio_err]))
         for name in MODELS:
             data = sim_results.get(name, {}).get(snap)
             if data is not None:
                 sim_b16_values_by_row[row].extend(data["ratio"][np.isfinite(data["ratio"]) & (data["ratio"] > 0.0)])
 
-    bt_pl_ratio_ylim = ratio_ylim(bt_pl_ratio_values)
+    bt_pl_ratio_ylims = {}
     sim_b16_ratio_ylims = {}
     for row in range(n_rows):
+        bt_pl_ratio_ylims[row] = ratio_ylim(
+            bt_pl_ratio_values_by_row.get(row, []),
+            expand_large_range=(row > 0),
+        )
         sim_b16_ratio_ylims[row] = padded_ratio_ylim(sim_b16_values_by_row.get(row, []), fallback=(0.5, 2.0))
 
     fig = plt.figure(figsize=(3.20 * n_cols, 4.35 * n_rows))
@@ -566,7 +570,7 @@ def plot_results(sim_results, theory_results):
         format_axes(ax_model, grid=True)
         y_min = 1.0e-8 if redshift is not None and redshift >= 8.0 else 1.0e-7
         ax_upper.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=(y_min, 1.0e2))
-        ax_bt.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=bt_pl_ratio_ylim)
+        ax_bt.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=bt_pl_ratio_ylims[row])
         ax_model.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=sim_b16_ratio_ylims[row])
         set_hmf_log_ticks(ax_upper, y_decades=(int(np.log10(y_min)), 2))
         set_hmf_ratio_ticks(ax_bt, ratio_ticks=BT_PL_LABEL_TICKS)
