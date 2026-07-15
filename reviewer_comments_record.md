@@ -4,13 +4,28 @@ This document records requested manuscript changes and the corresponding revisio
 
 ## Current Status
 
-- All sixteen requested language, scope, citation, interpretation, and figure revisions have been addressed in the manuscript.
+- All seventeen requested language, scope, citation, interpretation, and figure revisions have been addressed in the manuscript.
 - Revised manuscript text remains blue for review.
 - The Sim/Reed07 y-axis range has been revised.
 - On 2026-07-15, the main-text adjacent-snapshot accretion-rate figure and the appendix FOF-$\Gamma$ figure were replaced by the full median FOF mass-assembly-history comparison described below.
 - The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
 - The Power et al. (2003) citation and explanation of the convergence parameter have been added; the original comments remain visible only for final confirmation.
 - The language revisions do not change the simulation models.
+
+## 2026-07-15. Quantify agreement between published prescriptions and simulations
+
+- **Location:** Halo mass function, median mass-assembly histories, concentration--mass relation, and conclusions
+- **Status:** Completed in blue text; the original comment remains visible for confirmation
+
+### Requested change
+
+> This paragraph is important, but it sounds odd. Especially, how good the fitting compared to simulations?
+
+### Revision made
+
+The revised text now reports the simulation-to-model agreement directly. For mass bins above the adopted limits with at least 20 halos, the median HMF residual is within 8 per cent of both the Reed et al. (2007) and Bocquet et al. (2016) prescriptions at $z=0$ and $z=3.44$. The median differences increase to 2--22 per cent for Reed et al. and 16--32 per cent for Bocquet et al. at $z=8.52$.
+
+At $z=0$ and $10^9\le M_{200c}/M_\odot<10^{9.5}$, the median $c_{\rm sim}/c_{\rm I21,fit}$ ratios are 0.96, 1.38, and 1.12 for PL, $k_p=1$, and $k_p=10$, respectively. The modified Correa histories differ from the simulated median histories by at most 25 per cent for PL and 7 per cent for $k_p=1$ over $10^9\le M_0/M_\odot\le10^{11}$ at $z=1,2,4,6$. The conclusion now summarizes these quantitative residuals and states that the published prescriptions are reference models rather than refitted BT formulae.
 
 ## 2026-07-15. Replace the accretion-rate section with full mass-assembly histories
 
