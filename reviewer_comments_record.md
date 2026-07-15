@@ -6,11 +6,24 @@ This document records requested manuscript changes and the corresponding revisio
 
 - All sixteen requested language, scope, citation, interpretation, and figure revisions have been addressed in the manuscript.
 - Revised manuscript text remains blue for review.
-- The Sim/Reed07 y-axis range has been revised. The accretion-rate figure now uses median current-$M_{200c}$ growth along the most-massive-progenitor branch and the Correa et al. analytic comparison.
-- The earlier FOF-$\Gamma$ accretion diagnostic is retained as the final appendix figure without an analytic reference line.
+- The Sim/Reed07 y-axis range has been revised.
+- On 2026-07-15, the main-text adjacent-snapshot accretion-rate figure and the appendix FOF-$\Gamma$ figure were replaced by the full median FOF mass-assembly-history comparison described below.
 - The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
 - The Power et al. (2003) citation and explanation of the convergence parameter have been added; the original comments remain visible only for final confirmation.
-- The language revisions do not change the simulation models. The accretion-rate statistic was reprocessed as recorded below.
+- The language revisions do not change the simulation models.
+
+## 2026-07-15. Replace the accretion-rate section with full mass-assembly histories
+
+- **Location:** Main-text assembly section, Fig. `fig:mass_assembly_history_correa`, conclusions, numerical-range table, and data-availability statement
+- **Status:** Completed in blue text
+
+The previous main-text $M_{200c}$ adjacent-snapshot accretion-rate figure and the final appendix FOF-$\Gamma$ figure are no longer referenced by the manuscript. They are replaced by `mass-assembly-history-correa-halfmass.png`.
+
+The new figure selects halos in seven Warren-corrected $z=0$ FOF mass windows and follows each halo through its persistent HBT-HERONS `TrackId`. Each point is the median positive recorded FOF mass among selected halos detected at that snapshot. Missing detections are not filled, and no cumulative-maximum filter is applied. Quantitative interpretation is restricted to $M_0\ge10^9\,M_\odot$ and $z\le6$, where more than 90 per cent of each selected sample is detected.
+
+The BT histories in this figure use only the $k_p=1\,h\,{\rm Mpc}^{-1}$, $m_s=1.5$ simulation. The text and caption state this explicitly. The three-model assembly ranking continues to come from the half-mass-redshift figure.
+
+The analytic comparison uses the Correa et al. (2015) Paper I EPS form. Faint curves retain the published mass-dependent $q$ and $\widetilde z_{\rm f}$ relations. Prominent curves recompute the spectrum-dependent quantities and solve $q$ and $\widetilde z_{\rm f}$ with a half-mass closure. The latter are diagnostic modified relations, not fits to the plotted simulation histories. Reduced histories, curve tables, parameters, selection summaries, and a standalone plotting script were added to `public_data/`.
 
 ## 1. Describe the projected density fields
 

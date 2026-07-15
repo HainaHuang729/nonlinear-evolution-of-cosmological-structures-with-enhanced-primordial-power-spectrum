@@ -1,15 +1,13 @@
 figure_file,present_in_manuscript_dir,size_bytes,notes
-input-power-spectrum.png,True,159991,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-projection.png,True,25226598,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-mass-function.png,True,593627,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-mass-function-m200c-bocquet16.png,True,593339,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-halfmass-redshift-trackid-no-envelope.png,True,334360,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-mass-accretion-rate-m200c-main-branch.png,True,696924,Main-text median M200c accretion-rate figure along the most-massive-progenitor branch.
-mass-accretion-rate-fof-gamma.png,True,650296,Final-appendix z=0-selected FOF Gamma diagnostic without an analytic reference line.
-halo-density.png,True,830768,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-halo-density-radial-n100-power.png,True,1086251,Manuscript figure image; public_data/figure_data/halo_density_radial contains the direct radial-profile data and BT/PL ratios.
-concentration-qc.png,True,1266865,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-power-spectrum.png,True,1217953,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-halfmass-redshift-fof-gap-stitching.png,True,628933,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-power-spectrum-validation-theory.png,True,1615547,Appendix validation figure; public_data/figure_data/nonlinear_power_spectrum contains reduced power-spectrum measurements and public_data/scripts/plot_power_spectrum_halofit.py preserves the plotting logic.
-fof-hmf-resolution-volume.png,True,482999,Appendix resolution and volume check; public_data/figure_data/fof_hmf_resolution contains reduced FOF HMF points and summary metrics, and public_data/scripts/plot_fof_hmf_resolution.py preserves the plotting logic.
+input-power-spectrum.png,True,175205,Input linear matter power spectra.
+projection.png,True,25306016,Projected density-field comparison.
+mass-function.png,True,171339,FOF halo mass functions and Reed07 comparisons.
+mass-function-m200c-bocquet16.png,True,744183,M200c halo mass functions and B16 comparisons.
+halfmass-redshift-trackid-no-envelope.png,True,327256,Same-TrackId half-mass assembly redshifts.
+mass-assembly-history-correa-halfmass.png,True,1288264,Median FOF mass-assembly histories for PL and the kp=1 BT model with Correa EPS comparisons.
+halo-density-radial-n100-power.png,True,992159,Direct radial density profiles and BT/PL ratios.
+concentration-qc-i21-fit.png,True,158335,Main-text concentration-mass comparison with the I21 prescription.
+power-spectrum.png,True,658225,Nonlinear matter power spectra and matched BT/PL ratios.
+fof-hmf-resolution-volume.png,True,482999,Appendix FOF mass-function resolution and volume check.
+concentration-qc-d19.png,True,159206,Appendix concentration-mass comparison with the D19 prescription.
+concentration-qc-l16.png,True,167884,Appendix concentration-mass comparison with the L16 prescription.
