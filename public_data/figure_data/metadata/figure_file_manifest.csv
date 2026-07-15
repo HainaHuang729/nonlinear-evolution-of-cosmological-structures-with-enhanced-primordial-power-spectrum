@@ -4,7 +4,7 @@ projection.png,True,25226598,Manuscript figure image; public_data/figure_data co
 mass-function.png,True,593627,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
 mass-function-m200c-bocquet16.png,True,593339,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
 halfmass-redshift-trackid-no-envelope.png,True,334360,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
-mass-accretion-rate-m200c-population.png,True,866300,Main-text current-M200c population mean accretion-rate figure.
+mass-accretion-rate-m200c-main-branch.png,True,696924,Main-text median M200c accretion-rate figure along the most-massive-progenitor branch.
 mass-accretion-rate-fof-gamma.png,True,650296,Final-appendix z=0-selected FOF Gamma diagnostic without an analytic reference line.
 halo-density.png,True,830768,Manuscript figure image; public_data/figure_data contains reduced numerical data where applicable.
 halo-density-radial-n100-power.png,True,1086251,Manuscript figure image; public_data/figure_data/halo_density_radial contains the direct radial-profile data and BT/PL ratios.

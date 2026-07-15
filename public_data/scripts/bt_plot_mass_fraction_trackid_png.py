@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from bt_plot_mass_accretion_rate_trackid_png import (
+from plot_fof_gamma_appendix import (
     ARTICLE_ROOT,
     DEFAULT_SNAP_END,
     DEFAULT_SNAP_START,

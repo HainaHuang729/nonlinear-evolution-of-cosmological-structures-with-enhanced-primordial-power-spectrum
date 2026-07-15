@@ -3,7 +3,7 @@
 
 The statistic selects z=0 FOF halos and follows their Warren-corrected FOF
 masses through HBT-HERONS TrackId. It is intentionally separate from the
-current-M200c population mean dM200c/dt measurement in the main text.
+descendant-selected main-branch dM200c/dt measurement in the main text.
 """
 
 from __future__ import annotations

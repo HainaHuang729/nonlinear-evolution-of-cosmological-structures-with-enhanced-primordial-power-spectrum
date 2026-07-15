@@ -6,7 +6,7 @@ This document records requested manuscript changes and the corresponding revisio
 
 - All sixteen requested language, scope, citation, interpretation, and figure revisions have been addressed in the manuscript.
 - Revised manuscript text remains blue for review.
-- The Sim/Reed07 y-axis range has been revised. The accretion-rate figure now uses current-$M_{200c}$ population means and the Correa et al. analytic comparison.
+- The Sim/Reed07 y-axis range has been revised. The accretion-rate figure now uses median current-$M_{200c}$ growth along the most-massive-progenitor branch and the Correa et al. analytic comparison.
 - The earlier FOF-$\Gamma$ accretion diagnostic is retained as the final appendix figure without an analytic reference line.
 - The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
 - The Power et al. (2003) citation and explanation of the convergence parameter have been added; the original comments remain visible only for final confirmation.
@@ -113,7 +113,7 @@ These edits change only the explanation of the analysis. They do not change any 
 
 ## 7. Compare the measured halo accretion rates with an analytic relation
 
-- **Location:** Mass-accretion-rate discussion and Fig. `fig:mass_accretion_rate_trackid`
+- **Location:** Mass-accretion-rate discussion and Fig. `fig:mass_accretion_rate_m200c_main_branch`
 - **Status:** Completed; the analytic calculation and figure update were performed on the cluster
 
 ### Requested change
@@ -122,22 +122,22 @@ These edits change only the explanation of the analysis. They do not change any 
 
 ### Revised measurement
 
-The figure now measures the population mean mass-accretion rate in current-$M_{200c}$ bins,
+The figure now follows the adjacent-snapshot main branch used in the simulation comparison of Correa et al. Descendant central halos are placed in current-$M_{200c}$ bins. For each descendant, the most massive resolved central progenitor in the previous snapshot is selected, and
 
 \[
 \frac{dM_{200c}}{dt}
-=\frac{M_{200c,i+1}-M_{200c,i}}{t_{i+1}-t_i}.
+=\frac{M_{200c,\rm desc}-M_{200c,\rm prog}}{t_{\rm desc}-t_{\rm prog}}.
 \]
 
-At each snapshot, central halos with $N_{\rm DM}\ge100$ are selected using SOAP `SO/200_crit`. Each halo's `DescendantTrackId` is matched to the `TrackId` in the next snapshot. The rates are averaged within the current-$M_{200c}$ bin, and negative rates are retained.
+Both halos require $N_{\rm DM}\ge100$. The plotted statistic is the median within each descendant-$M_{200c}$ bin. Negative rates are retained, and each plotted point requires at least 50 matched pairs.
 
 ### Analytic comparison
 
-The gray dashed line uses Eq. (23) of Correa et al. (2015), Paper II. It is evaluated at the mean current PL mass and midpoint redshift of each snapshot pair. It is not fitted to the simulations.
+The gray dashed line uses Eq. (23) of Correa et al. (2015), Paper II. It is evaluated at the mean descendant PL mass and descendant redshift. The dashed curve is a mean relation, while the simulation curves show medians, following the comparison in that paper. It is not fitted to the simulations.
 
-The public data package now contains the reduced current-$M_{200c}$ accretion table, its summary, the catalog-reduction script, and the plotting script.
+The public data package now contains the reduced main-branch $M_{200c}$ accretion table, its summary, the catalog-reduction script, and the plotting script.
 
-The earlier FOF-based diagnostic is retained separately in Appendix `app:fof_gamma_accretion`. It selects halos by their $z=0$ Warren-corrected FOF mass and plots the median adjacent-snapshot $\Gamma=d\ln M_{\rm FOF}/d\ln a$. No Correa curve is shown in that figure because the main-text reference is a dimensional population mean $dM/dt$. A visible `\Tk{}` comment records that the two figures differ in mass definition, halo sample, bin assignment, averaging statistic, and units, and therefore should not be compared point by point.
+The earlier FOF-based diagnostic is retained separately in Appendix `app:fof_gamma_accretion`. It selects halos by their $z=0$ Warren-corrected FOF mass and plots the median adjacent-snapshot $\Gamma=d\ln M_{\rm FOF}/d\ln a$. No Correa curve is shown in that figure because the main-text reference uses dimensional $dM_{200c}/dt$ along the most-massive-progenitor branch. A visible `\Tk{}` comment records that the two figures differ in mass definition, halo sample, bin assignment, and units, and therefore should not be compared point by point.
 
 ## 8. Cite and explain the radial-profile convergence criterion
 
@@ -317,16 +317,16 @@ The revised paragraph assigns a concrete use to each tested prescription. Halo m
 ### Figures
 
 - `mass-function.png`: updates the Sim/Reed07 panel limits by redshift row.
-- `mass-accretion-rate-m200c-population.png`: replaces the ambiguous main-text accretion figure with the current-$M_{200c}$ population-mean statistic.
+- `mass-accretion-rate-m200c-main-branch.png`: replaces the forward population-mean figure with the descendant-selected most-massive-progenitor median used for the main-text comparison.
 - `mass-accretion-rate-fof-gamma.png`: preserves the earlier FOF-based dimensionless diagnostic as the final appendix figure, without a Correa reference curve.
 - `mass-accretion-rate-trackid.png`: removed because its generic name did not identify the plotted mass definition or statistic.
 
 ### Public data and reproducibility scripts
 
-- `public_data/figure_data/mass_accretion/m200c_population_accretion.csv` and `m200c_population_accretion_summary.csv`: current-$M_{200c}$ halo-level reduction and plotted summary.
+- `public_data/figure_data/mass_accretion/m200c_main_branch_accretion.csv` and `m200c_main_branch_accretion_summary.csv`: descendant-selected most-massive-progenitor reduction and plotted summary.
 - `public_data/figure_data/mass_accretion/fof_gamma_bybin.csv` and `fof_gamma_summary.csv`: explicitly named copies of the earlier FOF-$\Gamma$ data.
-- `public_data/scripts/compute_m200c_population_accretion.py`: constructs the adjacent-snapshot current-$M_{200c}$ population statistic from SOAP catalogs.
-- `public_data/scripts/bt_plot_mass_accretion_rate_trackid_png.py`: plots the main $dM_{200c}/dt$ figure and the Correa et al. comparison.
+- `public_data/scripts/compute_m200c_main_branch_accretion.py`: constructs the adjacent-snapshot most-massive-progenitor statistic from SOAP catalogs.
+- `public_data/scripts/plot_m200c_main_branch_accretion.py`: plots the median main-branch $dM_{200c}/dt$ figure and the Correa et al. comparison.
 - `public_data/scripts/plot_fof_gamma_appendix.py`: independently reproduces the appendix FOF-$\Gamma$ figure without an analytic reference line.
 - `public_data/scripts/plot_hmf_public_ratio.py`: implements the revised Sim/Reed07 display ranges.
 - `public_data/README.md`, `public_data/MANIFEST.csv`, and `public_data/figure_data/metadata/figure_file_manifest.csv`: distinguish the two accretion statistics and list their data, scripts, and outputs.
@@ -334,8 +334,9 @@ The revised paragraph assigns a concrete use to each tested prescription. Halo m
 
 ### Validation record
 
-- The new current-$M_{200c}$ reduction contains 643 plotted rows and 24 summary rows.
-- All 643 rows agree with an independently generated mechanism-test table; the maximum relative numerical difference is approximately $2.1\times10^{-7}$.
+- The main-branch reduction contains 661 plotted rows and 24 summary rows. The four displayed mass bins contain 24--35 snapshot points per model, with at least 50 matched halo pairs per point.
+- The selected most massive progenitor shares the persistent HBT-HERONS `TrackId` of the descendant for at least 99.98 percent of pairs in the four displayed bins. This confirms that the reconstructed branch follows the persistent main track.
+- At every snapshot shared with PL, the median BT $k_p=1$ rate is lower than PL in all four displayed mass bins. The median BT $k_p=1$/PL ratios across the shared outputs range from 0.51 to 0.66.
 - The restored appendix image is byte-for-byte identical to the preserved earlier FOF-$\Gamma$ image (SHA-256 `1d9bc362461779f43478ae04cd2214cbca941e04cfab7a1fb8032bfe1cbf11dd`).
 - The data reduction and figure regeneration were run through Slurm compute jobs; no heavy calculation was run on the login node.
 - LaTeX compilation was intentionally not run for this revision because the figure was requested for visual inspection before compilation.

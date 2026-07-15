@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reduce SOAP catalogs to current-M200c population accretion statistics."""
+"""Measure M200c accretion along the most-massive-progenitor branch."""
 
 from __future__ import annotations
 
@@ -110,59 +110,104 @@ def read_catalog(path: Path) -> dict[str, np.ndarray | float]:
         }
 
 
-def match_descendant_mass(
+def match_most_massive_progenitor(
+    previous: dict[str, np.ndarray | float],
     descendant_track_id: np.ndarray,
-    next_track_id: np.ndarray,
-    next_mass_msun: np.ndarray,
-) -> np.ndarray:
-    order = np.argsort(next_track_id)
-    sorted_track_id = next_track_id[order]
-    positions = np.searchsorted(sorted_track_id, descendant_track_id)
-    in_range = positions < sorted_track_id.size
-    matched = np.full(descendant_track_id.size, np.nan, dtype=float)
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Return one resolved central progenitor for each descendant."""
+    previous_mass = np.asarray(previous["m200c_msun"])
+    previous_track_id = np.asarray(previous["track_id"])
+    previous_descendant_id = np.asarray(previous["descendant_track_id"])
+    valid_previous = (
+        np.asarray(previous["is_central"])
+        & np.isfinite(previous_mass)
+        & (previous_mass > 0.0)
+        & (np.asarray(previous["n_dm"]) >= MIN_PARTICLES)
+        & (previous_descendant_id >= 0)
+    )
+
+    candidate_descendant_id = previous_descendant_id[valid_previous]
+    candidate_mass = previous_mass[valid_previous]
+    candidate_track_id = previous_track_id[valid_previous]
+    if candidate_descendant_id.size == 0:
+        return (
+            np.full(descendant_track_id.size, np.nan, dtype=float),
+            np.zeros(descendant_track_id.size, dtype=int),
+            np.full(descendant_track_id.size, -1, dtype=previous_track_id.dtype),
+        )
+
+    # Sort each descendant group by decreasing progenitor mass. The first row
+    # in each group is therefore its most massive resolved progenitor.
+    order = np.lexsort((-candidate_mass, candidate_descendant_id))
+    sorted_descendant_id = candidate_descendant_id[order]
+    sorted_mass = candidate_mass[order]
+    sorted_track_id = candidate_track_id[order]
+    unique_descendant_id, first, counts = np.unique(
+        sorted_descendant_id,
+        return_index=True,
+        return_counts=True,
+    )
+    most_massive_mass = sorted_mass[first]
+    most_massive_track_id = sorted_track_id[first]
+
+    positions = np.searchsorted(unique_descendant_id, descendant_track_id)
+    in_range = positions < unique_descendant_id.size
+    matched_mass = np.full(descendant_track_id.size, np.nan, dtype=float)
+    matched_count = np.zeros(descendant_track_id.size, dtype=int)
+    matched_track_id = np.full(
+        descendant_track_id.size,
+        -1,
+        dtype=previous_track_id.dtype,
+    )
     candidate_rows = np.flatnonzero(in_range)
     candidate_positions = positions[in_range]
-    equal = sorted_track_id[candidate_positions] == descendant_track_id[in_range]
-    matched[candidate_rows[equal]] = next_mass_msun[order[candidate_positions[equal]]]
-    return matched
+    equal = unique_descendant_id[candidate_positions] == descendant_track_id[in_range]
+    matched_rows = candidate_rows[equal]
+    matched_positions = candidate_positions[equal]
+    matched_mass[matched_rows] = most_massive_mass[matched_positions]
+    matched_count[matched_rows] = counts[matched_positions]
+    matched_track_id[matched_rows] = most_massive_track_id[matched_positions]
+    return matched_mass, matched_count, matched_track_id
 
 
 def summarize_pair(
     model: str,
-    snap_current: int,
-    snap_next: int,
-    current: dict[str, np.ndarray | float],
-    nxt: dict[str, np.ndarray | float],
+    snap_progenitor: int,
+    snap_descendant: int,
+    previous: dict[str, np.ndarray | float],
+    descendant: dict[str, np.ndarray | float],
 ) -> list[dict[str, float | int | str]]:
-    z_current = float(current["redshift"])
-    z_next = float(nxt["redshift"])
-    dt_yr = cosmic_age_flat_lcdm_yr(z_next) - cosmic_age_flat_lcdm_yr(z_current)
+    z_progenitor = float(previous["redshift"])
+    z_descendant = float(descendant["redshift"])
+    dt_yr = cosmic_age_flat_lcdm_yr(z_descendant) - cosmic_age_flat_lcdm_yr(z_progenitor)
     if not np.isfinite(dt_yr) or dt_yr <= 0.0:
         return []
 
-    mass_current = np.asarray(current["m200c_msun"])
-    descendant_id = np.asarray(current["descendant_track_id"])
-    valid_current = (
-        np.asarray(current["is_central"])
-        & np.isfinite(mass_current)
-        & (mass_current > 0.0)
-        & (np.asarray(current["n_dm"]) >= MIN_PARTICLES)
-        & (descendant_id >= 0)
+    mass_descendant = np.asarray(descendant["m200c_msun"])
+    track_id_descendant = np.asarray(descendant["track_id"])
+    valid_descendant = (
+        np.asarray(descendant["is_central"])
+        & np.isfinite(mass_descendant)
+        & (mass_descendant > 0.0)
+        & (np.asarray(descendant["n_dm"]) >= MIN_PARTICLES)
+        & (track_id_descendant >= 0)
     )
-    if not np.any(valid_current):
+    if not np.any(valid_descendant):
         return []
 
-    mass_next = match_descendant_mass(
-        descendant_id[valid_current],
-        np.asarray(nxt["track_id"]),
-        np.asarray(nxt["m200c_msun"]),
+    mass_progenitor, progenitor_count, progenitor_track_id = match_most_massive_progenitor(
+        previous,
+        track_id_descendant[valid_descendant],
     )
-    mass_now = mass_current[valid_current]
-    matched = np.isfinite(mass_next) & (mass_next > 0.0)
+    mass_now = mass_descendant[valid_descendant]
+    descendant_track_id = track_id_descendant[valid_descendant]
+    matched = np.isfinite(mass_progenitor) & (mass_progenitor > 0.0)
     mass_now = mass_now[matched]
-    mass_next = mass_next[matched]
-    dmdt = (mass_next - mass_now) / dt_yr
-    z_mid = 0.5 * (z_current + z_next)
+    mass_progenitor = mass_progenitor[matched]
+    progenitor_count = progenitor_count[matched]
+    progenitor_track_id = progenitor_track_id[matched]
+    descendant_track_id = descendant_track_id[matched]
+    dmdt = (mass_now - mass_progenitor) / dt_yr
 
     rows: list[dict[str, float | int | str]] = []
     for left, right in zip(MASS_BINS_MSUN[:-1], MASS_BINS_MSUN[1:]):
@@ -176,24 +221,27 @@ def summarize_pair(
             continue
         values = dmdt[selected]
         masses = mass_now[selected]
+        progenitor_masses = mass_progenitor[selected]
+        selected_progenitor_count = progenitor_count[selected]
+        selected_same_track = progenitor_track_id[selected] == descendant_track_id[selected]
         mean_mass = float(np.mean(masses))
         standard_deviation = float(np.std(values, ddof=1)) if n_halos > 1 else np.nan
         rows.append(
             {
                 "model": model,
                 "model_label": MODEL_SPECS[model]["label"],
-                "snap_current": snap_current,
-                "snap_next": snap_next,
-                "z_current": z_current,
-                "z_next": z_next,
-                "z_mid": z_mid,
+                "snap_progenitor": snap_progenitor,
+                "snap_descendant": snap_descendant,
+                "z_progenitor": z_progenitor,
+                "z_descendant": z_descendant,
                 "dt_yr": dt_yr,
                 "mass_bin_left_msun": left,
                 "mass_bin_right_msun": right,
                 "mass_bin_center_msun": float(np.sqrt(left * right)),
                 "n_halos": n_halos,
-                "mean_mass_current_msun": mean_mass,
-                "median_mass_current_msun": float(np.median(masses)),
+                "mean_mass_descendant_msun": mean_mass,
+                "median_mass_descendant_msun": float(np.median(masses)),
+                "mean_mass_main_progenitor_msun": float(np.mean(progenitor_masses)),
                 "mean_dM200c_dt_msun_yr": float(np.mean(values)),
                 "median_dM200c_dt_msun_yr": float(np.median(values)),
                 "std_dM200c_dt_msun_yr": standard_deviation,
@@ -201,7 +249,11 @@ def summarize_pair(
                 "p16_dM200c_dt_msun_yr": float(np.percentile(values, 16.0)),
                 "p84_dM200c_dt_msun_yr": float(np.percentile(values, 84.0)),
                 "negative_fraction": float(np.mean(values < 0.0)),
-                "correa2015_mean_dMdt_msun_yr": float(correa2015_mean_dmdt(z_mid, mean_mass)),
+                "multiple_progenitor_fraction": float(np.mean(selected_progenitor_count > 1)),
+                "same_track_main_progenitor_fraction": float(np.mean(selected_same_track)),
+                "correa2015_mean_dMdt_msun_yr": float(
+                    correa2015_mean_dmdt(z_descendant, mean_mass)
+                ),
             }
         )
     return rows
@@ -218,27 +270,34 @@ def compute_model(model: str, snap_start: int, snap_end: int) -> pd.DataFrame:
         raise FileNotFoundError(f"{model}: fewer than two catalogs found in {catalog_directory(model)}")
 
     rows: list[dict[str, float | int | str]] = []
-    current = read_catalog(paths[0])
-    for current_path, next_path in zip(paths[:-1], paths[1:]):
-        nxt = read_catalog(next_path)
-        snap_current = snapshot_number(current_path)
-        snap_next = snapshot_number(next_path)
-        pair_rows = summarize_pair(model, snap_current, snap_next, current, nxt)
+    previous = read_catalog(paths[0])
+    for previous_path, descendant_path in zip(paths[:-1], paths[1:]):
+        descendant = read_catalog(descendant_path)
+        snap_progenitor = snapshot_number(previous_path)
+        snap_descendant = snapshot_number(descendant_path)
+        pair_rows = summarize_pair(
+            model,
+            snap_progenitor,
+            snap_descendant,
+            previous,
+            descendant,
+        )
         rows.extend(pair_rows)
         print(
-            f"{model}: {snap_current:04d}->{snap_next:04d}, "
-            f"z={float(current['redshift']):.3f}->{float(nxt['redshift']):.3f}, rows={len(pair_rows)}",
+            f"{model}: {snap_progenitor:04d}->{snap_descendant:04d}, "
+            f"z={float(previous['redshift']):.3f}->{float(descendant['redshift']):.3f}, "
+            f"rows={len(pair_rows)}",
             flush=True,
         )
-        current = nxt
+        previous = descendant
         gc.collect()
     return pd.DataFrame(rows)
 
 
 def make_summary(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
-    data["mean_over_correa"] = (
-        data["mean_dM200c_dt_msun_yr"] / data["correa2015_mean_dMdt_msun_yr"]
+    data["median_over_correa"] = (
+        data["median_dM200c_dt_msun_yr"] / data["correa2015_mean_dMdt_msun_yr"]
     )
     return (
         data.groupby(
@@ -247,12 +306,17 @@ def make_summary(data: pd.DataFrame) -> pd.DataFrame:
         )
         .agg(
             mass_bin_center_msun=("mass_bin_center_msun", "median"),
-            z_min=("z_mid", "min"),
-            z_max=("z_mid", "max"),
-            n_snapshot_pairs=("z_mid", "size"),
+            z_min=("z_descendant", "min"),
+            z_max=("z_descendant", "max"),
+            n_snapshot_pairs=("z_descendant", "size"),
             total_halo_pairs=("n_halos", "sum"),
-            median_mean_over_correa=("mean_over_correa", "median"),
+            median_rate_over_correa=("median_over_correa", "median"),
             median_negative_fraction=("negative_fraction", "median"),
+            median_multiple_progenitor_fraction=("multiple_progenitor_fraction", "median"),
+            median_same_track_main_progenitor_fraction=(
+                "same_track_main_progenitor_fraction",
+                "median",
+            ),
         )
         .reset_index()
     )
@@ -267,12 +331,12 @@ def main() -> None:
 
     frames = [compute_model(model, args.snap_start, args.snap_end) for model in models]
     data = pd.concat(frames, ignore_index=True)
-    data["mean_over_correa"] = (
-        data["mean_dM200c_dt_msun_yr"] / data["correa2015_mean_dMdt_msun_yr"]
+    data["median_over_correa"] = (
+        data["median_dM200c_dt_msun_yr"] / data["correa2015_mean_dMdt_msun_yr"]
     )
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    data_path = args.output_dir / "m200c_population_accretion.csv"
-    summary_path = args.output_dir / "m200c_population_accretion_summary.csv"
+    data_path = args.output_dir / "m200c_main_branch_accretion.csv"
+    summary_path = args.output_dir / "m200c_main_branch_accretion_summary.csv"
     data.to_csv(data_path, index=False)
     make_summary(data).to_csv(summary_path, index=False)
     print(f"Wrote {len(data)} rows to {data_path}", flush=True)

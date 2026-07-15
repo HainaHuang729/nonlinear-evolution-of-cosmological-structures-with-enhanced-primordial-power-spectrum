@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plot current-M200c population accretion rates from the reduced CSV."""
+"""Plot M200c accretion along the most-massive-progenitor branch."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ import pandas as pd
 SCRIPT_PATH = Path(__file__).resolve()
 ARTICLE_ROOT = next((p for p in SCRIPT_PATH.parents if (p / "main.tex").exists()), SCRIPT_PATH.parents[2])
 PUBLIC_DATA_PATH = (
-    ARTICLE_ROOT / "public_data/figure_data/mass_accretion/m200c_population_accretion.csv"
+    ARTICLE_ROOT / "public_data/figure_data/mass_accretion/m200c_main_branch_accretion.csv"
 )
 
 if str(SCRIPT_PATH.parent) not in sys.path:
@@ -69,9 +69,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=ARTICLE_ROOT / "mass-accretion-rate-m200c-population.png",
+        default=ARTICLE_ROOT / "mass-accretion-rate-m200c-main-branch.png",
     )
     parser.add_argument("--check-output", type=Path, default=None)
+    parser.add_argument(
+        "--show-scatter",
+        action="store_true",
+        help="Show the 16th--84th percentile halo-to-halo range.",
+    )
     return parser.parse_args()
 
 
@@ -86,20 +91,27 @@ def select_bin(data: pd.DataFrame, model: str, left: float, right: float) -> pd.
         (data["model"] == model)
         & np.isclose(data["mass_bin_left_msun"], left)
         & np.isclose(data["mass_bin_right_msun"], right)
-    ].sort_values("z_mid")
+    ].sort_values("z_descendant")
 
 
-def draw_panel(ax, data: pd.DataFrame, left: float, right: float, show_legend: bool) -> None:
+def draw_panel(
+    ax,
+    data: pd.DataFrame,
+    left: float,
+    right: float,
+    show_legend: bool,
+    show_scatter: bool,
+) -> None:
     plotted_values: list[np.ndarray] = []
     pl = select_bin(data, "PL", left, right)
     if not pl.empty:
         ax.plot(
-            pl["z_mid"],
+            pl["z_descendant"],
             pl["correa2015_mean_dMdt_msun_yr"],
             color="0.48",
             linestyle="--",
             linewidth=1.45,
-            label="Correa15 (PL)",
+            label="Correa15 mean (PL)",
             zorder=2,
         )
         plotted_values.append(pl["correa2015_mean_dMdt_msun_yr"].to_numpy(dtype=float))
@@ -108,27 +120,33 @@ def draw_panel(ax, data: pd.DataFrame, left: float, right: float, show_legend: b
         subset = select_bin(data, model, left, right)
         if subset.empty:
             continue
-        redshift = subset["z_mid"].to_numpy(dtype=float)
-        mean_rate = subset["mean_dM200c_dt_msun_yr"].to_numpy(dtype=float)
-        sem_rate = subset["sem_dM200c_dt_msun_yr"].to_numpy(dtype=float)
-        ax.fill_between(
-            redshift,
-            mean_rate - sem_rate,
-            mean_rate + sem_rate,
-            color=style["color"],
-            alpha=0.12,
-            linewidth=0,
-            zorder=1,
-        )
+        redshift = subset["z_descendant"].to_numpy(dtype=float)
+        median_rate = subset["median_dM200c_dt_msun_yr"].to_numpy(dtype=float)
+        if show_scatter:
+            lower_rate = subset["p16_dM200c_dt_msun_yr"].to_numpy(dtype=float)
+            upper_rate = subset["p84_dM200c_dt_msun_yr"].to_numpy(dtype=float)
+            ax.fill_between(
+                redshift,
+                lower_rate,
+                upper_rate,
+                color=style["color"],
+                alpha=0.10,
+                linewidth=0,
+                zorder=1,
+            )
+            plotted_values.extend((lower_rate, upper_rate))
         ax.plot(
             redshift,
-            mean_rate,
+            median_rate,
             color=style["color"],
             linewidth=1.8,
+            marker="o",
+            markersize=3.0,
+            markeredgewidth=0,
             label=style["label"],
             zorder=3,
         )
-        plotted_values.extend((mean_rate - sem_rate, mean_rate + sem_rate))
+        plotted_values.append(median_rate)
 
     finite_values = np.concatenate([values[np.isfinite(values)] for values in plotted_values])
     upper = max(0.0, float(np.max(finite_values)))
@@ -158,11 +176,12 @@ def main() -> None:
     data = pd.read_csv(args.data)
     required = {
         "model",
-        "z_mid",
+        "z_descendant",
         "mass_bin_left_msun",
         "mass_bin_right_msun",
-        "mean_dM200c_dt_msun_yr",
-        "sem_dM200c_dt_msun_yr",
+        "median_dM200c_dt_msun_yr",
+        "p16_dM200c_dt_msun_yr",
+        "p84_dM200c_dt_msun_yr",
         "correa2015_mean_dMdt_msun_yr",
     }
     missing = sorted(required.difference(data.columns))
@@ -172,13 +191,20 @@ def main() -> None:
     apply_journal_style(base_fontsize=8.5)
     fig, axes = plt.subplots(2, 2, figsize=(7.05, 7.0), constrained_layout=False)
     for index, (ax, (left, right)) in enumerate(zip(axes.flat, PANEL_BINS)):
-        draw_panel(ax, data, left, right, show_legend=index == 0)
+        draw_panel(
+            ax,
+            data,
+            left,
+            right,
+            show_legend=index == 0,
+            show_scatter=args.show_scatter,
+        )
         if index // 2 == 1:
             ax.set_xlabel("Redshift $z$")
         else:
             ax.tick_params(labelbottom=False)
         if index % 2 == 0:
-            ax.set_ylabel(r"$\langle \mathrm{d}M_{200c}/\mathrm{d}t\rangle$ [$M_\odot\,{\rm yr}^{-1}$]")
+            ax.set_ylabel(r"$\mathrm{median}\,(\mathrm{d}M_{200c}/\mathrm{d}t)$ [$M_\odot\,{\rm yr}^{-1}$]")
         else:
             ax.tick_params(labelleft=False)
 
