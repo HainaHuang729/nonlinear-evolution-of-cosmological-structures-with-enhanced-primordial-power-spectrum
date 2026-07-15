@@ -12,7 +12,7 @@ product rather than by raw simulation output.
 - `figure_data/fof_hmf/`: binned FoF halo mass-function points.
 - `figure_data/m200c_hmf/`: binned `M200c` halo mass-function points.
 - `figure_data/halfmass_redshift/`: same-TrackId half-mass redshift points and summaries.
-- `figure_data/mass_accretion/`: same-TrackId FOF mass-accretion-rate summaries.
+- `figure_data/mass_accretion/`: two separate accretion measurements. The main figure uses the population mean `dM200c/dt` in current-`M200c` bins and compares PL with Correa et al. (2015). The appendix figure uses the median dimensionless FOF `Gamma` for halos selected in final FOF mass bins and has no analytic reference line.
 - `figure_data/halo_density/`: concentration-derived NFW density-profile curves and mass-bin summaries.
 - `figure_data/halo_density_radial/`: direct particle-count radial density profiles and BT/PL ratios used in `halo-density-radial-n100-power.png`.
 - `figure_data/concentration/`: binned `c200c` concentration-mass data.

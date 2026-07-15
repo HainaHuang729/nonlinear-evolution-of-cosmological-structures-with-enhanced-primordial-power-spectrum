@@ -40,8 +40,7 @@ HMF_CATALOG_CUT_MSUN = 1.0e8
 RATIO_TICKS = np.array([0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000.0])
 RATIO_LABEL_TICKS = np.array([0.1, 1, 10, 100, 1000.0])
 BT_PL_LABEL_TICKS = np.array([0.1, 1, 10, 1000.0])
-SIM_REED_YLIM = (0.5, 1.5)
-SIM_REED_LABEL_TICKS = np.array([0.5, 1.0, 1.5])
+SIM_REED_LABEL_TICKS = np.array([0.2, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0])
 
 
 def normalize_snap(value):
@@ -168,6 +167,22 @@ def ratio_ylim(values, *, expand_large_range=True):
     return ymin, ymax
 
 
+def sim_reed_ylim(values):
+    """Return readable log limits that include the measured ratios and errors."""
+    values = np.asarray(values, dtype=float)
+    values = values[np.isfinite(values) & (values > 0)]
+    if len(values) == 0:
+        return 0.5, 2.0
+
+    lower_candidates = np.array([0.05, 0.1, 0.2, 0.5, 1.0])
+    upper_candidates = np.array([1.5, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0])
+    lower_valid = lower_candidates[lower_candidates <= 0.95 * values.min()]
+    upper_valid = upper_candidates[upper_candidates >= 1.05 * values.max()]
+    lower = float(lower_valid[-1]) if lower_valid.size else float(lower_candidates[0])
+    upper = float(upper_valid[0]) if upper_valid.size else float(upper_candidates[-1])
+    return lower, upper
+
+
 def main():
     apply_journal_style(base_fontsize=11.2)
     points, ratios = read_public_tables()
@@ -200,7 +215,20 @@ def main():
         row: ratio_ylim(row_values, expand_large_range=(row > 0))
         for row, row_values in bt_pl_values_by_row.items()
     }
-    sim_reed_ylim = SIM_REED_YLIM
+    sim_reed_values_by_row = {row: [] for row in bt_pl_values_by_row}
+    for idx, snap in enumerate(SNAPS):
+        row = idx // n_cols
+        for model in MODELS:
+            model_rows = ratios.get((snap, model), [])
+            if not model_rows:
+                continue
+            ratio = values(model_rows, "sim_over_reed07")
+            error = values(model_rows, "ratio_err")
+            sim_reed_values_by_row[row].extend(np.concatenate([ratio, ratio - error, ratio + error]))
+    sim_reed_ylims = {
+        row: sim_reed_ylim(row_values)
+        for row, row_values in sim_reed_values_by_row.items()
+    }
 
     fig = plt.figure(figsize=(8.6, 8.25))
     outer = gridspec.GridSpec(2, 3, figure=fig, left=0.09, right=0.995, bottom=0.075, top=0.985, hspace=0.22, wspace=0.10)
@@ -259,7 +287,7 @@ def main():
             format_axes(ratio_ax, grid=True)
             mark_resolution(ratio_ax)
         ax_bt.set_ylim(*bt_pl_ylims[row])
-        ax_model.set_ylim(*sim_reed_ylim)
+        ax_model.set_ylim(*sim_reed_ylims[row])
         set_log_ticks(ax_bt, ratio=True, ratio_ticks=BT_PL_LABEL_TICKS)
         set_log_ticks(ax_model, ratio=True, ratio_ticks=SIM_REED_LABEL_TICKS)
 

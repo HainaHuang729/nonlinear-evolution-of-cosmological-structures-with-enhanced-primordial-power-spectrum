@@ -4,11 +4,13 @@ This document records requested manuscript changes and the corresponding revisio
 
 ## Current Status
 
-- Fourteen requested language, scope, citation, and interpretation revisions have been addressed in the manuscript.
+- All sixteen requested language, scope, citation, interpretation, and figure revisions have been addressed in the manuscript.
 - Revised manuscript text remains blue for review.
-- Two figure-related tasks remain pending: adjustment of the Sim/Reed07 y-axis range and comparison of the measured halo accretion rates with a Correa et al. analytic relation.
+- The Sim/Reed07 y-axis range has been revised. The accretion-rate figure now uses current-$M_{200c}$ population means and the Correa et al. analytic comparison.
+- The earlier FOF-$\Gamma$ accretion diagnostic is retained as the final appendix figure without an analytic reference line.
+- The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
 - The Power et al. (2003) citation and explanation of the convergence parameter have been added; the original comments remain visible only for final confirmation.
-- No numerical result, model definition, citation key, or physical conclusion was changed by the language revisions.
+- The language revisions do not change the simulation models. The accretion-rate statistic was reprocessed as recorded below.
 
 ## 1. Describe the projected density fields
 
@@ -60,19 +62,19 @@ The figure legend now uses `BT $k_p=1$` and `BT $k_p=10$` instead of the previou
 ## 4. Adjust the Sim/Reed07 y-axis range
 
 - **Location:** Sim/Reed07 panels in Fig. `fig:mass_function`
-- **Status:** Pending; the figure will be regenerated on the cluster
+- **Status:** Completed; the figure was regenerated on the cluster
 
 ### Requested change
 
 > also in Sim/Reed07 row, the lower limit of yrange can be adjusted.
 
-### Planned revision
+### Revision made
 
-Replace the fixed Sim/Reed07 range of `0.5--1.5` with data-informed limits for each redshift row, so that low values, high-redshift points, and relevant error bars are not clipped. The caption will state that the Sim/Reed07 y-axis range is set separately for each redshift row. This change requires regenerating `mass-function.png` from the plotting script on the cluster.
+The fixed Sim/Reed07 range of `0.5--1.5` was replaced with data-informed limits for each redshift row. The two rows use `0.2--5` and `0.2--50`, respectively, so that the low values, high-redshift points, and plotted error bars remain visible. The caption states that the Sim/Reed07 range is set separately for each redshift row.
 
 ## 5. Explain the unsmoothed halo mass histories
 
-- **Location:** Half-Mass Redshift subsection, Fig. `fig:half_mass_redshift`, mass-accretion-rate discussion, and Appendix `app:trusted_ranges`
+- **Location:** Half-Mass Redshift subsection, Fig. `fig:half_mass_redshift`, and Appendix `app:trusted_ranges`
 - **Status:** Completed in blue text
 
 ### Requested change
@@ -87,7 +89,7 @@ Replace the fixed Sim/Reed07 range of `0.5--1.5` with data-informed limits for e
 
 ### Revised explanation
 
-The manuscript now states that each halo is followed across snapshots through its persistent HBT-HERONS `TrackId`. The recorded FOF masses are used directly: missing snapshots are not filled, and the mass history is not forced to grow monotonically with a cumulative-maximum filter. Consequently, temporary FOF mass decreases caused by bridge or split events remain in the assembly and accretion-rate measurements.
+The manuscript now states that each halo is followed across snapshots through its persistent HBT-HERONS `TrackId`. The recorded FOF masses are used directly: missing snapshots are not filled, and the mass history is not forced to grow monotonically with a cumulative-maximum filter. Temporary FOF mass changes caused by bridge or split events therefore remain in the half-mass assembly histories.
 
 The term `no-envelope measurement` has been removed from the scientific text and caption. It remains only in the image filename, which is not displayed in the manuscript.
 
@@ -112,27 +114,30 @@ These edits change only the explanation of the analysis. They do not change any 
 ## 7. Compare the measured halo accretion rates with an analytic relation
 
 - **Location:** Mass-accretion-rate discussion and Fig. `fig:mass_accretion_rate_trackid`
-- **Status:** Pending; the analytic calculation and figure update should be performed on the cluster
+- **Status:** Completed; the analytic calculation and figure update were performed on the cluster
 
 ### Requested change
 
 > I think there is some analytic formula to measure the halo accretion rate: Correa paper I think.
 
-### Current measurement
+### Revised measurement
 
-The manuscript measures the dimensionless mass-accretion rate directly from adjacent simulation snapshots,
+The figure now measures the population mean mass-accretion rate in current-$M_{200c}$ bins,
 
 \[
-\Gamma=\frac{d\ln M}{d\ln a}.
+\frac{dM_{200c}}{dt}
+=\frac{M_{200c,i+1}-M_{200c,i}}{t_{i+1}-t_i}.
 \]
 
-This simulation measurement should be retained. An analytic mass-accretion history from Correa et al. can be added as an external comparison rather than used as a replacement for the measured values.
+At each snapshot, central halos with $N_{\rm DM}\ge100$ are selected using SOAP `SO/200_crit`. Each halo's `DescendantTrackId` is matched to the `TrackId` in the next snapshot. The rates are averaged within the current-$M_{200c}$ bin, and negative rates are retained.
 
-### Planned revision
+### Analytic comparison
 
-Identify and cite the applicable Correa et al. mass-accretion-history relation, calculate its corresponding \(\Gamma(z)\), and add the result to the accretion-rate figure as a clearly identified analytic curve. The standard relation can be used to check the PL result. It should not be applied to the BT models without first confirming that its parameters can be recomputed from each model's linear matter power spectrum or that its original calibration remains applicable.
+The gray dashed line uses Eq. (23) of Correa et al. (2015), Paper II. It is evaluated at the mean current PL mass and midpoint redshift of each snapshot pair. It is not fitted to the simulations.
 
-The revised caption and discussion should state that the analytic curve is an external reference and is not fitted to the simulations. This task requires regenerating `mass-accretion-rate-trackid.png` on the cluster.
+The public data package now contains the reduced current-$M_{200c}$ accretion table, its summary, the catalog-reduction script, and the plotting script.
+
+The earlier FOF-based diagnostic is retained separately in Appendix `app:fof_gamma_accretion`. It selects halos by their $z=0$ Warren-corrected FOF mass and plots the median adjacent-snapshot $\Gamma=d\ln M_{\rm FOF}/d\ln a$. No Correa curve is shown in that figure because the main-text reference is a dimensional population mean $dM/dt$. A visible `\Tk{}` comment records that the two figures differ in mass definition, halo sample, bin assignment, averaging statistic, and units, and therefore should not be compared point by point.
 
 ## 8. Cite and explain the radial-profile convergence criterion
 
@@ -301,3 +306,36 @@ The observational relevance of the tested analytic prescriptions should be state
 ### Revision made
 
 The revised paragraph assigns a concrete use to each tested prescription. Halo mass-function prescriptions evaluated with the PL and BT linear matter power spectra can enter forward models of high-redshift galaxy populations, while the Ishiyama et al. (2021) concentration--mass relation can inform models of low-mass halo structure used in dwarf-galaxy and strong-lensing studies. It also connects the simulated halo abundance and assembly changes to source-population and reionization models for 21-cm predictions. The paragraph states that the prescriptions were not refitted to the BT simulations and therefore provide inputs to observational modeling rather than direct observational constraints.
+
+## File-Level Change Inventory for the 2026-07-15 Push
+
+### Manuscript and bibliography
+
+- `main.tex`: adds the explicit $M_{200c}$ definition, revises the main accretion-rate description and caption, and adds the final FOF-$\Gamma$ appendix figure and the visible comparison comment.
+- `main.bib`: adds the Correa et al. (2015) Paper II reference used for the analytic mean-accretion-rate comparison.
+
+### Figures
+
+- `mass-function.png`: updates the Sim/Reed07 panel limits by redshift row.
+- `mass-accretion-rate-m200c-population.png`: replaces the ambiguous main-text accretion figure with the current-$M_{200c}$ population-mean statistic.
+- `mass-accretion-rate-fof-gamma.png`: preserves the earlier FOF-based dimensionless diagnostic as the final appendix figure, without a Correa reference curve.
+- `mass-accretion-rate-trackid.png`: removed because its generic name did not identify the plotted mass definition or statistic.
+
+### Public data and reproducibility scripts
+
+- `public_data/figure_data/mass_accretion/m200c_population_accretion.csv` and `m200c_population_accretion_summary.csv`: current-$M_{200c}$ halo-level reduction and plotted summary.
+- `public_data/figure_data/mass_accretion/fof_gamma_bybin.csv` and `fof_gamma_summary.csv`: explicitly named copies of the earlier FOF-$\Gamma$ data.
+- `public_data/scripts/compute_m200c_population_accretion.py`: constructs the adjacent-snapshot current-$M_{200c}$ population statistic from SOAP catalogs.
+- `public_data/scripts/bt_plot_mass_accretion_rate_trackid_png.py`: plots the main $dM_{200c}/dt$ figure and the Correa et al. comparison.
+- `public_data/scripts/plot_fof_gamma_appendix.py`: independently reproduces the appendix FOF-$\Gamma$ figure without an analytic reference line.
+- `public_data/scripts/plot_hmf_public_ratio.py`: implements the revised Sim/Reed07 display ranges.
+- `public_data/README.md`, `public_data/MANIFEST.csv`, and `public_data/figure_data/metadata/figure_file_manifest.csv`: distinguish the two accretion statistics and list their data, scripts, and outputs.
+- The old generic `mass_accretion_rate_bybin.csv` and `mass_accretion_rate_summary.csv` names were removed in favor of the explicit FOF-$\Gamma$ names above.
+
+### Validation record
+
+- The new current-$M_{200c}$ reduction contains 643 plotted rows and 24 summary rows.
+- All 643 rows agree with an independently generated mechanism-test table; the maximum relative numerical difference is approximately $2.1\times10^{-7}$.
+- The restored appendix image is byte-for-byte identical to the preserved earlier FOF-$\Gamma$ image (SHA-256 `1d9bc362461779f43478ae04cd2214cbca941e04cfab7a1fb8032bfe1cbf11dd`).
+- The data reduction and figure regeneration were run through Slurm compute jobs; no heavy calculation was run on the login node.
+- LaTeX compilation was intentionally not run for this revision because the figure was requested for visual inspection before compilation.
