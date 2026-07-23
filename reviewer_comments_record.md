@@ -368,3 +368,16 @@ The revised paragraph assigns a concrete use to each tested prescription. Halo m
 - The restored appendix image is byte-for-byte identical to the preserved earlier FOF-$\Gamma$ image (SHA-256 `1d9bc362461779f43478ae04cd2214cbca941e04cfab7a1fb8032bfe1cbf11dd`).
 - The data reduction and figure regeneration were run through Slurm compute jobs; no heavy calculation was run on the login node.
 - LaTeX compilation was intentionally not run for this revision because the figure was requested for visual inspection before compilation.
+
+## 17. Revise the mass-assembly-history comparison figure
+
+- **Location:** Median Mass-Assembly Histories subsection and figure
+- **Status:** Figure and caption updated; manuscript compilation intentionally deferred
+
+### Requested changes
+
+The simulation histories should be shown as points rather than connected lines. A lower panel should also show the difference between each simulation history and its analytic reference.
+
+### Revision made
+
+The upper panel now shows the PL and BT simulation medians as unconnected circles and triangles. The Correa relations remain as curves. A new lower panel shows \(M_{\rm sim}/M_{\rm Correa}\), evaluated against the prominent spectrum-dependent Correa curve at each simulation redshift. A horizontal gray band marks a 10 percent difference from unity. The interval at \(z>6\) is shaded because the manuscript restricts its quantitative comparison to \(z\le6\).

@@ -4,7 +4,7 @@ projection.png,True,25306016,Projected density-field comparison.
 mass-function.png,True,171339,FOF halo mass functions and Reed07 comparisons.
 mass-function-m200c-bocquet16.png,True,744183,M200c halo mass functions and B16 comparisons.
 halfmass-redshift-trackid-no-envelope.png,True,327256,Same-TrackId half-mass assembly redshifts.
-mass-assembly-history-correa-halfmass.png,True,1288264,Median FOF mass-assembly histories for PL and the kp=1 BT model with Correa EPS comparisons.
+mass-assembly-history-correa-halfmass.png,True,1270605,Median FOF mass-assembly histories for PL and the kp=1 BT model with Correa EPS comparisons and simulation-to-reference ratios.
 halo-density-radial-n100-power.png,True,992159,Direct radial density profiles and BT/PL ratios.
 concentration-qc-i21-fit.png,True,158335,Main-text concentration-mass comparison with the I21 prescription.
 power-spectrum.png,True,658225,Nonlinear matter power spectra and matched BT/PL ratios.
