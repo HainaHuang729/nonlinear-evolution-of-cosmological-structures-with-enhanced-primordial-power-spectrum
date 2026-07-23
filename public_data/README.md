@@ -7,6 +7,7 @@ product rather than by raw simulation output.
 ## Contents
 
 - `MANIFEST.csv`: file-by-file inventory with descriptions and source paths.
+- `CATALOG_RELEASE.md`: schema, selections, and validation for the separately distributed compact per-halo catalog.
 - `figure_data/metadata/`: simulation-suite and figure-file manifests.
 - `figure_data/input_power_spectra/`: input linear matter spectra.
 - `figure_data/fof_hmf/`: binned FoF halo mass-function points.
@@ -29,6 +30,12 @@ statistics reproducible without requiring the full raw simulation snapshots.
 The raw SWIFT snapshots and complete HBT+/SOAP catalogs are much larger than
 the manuscript source package; the reduced files here are the data products
 used for the manuscript figures and numerical comparisons.
+
+A separate 74.2 MiB compact catalog provides the individual halo inputs used
+for the FOF and `M200c` mass functions, concentration relation, mass-assembly
+histories, and radial-profile sample. See `CATALOG_RELEASE.md` for its contents,
+selection rules, checksums, and validation procedure. The HDF5 files are kept
+outside the manuscript Git repository.
 
 Paths recorded in `MANIFEST.csv` point to the local project locations from
 which the reduced products were assembled. The copied scripts in `scripts/`

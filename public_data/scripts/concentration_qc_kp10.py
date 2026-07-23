@@ -88,8 +88,20 @@ NPART_STRICT = 1000
 MASS_NPART_STRICT_MSUN = NPART_STRICT * MAIN_PARTICLE_MASS_MSUN
 CONC_MAX = 500.0
 SIMULATION_N_BINS = 22
-OUTER_PANEL_HSPACE = 0.07
+OUTER_PANEL_HSPACE = 0.11
 LEFT_LABEL_X = -0.095
+PANEL_X_LIMITS = {
+    "0056": (8.0, 13.5),
+    "0048": (8.0, 13.5),
+    "0040": (8.0, 12.65),
+    "0032": (8.0, 11.65),
+}
+PANEL_Y_LIMITS = {
+    "0056": (0.55, 2.18),
+    "0048": (0.38, 1.82),
+    "0040": (0.20, 1.28),
+    "0032": (0.00, 1.05),
+}
 THEORY_MODELS = {
     "diemer19": {
         "label": "D19",
@@ -442,6 +454,7 @@ def write_residual_table(stats_by_snap, output_path):
     with output_path.open("w", newline="") as handle:
         writer = csv.DictWriter(
             handle,
+            lineterminator="\n",
             fieldnames=[
                 "model",
                 "snapshot",
@@ -485,6 +498,7 @@ def write_scatter_table(stats_by_snap, output_path):
     with output_path.open("w", newline="") as handle:
         writer = csv.DictWriter(
             handle,
+            lineterminator="\n",
             fieldnames=[
                 "model",
                 "snapshot",
@@ -528,7 +542,7 @@ def output_path_for_theory(theory_model):
 
 def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
     theory_style = THEORY_MODELS[theory_model]
-    fig = plt.figure(figsize=(9.6, 10.8))
+    fig = plt.figure(figsize=(8.6, 8.25))
     outer_grid = fig.add_gridspec(
         2,
         2,
@@ -545,7 +559,7 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
         row = i // 2
         col = i % 2
         inner_grid = outer_grid[row, col].subgridspec(
-            3, 1, height_ratios=[3.25, 1.15, 1.15], hspace=0.07
+            3, 1, height_ratios=[4.0, 1.15, 1.25], hspace=0.10
         )
         ax = fig.add_subplot(inner_grid[0])
         ax_residual = fig.add_subplot(inner_grid[1], sharex=ax)
@@ -562,27 +576,18 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
             ratio_data = stat["theory_ratios"][theory_model]
             good = ratio_data["valid"] & np.isfinite(ratio_data["ratio"])
             if np.any(good):
-                ax_residual.errorbar(
+                ax_residual.plot(
                     stat["bins"][good],
                     ratio_data["ratio"][good],
-                    yerr=[
-                        ratio_data["ratio_low"][good],
-                        ratio_data["ratio_high"][good],
-                    ],
-                    fmt=model["marker"],
+                    model["marker"],
                     color=model["color"],
                     markersize=3.6,
                     alpha=0.92,
-                    capsize=2.4,
-                    capthick=1.05,
-                    elinewidth=1.05,
                     markerfacecolor="white",
                     markeredgewidth=0.9,
                     label="_nolegend_",
                 )
                 ratio_values.extend(ratio_data["ratio"][good])
-                ratio_values.extend(ratio_data["ratio"][good] - ratio_data["ratio_low"][good])
-                ratio_values.extend(ratio_data["ratio"][good] + ratio_data["ratio_high"][good])
             ax_scatter.plot(
                 stat["bins"],
                 stat["sigma_68_log10_c"],
@@ -597,13 +602,13 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
                 stat["sigma_68_log10_c"][np.isfinite(stat["sigma_68_log10_c"])]
             )
 
-        ax.set_xlim(8.0, 13.5)
-        ax.set_xticks([8, 9, 10, 11, 12, 13])
-        y_max = 1.8 if redshift <= 1.1 else 1.3
-        ax.set_ylim(0.0, y_max)
-        format_axes(ax)
-        format_axes(ax_residual)
-        format_axes(ax_scatter)
+        x_min, x_max = PANEL_X_LIMITS[snap]
+        ax.set_xticks(np.arange(np.ceil(x_min), np.floor(x_max) + 1.0, 1.0))
+        ax.set_xlim(x_min, x_max)
+        ax.set_ylim(*PANEL_Y_LIMITS[snap])
+        for panel_axis in (ax, ax_residual, ax_scatter):
+            panel_axis.set_axisbelow(True)
+            format_axes(panel_axis, grid=True)
         emphasize_panel_text(ax)
         emphasize_panel_text(ax_residual)
         emphasize_panel_text(ax_scatter)
@@ -634,14 +639,15 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
                 labelpad=5,
             )
             ax_scatter.set_ylabel(r"$\sigma_{68}(\log_{10}c)$", fontweight="bold", labelpad=5)
-            for label_axis in (ax, ax_residual, ax_scatter):
-                label_axis.yaxis.set_label_coords(LEFT_LABEL_X, 0.5)
+            ax.yaxis.set_label_coords(LEFT_LABEL_X, 0.5)
+            ax_residual.yaxis.set_label_coords(LEFT_LABEL_X, 0.56)
+            ax_scatter.yaxis.set_label_coords(LEFT_LABEL_X, 0.42)
         else:
             ax.tick_params(axis="y", labelleft=False)
             ax_residual.tick_params(axis="y", labelleft=False)
             ax_scatter.tick_params(axis="y", labelleft=False)
         ax.text(
-            0.95,
+            0.40 if i == 0 else 0.95,
             0.92,
             rf"$z={format_redshift(redshift, 2)}$",
             transform=ax.transAxes,
@@ -680,7 +686,7 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
                 labels,
                 title=rf"{theory_style['label']}; BT: $m_s=1.5$",
                 handler_map={tuple: HandlerTuple(ndivide=None)},
-                loc="lower left",
+                loc="upper right",
                 ncol=1,
                 fontsize=10.6,
                 title_fontsize=10.6,
@@ -703,7 +709,12 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
         hspace=OUTER_PANEL_HSPACE,
     )
 
-    fig.savefig(output_path_for_theory(theory_model), dpi=100, bbox_inches=None)
+    fig.savefig(
+        output_path_for_theory(theory_model),
+        dpi=320,
+        bbox_inches="tight",
+        pad_inches=0.08,
+    )
     plt.close(fig)
     gc.collect()
 

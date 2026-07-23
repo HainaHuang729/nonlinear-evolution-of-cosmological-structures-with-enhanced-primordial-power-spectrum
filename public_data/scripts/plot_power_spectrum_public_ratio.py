@@ -58,6 +58,12 @@ H_VAL = 0.6736
 MESH_N = 1024
 K_NY_25 = np.pi * MESH_N / 25.0
 K_NY_256 = np.pi * MESH_N / 256.0
+K_MIN_25 = 4.0 * (2.0 * np.pi / 25.0)
+K_MIN_256 = 4.0 * (2.0 * np.pi / 256.0)
+TRUSTED_K_RANGES = {
+    "25": (K_MIN_25, K_NY_25),
+    "256": (K_MIN_256, K_NY_256),
+}
 POWER_RATIO_YLIM = (0.5, 10.0)
 POWER_RATIO_TICKS = np.array([0.5, 1.0, 2.0, 5.0, 10.0])
 POWER_RESIDUAL_YLIM = (0.15, 2.0)
@@ -67,6 +73,7 @@ RATIO_MARKER_COUNT = 24
 RESIDUAL_MARKER_COUNT = 16
 SIM_LINEWIDTH = 0.55
 SIM_ALPHA = 0.68
+UNTRUSTED_ALPHA = 0.36
 
 MODEL_ALIASES = {
     "BT_soft": "BTKP1",
@@ -214,6 +221,80 @@ def log_spaced_marker_indices(k_values, max_markers):
     )
 
 
+def plot_simulation_series(
+    ax,
+    k_values,
+    y_values,
+    *,
+    box_key,
+    color,
+    marker,
+    max_markers,
+    log_y=False,
+    connect=False,
+):
+    """Plot trusted markers normally and retain excluded points as faded open markers."""
+    k_values = np.asarray(k_values, dtype=float)
+    y_values = np.asarray(y_values, dtype=float)
+    valid = np.isfinite(k_values) & np.isfinite(y_values) & (k_values > 0) & (y_values > 0)
+    k_values = k_values[valid]
+    y_values = y_values[valid]
+    if not len(k_values):
+        return
+
+    plotter = ax.loglog if log_y else ax.semilogx
+    k_min, k_max = TRUSTED_K_RANGES[box_key]
+    trusted = (k_values >= k_min) & (k_values <= k_max)
+
+    if connect:
+        plotter(
+            k_values,
+            y_values,
+            color=color,
+            linestyle="-",
+            linewidth=SIM_LINEWIDTH,
+            alpha=UNTRUSTED_ALPHA,
+        )
+        plotter(
+            k_values[trusted],
+            y_values[trusted],
+            color=color,
+            linestyle="-",
+            linewidth=SIM_LINEWIDTH,
+            alpha=SIM_ALPHA,
+        )
+
+    marker_indices = log_spaced_marker_indices(k_values, max_markers)
+    marker_k = k_values[marker_indices]
+    marker_y = y_values[marker_indices]
+    marker_trusted = trusted[marker_indices]
+
+    if np.any(marker_trusted):
+        plotter(
+            marker_k[marker_trusted],
+            marker_y[marker_trusted],
+            color=color,
+            linestyle="",
+            marker=marker,
+            markersize=3.4,
+            markerfacecolor=color if BOX_MODELS[box_key]["filled_markers"] else "none",
+            markeredgewidth=0.75,
+            alpha=SIM_ALPHA,
+        )
+    if np.any(~marker_trusted):
+        plotter(
+            marker_k[~marker_trusted],
+            marker_y[~marker_trusted],
+            color=color,
+            linestyle="",
+            marker=marker,
+            markersize=3.4,
+            markerfacecolor="none",
+            markeredgewidth=0.75,
+            alpha=UNTRUSTED_ALPHA,
+        )
+
+
 def needed_measurement_families():
     families = set()
     for box in BOX_MODELS.values():
@@ -338,14 +419,19 @@ def log_interp(x, x_ref, y_ref):
 
 def mark_reliability(ax_top, ax_ratio, annotate=False):
     for ax in (ax_top, ax_ratio):
+        ax.axvline(K_MIN_256, color="0.35", linestyle=":", linewidth=0.8, alpha=0.8, zorder=1)
         ax.axvline(K_NY_256, color="0.35", linestyle=":", linewidth=0.8, alpha=0.8, zorder=1)
+        ax.axvline(K_MIN_25, color="0.25", linestyle="--", linewidth=0.85, alpha=0.85, zorder=1)
         ax.axvline(K_NY_25, color="0.25", linestyle="--", linewidth=0.85, alpha=0.85, zorder=1)
+        ax.axvspan(1.0e-2, K_MIN_256, color="0.82", alpha=0.16, lw=0, zorder=0)
         ax.axvspan(K_NY_25, 1.0e3, color="0.82", alpha=0.16, lw=0, zorder=0)
     if annotate:
         ax_top.text(
             0.96,
             0.72,
-            r"dotted/dashed: $k_{\rm Ny}$",
+            r"vertical pairs: $4k_{\rm f}$, $k_{\rm Ny}$"
+            + "\n"
+            + r"dotted: 256; dashed: 25",
             transform=ax_top.transAxes,
             ha="right",
             va="top",
@@ -356,12 +442,14 @@ def mark_reliability(ax_top, ax_ratio, annotate=False):
 
 
 def mark_residual_reliability(ax, box_key):
-    if box_key == "25":
-        ax.axvline(K_NY_25, color="0.25", linestyle="--", linewidth=0.85, alpha=0.85, zorder=1)
-        ax.axvspan(K_NY_25, 1.0e3, color="0.82", alpha=0.16, lw=0, zorder=0)
-    else:
-        ax.axvline(K_NY_256, color="0.35", linestyle=":", linewidth=0.8, alpha=0.8, zorder=1)
-        ax.axvspan(K_NY_256, 1.0e3, color="0.82", alpha=0.16, lw=0, zorder=0)
+    k_min, k_max = TRUSTED_K_RANGES[box_key]
+    linestyle = "--" if box_key == "25" else ":"
+    color = "0.25" if box_key == "25" else "0.35"
+    linewidth = 0.85 if box_key == "25" else 0.8
+    ax.axvline(k_min, color=color, linestyle=linestyle, linewidth=linewidth, alpha=0.85, zorder=1)
+    ax.axvline(k_max, color=color, linestyle=linestyle, linewidth=linewidth, alpha=0.85, zorder=1)
+    ax.axvspan(1.0e-2, k_min, color="0.82", alpha=0.16, lw=0, zorder=0)
+    ax.axvspan(k_max, 1.0e3, color="0.82", alpha=0.16, lw=0, zorder=0)
     ax.axhspan(0.9, 1.1, color="0.45", alpha=0.10, lw=0, zorder=0)
 
 
@@ -435,6 +523,17 @@ def plot_power_spectrum():
         r"$25\,h^{-1}\,\mathrm{Mpc}$ (filled)",
         r"$256\,h^{-1}\,\mathrm{Mpc}$ (open)",
     ]
+    excluded_legend_handle = plt.Line2D(
+        [0],
+        [0],
+        color="0.35",
+        linestyle="",
+        marker="o",
+        markersize=4.2,
+        markerfacecolor="none",
+        markeredgewidth=0.8,
+        alpha=UNTRUSTED_ALPHA,
+    )
 
     fig = plt.figure(figsize=(8.8, 8.9))
     outer_grid = gridspec.GridSpec(
@@ -504,50 +603,43 @@ def plot_power_spectrum():
             pl_rows = panel_measurements(measurements, box["pl_family"], snap)
             if pl_rows:
                 k_vals, p_vals = row_arrays(pl_rows, "P_Mpc_over_h_cubed")
-                ax_top.loglog(
+                plot_simulation_series(
+                    ax_top,
                     k_vals,
                     p_vals,
+                    box_key=box_key,
                     color=box["pl_color"],
-                    linestyle="",
                     marker=box["pl_marker"],
-                    markevery=log_spaced_marker_indices(k_vals, TOP_MARKER_COUNT),
-                    markersize=3.4,
-                    markerfacecolor=box["pl_color"] if box["filled_markers"] else "none",
-                    markeredgewidth=0.75,
-                    alpha=SIM_ALPHA,
+                    max_markers=TOP_MARKER_COUNT,
+                    log_y=True,
                 )
 
             for bt_model, bt_config in box["bt_models"].items():
                 bt_rows = panel_measurements(measurements, bt_config["family"], snap)
                 if bt_rows:
                     k_vals, p_vals = row_arrays(bt_rows, "P_Mpc_over_h_cubed")
-                    ax_top.loglog(
+                    plot_simulation_series(
+                        ax_top,
                         k_vals,
                         p_vals,
+                        box_key=box_key,
                         color=bt_config["bt_color"],
-                        linestyle="",
                         marker=bt_config["bt_marker"],
-                        markevery=log_spaced_marker_indices(k_vals, TOP_MARKER_COUNT),
-                        markersize=3.4,
-                        markerfacecolor=bt_config["bt_color"] if box["filled_markers"] else "none",
-                        markeredgewidth=0.75,
-                        alpha=SIM_ALPHA,
+                        max_markers=TOP_MARKER_COUNT,
+                        log_y=True,
                     )
 
                 ratio_rows = ratios.get((box_key, bt_config["ratio_model"], snap), [])
                 if ratio_rows:
                     k_vals, ratio_vals = row_arrays(ratio_rows, "P_model_over_P_PL")
-                    ax_ratio.semilogx(
+                    plot_simulation_series(
+                        ax_ratio,
                         k_vals,
                         ratio_vals,
+                        box_key=box_key,
                         color=bt_config["bt_color"],
-                        linestyle="",
                         marker=bt_config["bt_marker"],
-                        markevery=log_spaced_marker_indices(k_vals, RATIO_MARKER_COUNT),
-                        markersize=3.2,
-                        markerfacecolor=bt_config["bt_color"] if box["filled_markers"] else "none",
-                        markeredgewidth=0.75,
-                        alpha=SIM_ALPHA,
+                        max_markers=RATIO_MARKER_COUNT,
                     )
 
         for box_key, ax_residual in residual_axes.items():
@@ -563,18 +655,15 @@ def plot_power_spectrum():
                     marker = box["bt_models"][model]["bt_marker"]
                     color = box["bt_models"][model]["bt_color"]
                 k_vals, residual_ratio = row_arrays(rows, "sim_over_hmcode")
-                ax_residual.semilogx(
+                plot_simulation_series(
+                    ax_residual,
                     k_vals,
                     residual_ratio,
+                    box_key=box_key,
                     color=color,
-                    linestyle="-",
-                    linewidth=SIM_LINEWIDTH,
                     marker=marker,
-                    markevery=log_spaced_marker_indices(k_vals, RESIDUAL_MARKER_COUNT),
-                    markersize=3.1,
-                    markerfacecolor=color if box["filled_markers"] else "none",
-                    markeredgewidth=0.75,
-                    alpha=SIM_ALPHA,
+                    max_markers=RESIDUAL_MARKER_COUNT,
+                    connect=True,
                 )
                 residual_values[box_key].extend(
                     row["sim_over_hmcode"] for row in rows
@@ -665,6 +754,19 @@ def plot_power_spectrum():
                 handlelength=1.45,
                 handletextpad=0.35,
                 labelspacing=0.16,
+            )
+        elif idx == 2:
+            ax_top.legend(
+                [excluded_legend_handle],
+                ["outside adopted range"],
+                loc="lower left",
+                fontsize=7.0,
+                frameon=True,
+                framealpha=0.72,
+                edgecolor="none",
+                borderpad=0.2,
+                handlelength=1.45,
+                handletextpad=0.35,
             )
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)

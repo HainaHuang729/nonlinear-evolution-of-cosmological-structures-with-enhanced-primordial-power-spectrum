@@ -4,13 +4,62 @@ This document records requested manuscript changes and the corresponding revisio
 
 ## Current Status
 
-- All seventeen requested language, scope, citation, interpretation, and figure revisions have been addressed in the manuscript.
+- Twenty-eight requested revisions have been addressed. The concentration figures now use the compact article layout.
 - Revised manuscript text remains blue for review.
 - The Sim/Reed07 y-axis range has been revised.
 - On 2026-07-15, the main-text adjacent-snapshot accretion-rate figure and the appendix FOF-$\Gamma$ figure were replaced by the full median FOF mass-assembly-history comparison described below.
 - The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
 - The Power et al. (2003) citation and explanation of the convergence parameter have been added; the original comments remain visible only for final confirmation.
 - The language revisions do not change the simulation models.
+
+## 27. Prepare a space-efficient public halo catalog
+
+- **Location:** Public data release
+- **Status:** Completed; catalog extracted and validated on 2026-07-23
+
+Prepare an article-specific catalog instead of uploading complete FOF, SOAP, HBT-HERONS, or particle outputs. Preserve the existing reduced `public_data` package first. Then prioritize the FOF mass-function source masses, same-TrackId FOF assembly histories, the SOAP fields used for the (M_{200c}) mass function and concentration relation, and metadata for the halos selected for direct radial profiles. Do not include SOAP membership files or full particle snapshots unless substantially more storage becomes available.
+
+The final release contains nine compressed HDF5 files totaling 74.2 MiB. It
+includes individual FOF groups for the six mass-function snapshots; the SOAP
+`M200c`, `c200c`, particle-count, central-status, and `TrackId` fields used by
+the mass-function and concentration analyses; full same-`TrackId` raw FOF
+histories for the PL and \(k_p=1\) BT assembly samples; and metadata for the
+1,198 halos selected for direct radial profiles. Full snapshots, SOAP
+membership files, and complete HBT-HERONS and SOAP catalogs remain excluded.
+
+The extraction ran as Slurm job `1973235`. Independent validation reproduced
+540 published FOF mass-function points, the selections for 3,183,867 `M200c`
+rows, 336 mass-bin/snapshot assembly-history medians, and all 1,198 radial
+selections. SHA-256 checks passed for every catalog file. The extraction,
+Slurm, and validation scripts, the expected checksum manifest, and the schema
+documentation are recorded under `public_data/`. The HDF5 files remain in the
+separate release staging directory and are not added to the manuscript Git
+repository.
+
+## 2026-07-22. Compare with previous BT studies in the Discussion
+
+- **Location:** Discussion
+- **Status:** Completed in blue text; see item 21
+
+Add a focused comparison between the present simulation results and previous studies of enhanced or blue-tilted small-scale primordial power. The comparison should distinguish agreements and differences in the adopted primordial spectrum, simulation setup, halo definition, redshift range, mass range, and reported halo response.
+
+Search specifically for studies that use the halo mass function to investigate blue-tilted or enhanced-small-scale-power models. Verify that each candidate paper is genuinely relevant before adding it. Summarize how its halo-abundance result compares with the PL--BT trends measured here, and avoid citing papers that discuss related models without measuring or predicting a halo mass function.
+
+A focused comparison has now been added to the Relation to Previous Work subsection. The cited halo mass-function and zoom-in studies were checked against their journal or arXiv records before the revision. Item 21 records the paper-by-paper classification and the resulting manuscript changes.
+
+## 2026-07-22. Shorten the title
+
+- **Location:** Manuscript title
+- **Status:** Completed
+
+The title was shortened from `Enhanced Small-Scale Primordial Power and the Nonlinear Formation of Dark Matter Halos` to `Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power`. The revised title states the research subject first and removes the longer phrase "the nonlinear formation of."
+
+## 2026-07-22. Shorten the abstract
+
+- **Location:** Abstract
+- **Status:** Completed in blue text
+
+The abstract was reduced to a single paragraph. Detailed numerical values were removed, while the simulation design, measured statistics, main physical trends, comparison with published prescriptions, and scope of the dark-matter-only results were retained.
 
 ## 2026-07-15. Quantify agreement between published prescriptions and simulations
 
@@ -381,3 +430,161 @@ The simulation histories should be shown as points rather than connected lines. 
 ### Revision made
 
 The upper panel now shows the PL and BT simulation medians as unconnected circles and triangles. The Correa relations remain as curves. A new lower panel shows \(M_{\rm sim}/M_{\rm Correa}\), evaluated against the prominent spectrum-dependent Correa curve at each simulation redshift. A horizontal gray band marks a 10 percent difference from unity. The interval at \(z>6\) is shaded because the manuscript restricts its quantitative comparison to \(z\le6\).
+
+## 18. Mark box-specific reliable ranges in the power-spectrum figure
+
+- **Location:** Nonlinear matter power-spectrum figure and numerical-ranges appendix
+- **Status:** Figure, caption, and appendix updated; manuscript compilation deferred
+
+### Requested change
+
+Simulation points outside the reliable range should be identified. The low-wavenumber limit from finite box size must be shown in addition to the high-wavenumber mesh limit, especially for the 25 \(h^{-1}\) Mpc box.
+
+### Revision made
+
+Each box now uses an adopted interval from \(4k_{\rm f}\) to \(k_{\rm Ny}\), with \(k_{\rm f}=2\pi/L_{\rm box}\). This gives approximately \(1.0\le k/(h\,{\rm Mpc}^{-1})\le129\) for the 25 box and \(0.10\le k/(h\,{\rm Mpc}^{-1})\le12.6\) for the 256 box. Points outside the corresponding interval are retained as faded open symbols. Vertical boundary pairs identify both limits, and the box-separated residual panels shade the excluded regions. No simulation values or quoted BT/PL ratios were changed.
+
+## 19. State the resolution and volume limitations directly
+
+- **Location:** Numerical and Modeling Limitations subsection
+- **Status:** Completed in blue text
+
+### Requested change
+
+The opening sentence should identify resolution and box size explicitly rather than referring only to the numerical range of each statistic.
+
+### Revision made
+
+The sentence now lists finite mass and force resolution and finite simulation volume alongside the dark-matter-only setup and the single matched realization. The following paragraphs retain the statistic-specific explanation of these limitations.
+
+## 20. Restate the two BT models in the Conclusions
+
+- **Location:** Opening paragraph of the Conclusions
+- **Status:** Completed in blue text
+
+### Requested change
+
+Readers who begin with the Conclusions should be told explicitly which two BT models are analyzed.
+
+### Revision made
+
+The Conclusions now state that both BT models use \(m_s=1.5\). They also identify \BTKPone{} with \(k_p=1\,h\,{\rm Mpc}^{-1}\) and \BTKPten{} with \(k_p=10\,h\,{\rm Mpc}^{-1}\).
+
+## 21. Compare the results with previous halo mass-function studies
+
+- **Location:** Relation to Previous Work subsection
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+### Requested change
+
+The Discussion should compare the simulation results with previous studies of blue-tilted or otherwise enhanced small-scale power, especially work based on the halo mass function.
+
+### Revision made
+
+The revised subsection now separates three types of earlier work. It identifies the analytic Sheth--Tormen calculation of Parashari and Laha, the cosmological N-body halo mass functions of Hirano and Yoshida, and the localized-bump simulations of Tkachev et al. It then states the common result: the halo-abundance response is strongest at low mass and high redshift and becomes weaker toward \(z=0\).
+
+The text also states the extension made here. The matched periodic boxes are used to compare both FOF and \(M_{200c}\) mass functions together with assembly histories, radial profiles, concentrations, and nonlinear matter power. A separate paragraph distinguishes these field-halo measurements from the Milky Way zoom-in subhalo studies of Wu et al. and Nadler et al. Dekker and Kravtsov are no longer described as a halo mass-function study; their work is cited only in the structural and observational context where it belongs.
+
+The cited papers and their stated methods were checked against their journal or arXiv records before the revision. No new bibliography entry was required because all six references were already present in `main.bib`.
+
+## 22. Remove repetition from the Introduction and state the analytic comparisons
+
+- **Location:** Final paragraphs of the Introduction
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+### Requested changes
+
+The second list of observational probes repeats the opening paragraph and should be shortened. The statement of the paper's scope should also say that the simulations are compared with existing analytic models.
+
+### Revision made
+
+The repeated list of high-redshift galaxies, Milky Way zoom-ins, dwarf galaxies, lensing, and 21-cm studies has been replaced by two direct sentences. They state that observational interpretation requires additional astrophysical modeling and that this paper first isolates the dark-matter response.
+
+The following scope paragraph now states the simulation design and measured statistics without repeating the observational motivation. It also adds the comparison with published halo mass-function, concentration, and mass-assembly prescriptions. The text specifies that each prescription is evaluated with the linear spectrum of the corresponding model and that its parameters are not refitted to the simulations.
+
+## 23. Reorganize the halo definitions and merger-tree methods
+
+- **Location:** Numerical Methods and the opening sentences of the related Results subsections
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+### Requested changes
+
+The Simulation Suite and Terminology subsection should appear before the halo-catalog methods. The halo-method discussion should separately explain the FOF and spherical-overdensity definitions, the halo center and structural measurements, and the merger-tree progenitor assignment. Detailed result-specific cuts should remain in the Results section.
+
+### Revision made
+
+The simulation terminology has been merged into the earlier Simulation Suite subsection, which now precedes the halo-catalog discussion. The duplicate subsection after the halo methods has been removed.
+
+The renamed Halo Catalogs and Merger Trees subsection now follows a fixed order. It first defines the SWIFT FOF groups and their linking length. It then defines \(M_{200c}\) and \(M_{200m}\) and identifies the corresponding SOAP catalog fields. A separate paragraph distinguishes the centers used for the structural measurements: the direct particle profiles use `SO/200_mean/CentreOfMass`, while the SOAP SO concentration uses the HBT-HERONS most-bound-particle input center. It also states the direct particle-shell profile measurement and SOAP's NFW-based radial-moment concentration calculation. The final paragraph explains the HBT-HERONS particle-tracking tree, persistent `TrackId`, descendant link, and the same-`TrackId` main progenitor branch used for the assembly histories.
+
+The FOF mass-function, half-mass redshift, radial-profile, and concentration subsections now refer back to the new methods label. Their sample cuts, binning rules, and numerical results remain in the Results section.
+
+## 24. Explain the redshift and model dependence in the projection figure
+
+- **Location:** Projection figure caption and accompanying Results paragraph
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+### Requested change
+
+The text should state that the visual effect is strongest at high redshift and should explain why \BTKPone{} shows the clearest enhancement.
+
+### Revision made
+
+The caption and main text now state that the BT--PL contrast is most visible at \(z=8.52\) and becomes less distinct toward \(z=0\). They also explain that \BTKPone{} has the clearest small-scale structure because its lower pivot enhances a broader range of resolved modes and gives the largest small-scale input power. The shared phases are retained as the reason that the large-scale structures remain aligned across models.
+
+## 25. Introduce the pivot-to-mass conversion with the BT models
+
+- **Location:** Power-Spectrum Models and Linear Matter Power subsection; Physical Interpretation subsection
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+### Requested change
+
+The theoretical overview should give readers an approximate halo mass scale associated with each pivot before the numerical results are presented.
+
+### Revision made
+
+The model-definition subsection now introduces the Lagrangian mapping \(r_l=\pi/k_p\) and \(M_p=(4\pi/3)r_l^3\rho_{{\rm crit},0}\Omega_{{\rm m},0}\), following Wu et al. For the adopted cosmology, the text gives \(M_p=1.68\times10^{13}\,M_\odot\) for \(k_p=1\,h\,{\rm Mpc}^{-1}\) and \(M_p=1.68\times10^{10}\,M_\odot\) for \(k_p=10\,h\,{\rm Mpc}^{-1}\). It states immediately that these are approximate characteristic scales rather than sharp boundaries.
+
+The Discussion now refers back to the numbered pivot-mass equation instead of repeating the formula and both numerical values. It retains the physical interpretation that the high-redshift abundance response is strongest below the corresponding characteristic mass, while assembly and internal structure preserve the earlier-collapse signal at later times.
+
+## 26. Define the Power et al. relaxation parameter explicitly
+
+- **Location:** Radial Halo Density Profiles subsection and figure caption
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+### Requested change
+
+The text should cite the convergence study and define \(\kappa\) rather than only displaying the threshold \(\kappa=0.6\).
+
+### Revision made
+
+The radial-profile subsection now gives the exact criterion used by the figure script,
+\[
+\kappa(r)=\frac{N(<r)}{8\ln N(<r)}
+\left[\frac{200\rho_{{\rm m},0}}{\overline{\rho}(<r)}\right]^{1/2}.
+\]
+It defines the enclosed particle count, mean enclosed density, and present-day mean matter density. The convergence radius is the smallest radius satisfying \(\kappa\ge0.6\). The text states that smaller radii can be affected by finite-particle two-body relaxation.
+
+The caption now points to the numbered equation and identifies the gray region as \(r<r_{\rm conv}\). The Power et al. (2003) citation remains attached to the criterion. No figure data or convergence threshold was changed.
+
+## 28. Make the concentration figures compact and consistent
+
+- **Location:** Main-text I21 concentration figure and appendix D19 and L16 concentration figures
+- **Status:** Completed; final figures regenerated on Slurm job `1973305`
+
+The four redshift blocks retain the same three-row structure: the
+concentration--mass relation, the median simulation-to-reference ratio, and
+the halo-to-halo scatter. The canvas and row heights now follow the compact
+mass-function layout. Light major grids were added to all panels. The mass
+range is shortened at \(z=3.44\) and \(z=8.52\), where no higher-mass simulation
+measurements exist, and the concentration limits now include the plotted
+16th--84th percentile ranges without retaining unused space below the data.
+
+The neighboring lower-panel y-axis labels and panel spacing were also adjusted
+so that the ratio and scatter labels remain separate. The ratio row now shows the median ratio markers without repeating the
+16th--84th percentile error bars. The same scatter is already shown by the
+error bars in the main panel and quantified in the third row. The change makes
+the ratio trend readable without changing any simulation medians, theory
+curves, selections, or quoted numerical results. All three figures now use
+320-dpi output, and the analysis and public provenance copies of the plotting
+script are synchronized.
