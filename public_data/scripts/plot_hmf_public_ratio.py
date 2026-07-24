@@ -4,6 +4,7 @@
 from collections import defaultdict
 from pathlib import Path
 import csv
+import os
 
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
@@ -18,7 +19,7 @@ ARTICLE_ROOT = next(p for p in SCRIPT_DIR.parents if (p / "main.tex").exists())
 DATA_ROOT = ARTICLE_ROOT / "public_data" / "figure_data" / "fof_hmf"
 POINTS_PATH = DATA_ROOT / "fof_reed07_hmf_points.csv"
 RATIO_PATH = DATA_ROOT / "fof_reed07_hmf_residuals.csv"
-OUTPUT_PATH = ARTICLE_ROOT / "mass-function.png"
+OUTPUT_PATH = Path(os.environ.get("FOF_HMF_OUTPUT_PATH", ARTICLE_ROOT / "mass-function.png"))
 
 SNAPS = ["0056", "0040", "0032", "0030", "0027", "0024"]
 MODEL_MAP = {"PL": "PL", "BT_soft": "BTKP1", "BT_deep": "BTKP10", "BTKP1": "BTKP1", "BTKP10": "BTKP10"}

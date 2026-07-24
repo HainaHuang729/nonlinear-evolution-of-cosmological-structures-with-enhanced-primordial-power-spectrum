@@ -90,6 +90,7 @@ RADIAL_ONLY_MASSES = [
     if s.strip()
 ]
 RADIAL_OUTPUT_BASENAME = os.environ.get("RADIAL_OUTPUT_BASENAME", "halo-density-radial-trial.png")
+RADIAL_OUTPUT_PATH_ENV = os.environ.get("RADIAL_OUTPUT_PATH")
 POWER_KAPPA_THRESHOLD = float(os.environ.get("POWER_KAPPA_THRESHOLD", "0.6"))
 POWER_CRITERION_LABEL = os.environ.get("POWER_CRITERION_LABEL", "Power03")
 POWER_REFERENCE_OVERDENSITY_CRIT = float(
@@ -557,7 +558,12 @@ def plot_trial():
     )
 
     fig.subplots_adjust(top=0.965, bottom=0.075, left=0.10, right=0.99, hspace=0.08, wspace=0.06)
-    out = PAPERPLOT_ROOT / "figures" / RADIAL_OUTPUT_BASENAME
+    out = (
+        Path(RADIAL_OUTPUT_PATH_ENV).expanduser().resolve()
+        if RADIAL_OUTPUT_PATH_ENV
+        else PAPERPLOT_ROOT / "figures" / RADIAL_OUTPUT_BASENAME
+    )
+    out.parent.mkdir(parents=True, exist_ok=True)
     save_publication_figure(fig, out)
     print(f"Figure saved: {out}")
 

@@ -10,6 +10,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.legend_handler import HandlerTuple
 from scipy import stats
+from scipy.interpolate import PchipInterpolator
 
 LOCAL_COLOSSUS_ROOT = next(
     (
@@ -35,17 +36,21 @@ ARTICLE_ROOT = next(
     WORKSPACE_ROOT / "papers" / "article_nonlinear_evolution_pps",
 )
 PUBLIC_DATA_ROOT = ARTICLE_ROOT / "public_data"
-PAPERPLOT_ROOT = next(
-    (
-        p
-        for p in (
-            WORKSPACE_ROOT / "analysis" / "_used_by_article_nonlinear_evolution_pps" / "paperplot",
-            WORKSPACE_ROOT / "analysis" / "paperplot",
-        )
-        if p.exists()
-    ),
-    WORKSPACE_ROOT / "analysis" / "paperplot",
-)
+PAPERPLOT_ROOT_ENV = os.environ.get("PAPERPLOT_ROOT")
+if PAPERPLOT_ROOT_ENV:
+    PAPERPLOT_ROOT = Path(PAPERPLOT_ROOT_ENV).expanduser().resolve()
+else:
+    PAPERPLOT_ROOT = next(
+        (
+            p
+            for p in (
+                WORKSPACE_ROOT / "analysis" / "_used_by_article_nonlinear_evolution_pps" / "paperplot",
+                WORKSPACE_ROOT / "analysis" / "paperplot",
+            )
+            if p.exists()
+        ),
+        WORKSPACE_ROOT / "analysis" / "paperplot",
+    )
 STYLE_ROOT = next(
     (
         p
@@ -158,6 +163,14 @@ CONCENTRATION_BINNED_CSV_PATH = Path(os.environ.get(
     PUBLIC_DATA_ROOT / "figure_data" / "concentration" / "concentration_qc_binned_points.csv",
 ))
 USE_PUBLIC_BINNED_POINTS = os.environ.get("CONCENTRATION_READ_RAW", "0") != "1"
+PUBLIC_THEORY_RATIO_INPUT_PATH = (
+    PUBLIC_DATA_ROOT
+    / "figure_data"
+    / "concentration"
+    / "concentration_qc_theory_ratios.csv"
+)
+PUBLIC_THEORY_MODELS = {"diemer19", "ishiyama21_fit"}
+PUBLIC_THEORY_TABLE = None
 
 MODELS = {
     "PL": {
@@ -376,8 +389,30 @@ def evaluate_theory(redshift, model, theory_model, mass_msun):
     return conc_model, valid
 
 
-def plot_theory(ax, redshift, model, theory_model, mass_msun):
-    conc_model, valid = evaluate_theory(redshift, model, theory_model, mass_msun)
+def public_theory_rows(snapshot, model, theory_model):
+    if PUBLIC_THEORY_TABLE is None or theory_model not in PUBLIC_THEORY_MODELS:
+        return None
+    snapshot = str(snapshot).zfill(4)
+    selected = PUBLIC_THEORY_TABLE[
+        (PUBLIC_THEORY_TABLE["snapshot"] == snapshot)
+        & (PUBLIC_THEORY_TABLE["model"] == model["label"])
+        & (PUBLIC_THEORY_TABLE["theory_model"] == theory_model)
+    ].sort_values("log10_M200c_center_Msun")
+    return selected if len(selected) else None
+
+
+def plot_theory(ax, snapshot, redshift, model, theory_model, mass_msun):
+    released = public_theory_rows(snapshot, model, theory_model)
+    if released is not None:
+        x_released = released["log10_M200c_center_Msun"].to_numpy(dtype=float)
+        logc_released = np.log10(released["theory_c200c"].to_numpy(dtype=float))
+        log_mass = np.log10(mass_msun)
+        conc_model = 10.0 ** PchipInterpolator(
+            x_released, logc_released, extrapolate=True
+        )(log_mass)
+        valid = np.isfinite(conc_model) & (conc_model > 0.0)
+    else:
+        conc_model, valid = evaluate_theory(redshift, model, theory_model, mass_msun)
     theory_style = THEORY_MODELS[theory_model]
     ax.plot(
         np.log10(mass_msun[valid]),
@@ -400,6 +435,35 @@ def add_theory_ratios(stat, theory_models=None):
     sim_c_high = 10 ** stat["logc_p84"]
     stat.setdefault("theory_ratios", {})
     for theory_model in theory_models:
+        released = public_theory_rows(
+            stat["snapshot"], model, theory_model
+        )
+        if released is not None:
+            released_by_bin = {
+                round(float(row["log10_M200c_center_Msun"]), 8): row
+                for _, row in released.iterrows()
+            }
+            conc_model = np.full_like(sim_c, np.nan, dtype=float)
+            ratio = np.full_like(sim_c, np.nan, dtype=float)
+            ratio_low = np.full_like(sim_c, np.nan, dtype=float)
+            ratio_high = np.full_like(sim_c, np.nan, dtype=float)
+            for index, mass_bin in enumerate(stat["bins"]):
+                row = released_by_bin.get(round(float(mass_bin), 8))
+                if row is None:
+                    continue
+                conc_model[index] = float(row["theory_c200c"])
+                ratio[index] = float(row["sim_over_theory"])
+                ratio_low[index] = float(row["ratio_low_16th"])
+                ratio_high[index] = float(row["ratio_high_84th"])
+            good = np.isfinite(conc_model) & np.isfinite(ratio) & (conc_model > 0.0)
+            stat["theory_ratios"][theory_model] = {
+                "concentration": conc_model,
+                "valid": good,
+                "ratio": ratio,
+                "ratio_low": ratio_low,
+                "ratio_high": ratio_high,
+            }
+            continue
         conc_model, valid = evaluate_theory(
             stat["redshift"], model, theory_model, mass_msun
         )
@@ -571,7 +635,7 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
         for model_key, model in MODELS.items():
             stat = stats_by_snap[snap][model_key]
             plot_simulation(ax, stat)
-            plot_theory(ax, redshift, model, theory_model, mass_msun)
+            plot_theory(ax, snap, redshift, model, theory_model, mass_msun)
 
             ratio_data = stat["theory_ratios"][theory_model]
             good = ratio_data["valid"] & np.isfinite(ratio_data["ratio"])
@@ -720,6 +784,7 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
 
 
 def main():
+    global PUBLIC_THEORY_TABLE
     apply_journal_style(base_fontsize=14.2)
     mass_msun = 10 ** np.arange(8.0, 13.5, 0.1)
     theory_keys = [
@@ -729,6 +794,14 @@ def main():
     ]
     if USE_PUBLIC_BINNED_POINTS and CONCENTRATION_BINNED_CSV_PATH.exists():
         stats_by_snap = collect_public_binned_stats()
+        if PUBLIC_THEORY_RATIO_INPUT_PATH.exists():
+            PUBLIC_THEORY_TABLE = pd.read_csv(
+                PUBLIC_THEORY_RATIO_INPUT_PATH,
+                dtype={"snapshot": str},
+            )
+            PUBLIC_THEORY_TABLE["snapshot"] = (
+                PUBLIC_THEORY_TABLE["snapshot"].str.zfill(4)
+            )
     else:
         stats_by_snap = {snap: {} for snap in SNAPSHOTS}
         for snap in SNAPSHOTS:

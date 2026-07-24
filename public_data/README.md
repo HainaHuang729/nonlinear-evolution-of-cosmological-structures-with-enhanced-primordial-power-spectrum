@@ -8,6 +8,8 @@ product rather than by raw simulation output.
 
 - `MANIFEST.csv`: file-by-file inventory with descriptions and source paths.
 - `CATALOG_RELEASE.md`: schema, selections, and validation for the separately distributed compact per-halo catalog.
+- `REPRODUCIBILITY_PACKAGE.md`: quick-start instructions and the scope of the self-contained archive.
+- `requirements-figures.txt`: Python dependencies for regenerating the manuscript figures.
 - `figure_data/metadata/`: simulation-suite and figure-file manifests.
 - `figure_data/input_power_spectra/`: input linear matter spectra.
 - `figure_data/fof_hmf/`: binned FoF halo mass-function points.
@@ -21,7 +23,9 @@ product rather than by raw simulation output.
 - `figure_data/nonlinear_power_spectrum/`: nonlinear matter power spectra and BT/PL ratios.
 - `figure_data/appendix_fof_gap_stitching/`: appendix gap-stitching data and notes.
 - `figure_data/fof_hmf_resolution/`: appendix FOF mass-function resolution and volume check data.
-- `scripts/`: provenance copies of the plotting and reduction scripts used to generate the figure products.
+- `scripts/reproduce_all_figures.py`: one-command regeneration and validation of all 12 manuscript figures.
+- `scripts/build_reproducibility_release.py`: project-side assembler for the self-contained archive.
+- `scripts/`: plotting, reduction, catalog-extraction, and validation scripts.
 
 ## Scope
 
@@ -33,11 +37,15 @@ used for the manuscript figures and numerical comparisons.
 
 A separate 74.2 MiB compact catalog provides the individual halo inputs used
 for the FOF and `M200c` mass functions, concentration relation, mass-assembly
-histories, and radial-profile sample. See `CATALOG_RELEASE.md` for its contents,
-selection rules, checksums, and validation procedure. The HDF5 files are kept
-outside the manuscript Git repository.
+histories, and radial-profile sample. The self-contained archive combines this
+catalog with `figure_data/`, the clean projection mosaic, radial-profile
+bootstrap caches, and the project Colossus source. See `CATALOG_RELEASE.md` for
+the catalog contents, selection rules, checksums, and validation procedure. The
+large binary files are kept outside the manuscript Git repository.
 
 Paths recorded in `MANIFEST.csv` point to the local project locations from
-which the reduced products were assembled. The copied scripts in `scripts/`
-preserve the analysis logic, but some hard-coded paths may need adaptation if
-the package is moved outside the original project workspace.
+which the reduced products were assembled. In the assembled archive, run
+`python public_data/scripts/reproduce_all_figures.py` from any location to
+write and validate all 12 figures under `reproduced_figures/`. Raw-data
+reduction scripts retain project path defaults because the full snapshots are
+not distributed; the figure-regeneration path does not use those paths.

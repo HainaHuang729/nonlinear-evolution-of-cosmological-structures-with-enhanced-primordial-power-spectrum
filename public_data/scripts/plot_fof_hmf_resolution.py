@@ -16,12 +16,30 @@ import numpy as np
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-ARTICLE_ROOT = next(parent for parent in SCRIPT_DIR.parents if (parent / "main.tex").exists())
-PROJECT_ROOT = next(parent for parent in SCRIPT_DIR.parents if (parent / "data" / "PL").exists())
+ARTICLE_ROOT = next(
+    (parent for parent in SCRIPT_DIR.parents if (parent / "main.tex").exists()),
+    SCRIPT_DIR.parents[2],
+)
+PROJECT_ROOT = next(
+    (parent for parent in SCRIPT_DIR.parents if (parent / "data" / "PL").exists()),
+    ARTICLE_ROOT,
+)
 DATA_ROOT = PROJECT_ROOT / "data" / "PL"
 OUTPUT_ROOT = Path(os.environ.get("FOF_HMF_RESOLUTION_OUTPUT_ROOT", ARTICLE_ROOT))
 OUTPUT_DATA_DIR = OUTPUT_ROOT / "public_data" / "figure_data" / "fof_hmf_resolution"
-OUTPUT_FIGURE = OUTPUT_ROOT / "fof-hmf-resolution-volume.png"
+PUBLIC_POINTS_PATH = (
+    ARTICLE_ROOT
+    / "public_data"
+    / "figure_data"
+    / "fof_hmf_resolution"
+    / "fof_hmf_resolution_points.csv"
+)
+OUTPUT_FIGURE = Path(
+    os.environ.get(
+        "FOF_HMF_RESOLUTION_OUTPUT_PATH",
+        OUTPUT_ROOT / "fof-hmf-resolution-volume.png",
+    )
+)
 
 JOURNAL_COLORS = {
     "blue": "#0072B2",
@@ -139,6 +157,42 @@ def load_all_results():
         for run_name, config in RUNS.items():
             print(f"Reading {run_name} snapshot {snap:04d}", flush=True)
             results[snap][run_name] = stream_hmf(config, snap)
+    return results
+
+
+def load_results_from_public():
+    """Rebuild the plotting arrays from the released binned table."""
+    grouped = {(snap, run_name): [] for snap in SNAPSHOTS for run_name in RUNS}
+    with PUBLIC_POINTS_PATH.open(newline="") as handle:
+        for row in csv.DictReader(handle):
+            snap = int(float(row["snapshot"]))
+            run_name = row["model"]
+            key = (snap, run_name)
+            if key in grouped:
+                grouped[key].append(row)
+
+    results = {snap: {} for snap in SNAPSHOTS}
+    for snap in SNAPSHOTS:
+        for run_name in RUNS:
+            rows = sorted(
+                grouped[(snap, run_name)],
+                key=lambda row: float(row["log10_bin_left"]),
+            )
+            if not rows:
+                raise ValueError(
+                    f"No public FOF resolution rows for {run_name}, snapshot {snap:04d}"
+                )
+            results[snap][run_name] = {
+                "redshift": float(rows[0]["redshift"]),
+                "box_size_mpc": float(rows[0]["box_size_mpc"]),
+                "particle_mass_msun": float(rows[0]["particle_mass_msun"]),
+                "counts": np.asarray([float(row["counts"]) for row in rows]),
+                "hmf": np.asarray([float(row["dn_dlog10M"]) for row in rows]),
+                "hmf_err": np.asarray([float(row["poisson_err"]) for row in rows]),
+                "logm_centers": np.asarray(
+                    [float(row["log10_M_FOF_Msun"]) for row in rows]
+                ),
+            }
     return results
 
 
@@ -400,12 +454,20 @@ def make_figure(results):
 
 
 def main():
-    results = load_all_results()
-    points_path = write_points_csv(results)
-    summary_path = write_summary_csv(results)
+    use_public = (
+        PUBLIC_POINTS_PATH.exists()
+        and os.environ.get("FOF_HMF_RESOLUTION_USE_CATALOG", "0") != "1"
+    )
+    if use_public:
+        results = load_results_from_public()
+        print(f"Read {PUBLIC_POINTS_PATH}")
+    else:
+        results = load_all_results()
+        points_path = write_points_csv(results)
+        summary_path = write_summary_csv(results)
+        print(f"Wrote {points_path}")
+        print(f"Wrote {summary_path}")
     figure_path = make_figure(results)
-    print(f"Wrote {points_path}")
-    print(f"Wrote {summary_path}")
     print(f"Wrote {figure_path}")
 
 

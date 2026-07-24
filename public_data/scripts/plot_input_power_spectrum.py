@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plot the input matter power spectra used in the manuscript."""
+"""Plot the manuscript input spectra from the public reduced table."""
 
 import os
 from pathlib import Path
@@ -15,33 +15,40 @@ from matplotlib.ticker import FixedLocator, LogFormatterMathtext
 import numpy as np
 
 
-WORKSPACE = Path("/project/tkcastrosim/HNHuang")
-PROJECT = WORKSPACE / "project_big_sim"
-ANALYSIS_ROOT = PROJECT / "analysis" / "_used_by_article_nonlinear_evolution_pps"
-DATA_DIR = ANALYSIS_ROOT / "initial_condition"
-OUT_DIR = ANALYSIS_ROOT / "paperplot" / "figures"
-PAPER_DIR = PROJECT / "papers" / "article_nonlinear_evolution_pps"
-POSTER_FIG_DIR = PROJECT / "posters" / "poster_blue_tilted_pps" / "figures"
-TOOLS_DIR = WORKSPACE / "tools"
-if str(TOOLS_DIR) not in sys.path:
-    sys.path.insert(0, str(TOOLS_DIR))
+SCRIPT_DIR = Path(__file__).resolve().parent
+ARTICLE_ROOT = next(
+    (parent for parent in SCRIPT_DIR.parents if (parent / "main.tex").exists()),
+    SCRIPT_DIR.parents[2],
+)
+PUBLIC_DATA_PATH = (
+    ARTICLE_ROOT
+    / "public_data"
+    / "figure_data"
+    / "input_power_spectra"
+    / "input_power_spectra.csv"
+)
+OUTPUT_PATH = Path(
+    os.environ.get("INPUT_POWER_SPECTRUM_OUTPUT_PATH", ARTICLE_ROOT / "input-power-spectrum.png")
+)
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
 
 from cosmology_plot_style import JOURNAL_COLORS, apply_journal_style, format_axes  # noqa: E402
 
 SPECTRA = [
     (
         "PL",
-        DATA_DIR / "input_powerspec_kp_1.0_ms_1.0_5.000000_0.0.txt",
+        "PL",
         {"color": JOURNAL_COLORS["black"], "linestyle": "-", "linewidth": 1.45},
     ),
     (
+        "BT_soft",
         r"BT $k_p=1$",
-        DATA_DIR / "input_powerspec_kp_1.0_ms_1.5_256.000000_0.0.txt",
         {"color": JOURNAL_COLORS["blue"], "linestyle": "--", "linewidth": 1.45},
     ),
     (
+        "BT_deep",
         r"BT $k_p=10$",
-        DATA_DIR / "input_powerspec_kp_10.0_ms_1.5_256.000000_0.0.txt",
         {"color": JOURNAL_COLORS["green"], "linestyle": "-.", "linewidth": 1.45},
     ),
 ]
@@ -51,6 +58,30 @@ FIDUCIAL_MESH_N = 1024
 K_NY_FIDUCIAL = np.pi * FIDUCIAL_MESH_N / FIDUCIAL_BOX_HMPC
 K_HIGHK_CAUTION = 0.5 * K_NY_FIDUCIAL
 BT_PIVOTS = (1.0, 10.0)
+
+
+def read_public_spectra() -> dict[str, tuple[np.ndarray, np.ndarray]]:
+    """Read the portable CSV without relying on the original cluster paths."""
+    if not PUBLIC_DATA_PATH.exists():
+        raise FileNotFoundError(f"Missing public input-spectrum table: {PUBLIC_DATA_PATH}")
+    table = np.genfromtxt(
+        PUBLIC_DATA_PATH,
+        delimiter=",",
+        names=True,
+        dtype=None,
+        encoding="utf-8",
+    )
+    spectra = {}
+    for model, _label, _style in SPECTRA:
+        selected = table[table["model"] == model]
+        if len(selected) == 0:
+            raise ValueError(f"No rows for {model} in {PUBLIC_DATA_PATH}")
+        order = np.argsort(selected["k_hMpc"])
+        spectra[model] = (
+            np.asarray(selected["k_hMpc"][order], dtype=float),
+            np.asarray(selected["P_k_Mpc_over_h_cubed"][order], dtype=float),
+        )
+    return spectra
 
 
 def mark_input_scale_reference(ax) -> None:
@@ -86,11 +117,10 @@ def mark_input_scale_reference(ax) -> None:
 def main() -> None:
     apply_journal_style(base_fontsize=8.8)
     fig, ax = plt.subplots(figsize=(3.45, 2.65))
+    spectra = read_public_spectra()
 
-    for label, path, style in SPECTRA:
-        data = np.loadtxt(path)
-        k = data[:, 0]
-        power = data[:, 1]
+    for model, label, style in SPECTRA:
+        k, power = spectra[model]
         mask = (k >= 1e-3) & (k <= 1e3)
         ax.loglog(k[mask], power[mask], label=label, **style)
 
@@ -116,16 +146,10 @@ def main() -> None:
         handletextpad=0.45,
     )
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    PAPER_DIR.mkdir(parents=True, exist_ok=True)
-    POSTER_FIG_DIR.mkdir(parents=True, exist_ok=True)
-    for path in (
-        OUT_DIR / "input-power-spectrum.png",
-        PAPER_DIR / "input-power-spectrum.png",
-        POSTER_FIG_DIR / "input-power-spectrum.png",
-    ):
-        fig.savefig(path, dpi=600, bbox_inches="tight", pad_inches=0.06)
-        print(path)
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(OUTPUT_PATH, dpi=600, bbox_inches="tight", pad_inches=0.06)
+    plt.close(fig)
+    print(OUTPUT_PATH)
 
 
 if __name__ == "__main__":

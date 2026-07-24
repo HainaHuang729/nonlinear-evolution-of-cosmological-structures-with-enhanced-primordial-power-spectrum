@@ -48,6 +48,7 @@ OUT_CANONICAL = PAPERPLOT_FIG_DIR / "halfmass-redshift-trackid-no-envelope.png"
 OUT_PAPER = PAPER_DIR / "halfmass-redshift-trackid-no-envelope.png"
 LOCAL_PUBLIC_POINTS = REPO_ROOT / "public_data/figure_data/halfmass_redshift/same_trackid_no_envelope_points.csv"
 LOCAL_OUT_FIG = REPO_ROOT / "halfmass-redshift-trackid-no-envelope.png"
+PORTABLE_OUTPUT_PATH = Path(os.environ.get("HALFMASS_OUTPUT_PATH", LOCAL_OUT_FIG))
 
 SNAPS = [f"{i:04d}" for i in range(21, 57)]
 MASS_EDGES_CODE = np.logspace(-2.0, 2.0, 21)
@@ -340,8 +341,8 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
 def main() -> None:
     if LOCAL_PUBLIC_POINTS.exists() and os.environ.get("HALFMASS_USE_CATALOG", "0") != "1":
         points = pd.read_csv(LOCAL_PUBLIC_POINTS)
-        plot(points, OUT_PAPER)
-        print(OUT_PAPER)
+        plot(points, PORTABLE_OUTPUT_PATH)
+        print(PORTABLE_OUTPUT_PATH)
         return
 
     if not all(info["dir"].exists() for info in MODELS.values()):
