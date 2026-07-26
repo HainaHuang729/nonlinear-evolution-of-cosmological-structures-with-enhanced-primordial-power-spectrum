@@ -324,6 +324,7 @@ Within the resolved mass range, both blue-tilted models increase the low-mass FO
     \centering
     \includegraphics[width=\textwidth]{mass-function.png}
     \caption{FOF halo mass functions for the PL, \BTKPone{}, and \BTKPten{} simulations at representative redshifts. Upper panels show the measured $dn/d\log_{10} M_{\rm FOF}$ with Poisson error bars, together with the Reed et al. (2007) (Reed07) FOF prediction computed separately from each model's linear matter power spectrum. Middle panels show \(\BTKPone/\mathrm{PL}\) and \(\BTKPten/\mathrm{PL}\) mass-function ratios in the same FOF mass bins. The middle-panel y-axis range is set separately for each redshift row. Bottom panels show \(f_{\rm sim}/f_{\rm Reed07}\) for PL, \BTKPone{}, and \BTKPten{}, using the same bins and mass thresholds. \revisionblue{The Sim/Reed07 y-axis range is also set separately for each redshift row so that the plotted values and error bars remain visible.} Here \BTKPone{} denotes the model with $k_p=1\,h\,{\rm Mpc}^{-1}$ and $m_s=1.5$, while \BTKPten{} denotes the model with $k_p=10\,h\,{\rm Mpc}^{-1}$ and $m_s=1.5$. All simulations use a $25\,h^{-1}{\rm Mpc}$ box with $1024^3$ particles. The gray band marks the interval between the nominal 20-particle halo threshold \(3.8\times10^7\,M_\odot\) and the adopted plotted catalog threshold \(M_{\rm FOF}=10^8\,M_\odot\), roughly the 50-particle scale.}
+    \Tk{Maybe relative difference in the Sim/Reed07 row? with symlog ? \url{https://matplotlib.org/stable/gallery/scales/symlog_demo.html} Currently the difference is still not obvious in z=0,3.}
     %\Tk{also in Sim/Reed07 row, the lower limit of yrange can be adjusted.}
     \label{fig:mass_function}
 \end{figure*}
@@ -584,7 +585,7 @@ The reduced data files supporting the figures and quantitative comparisons are a
 \begin{acknowledgments}
 The authors acknowledge the computational resources and software infrastructure used to carry out the simulations and analyses presented in this work.
 
-The research in this paper used the {\small SWIFT} open-source simulation code (http://www.swiftsim.com, \cite{ascl18SWIFT}) version 1.0.0, {\small MONOFONIC} \citep{Hahn2020MUSIC2monofonIC,Michaux2021MUSIC2monofonIC}, {\small HBT-HERONS} \citep{Victor25HBTHerons}, {\small SOAP} \citep{McGibbon25SOAP}, {\small VELOCIraptor}\citep{Elahi19VELOCIraptor} and {\small COLOSSUS} \citep{Diemer18Colossus}. This work also made use of matplotlib \citep{Hunt07matplotlib}, numpy \citep{vand11numpy}, scipy \citep{Jone01scipy,Virt20scipy} and NASA’s Astrophysics Data System. 
+The research in this paper used the {\small SWIFT} open-source simulation code (http://www.swiftsim.com, \cite{ascl18SWIFT}) version 1.0.0, {\small MONOFONIC} \citep{Hahn2020MUSIC2monofonIC,Michaux2021MUSIC2monofonIC}, {\small HBT-HERONS} \citep{Victor25HBTHERONS}, {\small SOAP} \citep{McGibbon25SOAP}, {\small VELOCIraptor}\citep{Elahi19VELOCIraptor} and {\small COLOSSUS} \citep{Diemer18Colossus}. This work also made use of matplotlib \citep{Hunt07matplotlib}, numpy \citep{vand11numpy}, scipy \citep{Jone01scipy,Virt20scipy} and NASA’s Astrophysics Data System. 
 
 
 
