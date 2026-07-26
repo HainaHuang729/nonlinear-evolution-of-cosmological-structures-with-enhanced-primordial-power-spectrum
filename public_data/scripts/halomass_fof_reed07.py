@@ -109,6 +109,10 @@ HMF_XMIN_MSUN = 5.0e7
 HMF_BINS_PER_DEX = 6
 HMF_X_MAJOR_TICKS = 10.0 ** np.arange(8, 12)
 HMF_RATIO_TICK_POOL = np.array([0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0])
+HMF_RESIDUAL_LINTHRESH = 0.1
+HMF_RESIDUAL_TICK_POOL = np.array(
+    [-100.0, -30.0, -10.0, -3.0, -1.0, -0.3, -0.1, 0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0]
+)
 
 
 def hmf_log_edges(bins_per_dex=HMF_BINS_PER_DEX):
@@ -156,6 +160,30 @@ def padded_ratio_ylim(values):
         ymin = 10 ** np.floor(np.log10(ymin))
         ymax = 10 ** np.ceil(np.log10(ymax))
     return ymin, ymax
+
+
+def residual_ylim(values):
+    values = np.asarray(values, dtype=float)
+    values = values[np.isfinite(values)]
+    if len(values) == 0:
+        return -0.3, 0.3
+    lower = min(-1.2 * HMF_RESIDUAL_LINTHRESH, 1.08 * float(values.min()))
+    upper = max(1.2 * HMF_RESIDUAL_LINTHRESH, 1.08 * float(values.max()))
+    return lower, upper
+
+
+def set_hmf_residual_ticks(ax):
+    ax.xaxis.set_major_locator(FixedLocator(HMF_X_MAJOR_TICKS))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.xaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=100))
+    ax.xaxis.set_minor_formatter(NullFormatter())
+    ymin, ymax = ax.get_ylim()
+    ticks = HMF_RESIDUAL_TICK_POOL[
+        (HMF_RESIDUAL_TICK_POOL >= ymin) & (HMF_RESIDUAL_TICK_POOL <= ymax)
+    ]
+    ax.yaxis.set_major_locator(FixedLocator(ticks))
+    ax.yaxis.set_major_formatter(FuncFormatter(plain_ratio_tick_label))
+    ax.tick_params(axis="y", which="major", labelsize=8.0, pad=1.0)
 
 
 def mark_hmf_resolution(ax, annotate=False):
@@ -544,18 +572,26 @@ for idx, snap_num in enumerate(snap_numbers):
         }
         bt_pl_ratio_values_by_row[row].extend(ratio[np.isfinite(ratio) & (ratio > 0)])
 
-combined_ratio_values = []
-for values in bt_pl_ratio_values_by_row.values():
-    combined_ratio_values.extend(values)
+bt_pl_ratio_ylims = {
+    row: padded_ratio_ylim(values)
+    for row, values in bt_pl_ratio_values_by_row.items()
+}
+model_residual_values_by_row = {row: [] for row in range(n_rows)}
 for idx, snap_num in enumerate(snap_numbers):
+    row = idx // n_cols
     for code in sim_configs.keys():
         sim_data = sim_results.get(code, {}).get(snap_num)
         if sim_data is None or "diff_data" not in sim_data:
             continue
-        values = np.asarray(sim_data["diff_data"]["model_ratio"], dtype=float)
-        combined_ratio_values.extend(values[np.isfinite(values) & (values > 0)])
-
-combined_ratio_ylim = padded_ratio_ylim(combined_ratio_values)
+        residual = np.asarray(sim_data["diff_data"]["relative_diff"], dtype=float)
+        error = np.asarray(sim_data["diff_data"]["diff_err"], dtype=float)
+        model_residual_values_by_row[row].extend(
+            np.concatenate([residual, residual - error, residual + error])
+        )
+model_residual_ylims = {
+    row: residual_ylim(values)
+    for row, values in model_residual_values_by_row.items()
+}
 
 write_residual_table(HMF_RESIDUAL_CSV_PATH)
 
@@ -680,11 +716,11 @@ for idx, snap_num in enumerate(snap_numbers):
     ax_ratio.axhline(y=1.0, color='black', linestyle='-', linewidth=0.7, alpha=0.6)
     ax_ratio.axhline(y=2.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
     ax_ratio.axhline(y=5.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
-    ax_ratio.set(xscale='log', yscale='log', xlim=(HMF_XMIN_MSUN, 2e11), ylim=combined_ratio_ylim)
+    ax_ratio.set(xscale='log', yscale='log', xlim=(HMF_XMIN_MSUN, 2e11), ylim=bt_pl_ratio_ylims[row])
     set_hmf_log_ticks(ax_ratio, ratio_axis=True)
     mark_hmf_resolution(ax_ratio, annotate=(idx == 0))
 
-    # 绘制最下子图：simulation/Reed07比值
+    # 绘制最下子图：相对于Reed07的差异
     for code in sim_configs.keys():
         sim_data = sim_results.get(code, {}).get(snap_num)
         if sim_data is None or "diff_data" not in sim_data:
@@ -693,8 +729,8 @@ for idx, snap_num in enumerate(snap_numbers):
         config = sim_data["config"]
         ax_residual.errorbar(
             diff_data["mass"],
-            diff_data["model_ratio"],
-            yerr=diff_data["model_ratio_err"],
+            diff_data["relative_diff"],
+            yerr=diff_data["diff_err"],
             fmt=config["marker"],
             color=config["color"],
             markersize=3.1,
@@ -707,11 +743,15 @@ for idx, snap_num in enumerate(snap_numbers):
         )
 
     format_axes(ax_residual, grid=True)
-    ax_residual.axhline(y=1.0, color='black', linestyle='-', linewidth=0.7, alpha=0.6)
-    ax_residual.axhline(y=2.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
-    ax_residual.axhline(y=5.0, color='gray', linestyle=':', linewidth=0.6, alpha=0.55)
-    ax_residual.set(xscale='log', yscale='log', xlim=(HMF_XMIN_MSUN, 2e11), ylim=combined_ratio_ylim)
-    set_hmf_log_ticks(ax_residual, ratio_axis=True)
+    ax_residual.axhspan(-0.1, 0.1, color='0.82', alpha=0.22, lw=0, zorder=0)
+    ax_residual.axhline(y=0.0, color='black', linestyle='-', linewidth=0.7, alpha=0.7)
+    ax_residual.axhline(y=-0.1, color='gray', linestyle=':', linewidth=0.6, alpha=0.65)
+    ax_residual.axhline(y=0.1, color='gray', linestyle=':', linewidth=0.6, alpha=0.65)
+    ax_residual.set_xscale('log')
+    ax_residual.set_yscale('symlog', linthresh=HMF_RESIDUAL_LINTHRESH, linscale=1.0, base=10)
+    ax_residual.set_xlim(HMF_XMIN_MSUN, 2e11)
+    ax_residual.set_ylim(*model_residual_ylims[row])
+    set_hmf_residual_ticks(ax_residual)
     mark_hmf_resolution(ax_residual, annotate=False)
 
     # 只在最后一行的下子图显示x轴标签
@@ -728,7 +768,7 @@ for idx, snap_num in enumerate(snap_numbers):
     if col == 0:
         ax_upper.set_ylabel(r'$dn/d\log_{10}M\,[{\rm Mpc}^{-3}]$')
         ax_ratio.set_ylabel(r'$f_{\rm BT}/f_{\rm PL}$')
-        ax_residual.set_ylabel(r'$\mathrm{sim}/\mathrm{Reed07}$')
+        ax_residual.set_ylabel(r'$\Delta f/f_{\rm R07}$')
     else:
         ax_upper.tick_params(labelleft=False)
         ax_ratio.tick_params(labelleft=False)

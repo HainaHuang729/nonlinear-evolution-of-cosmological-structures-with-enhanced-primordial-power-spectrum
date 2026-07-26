@@ -12,18 +12,19 @@ product rather than by raw simulation output.
 - `requirements-figures.txt`: Python dependencies for regenerating the manuscript figures.
 - `figure_data/metadata/`: simulation-suite and figure-file manifests.
 - `figure_data/input_power_spectra/`: input linear matter spectra.
-- `figure_data/fof_hmf/`: binned FoF halo mass-function points.
-- `figure_data/m200c_hmf/`: binned `M200c` halo mass-function points.
+- `figure_data/fof_hmf/`: binned FoF halo mass-function points and Reed07 relative differences.
+- `figure_data/m200c_hmf/`: binned `M200c` halo mass-function points used to derive the B16 relative differences.
 - `figure_data/halfmass_redshift/`: same-TrackId half-mass redshift points and summaries.
-- `figure_data/mass_assembly_history/`: same-TrackId median FOF mass histories for PL and the `kp=1` BT model, together with the fixed and half-mass-closure Correa curves used in `mass-assembly-history-correa-halfmass.png`.
+- `figure_data/mass_assembly_history/`: same-TrackId median FOF mass histories for PL and the `kp=1` BT model, the fixed and half-mass-closure Correa curves, and the normalized BT/PL assembly ratio used in `mass-assembly-history-correa-halfmass.png`.
 - `figure_data/mass_accretion/`: archived accretion diagnostics retained for revision traceability. They are not used by the current manuscript figures.
 - `figure_data/halo_density/`: concentration-derived NFW density-profile curves and mass-bin summaries.
 - `figure_data/halo_density_radial/`: direct particle-count radial density profiles and BT/PL ratios used in `halo-density-radial-n100-power.png`.
-- `figure_data/concentration/`: binned `c200c` concentration-mass data.
+- `figure_data/concentration/`: binned `c200c` measurements, theory ratios, mass-dependent scatter, and derived accuracy summaries.
 - `figure_data/nonlinear_power_spectrum/`: nonlinear matter power spectra and BT/PL ratios.
 - `figure_data/appendix_fof_gap_stitching/`: appendix gap-stitching data and notes.
 - `figure_data/fof_hmf_resolution/`: appendix FOF mass-function resolution and volume check data.
 - `scripts/reproduce_all_figures.py`: one-command regeneration and validation of all 12 manuscript figures.
+- `scripts/summarize_concentration_metrics.py`: regenerates the released concentration accuracy and mass-range scatter summaries.
 - `scripts/build_reproducibility_release.py`: project-side assembler for the self-contained archive.
 - `scripts/`: plotting, reduction, catalog-extraction, and validation scripts.
 

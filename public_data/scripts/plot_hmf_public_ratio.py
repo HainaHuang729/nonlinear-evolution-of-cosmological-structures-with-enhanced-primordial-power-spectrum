@@ -41,7 +41,10 @@ HMF_CATALOG_CUT_MSUN = 1.0e8
 RATIO_TICKS = np.array([0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000.0])
 RATIO_LABEL_TICKS = np.array([0.1, 1, 10, 100, 1000.0])
 BT_PL_LABEL_TICKS = np.array([0.1, 1, 10, 1000.0])
-SIM_REED_LABEL_TICKS = np.array([0.2, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0])
+RESIDUAL_LINTHRESH = 0.1
+RESIDUAL_TICK_POOL = np.array(
+    [-100.0, -30.0, -10.0, -3.0, -1.0, -0.3, -0.1, 0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0]
+)
 
 
 def normalize_snap(value):
@@ -86,6 +89,10 @@ def read_public_tables():
                     "log10_M_FOF_Msun": as_float(row.get("log10_M_FOF_Msun")),
                     "reed07_dndlog10M_interp": as_float(row.get("reed07_dndlog10M_interp")),
                     "sim_over_reed07": as_float(row.get("sim_over_reed07")),
+                    "relative_difference": as_float(
+                        row.get("sim_over_reed07_minus_1"),
+                        as_float(row.get("sim_over_reed07")) - 1.0,
+                    ),
                     "ratio_err": as_float(row.get("ratio_err")),
                 }
             )
@@ -168,20 +175,27 @@ def ratio_ylim(values, *, expand_large_range=True):
     return ymin, ymax
 
 
-def sim_reed_ylim(values):
-    """Return readable log limits that include the measured ratios and errors."""
+def residual_ylim(values):
+    """Return padded symlog limits that include the residuals and errors."""
     values = np.asarray(values, dtype=float)
-    values = values[np.isfinite(values) & (values > 0)]
+    values = values[np.isfinite(values)]
     if len(values) == 0:
-        return 0.5, 2.0
-
-    lower_candidates = np.array([0.05, 0.1, 0.2, 0.5, 1.0])
-    upper_candidates = np.array([1.5, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0])
-    lower_valid = lower_candidates[lower_candidates <= 0.95 * values.min()]
-    upper_valid = upper_candidates[upper_candidates >= 1.05 * values.max()]
-    lower = float(lower_valid[-1]) if lower_valid.size else float(lower_candidates[0])
-    upper = float(upper_valid[0]) if upper_valid.size else float(upper_candidates[-1])
+        return -0.3, 0.3
+    lower = min(-1.2 * RESIDUAL_LINTHRESH, 1.08 * float(values.min()))
+    upper = max(1.2 * RESIDUAL_LINTHRESH, 1.08 * float(values.max()))
     return lower, upper
+
+
+def set_residual_ticks(ax):
+    ax.xaxis.set_major_locator(FixedLocator(10.0 ** np.arange(8, 12)))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.xaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=80))
+    ax.xaxis.set_minor_formatter(NullFormatter())
+    ymin, ymax = ax.get_ylim()
+    ticks = RESIDUAL_TICK_POOL[(RESIDUAL_TICK_POOL >= ymin) & (RESIDUAL_TICK_POOL <= ymax)]
+    ax.yaxis.set_major_locator(FixedLocator(ticks))
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _pos: f"{value:g}"))
+    ax.tick_params(axis="y", which="major", labelsize=8.0, pad=1.0)
 
 
 def main():
@@ -216,19 +230,21 @@ def main():
         row: ratio_ylim(row_values, expand_large_range=(row > 0))
         for row, row_values in bt_pl_values_by_row.items()
     }
-    sim_reed_values_by_row = {row: [] for row in bt_pl_values_by_row}
+    sim_reed_residuals_by_row = {row: [] for row in bt_pl_values_by_row}
     for idx, snap in enumerate(SNAPS):
         row = idx // n_cols
         for model in MODELS:
             model_rows = ratios.get((snap, model), [])
             if not model_rows:
                 continue
-            ratio = values(model_rows, "sim_over_reed07")
+            residual = values(model_rows, "relative_difference")
             error = values(model_rows, "ratio_err")
-            sim_reed_values_by_row[row].extend(np.concatenate([ratio, ratio - error, ratio + error]))
-    sim_reed_ylims = {
-        row: sim_reed_ylim(row_values)
-        for row, row_values in sim_reed_values_by_row.items()
+            sim_reed_residuals_by_row[row].extend(
+                np.concatenate([residual, residual - error, residual + error])
+            )
+    sim_reed_residual_ylims = {
+        row: residual_ylim(row_values)
+        for row, row_values in sim_reed_residuals_by_row.items()
     }
 
     fig = plt.figure(figsize=(8.6, 8.25))
@@ -249,7 +265,7 @@ def main():
                 ax.plot(10 ** values(r, "log10_M_FOF_Msun"), values(r, "reed07_dndlog10M_interp"), style["linestyle"], color=style["color"], lw=1.15)
                 ax_model.errorbar(
                     10 ** values(r, "log10_M_FOF_Msun"),
-                    values(r, "sim_over_reed07"),
+                    values(r, "relative_difference"),
                     yerr=values(r, "ratio_err"),
                     fmt=style["marker"],
                     color=style["color"],
@@ -280,17 +296,26 @@ def main():
             style = MODELS[model]
             ax_bt.errorbar(mass, ratio, yerr=err, fmt=style["marker"], color=style["color"], markersize=2.9, capsize=1.2, markerfacecolor="white", markeredgewidth=0.7, elinewidth=0.55)
 
-        for ratio_ax in (ax_bt, ax_model):
-            ratio_ax.axhline(1.0, color="0.2", lw=0.7, alpha=0.65)
-            ratio_ax.axhline(2.0, color="0.5", ls=":", lw=0.6, alpha=0.55)
-            ratio_ax.axhline(5.0, color="0.5", ls=":", lw=0.6, alpha=0.55)
-            ratio_ax.set(xscale="log", yscale="log", xlim=(HMF_XMIN_MSUN, HMF_XMAX_MSUN))
-            format_axes(ratio_ax, grid=True)
-            mark_resolution(ratio_ax)
+        ax_bt.axhline(1.0, color="0.2", lw=0.7, alpha=0.65)
+        ax_bt.axhline(2.0, color="0.5", ls=":", lw=0.6, alpha=0.55)
+        ax_bt.axhline(5.0, color="0.5", ls=":", lw=0.6, alpha=0.55)
+        ax_bt.set(xscale="log", yscale="log", xlim=(HMF_XMIN_MSUN, HMF_XMAX_MSUN))
+        format_axes(ax_bt, grid=True)
+        mark_resolution(ax_bt)
         ax_bt.set_ylim(*bt_pl_ylims[row])
-        ax_model.set_ylim(*sim_reed_ylims[row])
         set_log_ticks(ax_bt, ratio=True, ratio_ticks=BT_PL_LABEL_TICKS)
-        set_log_ticks(ax_model, ratio=True, ratio_ticks=SIM_REED_LABEL_TICKS)
+
+        ax_model.axhspan(-0.1, 0.1, color="0.82", alpha=0.22, lw=0, zorder=0)
+        ax_model.axhline(0.0, color="0.2", lw=0.7, alpha=0.75)
+        ax_model.axhline(-0.1, color="0.5", ls=":", lw=0.6, alpha=0.7)
+        ax_model.axhline(0.1, color="0.5", ls=":", lw=0.6, alpha=0.7)
+        ax_model.set_xscale("log")
+        ax_model.set_yscale("symlog", linthresh=RESIDUAL_LINTHRESH, linscale=1.0, base=10)
+        ax_model.set_xlim(HMF_XMIN_MSUN, HMF_XMAX_MSUN)
+        ax_model.set_ylim(*sim_reed_residual_ylims[row])
+        format_axes(ax_model, grid=True)
+        mark_resolution(ax_model)
+        set_residual_ticks(ax_model)
 
         ax.set(xscale="log", yscale="log", xlim=(HMF_XMIN_MSUN, HMF_XMAX_MSUN), ylim=(1e-7 if redshift >= 8 else 1e-4, 1e2))
         format_axes(ax, grid=True)
@@ -304,7 +329,7 @@ def main():
         if col == 0:
             ax.set_ylabel(r"$dn/d\log_{10}M\,[{\rm Mpc}^{-3}]$", fontweight="bold", labelpad=5)
             ax_bt.set_ylabel(r"$f_{\rm BT}/f_{\rm PL}$", fontweight="bold", labelpad=5)
-            ax_model.set_ylabel(r"$\mathrm{Sim}/\mathrm{Reed07}$", fontweight="bold", labelpad=5)
+            ax_model.set_ylabel(r"$\Delta f/f_{\rm R07}$", fontweight="bold", labelpad=5)
         else:
             ax.tick_params(labelleft=False)
             ax_bt.tick_params(labelleft=False)

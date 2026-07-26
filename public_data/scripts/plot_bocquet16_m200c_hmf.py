@@ -93,8 +93,10 @@ THEORY_MASS_MSUN = 10 ** np.linspace(8.0, 13.8, 400)
 HMF_X_MAJOR_TICKS = 10.0 ** np.arange(8, 12)
 HMF_RATIO_TICK_POOL = np.array([0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0])
 BT_PL_LABEL_TICKS = np.array([0.1, 1.0, 10.0, 1000.0])
-SIM_B16_LABEL_TICKS = np.array([0.5, 1.0, 1.5, 2.0])
-SIM_B16_TOP_ROW_YLIM = (0.5, 1.5)
+HMF_RESIDUAL_LINTHRESH = 0.1
+HMF_RESIDUAL_TICK_POOL = np.array(
+    [-100.0, -30.0, -10.0, -3.0, -1.0, -0.3, -0.1, 0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0]
+)
 PUBLIC_MODEL_MAP = {"PL": "PL", "BT_soft": "BT_soft", "BT_deep": "BT_deep", "BTKP1": "BT_soft", "BTKP10": "BT_deep"}
 
 MODELS = {
@@ -186,6 +188,27 @@ def set_hmf_ratio_ticks(ax, *, ratio_ticks=None):
     ax.tick_params(axis="y", which="major", labelsize=8.0, pad=1.0)
     for tick_label in ax.get_yticklabels():
         tick_label.set_verticalalignment("center")
+
+
+def residual_ylim(values):
+    values = np.asarray(values, dtype=float)
+    values = values[np.isfinite(values)]
+    if values.size == 0:
+        return -0.3, 0.3
+    lower = min(-1.2 * HMF_RESIDUAL_LINTHRESH, 1.08 * float(values.min()))
+    upper = max(1.2 * HMF_RESIDUAL_LINTHRESH, 1.08 * float(values.max()))
+    return lower, upper
+
+
+def set_hmf_residual_ticks(ax):
+    set_hmf_x_ticks(ax)
+    ymin, ymax = ax.get_ylim()
+    ticks = HMF_RESIDUAL_TICK_POOL[
+        (HMF_RESIDUAL_TICK_POOL >= ymin) & (HMF_RESIDUAL_TICK_POOL <= ymax)
+    ]
+    ax.yaxis.set_major_locator(FixedLocator(ticks))
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _pos: f"{value:g}"))
+    ax.tick_params(axis="y", which="major", labelsize=8.0, pad=1.0)
 
 
 def apply_completeness_cut(centers, hmf, err):
@@ -417,19 +440,6 @@ def collect_results_from_public():
     return sim_results, theory_results
 
 
-def padded_ratio_ylim(values, fallback=(0.5, 2.0)):
-    values = np.asarray(values, dtype=float)
-    values = values[np.isfinite(values) & (values > 0.0)]
-    if values.size == 0:
-        return fallback
-    ymin = max(0.3, values.min() * 0.82)
-    ymax = min(1.0e3, max(2.0, values.max() * 1.18))
-    if ymax / ymin > 30.0:
-        ymin = 10.0 ** np.floor(np.log10(ymin))
-        ymax = 10.0 ** np.ceil(np.log10(ymax))
-    return ymin, ymax
-
-
 def ratio_ylim(values, fallback=(0.5, 10.0), *, expand_large_range=True):
     values = np.asarray(values, dtype=float)
     values = values[np.isfinite(values) & (values > 0.0)]
@@ -451,7 +461,7 @@ def plot_results(sim_results, theory_results):
     n_rows = int(np.ceil(n_panels / n_cols))
     bt_pl_ratio_results = {name: {} for name in ("BT_soft", "BT_deep")}
     bt_pl_ratio_values_by_row = {row: [] for row in range(n_rows)}
-    sim_b16_values_by_row = {row: [] for row in range(n_rows)}
+    sim_b16_residuals_by_row = {row: [] for row in range(n_rows)}
 
     for idx, snap in enumerate(SNAPSHOTS):
         row = idx // n_cols
@@ -472,18 +482,22 @@ def plot_results(sim_results, theory_results):
         for name in MODELS:
             data = sim_results.get(name, {}).get(snap)
             if data is not None:
-                sim_b16_values_by_row[row].extend(data["ratio"][np.isfinite(data["ratio"]) & (data["ratio"] > 0.0)])
+                residual = data["ratio"] - 1.0
+                error = data["ratio_err"]
+                sim_b16_residuals_by_row[row].extend(
+                    np.concatenate([residual, residual - error, residual + error])
+                )
 
     bt_pl_ratio_ylims = {}
-    sim_b16_ratio_ylims = {}
+    sim_b16_residual_ylims = {}
     for row in range(n_rows):
         bt_pl_ratio_ylims[row] = ratio_ylim(
             bt_pl_ratio_values_by_row.get(row, []),
             expand_large_range=(row > 0),
         )
-        sim_b16_ratio_ylims[row] = padded_ratio_ylim(sim_b16_values_by_row.get(row, []), fallback=(0.5, 2.0))
-        if row == 0:
-            sim_b16_ratio_ylims[row] = SIM_B16_TOP_ROW_YLIM
+        sim_b16_residual_ylims[row] = residual_ylim(
+            sim_b16_residuals_by_row.get(row, [])
+        )
 
     fig = plt.figure(figsize=(3.20 * n_cols, 4.35 * n_rows))
     outer = gridspec.GridSpec(
@@ -538,7 +552,7 @@ def plot_results(sim_results, theory_results):
                 )
                 ax_model.errorbar(
                     sim["ratio_mass"],
-                    sim["ratio"],
+                    sim["ratio"] - 1.0,
                     yerr=sim["ratio_err"],
                     fmt=model["marker"],
                     color=model["color"],
@@ -574,17 +588,28 @@ def plot_results(sim_results, theory_results):
         y_min = 1.0e-8 if redshift is not None and redshift >= 8.0 else 1.0e-7
         ax_upper.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=(y_min, 1.0e2))
         ax_bt.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=bt_pl_ratio_ylims[row])
-        ax_model.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=sim_b16_ratio_ylims[row])
+        ax_model.set_xscale("log")
+        ax_model.set_yscale(
+            "symlog",
+            linthresh=HMF_RESIDUAL_LINTHRESH,
+            linscale=1.0,
+            base=10,
+        )
+        ax_model.set_xlim(1.0e8, 2.0e11)
+        ax_model.set_ylim(*sim_b16_residual_ylims[row])
         set_hmf_log_ticks(ax_upper, y_decades=(int(np.log10(y_min)), 2))
         set_hmf_ratio_ticks(ax_bt, ratio_ticks=BT_PL_LABEL_TICKS)
-        set_hmf_ratio_ticks(ax_model, ratio_ticks=SIM_B16_LABEL_TICKS)
+        set_hmf_residual_ticks(ax_model)
         mark_m200c_resolution(ax_upper, annotate=False)
         mark_m200c_resolution(ax_bt, annotate=(idx == 0))
         mark_m200c_resolution(ax_model, annotate=False)
-        for ratio_ax in (ax_bt, ax_model):
-            ratio_ax.axhline(1.0, color="black", linewidth=0.7, alpha=0.65)
-            ratio_ax.axhline(2.0, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
-            ratio_ax.axhline(5.0, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
+        ax_bt.axhline(1.0, color="black", linewidth=0.7, alpha=0.65)
+        ax_bt.axhline(2.0, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
+        ax_bt.axhline(5.0, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
+        ax_model.axhspan(-0.1, 0.1, color="0.82", alpha=0.22, lw=0, zorder=0)
+        ax_model.axhline(0.0, color="black", linewidth=0.7, alpha=0.75)
+        ax_model.axhline(-0.1, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
+        ax_model.axhline(0.1, color="0.5", linewidth=0.55, linestyle=":", alpha=0.7)
 
         if redshift is not None:
             panel_label(
@@ -605,7 +630,7 @@ def plot_results(sim_results, theory_results):
         if col == 0:
             ax_upper.set_ylabel(r"$dn/d\ln M_{200c}\,[{\rm Mpc}^{-3}]$")
             ax_bt.set_ylabel(r"$f_{\rm BT}/f_{\rm PL}$")
-            ax_model.set_ylabel(r"$\mathrm{Sim}/\mathrm{B16}$")
+            ax_model.set_ylabel(r"$\Delta f/f_{\rm B16}$")
         else:
             ax_upper.tick_params(labelleft=False)
             ax_bt.tick_params(labelleft=False)

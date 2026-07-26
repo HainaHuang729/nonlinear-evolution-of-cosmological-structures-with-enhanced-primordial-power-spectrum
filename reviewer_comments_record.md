@@ -4,9 +4,9 @@ This document records requested manuscript changes and the corresponding revisio
 
 ## Current Status
 
-- Twenty-eight requested revisions have been addressed. The concentration figures now use the compact article layout.
-- Revised manuscript text remains blue for review.
-- The Sim/Reed07 y-axis range has been revised.
+- Thirty-four requested revisions have been addressed. The EPS foundations, concentration scatter, HMcode2020 implementation, and L16 high-mass limitation are now documented.
+- The four latest responses remain blue for review; earlier accepted revisions are rendered in black.
+- The Reed07 and B16 comparison rows use relative differences with row-specific symmetric-logarithmic limits.
 - On 2026-07-15, the main-text adjacent-snapshot accretion-rate figure and the appendix FOF-$\Gamma$ figure were replaced by the full median FOF mass-assembly-history comparison described below.
 - The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
 - The Power et al. (2003) citation and explanation of the convergence parameter have been added; the original comments remain visible only for final confirmation.
@@ -588,3 +588,97 @@ the ratio trend readable without changing any simulation medians, theory
 curves, selections, or quoted numerical results. All three figures now use
 320-dpi output, and the analysis and public provenance copies of the plotting
 script are synchronized.
+
+## 29. Show relative differences in the HMF model comparisons
+
+- **Location:** Bottom rows of the FOF/Reed07 and \(M_{200c}\)/B16 mass-function figures
+- **Status:** Completed; figures regenerated on Slurm job `1988333`, manuscript compilation deferred
+
+The FOF bottom row now shows
+\(\Delta f/f_{\rm Reed07}=(f_{\rm sim}-f_{\rm Reed07})/f_{\rm Reed07}\)
+instead of \(f_{\rm sim}/f_{\rm Reed07}\). The same change was applied to the
+\(M_{200c}\) comparison using B16. Zero therefore marks agreement with the
+reference model in both figures.
+
+Both bottom rows use a symmetric-logarithmic y-axis with a linear interval for
+\(|\Delta f/f|\le0.1\). A horizontal gray band marks this \(\pm10\%\) interval,
+and each redshift row uses limits derived from its plotted values and Poisson
+error bars. The BT/PL middle rows remain direct ratios.
+
+The main analysis scripts, the portable FOF plotting script, figure captions,
+public-data inventory, and figure-file manifest were updated together. The
+active HMF figure comment was removed after the revised figures passed visual
+inspection.
+
+## 30. Cite and quantify the BK09 and COCO half-mass comparisons
+
+- **Location:** Half-Mass Redshift subsection
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+The Millennium-II citation is Boylan-Kolchin et al. (2009), and the COCO
+citation is Hellwing et al. (2016). Their DOI and arXiv records were checked
+against the published metadata. The source papers also confirm the fitting
+coefficients used by the plotting script.
+
+The revised text distinguishes their halo definitions: BK09 calibrated its
+relation with virial masses, while COCO used FOF masses. Both relations are
+therefore shown as external \(\Lambda\)CDM references rather than fits to the
+present simulation.
+
+For the 15 PL bins with
+\(1.25\times10^9\le M_{\rm FOF}/M_\odot\le8.22\times10^{11}\), the mean
+absolute offsets in \(z_{1/2}\) are \(0.053\) from BK09 and \(0.097\) from
+COCO/Hellwing16. The corresponding maximum absolute offsets are \(0.128\) and
+\(0.207\). These values are taken from
+`same_trackid_no_envelope_summary.csv`.
+
+## 31. Cite the foundations of the EPS framework
+
+- **Location:** Median Mass-Assembly Histories subsection
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+The Correa et al. mass-assembly model is now introduced as an application of
+the extended Press--Schechter framework. The text cites Bond et al. (1991) for
+the excursion-set method and Lacey and Cole (1993) for its application to halo
+merger and formation histories. Both bibliography entries were checked against
+their journal metadata and DOI records.
+
+## 32. Quantify and compare the concentration scatter
+
+- **Location:** Concentration--Mass Relation subsection
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+The revised text compares two resolved mass ranges at \(z=0\). The median
+\(\sigma_{68}(\ln c)\) values in
+\(10^{9.5}\le M_{200c}/M_\odot<10^{10}\) are \(0.42\), \(0.55\), and \(0.45\)
+for PL, \BTKPone{}, and \BTKPten{}. In
+\(10^{10.5}\le M_{200c}/M_\odot<10^{11.5}\), they are \(0.34\), \(0.40\), and
+\(0.34\). Thus, all three models have larger scatter in the lower-mass range.
+
+Macciò et al. (2007) reported a total scatter
+\(\sigma_{\ln c}=0.40\pm0.03\) and an intrinsic scatter of \(0.33\pm0.03\) for
+their \(z=0\) halo sample. The manuscript presents this as an approximate
+comparison because the studies use different mass definitions, concentration
+estimators, and scatter statistics. The article metadata and quoted scatter
+values were checked against the published paper.
+
+## 33. Cite HMcode2020 and identify the implementation
+
+- **Location:** Power Spectrum subsection
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+The nonlinear-theory paragraph now cites Mead et al. (2021) for HMcode2020 and
+links the `pyhmcode` implementation used in the analysis:
+`https://github.com/tilmantroester/pyhmcode`. The paper metadata, DOI, arXiv
+record, and repository URL were checked before the revision.
+
+## 34. State the high-mass limitation of the L16 comparison
+
+- **Location:** Alternative Concentration Prescriptions appendix
+- **Status:** Completed in blue text; manuscript compilation deferred
+
+The appendix now states that the L16 comparison is less accurate at the
+high-mass end, especially at \(z=8.52\). The simulated concentration--mass
+relation turns upward in the highest-mass bins, while the L16 curve continues
+to decline. The text also warns that these bins contain few halos, so the
+discrepancy is interpreted qualitatively rather than as a precise measurement.

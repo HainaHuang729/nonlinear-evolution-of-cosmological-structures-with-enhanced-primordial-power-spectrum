@@ -47,6 +47,7 @@ OUT_FIG = FIG_DIR / "halfmass-redshift-trackid-no-envelope.png"
 OUT_CANONICAL = PAPERPLOT_FIG_DIR / "halfmass-redshift-trackid-no-envelope.png"
 OUT_PAPER = PAPER_DIR / "halfmass-redshift-trackid-no-envelope.png"
 LOCAL_PUBLIC_POINTS = REPO_ROOT / "public_data/figure_data/halfmass_redshift/same_trackid_no_envelope_points.csv"
+LOCAL_PUBLIC_SUMMARY = REPO_ROOT / "public_data/figure_data/halfmass_redshift/same_trackid_no_envelope_summary.csv"
 LOCAL_OUT_FIG = REPO_ROOT / "halfmass-redshift-trackid-no-envelope.png"
 PORTABLE_OUTPUT_PATH = Path(os.environ.get("HALFMASS_OUTPUT_PATH", LOCAL_OUT_FIG))
 
@@ -250,6 +251,7 @@ def summarize(points: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for model, sub_model in points.groupby("model", sort=False):
         low = sub_model[sub_model["M0_mean_msun"] < 1.0e9]
+        resolved = sub_model[sub_model["M0_mean_msun"] >= 1.0e9]
         for fit, col in [
             ("BK09 original", "dz_bk09_original"),
             ("COCO/Hellwing16", "dz_coco_hellwing16"),
@@ -269,6 +271,10 @@ def summarize(points: pd.DataFrame) -> pd.DataFrame:
                     "low_mass_n_bins_M_lt_1e9": int(len(low)),
                     "low_mass_mean_dz_M_lt_1e9": float(low[col].mean()) if len(low) else np.nan,
                     "low_mass_mae_dz_M_lt_1e9": float(low[col].abs().mean()) if len(low) else np.nan,
+                    "resolved_n_bins_M_ge_1e9": int(len(resolved)),
+                    "resolved_mean_dz_M_ge_1e9": float(resolved[col].mean()) if len(resolved) else np.nan,
+                    "resolved_mae_dz_M_ge_1e9": float(resolved[col].abs().mean()) if len(resolved) else np.nan,
+                    "resolved_max_abs_dz_M_ge_1e9": float(resolved[col].abs().max()) if len(resolved) else np.nan,
                 }
             )
     return pd.DataFrame(rows)
@@ -341,8 +347,12 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
 def main() -> None:
     if LOCAL_PUBLIC_POINTS.exists() and os.environ.get("HALFMASS_USE_CATALOG", "0") != "1":
         points = pd.read_csv(LOCAL_PUBLIC_POINTS)
+        summary = summarize(points)
+        summary.to_csv(LOCAL_PUBLIC_SUMMARY, index=False)
         plot(points, PORTABLE_OUTPUT_PATH)
         print(PORTABLE_OUTPUT_PATH)
+        print(LOCAL_PUBLIC_SUMMARY)
+        print(summary.to_string(index=False))
         return
 
     if not all(info["dir"].exists() for info in MODELS.values()):
