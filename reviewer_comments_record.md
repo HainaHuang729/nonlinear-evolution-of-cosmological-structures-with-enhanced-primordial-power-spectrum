@@ -5,7 +5,7 @@ This document records requested manuscript changes and the corresponding revisio
 ## Current Status
 
 - Thirty-four requested revisions have been addressed. The EPS foundations, concentration scatter, HMcode2020 implementation, and L16 high-mass limitation are now documented.
-- The four latest responses remain blue for review; earlier accepted revisions are rendered in black.
+- The latest responses and recent wording or semantic revisions remain blue for review; earlier accepted revisions are rendered in black.
 - The Reed07 and B16 comparison rows use relative differences with row-specific symmetric-logarithmic limits.
 - On 2026-07-15, the main-text adjacent-snapshot accretion-rate figure and the appendix FOF-$\Gamma$ figure were replaced by the full median FOF mass-assembly-history comparison described below.
 - The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
