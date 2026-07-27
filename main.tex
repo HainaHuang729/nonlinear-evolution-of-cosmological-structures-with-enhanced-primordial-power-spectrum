@@ -387,7 +387,8 @@ The half-mass assembly redshift, \(z_{1/2}\), is the redshift at which a \(z=0\)
 
 \currentrevisionblue{At each snapshot, we take the median \(M_{\rm FOF}(z)\) among halos with a finite positive recorded mass. Missing detections are not filled, and no cumulative-maximum filter is applied, so the contributing sample can decrease with redshift. We restrict quantitative comparisons to \(M_0\ge10^9\,M_\odot\) and \(z\le6\), where more than 90 per cent of each selected sample remains detected.}
 
-\Tk{cite  (Bond et al. 1991; Lacey \& Cole 1993) for EPS}
+%\Tk{cite  (Bond et al. 1991; Lacey \& Cole 1993) for EPS}
+
 \currentrevisionblue{We compare these histories with the mass-assembly model of \citet{Correa2015MAHI}. This model is based on the extended Press--Schechter (EPS) framework \citep{Bond1991ExcursionSet,LaceyCole1993MergerRates}:}
 \begin{equation}
 \label{eq:correa2015_mah}
@@ -416,7 +417,7 @@ The half-mass assembly redshift, \(z_{1/2}\), is the redshift at which a \(z=0\)
 We next test whether earlier halo growth also changes internal structure. We use direct radial density profiles and the concentration--mass relation.
 
 \subsubsection{Radial Halo Density Profiles\label{subsub:DensityProfile}}
-\currentrevisionblue{The radial-profile analysis uses the centers and \(M_{200m}\) definition given in Sec.~\ref{subsec:halo_catalogs}. Figure~\ref{fig:halo_density_analysis} compares median profiles measured directly from simulation particles with NFW profiles computed using the Diemer \& Joyce (2019) concentration--mass relation for the corresponding PL and BT models \citep{Diemer2019}. The error bars show bootstrap 16th--84th percentile intervals for the median profile in each bin.}
+\currentrevisionblue{The radial-profile analysis uses the centers and \(M_{200m}\) definition given in Sec.~\ref{subsec:halo_catalogs}. Figure~\ref{fig:halo_density_analysis} compares median profiles measured directly from simulation particles with NFW profiles (Eq. \ref{eq:nfw_profile}) computed using the Diemer \& Joyce (2019) concentration--mass relation for the corresponding PL and BT models \citep{Diemer2019}. The error bars show bootstrap 16th--84th percentile intervals for the median profile in each bin.}
 
 \currentrevisionblue{To identify the radial convergence limit, we follow \citet{Power2003} and calculate}
 %\Tk{There is no Diemer NFW profile, but NFW profile with the concentration from Diemer's mass-concentration relation.}
@@ -463,8 +464,8 @@ We next test whether earlier halo growth also changes internal structure. We use
 %\Tk{We should use Diemer fit instead. Then the error (for resolved halos) is less than 20\% for \BTKPone{}.}
 %\Tk{for which mass bins?}
 
-\Tk{Need to discuss the scatter of mass-concentration relation too. Compare with Maccio 2007. and state that we discover higher scatters in lower mass halos.}
-\currentrevisionblue{We find more concentration scatter at lower mass at \(z=0\). Over \(10^{9.5}\le M_{200c}/M_\odot<10^{10}\), the median \(\sigma_{68}(\ln c)\) is \(0.42\), \(0.55\), and \(0.45\) for PL, \BTKPone{}, and \BTKPten{}, respectively. Over \(10^{10.5}\le M_{200c}/M_\odot<10^{11.5}\), the corresponding values are \(0.34\), \(0.40\), and \(0.34\). All three models therefore show larger scatter in the lower-mass range. For comparison, \citet{Maccio2007ConcentrationScatter} reported a total scatter of \(\sigma_{\ln c}=0.40\pm0.03\) and an intrinsic scatter of \(0.33\pm0.03\) for halos at \(z=0\). This comparison is approximate because the mass definitions, concentration estimators, and scatter statistics differ.}
+%\Tk{Need to discuss the scatter of mass-concentration relation too. Compare with Maccio 2007. and state that we discover higher scatters in lower mass halos.}
+\currentrevisionblue{We find more concentration scatter at lower mass at \(z=0\). Over \(10^{9.5}\le M_{200c}/M_\odot<10^{10}\), the median \(\sigma_{68}(\ln c)\) is \(0.42\), \(0.55\), and \(0.45\) for PL, \BTKPone{}, and \BTKPten{}, respectively. Over \(10^{10.5}\le M_{200c}/M_\odot<10^{11.5}\), the corresponding values are \(0.34\), \(0.40\), and \(0.34\). All three models therefore show larger scatter in the lower-mass range. For comparison, \citet{Maccio2007ConcentrationScatter} reported a total scatter of \(\sigma_{\ln c}=0.40\pm0.03\) and an intrinsic scatter of \(0.33\pm0.03\) for halos at \(z=0\). }\Tk{State what mass range Maccio2007 is considering.}\Tk{also since you are plotting \(\sigma_{\ln c}\) instead of \(\sigma_{\log10 c}\), you need to convert Maccio2007 value to that unit too.}
 
 \begin{figure*}[t]
     \centering
@@ -477,7 +478,8 @@ We next test whether earlier halo growth also changes internal structure. We use
 
 \currentrevisionblue{We measure the nonlinear matter power spectrum from the full dark matter density field. For each snapshot, we assign the particle masses to a regular \(1024^3\) Cartesian mesh and compute the isotropically averaged spectrum with the \textsc{swiftsimio} power-spectrum utilities. We pass the total number of dark matter particles to the routine as \texttt{shot\_noise\_norm}. For plotting, we group the measurements in logarithmic bins and use the geometric-mean wavenumber and median power in each bin.}
 
-\Tk{Need to cite HMcode2020 and reference \texttt{pyhmcode} url}
+%\Tk{Need to cite HMcode2020 and reference \texttt{pyhmcode} url}
+
 \currentrevisionblue{The nonlinear theory curves are computed with the HMcode2020 dark-matter-only prescription \citep{Mead2021HMcode2020}, using the \texttt{pyhmcode} implementation.\footnote{\url{https://github.com/tilmantroester/pyhmcode}}} We first construct the PL linear matter spectrum from the Eisenstein--Hu transfer function and the adopted cosmological parameters. For each BT model, we apply the broken-power-law enhancement above its \(k_p\) and supply the resulting linear spectrum to HMcode2020. The theory ratios are HMcode2020 predictions; no parameters are fitted to the simulated BT/PL ratios.
 
 %No additional folding correction or external window-function deconvolution is applied outside the \textsc{swiftsimio} routine, so the highest-\(k\) points are interpreted as evidence for the direction of the small-scale trend rather than as a calibrated nonlinear-power fitting formula.
@@ -510,6 +512,8 @@ Fig.~\ref{fig:power_spectra_ratio_z0} shows BT/PL ratios for the \(k_p=1\) and \
 %{\color{red} Some previous works:  They do semi-analytic model only (halo mass function) with enhanced power spectrum \cite{Dekker25DwarfPPS,Parashari23JWSTPPS}Others do simulations, but only zoom-in Milky Way \cite{Wu25BT,Nadler2025enhanced}\cite{Hira24bluetilt} do large volume simulations but only focus on the high redshift galaxy.We here do a systematic study of the effect of blue-tilted on large volume simulations and investigate their effects on halo statistics, formation time, and profiles. Quantified with analytic solutions.}
 
 \currentrevisionblue{Previous studies have used halo mass functions to connect enhanced small-scale power to early structure formation. \citet{Parashari23JWSTPPS} evaluated a Sheth--Tormen halo mass function for broken-power-law spectra and used it to infer high-redshift stellar mass densities. \citet{Hira24bluetilt} measured FOF halo mass functions in cosmological \(N\)-body simulations with BT spectra and applied the results to high-redshift galaxies. \citet{Tkac24BumpyPPS} found a similar early excess of low-mass halos for a localized bump in the primordial power spectrum.}
+
+\Tk{Add Dekker and Esteban 2023 \cite{Esteban2024lumpyDM} here too. They studied halo concentration in enhanced power spectrum, but only with analytic model.}
 
 \currentrevisionblue{These studies and our simulations find the largest halo-abundance changes at low mass and high redshift, with smaller differences toward \(z=0\).}
 
@@ -578,15 +582,25 @@ The main conclusions are as follows:
     \item \currentrevisionblue{The density profiles (Sec.~\ref{subsub:DensityProfile}; Fig.~\ref{fig:halo_density_analysis}) and the concentration--mass relation (Sec.~\ref{subsub:concentration}; Fig.~\ref{fig:concentration_comparison_d19}) both show higher central density and concentration in the blue-tilted runs. At \(z=0\), the median \(c_{200c}\) in the \(10^9\)--\(10^{9.5}\,M_\odot\) bin is higher than PL by factors of \(3.20\) for \BTKPone{} and \(1.35\) for \BTKPten{}.}
 
     %\Tk{We should use the Diemer model in the main paper.}
-    \currentrevisionblue{For the strict resolved bins defined in Sec.~\ref{subsub:concentration}, the Diemer \& Joyce (2019) relation differs from the simulation medians by less than \(20\%\) for PL, \BTKPone{}, and \BTKPten{} at all four redshifts \citep{Diemer2019}.}
+    \currentrevisionblue{In Sec.~\ref{subsub:concentration},for the resolved mass bins, the Diemer \& Joyce (2019) relation agrees with the simulation medians within \(20\%\) for PL, \BTKPone{}, and \BTKPten{} at all four redshifts \citep{Diemer2019}.}
 
     
-    \item \currentrevisionblue{\BTKPone{} also increases the nonlinear matter power at high \(k\), although by less than its effect on the halo statistics. In the fiducial \(25\,h^{-1}{\rm Mpc}\) box (Sec.~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}), \(P_{\rm BT}/P_{\rm PL}\) reaches \(1.17\) at \(k=20\,h\,{\rm Mpc}^{-1}\) and \(1.34\) at \(k=40\,h\,{\rm Mpc}^{-1}\). For \BTKPten{}, the ratios are \(1.00\) at both wavenumbers. The measured high-\(k\) amplitude depends on box size and the power-spectrum estimator, so we do not calibrate a nonlinear fitting formula from these simulations.}
+    \item \currentrevisionblue{\BTKPone{} also increases the nonlinear matter power at high \(k\), although by less than its effect on the halo statistics. In the fiducial \(25\,h^{-1}{\rm Mpc}\) box (Sec.~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}), \(P_{\rm BT}/P_{\rm PL}\) reaches \(1.17\) at \(k=20\,h\,{\rm Mpc}^{-1}\) and \(1.34\) at \(k=40\,h\,{\rm Mpc}^{-1}\). For \BTKPten{}, the ratios are \(1.00\) at both wavenumbers.} \Tk{Say you have compared with HM2020 and state how good it is.}
 \end{enumerate}
 
 %\Tk{I think this paragraph can be merged into the previous bullet points. For example, the first bullet talks about halo abundance. We can say how good Reed et al. (2007) FOF and Bocquet et al. (2016) are the fit. Similarly for mass-concentration. Talk about Ishiyama et al. (2021) relation at the end}
 
-\currentrevisionblue{Future work should test these trends with independent realizations and simulations that include baryonic physics. Coupling the resulting halo populations to galaxy-formation and reionization models will enable predictions for dwarf galaxies, strong lensing, high-redshift galaxy counts, and 21-cm observables.}
+\currentrevisionblue{Future work should test these trends with independent realizations and simulations that include baryonic physics. Coupling the resulting halo populations to galaxy-formation and reionization models will enable predictions for dwarf galaxies, strong lensing, high-redshift galaxy counts, and 21-cm observables.} \Tk{State there are a few ways forwards: 
+
+1. different kinds of enhanced power spectrum: gaussian bump, smooth blue tilted, etc. See if the analytic models can still fit well.
+
+2. different phase/seed realisations, different box size, etc.
+
+3. add baryon and galaxy physics. But even in this case, we have semi-analytic models vs hydrodynamics vs full galaxy simulation.
+
+4. Comparison with observations and constrain small scale power spectrum.
+
+}
 
 \section*{Data Availability}
 
@@ -595,7 +609,7 @@ The reduced data files supporting the figures and quantitative comparisons are a
 \begin{acknowledgments}
 The authors acknowledge the computational resources and software infrastructure used to carry out the simulations and analyses presented in this work.
 
-\currentrevisionblue{The research in this paper used version 1.0.0 of the {\small SWIFT} open-source simulation code \citep{ascl18SWIFT} (available at \url{https://www.swiftsim.com}), {\small MONOFONIC} \citep{Hahn2020MUSIC2monofonIC,Michaux2021MUSIC2monofonIC}, {\small HBT-HERONS} \citep{Victor25HBTHERONS}, {\small SOAP} \citep{McGibbon25SOAP}, {\small VELOCIraptor} \citep{Elahi19VELOCIraptor}, and {\small COLOSSUS} \citep{Diemer18Colossus}. This work also used matplotlib \citep{Hunt07matplotlib}, numpy \citep{vand11numpy}, scipy \citep{Jone01scipy,Virt20scipy}, and NASA's Astrophysics Data System.}
+\currentrevisionblue{The research in this paper used version 1.0.0 of the {\small SWIFT} open-source simulation code \citep{ascl18SWIFT} (available at \url{https://www.swiftsim.com}), {\small MONOFONIC} \citep{Hahn2020MUSIC2monofonIC,Michaux2021MUSIC2monofonIC}, {\small HBT-HERONS} \citep{Victor25HBTHERONS}, {\small SOAP} \citep{McGibbon2025SOAP}, and {\small COLOSSUS} \citep{Diemer2018}. This work also used matplotlib \citep{Hunt07matplotlib}, numpy \citep{vand11numpy}, scipy \citep{Jone01scipy,Virt20scipy}, and NASA's Astrophysics Data System.}
 
 
 
@@ -663,8 +677,9 @@ The \(256^3\) same-volume run and the \(50\,h^{-1}{\rm Mpc}\), \(512^3\) volume 
 
 \currentrevisionblue{At \(z=0\) and \(10^9\le M_{200c}/M_\odot<10^{9.5}\), the median \(c_{\rm sim}/c_{\rm I21,fit}\) values are \(0.96\), \(1.38\), and \(1.12\) for PL, \BTKPone{}, and \BTKPten{}, respectively.}
 
-\Tk{mention Ludlow is less accurate at high mass end especially high redshift, since it does not have turn-over.}
-\currentrevisionblue{The L16 comparison is less accurate at the high-mass end, especially at \(z=8.52\). The simulated concentration--mass relation turns upward in the highest-mass bins, whereas the L16 curve continues to decline and misses this turnover. These bins contain few halos, so we interpret the high-mass discrepancy qualitatively.}
+%\Tk{mention Ludlow is less accurate at high mass end especially high redshift, since it does not have turn-over.}
+
+\currentrevisionblue{The L16 comparison is less accurate at the high-mass end, especially at \(z=8.52\). The simulated concentration--mass relation turns upward in the highest-mass bins, whereas the L16 curve continues to decline and misses this turnover. However, the Ishiyama et al. (2021) and Diemer \& Joyce (2019) models can capture this upturn.}
 
 \begin{figure*}[t]
     \centering
