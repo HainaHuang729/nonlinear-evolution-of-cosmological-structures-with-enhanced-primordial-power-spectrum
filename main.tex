@@ -130,7 +130,7 @@ We do not model these mechanisms explicitly. Instead, we use broken-power-law bl
 %\Tk{Are this paragraph repeating the first one a little bit? Need to clean up.}
 
 
-\currentrevisionblue{We use dark-matter-only cosmological \(N\)-body simulations in periodic boxes to compare a standard power-law primordial spectrum with two BT models. We measure halo mass functions, assembly histories, radial density profiles, concentrations, and the nonlinear matter power spectrum. We also test published halo mass-function, concentration, and mass-assembly prescriptions using the PL and BT primordial power spectra without refitting their parameters. }
+\currentrevisionblue{We use dark-matter-only cosmological \(N\)-body simulations in periodic boxes to compare a standard power-law primordial spectrum with two BT models with the same initial phases. We measure halo mass functions, assembly histories, radial density profiles, concentrations, and the nonlinear matter power spectrum. We also test published halo mass-function, concentration, and mass-assembly prescriptions using the PL and BT primordial power spectra without refitting their parameters. }
 
 %This setup isolates the gravitational effects of enhanced small-scale primordial power from baryonic and observational effects.
 
@@ -207,7 +207,7 @@ All simulations use the following Planck 2018 background cosmology \citep{Planck
 \subsection{Initial Conditions}
 \currentrevisionblue{We generate the initial conditions with \textsc{Music2-MonofonIC} \citep{Hahn2020MUSIC2monofonIC,Michaux2021MUSIC2monofonIC}. PL uses the Eisenstein \& Hu transfer function \citep{Eisenstein1998}. For each BT model, we modify the transfer-function plugin only above \(k_p\), and MonofonIC normalizes the resulting spectrum to \(\sigma_8=0.8111\).}
 
-\currentrevisionblue{For each matched set of runs, we keep the background cosmology, numerical settings, and MonofonIC random seed fixed. The main PL, \BTKPone{}, and \BTKPten{} \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) simulations therefore share the same initial phases. This matching reduces realization noise in the PL--BT comparisons.}
+\currentrevisionblue{For each matched set of runs, we keep the background cosmology, numerical settings, and MonofonIC random seed fixed. The main PL, \BTKPone{}, and \BTKPten{} \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) simulations therefore share the same initial phases. This matching reduces the uncertainties in different realizations in the PL--BT comparisons.}
 
 As an initial-condition consistency test, we compare the BT pivot scales with the particle-grid scale. For the main \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs, \(k_{\rm Ny}\simeq128.7\,h\,{\rm Mpc}^{-1}\). The two pivots, \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\), are therefore well below the grid Nyquist scale. The largest BT input value over this range is also small, \(\Delta^2(k,z_i)\simeq5.8\times10^{-5}\) for \BTKPone{}, so the enhanced modes are still linear at \(z_i=200\). This comparison addresses the location and initial linearity of the imposed break, but it does not constitute a nonlinear convergence test.
 
