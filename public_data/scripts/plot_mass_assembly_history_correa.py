@@ -162,7 +162,7 @@ def make_figure(output: Path) -> None:
             bt_pl_x,
             bt_pl_ratio,
             color=color,
-            lw=0.85,
+            ls="none",
             marker="o",
             markersize=2.6,
             alpha=0.95,
