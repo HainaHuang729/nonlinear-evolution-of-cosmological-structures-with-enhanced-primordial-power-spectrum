@@ -223,11 +223,17 @@ def make_figure(output: Path) -> None:
     style_handles = [
         plt.Line2D([], [], color="0.25", ls="none", marker="o", markersize=3.0, label="PL median"),
         plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label="BT median"),
-        plt.Line2D([], [], color="0.25", lw=1.1, ls="--", label=r"PL solved $q,\tilde{z}_{\rm f}$"),
-        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label=r"BT solved $q,\tilde{z}_{\rm f}$"),
-        plt.Line2D([], [], color="0.25", lw=0.7, ls="-", alpha=0.25, label="fixed relation"),
+        plt.Line2D([], [], color="0.25", lw=1.1, ls="--", label="PL recomputed"),
+        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label="BT recomputed"),
+        plt.Line2D([], [], color="0.25", lw=0.7, ls="-", alpha=0.25, label="published relation"),
     ]
-    first = ax.legend(handles=style_handles, loc="lower left", fontsize=7.1)
+    first = ax.legend(
+        handles=style_handles,
+        title="Correa-EPS",
+        loc="lower left",
+        fontsize=7.1,
+        title_fontsize=7.1,
+    )
     ax.add_artist(first)
 
     mass_handles = [
