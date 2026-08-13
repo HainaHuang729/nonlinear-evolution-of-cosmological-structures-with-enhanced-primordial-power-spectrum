@@ -31,7 +31,7 @@ apply_journal_style(base_fontsize=8.5)
 
 Z_MAX = 8.0
 QUANTITATIVE_Z_MAX = 6.0
-TARGETS = [3.0e8, 1.0e9, 3.0e9, 1.0e10, 3.0e10, 1.0e11, 3.0e11]
+TARGETS = [1.0e9, 3.0e9, 1.0e10, 3.0e10, 1.0e11, 3.0e11]
 
 
 def row_for_target(summary: pd.DataFrame, target: float) -> pd.Series:
@@ -50,10 +50,6 @@ def solved_curve(curves: pd.DataFrame, mass: float, spectrum: str) -> pd.DataFra
         curves["M0_msun"], mass, rtol=1.0e-10, atol=0.0
     )
     return curves[mask].sort_values("z")
-
-
-def fixed_curve(curves: pd.DataFrame, mass: float) -> pd.DataFrame:
-    return curves[np.isclose(curves["M0_msun"], mass, rtol=1.0e-10, atol=0.0)].sort_values("z")
 
 
 def simulation_to_reference_ratio(
@@ -90,9 +86,6 @@ def make_figure(output: Path) -> None:
     pl_summary = pd.read_csv(DATA_DIR / "pl_warren_selection_summary.csv")
     bt_summary = pd.read_csv(DATA_DIR / "bt_soft_warren_selection_summary.csv")
 
-    pl_fixed_curves = pd.read_csv(DATA_DIR / "pl_project_warren_curves.csv")
-    bt_fixed_curves = pd.read_csv(DATA_DIR / "bt_project_warren_curves.csv")
-
     fig, (ax, ratio_ax, bt_pl_ax) = plt.subplots(
         3,
         1,
@@ -110,11 +103,6 @@ def make_figure(output: Path) -> None:
         bt_direct = direct_for_target(bt_data, target)
         pl_solved = solved_curve(curves, float(pl_row["median_M0_Msun"]), "pl")
         bt_solved = solved_curve(curves, float(bt_row["median_M0_Msun"]), "bt_soft")
-        pl_fixed = fixed_curve(pl_fixed_curves, float(pl_row["median_M0_Msun"]))
-        bt_fixed = fixed_curve(bt_fixed_curves, float(bt_row["median_M0_Msun"]))
-
-        ax.plot(np.log10(1.0 + pl_fixed["z"]), pl_fixed["M_msun"], color=color, lw=0.65, ls="--", alpha=0.22)
-        ax.plot(np.log10(1.0 + bt_fixed["z"]), bt_fixed["M_msun"], color=color, lw=0.65, ls=":", alpha=0.26)
         ax.plot(np.log10(1.0 + pl_solved["z"]), pl_solved["M_msun"], color=color, lw=1.15, ls="--", alpha=0.90)
         ax.plot(np.log10(1.0 + bt_solved["z"]), bt_solved["M_msun"], color=color, lw=1.15, ls=":", alpha=0.95)
         ax.plot(
@@ -199,7 +187,7 @@ def make_figure(output: Path) -> None:
     ax.set_xlim(0.0, np.log10(1.0 + Z_MAX))
     ax.set_ylim(5.0e6, 7.0e11)
     ax.set_ylabel(r"Median $M(z)\,[M_\odot]$", labelpad=8)
-    ax.set_title("Median MAHs and Correa reference relations", pad=7)
+    ax.set_title("Median MAHs and spectrum-specific Correa-EPS relations", pad=7)
     format_axes(ax, grid=True)
 
     ratio_ax.axhspan(0.9, 1.1, color="0.75", alpha=0.18, lw=0, zorder=0)
@@ -223,9 +211,8 @@ def make_figure(output: Path) -> None:
     style_handles = [
         plt.Line2D([], [], color="0.25", ls="none", marker="o", markersize=3.0, label="PL median"),
         plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label="BT median"),
-        plt.Line2D([], [], color="0.25", lw=1.1, ls="--", label="PL recomputed"),
-        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label="BT recomputed"),
-        plt.Line2D([], [], color="0.25", lw=0.7, ls="-", alpha=0.25, label="published relation"),
+        plt.Line2D([], [], color="0.25", lw=1.1, ls="--", label="PL Correa-EPS"),
+        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label="BT Correa-EPS"),
     ]
     first = ax.legend(
         handles=style_handles,

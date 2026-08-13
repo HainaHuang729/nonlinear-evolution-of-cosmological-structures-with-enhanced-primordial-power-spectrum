@@ -70,10 +70,17 @@ from cosmology_plot_style import (  # noqa: E402
 SNAP_LIST = ["0056", "0048", "0040", "0032"]
 N_PLOT_BINS = 42
 DATA_DIR = ANALYSIS_ROOT / "powerspectrum" / "sim_power_data"
-OUTPUT_PATH = Path(os.environ.get("POWER_SPECTRUM_OUTPUT_PATH", ARTICLE_ROOT / "power-spectrum.png"))
+OUTPUT_PATH = Path(
+    os.environ.get(
+        "POWER_SPECTRUM_OUTPUT_PATH", ARTICLE_ROOT / "power-spectrum_finite_box.png"
+    )
+)
 POWER_RESIDUAL_CSV_PATH = Path(os.environ.get(
     "POWER_RESIDUAL_CSV_PATH",
-    PUBLIC_DATA_ROOT / "figure_data" / "nonlinear_power_spectrum" / "power_spectrum_hmcode_residuals.csv",
+    PUBLIC_DATA_ROOT
+    / "figure_data"
+    / "nonlinear_power_spectrum"
+    / "power_spectrum_hmcode_residuals_finite_box.csv",
 ))
 BOX_LABEL = r"$25$ and $256\,h^{-1}\,\mathrm{Mpc}$ matched boxes"
 
@@ -84,6 +91,7 @@ N_S = 0.9649
 SIGMA8 = 0.8111
 OMEGA_M = OMEGA_C + OMEGA_B
 MESH_N = 1024
+N_REALIZATIONS = 1
 K_NY_25 = np.pi * MESH_N / 25.0
 K_NY_256 = np.pi * MESH_N / 256.0
 
@@ -276,24 +284,34 @@ def series_is_available(bt_key):
     return True
 
 
-def log_bin_for_plot(k, y, n_bins=N_PLOT_BINS):
+def log_bin_for_plot(k, y, n_bins=N_PLOT_BINS, *, return_edges=False):
+    """Apply the plotting bins and optionally return each populated bin edge."""
     k = np.asarray(k)
     y = np.asarray(y)
     valid = np.isfinite(k) & np.isfinite(y) & (k > 0) & (y > 0)
     k = k[valid]
     y = y[valid]
     if len(k) == 0:
+        if return_edges:
+            return k, y, k.copy(), k.copy()
         return k, y
 
     edges = np.logspace(np.log10(k.min()), np.log10(k.max()), n_bins + 1)
     k_binned = []
     y_binned = []
+    left_binned = []
+    right_binned = []
     for left, right in zip(edges[:-1], edges[1:]):
         mask = (k >= left) & (k < right)
         if np.any(mask):
             k_binned.append(10 ** np.mean(np.log10(k[mask])))
             y_binned.append(np.median(y[mask]))
-    return np.asarray(k_binned), np.asarray(y_binned)
+            left_binned.append(left)
+            right_binned.append(right)
+    result = (np.asarray(k_binned), np.asarray(y_binned))
+    if return_edges:
+        return result + (np.asarray(left_binned), np.asarray(right_binned))
+    return result
 
 
 def interpolate_ratio(k_target, k_ref, p_ref, p_target):
@@ -349,8 +367,21 @@ def mark_residual_reliability(ax, box_key):
     ax.axhspan(0.9, 1.1, color="0.45", alpha=0.10, lw=0, zorder=0)
 
 
-def append_residual_rows(rows, *, box_key, model_key, label, snapshot, redshift, k_values,
-                         p_sim, p_theory, source_file):
+def append_residual_rows(
+    rows,
+    *,
+    box_key,
+    model_key,
+    label,
+    snapshot,
+    redshift,
+    k_values,
+    k_bin_left,
+    k_bin_right,
+    p_sim,
+    p_theory,
+    source_file,
+):
     valid = (
         np.isfinite(k_values)
         & np.isfinite(p_sim)
@@ -359,15 +390,27 @@ def append_residual_rows(rows, *, box_key, model_key, label, snapshot, redshift,
         & (p_sim > 0)
         & (p_theory > 0)
     )
-    for k_val, p_val, p_ref in zip(k_values[valid], p_sim[valid], p_theory[valid]):
+    for k_val, left, right, p_val, p_ref in zip(
+        k_values[valid],
+        k_bin_left[valid],
+        k_bin_right[valid],
+        p_sim[valid],
+        p_theory[valid],
+    ):
         rows.append({
             "box_hinv_Mpc": box_key,
+            "box_length_unit": "h^-1 Mpc",
             "model": model_key,
             "label": label,
             "snapshot": snapshot,
             "redshift": f"{redshift:.10e}",
             "reference_model": "HMcode2020",
             "k_hMpc": f"{k_val:.10e}",
+            "k_bin_left_hMpc": f"{left:.10e}",
+            "k_bin_right_hMpc": f"{right:.10e}",
+            "delta_k_hMpc": f"{right - left:.10e}",
+            "n_realizations": N_REALIZATIONS,
+            "mode_count_method": "Takahashi2008_Eq12_continuum",
             "P_sim_Mpc_over_h_cubed": f"{p_val:.10e}",
             "P_hmcode_Mpc_over_h_cubed": f"{p_ref:.10e}",
             "sim_over_hmcode": f"{p_val / p_ref:.10e}",
@@ -381,14 +424,21 @@ def write_residual_table(rows, output_path):
     with output_path.open("w", newline="") as handle:
         writer = csv.DictWriter(
             handle,
+            lineterminator="\n",
             fieldnames=[
                 "box_hinv_Mpc",
+                "box_length_unit",
                 "model",
                 "label",
                 "snapshot",
                 "redshift",
                 "reference_model",
                 "k_hMpc",
+                "k_bin_left_hMpc",
+                "k_bin_right_hMpc",
+                "delta_k_hMpc",
+                "n_realizations",
+                "mode_count_method",
                 "P_sim_Mpc_over_h_cubed",
                 "P_hmcode_Mpc_over_h_cubed",
                 "sim_over_hmcode",
@@ -487,7 +537,9 @@ def main():
         residual_values = {box_key: [] for box_key in BOX_MODELS}
         for box_key, box in BOX_MODELS.items():
             pl_k, pl_p, box_pl_z, pl_path = load_power(box["pl_template"], snap)
-            k_pl, p_pl = log_bin_for_plot(pl_k, pl_p)
+            k_pl, p_pl, k_pl_left, k_pl_right = log_bin_for_plot(
+                pl_k, pl_p, return_edges=True
+            )
             source_paths.append(pl_path)
             pl_theory_binned = interpolate_power(k_pl, K_THEORY, pl_theory_full)
             pl_resid_valid = np.isfinite(pl_theory_binned) & (pl_theory_binned > 0) & np.isfinite(p_pl) & (p_pl > 0)
@@ -512,6 +564,8 @@ def main():
                     snapshot=snap,
                     redshift=box_pl_z,
                     k_values=k_pl[pl_resid_valid],
+                    k_bin_left=k_pl_left[pl_resid_valid],
+                    k_bin_right=k_pl_right[pl_resid_valid],
                     p_sim=p_pl[pl_resid_valid],
                     p_theory=pl_theory_binned[pl_resid_valid],
                     source_file=pl_path,
@@ -538,7 +592,9 @@ def main():
                         f"{box['pl_label']}={box_pl_z}, {bt_config['bt_label']}={box_bt_z}"
                     )
 
-                k_bt, p_bt = log_bin_for_plot(bt_k, bt_p)
+                k_bt, p_bt, k_bt_left, k_bt_right = log_bin_for_plot(
+                    bt_k, bt_p, return_edges=True
+                )
                 k_ratio_raw, ratio_bt_pl = interpolate_ratio(bt_k, pl_k, pl_p, bt_p)
                 k_ratio, ratio_plot = log_bin_for_plot(k_ratio_raw, ratio_bt_pl)
                 bt_theory_binned = interpolate_power(k_bt, K_THEORY, bt_theory_full[bt_key])
@@ -569,6 +625,8 @@ def main():
                         snapshot=snap,
                         redshift=box_bt_z,
                         k_values=k_bt[bt_resid_valid],
+                        k_bin_left=k_bt_left[bt_resid_valid],
+                        k_bin_right=k_bt_right[bt_resid_valid],
                         p_sim=p_bt[bt_resid_valid],
                         p_theory=bt_theory_binned[bt_resid_valid],
                         source_file=bt_path,

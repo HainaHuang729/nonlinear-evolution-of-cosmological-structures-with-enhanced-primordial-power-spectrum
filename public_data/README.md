@@ -20,7 +20,7 @@ product rather than by raw simulation output.
 - `figure_data/halo_density/`: concentration-derived NFW density-profile curves and mass-bin summaries.
 - `figure_data/halo_density_radial/`: direct particle-count radial density profiles and BT/PL ratios used in `halo-density-radial-n100-power.png`.
 - `figure_data/concentration/`: binned `c200c` measurements, theory ratios, mass-dependent scatter, and derived accuracy summaries.
-- `figure_data/nonlinear_power_spectrum/`: nonlinear matter power spectra and BT/PL ratios.
+- `figure_data/nonlinear_power_spectrum/`: nonlinear matter power spectra, BT/PL ratios, and the (z=0) FFT-mesh convergence diagnostic.
 - `figure_data/appendix_fof_gap_stitching/`: appendix gap-stitching data and notes.
 - `figure_data/fof_hmf_resolution/`: appendix FOF mass-function resolution and volume check data.
 - `scripts/reproduce_all_figures.py`: one-command regeneration and validation of all 12 manuscript figures.

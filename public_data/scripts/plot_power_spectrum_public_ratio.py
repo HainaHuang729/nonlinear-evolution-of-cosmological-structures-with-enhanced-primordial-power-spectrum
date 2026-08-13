@@ -47,23 +47,22 @@ from cosmology_plot_style import (  # noqa: E402
 SNAP_LIST = ["0056", "0048", "0040", "0032"]
 SNAP_SET = set(SNAP_LIST)
 OUTPUT_PATH = Path(
-    os.environ.get("POWER_SPECTRUM_OUTPUT_PATH", ARTICLE_ROOT / "power-spectrum.png")
+    os.environ.get(
+        "POWER_SPECTRUM_OUTPUT_PATH", ARTICLE_ROOT / "power-spectrum_finite_box.png"
+    )
 )
 FIGURE_DATA_ROOT = PUBLIC_DATA_ROOT / "figure_data" / "nonlinear_power_spectrum"
 MEASUREMENT_CSV_PATH = FIGURE_DATA_ROOT / "power_spectrum_measurements.csv"
 RATIO_CSV_PATH = FIGURE_DATA_ROOT / "power_spectrum_ratios.csv"
-POWER_RESIDUAL_CSV_PATH = FIGURE_DATA_ROOT / "power_spectrum_hmcode_residuals.csv"
+POWER_RESIDUAL_CSV_PATH = (
+    FIGURE_DATA_ROOT / "power_spectrum_hmcode_residuals_finite_box.csv"
+)
 
-H_VAL = 0.6736
 MESH_N = 1024
-K_NY_25 = np.pi * MESH_N / 25.0
-K_NY_256 = np.pi * MESH_N / 256.0
-K_MIN_25 = 4.0 * (2.0 * np.pi / 25.0)
-K_MIN_256 = 4.0 * (2.0 * np.pi / 256.0)
-TRUSTED_K_RANGES = {
-    "25": (K_MIN_25, K_NY_25),
-    "256": (K_MIN_256, K_NY_256),
-}
+ADOPTED_KF_MULTIPLIER = 4.0
+ADOPTED_KNY_MULTIPLIER = 0.25
+PLOT_K_MIN = 1.0e-2
+PLOT_K_MAX = 1.0e3
 POWER_RATIO_YLIM = (0.5, 10.0)
 POWER_RATIO_TICKS = np.array([0.5, 1.0, 2.0, 5.0, 10.0])
 POWER_RESIDUAL_YLIM = (0.15, 2.0)
@@ -200,6 +199,18 @@ def valid_positive(value):
     return np.isfinite(value) and value > 0
 
 
+def finite_box_scales(box_length_hinv_mpc):
+    """Return the box scales and adopted display limits."""
+    k_fundamental = 2.0 * np.pi / box_length_hinv_mpc
+    k_nyquist = np.pi * MESH_N / box_length_hinv_mpc
+    return {
+        "k_fundamental": k_fundamental,
+        "k_adopted_min": ADOPTED_KF_MULTIPLIER * k_fundamental,
+        "k_nyquist": k_nyquist,
+        "k_adopted_max": ADOPTED_KNY_MULTIPLIER * k_nyquist,
+    }
+
+
 def row_arrays(rows, y_key):
     return (
         np.asarray([row["k_hMpc"] for row in rows], dtype=float),
@@ -230,10 +241,11 @@ def plot_simulation_series(
     color,
     marker,
     max_markers,
+    trusted_k_ranges,
     log_y=False,
     connect=False,
 ):
-    """Plot trusted markers normally and retain excluded points as faded open markers."""
+    """Plot the adopted high-k range and fade points below the low-k limit."""
     k_values = np.asarray(k_values, dtype=float)
     y_values = np.asarray(y_values, dtype=float)
     valid = np.isfinite(k_values) & np.isfinite(y_values) & (k_values > 0) & (y_values > 0)
@@ -242,8 +254,14 @@ def plot_simulation_series(
     if not len(k_values):
         return
 
+    k_min, k_max = trusted_k_ranges[box_key]
+    below_high_k_limit = k_values <= k_max
+    k_values = k_values[below_high_k_limit]
+    y_values = y_values[below_high_k_limit]
+    if not len(k_values):
+        return
+
     plotter = ax.loglog if log_y else ax.semilogx
-    k_min, k_max = TRUSTED_K_RANGES[box_key]
     trusted = (k_values >= k_min) & (k_values <= k_max)
 
     if connect:
@@ -304,11 +322,27 @@ def needed_measurement_families():
     return families
 
 
+def register_box_length(box_lengths, raw_value, unit=""):
+    """Read L_box from the released table metadata and verify its units."""
+    key = box_key(raw_value)
+    value = as_float(raw_value)
+    if key not in BOX_MODELS or not valid_positive(value):
+        return key
+    if unit and unit.strip() not in {"h^-1 Mpc", "h^{-1} Mpc"}:
+        raise ValueError(f"Unsupported box-length unit for box {key}: {unit}")
+    previous = box_lengths.get(key)
+    if previous is not None and not np.isclose(previous, value, rtol=0.0, atol=1.0e-10):
+        raise ValueError(f"Inconsistent box length for {key}: {previous} and {value}")
+    box_lengths[key] = value
+    return key
+
+
 def read_public_tables():
     measurements = defaultdict(list)
     ratios = defaultdict(list)
     residuals = defaultdict(list)
     theory_rows = defaultdict(list)
+    box_lengths = {}
     family_filter = needed_measurement_families()
 
     with MEASUREMENT_CSV_PATH.open(newline="") as handle:
@@ -333,7 +367,7 @@ def read_public_tables():
         for row in csv.DictReader(handle):
             snap = snap_key(row.get("snapshot", ""))
             model = canonical_model(row.get("model", ""))
-            box = box_key(row.get("box_hinv_Mpc", ""))
+            box = register_box_length(box_lengths, row.get("box_hinv_Mpc", ""))
             if snap not in SNAP_SET or model not in {"BTKP1", "BTKP10"} or box not in BOX_MODELS:
                 continue
             k_val = as_float(row.get("k_hMpc"))
@@ -348,7 +382,11 @@ def read_public_tables():
         for row in csv.DictReader(handle):
             snap = snap_key(row.get("snapshot", ""))
             model = canonical_model(row.get("model", ""))
-            box = box_key(row.get("box_hinv_Mpc", ""))
+            box = register_box_length(
+                box_lengths,
+                row.get("box_hinv_Mpc", ""),
+                row.get("box_length_unit", ""),
+            )
             if snap not in SNAP_SET or model not in THEORY_STYLES or box not in BOX_MODELS:
                 continue
             k_val = as_float(row.get("k_hMpc"))
@@ -367,6 +405,11 @@ def read_public_tables():
             residuals[(box, model, snap)].append(
                 {
                     "k_hMpc": k_val,
+                    "k_bin_left_hMpc": as_float(row.get("k_bin_left_hMpc")),
+                    "k_bin_right_hMpc": as_float(row.get("k_bin_right_hMpc")),
+                    "n_realizations": max(
+                        1, int(as_float(row.get("n_realizations"), default=1))
+                    ),
                     "P_sim_Mpc_over_h_cubed": p_sim,
                     "P_hmcode_Mpc_over_h_cubed": p_hm,
                     "sim_over_hmcode": sim_over,
@@ -377,7 +420,13 @@ def read_public_tables():
         for key, rows in table.items():
             rows.sort(key=lambda item: item["k_hMpc"])
 
-    return measurements, ratios, residuals, theory_rows
+    missing_boxes = sorted(set(BOX_MODELS) - set(box_lengths))
+    if missing_boxes:
+        raise ValueError(
+            "Missing box_hinv_Mpc metadata for: " + ", ".join(missing_boxes)
+        )
+
+    return measurements, ratios, residuals, theory_rows, box_lengths
 
 
 def panel_measurements(measurements, family, snap):
@@ -417,40 +466,52 @@ def log_interp(x, x_ref, y_ref):
     return result
 
 
-def mark_reliability(ax_top, ax_ratio, annotate=False):
-    for ax in (ax_top, ax_ratio):
-        ax.axvline(K_MIN_256, color="0.35", linestyle=":", linewidth=0.8, alpha=0.8, zorder=1)
-        ax.axvline(K_NY_256, color="0.35", linestyle=":", linewidth=0.8, alpha=0.8, zorder=1)
-        ax.axvline(K_MIN_25, color="0.25", linestyle="--", linewidth=0.85, alpha=0.85, zorder=1)
-        ax.axvline(K_NY_25, color="0.25", linestyle="--", linewidth=0.85, alpha=0.85, zorder=1)
-        ax.axvspan(1.0e-2, K_MIN_256, color="0.82", alpha=0.16, lw=0, zorder=0)
-        ax.axvspan(K_NY_25, 1.0e3, color="0.82", alpha=0.16, lw=0, zorder=0)
-    if annotate:
-        ax_top.text(
-            0.96,
-            0.72,
-            r"vertical pairs: $4k_{\rm f}$, $k_{\rm Ny}$"
-            + "\n"
-            + r"dotted: 256; dashed: 25",
-            transform=ax_top.transAxes,
-            ha="right",
-            va="top",
-            fontsize=7.0,
-            color="0.25",
-            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.80, "pad": 0.9},
+def gaussian_finite_mode_estimate(rows, box_length_hinv_mpc):
+    """Evaluate Takahashi et al. (2008) Eq. (12) for the plotted bins."""
+    k_values = np.asarray([row["k_hMpc"] for row in rows], dtype=float)
+    left_edges = np.asarray([row["k_bin_left_hMpc"] for row in rows], dtype=float)
+    right_edges = np.asarray([row["k_bin_right_hMpc"] for row in rows], dtype=float)
+    n_realizations = np.asarray([row["n_realizations"] for row in rows], dtype=float)
+    delta_k = right_edges - left_edges
+    valid = (
+        np.isfinite(k_values)
+        & np.isfinite(left_edges)
+        & np.isfinite(right_edges)
+        & (k_values > 0.0)
+        & (delta_k > 0.0)
+        & (n_realizations >= 1.0)
+    )
+    k_values = k_values[valid]
+    delta_k = delta_k[valid]
+    n_realizations = n_realizations[valid]
+
+    # The released tables do not contain the discrete FFT wavevectors.  We
+    # therefore use the continuum shell-count approximation with the actual,
+    # generally nonuniform plotting-bin widths exported by the reduction step.
+    n_mode = (
+        box_length_hinv_mpc**3 * k_values**2 * delta_k / (2.0 * np.pi**2)
+    )
+    sigma_fraction = np.sqrt(2.0 / (n_mode * n_realizations))
+    return k_values, delta_k, n_mode, n_realizations, sigma_fraction
+
+
+def print_finite_box_diagnostics(residuals, box_lengths, box_scales):
+    print("Finite-box diagnostics (L_box is read from box_hinv_Mpc metadata):")
+    for box_key in sorted(box_lengths, key=lambda key: box_lengths[key]):
+        rows = residuals.get((box_key, "PL", SNAP_LIST[0]), [])
+        k_values, delta_k, n_mode, n_realizations, sigma_fraction = (
+            gaussian_finite_mode_estimate(rows, box_lengths[box_key])
         )
-
-
-def mark_residual_reliability(ax, box_key):
-    k_min, k_max = TRUSTED_K_RANGES[box_key]
-    linestyle = "--" if box_key == "25" else ":"
-    color = "0.25" if box_key == "25" else "0.35"
-    linewidth = 0.85 if box_key == "25" else 0.8
-    ax.axvline(k_min, color=color, linestyle=linestyle, linewidth=linewidth, alpha=0.85, zorder=1)
-    ax.axvline(k_max, color=color, linestyle=linestyle, linewidth=linewidth, alpha=0.85, zorder=1)
-    ax.axvspan(1.0e-2, k_min, color="0.82", alpha=0.16, lw=0, zorder=0)
-    ax.axvspan(k_max, 1.0e3, color="0.82", alpha=0.16, lw=0, zorder=0)
-    ax.axhspan(0.9, 1.1, color="0.45", alpha=0.10, lw=0, zorder=0)
+        scale = box_scales[box_key]
+        unique_n_real = sorted(set(n_realizations.astype(int)))
+        print(
+            f"  L_box={box_lengths[box_key]:g} h^-1 Mpc; "
+            f"k_min=2*pi/L_box={scale['k_fundamental']:.8g} h Mpc^-1; "
+            f"N_real={unique_n_real or ['unavailable']}"
+        )
+        print("    first bins: k, Delta_k, N_mode, sigma_P/P")
+        for values in zip(k_values[:5], delta_k[:5], n_mode[:5], sigma_fraction[:5]):
+            print("    " + "  ".join(f"{value:.8g}" for value in values))
 
 
 def ratio_tick_label(value, _pos, *, decade_only=False):
@@ -489,7 +550,15 @@ def redshift_for_snap(measurements, snap):
 
 def plot_power_spectrum():
     apply_journal_style(base_fontsize=9.0)
-    measurements, ratios, residuals, theory_rows = read_public_tables()
+    measurements, ratios, residuals, theory_rows, box_lengths = read_public_tables()
+    box_scales = {
+        key: finite_box_scales(length) for key, length in box_lengths.items()
+    }
+    trusted_k_ranges = {
+        key: (scale["k_adopted_min"], scale["k_adopted_max"])
+        for key, scale in box_scales.items()
+    }
+    print_finite_box_diagnostics(residuals, box_lengths, box_scales)
 
     model_legend_handles = [
         plt.Line2D(
@@ -534,7 +603,6 @@ def plot_power_spectrum():
         markeredgewidth=0.8,
         alpha=UNTRUSTED_ALPHA,
     )
-
     fig = plt.figure(figsize=(8.8, 8.9))
     outer_grid = gridspec.GridSpec(
         2,
@@ -611,6 +679,7 @@ def plot_power_spectrum():
                     color=box["pl_color"],
                     marker=box["pl_marker"],
                     max_markers=TOP_MARKER_COUNT,
+                    trusted_k_ranges=trusted_k_ranges,
                     log_y=True,
                 )
 
@@ -626,6 +695,7 @@ def plot_power_spectrum():
                         color=bt_config["bt_color"],
                         marker=bt_config["bt_marker"],
                         max_markers=TOP_MARKER_COUNT,
+                        trusted_k_ranges=trusted_k_ranges,
                         log_y=True,
                     )
 
@@ -640,6 +710,7 @@ def plot_power_spectrum():
                         color=bt_config["bt_color"],
                         marker=bt_config["bt_marker"],
                         max_markers=RATIO_MARKER_COUNT,
+                        trusted_k_ranges=trusted_k_ranges,
                     )
 
         for box_key, ax_residual in residual_axes.items():
@@ -663,6 +734,7 @@ def plot_power_spectrum():
                     color=color,
                     marker=marker,
                     max_markers=RESIDUAL_MARKER_COUNT,
+                    trusted_k_ranges=trusted_k_ranges,
                     connect=True,
                 )
                 residual_values[box_key].extend(
@@ -670,19 +742,17 @@ def plot_power_spectrum():
                 )
 
         ax_ratio.axhline(1.0, color="0.45", linestyle=":", linewidth=0.8)
-        mark_reliability(ax_top, ax_ratio, annotate=(idx == 0))
         for box_key, ax_residual in residual_axes.items():
             ax_residual.axhline(1.0, color="0.45", linestyle=":", linewidth=0.8)
-            mark_residual_reliability(ax_residual, box_key)
             panel_label(
                 ax_residual,
-                rf"${box_key}\,h^{{-1}}\,\mathrm{{Mpc}}$",
+                rf"${box_lengths[box_key]:g}\,h^{{-1}}\,\mathrm{{Mpc}}$",
                 loc=(0.97, 0.84),
                 ha="right",
                 fontsize=6.7,
             )
 
-        ax_top.set_xlim(1e-2, 1e3)
+        ax_top.set_xlim(PLOT_K_MIN, PLOT_K_MAX)
         ax_top.set_ylim(1e-5, 1e5)
         set_ratio_yaxis(
             ax_ratio,
@@ -755,18 +825,19 @@ def plot_power_spectrum():
                 handletextpad=0.35,
                 labelspacing=0.16,
             )
-        elif idx == 2:
+        elif idx == 3:
             ax_top.legend(
                 [excluded_legend_handle],
-                ["outside adopted range"],
+                [r"$k<4k_{\rm f}$"],
                 loc="lower left",
-                fontsize=7.0,
+                fontsize=6.8,
                 frameon=True,
                 framealpha=0.72,
                 edgecolor="none",
                 borderpad=0.2,
                 handlelength=1.45,
                 handletextpad=0.35,
+                labelspacing=0.16,
             )
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)

@@ -29,7 +29,7 @@ FIGURE_NAMES = [
     "mass-assembly-history-correa-halfmass.png",
     "halo-density-radial-n100-power.png",
     "concentration-qc-i21-fit.png",
-    "power-spectrum.png",
+    "power-spectrum_finite_box.png",
     "fof-hmf-resolution-volume.png",
     "concentration-qc-d19.png",
     "concentration-qc-l16.png",
