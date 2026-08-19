@@ -78,7 +78,7 @@
 
 \title{Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power}
 
-\author{Haina Huang\orcidlink{0009-0004-4765-0358}}c c
+\author{Haina Huang\orcidlink{0009-0004-4765-0358}}
 \email[Contact author: ]{hhuan155@link.cuhk.edu.hk}
 \affiliation{
  Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China
@@ -107,7 +107,7 @@
 
 % ===== Abstract ===== #
 \begin{abstract}
-\currentrevisionblue{The primordial power spectrum is well constrained on large scales but remains uncertain on small scales. We use dark-matter-only cosmological \(N\)-body simulations initialized with the same random phases to determine how enhanced small-scale power changes nonlinear structure formation. We compare a standard power-law (PL) model with two broken-power-law blue-tilted (BT) models whose spectra steepen above \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\). We measure halo mass functions, assembly histories, radial density profiles, concentration--mass relations, and nonlinear matter power spectra. Enhanced small-scale power increases the abundance of low-mass halos at high redshift, shifts halo assembly earlier, and produces denser and more concentrated low-mass halos. These effects are stronger in the \(k_p=1\,h\,{\rm Mpc}^{-1}\) model than in the \(k_p=10\,h\,{\rm Mpc}^{-1}\) model and weaken toward higher halo masses and lower redshifts. The nonlinear matter power spectrum changes more modestly. Comparisons with published mass-function, concentration, and mass-assembly prescriptions validate their broad trends but show that their quantitative accuracy depends on redshift and halo mass. These results isolate the gravitational effects of enhanced small-scale primordial power before baryonic physics and observational selection are included.}
+\currentrevisionblue{The primordial power spectrum is well constrained on large scales but remains uncertain on small scales. We use dark-matter-only cosmological \(N\)-body simulations initialized with the same random phases to determine how enhanced small-scale power changes nonlinear structure formation. We compare a standard power-law (PL) model with two broken-power-law blue-tilted (BT) models whose spectra steepen above \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\). We measure halo mass functions, assembly histories, radial density profiles, concentration--mass relations, and nonlinear matter power spectra. Enhanced small-scale power increases the abundance of low-mass halos at high redshift, shifts halo assembly earlier, and produces denser and more concentrated low-mass halos. These effects are stronger in the \(k_p=1\,h\,{\rm Mpc}^{-1}\) model than in the \(k_p=10\,h\,{\rm Mpc}^{-1}\) model and weaken toward higher halo masses and lower redshifts. The nonlinear matter power spectrum changes more modestly. Published mass-function, concentration, and mass-assembly prescriptions reproduce the broad trends, but their quantitative accuracy varies with redshift and halo mass. These simulations provide a dark-matter baseline for future studies that include baryonic physics and observational selection.}
 
 \end{abstract}
 
@@ -116,7 +116,7 @@
 \section{Introduction\label{intro}}
 \currentrevisionblue{The standard \(\Lambda\)CDM model assumes cold dark matter, a cosmological constant, and a nearly scale-invariant primordial power spectrum, \(P_{\rm prim}(k)\propto k^{n_s}\) with \(n_s\simeq0.965\). This model agrees with measurements of the cosmic microwave background (CMB) \citep{Planck20CMB}, galaxy clustering \citep{Blanton17SDSSsurvey}, and the Lyman-\(\alpha\) forest \citep{Chabanier19LyalphaPS,Abolfathi18DR14}. However, the primordial power spectrum is less tightly constrained on scales much smaller than a megaparsec. Probes of these scales include CMB spectral distortions \citep{Chluba2012CMBSmallscalepowerspectrum}, satellite statistics and density profiles \citep{Wu25BT,Dekker25DwarfPPS,Esteban2024lumpyDM,Nadler2025enhanced}, strong-lensing flux-ratio and substructure measurements \citep{Gilman22SubgalacticPPS}, high-redshift galaxy counts \citep{Parashari23JWSTPPS,Hira24bluetilt}, ultra-compact minihalos \citep{Bringmann2026ultracompactminihaloonprimordialpowerspectrum}, and future 21-cm observations \citep{Munoz20SmallScale21cm}.}
 
-\currentrevisionblue{Previous studies have examined enhanced small-scale power using high-redshift cosmological simulations \citep{Hirano15BlueTiltedPPS,Inman23EnhancedSmallScaledarkage} and zoom-in simulations of Milky Way--mass environments \citep{Wu25BT,Nadler2025enhanced}. A systematic comparison of how different primordial spectra affect nonlinear evolution within the same cosmological volume remains limited.}
+\currentrevisionblue{Previous studies have examined enhanced small-scale power using high-redshift cosmological simulations \citep{Hirano15BlueTiltedPPS,Inman23EnhancedSmallScaledarkage} and zoom-in simulations of Milky Way--mass environments \citep{Wu25BT,Nadler2025enhanced}. Few studies have compared the nonlinear evolution produced by different primordial spectra in the same cosmological volume.}
 
 
 %These probes do not by themselves select a blue-tilted model, but they motivate controlled tests of how small-scale primordial power affects nonlinear structure.
@@ -207,14 +207,14 @@ As an initial-condition consistency test, we compare the BT pivot scales with th
 \begin{figure}[t]
     \centering
     \includegraphics[width=\columnwidth]{input-power-spectrum.png}
-    \caption{Input linear matter power spectra at \(z_i=200\) used to generate the PL, \BTKPone{}, and \BTKPten{} initial conditions. The PL spectrum provides the standard power-law baseline. The BT spectra use the same target \(\sigma_8\) normalization and keep the PL/Eisenstein shape below their pivot scales, up to the small global normalization applied by MonofonIC; above the pivot, they depart from PL. \BTKPone{} departs from PL over a broader range of mildly nonlinear modes, whereas \BTKPten{} confines the modification to smaller scales. The spectra are evaluated at the initial redshift, \(z_i=200\). For the main \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs, \(k_{\rm Ny}\simeq129\,h\,{\rm Mpc}^{-1}\), so the \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\) pivots are well below the particle-grid Nyquist scale. \revisionblue{Vertical dotted lines mark the BT pivot scales. The light-gray region spans \(0.5k_{\rm Ny}\le k\le k_{\rm Ny}\), where particle-grid resolution becomes increasingly important, and the darker region marks modes beyond \(k_{\rm Ny}\).}}
+    \caption{Input linear matter power spectra at \(z_i=200\) used to generate the PL, \BTKPone{}, and \BTKPten{} initial conditions. The PL spectrum provides the standard power-law baseline. The BT spectra use the same target \(\sigma_8\) normalization and keep the PL/Eisenstein shape below their pivot scales, up to the small global normalization applied by MonofonIC; above the pivot, they depart from PL. \BTKPone{} departs from PL over a broader range of resolved wavenumbers, whereas \BTKPten{} confines the modification to smaller scales. The spectra are evaluated at the initial redshift, \(z_i=200\). For the main \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs, \(k_{\rm Ny}\simeq129\,h\,{\rm Mpc}^{-1}\), so the \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\) pivots are well below the particle-grid Nyquist scale. \revisionblue{Vertical dotted lines mark the BT pivot scales. The light-gray region spans \(0.5k_{\rm Ny}\le k\le k_{\rm Ny}\), where particle-grid resolution becomes increasingly important, and the darker region marks modes beyond \(k_{\rm Ny}\).}}
     \label{fig:power_spectrum_comparison}
 \end{figure}
 
 
 %In the dark-matter-only, collisionless mode used here,
 \subsection{Simulation Code}
-We evolve the initial conditions with the cosmological $N$-body code \small{SWIFT} \citep{Schaller2024SWIFT}\footnote{Publicly available at \url{https://swiftsim.com/}.}. {\small SWIFT}'s gravity solver uses a fast-multipole method \citep{Dehn00FMM}, coupled to a Particle-Mesh solver at large scales \citep{Hock88PM}. 
+We evolve the initial conditions with the cosmological $N$-body code \textsc{SWIFT} \citep{Schaller2024SWIFT}\footnote{Publicly available at \url{https://swiftsim.com/}.}. \textsc{SWIFT}'s gravity solver uses a fast-multipole method \citep{Dehn00FMM}, coupled to a Particle-Mesh solver at large scales \citep{Hock88PM}.
 
 
 
@@ -306,7 +306,7 @@ Volume & PL-256-512 & -- & -- & \(512^3\) & 256 & \(1.09\times 10^{10}\) & 14.85
 
 
 
-\currentrevisionblue{At high redshift \(z=8.52\), both BT models show much more small-scale structures than PL, and \BTKPone{} has the most. However, the enhancement of small-scale structures is weaker toward lower redshift \(z=0\). In the following sections, we will quantify the effects of the BT models in halo abundance, assembly histories, internal structure, and the nonlinear matter power spectrum.}
+\currentrevisionblue{At \(z=8.52\), both BT models show more small-scale structure than PL, with the strongest contrast in \BTKPone{}. The differences become less visible toward \(z=0\). We quantify them below using halo and matter statistics.}
 
 %\Tk{Need to say the effect is biggest at higher redshift too. Need to say \BTKPone{} is the clearest enhancement because its small-scale power spectrum is strongest.}
 
@@ -452,8 +452,6 @@ We next test whether earlier halo growth also changes internal structure. We use
 
 \currentrevisionblue{The BT models differ most from PL in the resolved inner profiles. \BTKPone{} has the largest central-density enhancement, while \BTKPten{} shows a weaker enhancement. The differences decrease toward larger \(r/R_{200m}\). The lower ratio panels show that the \BTKPone{} enhancement is strongest in the low- and intermediate-mass bins, while \BTKPten{} remains closer to PL.}
 
-\currentrevisionblue{The \(V_{\max}\)--\(R_{\max}\) measurements at \(z=0\) show the same ordering. In the \(10^9\)--\(10^{9.5}\,M_\odot\) bin, the median \BTKPone{}/PL ratios are \(1.27\) for \(V_{\max}\) and \(0.59\) for \(R_{\max}\). The corresponding \BTKPten{}/PL ratios are \(1.06\) and \(0.82\). At \(r\gtrsim0.3R_{200m}\), the differences are weaker and depend more strongly on halo mass. In the highest-mass bins shown, the profiles agree within the plotted scatter.}
-
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\textwidth]{halo-density-radial-n100-power.png}
@@ -510,7 +508,7 @@ We next test whether earlier halo growth also changes internal structure. We use
 
 \currentrevisionblue{The nonlinear theory curves are computed with the HMcode2020 dark-matter-only prescription \citep{Mead2021HMcode2020}, using the \texttt{pyhmcode} implementation.\footnote{\url{https://github.com/tilmantroester/pyhmcode}}} We first construct the PL linear matter spectrum from the Eisenstein--Hu transfer function and the adopted cosmological parameters. For each BT model, we apply the broken-power-law enhancement above its \(k_p\) and supply the resulting linear spectrum to HMcode2020. The theory ratios are HMcode2020 predictions; no parameters are fitted to the simulated BT/PL ratios.
 
-Fig.~\ref{fig:power_spectra_ratio_z0} shows BT/PL ratios for the \(k_p=1\) and \(k_p=10\), \(m_s=1.5\) models in the \(25\) and \(256\,h^{-1}{\rm Mpc}\) boxes. The sim/HMcode2020 panels show \(P_{\rm sim}/P_{\rm HMcode2020}\) for each model and box. \currentrevisionblue{The lowest nonzero mode in a periodic box is \(k_{\min}=k_{\rm f}=2\pi/L_{\rm box}\). It is \(0.251\,h\,{\rm Mpc}^{-1}\) for the \(25\,h^{-1}{\rm Mpc}\) box and \(0.0245\,h\,{\rm Mpc}^{-1}\) for the \(256\,h^{-1}{\rm Mpc}\) box. Modes with \(k<k_{\min}\) are not sampled. We show measurements below \(4k_{\rm f}\) as faded open symbols. At high \(k\), we omit simulation measurements above \(0.25k_{\rm Ny}\), where \(k_{\rm Ny}=\pi N_{\rm mesh}/L_{\rm box}\) and \(N_{\rm mesh}=1024\). The adopted display intervals are therefore \(1.0\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the 25 box and \(0.098\le k/(h\,{\rm Mpc}^{-1})\le3.14\) for the 256 box.}
+Fig.~\ref{fig:power_spectra_ratio_z0} shows BT/PL ratios for the \(k_p=1\) and \(k_p=10\), \(m_s=1.5\) models in the \(25\) and \(256\,h^{-1}{\rm Mpc}\) boxes. The sim/HMcode2020 panels show \(P_{\rm sim}/P_{\rm HMcode2020}\) for each model and box. \currentrevisionblue{The lowest nonzero mode in a periodic box is \(k_{\min}=k_{\rm f}=2\pi/L_{\rm box}\). It is \(0.251\,h\,{\rm Mpc}^{-1}\) for the \(25\,h^{-1}{\rm Mpc}\) box and \(0.0245\,h\,{\rm Mpc}^{-1}\) for the \(256\,h^{-1}{\rm Mpc}\) box. Modes with \(k<k_{\min}\) are not sampled. We show measurements below \(4k_{\rm f}\) as faded open symbols. At high \(k\), we omit simulation measurements above \(0.25k_{\rm Ny}\), where \(k_{\rm Ny}=\pi N_{\rm mesh}/L_{\rm box}\) and \(N_{\rm mesh}=1024\). The power-spectrum intervals used for quantitative interpretation are therefore \(1.0\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the 25 box and \(0.098\le k/(h\,{\rm Mpc}^{-1})\le3.14\) for the 256 box. The two boxes are not spliced into a single spectrum. We interpret each box only over its adopted interval and calculate BT/PL only from runs with the same box size.}
 
 \currentrevisionblue{We test the mesh dependence by remeasuring the \(z=0\) PL spectra on a \(512^3\) mesh using the same simulation particles. Near \(0.25k_{\rm Ny}\) of the \(1024^3\) mesh, \(P_{512}/P_{1024}=0.871\) for the 25 box and \(0.864\) for the 256 box. If the leading grid error scales as the square of the cell size, these differences imply \(1024^3\)-mesh errors of \(4.3\%\) and \(4.5\%\), respectively. This test supports the adopted cutoff at the \(5\%\) level. It tests the power-spectrum estimator, not the particle-mass or force resolution of the simulations.}
 
@@ -578,7 +576,8 @@ We use the width of each plotted bin and \(N_{\rm real}=1\). Equation~\eqref{eq:
 
 \currentrevisionblue{First, the simulations are collisionless dark-matter-only runs. This setup isolates the gravitational effect of the modified primordial power-spectrum model, but it omits gas cooling, star formation, stellar and AGN feedback, and reionization. These processes can change halo density profiles, subhalo survival, and the connection between halos and galaxies.}
 
-%\Tk{I don't think they will make these  interpretations. }The results should therefore be interpreted as predictions for the underlying dark matter distribution, not as direct predictions for observed galaxies or lensing samples without further modeling.
+%\Tk{I don't think they will make these interpretations.}
+The results should therefore be interpreted as predictions for the underlying dark matter distribution, not as direct predictions for observed galaxies or lensing samples without further modeling.
 
 \currentrevisionblue{Second, we have one initial realization for each model. Using the same initial random phases reduces the uncertainty associated with the chosen realization in the PL--BT ratios, but it does not quantify the variation among independent realizations. The HMF error bars include only Poisson counting uncertainties, while the concentration error bars show halo-to-halo scatter. Neither includes cosmic variance. This omission matters most for rare high-mass halos, large-scale power-spectrum modes, and statistics measured in the smaller auxiliary boxes.}
 
@@ -587,7 +586,7 @@ We use the width of each plotted bin and \(N_{\rm real}=1\). Equation~\eqref{eq:
 
 %For the assembly histories, temporary FOF bridge or split events can interrupt a \texttt{TrackId} history.
 
-\currentrevisionblue{Third, our results are limited by resolution and box sizes, summarized in Table~\ref{tab:trusted_ranges}. The main FOF mass-function results are restricted to \(M_{\rm FOF}\ge10^8\,M_\odot\), and the assembly-history comparisons use halos with \(M_0\ge10^9\,M_\odot\) and \(z\le6\). The density profiles are not reliable for \(r<r_{\rm conv}\). The concentration-model comparison are only reliable above the 1000-particle scale, \(M_{200c}=1.89\times10^9\,M_\odot\). The adopted power-spectrum display intervals are \(1.0\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the \(25\,h^{-1}{\rm Mpc}\) box and \(0.098\le k/(h\,{\rm Mpc}^{-1})\le3.14\) for the \(256\,h^{-1}{\rm Mpc}\) box. Appendix~\ref{app:fof_hmf_resolution} separately tests the effects of mass resolution and box volume on the FOF mass function.}
+\currentrevisionblue{Third, our results are limited by resolution and box sizes, summarized in Table~\ref{tab:trusted_ranges}. The main FOF mass-function results are restricted to \(M_{\rm FOF}\ge10^8\,M_\odot\), and the assembly-history comparisons use halos with \(M_0\ge10^9\,M_\odot\) and \(z\le6\). The density profiles are not reliable for \(r<r_{\rm conv}\). The concentration-model comparisons are restricted to masses above the 1000-particle scale, \(M_{200c}=1.89\times10^9\,M_\odot\). The power-spectrum intervals used for quantitative interpretation are \(1.0\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the \(25\,h^{-1}{\rm Mpc}\) box and \(0.098\le k/(h\,{\rm Mpc}^{-1})\le3.14\) for the \(256\,h^{-1}{\rm Mpc}\) box. Appendix~\ref{app:fof_hmf_resolution} separately tests the effects of mass resolution and box volume on the FOF mass function.}
 
 %\Tk{no need to repeat}
 %\currentrevisionblue{Finally, the halo mass-function and concentration prescriptions were calibrated over finite ranges of cosmology, mass, and redshift. We evaluate each prescription with the corresponding PL or BT linear matter spectrum without refitting its parameters.}
@@ -628,12 +627,12 @@ The main conclusions are as follows:
     \currentrevisionblue{In Sec.~\ref{subsub:concentration}, for the resolved mass bins, the Diemer \& Joyce (2019) relation agrees with the simulation medians within \(20\%\) for PL, \BTKPone{}, and \BTKPten{} at all four redshifts \citep{Diemer2019}.}
 
     
-    \item \currentrevisionblue{\BTKPone{} increases the nonlinear matter power at high \(k\), but less strongly than it changes the halo statistics. At \(z=0\), \(P_{\rm BT}/P_{\rm PL}=1.17\) at \(k=20\,h\,{\rm Mpc}^{-1}\) in the fiducial box, while \BTKPten{} remains close to unity (Sec.~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}). Across the adopted intervals, the HMcode2020 BT/PL ratios differ from the simulation ratios by less than \(17\%\). The largest difference occurs for \BTKPone{} at \(z=8.52\) in the \(25\,h^{-1}{\rm Mpc}\) box. Predictions for the absolute spectra are less accurate.}
+    \item \currentrevisionblue{\BTKPone{} increases the nonlinear matter power at high \(k\), but less strongly than it changes the halo statistics. At \(z=0\), \(P_{\rm BT}/P_{\rm PL}=1.17\) at \(k=20\,h\,{\rm Mpc}^{-1}\) in the fiducial box, while \BTKPten{} remains close to unity (Sec.~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}). Across the adopted intervals, the HMcode2020 BT/PL ratios differ from the simulation ratios by less than \(17\%\). The largest difference occurs for \BTKPone{} at \(z=8.52\) in the \(25\,h^{-1}{\rm Mpc}\) box. The absolute spectra show larger box-dependent differences at low redshift, so we interpret the small-box normalization cautiously.}
 \end{enumerate}
 
 %\Tk{I think this paragraph can be merged into the previous bullet points. For example, the first bullet talks about halo abundance. We can say how good Reed et al. (2007) FOF and Bocquet et al. (2016) are the fit. Similarly for mass-concentration. Talk about Ishiyama et al. (2021) relation at the end}
 
-\currentrevisionblue{There are a few promising research directions. First, alternative enhanced primordial spectra, including localized Gaussian bumps \citep{Tkac24BumpyPPS} and smooth blue tilts \citep{2026arXiv260522161K}, should be tested against the same analytic models. Second, simulations with different random initial phases and box sizes are needed to quantify realization-realization scatters and finite-volume uncertainties. To connect these models to observable signatures, baryonic and galaxy physics should be incorporated through semi-analytic models, hydrodynamic simulations, and/or full cosmological galaxy-formation simulations. Comparisons with dwarf galaxies, strong lensing (Wu, Chan, Lange\& Huang, in prep.), high-redshift galaxy counts, and 21-cm observations (Yang, Chan, Huang, Theuns, Richings, in prep.) can constrain the primordial power spectrum on small (sub-galactic) scales.} 
+\currentrevisionblue{Future work should test other enhanced primordial spectra, including localized Gaussian bumps \citep{Tkac24BumpyPPS} and smooth blue tilts \citep{2026arXiv260522161K}, against the same analytic models. Simulations with independent random phases and different box sizes are needed to quantify variation among realizations and finite-volume effects. Connecting these models to observations will also require semi-analytic or hydrodynamic galaxy-formation models. Dwarf galaxies, strong-lensing systems (Wu, Chan, Lange\& Huang, in prep.), high-redshift galaxy counts, and 21-cm observations (Yang, Chan, Huang, Theuns, Richings, in prep.) can probe the primordial power spectrum on subgalactic scales.}
 
 \section*{Data Availability}
 
@@ -716,7 +715,7 @@ The \(256^3\) same-volume run and the \(50\,h^{-1}{\rm Mpc}\), \(512^3\) volume 
 
 %\Tk{mention Ludlow is less accurate at high mass end especially high redshift, since it does not have turn-over.}
 
-\currentrevisionblue{The L16 comparison is less accurate at the high-mass end, especially at \(z=8.52\). The simulated concentration--mass relation turns upward in the highest-mass bins, whereas the L16 curve continues to decline and misses this turnover. However, the Ishiyama et al. (2021) and Diemer \& Joyce (2019) models can capture this upturn.}
+\currentrevisionblue{At \(z=8.52\), the L16 prediction differs more strongly from the simulations at the high-mass end. The simulated median concentration rises in the highest-mass bins, whereas L16 continues to decline. These bins contain few halos, so this trend should be interpreted qualitatively. The I21 and D19 predictions show a similar trend.}
 
 \begin{figure*}[t]
     \centering

@@ -4,12 +4,15 @@ This document records requested manuscript changes and the corresponding revisio
 
 ## Current Status
 
-- Thirty-four requested revisions have been addressed. The EPS foundations, concentration scatter, HMcode2020 implementation, and L16 high-mass limitation are now documented.
-- The latest responses and recent wording or semantic revisions remain blue for review; earlier accepted revisions are rendered in black.
+- Thirty-five requested revisions have been addressed. The EPS foundations, concentration scatter, HMcode2020 implementation, L16 high-mass limitation, and final prose-consistency pass are now documented.
+- All manuscript revisions currently render in black.
 - The Reed07 and B16 comparison rows use relative differences with row-specific symmetric-logarithmic limits.
 - On 2026-07-15, the main-text adjacent-snapshot accretion-rate figure and the appendix FOF-$\Gamma$ figure were replaced by the full median FOF mass-assembly-history comparison described below.
 - The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
 - The Power et al. (2003) citation and explanation of the convergence parameter have been added; the original comments remain visible only for final confirmation.
+- On 2026-08-19, the unsupported \(V_{\max}\)--\(R_{\max}\) summary was removed because its original figure, calculation script, and source table are no longer part of the manuscript or reproducibility package.
+- On 2026-08-19, the initial-spectrum caption was corrected to describe the affected range as resolved wavenumbers rather than mildly nonlinear modes, consistent with the stated linearity at \(z_i=200\).
+- On 2026-08-19, the projection-results paragraph was simplified to state directly that the small-scale contrast is strongest for \BTKPone{} at high redshift and becomes less visible toward \(z=0\).
 - The language revisions do not change the simulation models.
 
 ## 27. Prepare a space-efficient public halo catalog
@@ -39,7 +42,7 @@ repository.
 ## 2026-07-22. Compare with previous BT studies in the Discussion
 
 - **Location:** Discussion
-- **Status:** Completed in blue text; see item 21
+- **Status:** Completed; see item 21
 
 Add a focused comparison between the present simulation results and previous studies of enhanced or blue-tilted small-scale primordial power. The comparison should distinguish agreements and differences in the adopted primordial spectrum, simulation setup, halo definition, redshift range, mass range, and reported halo response.
 
@@ -57,14 +60,14 @@ The title was shortened from `Enhanced Small-Scale Primordial Power and the Nonl
 ## 2026-07-22. Shorten the abstract
 
 - **Location:** Abstract
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 The abstract was reduced to a single paragraph. Detailed numerical values were removed, while the simulation design, measured statistics, main physical trends, comparison with published prescriptions, and scope of the dark-matter-only results were retained.
 
 ## 2026-07-15. Quantify agreement between published prescriptions and simulations
 
 - **Location:** Halo mass function, median mass-assembly histories, concentration--mass relation, and conclusions
-- **Status:** Completed in blue text; the original comment remains visible for confirmation
+- **Status:** Completed; the original comment remains visible for confirmation
 
 ### Requested change
 
@@ -79,7 +82,7 @@ At $z=0$ and $10^9\le M_{200c}/M_\odot<10^{9.5}$, the median $c_{\rm sim}/c_{\rm
 ## 2026-07-15. Replace the accretion-rate section with full mass-assembly histories
 
 - **Location:** Main-text assembly section, Fig. `fig:mass_assembly_history_correa`, conclusions, numerical-range table, and data-availability statement
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 The previous main-text $M_{200c}$ adjacent-snapshot accretion-rate figure and the final appendix FOF-$\Gamma$ figure are no longer referenced by the manuscript. They are replaced by `mass-assembly-history-correa-halfmass.png`.
 
@@ -92,7 +95,7 @@ The analytic comparison uses the Correa et al. (2015) Paper I EPS form. Faint cu
 ## 1. Describe the projected density fields
 
 - **Location:** Projection subsection and Fig. `fig:dark_matter_comparison`
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -105,7 +108,7 @@ The revised paragraph explains that the matched initial phases keep the large-sc
 ## 2. Acknowledge previous simulation studies
 
 - **Location:** Introduction, after the opening paragraph
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -152,7 +155,7 @@ The fixed Sim/Reed07 range of `0.5--1.5` was replaced with data-informed limits 
 ## 5. Explain the unsmoothed halo mass histories
 
 - **Location:** Half-Mass Redshift subsection, Fig. `fig:half_mass_redshift`, and Appendix `app:trusted_ranges`
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -173,7 +176,7 @@ The term `no-envelope measurement` has been removed from the scientific text and
 ## 6. Replace internal analysis terminology with explicit descriptions
 
 - **Location:** Abstract, numerical methods, figure captions, results, conclusions, and numerical-range appendix
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Revision made
 
@@ -219,7 +222,7 @@ The earlier FOF-based diagnostic is retained separately in Appendix `app:fof_gam
 ## 8. Cite and explain the radial-profile convergence criterion
 
 - **Location:** Radial Halo Density Profiles subsection and Fig. `fig:halo_density_analysis`
-- **Status:** Addressed in blue text; the comments remain in the manuscript for confirmation
+- **Status:** Addressed; the comments remain in the manuscript for confirmation
 
 ### Requested changes
 
@@ -274,7 +277,7 @@ The empty lead-in and its resolved comment were deleted. The subsection now begi
 ## 11. Quantify the halo mass scales associated with the BT pivots
 
 - **Location:** Physical Interpretation of the Main Trends subsection
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -297,7 +300,7 @@ For the cosmological parameters used here, \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}
 ## 12. Remove repeated numerical results from the Discussion
 
 - **Location:** Physical Interpretation of the Main Trends subsection
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -319,7 +322,7 @@ The repeated numerical summary was deleted rather than moved to the Conclusions,
 ## 13. State the scope relative to observational modeling directly
 
 - **Location:** Opening of the Relation to Previous Work subsection
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -336,7 +339,7 @@ The indirect comparison was replaced by a direct statement that the paper does n
 ## 14. Clarify the complementary roles of periodic boxes and zoom-in simulations
 
 - **Location:** Relation to Previous Work subsection
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -353,7 +356,7 @@ The revised paragraph states that zoom-in simulations are better suited to host-
 ## 15. State the physical connection to 21-cm observations
 
 - **Location:** Relation to Previous Work subsection
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -370,7 +373,7 @@ The paragraph now states the physical sequence directly: enhanced small-scale pr
 ## 16. Explain how the tested analytic prescriptions connect to observations
 
 - **Location:** Connection to Observations subsection
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -434,7 +437,7 @@ The upper panel now shows the PL and BT simulation medians as unconnected circle
 ## 18. Mark box-specific reliable ranges in the power-spectrum figure
 
 - **Location:** Nonlinear matter power-spectrum figure and numerical-ranges appendix
-- **Status:** Figure, caption, and appendix updated; manuscript compilation deferred
+- **Status:** Completed; figure, caption, main text, and appendix updated
 
 ### Requested change
 
@@ -442,12 +445,14 @@ Simulation points outside the reliable range should be identified. The low-waven
 
 ### Revision made
 
-Each box now uses an adopted interval from \(4k_{\rm f}\) to \(k_{\rm Ny}\), with \(k_{\rm f}=2\pi/L_{\rm box}\). This gives approximately \(1.0\le k/(h\,{\rm Mpc}^{-1})\le129\) for the 25 box and \(0.10\le k/(h\,{\rm Mpc}^{-1})\le12.6\) for the 256 box. Points outside the corresponding interval are retained as faded open symbols. Vertical boundary pairs identify both limits, and the box-separated residual panels shade the excluded regions. No simulation values or quoted BT/PL ratios were changed.
+For the low-wavenumber diagnostic, points below \(4k_{\rm f}\), with \(k_{\rm f}=2\pi/L_{\rm box}\), are retained as faded open symbols. At high wavenumber, simulation measurements above \(0.25k_{\rm Ny}\) are omitted from all power-spectrum panels, while the theory curves continue. The displayed intervals are therefore \(1.0\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the \(25\,h^{-1}{\rm Mpc}\) box and \(0.098\le k/(h\,{\rm Mpc}^{-1})\le3.14\) for the \(256\,h^{-1}{\rm Mpc}\) box. The omitted measurements remain in the released data table. No finite-volume, grid-window, or nonlinear mode-coupling correction is applied.
+
+The main text also states that the two boxes are not spliced into a single spectrum and that each box is interpreted only over its own adopted interval. The low-redshift absolute spectra from the small box differ from the large-box measurements by more than the Gaussian mode-count estimate. BT/PL is formed only from PL and BT runs in the same box, where the shared initial phases partly cancel realization-dependent deviations.
 
 ## 19. State the resolution and volume limitations directly
 
 - **Location:** Numerical and Modeling Limitations subsection
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -460,7 +465,7 @@ The sentence now lists finite mass and force resolution and finite simulation vo
 ## 20. Restate the two BT models in the Conclusions
 
 - **Location:** Opening paragraph of the Conclusions
-- **Status:** Completed in blue text
+- **Status:** Completed
 
 ### Requested change
 
@@ -473,7 +478,7 @@ The Conclusions now state that both BT models use \(m_s=1.5\). They also identif
 ## 21. Compare the results with previous halo mass-function studies
 
 - **Location:** Relation to Previous Work subsection
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 ### Requested change
 
@@ -490,7 +495,7 @@ The cited papers and their stated methods were checked against their journal or 
 ## 22. Remove repetition from the Introduction and state the analytic comparisons
 
 - **Location:** Final paragraphs of the Introduction
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 ### Requested changes
 
@@ -505,7 +510,7 @@ The following scope paragraph now states the simulation design and measured stat
 ## 23. Reorganize the halo definitions and merger-tree methods
 
 - **Location:** Numerical Methods and the opening sentences of the related Results subsections
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 ### Requested changes
 
@@ -522,7 +527,7 @@ The FOF mass-function, half-mass redshift, radial-profile, and concentration sub
 ## 24. Explain the redshift and model dependence in the projection figure
 
 - **Location:** Projection figure caption and accompanying Results paragraph
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 ### Requested change
 
@@ -535,7 +540,7 @@ The caption and main text now state that the BT--PL contrast is most visible at 
 ## 25. Introduce the pivot-to-mass conversion with the BT models
 
 - **Location:** Power-Spectrum Models and Linear Matter Power subsection; Physical Interpretation subsection
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 ### Requested change
 
@@ -550,7 +555,7 @@ The Discussion now refers back to the numbered pivot-mass equation instead of re
 ## 26. Define the Power et al. relaxation parameter explicitly
 
 - **Location:** Radial Halo Density Profiles subsection and figure caption
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 ### Requested change
 
@@ -613,7 +618,7 @@ inspection.
 ## 30. Cite and quantify the BK09 and COCO half-mass comparisons
 
 - **Location:** Half-Mass Redshift subsection
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 The Millennium-II citation is Boylan-Kolchin et al. (2009), and the COCO
 citation is Hellwing et al. (2016). Their DOI and arXiv records were checked
@@ -635,7 +640,7 @@ COCO/Hellwing16. The corresponding maximum absolute offsets are \(0.128\) and
 ## 31. Cite the foundations of the EPS framework
 
 - **Location:** Median Mass-Assembly Histories subsection
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 The Correa et al. mass-assembly model is now introduced as an application of
 the extended Press--Schechter framework. The text cites Bond et al. (1991) for
@@ -646,14 +651,14 @@ their journal metadata and DOI records.
 ## 32. Quantify and compare the concentration scatter
 
 - **Location:** Concentration--Mass Relation subsection
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 The revised text compares two resolved mass ranges at \(z=0\). The median
-\(\sigma_{68}(\ln c)\) values in
-\(10^{9.5}\le M_{200c}/M_\odot<10^{10}\) are \(0.42\), \(0.55\), and \(0.45\)
+\(\sigma_{68}(\log_{10}c)\) values in
+\(10^{9.5}\le M_{200c}/M_\odot<10^{10}\) are \(0.18\), \(0.24\), and \(0.19\)
 for PL, \BTKPone{}, and \BTKPten{}. In
-\(10^{10.5}\le M_{200c}/M_\odot<10^{11.5}\), they are \(0.34\), \(0.40\), and
-\(0.34\). Thus, all three models have larger scatter in the lower-mass range.
+\(10^{10.5}\le M_{200c}/M_\odot<10^{11.5}\), they are \(0.15\), \(0.18\), and
+\(0.15\). Thus, all three models have larger scatter in the lower-mass range.
 
 Macciò et al. (2007) reported a total scatter
 \(\sigma_{\ln c}=0.40\pm0.03\) and an intrinsic scatter of \(0.33\pm0.03\) for
@@ -665,7 +670,7 @@ values were checked against the published paper.
 ## 33. Cite HMcode2020 and identify the implementation
 
 - **Location:** Power Spectrum subsection
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
 The nonlinear-theory paragraph now cites Mead et al. (2021) for HMcode2020 and
 links the `pyhmcode` implementation used in the analysis:
@@ -675,10 +680,30 @@ record, and repository URL were checked before the revision.
 ## 34. State the high-mass limitation of the L16 comparison
 
 - **Location:** Alternative Concentration Prescriptions appendix
-- **Status:** Completed in blue text; manuscript compilation deferred
+- **Status:** Completed
 
-The appendix now states that the L16 comparison is less accurate at the
-high-mass end, especially at \(z=8.52\). The simulated concentration--mass
-relation turns upward in the highest-mass bins, while the L16 curve continues
-to decline. The text also warns that these bins contain few halos, so the
-discrepancy is interpreted qualitatively rather than as a precise measurement.
+The appendix now states that the L16 prediction differs more strongly from the
+simulations at the high-mass end at \(z=8.52\). The simulated median
+concentration rises in the highest-mass bins, while the L16 curve continues to
+decline. Because these bins contain few halos, the trend is interpreted
+qualitatively. The I21 and D19 predictions are described as showing a similar
+trend rather than as precisely capturing the upturn.
+
+## 35. Complete the final prose-consistency pass
+
+- **Location:** Abstract, Introduction, Numerical Methods, Discussion, Conclusions, and Alternative Concentration Prescriptions appendix
+- **Status:** Completed
+
+The final pass removed unsupported or obsolete statements and simplified the
+remaining prose without changing the numerical results. It removed the stale
+\(V_{\max}\)--\(R_{\max}\) paragraph, corrected the initial-spectrum caption,
+and shortened the projection description. It also states explicitly that the
+two power-spectrum boxes are interpreted separately rather than spliced.
+
+The pass corrected the unscoped `\\small{SWIFT}` declaration, restored a
+limitations sentence that had accidentally followed a comment marker, and
+replaced several vague or overly strong expressions. The abstract now says
+that published prescriptions reproduce broad trends rather than validate
+them. The Conclusions identify the box-dependent uncertainty in the absolute
+small-box spectra and use direct language for variation among realizations,
+finite-volume effects, and future observational tests.

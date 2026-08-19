@@ -17,11 +17,11 @@ product rather than by raw simulation output.
 - `figure_data/halfmass_redshift/`: same-TrackId half-mass redshift points and summaries.
 - `figure_data/mass_assembly_history/`: same-TrackId median FOF mass histories for PL and the `kp=1` BT model, the fixed and half-mass-closure Correa curves, and the normalized BT/PL assembly ratio used in `mass-assembly-history-correa-halfmass.png`.
 - `figure_data/mass_accretion/`: archived accretion diagnostics retained for revision traceability. They are not used by the current manuscript figures.
-- `figure_data/halo_density/`: concentration-derived NFW density-profile curves and mass-bin summaries.
+- `figure_data/halo_density/`: archived concentration-derived NFW curves for the retired `halo-density.png`; not used by the current manuscript figures.
 - `figure_data/halo_density_radial/`: direct particle-count radial density profiles and BT/PL ratios used in `halo-density-radial-n100-power.png`.
 - `figure_data/concentration/`: binned `c200c` measurements, theory ratios, mass-dependent scatter, and derived accuracy summaries.
 - `figure_data/nonlinear_power_spectrum/`: nonlinear matter power spectra, BT/PL ratios, and the (z=0) FFT-mesh convergence diagnostic.
-- `figure_data/appendix_fof_gap_stitching/`: appendix gap-stitching data and notes.
+- `figure_data/appendix_fof_gap_stitching/`: archived gap-stitching diagnostic retained for revision traceability; not used by the current manuscript.
 - `figure_data/fof_hmf_resolution/`: appendix FOF mass-function resolution and volume check data.
 - `scripts/reproduce_all_figures.py`: one-command regeneration and validation of all 12 manuscript figures.
 - `scripts/summarize_concentration_metrics.py`: regenerates the released concentration accuracy and mass-range scatter summaries.

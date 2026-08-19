@@ -4,10 +4,10 @@ projection.png,True,25306016,Projected density-field comparison.
 mass-function.png,True,180692,FOF halo mass functions and Reed07 relative differences.
 mass-function-m200c-bocquet16.png,True,776104,M200c halo mass functions and B16 relative differences.
 halfmass-redshift-trackid-no-envelope.png,True,327256,Same-TrackId half-mass assembly redshifts.
-mass-assembly-history-correa-halfmass.png,True,1440275,Median FOF mass-assembly histories for PL and the kp=1 BT model with Correa EPS comparisons simulation-to-reference ratios and normalized BT/PL ratios.
+mass-assembly-history-correa-halfmass.png,True,1007603,Median FOF mass-assembly histories for PL and the kp=1 BT model with Correa EPS comparisons simulation-to-reference ratios and normalized BT/PL ratios.
 halo-density-radial-n100-power.png,True,992159,Direct radial density profiles and BT/PL ratios.
 concentration-qc-i21-fit.png,True,560329,Appendix concentration-mass comparison with the I21 prescription.
-power-spectrum.png,True,710197,Nonlinear matter power spectra and matched BT/PL ratios with box-specific adopted ranges.
+power-spectrum_finite_box.png,True,592220,Nonlinear matter power spectra and BT/PL ratios with box-specific adopted ranges and finite-mode diagnostics.
 fof-hmf-resolution-volume.png,True,482999,Appendix FOF mass-function resolution and volume check.
 concentration-qc-d19.png,True,553203,Main-text concentration-mass comparison with the D19 prescription.
 concentration-qc-l16.png,True,581161,Appendix concentration-mass comparison with the L16 prescription.
