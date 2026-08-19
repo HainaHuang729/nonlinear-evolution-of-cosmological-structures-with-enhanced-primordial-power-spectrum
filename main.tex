@@ -397,8 +397,18 @@ The half-mass assembly redshift, \(z_{1/2}\), is the redshift at which a \(z=0\)
 \label{eq:correa2015_fm0}
 \revisionblue{f(M_0)=\left[S(M_0/q)-S(M_0)\right]^{-1/2},}
 \end{equation}
-\Tk{Need to say what are  q; i.e. the numerical form of  q. }
-\currentrevisionblue{Here, \(S(M)=\sigma^2(M)\) and \(a=1+1.686\sqrt{2/\pi}\,[\mathrm{d}D/\mathrm{d}z]_{z=0}=0.291\), where the linear growth factor is normalized to \(D(0)=1\). We compute \(S(M)\) from the corresponding PL or \BTKPone{} linear matter power spectrum. We determine \(q\) and \(\widetilde z_{\rm f}\) separately for each mass and input spectrum by solving the EPS formation equation together with \(M(\widetilde z_{\rm f})=M_0/2\). For the six mass bins shown in Fig.~\ref{fig:mass_assembly_history_correa}, \(q\) ranges from 2.981 to 3.030 for PL and from 3.019 to 3.052 for \BTKPone{}. We refer to this as the spectrum-specific Correa-EPS calculation. It does not use the measured histories, so the curves are not fits to the simulation data.}
+%\Tk{Need to say what are q; i.e. the numerical form of q.}
+\begin{equation}
+\revisionblue{
+\begin{aligned}
+M(\widetilde z_{\rm f})&=\frac{M_0}{2},\\
+\delta_{\rm c}(\widetilde z_{\rm f})-\delta_{\rm c}(0)
+&=\sqrt{2\left[S(M_0/q)-S(M_0)\right]}\\
+&\quad\times\operatorname{erf}^{-1}\!\left(1-\frac{1}{q}\right).
+\end{aligned}}
+\label{eq:correa_q_closure}
+\end{equation}
+\currentrevisionblue{Here, \(S(M)=\sigma^2(M)\) and \(a=1+1.686\sqrt{2/\pi}\,[\mathrm{d}D/\mathrm{d}z]_{z=0}=0.291\), where the linear growth factor is normalized to \(D(0)=1\). The parameter \(q\) sets the progenitor mass scale \(M_0/q\) in the EPS conditional mass distribution, and \(\delta_{\rm c}(z)\) is the spherical-collapse barrier. We compute \(S(M)\) from the corresponding PL or \BTKPone{} linear matter power spectrum. For each mass and input spectrum, we solve Eq.~\eqref{eq:correa_q_closure} for \(q\) and \(\widetilde z_{\rm f}\). For the six mass bins shown in Fig.~\ref{fig:mass_assembly_history_correa}, \(q\) ranges from 2.981 to 3.030 for PL and from 3.019 to 3.052 for \BTKPone{}. We refer to this as the spectrum-specific Correa-EPS calculation. It does not use the measured histories, so the curves are not fits to the simulation data.}
 
 
 %\Tk{I don't think we need ``The faint curves use the published mass-dependent relations''. Take it out from the text and figure.}
@@ -479,7 +489,7 @@ We next test whether earlier halo growth also changes internal structure. We use
 
 \currentrevisionblue{The concentration scatter increases toward lower halo mass at \(z=0\). Over \(10^{9.5}\le M_{200c}/M_\odot<10^{10}\), the median \(\sigma_{68}(\log_{10}c)\) is \(0.18\), \(0.24\), and \(0.19\) for PL, \BTKPone{}, and \BTKPten{}, respectively. Over \(10^{10.5}\le M_{200c}/M_\odot<10^{11.5}\), the corresponding values are \(0.15\), \(0.18\), and \(0.15\). \citet{Maccio2007ConcentrationScatter} studied \(z=0\) halos over \(3\times10^9\lesssim M_{\rm vir}/(h^{-1}M_\odot)\lesssim3\times10^{13}\). They reported a total scatter of \(\sigma_{\ln c}=0.40\pm0.03\) and an intrinsic scatter of \(0.33\pm0.03\), corresponding to \(\sigma_{\log_{10}c}=0.174\pm0.013\) and \(0.143\pm0.013\), respectively. Their total scatter is close to our low-mass PL value, whereas their intrinsic scatter is close to our high-mass PL value. This comparison is approximate because the two studies use different halo-mass definitions and scatter estimators.}
 
-While this work focuses on validating the \citet{Diemer2019} model at large mass end, our upcoming work (Wu, Chan, Lange\& Huang, in prep.) has shown that the \citet{Diemer2019} concentration-mass model also fits well with numerical simulation at smaller mass range $10^7-10^{10} M_\odot$.
+\currentrevisionblue{A separate study in preparation (Wu, Chan, Lange, \& Huang) examines the Diemer \& Joyce relation in simulations spanning \(10^7\)--\(10^{10}\,M_\odot\), extending the mass range considered here.}
 
 %\Tk{State what mass range Maccio2007 is considering.}
 
@@ -521,7 +531,7 @@ We use the width of each plotted bin and \(N_{\rm real}=1\). Equation~\eqref{eq:
     \centering
     \includegraphics[width=\textwidth]{power-spectrum_finite_box.png}
     \caption{Nonlinear matter power spectra and BT/PL ratios at representative redshifts. The upper panels show the simulation measurements and HMcode2020 curves. Filled and open symbols identify the \(25\) and \(256\,h^{-1}{\rm Mpc}\) boxes. The middle panels show BT/PL for simulations and theory. The two bottom rows show \(P_{\rm sim}/P_{\rm HMcode2020}\) for each box. \currentrevisionblue{Faded open symbols have \(k<4k_{\rm f}\). Simulation measurements above \(0.25k_{\rm Ny}\) are omitted, giving upper limits of \(32.2\) and \(3.14\,h\,{\rm Mpc}^{-1}\) for the 25 and \(256\,h^{-1}{\rm Mpc}\) boxes, respectively. The omitted measurements remain available in the released table. No finite-volume or grid-window correction is applied.} For each box size, the PL and BT simulations use the same initial random phases. The theory curves use the corresponding input linear spectra and are not fitted to the simulations. In the fiducial \(k_p=1\), \(25\,h^{-1}{\rm Mpc}\) box at \(z=0\), BT/PL reaches \(1.17\) at \(k=20\,h\,{\rm Mpc}^{-1}\).}
-    \Tk{If the simulation data is outside of the reliable regime, we should indicate that. Maybe using empty symbol? There should be a box-size reliable limit too. For the small box, the low k data is not reliable.}
+    %\Tk{If the simulation data is outside of the reliable regime, we should indicate that. Maybe using empty symbol? There should be a box-size reliable limit too. For the small box, the low k data is not reliable.}
     \label{fig:power_spectra_ratio_z0}
 \end{figure*}
 
@@ -555,7 +565,7 @@ We use the width of each plotted bin and \(N_{\rm real}=1\). Equation~\eqref{eq:
 
 \subsection{Connection to Observations}
 
-\currentrevisionblue{Enhanced small-scale power spectrum can boost the abundance of dark matter halos, especially at low halo mass and high redshift, and lead to higher concentration. As a result, boosted halo mass functions may accelerate high-redshift galaxy formations, which are recently observed with JWST. The associated increases in halo abundance and concentration can also be tested with dwarf-galaxy dynamics and strong-lensing perturbers \citep{Diemer2019,Dekker25DwarfPPS,Gilman22SubgalacticPPS}. Strong-lensing analyses have identified unusually dense low-mass perturbers in SDSS J0946+1006 and JVAS B1938+666 \citep{Minor2021HighConcentration,Tajalli2025DensePerturbers}. These systems may provide tests of enhanced small-scale power. Our upcoming work (Wu, Chan, Lange\& Huang, in prep.) has shown that BT model can ease this tension. Finally, halo abundances and assembly histories from enhanced power can be incorporated into source-population and reionization models to predict 21-cm signals \citep{Munoz20SmallScale21cm,deKruijf25DarkAges,Zhu26SKAPPS}. }
+\currentrevisionblue{Enhanced small-scale primordial power increases the abundance of low-mass halos at high redshift and raises their concentrations. These changes could affect the abundance of high-redshift galaxies observed with JWST, although a quantitative comparison requires a galaxy-formation model. Dwarf-galaxy dynamics and strong-lensing perturbers provide complementary tests \citep{Dekker25DwarfPPS,Gilman22SubgalacticPPS}. Strong-lensing analyses have identified unusually dense low-mass perturbers in SDSS J0946+1006 and JVAS B1938+666 \citep{Minor2021HighConcentration,Tajalli2025DensePerturbers}. A separate study in preparation (Wu, Chan, Lange, \& Huang) examines whether BT models can account for these systems. Finally, the halo abundances and assembly histories measured here can be incorporated into source-population and reionization models to predict 21-cm signals \citep{Munoz20SmallScale21cm,deKruijf25DarkAges,Zhu26SKAPPS}.}
 
 
 %\Tk{the placement is a little bit odd.}
@@ -627,7 +637,8 @@ The main conclusions are as follows:
 
 \section*{Data Availability}
 
-\currentrevisionblue{The reduced data files supporting the figures and quantitative comparisons are available in the \texttt{public\_data/} directory of the GitHub repository at \url{https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum}.} \Tk{Use github and/or zenodo.org} The repository contains the input linear matter power spectra, binned halo mass functions, half-mass redshift summaries, median mass-assembly histories, Correa-comparison curves, radial-density profile summaries, concentration--mass summaries, nonlinear matter power-spectrum measurements, and the analysis scripts used to generate the figures. The full simulation snapshots and complete \textsc{HBT-HERONS}/\textsc{SOAP} catalogs are substantially larger than the reduced data package and are not included in the repository.
+\currentrevisionblue{The reduced data files supporting the figures and quantitative comparisons are available in the \texttt{public\_data/} directory on \href{https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum}{GitHub} and are archived on \href{https://doi.org/10.5281/zenodo.22007478}{Zenodo}.} %\Tk{Use github and/or zenodo.org}
+The repository contains the input linear matter power spectra, binned halo mass functions, half-mass redshift summaries, median mass-assembly histories, Correa-comparison curves, radial-density profile summaries, concentration--mass summaries, nonlinear matter power-spectrum measurements, and the analysis scripts used to generate the figures. The full simulation snapshots and complete \textsc{HBT-HERONS}/\textsc{SOAP} catalogs are substantially larger than the reduced data package and are not included in the repository.
 
 \begin{acknowledgments}
 The authors acknowledge the computational resources and software infrastructure used to carry out the simulations and analyses presented in this work.
