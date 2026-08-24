@@ -15,7 +15,7 @@ product rather than by raw simulation output.
 - `figure_data/fof_hmf/`: binned FoF halo mass-function points and Reed07 relative differences.
 - `figure_data/m200c_hmf/`: binned `M200c` halo mass-function points used to derive the B16 relative differences.
 - `figure_data/halfmass_redshift/`: same-TrackId half-mass redshift points and summaries.
-- `figure_data/mass_assembly_history/`: same-TrackId median FOF mass histories for PL and the `kp=1` BT model, the fixed and half-mass-closure Correa curves, and the normalized BT/PL assembly ratio used in `mass-assembly-history-correa-halfmass.png`.
+- `figure_data/mass_assembly_history/`: same-TrackId median FOF mass histories for PL and the `kp=1` BT model, the Correa curves based on the published mass-dependent relations, and the normalized BT/PL assembly ratio used in `mass-assembly-history-correa.png`. The half-mass-closure tables are retained only as diagnostics and are not used by the figure script.
 - `figure_data/mass_accretion/`: archived accretion diagnostics retained for revision traceability. They are not used by the current manuscript figures.
 - `figure_data/halo_density/`: archived concentration-derived NFW curves for the retired `halo-density.png`; not used by the current manuscript figures.
 - `figure_data/halo_density_radial/`: direct particle-count radial density profiles and BT/PL ratios used in `halo-density-radial-n100-power.png`.

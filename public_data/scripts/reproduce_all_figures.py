@@ -26,7 +26,7 @@ FIGURE_NAMES = [
     "mass-function.png",
     "mass-function-m200c-bocquet16.png",
     "halfmass-redshift-trackid-no-envelope.png",
-    "mass-assembly-history-correa-halfmass.png",
+    "mass-assembly-history-correa.png",
     "halo-density-radial-n100-power.png",
     "concentration-qc-i21-fit.png",
     "power-spectrum_finite_box.png",

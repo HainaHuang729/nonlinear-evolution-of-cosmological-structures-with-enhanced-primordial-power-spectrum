@@ -30,7 +30,6 @@ from cosmology_plot_style import apply_journal_style, format_axes, save_publicat
 apply_journal_style(base_fontsize=8.5)
 
 Z_MAX = 8.0
-QUANTITATIVE_Z_MAX = 6.0
 TARGETS = [1.0e9, 3.0e9, 1.0e10, 3.0e10, 1.0e11, 3.0e11]
 
 
@@ -45,22 +44,58 @@ def direct_for_target(data: pd.DataFrame, target: float) -> pd.DataFrame:
     return data[(data["target_M0_msun"] == nearest) & (data["z"] <= Z_MAX)].sort_values("z")
 
 
-def solved_curve(curves: pd.DataFrame, mass: float, spectrum: str) -> pd.DataFrame:
-    mask = (curves["spectrum"] == spectrum) & np.isclose(
-        curves["M0_msun"], mass, rtol=1.0e-10, atol=0.0
-    )
+def reference_curve(curves: pd.DataFrame, mass: float) -> pd.DataFrame:
+    mask = np.isclose(curves["M0_msun"], mass, rtol=1.0e-10, atol=0.0)
     return curves[mask].sort_values("z")
 
 
 def simulation_to_reference_ratio(
     direct: pd.DataFrame, reference: pd.DataFrame
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     x_direct = np.log10(1.0 + direct["z"].to_numpy(dtype=float))
     x_reference = np.log10(1.0 + reference["z"].to_numpy(dtype=float))
     log_reference_mass = np.log10(reference["M_msun"].to_numpy(dtype=float))
     reference_mass = 10.0 ** np.interp(x_direct, x_reference, log_reference_mass)
     ratio = direct["median_M_msun"].to_numpy(dtype=float) / reference_mass
-    return x_direct, ratio
+    return x_direct, ratio, reference_mass
+
+
+def mass_interval_errors(
+    errorbars: pd.DataFrame,
+    model: str,
+    target: float,
+    redshifts: np.ndarray,
+    interval_kind: str,
+) -> np.ndarray:
+    interval_columns = {
+        "bootstrap": (
+            "bootstrap_p16_median_M_msun",
+            "bootstrap_p84_median_M_msun",
+        ),
+        "halo": ("halo_p16_M_msun", "halo_p84_M_msun"),
+    }
+    lower_column, upper_column = interval_columns[interval_kind]
+    model_rows = errorbars[errorbars["model"] == model]
+    available_targets = model_rows["target_M0_msun"].to_numpy(dtype=float)
+    nearest = available_targets[
+        int(np.argmin(np.abs(np.log10(available_targets / target))))
+    ]
+    model_rows = model_rows[model_rows["target_M0_msun"] == nearest]
+    lower = []
+    upper = []
+    for redshift in redshifts:
+        row = model_rows[
+            np.isclose(model_rows["z"], redshift, rtol=0.0, atol=1.0e-8)
+        ]
+        if row.empty:
+            lower.append(np.nan)
+            upper.append(np.nan)
+            continue
+        entry = row.iloc[0]
+        median = float(entry["median_M_msun"])
+        lower.append(median - float(entry[lower_column]))
+        upper.append(float(entry[upper_column]) - median)
+    return np.vstack([lower, upper])
 
 
 def normalized_bt_to_pl_ratio(
@@ -79,12 +114,18 @@ def normalized_bt_to_pl_ratio(
     return x_bt, bt_fraction / pl_fraction, pl_mass, pl_fraction, bt_fraction
 
 
-def make_figure(output: Path) -> None:
-    curves = pd.read_csv(DATA_DIR / "qzf_project_warren_half_mass_allmass_curves.csv")
+def make_figure(
+    output: Path,
+    errorbar_table: Path | None = None,
+    interval_kind: str = "bootstrap",
+) -> None:
+    pl_curves = pd.read_csv(DATA_DIR / "pl_project_warren_curves.csv")
+    bt_curves = pd.read_csv(DATA_DIR / "bt_project_warren_curves.csv")
     pl_data = pd.read_csv(DATA_DIR / "pl_warren_median_mah.csv")
     bt_data = pd.read_csv(DATA_DIR / "bt_soft_warren_median_mah.csv")
     pl_summary = pd.read_csv(DATA_DIR / "pl_warren_selection_summary.csv")
     bt_summary = pd.read_csv(DATA_DIR / "bt_soft_warren_selection_summary.csv")
+    errorbars = pd.read_csv(errorbar_table) if errorbar_table is not None else None
 
     fig, (ax, ratio_ax, bt_pl_ax) = plt.subplots(
         3,
@@ -101,45 +142,88 @@ def make_figure(output: Path) -> None:
         bt_row = row_for_target(bt_summary, target)
         pl_direct = direct_for_target(pl_data, target)
         bt_direct = direct_for_target(bt_data, target)
-        pl_solved = solved_curve(curves, float(pl_row["median_M0_Msun"]), "pl")
-        bt_solved = solved_curve(curves, float(bt_row["median_M0_Msun"]), "bt_soft")
+        pl_solved = reference_curve(pl_curves, float(pl_row["median_M0_Msun"]))
+        bt_solved = reference_curve(bt_curves, float(bt_row["median_M0_Msun"]))
         ax.plot(np.log10(1.0 + pl_solved["z"]), pl_solved["M_msun"], color=color, lw=1.15, ls="--", alpha=0.90)
         ax.plot(np.log10(1.0 + bt_solved["z"]), bt_solved["M_msun"], color=color, lw=1.15, ls=":", alpha=0.95)
-        ax.plot(
+        pl_mass_errors = None
+        bt_mass_errors = None
+        if errorbars is not None:
+            pl_mass_errors = mass_interval_errors(
+                errorbars,
+                "PL",
+                target,
+                pl_direct["z"].to_numpy(dtype=float),
+                interval_kind,
+            )
+            bt_mass_errors = mass_interval_errors(
+                errorbars,
+                "BT_kp1",
+                target,
+                bt_direct["z"].to_numpy(dtype=float),
+                interval_kind,
+            )
+        ax.errorbar(
             np.log10(1.0 + pl_direct["z"]),
             pl_direct["median_M_msun"],
+            yerr=pl_mass_errors,
             color=color,
             ls="none",
             marker="o",
             markersize=3.0,
+            elinewidth=0.65,
+            capsize=1.2,
+            capthick=0.65,
         )
-        ax.plot(
+        ax.errorbar(
             np.log10(1.0 + bt_direct["z"]),
             bt_direct["median_M_msun"],
+            yerr=bt_mass_errors,
             color=color,
             ls="none",
             marker="^",
             markersize=3.2,
+            elinewidth=0.65,
+            capsize=1.2,
+            capthick=0.65,
             alpha=0.95,
         )
 
-        pl_ratio_x, pl_ratio = simulation_to_reference_ratio(pl_direct, pl_solved)
-        bt_ratio_x, bt_ratio = simulation_to_reference_ratio(bt_direct, bt_solved)
-        ratio_ax.plot(
+        pl_ratio_x, pl_ratio, pl_reference_mass = simulation_to_reference_ratio(
+            pl_direct, pl_solved
+        )
+        bt_ratio_x, bt_ratio, bt_reference_mass = simulation_to_reference_ratio(
+            bt_direct, bt_solved
+        )
+        pl_ratio_errors = (
+            pl_mass_errors / pl_reference_mass if pl_mass_errors is not None else None
+        )
+        bt_ratio_errors = (
+            bt_mass_errors / bt_reference_mass if bt_mass_errors is not None else None
+        )
+        ratio_ax.errorbar(
             pl_ratio_x,
             pl_ratio,
+            yerr=pl_ratio_errors,
             color=color,
             ls="none",
             marker="o",
             markersize=2.8,
+            elinewidth=0.6,
+            capsize=1.1,
+            capthick=0.6,
         )
-        ratio_ax.plot(
+        ratio_ax.errorbar(
             bt_ratio_x,
             bt_ratio,
+            yerr=bt_ratio_errors,
             color=color,
             ls="none",
             marker="^",
             markersize=3.0,
+            elinewidth=0.6,
+            capsize=1.1,
+            capthick=0.6,
             alpha=0.95,
         )
 
@@ -170,18 +254,6 @@ def make_figure(output: Path) -> None:
             )
 
     pd.DataFrame(bt_over_pl_rows).to_csv(BT_OVER_PL_OUTPUT, index=False)
-
-    trusted_x_max = np.log10(1.0 + QUANTITATIVE_Z_MAX)
-    plotted_x_max = np.log10(1.0 + Z_MAX)
-    for panel in (ax, ratio_ax, bt_pl_ax):
-        panel.axvspan(
-            trusted_x_max,
-            plotted_x_max,
-            color="0.75",
-            alpha=0.16,
-            lw=0,
-            zorder=0,
-        )
 
     ax.set_yscale("log")
     ax.set_xlim(0.0, np.log10(1.0 + Z_MAX))
@@ -245,12 +317,24 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=ARTICLE_DIR / "mass-assembly-history-correa-halfmass.png",
+        default=ARTICLE_DIR / "mass-assembly-history-correa.png",
+    )
+    parser.add_argument(
+        "--errorbar-table",
+        type=Path,
+        default=None,
+        help="Optional bootstrap table used for 68 per cent median error bars.",
+    )
+    parser.add_argument(
+        "--interval-kind",
+        choices=["bootstrap", "halo"],
+        default="bootstrap",
+        help="Show bootstrap uncertainty of the median or halo-to-halo percentiles.",
     )
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
-    make_figure(args.output)
+    make_figure(args.output, args.errorbar_table, args.interval_kind)
     print(args.output)

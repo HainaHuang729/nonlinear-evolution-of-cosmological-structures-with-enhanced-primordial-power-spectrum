@@ -4,8 +4,9 @@ This document records requested manuscript changes and the corresponding revisio
 
 ## Current Status
 
-- Thirty-five requested revisions have been addressed. The EPS foundations, concentration scatter, HMcode2020 implementation, L16 high-mass limitation, and final prose-consistency pass are now documented.
-- All manuscript revisions currently render in black.
+- Thirty-nine requested revisions have been addressed. The EPS foundations, concentration scatter, HMcode2020 implementation, L16 high-mass limitation, final prose-consistency pass, symbol-definition audit, mass-assembly-history updates, and GitHub/Zenodo release documentation are now recorded.
+- One TK follow-up comment from 2026-08-24 remains under review: the small-box power-spectrum deviation.
+- The current Correa-response edits remain marked as the active revision; previously confirmed edits are unchanged.
 - The Reed07 and B16 comparison rows use relative differences with row-specific symmetric-logarithmic limits.
 - On 2026-07-15, the main-text adjacent-snapshot accretion-rate figure and the appendix FOF-$\Gamma$ figure were replaced by the full median FOF mass-assembly-history comparison described below.
 - The numerical-methods section now defines $R_{200c}$, $\rho_{\rm crit}(z)$, and $M_{200c}$ explicitly.
@@ -77,20 +78,20 @@ The abstract was reduced to a single paragraph. Detailed numerical values were r
 
 The revised text now reports the simulation-to-model agreement directly. For mass bins above the adopted limits with at least 20 halos, the median HMF residual is within 8 per cent of both the Reed et al. (2007) and Bocquet et al. (2016) prescriptions at $z=0$ and $z=3.44$. The median differences increase to 2--22 per cent for Reed et al. and 16--32 per cent for Bocquet et al. at $z=8.52$.
 
-At $z=0$ and $10^9\le M_{200c}/M_\odot<10^{9.5}$, the median $c_{\rm sim}/c_{\rm I21,fit}$ ratios are 0.96, 1.38, and 1.12 for PL, $k_p=1$, and $k_p=10$, respectively. The modified Correa histories differ from the simulated median histories by at most 25 per cent for PL and 7 per cent for $k_p=1$ over $10^9\le M_0/M_\odot\le10^{11}$ at $z=1,2,4,6$. The conclusion now summarizes these quantitative residuals and states that the published prescriptions are reference models rather than refitted BT formulae.
+At $z=0$ and $10^9\le M_{200c}/M_\odot<10^{9.5}$, the median $c_{\rm sim}/c_{\rm I21,fit}$ ratios are 0.96, 1.38, and 1.12 for PL, $k_p=1$, and $k_p=10$, respectively. The Correa histories differ from the simulated median histories by at most 46 per cent for PL and 9 per cent for $k_p=1$ over $10^9\le M_0/M_\odot\le10^{11}$ at $z=1,2,4,6$. The conclusion now summarizes these quantitative residuals and states that the published prescriptions are reference models rather than refitted BT formulae.
 
 ## 2026-07-15. Replace the accretion-rate section with full mass-assembly histories
 
 - **Location:** Main-text assembly section, Fig. `fig:mass_assembly_history_correa`, conclusions, numerical-range table, and data-availability statement
 - **Status:** Completed
 
-The previous main-text $M_{200c}$ adjacent-snapshot accretion-rate figure and the final appendix FOF-$\Gamma$ figure are no longer referenced by the manuscript. They are replaced by `mass-assembly-history-correa-halfmass.png`.
+The previous main-text $M_{200c}$ adjacent-snapshot accretion-rate figure and the final appendix FOF-$\Gamma$ figure are no longer referenced by the manuscript. They are replaced by `mass-assembly-history-correa.png`.
 
 The new figure selects halos in seven Warren-corrected $z=0$ FOF mass windows and follows each halo through its persistent HBT-HERONS `TrackId`. Each point is the median positive recorded FOF mass among selected halos detected at that snapshot. Missing detections are not filled, and no cumulative-maximum filter is applied. Quantitative interpretation is restricted to $M_0\ge10^9\,M_\odot$ and $z\le6$, where more than 90 per cent of each selected sample is detected.
 
 The BT histories in this figure use only the $k_p=1\,h\,{\rm Mpc}^{-1}$, $m_s=1.5$ simulation. The text and caption state this explicitly. The three-model assembly ranking continues to come from the half-mass-redshift figure.
 
-The analytic comparison uses the Correa et al. (2015) Paper I EPS form. Faint curves retain the published mass-dependent $q$ and $\widetilde z_{\rm f}$ relations. Prominent curves recompute the spectrum-dependent quantities and solve $q$ and $\widetilde z_{\rm f}$ with a half-mass closure. The latter are diagnostic modified relations, not fits to the plotted simulation histories. Reduced histories, curve tables, parameters, selection summaries, and a standalone plotting script were added to `public_data/`.
+The analytic comparison uses the Correa et al. (2015) Paper I EPS form and its published mass-dependent $q$ and $\widetilde z_{\rm f}$ relations. The PL and BT predictions use their corresponding linear-spectrum variances and are not fitted to the plotted simulation histories. Reduced histories, curve tables, selection summaries, and a standalone plotting script were added to `public_data/`.
 
 ## 1. Describe the projected density fields
 
@@ -707,3 +708,71 @@ that published prescriptions reproduce broad trends rather than validate
 them. The Conclusions identify the box-dependent uncertainty in the absolute
 small-box spectra and use direct language for variation among realizations,
 finite-volume effects, and future observational tests.
+
+## 36. Define symbols and abbreviations on first use
+
+- **Location:** Theoretical Overview, Numerical Methods, Results, figure captions, numerical-range table, and acknowledgments
+- **Status:** Completed
+
+The manuscript now defines the comoving wavenumber \(k\), the scalar spectral
+index \(n_s\), the initial redshift \(z_i\), the density parameters, the
+normalization \(\sigma_8\), the dimensionless linear power \(\Delta^2\), and
+the present-day quantities \(\rho_{{\rm crit},0}\) and
+\(\Omega_{{\rm m},0}\). It also expands HMF, FOF, and NFW at first use and defines
+\(N_{\rm h}\), the mass-function symbol \(f\), the BK09 and COCO/Hellwing16
+labels, the redshift-dependent reference densities used for \(M_{200c}\) and
+\(M_{200m}\), the final-mass window center \(M_0\), the main-progenitor mass
+\(M(z)\), the Correa formation redshift, and the inverse error function.
+
+The concentration section now defines D19, I21, L16, \(P_{16}\), and
+\(P_{84}\). The power-spectrum section uses \(N_{\rm p}\) only for the total
+simulation particle count and reserves \(N_{\rm DM}\) for the per-halo dark
+matter particle count. It also defines \(N_{\rm mesh}\), \(\Delta k\),
+\(N_{\rm mode}\), \(N_{\rm real}\), and \(\sigma_P/P\). JWST, AGN, RGC, and
+CUHK are expanded at first use. These edits do not change any numerical value,
+selection criterion, or figure.
+
+## 37. Remove the high-redshift shading from the mass-assembly-history figure
+
+- **Location:** Median Mass-Assembly Histories figure and caption
+- **Status:** Completed
+
+The vertical gray region at \(z>6\) has been removed from all three panels, and
+the corresponding sentence has been deleted from the figure caption. All data
+points and analytic curves remain unchanged. The text retains \(z\le6\) as the
+range used for quantitative comparisons because more than 90 per cent of every
+selected sample is detected over that range; this sample-completeness statement
+is not presented as a shaded numerical-resolution boundary.
+
+## 38. Make the GitHub and Zenodo release easier to use
+
+- **Location:** Repository root, public-data documentation, and Data Availability
+- **Status:** Completed
+
+The repository now has a root-level `README.md` with environment setup,
+one-command regeneration of all 12 figures, a directory guide, compact-catalog
+validation instructions, and the Zenodo DOI. A root-level `requirements.txt`
+forwards to the maintained figure dependency list in
+`public_data/requirements-figures.txt`.
+
+The Data Availability section now states that the Zenodo release contains the
+compact per-halo inputs used at six snapshots, plus the tracked assembly
+histories and radial-profile selection metadata. The full SWIFT snapshots and
+complete HBT-HERONS/SOAP catalogs remain excluded because they are not needed
+for reproduction and are hundreds of gigabytes per model.
+
+## 39. Clarify the Correa parameters and use the published relations
+
+- **Location:** Median Mass-Assembly Histories subsection and figure
+- **Status:** Completed
+
+The analytic comparison now uses the published Correa et al. mass-dependent
+relations for $q$ and $\widetilde z_{\rm f}$. The coefficient $a=0.292$
+is calculated from the shared background cosmology. The PL and BT curves use
+the same $q(M_0)$, $\widetilde z_{\rm f}(M_0)$, and $a$; their difference
+comes only from the corresponding linear-spectrum variance
+$S(M_0/q)-S(M_0)$. The text states the equations, numerical $q$ ranges, and
+updated simulation-to-model differences. The figure has been renamed
+`mass-assembly-history-correa.png`; the older half-mass-closure tables remain
+available only as diagnostic products and are no longer read by the plotting
+script.
