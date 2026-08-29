@@ -1,0 +1,30 @@
+script,category,status,execution_scope,used_by_reproduce_all,description
+bt_plot_halo_density_profile_png.py,archived,archived,cluster,no,Retired analytic halo-density figure
+bt_plot_halo_density_radial_trial_png.py,figure,current,portable,yes,Radial density profiles
+bt_plot_mass_fraction_trackid_png.py,archived,archived,cluster,no,Superseded same-TrackId mass-fraction diagnostic
+bt_submit_halo_density_radial_n100_power.sh,workflow,current,cluster,no,Slurm wrapper for radial profiles
+build_reproducibility_release.py,workflow,current,cluster,no,Self-contained release assembler
+compute_m200c_main_branch_accretion.py,archived,archived,cluster,no,Retired M200c accretion reduction
+compute_sim_power_spectrum.py,reduction,current,cluster,no,Simulation power-spectrum measurement
+concentration_qc_kp10.py,figure,current,portable,yes,Three concentration figures
+cosmology_plot_style.py,shared,current,portable,yes,Shared journal plotting style
+extract_article_halo_catalog.py,reduction,current,cluster,no,Compact per-halo catalog extraction
+halomass_fof_reed07.py,reduction,current,cluster,no,FOF mass-function reduction
+plot_bocquet16_m200c_hmf.py,figure,current,portable,yes,M200c halo mass function
+plot_fof_gamma_appendix.py,archived,archived,cluster,no,Retired FOF Gamma diagnostic
+plot_fof_hmf_resolution.py,figure,current,portable,yes,FOF resolution and volume appendix
+plot_hmf_public_ratio.py,figure,current,portable,yes,FOF halo mass function
+plot_input_power_spectrum.py,figure,current,portable,yes,Input linear matter spectra
+plot_m200c_main_branch_accretion.py,archived,archived,cluster,no,Retired M200c accretion figure
+plot_mass_assembly_history_correa.py,figure,current,portable,yes,Median mass-assembly histories
+plot_mass_assembly_history_correa.sbatch,workflow,current,cluster,no,Slurm wrapper for the MAH figure
+plot_power_spectrum_bt_over_pl.py,reduction,current,cluster,no,Nonlinear power-spectrum table generation
+plot_power_spectrum_halofit.py,archived,archived,cluster,no,Superseded direct theory comparison
+plot_power_spectrum_public_ratio.py,figure,current,portable,yes,Nonlinear matter power spectrum
+plot_projection_public.py,figure,current,portable,yes,Projected-density mosaic labels
+plot_same_trackid_no_envelope_allmodels.py,figure,current,portable,yes,Half-mass redshift
+reproduce_all_figures.py,workflow,current,portable,entrypoint,Complete figure regeneration and validation
+submit_extract_article_halo_catalog.sbatch,workflow,current,cluster,no,Slurm wrapper for catalog extraction
+summarize_concentration_metrics.py,validation,current,portable,no,Concentration summary regeneration
+test_fof_gap_stitching_halfmass.py,archived,archived,cluster,no,Retired gap-stitching validation
+validate_article_halo_catalog.py,validation,current,portable,no,Compact catalog validation

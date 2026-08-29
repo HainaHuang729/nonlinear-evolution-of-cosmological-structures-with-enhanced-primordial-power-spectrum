@@ -98,6 +98,13 @@ def mass_interval_errors(
     return np.vstack([lower, upper])
 
 
+def direct_halo_interval_errors(direct: pd.DataFrame) -> np.ndarray:
+    median = direct["median_M_msun"].to_numpy(dtype=float)
+    lower = median - direct["p16_M_msun"].to_numpy(dtype=float)
+    upper = direct["p84_M_msun"].to_numpy(dtype=float) - median
+    return np.vstack([lower, upper])
+
+
 def normalized_bt_to_pl_ratio(
     bt_direct: pd.DataFrame, pl_direct: pd.DataFrame
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
@@ -117,7 +124,7 @@ def normalized_bt_to_pl_ratio(
 def make_figure(
     output: Path,
     errorbar_table: Path | None = None,
-    interval_kind: str = "bootstrap",
+    interval_kind: str = "halo",
 ) -> None:
     pl_curves = pd.read_csv(DATA_DIR / "pl_project_warren_curves.csv")
     bt_curves = pd.read_csv(DATA_DIR / "bt_project_warren_curves.csv")
@@ -146,9 +153,10 @@ def make_figure(
         bt_solved = reference_curve(bt_curves, float(bt_row["median_M0_Msun"]))
         ax.plot(np.log10(1.0 + pl_solved["z"]), pl_solved["M_msun"], color=color, lw=1.15, ls="--", alpha=0.90)
         ax.plot(np.log10(1.0 + bt_solved["z"]), bt_solved["M_msun"], color=color, lw=1.15, ls=":", alpha=0.95)
-        pl_mass_errors = None
-        bt_mass_errors = None
-        if errorbars is not None:
+        if interval_kind == "halo":
+            pl_mass_errors = direct_halo_interval_errors(pl_direct)
+            bt_mass_errors = direct_halo_interval_errors(bt_direct)
+        elif errorbars is not None:
             pl_mass_errors = mass_interval_errors(
                 errorbars,
                 "PL",
@@ -156,6 +164,8 @@ def make_figure(
                 pl_direct["z"].to_numpy(dtype=float),
                 interval_kind,
             )
+        else:
+            raise ValueError("--errorbar-table is required for bootstrap intervals")
             bt_mass_errors = mass_interval_errors(
                 errorbars,
                 "BT_kp1",
@@ -262,7 +272,6 @@ def make_figure(
     ax.set_title("Median MAHs and spectrum-specific Correa-EPS relations", pad=7)
     format_axes(ax, grid=True)
 
-    ratio_ax.axhspan(0.9, 1.1, color="0.75", alpha=0.18, lw=0, zorder=0)
     ratio_ax.axhline(1.0, color="0.25", lw=0.75, zorder=1)
     ratio_ax.set_yscale("log")
     ratio_ax.set_ylim(0.8, 3.3)
@@ -272,7 +281,6 @@ def make_figure(
     format_axes(ratio_ax, grid=True)
     plt.setp(ratio_ax.get_xticklabels(), visible=False)
 
-    bt_pl_ax.axhspan(0.9, 1.1, color="0.75", alpha=0.18, lw=0, zorder=0)
     bt_pl_ax.axhline(1.0, color="0.25", lw=0.75, zorder=1)
     bt_pl_ax.set_ylim(0.9, 5.0)
     bt_pl_ax.set_yticks([1.0, 2.0, 3.0, 4.0, 5.0])
@@ -323,12 +331,12 @@ def parse_args() -> argparse.Namespace:
         "--errorbar-table",
         type=Path,
         default=None,
-        help="Optional bootstrap table used for 68 per cent median error bars.",
+        help="Bootstrap table; only required when --interval-kind=bootstrap.",
     )
     parser.add_argument(
         "--interval-kind",
         choices=["bootstrap", "halo"],
-        default="bootstrap",
+        default="halo",
         help="Show bootstrap uncertainty of the median or halo-to-halo percentiles.",
     )
     return parser.parse_args()

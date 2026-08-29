@@ -18,4 +18,4 @@ export PYTHONDONTWRITEBYTECODE=1
 export MPLCONFIGDIR=/tmp/matplotlib-${SLURM_JOB_ID}
 
 "$PYTHON" public_data/scripts/plot_mass_assembly_history_correa.py \
-    --output mass-assembly-history-correa-halfmass.png
+    --output mass-assembly-history-correa.png

@@ -17,6 +17,10 @@ The second command writes the 12 PNG files to `reproduced_figures/` and writes
 `figure_manifest_sha256.csv` with image dimensions, byte sizes, and SHA-256
 checksums. Use `--overwrite` to replace a previous run.
 
+See `public_data/scripts/README.md` for the script groups and
+`public_data/scripts/SCRIPT_MANIFEST.csv` for the complete file-level index.
+The one-command driver uses only the current portable plotting scripts.
+
 ## Included Inputs
 
 - `public_data/figure_data/`: reduced figure-level CSV tables.
@@ -43,6 +47,12 @@ The package reproduces every plotted figure without access to the original
 cluster paths. The full SWIFT snapshots, particle coordinates, and complete
 HBT-HERONS/SOAP catalogs are not included because they are hundreds of
 gigabytes per model.
+
+All 29 scripts retained with the article are included in the archive. This set
+contains the portable figure scripts, upstream cluster reductions, validation
+tools, Slurm wrappers, and archived scripts kept for revision provenance.
+Archived scripts are identified in `SCRIPT_MANIFEST.csv` and are not called by
+the one-command figure driver.
 
 The projected-density input is a derived two-dimensional mosaic. It reproduces
 the published projection and its labels, but it cannot be used to choose a new

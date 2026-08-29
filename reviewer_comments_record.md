@@ -776,3 +776,36 @@ updated simulation-to-model differences. The figure has been renamed
 `mass-assembly-history-correa.png`; the older half-mass-closure tables remain
 available only as diagnostic products and are no longer read by the plotting
 script.
+
+## 40. Restore halo-to-halo error bars without shaded regions in the MAH figure
+
+- **Location:** Median Mass-Assembly Histories figure and caption
+- **Status:** Completed
+
+The PL and BT simulation points now show the 16th--84th percentile
+halo-to-halo range of Warren-corrected FOF mass in each final-mass window.
+The middle-panel error bars show the same mass intervals divided by the
+corresponding Correa-EPS value. The figure contains no shaded regions; only
+horizontal unity lines remain in the ratio panels. The analytic curves,
+simulation medians, and quantitative comparison ranges are unchanged.
+
+## 41. Classify and include the complete article script set
+
+- **Location:** Public-data script package and release builder
+- **Status:** Completed
+
+All 29 scripts retained with the article are now indexed by purpose, status,
+and execution scope. The index separates current portable figure scripts from
+upstream cluster reductions, validation tools, workflow wrappers, shared code,
+and archived revision diagnostics. The scripts remain in one directory so the
+existing imports and one-command figure workflow do not change.
+
+The release builder now copies the complete script directory rather than a
+hand-maintained subset. The public manifest includes the four previously
+unlisted scripts plus the new script guide and machine-readable index. The MAH
+Slurm wrapper now writes the current `mass-assembly-history-correa.png`
+filename. Failed release copies, legacy analysis directories, and raw
+simulation data remain outside the public package.
+
+The D19 and I21 concentration PNGs were regenerated from the assembled release
+so the article figures now match the portable plotting scripts exactly.

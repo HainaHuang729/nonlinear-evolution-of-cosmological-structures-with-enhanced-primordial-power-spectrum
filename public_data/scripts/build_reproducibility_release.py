@@ -25,24 +25,6 @@ DEFAULT_COLOSSUS_PATCH_ROOT = Path(
     "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/software/colossus"
 )
 
-PLOTTING_SCRIPTS = [
-    "bt_plot_halo_density_profile_png.py",
-    "bt_plot_halo_density_radial_trial_png.py",
-    "concentration_qc_kp10.py",
-    "cosmology_plot_style.py",
-    "plot_bocquet16_m200c_hmf.py",
-    "plot_fof_hmf_resolution.py",
-    "plot_hmf_public_ratio.py",
-    "plot_input_power_spectrum.py",
-    "plot_mass_assembly_history_correa.py",
-    "plot_power_spectrum_public_ratio.py",
-    "plot_projection_public.py",
-    "plot_same_trackid_no_envelope_allmodels.py",
-    "reproduce_all_figures.py",
-    "validate_article_halo_catalog.py",
-]
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
@@ -148,8 +130,11 @@ def main() -> None:
         ARTICLE_ROOT / "public_data" / "requirements-figures.txt",
         output / "requirements.txt",
     )
-    for name in PLOTTING_SCRIPTS:
-        copy_file(SCRIPT_DIR / name, output / "public_data" / "scripts" / name)
+    shutil.copytree(
+        SCRIPT_DIR,
+        output / "public_data" / "scripts",
+        ignore=ignore_generated,
+    )
 
     projection_target = output / "public_data" / "figure_data" / "projection"
     copy_file(args.projection_dir / "projection-clean.png", projection_target / "projection-clean.png")
