@@ -1,5 +1,5 @@
 {
-  "built": "2026-09-09T07:11:35.974257+00:00",
+  "built": "2026-09-09T07:32:36.944664+00:00",
   "paper_title": "Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power",
   "sources": [
     {
@@ -105,6 +105,42 @@
       "bytes": 1122358
     },
     {
+      "file": "data/simulation_suite.csv",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/metadata/simulation_suite.csv",
+      "sha256": "ac8e151048781193902b61f39289f660b9e375287e0fc63af1c5f753eb63847f",
+      "bytes": 865
+    },
+    {
+      "file": "data/fof_hmf_resolution_points.csv",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/fof_hmf_resolution/fof_hmf_resolution_points.csv",
+      "sha256": "59f103ba3601005e8fd298b4494bfe0b05451a6a3d00b1350ffe0e3abc33e15f",
+      "bytes": 87540
+    },
+    {
+      "file": "data/fof_hmf_resolution_summary.csv",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/fof_hmf_resolution/fof_hmf_resolution_summary.csv",
+      "sha256": "703a2aa31db08eedb1acd766a096325251550fefe2354ef42b9e3ac58bf630d8",
+      "bytes": 867
+    },
+    {
+      "file": "data/power_spectrum_mesh_convergence_z0.csv",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/nonlinear_power_spectrum/power_spectrum_mesh_convergence_z0.csv",
+      "sha256": "30ff2259520cb1f387e3a07319f1c7163afe25ea72b90663933b8b1d431de7c4",
+      "bytes": 10619
+    },
+    {
+      "file": "data/concentration_qc_theory_ratios.csv",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/concentration/concentration_qc_theory_ratios.csv",
+      "sha256": "eb034acf5306eb1224b8442ad70cd922b380f8c4b300edcceedf2951ec86f04a",
+      "bytes": 213103
+    },
+    {
+      "file": "data/radial_density_ratios_n100_power03.csv",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/halo_density_radial/radial_density_ratios_n100_power03.csv",
+      "sha256": "d9b2cd53b41e22bc7bced065b401c80c8a7e2a7814a5c0db0cf440db138a6abd",
+      "bytes": 15473
+    },
+    {
       "file": "assets/projection-clean.png",
       "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/paperplot/figures/projection-clean.png",
       "sha256": "790914e07b1cb5d2db20ef1942aacae789cce618dbb599037c46906672554108",
@@ -165,6 +201,24 @@
       "bytes": 175205
     },
     {
+      "file": "assets/concentration-qc-d19.png",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/concentration-qc-d19.png",
+      "sha256": "bf41cab66cabfafa19d4826ed2a37c995890bd21457ef8a9cfc0848edca208ad",
+      "bytes": 552754
+    },
+    {
+      "file": "assets/concentration-qc-l16.png",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/concentration-qc-l16.png",
+      "sha256": "d2631980ccb861a9a953a30af9eab624ccca051e0066357aed2656772625da8e",
+      "bytes": 581161
+    },
+    {
+      "file": "assets/fof-hmf-resolution-volume.png",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/fof-hmf-resolution-volume.png",
+      "sha256": "4a2e323668dc245dc92e5824dd5e94086bd5f4babe7f20723c8ca978485026b7",
+      "bytes": 482999
+    },
+    {
       "file": "data/manuscript-source.tex",
       "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/main.tex",
       "sha256": "b21920ea5b7ff0695f35fa8c8c929a8f6354639b56cd5187a0bd95ddd10a3a58",
@@ -176,6 +230,10 @@
     "assembly": "PL and BT kp1 identified by source file and selection provenance; show median of individual M(z)/M0, with halo 16–84 percentiles.",
     "halfmass": "Show zhalf_median and halo percentile spread from the same-TrackId table; the original paper image is provided separately.",
     "projection": "Original PNG bytes; CSS viewports select existing panels. Independent original color normalization. No generated or interpolated fields.",
-    "power": "Use current finite-box table; shade outside 4*(2*pi/L) <= k <= 0.25*(pi*1024/L). Original published BT/PL ratio samples."
+    "power": "Use current finite-box table; shade outside 4*(2*pi/L) <= k <= 0.25*(pi*1024/L). Original published BT/PL ratio samples.",
+    "input_ratio": "Divide input spectra on identical stored k samples only. Retain the source normalization; this is input linear matter power, not the nonlinear output or a newly normalized primordial spectrum.",
+    "resolution": "Published FOF resolution/volume table. Open markers indicate mean-bin masses below 50 times that run's particle mass. Mesh convergence is the tabulated PL P_mesh512/P_mesh1024 at z=0; no new simulations.",
+    "concentration_reference": "Use tabulated simulation/theory ratios. Reconstruct halo percentile bounds by dividing retained simulation percentiles by theory_c200c. The source ratio_low/high fields are not used as absolute interval endpoints.",
+    "profile_ratio": "Retain released radial density ratios and intervals constructed from separate bootstrap bounds; these are not a paired bootstrap distribution of the ratio."
   }
 }

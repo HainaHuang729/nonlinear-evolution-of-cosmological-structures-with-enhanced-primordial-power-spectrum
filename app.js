@@ -12,7 +12,10 @@
   const MODELS = ['PL', 'kp1', 'kp10'];
   const LABELS = {PL:'PL', kp1:'BT kₚ = 1', kp10:'BT kₚ = 10'};
   const COLORS = {PL:'#53657e', kp1:'#377caf', kp10:'#298773'};
-  const S = {frame:0, tab:'hmf', statsZ:8.52, definition:'fof', box:25, mass:1e10, profileMass:1e10, zoom:1, panX:0, panY:0};
+  const S = {frame:0, tab:'hmf', statsZ:8.52, definition:'fof', box:25, powerComparison:'ratio', mass:1e10, profileMass:1e10, concentrationReference:'none', profileView:'density', meshBox:25, zoom:1, panX:0, panY:0};
+  const TABS=['hmf','power','assembly','structure','input','reliability'];
+  const RUN_COLORS={'PL-25-1024':'#53657e','PL-25-512':'#377caf','PL-25-256':'#b07c3e','PL-50-512':'#298773'};
+  const THEORY_LABELS={diemer19:'Diemer–Joyce19',ishiyama21_fit:'Ishiyama21',ludlow16:'Ludlow16'};
   let timer = null;
   let downloadRows = [];
   const nearly = (a,b) => Math.abs(a-b)<0.015;
@@ -79,6 +82,11 @@
       [lo,hi].forEach(v=>plot.append(elem('line',{x1:x(v),y1:T,x2:x(v),y2:H-B,stroke:'#a2ad9c','stroke-dasharray':'3 4','stroke-width':.8})));
     }
     if(config.baseline!==undefined)plot.append(elem('line',{x1:L,y1:y(config.baseline),x2:W-R,y2:y(config.baseline),stroke:'#abb5a3','stroke-dasharray':'4 4'}));
+    (config.vlines||[]).forEach(({value,label,color='#a08c6c'})=>{
+      if(tx(value)<xmin||tx(value)>xmax)return;
+      plot.append(elem('line',{x1:x(value),y1:T,x2:x(value),y2:H-B,stroke:color,'stroke-dasharray':'3 4','stroke-width':.8}));
+      plot.append(elem('text',{x:x(value)+5,y:T+12,fill:color,'font-size':10},label));
+    });
     if(config.marker!==undefined&&config.marker>= (xLog?10**xmin:xmin)&&config.marker<=(xLog?10**xmax:xmax)) {
       plot.append(elem('line',{x1:x(config.marker),y1:T,x2:x(config.marker),y2:H-B,stroke:'#b48b50','stroke-dasharray':'4 4'}));
       plot.append(elem('text',{x:x(config.marker)+5,y:T+11,fill:'#9b783e','font-size':10},'投影 z='+ztext(config.marker)));
@@ -99,7 +107,7 @@
       const stride=Math.max(1,Math.ceil(points.length/55));
       points.forEach((p,i)=>{
         if(i%stride!==0&&i!==points.length-1)return;
-        const outside=config.trusted&&(p.x<config.trusted[0]||p.x>config.trusted[1]);
+        const outside=(config.trusted&&(p.x<config.trusted[0]||p.x>config.trusted[1]))||(s.trusted&&(p.x<s.trusted[0]||p.x>s.trusted[1]));
         if(config.errors&&Number.isFinite(p.lo)&&Number.isFinite(p.hi)) {
           const low=yLog?Math.max(10**ymin,p.lo):p.lo;
           plot.append(elem('line',{x1:x(p.x),y1:y(low),x2:x(p.x),y2:y(p.hi),stroke:color,'stroke-width':.8,opacity:.5}));
@@ -144,16 +152,21 @@
   function setHeading(side,title,meta,caption) {
     $('chart-title-'+side).textContent=title;$('chart-meta-'+side).textContent=meta;$('chart-caption-'+side).textContent=caption;
   }
+  function legend(entries=MODELS.map(model=>({label:LABELS[model],color:COLORS[model]}))) {
+    const labels=entries.map(entry=>{const span=document.createElement('span');const dot=document.createElement('i');dot.style.background=entry.color;span.append(dot,document.createTextNode(entry.label));return span;});
+    const note=document.createElement('span');note.id='legend-note';note.className='legend-note';
+    $('model-legend').replaceChildren(...labels,note);
+  }
   function renderStats() {
     $('tooltip').hidden=true;
     const projectionZ=D.projection.frames[S.frame].z;
-    ['hmf','power','assembly','structure'].forEach(tab=>{
+    TABS.forEach(tab=>{
       $('tab-'+tab).setAttribute('aria-selected',String(S.tab===tab));$('tab-'+tab).tabIndex=S.tab===tab?0:-1;
       $(tab+'-control').hidden=S.tab!==tab;
     });
     $('chart-panel').setAttribute('aria-labelledby','tab-'+S.tab);
-    $('redshift-control').hidden=S.tab==='assembly';
-    const source=S.tab==='hmf'?D.hmf[S.definition]:S.tab==='power'?D.power:D.concentration;
+    $('redshift-control').hidden=['assembly','input'].includes(S.tab);
+    const source=S.tab==='hmf'?D.hmf[S.definition]:S.tab==='power'?D.power:S.tab==='reliability'?D.resolution:D.concentration;
     const available=unique(source.map(r=>r.z));
     const choices=available.some(z=>nearly(z,S.statsZ))?available:[S.statsZ,...available].sort((a,b)=>b-a);
     $('stats-redshift').replaceChildren(...choices.map(z=>{
@@ -161,8 +174,9 @@
     }));
     const matching=nearly(S.statsZ,projectionZ);
     $('sync-status').classList.toggle('is-independent',!matching);
-    $('sync-status').textContent=S.tab==='assembly'?'完整形成历史 · 选定最终质量样本':matching?'与投影红移一致':`统计 z = ${ztext(S.statsZ)} · 投影 z = ${ztext(projectionZ)}`;
-    $('legend-note').textContent='';
+    $('sync-status').textContent=S.tab==='input'?'输入模型 · 不随投影快照变化':S.tab==='assembly'?'完整形成历史 · 选定最终质量样本':matching?'与投影红移一致':`统计 z = ${ztext(S.statsZ)} · 投影 z = ${ztext(projectionZ)}`;
+    if(S.tab==='input'||S.tab==='assembly')$('sync-status').classList.remove('is-independent');
+    legend(S.tab==='reliability'?Object.entries(RUN_COLORS).map(([label,color])=>({label,color})):undefined);
     const atZ=rows=>rows.filter(r=>nearly(r.z,S.statsZ));
     const zr='z = '+ztext(S.statsZ);
     if(S.tab==='hmf') {
@@ -180,15 +194,16 @@
       downloadRows=[...rows.map(r=>({...r,series:'published_hmf'})),...ratio.map(r=>({...r,series:'shared_bin_BT_over_PL'}))];
     } else if(S.tab==='power') {
       const rows=atZ(D.power).filter(r=>r.box===S.box),ratio=atZ(D.powerRatios).filter(r=>r.box===S.box);
+      const comparison=S.powerComparison==='ratio'?ratio:rows.map(r=>({...r,y:r.y/r.theory}));
       const trusted=[4*2*Math.PI/S.box,.25*Math.PI*1024/S.box];
       $('science-question').textContent='初始的小尺度功率增强，在非线性演化后保留在哪些尺度？';
       $('legend-note').textContent='虚线：HMcode2020；灰区：采用范围之外';
       setHeading('a','非线性物质功率谱',`${zr} · L = ${S.box}`,`L = ${S.box} h⁻¹ Mpc。采用区间 ${trusted[0].toFixed(2)} ≤ k ≤ ${trusted[1].toFixed(2)} h Mpc⁻¹；HMcode2020 曲线为理论参考。`);
-      setHeading('b','相对于 PL 的功率',zr,'直接使用论文发布的同盒子 BT/PL 数据。灰区外保留原始趋势供查看；不跨盒子计算比值。');
+      setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'直接使用论文发布的同盒子 BT/PL 数据。灰区外保留原始趋势供查看；不跨盒子计算比值。':'每个模型的模拟功率除以该模型对应的 HMcode2020 表值。HMcode 曲线是参考预测，未重新拟合模拟结果。');
       chart('chart-a',[...grouped(rows),...grouped(rows.map(r=>({...r,y:r.theory})),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available});
-      chart('chart-b',grouped(ratio),{title:'同盒子 BT/PL 功率比',xLabel:'k [h Mpc⁻¹]',yLabel:'P_BT / P_PL',baseline:1,trusted,available});
+      chart('chart-b',grouped(comparison),{title:S.powerComparison==='ratio'?'同盒子 BT/PL 功率比':'模拟与 HMcode2020 的功率比',xLabel:'k [h Mpc⁻¹]',yLabel:S.powerComparison==='ratio'?'P_BT / P_PL':'P_sim / P_HMcode2020',baseline:1,trusted,available});
       refs([['power-spectrum_finite_box.png','论文非线性功率谱图'],['input-power-spectrum.png','输入线性物质功率谱']]);
-      downloadRows=[...rows.map(r=>({...r,series:'power'})),...ratio.map(r=>({...r,series:'BT_over_PL'}))];
+      downloadRows=[...rows.map(r=>({...r,series:'power'})),...comparison.map(r=>({...r,series:S.powerComparison==='ratio'?'BT_over_PL':'sim_over_HMcode2020'}))];
     } else if(S.tab==='assembly') {
       const rows=D.assembly.filter(r=>r.mass===S.mass);
       $('science-question').textContent='今天质量相近的 halo，过去怎样组装，又在何时达到一半质量？';
@@ -199,20 +214,128 @@
       chart('chart-b',grouped(D.halfmass),{title:'半质量形成红移',xLabel:'最终 M_FOF [M☉]',yLabel:'z₁/₂',yLog:false,bands:true,intervalLabel:'halo 16–84%'});
       refs([['mass-assembly-history-correa.png','论文质量组装历史图'],['halfmass-redshift-trackid-no-envelope.png','论文半质量形成红移图']]);
       downloadRows=[...rows.map(r=>({...r,series:'assembly'})),...D.halfmass.map(r=>({...r,series:'half_mass_redshift'}))];
-    } else {
-      const rows=atZ(D.concentration),profiles=D.profiles.filter(r=>r.mass===S.profileMass);
-      const convergence=Math.max(...profiles.map(r=>r.convergence));
+    } else if(S.tab==='structure') {
+      const theoryMode=S.concentrationReference!=='none';
+      const rows=theoryMode?atZ(D.concentrationTheory).filter(r=>r.reference===S.concentrationReference):atZ(D.concentration);
+      const originalProfiles=D.profiles.filter(r=>r.mass===S.profileMass);
+      const profiles=(S.profileView==='ratio'?D.profileRatios:D.profiles).filter(r=>r.mass===S.profileMass);
+      const convergence=Math.max(...originalProfiles.map(r=>r.convergence));
       $('science-question').textContent='halo 的内部密度分布与浓度，是否随输入功率模型改变？';
-      $('legend-note').textContent='浓度阴影：halo 散布；剖面阴影：bootstrap';
-      setHeading('a','浓度–质量关系',zr,'SOAP c₂₀₀c 的中位数及 halo 间 16–84% 散布。保留源表的浓度质量筛选；灰区标出 1000 粒子尺度以下。');
-      setHeading('b','直接粒子密度剖面',`固定 z = 0 · ${fmt(S.profileMass)} M☉`,'粒子计数得到的中位径向密度；阴影为中位数的 bootstrap 16–84% 区间。左侧灰区采用三个模型中最大的 Power 收敛半径。');
-      chart('chart-a',grouped(rows),{title:'浓度与质量',xLabel:'M₂₀₀c [M☉]',yLabel:'c₂₀₀c',bands:true,trusted:[1.89e9,1e15],available,intervalLabel:'halo 16–84%'});
-      chart('chart-b',grouped(profiles),{title:'z=0 直接粒子密度剖面',xLabel:'r / R₂₀₀m',yLabel:'ρ [M☉ kpc⁻³]',bands:true,trusted:[convergence,10],intervalLabel:'bootstrap 16–84%'});
-      refs([['concentration-qc-i21-fit.png','论文浓度–质量关系'],['halo-density-radial-n100-power.png','论文直接粒子密度剖面']]);
-      downloadRows=[...rows.map(r=>({...r,series:'concentration'})),...profiles.map(r=>({...r,series:'density_profile'}))];
+      $('legend-note').textContent=S.profileView==='ratio'?'浓度阴影：halo 散布；密度比区间：由 bootstrap 边界构造':'浓度阴影：halo 散布；剖面阴影：bootstrap';
+      setHeading('a',theoryMode?'浓度 / '+THEORY_LABELS[S.concentrationReference]:'浓度–质量关系',zr,theoryMode?'模拟中位浓度与所选理论表值的比值；阴影为 halo 的浓度分位区间除以同一参考值。灰区为 1000 粒子尺度以下。':'SOAP c₂₀₀c 的中位数及 halo 间 16–84% 散布。保留源表的浓度质量筛选；灰区标出 1000 粒子尺度以下。');
+      setHeading('b',S.profileView==='ratio'?'相对于 PL 的径向密度':'直接粒子密度剖面',`固定 z = 0 · ${fmt(S.profileMass)} M☉`,S.profileView==='ratio'?'直接读取发布的 BT/PL 密度比；阴影由两组剖面的 bootstrap 边界构造，并非比值的配对 bootstrap 区间。灰区沿用保守 Power 收敛半径。':'粒子计数得到的中位径向密度；阴影为中位数的 bootstrap 16–84% 区间。左侧灰区采用三个模型中最大的 Power 收敛半径。');
+      chart('chart-a',grouped(rows),{title:theoryMode?'浓度与理论参考的比值':'浓度与质量',xLabel:'M₂₀₀c [M☉]',yLabel:theoryMode?'c_sim / c_theory':'c₂₀₀c',bands:true,baseline:theoryMode?1:undefined,trusted:[1.89e9,1e15],available,intervalLabel:theoryMode?'halo 分位数 / 理论值':'halo 16–84%'});
+      chart('chart-b',grouped(profiles),{title:S.profileView==='ratio'?'z=0 BT/PL 密度比':'z=0 直接粒子密度剖面',xLabel:'r / R₂₀₀m',yLabel:S.profileView==='ratio'?'ρ_BT / ρ_PL':'ρ [M☉ kpc⁻³]',bands:true,baseline:S.profileView==='ratio'?1:undefined,trusted:[convergence,10],intervalLabel:S.profileView==='ratio'?'bootstrap 边界构造区间':'bootstrap 16–84%'});
+      const referenceFile={none:'concentration-qc-i21-fit.png',ishiyama21_fit:'concentration-qc-i21-fit.png',diemer19:'concentration-qc-d19.png',ludlow16:'concentration-qc-l16.png'}[S.concentrationReference];
+      refs([[referenceFile,'论文浓度–质量关系'],['halo-density-radial-n100-power.png','论文直接粒子密度剖面']]);
+      downloadRows=[...rows.map(r=>({...r,series:theoryMode?'concentration_over_theory':'concentration'})),...profiles.map(r=>({...r,series:S.profileView==='ratio'?'density_BT_over_PL':'density_profile'}))];
+    } else if(S.tab==='input') {
+      const rows=D.inputPower.filter(r=>r.x>=1e-3&&r.x<=1e3),ratios=D.inputRatios.filter(r=>r.x>=1e-3&&r.x<=1e3);
+      const pivots=[{value:1,label:'kₚ = 1'},{value:10,label:'kₚ = 10'}];
+      $('science-question').textContent='三种模拟的输入谱，从哪些尺度开始分开？';
+      $('legend-note').textContent='竖线：两个 BT 转折尺度；保留源表归一化';
+      setHeading('a','输入线性物质功率谱','输入模型','使用论文发布的输入线性物质谱及原始归一化，显示 10⁻³ ≤ k ≤ 10³ h Mpc⁻¹。这里的输入谱不随投影红移滑块改变。');
+      setHeading('b','输入谱相对于 PL 的增强','相同 k 采样点','在源表完全相同的 k 采样点计算 BT/PL，没有插值或外推。kₚ = 1 与 10 h Mpc⁻¹，两个 BT 模型均采用 mₛ = 1.5。');
+      chart('chart-a',grouped(rows),{title:'输入线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P_input(k) [(Mpc/h)³]',vlines:pivots});
+      chart('chart-b',grouped(ratios),{title:'输入谱 BT/PL',xLabel:'k [h Mpc⁻¹]',yLabel:'P_input,BT / P_input,PL',baseline:1,vlines:pivots});
+      refs([['input-power-spectrum.png','论文输入功率谱图']]);
+      downloadRows=[...rows.map(r=>({...r,series:'input_linear_power'})),...ratios.map(r=>({...r,series:'input_BT_over_PL'}))];
+    } else if(S.tab==='reliability') {
+      const rows=atZ(D.resolution),mesh=D.meshConvergence.filter(r=>r.box===S.meshBox);
+      const series=Object.entries(RUN_COLORS).map(([model,color])=>({model,label:model,color,points:rows.filter(r=>r.model===model),trusted:[rows.find(r=>r.model===model)?.mass50??0,1e15]})).filter(s=>s.points.length);
+      const trusted=[4*2*Math.PI/S.meshBox,.25*Math.PI*1024/S.meshBox];
+      $('science-question').textContent='改变粒子分辨率、盒子体积或功率谱网格后，测量会怎样变化？';
+      $('legend-note').textContent='左图空心点：低于各模拟的 50 粒子质量；右图固定 z = 0';
+      setHeading('a','FOF 分辨率与体积检查',zr,'论文附录的四组 PL 模拟；包含原始低质量点供检查。空心点的平均质量低于该模拟 50 个粒子的质量，误差为 Poisson 计数不确定性。');
+      setHeading('b','功率谱网格收敛',`固定 z = 0 · L = ${S.meshBox}`,'相同 PL 模拟分别使用 512³ 和 1024³ 功率谱网格；显示源表中的 P₅₁₂/P₁₀₂₄。此处改变的是测量网格，灰区标出论文采用的 k 范围之外。');
+      chart('chart-a',series,{title:'FOF 分辨率和体积检查',xLabel:'M_FOF [M☉]',yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,available,intervalLabel:'Poisson ±1σ'});
+      chart('chart-b',[{model:'PL',label:'PL · 网格 512³ / 1024³',color:COLORS.PL,points:mesh}],{title:'PL 功率谱网格收敛',xLabel:'k [h Mpc⁻¹]',yLabel:'P_mesh512 / P_mesh1024',yLog:false,baseline:1,trusted});
+      refs([['fof-hmf-resolution-volume.png','论文 FOF 分辨率与体积附录'],['power-spectrum_finite_box.png','论文功率谱采用区间']]);
+      downloadRows=[...rows.map(r=>({...r,series:'fof_resolution'})),...mesh.map(r=>({...r,series:'power_mesh_convergence'}))];
     }
     $('download-data').textContent=downloadRows.length?'下载当前数据 ↓':'当前无可下载数据';
     $('download-data').setAttribute('aria-disabled',String(!downloadRows.length));
+    document.querySelectorAll('#coverage-body tr').forEach(row=>row.classList.toggle('active',nearly(Number(row.dataset.z),S.statsZ)));
+  }
+  function renderCoverage() {
+    const columns=[
+      {label:'密度投影',zs:D.projection.frames.map(r=>r.z),tab:'projection'},
+      {label:'FOF 质量函数',zs:D.hmf.fof.map(r=>r.z),tab:'hmf',definition:'fof'},
+      {label:'M₂₀₀c 质量函数',zs:D.hmf.m200c.map(r=>r.z),tab:'hmf',definition:'m200c'},
+      {label:'物质功率谱',zs:D.power.map(r=>r.z),tab:'power'},
+      {label:'浓度关系',zs:D.concentration.map(r=>r.z),tab:'structure'}
+    ];
+    const redshifts=[];
+    columns.flatMap(c=>c.zs).sort((a,b)=>b-a).forEach(z=>{if(!redshifts.some(v=>nearly(v,z)))redshifts.push(z);});
+    $('coverage-body').replaceChildren(...redshifts.map(z=>{
+      const tr=document.createElement('tr');tr.dataset.z=z;
+      const head=document.createElement('th');head.scope='row';head.textContent='z = '+ztext(z);tr.append(head);
+      columns.forEach(column=>{
+        const cell=document.createElement('td');
+        if(column.zs.some(v=>nearly(v,z))) {
+          const button=document.createElement('button');button.type='button';button.textContent='查看';button.dataset.tab=column.tab;button.dataset.z=z;if(column.definition)button.dataset.definition=column.definition;
+          button.setAttribute('aria-label',`查看红移 ${ztext(z)} 的${column.label}`);
+          button.addEventListener('click',()=>{
+            stop();
+            if(column.tab==='projection') {
+              chooseFrame(D.projection.frames.findIndex(r=>nearly(r.z,z)));$('evolution').scrollIntoView();
+            } else {
+              S.tab=column.tab;S.statsZ=z;
+              if(column.definition){S.definition=column.definition;$('mass-definition').value=column.definition;}
+              renderStats();$('statistics').scrollIntoView();$('tab-'+S.tab).focus({preventScroll:true});
+            }
+          });cell.append(button);
+        } else {const unavailable=document.createElement('span');unavailable.className='missing';unavailable.textContent='—';unavailable.setAttribute('aria-label','当前展示包未收录');cell.append(unavailable);}
+        tr.append(cell);
+      });return tr;
+    }));
+  }
+  function renderSimulations() {
+    const filter=$('simulation-filter').value;
+    const rows=D.simulations.filter(r=>filter==='all'||r.set===filter);
+    const groups={Main:'主比较',Resolution:'分辨率',Volume:'盒子体积','BT check':'BT 小盒子'};
+    $('simulation-body').replaceChildren(...rows.map(row=>{
+      const tr=document.createElement('tr');
+      const name=row.run.replace('BT_soft','BT kₚ=1').replace('BT_deep','BT kₚ=10').replace('BT_kp1-','BT kₚ=1 · ').replace('BT_kp10-','BT kₚ=10 · ');
+      [groups[row.set],name,row.k_p_hMpc||'—',row.m_s||'—',row.N.replace('^3','³'),row.L_box_hinv_Mpc,fmt(Number(row.m_DM_hinv_Msun)),row.epsilon_Pl_kpc].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td);});return tr;
+    }));
+    $('simulation-count').textContent=`显示 ${rows.length} / ${D.simulations.length} 组模拟。参数来自论文发布的 simulation_suite.csv；单位保留源表口径。`;
+  }
+  const DATA_LABELS={
+    'simulation_suite.csv':'模拟参数表',
+    'fof_reed07_hmf_points.csv':'FOF 质量函数数值点',
+    'fof_reed07_hmf_residuals.csv':'FOF 与 Reed07 参考比较',
+    'm200c_bocquet16_hmf_points.csv':'M₂₀₀c 质量函数数值点',
+    'fof_shared_bin_ratios.csv':'FOF 统一分箱 BT/PL 比值',
+    'm200c_shared_bin_ratios.csv':'M₂₀₀c 统一分箱 BT/PL 比值',
+    'power_spectrum_hmcode_residuals_finite_box.csv':'非线性功率谱与 HMcode2020',
+    'power_spectrum_ratios.csv':'同盒子 BT/PL 功率谱比值',
+    'input_power_spectra.csv':'输入线性物质功率谱',
+    'pl_warren_median_mah.csv':'PL 质量组装历史',
+    'bt_soft_warren_median_mah.csv':'BT kₚ=1 质量组装历史',
+    'same_trackid_no_envelope_points.csv':'半质量形成红移与散布',
+    'concentration_qc_binned_points.csv':'浓度–质量关系与散布',
+    'concentration_qc_theory_ratios.csv':'浓度与三种理论参考比较',
+    'radial_density_profiles_n100_power03.csv':'粒子径向密度剖面与 bootstrap',
+    'radial_density_ratios_n100_power03.csv':'径向密度 BT/PL 比值与区间',
+    'fof_hmf_resolution_points.csv':'FOF 分辨率与体积检查',
+    'fof_hmf_resolution_summary.csv':'FOF 分辨率检查汇总',
+    'power_spectrum_mesh_convergence_z0.csv':'z=0 功率谱网格收敛检查'
+  };
+  function renderLibrary() {
+    const query=$('library-search').value.trim().toLowerCase(),kind=$('library-kind').value;
+    const items=[...D.figures.map(r=>({...r,kind:'figure',name:r.file.split('/').pop()})),...D.downloads.map(r=>({...r,kind:'data',title:DATA_LABELS[r.name]||r.name}))];
+    const selected=items.filter(r=>(kind==='all'||r.kind===kind)&&`${r.title} ${r.name} ${r.category||''}`.toLowerCase().includes(query));
+    $('library-grid').replaceChildren(...selected.map(item=>{
+      const a=document.createElement('a');a.className='library-item';a.href=item.file;
+      if(item.kind==='data')a.download=item.name;else{a.target='_blank';a.rel='noopener';}
+      const icon=document.createElement('span');icon.className='library-icon';icon.textContent=item.kind==='figure'?'FIG':'CSV';
+      const body=document.createElement('div');const title=document.createElement('strong');title.textContent=item.title;
+      const meta=document.createElement('small');meta.textContent=item.name+(item.bytes?' · '+(item.bytes/1024).toFixed(1)+' KB':'');body.append(title,meta);
+      const arrow=document.createElement('span');arrow.className='arrow';arrow.textContent=item.kind==='figure'?'↗':'↓';a.append(icon,body,arrow);return a;
+    }));
+    $('library-count').textContent=`${selected.length} / ${items.length} 项`;
+    $('library-empty').hidden=selected.length>0;
   }
   function renderProjection() {
     const f=D.projection.frames[S.frame];
@@ -262,6 +385,11 @@
   $('follow-projection').addEventListener('click',()=>{S.statsZ=D.projection.frames[S.frame].z;renderStats();});
   $('mass-definition').addEventListener('change',event=>{S.definition=event.target.value;renderStats();});
   $('box-size').addEventListener('change',event=>{S.box=Number(event.target.value);renderStats();});
+  for(const [id,key] of [['power-comparison','powerComparison'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id).addEventListener('change',event=>{S[key]=event.target.value;renderStats();});
+  $('mesh-box').addEventListener('change',event=>{S.meshBox=Number(event.target.value);renderStats();});
+  $('simulation-filter').addEventListener('change',renderSimulations);
+  $('library-search').addEventListener('input',renderLibrary);
+  $('library-kind').addEventListener('change',renderLibrary);
   for(const [id,rows,key,stateKey] of [['final-mass',D.assembly,'mass','mass'],['profile-mass',D.profiles,'mass','profileMass']]) {
     $(id).replaceChildren(...[...new Set(rows.map(r=>r[key]))].sort((a,b)=>a-b).map(m=>{const option=document.createElement('option');option.value=m;option.textContent=fmt(m)+' M☉';option.selected=m===S[stateKey];return option;}));
     $(id).addEventListener('change',event=>{S[stateKey]=Number(event.target.value);renderStats();});
@@ -273,11 +401,12 @@
     const quote=value=>'"'+String(value??'').replaceAll('"','""')+'"';
     const csv='\uFEFF'+[keys.map(quote).join(','),...downloadRows.map(r=>keys.map(k=>quote(r[k])).join(','))].join('\r\n');
     const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
-    const a=document.createElement('a');a.href=url;a.download=`article-${S.tab}-${S.tab==='assembly'?'history':'z'+ztext(S.statsZ)}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    const scope=S.tab==='assembly'?'history':S.tab==='input'?'input-models':'z'+ztext(S.statsZ);
+    const a=document.createElement('a');a.href=url;a.download=`article-${S.tab}-${scope}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   });
   $('download-data').href='#';
   $('build-date').textContent='数据打包 '+D.built.slice(0,10)+' · 离线可用';
   const image=new Image();image.src='assets/projection-clean.png';
   image.onerror=()=>{$('load-error').hidden=false;$('load-error').textContent='投影图片未加载，请确认 assets/projection-clean.png 与页面一同保存。';};
-  renderProjection();renderStats();
+  renderCoverage();renderSimulations();renderLibrary();renderProjection();renderStats();
 })();

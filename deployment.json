@@ -1,9 +1,11 @@
 {
+  "version": 2,
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "created": "2026-09-09T07:22:21.822911+00:00",
-  "local_validation_checks": 74,
+  "parent_commit": "075626a6665dc2268809ab6dc372239f15afe86f",
+  "created": "2026-09-09T07:46:10.329439+00:00",
+  "local_validation_checks": 139,
   "files": [
     {
       "file": ".nojekyll",
@@ -12,13 +14,13 @@
     },
     {
       "file": "README.md",
-      "sha256": "08d9eec9794bea892a5fc75356a8a83404a875bf945073f5a018a7bc4e9191bd",
-      "bytes": 1107
+      "sha256": "4da78c004c51751fa7f48725a7e2ec8bbd2fc3f9661f597584ead087e2beecd7",
+      "bytes": 1241
     },
     {
       "file": "app.js",
-      "sha256": "ce6b0001c3e6bff936c7d8d39c505566ec73333534e23b14bb15bcdb2b9a6699",
-      "bytes": 24015
+      "sha256": "a90cdf0b0c8735217264a8fc7e634b7e64ec5a29d5ab52773eaf07780db255e5",
+      "bytes": 37315
     },
     {
       "file": "assets/FONT-LICENSE.txt",
@@ -27,13 +29,28 @@
     },
     {
       "file": "assets/article-sans.woff2",
-      "sha256": "c73475fff64fd80d86ce5ded8d0dd02f8a0364f78b1124ba0bbfad07d0e47be4",
-      "bytes": 107488
+      "sha256": "545a2af82b440695c7d1f5e80dc9ac1b457f886cf080b5505cd022efd52e9fae",
+      "bytes": 125056
+    },
+    {
+      "file": "assets/concentration-qc-d19.png",
+      "sha256": "bf41cab66cabfafa19d4826ed2a37c995890bd21457ef8a9cfc0848edca208ad",
+      "bytes": 552754
     },
     {
       "file": "assets/concentration-qc-i21-fit.png",
       "sha256": "07b17ce43fc8698d756c967bd49dc2ac2ab51a2f1d64a0bbea38a860b0284b32",
       "bytes": 560568
+    },
+    {
+      "file": "assets/concentration-qc-l16.png",
+      "sha256": "d2631980ccb861a9a953a30af9eab624ccca051e0066357aed2656772625da8e",
+      "bytes": 581161
+    },
+    {
+      "file": "assets/fof-hmf-resolution-volume.png",
+      "sha256": "4a2e323668dc245dc92e5824dd5e94086bd5f4babe7f20723c8ca978485026b7",
+      "bytes": 482999
     },
     {
       "file": "assets/halfmass-redshift-trackid-no-envelope.png",
@@ -86,6 +103,21 @@
       "bytes": 64140
     },
     {
+      "file": "data/concentration_qc_theory_ratios.csv",
+      "sha256": "eb034acf5306eb1224b8442ad70cd922b380f8c4b300edcceedf2951ec86f04a",
+      "bytes": 213103
+    },
+    {
+      "file": "data/fof_hmf_resolution_points.csv",
+      "sha256": "59f103ba3601005e8fd298b4494bfe0b05451a6a3d00b1350ffe0e3abc33e15f",
+      "bytes": 87540
+    },
+    {
+      "file": "data/fof_hmf_resolution_summary.csv",
+      "sha256": "703a2aa31db08eedb1acd766a096325251550fefe2354ef42b9e3ac58bf630d8",
+      "bytes": 867
+    },
+    {
       "file": "data/fof_reed07_hmf_points.csv",
       "sha256": "fc5b6c12c34e0fe69a869d2300910c8c6492b8484cecb7ce0b2c1a44ad76c17b",
       "bytes": 198706
@@ -122,8 +154,8 @@
     },
     {
       "file": "data/page-data.json",
-      "sha256": "0e82823f726d476c60559d690d854b2078c707d509c212ea5be8f86cd7ac1306",
-      "bytes": 1268958
+      "sha256": "b757be5523f6812e5d636541d2a4072fc94b8e7373654d85ddecd4347bd72663",
+      "bytes": 1681328
     },
     {
       "file": "data/pl_warren_median_mah.csv",
@@ -134,6 +166,11 @@
       "file": "data/power_spectrum_hmcode_residuals_finite_box.csv",
       "sha256": "552b55d86e0f63ce4eff6df003045b29e65d8db9aa47a487cef957ea2e4a9634",
       "bytes": 351051
+    },
+    {
+      "file": "data/power_spectrum_mesh_convergence_z0.csv",
+      "sha256": "30ff2259520cb1f387e3a07319f1c7163afe25ea72b90663933b8b1d431de7c4",
+      "bytes": 10619
     },
     {
       "file": "data/power_spectrum_ratios.csv",
@@ -147,8 +184,8 @@
     },
     {
       "file": "data/provenance.json",
-      "sha256": "535dc71ce2e8281d95ba8f47c99d55af2b021950c0eb8601f82ded52a1f6fff5",
-      "bytes": 10746
+      "sha256": "a4cfe7c581e9578b508dabd57ace9e56c1c4d22b719095937937166e8ccc7993",
+      "bytes": 14607
     },
     {
       "file": "data/radial_density_profiles_n100_power03.csv",
@@ -156,24 +193,34 @@
       "bytes": 32164
     },
     {
+      "file": "data/radial_density_ratios_n100_power03.csv",
+      "sha256": "d9b2cd53b41e22bc7bced065b401c80c8a7e2a7814a5c0db0cf440db138a6abd",
+      "bytes": 15473
+    },
+    {
       "file": "data/same_trackid_no_envelope_points.csv",
       "sha256": "dbce5aeef41adab1dc7b075fccd41f9561b80209978e69c70754ddfd98b279ea",
       "bytes": 21073
     },
     {
+      "file": "data/simulation_suite.csv",
+      "sha256": "ac8e151048781193902b61f39289f660b9e375287e0fc63af1c5f753eb63847f",
+      "bytes": 865
+    },
+    {
       "file": "data.js",
-      "sha256": "8dd78790e303e3124c63d725d2ee859e58c95a1fb4e642f98b0cf3d493bea526",
-      "bytes": 1268981
+      "sha256": "32b03a1b18666d595d6cf9c06da55df21ceb541fd6e77439f166a749c26ece89",
+      "bytes": 1681351
     },
     {
       "file": "index.html",
-      "sha256": "66948a6e72f6cd2a8b0d8be9ab4cd4e82ef2ab223166b2fc171573f970f48e57",
-      "bytes": 9886
+      "sha256": "ed7d9e9ac53608cf137f78cfc1d416921e1307707fd1a39cb27d2a09d0e6c991",
+      "bytes": 14691
     },
     {
       "file": "styles.css",
-      "sha256": "a264df2b09f5f0690af18b74821f88b8f1304310cab832d6c923eb2ac07fb35d",
-      "bytes": 14478
+      "sha256": "a626d6edc6c2c1488019b8a4936b2c0165b56e9ab1f1a458ec4c4d3bb7b76cc7",
+      "bytes": 18065
     }
   ]
 }
