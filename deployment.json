@@ -1,0 +1,179 @@
+{
+  "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
+  "branch": "gh-pages",
+  "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
+  "created": "2026-09-09T07:22:21.822911+00:00",
+  "local_validation_checks": 74,
+  "files": [
+    {
+      "file": ".nojekyll",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "README.md",
+      "sha256": "08d9eec9794bea892a5fc75356a8a83404a875bf945073f5a018a7bc4e9191bd",
+      "bytes": 1107
+    },
+    {
+      "file": "app.js",
+      "sha256": "ce6b0001c3e6bff936c7d8d39c505566ec73333534e23b14bb15bcdb2b9a6699",
+      "bytes": 24015
+    },
+    {
+      "file": "assets/FONT-LICENSE.txt",
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "bytes": 4301
+    },
+    {
+      "file": "assets/article-sans.woff2",
+      "sha256": "c73475fff64fd80d86ce5ded8d0dd02f8a0364f78b1124ba0bbfad07d0e47be4",
+      "bytes": 107488
+    },
+    {
+      "file": "assets/concentration-qc-i21-fit.png",
+      "sha256": "07b17ce43fc8698d756c967bd49dc2ac2ab51a2f1d64a0bbea38a860b0284b32",
+      "bytes": 560568
+    },
+    {
+      "file": "assets/halfmass-redshift-trackid-no-envelope.png",
+      "sha256": "d9b30927f84b4ee66484b5c7fa04f0a2f3d661ea9fe2c7426645e19924c550af",
+      "bytes": 327256
+    },
+    {
+      "file": "assets/halo-density-radial-n100-power.png",
+      "sha256": "a5067e6f458193139af7813fac791addfcb7f6008ae9aa83d2814219062fc4da",
+      "bytes": 992159
+    },
+    {
+      "file": "assets/input-power-spectrum.png",
+      "sha256": "0693d8919670d11957c471667256e145bc76ff8f9ae57bcc55486fd5baeaf7bd",
+      "bytes": 175205
+    },
+    {
+      "file": "assets/mass-assembly-history-correa.png",
+      "sha256": "21d201bd8b9ad50b073f444eb401f218c5d952664469c2cd3929baf6072b7690",
+      "bytes": 1089777
+    },
+    {
+      "file": "assets/mass-function-m200c-bocquet16.png",
+      "sha256": "daab5c2cbe039b7109ac314cbd430a7c01b1e32e7fe2226e43a52c2ea7d67374",
+      "bytes": 776104
+    },
+    {
+      "file": "assets/mass-function.png",
+      "sha256": "3c36edbe66365564da5b5887b68bdb82d9f06d5eaf0446e0fd2a2a33eba120c6",
+      "bytes": 180692
+    },
+    {
+      "file": "assets/power-spectrum_finite_box.png",
+      "sha256": "e12cc56ba457d16b6b34d5db58fef5ff3779c2ca3ad45be032ebc30548df48d9",
+      "bytes": 592220
+    },
+    {
+      "file": "assets/projection-clean.png",
+      "sha256": "790914e07b1cb5d2db20ef1942aacae789cce618dbb599037c46906672554108",
+      "bytes": 25245802
+    },
+    {
+      "file": "data/bt_soft_warren_median_mah.csv",
+      "sha256": "cdea4d3aad870009a9da8b5153f027fce86bfb4764f7082a08ce823aef4f6bf2",
+      "bytes": 33452
+    },
+    {
+      "file": "data/concentration_qc_binned_points.csv",
+      "sha256": "325ea807b108743c29cbf95b80574f702c164cf1b3e1a0a25826636c83d56aa5",
+      "bytes": 64140
+    },
+    {
+      "file": "data/fof_reed07_hmf_points.csv",
+      "sha256": "fc5b6c12c34e0fe69a869d2300910c8c6492b8484cecb7ce0b2c1a44ad76c17b",
+      "bytes": 198706
+    },
+    {
+      "file": "data/fof_reed07_hmf_residuals.csv",
+      "sha256": "bb857c52e84c349edae83003d3a0a13f345e28572a2f8abeb3cdf009ab9ae1bd",
+      "bytes": 125591
+    },
+    {
+      "file": "data/fof_shared_bin_ratios.csv",
+      "sha256": "58a508831a04919b69538e57efaf031653f5e4d9fd90f411b6442831f8c29d5e",
+      "bytes": 21159
+    },
+    {
+      "file": "data/input_power_spectra.csv",
+      "sha256": "ea357c2376084202407d51f6055279a528a6007bfd1c8f066009b4240f76852d",
+      "bytes": 1122358
+    },
+    {
+      "file": "data/m200c_bocquet16_hmf_points.csv",
+      "sha256": "9889f050c65d2a28d8aede5034aaf4a7041db8a1d5e6a0c1e438a677924c2936",
+      "bytes": 193708
+    },
+    {
+      "file": "data/m200c_shared_bin_ratios.csv",
+      "sha256": "7238dd59ca1f006ffe06b4bc1b95d89be488d8fd1e9220a611399bee9390d07f",
+      "bytes": 20244
+    },
+    {
+      "file": "data/manuscript-source.tex",
+      "sha256": "b21920ea5b7ff0695f35fa8c8c929a8f6354639b56cd5187a0bd95ddd10a3a58",
+      "bytes": 90603
+    },
+    {
+      "file": "data/page-data.json",
+      "sha256": "0e82823f726d476c60559d690d854b2078c707d509c212ea5be8f86cd7ac1306",
+      "bytes": 1268958
+    },
+    {
+      "file": "data/pl_warren_median_mah.csv",
+      "sha256": "9fa985c8fd5905edd469b025bf58c188edcff30f3dabd13985465c0e3adb114a",
+      "bytes": 33444
+    },
+    {
+      "file": "data/power_spectrum_hmcode_residuals_finite_box.csv",
+      "sha256": "552b55d86e0f63ce4eff6df003045b29e65d8db9aa47a487cef957ea2e4a9634",
+      "bytes": 351051
+    },
+    {
+      "file": "data/power_spectrum_ratios.csv",
+      "sha256": "8c58d3585480eafed74fa850f3031356ba34b719b8f11df14b9573534791645f",
+      "bytes": 2968011
+    },
+    {
+      "file": "data/projection-panel-metadata.json",
+      "sha256": "51f87ebf219a96ccc512fbd16d4387331c9481b220576907b0a14732e863c843",
+      "bytes": 723
+    },
+    {
+      "file": "data/provenance.json",
+      "sha256": "535dc71ce2e8281d95ba8f47c99d55af2b021950c0eb8601f82ded52a1f6fff5",
+      "bytes": 10746
+    },
+    {
+      "file": "data/radial_density_profiles_n100_power03.csv",
+      "sha256": "2228f3784158d9579e9e3af34306c5bc3f9832a408412186973f35642275e7a3",
+      "bytes": 32164
+    },
+    {
+      "file": "data/same_trackid_no_envelope_points.csv",
+      "sha256": "dbce5aeef41adab1dc7b075fccd41f9561b80209978e69c70754ddfd98b279ea",
+      "bytes": 21073
+    },
+    {
+      "file": "data.js",
+      "sha256": "8dd78790e303e3124c63d725d2ee859e58c95a1fb4e642f98b0cf3d493bea526",
+      "bytes": 1268981
+    },
+    {
+      "file": "index.html",
+      "sha256": "66948a6e72f6cd2a8b0d8be9ab4cd4e82ef2ab223166b2fc171573f970f48e57",
+      "bytes": 9886
+    },
+    {
+      "file": "styles.css",
+      "sha256": "a264df2b09f5f0690af18b74821f88b8f1304310cab832d6c923eb2ac07fb35d",
+      "bytes": 14478
+    }
+  ]
+}

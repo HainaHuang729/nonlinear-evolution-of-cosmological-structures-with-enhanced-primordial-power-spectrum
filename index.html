@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power：密度投影、halo 质量函数、组装历史与非线性物质功率谱的交互展示。">
+  <title>暗物质结构演化 · 论文数据展示</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#statistics">跳转到统计图</a>
+  <header class="topbar">
+    <a class="brand" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="3"/><ellipse cx="16" cy="16" rx="14" ry="6" transform="rotate(-35 16 16)"/><ellipse cx="16" cy="16" rx="14" ry="6" transform="rotate(35 16 16)"/></svg><span>结构演化<span class="brand-sub">PAPER EXPLORER</span></span></a>
+    <nav aria-label="页面导航"><a href="#evolution">空间演化</a><a href="#statistics">论文统计</a><a href="#about">数据说明 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main>
+    <section class="evolution" id="evolution" aria-labelledby="page-title">
+      <div class="intro"><div><p class="eyebrow"><span class="tiny-orbit"></span> DARK MATTER · N-BODY SIMULATIONS</p><h1 id="page-title">看见暗物质结构的<span>演化</span></h1><p class="subtitle">相同初始相位，三种小尺度功率模型。沿红移探索宇宙结构，再用论文中的统计量比较它们。</p></div><div class="run-facts"><div><strong>25 <small>h⁻¹ Mpc</small></strong><span>共动盒子边长</span></div><div><strong>1024³</strong><span>每个模型的粒子数</span></div></div></div>
+      <div class="viewer-heading"><div><span class="section-number">01</span><h2>投影密度场</h2><span class="tag dark-tag">论文原图 · 3 个快照</span></div><div class="zoom-tools"><label for="zoom">同步缩放</label><select id="zoom"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3">3×</option></select><button id="reset-view" class="dark-button" type="button">重置视角</button></div></div>
+      <div class="projection-grid" id="projection-grid">
+        <figure class="projection-card"><figcaption><div><span class="model-dot pl"></span><strong>PL</strong><span class="model-desc">基准功率律</span></div><span class="frame-z"></span></figcaption><div class="projection-viewport" tabindex="0" data-col="0" role="img" aria-label="PL 密度投影；缩放后可拖动或使用方向键平移"><div class="projection-sprite"></div><div class="image-corner">PL <span class="frame-z"></span></div></div></figure>
+        <figure class="projection-card"><figcaption><div><span class="model-dot kp1"></span><strong>BT <i>k</i><sub>p</sub> = 1</strong><span class="model-desc">m<sub>s</sub> = 1.5</span></div><span class="frame-z"></span></figcaption><div class="projection-viewport" tabindex="0" data-col="1" role="img" aria-label="BT kp=1 密度投影；缩放后可拖动或使用方向键平移"><div class="projection-sprite"></div><div class="image-corner">BT k<sub>p</sub>=1 <span class="frame-z"></span></div></div></figure>
+        <figure class="projection-card"><figcaption><div><span class="model-dot kp10"></span><strong>BT <i>k</i><sub>p</sub> = 10</strong><span class="model-desc">m<sub>s</sub> = 1.5</span></div><span class="frame-z"></span></figcaption><div class="projection-viewport" tabindex="0" data-col="2" role="img" aria-label="BT kp=10 密度投影；缩放后可拖动或使用方向键平移"><div class="projection-sprite"></div><div class="image-corner">BT k<sub>p</sub>=10 <span class="frame-z"></span></div></div></figure>
+      </div>
+      <div class="timeline"><div class="transport"><button id="play" class="play-button" type="button" aria-label="播放红移演化">▶</button><div><span class="control-caption">当前投影红移</span><output id="redshift-output" for="redshift">z = 8.52</output></div></div><div class="timeline-track"><label class="sr-only" for="redshift">投影快照，从高红移到低红移</label><input id="redshift" type="range" min="0" max="2" step="1" value="0"><div class="redshift-ticks"><button type="button" data-frame="0">z = 8.52 <span>早期结构</span></button><button type="button" data-frame="1">z = 2.03</button><button type="button" data-frame="2">z = 0 <span>今天</span></button></div></div><div class="speed-control"><label for="speed">每帧停留</label><select id="speed"><option value="1800">1.8 秒</option><option value="3000">3 秒</option><option value="5000">5 秒</option></select></div></div>
+      <div class="projection-footnote"><p><span class="note-dot"></span>完整盒子沿视线投影；各面板沿用论文的独立色标，颜色用于形态比较。缩放后拖动可同步查看同一区域。</p><a href="assets/projection-clean.png" download>下载投影原图 ↓</a></div>
+      <div id="load-error" class="load-error" hidden role="alert"></div>
+    </section>
+    <section class="statistics page-width" id="statistics" aria-labelledby="statistics-title">
+      <div class="section-heading"><div><p class="eyebrow muted">FROM STRUCTURE TO STATISTICS</p><h2 id="statistics-title"><span class="section-number">02</span>用数据理解差异</h2></div><p>交互曲线来自本篇论文的数值表。<br>悬停或聚焦数据点可查看数值。</p></div>
+      <div class="statistics-toolbar"><div class="tabs" role="tablist" aria-label="论文统计主题"><button role="tab" id="tab-hmf" aria-controls="chart-panel" aria-selected="true" data-tab="hmf">质量函数</button><button role="tab" id="tab-power" aria-controls="chart-panel" aria-selected="false" tabindex="-1" data-tab="power">物质功率谱</button><button role="tab" id="tab-assembly" aria-controls="chart-panel" aria-selected="false" tabindex="-1" data-tab="assembly">形成历史</button><button role="tab" id="tab-structure" aria-controls="chart-panel" aria-selected="false" tabindex="-1" data-tab="structure">内部结构</button></div><a id="download-data" class="text-button" download>下载当前数据 ↓</a></div>
+      <div class="data-controls"><div id="redshift-control"><label for="stats-redshift">统计红移</label><select id="stats-redshift"></select><button id="follow-projection" type="button" class="text-button">跟随投影</button></div><div id="hmf-control"><label for="mass-definition">质量定义</label><select id="mass-definition"><option value="fof">FOF · Warren 修正</option><option value="m200c">M₂₀₀c</option></select></div><div id="power-control" hidden><label for="box-size">盒子边长</label><select id="box-size"><option value="25">25 h⁻¹ Mpc</option><option value="256">256 h⁻¹ Mpc</option></select></div><div id="assembly-control" hidden><label for="final-mass">最终质量 M₀</label><select id="final-mass"></select></div><div id="structure-control" hidden><label for="profile-mass">剖面质量 M₂₀₀m</label><select id="profile-mass"></select></div><span id="sync-status" class="sync-status" aria-live="polite"></span></div>
+      <div class="model-legend"><span><i class="pl"></i>PL</span><span><i class="kp1"></i>BT k<sub>p</sub> = 1</span><span><i class="kp10"></i>BT k<sub>p</sub> = 10</span><span class="legend-note" id="legend-note"></span></div>
+      <div id="chart-panel" role="tabpanel" aria-labelledby="tab-hmf" tabindex="0"><p class="science-question" id="science-question"></p><div class="chart-grid"><article class="chart-card"><div class="chart-title"><h3 id="chart-title-a"></h3><span id="chart-meta-a"></span></div><div class="chart" id="chart-a"></div><p class="chart-caption" id="chart-caption-a"></p></article><article class="chart-card"><div class="chart-title"><h3 id="chart-title-b"></h3><span id="chart-meta-b"></span></div><div class="chart" id="chart-b"></div><p class="chart-caption" id="chart-caption-b"></p></article></div></div>
+      <details class="figure-reference"><summary>查看论文对应原图 <span>FIGURE REFERENCE ↗</span></summary><div id="reference-figures"></div></details>
+    </section>
+    <section class="about page-width" id="about" aria-labelledby="about-title"><div><p class="eyebrow muted">ABOUT THIS DATA</p><h2 id="about-title">本篇论文的数据窗口</h2><p class="paper-title">Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power</p><p>展示小尺度初始功率增强对暗物质结构、halo 形成与内部结构的影响。所有面板保留模型、红移、质量定义和单位。</p><a class="text-button" href="data/provenance.json" download>下载数据来源与校验记录 ↓</a></div><div class="data-notes"><div><span>01</span><p><strong>三个匹配模型</strong>主比较采用相同初始相位的 25 h⁻¹ Mpc、1024³ 粒子模拟。k<sub>p</sub> 的单位为 h Mpc⁻¹。</p></div><div><span>02</span><p><strong>按实际快照展示</strong>投影仅含论文的三个红移。统计图支持各自已有的红移；缺失处明确留空，不插值生成快照。</p></div><div><span>03</span><p><strong>保留统计口径</strong>误差、halo 间散布和理论参考分别标注。功率谱默认突出 4k<sub>f</sub> 至 0.25k<sub>Ny</sub> 的论文采用区间。</p></div></div></section>
+  </main>
+  <footer class="page-width"><span>结构演化 · 论文配套数据展示</span><span id="build-date">本地静态页面 · 可离线使用</span><a href="#evolution">返回投影 ↑</a></footer>
+  <div id="tooltip" class="tooltip" role="status" hidden></div>
+  <noscript><p class="noscript">请启用 JavaScript 以使用红移播放和交互统计图。论文原图仍可从 assets 目录查看。</p></noscript>
+</body>
+</html>
