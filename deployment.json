@@ -1,11 +1,11 @@
 {
-  "version": 3,
+  "version": 4,
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "20acf9e26cc7d24eabfecf0eaf8d6feca7dc2297",
-  "created": "2026-09-09T11:08:29.420554+00:00",
-  "local_validation_checks": 113,
+  "parent_commit": "6013406040e33dc2e4c28c4ba3e371b1e4ed00b8",
+  "created": "2026-09-09T12:14:12.530238+00:00",
+  "local_validation_checks": 169,
   "files": [
     {
       "file": ".nojekyll",
@@ -14,13 +14,13 @@
     },
     {
       "file": "README.md",
-      "sha256": "a67b2c4341f059252120e1ddd77f29adef3fd9179fdb267044e0033715bf8677",
-      "bytes": 1331
+      "sha256": "1729df57d7108374ab5ad790a538922553aa1333d52c8c2fde419d6051ad5b14",
+      "bytes": 1714
     },
     {
       "file": "app.js",
-      "sha256": "00bc9a8bcefa64e61181764886ffeb25c61a2dd3e8cd3d08b44a4c54f348d4ba",
-      "bytes": 38161
+      "sha256": "d9ab804ced673432454c1acc105096a0126f561ca7d3d442a2b726a684b92819",
+      "bytes": 45101
     },
     {
       "file": "assets/FONT-LICENSE.txt",
@@ -28,9 +28,89 @@
       "bytes": 4301
     },
     {
+      "file": "assets/animations/particle-evolution-poster.jpg",
+      "sha256": "71f22f6eaf5bbe45fed6744ea7f8c851749567ec921460006e4cc2eb0fad7751",
+      "bytes": 226789
+    },
+    {
+      "file": "assets/animations/particle-evolution.gif",
+      "sha256": "32664cbe93e2021e0aa7f54bb6afcff44fb2ced18789a495833a582ff14d968d",
+      "bytes": 37421044
+    },
+    {
+      "file": "assets/animations/particle-evolution.mp4",
+      "sha256": "76b26439ce20ab49cf22c035b56e17261e1c8a1a6d0cd78baf95f65bc4002306",
+      "bytes": 3305394
+    },
+    {
+      "file": "assets/animations/particle-evolution.webm",
+      "sha256": "28c67294051d6f7170ac44d454f34907c5a2ad4807743adee198cceb6b5cf52e",
+      "bytes": 1427510
+    },
+    {
+      "file": "assets/animations/particle-rotation-poster.jpg",
+      "sha256": "06c1ac6471d8843220b094bc65ff57fbdbd8cf84490951631522c61c9099ba02",
+      "bytes": 223976
+    },
+    {
+      "file": "assets/animations/particle-rotation.gif",
+      "sha256": "a28563a4b82f688b0e055d28f1df75a7a7558b31d1d16fd3be69adf5c417f85f",
+      "bytes": 49249263
+    },
+    {
+      "file": "assets/animations/particle-rotation.mp4",
+      "sha256": "0d5958e7daca876f236be589d78a6f317cbdbc98402822fada7973729fc95eda",
+      "bytes": 8920935
+    },
+    {
+      "file": "assets/animations/particle-rotation.webm",
+      "sha256": "ded9751666529baec81f6603d413b6597a461c033e10e491b02616707ca0e1f5",
+      "bytes": 6863124
+    },
+    {
+      "file": "assets/animations/volume-evolution-poster.jpg",
+      "sha256": "06947ea166df998462d4060cadcdeb33efdd9ed2f115531121e36e6f2557af36",
+      "bytes": 104331
+    },
+    {
+      "file": "assets/animations/volume-evolution.gif",
+      "sha256": "b32657a39dbe4a2f3786ece6629b64b3f880dde9554dfe423ed54fa309c1f9e2",
+      "bytes": 33183995
+    },
+    {
+      "file": "assets/animations/volume-evolution.mp4",
+      "sha256": "3add413c06a82c51de5806416a3f1205fc2e69eea307960ffb9a1c29c516f696",
+      "bytes": 1508507
+    },
+    {
+      "file": "assets/animations/volume-evolution.webm",
+      "sha256": "69f8212c7d1869edc226b221d43d96e8588d47a07e5d7dd1c0da2c78bdb1c227",
+      "bytes": 734041
+    },
+    {
+      "file": "assets/animations/volume-rotation-poster.jpg",
+      "sha256": "72d761ada2491108dd8e61755d19a47683b6f483a31bb1acc3ed9faa29245060",
+      "bytes": 121523
+    },
+    {
+      "file": "assets/animations/volume-rotation.gif",
+      "sha256": "c329518d024dfe39f6d064939eafc9d48bcde5a16490ec37ba528279df985e99",
+      "bytes": 72585049
+    },
+    {
+      "file": "assets/animations/volume-rotation.mp4",
+      "sha256": "fbadd240a513d49829f357f38d77e7570a9d36a1d87bf94c4799d6c3515d9c72",
+      "bytes": 3863801
+    },
+    {
+      "file": "assets/animations/volume-rotation.webm",
+      "sha256": "df60450e9c97142e570ac6cedaa225ce4fa66bb7a43dec5899d81d0cc5d7273e",
+      "bytes": 1580274
+    },
+    {
       "file": "assets/article-sans.woff2",
-      "sha256": "77323eee1049cd340b643a69885ccffb9ab2b9514b5680ac92a0970a01dbc169",
-      "bytes": 126104
+      "sha256": "543c52fe8a31579181e01ea5fa09039d01d7a4788706e18c0819c3d2bf487572",
+      "bytes": 136724
     },
     {
       "file": "assets/concentration-qc-d19.png",
@@ -93,6 +173,126 @@
       "bytes": 25245802
     },
     {
+      "file": "assets/projections/PL-0024.png",
+      "sha256": "251096656289373bfa62e4e88bd7c799596b0cab70a09236cb53b06050008942",
+      "bytes": 1694365
+    },
+    {
+      "file": "assets/projections/PL-0027.png",
+      "sha256": "6a61fcdfea266e6422353c7d502aa804156e0f322658b700d3b2eff31ad69fcf",
+      "bytes": 1744777
+    },
+    {
+      "file": "assets/projections/PL-0030.png",
+      "sha256": "9ad04864890b8ada7f33a51220f312b9c2f572866876e6f21c8c63b676b65942",
+      "bytes": 1855975
+    },
+    {
+      "file": "assets/projections/PL-0032.png",
+      "sha256": "33ed1e10193be99edc01394f1de862ccdf9dc2a6b1e4840f3d7f7a03038d2b06",
+      "bytes": 1930489
+    },
+    {
+      "file": "assets/projections/PL-0040.png",
+      "sha256": "2af05ffeb2acf6b546c50ed1e46fe0de556a5cba23b53f51bff2960668aba926",
+      "bytes": 2073626
+    },
+    {
+      "file": "assets/projections/PL-0044.png",
+      "sha256": "9e2368df938feb602c35407be35f2bd1c7b65e57d4213f6ccc3ba3fdefc8301e",
+      "bytes": 2066583
+    },
+    {
+      "file": "assets/projections/PL-0048.png",
+      "sha256": "fdcf79534afc2e771fb135451cba8fd1d336f298572badc88e3d7674c757223d",
+      "bytes": 2041769
+    },
+    {
+      "file": "assets/projections/PL-0056.png",
+      "sha256": "13466ec78f0984099157bc2a2e3ec7135ff86289efa81891ebe8f4d968b7c8f3",
+      "bytes": 2005559
+    },
+    {
+      "file": "assets/projections/kp1-0024.png",
+      "sha256": "11dede29810b465fb941e9d95c4d430624bdde75e229eaae024d10e9a523841f",
+      "bytes": 2558760
+    },
+    {
+      "file": "assets/projections/kp1-0027.png",
+      "sha256": "957b4ff9730c297379a712c5929eef1e2cca442d3c7bf3ebe63907f09d386186",
+      "bytes": 2575570
+    },
+    {
+      "file": "assets/projections/kp1-0030.png",
+      "sha256": "1834ab6aefeaf9a8bc288ebfa05dddcf0c1240246843e5d4568f393fb23ed682",
+      "bytes": 2566157
+    },
+    {
+      "file": "assets/projections/kp1-0032.png",
+      "sha256": "b4bfbca353ef98e73435d500cc7456d4aa7073ac45b211fa3f075d1af2856e0c",
+      "bytes": 2548191
+    },
+    {
+      "file": "assets/projections/kp1-0040.png",
+      "sha256": "285ff52a705a45ce429e9a2a857ce199c89eba231d1ac9d965b8923c71d212a5",
+      "bytes": 2454675
+    },
+    {
+      "file": "assets/projections/kp1-0044.png",
+      "sha256": "62af8df47a3f3724c67cc3cadb70c3979281c5b5b3eef8b745b96e981b7e9e13",
+      "bytes": 2408239
+    },
+    {
+      "file": "assets/projections/kp1-0048.png",
+      "sha256": "991eeadc3559377200076d1d5702ff7efb69af8849534c0b0b360f494d5fb058",
+      "bytes": 2368244
+    },
+    {
+      "file": "assets/projections/kp1-0056.png",
+      "sha256": "f5d4331055ba9c0bf35fa30c873a438675df6f2659e30736d8c2a0a5bbf275a4",
+      "bytes": 2322813
+    },
+    {
+      "file": "assets/projections/kp10-0024.png",
+      "sha256": "092f3c5e323ff18530aad9b3977ba4e8863048cb32c338ca5b0c118ea2ea8871",
+      "bytes": 1990633
+    },
+    {
+      "file": "assets/projections/kp10-0027.png",
+      "sha256": "f1c10de96b51a546dc0fa1901f746c1be3869c36c07d1c9d256d21700d609283",
+      "bytes": 2015924
+    },
+    {
+      "file": "assets/projections/kp10-0030.png",
+      "sha256": "b1de18a09b96d6980d09940a87b537e8d3f300b0c7d684ddad3cad744ff3e515",
+      "bytes": 2070251
+    },
+    {
+      "file": "assets/projections/kp10-0032.png",
+      "sha256": "9ccbc69ceab6bba1512ed931fbb35d78a1ed09dafbaabffce77e05f898c03a30",
+      "bytes": 2106261
+    },
+    {
+      "file": "assets/projections/kp10-0040.png",
+      "sha256": "1479f685c77526e7979a8624cf6d659883ad0eaa4349c68399e15eba518243d2",
+      "bytes": 2173138
+    },
+    {
+      "file": "assets/projections/kp10-0044.png",
+      "sha256": "2dc65bc1c1738f4b3e0d7ab2b2670b2fa142baf018fecb838e77c5d3165c5a45",
+      "bytes": 2160120
+    },
+    {
+      "file": "assets/projections/kp10-0048.png",
+      "sha256": "af889f1a8757e99165cc561627cae28e1c7f537221f3d695192f709a0908acda",
+      "bytes": 2139522
+    },
+    {
+      "file": "assets/projections/kp10-0056.png",
+      "sha256": "a0c4ee674fbc134f7665e326c1313ef0a08e55d1c3af8d61e31332d233741d6b",
+      "bytes": 2116947
+    },
+    {
       "file": "data/bt_soft_warren_median_mah.csv",
       "sha256": "cdea4d3aad870009a9da8b5153f027fce86bfb4764f7082a08ce823aef4f6bf2",
       "bytes": 33452
@@ -151,6 +351,16 @@
       "file": "data/manuscript-source.tex",
       "sha256": "b21920ea5b7ff0695f35fa8c8c929a8f6354639b56cd5187a0bd95ddd10a3a58",
       "bytes": 90603
+    },
+    {
+      "file": "data/media-data.json",
+      "sha256": "2e1a51506d60be5162ae29b8e71c7fd9133f724bf7c449d69e7b690249e2c4eb",
+      "bytes": 37797
+    },
+    {
+      "file": "data/media-provenance.json",
+      "sha256": "02b6803ee234e9ea016ef6cf4b8dc648049dfa111fe38a3cd034b3d9a6a16dee",
+      "bytes": 144846
     },
     {
       "file": "data/page-data.json",
@@ -214,13 +424,18 @@
     },
     {
       "file": "index.html",
-      "sha256": "1f05b2773bae79e7ead5ce890e6475ca9db3636310fc1d64c8c7c952180222f4",
-      "bytes": 14471
+      "sha256": "df364e2917cfa6a51090e196ac59f80489949689a27558e34dc2d1c34635c616",
+      "bytes": 15782
+    },
+    {
+      "file": "media.js",
+      "sha256": "32ca94a7c72ee573b5dd9014c95c739e5f958a4282e6b574f8ba995fd31465cb",
+      "bytes": 19115
     },
     {
       "file": "styles.css",
-      "sha256": "c648f8e028db0b2bc65853670c4396a132076a4336ebb2dc3f9bc62226dc6bc4",
-      "bytes": 19963
+      "sha256": "1f1aaf038d2f2d3370d89e603efb48779c31eef301097850bc28f597cff39fd3",
+      "bytes": 23121
     }
   ]
 }

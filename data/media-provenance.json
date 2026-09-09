@@ -1,0 +1,3903 @@
+{
+  "built": "2026-09-09T12:01:36.227227+00:00",
+  "description": "Additional real-snapshot projections for the article main simulations and existing PL auxiliary animations.",
+  "projection_checks": [
+    {
+      "snapshot": 24,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "mass_conserved": true
+    },
+    {
+      "snapshot": 27,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "mass_conserved": true
+    },
+    {
+      "snapshot": 30,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "mass_conserved": true
+    },
+    {
+      "snapshot": 32,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "mass_conserved": true
+    },
+    {
+      "snapshot": 40,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "mass_conserved": true
+    },
+    {
+      "snapshot": 44,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "mass_conserved": true
+    },
+    {
+      "snapshot": 48,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "mass_conserved": true
+    },
+    {
+      "snapshot": 56,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "mass_conserved": true
+    }
+  ],
+  "sources": [
+    {
+      "file": "assets/projections/PL-0024.png",
+      "sha256": "251096656289373bfa62e4e88bd7c799596b0cab70a09236cb53b06050008942",
+      "bytes": 1694365,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 24,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0024.hdf5",
+        "exists": true,
+        "z": 19.40664523021168,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 34472300637,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 34472300637,
+        "source_mtime_ns": 1748776495000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999994,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "12bc1705340717ed8b333d3f8778b270101de663ab8e8bbf6335841378f4b253"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7f9ec5b020abd0475af4a4be683487b92572142feadcedf7c871b81a31b1463c"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8b399ce298e09b78961591340ab60283cbf014a91b355838de7b1332500ebec6"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "d7fd0410b347b909700cf7abb54197aeb0289a8fe1c83646d37a89ef3b3556d0"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "dc47284a4027ee96c8c640afabfbc1f3010a2abeb0cec9e235e410668da95ff3"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "04920ef2faa91fec3e6a602a5d642171be8097bd2026da45dddaf806c3f5f4fc"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "836c01c8d3150262b21e74c876c12aeb6a06456e4a4808bbe0a6b2b4c41fb7b5"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1fdd1b0b79a8bec36dfbdd66c514cca47486e8df5726d87416ff43711a64fa3e"
+          }
+        ],
+        "array_sha256": "a9dee68f460d0185f567acaec7856c95ab948721bfda0915cb81101e8f3cefaa",
+        "cache_sha256": "d7bbc6ea674d0968fd92c3013841c398c7d24d43b9a0f924e4aa5515cf9292c4",
+        "elapsed_seconds": 80.00929949386045,
+        "slurm_job": "2127867"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.1388547067318494,
+        "log10_max": 0.1703555416875208,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0024.png",
+      "sha256": "11dede29810b465fb941e9d95c4d430624bdde75e229eaae024d10e9a523841f",
+      "bytes": 2558760,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 24,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0024.hdf5",
+        "exists": true,
+        "z": 19.40664523021168,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36174963264,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36174963264,
+        "source_mtime_ns": 1748804010000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999988,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1b10993f3b6f355dbc574ecfcbddbd49f08dba748f52b5e30426dbb3f6ae6ee5"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "fa9008fc2dd47d42ffa0081412af0ff49f78b6671940e49c0895ce800aaa7982"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "61834abc1e1ff8059a00b8df6e49a11fc78354b645370a8550837cf3e65d691a"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8c401fed50caeb490c4c32e3d939f40d93709b2707d196f2a36b2c1a47781727"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "acc9f1a4fefb73e1c0fa811d4e5be87d65d49752e0a77c96c97ff350ad72036e"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7f4db5b3c8c98558cbf5412040e777dec14f2aa082f5d5a7972dc3ac8fbc95cd"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "260f29ff5c5c947aa2959f0b71d8759bca899647ca670753117e803ecd839cd2"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "985b8c64fd52d0ef06df8e3bc2780b527a89e6fde96bb515c988d0df765ce86e"
+          }
+        ],
+        "array_sha256": "10a53e55ba71f8c79b3c2ddd4dc3525381f5aa6f3d3284ed4e4ce785ef344a34",
+        "cache_sha256": "08fc847c50f0f1ac0fa658830286afb307f48e99516e506d6977aea1c4ba16d5",
+        "elapsed_seconds": 79.59407613007352,
+        "slurm_job": "2127877"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.1388547067318494,
+        "log10_max": 0.1703555416875208,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0024.png",
+      "sha256": "092f3c5e323ff18530aad9b3977ba4e8863048cb32c338ca5b0c118ea2ea8871",
+      "bytes": 1990633,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 24,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0024.hdf5",
+        "exists": true,
+        "z": 19.40664523021168,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 34876713847,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 34876713847,
+        "source_mtime_ns": 1748957783000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.1875,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3659d657e861475e34abb0985b64133bca676d81861da58f8c4bbc14e32ef2c7"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7398a29f158bdf7fff78cd0c02de66b3ff1badd2b0fedbe32e74ae1d10196091"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "78ded806cfcde2936c2ba0030b510bbeb733c624fb8664e780a191a28d3e2d5c"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "380ce44e36ece4b0a1f5fb8f48ff72dc6005923c2628f859a72624d3ce53390e"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "aaa0712b94d9afdebc7d59ed37b685a19fb113838b29f69976f0749c2453078a"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0387aca51baddfe179711155ccd0ea6c38cf1e36524a19b6e0841efa8ff7d9cd"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "bb37ab971d2214699ff93356b2481afd06890d31193d26f0780f274d254f65d0"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "81d64b9e1fcdda0bcc6b489ba986e7e58c349d2cd2a781a24b938fdf3be9bf33"
+          }
+        ],
+        "array_sha256": "b976a2707a63d99a6932dcd5602cc02edfcfc6f8de4bfdceeef404252fff32f5",
+        "cache_sha256": "440073087c839e65bc627d6bf9b06416a32ce267f5597be0f98f921238fef573",
+        "elapsed_seconds": 88.72450997494161,
+        "slurm_job": "2127891"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.1388547067318494,
+        "log10_max": 0.1703555416875208,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/PL-0027.png",
+      "sha256": "6a61fcdfea266e6422353c7d502aa804156e0f322658b700d3b2eff31ad69fcf",
+      "bytes": 1744777,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 27,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0027.hdf5",
+        "exists": true,
+        "z": 14.331814598205613,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 34772310367,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 34772310367,
+        "source_mtime_ns": 1748793283000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.1875,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8b57080e1bc6a5454ac6a8011245ccca239818a137eb0c0fa1fad63b15b8ae8c"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "802df425058b92ac47aff208d8fb45bc960308e9a5c813c31f1cb83d7601cac9"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1a7e2c8c153278dfe127ca4d991e5961ca829fe494db5c3bf0d7b2b6ba7d6d7a"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ed137d6be435e929be396d7b0a6c340a3968019437876515c7ab63651b13b619"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f078c895ba0cf6ddb7bb809d1794eb7c9c6483bcaac836a4b63b81ed57e7af61"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "666a2c3527f3486cc2b00948e5925d2f0351d84668c6dcd32bfeaebd38fa76b2"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "40afe30f4e42f555babe04723217daf74981d1057bf2be6b3c927d9b21fa1dfb"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c2f2d59733c5ff1568e950fc3c444ac8238b506d27f1f3f57d223b0cea0bfaee"
+          }
+        ],
+        "array_sha256": "3df45c5cec6c1c071614cb3688dcd0f817f13a63e49516b7fd246a7bc2ed9698",
+        "cache_sha256": "727e0508fd7fed2ad5873a263ff91d841c77706081a891c6ba0c329e337a3102",
+        "elapsed_seconds": 81.42428368423134,
+        "slurm_job": "2127868"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.18705997506625155,
+        "log10_max": 0.2651819187396498,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0027.png",
+      "sha256": "957b4ff9730c297379a712c5929eef1e2cca442d3c7bf3ebe63907f09d386186",
+      "bytes": 2575570,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 27,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0027.hdf5",
+        "exists": true,
+        "z": 14.331814598205613,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36497213953,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36497213953,
+        "source_mtime_ns": 1748842016000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999997,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3a3354c850d3c60a6f67392bb67b3e5d26a9bd047105b22894e7d70c6b2f0286"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "d838fbb5d7ef301e31f64ce02c2461889e0e43ee82a01a6075b57bcefd3ac33b"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "aa1a5d18d5e8ee1fce18198d59abd09b502295211858990403128397f868aa97"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0c65dbc41e18c0e3988f6b8d1dcfd783a3d86d628e3f02ae3d7794141781ae10"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "88759973d7de20bf86754b6462d10faf78fb2b57681ac8b748f9c3d361ca1a69"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c9adb3a0a5faa268d57204dd2fbfdbcb153e2b3213eb99787a6dcbcb778d89a5"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c58870d5f081463fabe0c9a7520570f84c6a6160e86265e7d25627d993a47ca8"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ca14078cdb5b060939c3e81cc553331b268bfc5ed45f87b8926b486b69cca8f2"
+          }
+        ],
+        "array_sha256": "be2b324c48b2cd1414e7b8d1486ffd0f069a9f7a93a242987efdac9ad506fdaf",
+        "cache_sha256": "d9e82777b3af150a6cd9ea2567aded5cccba25edef367cd5313a7a996f56b240",
+        "elapsed_seconds": 82.13763214973733,
+        "slurm_job": "2127878"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.18705997506625155,
+        "log10_max": 0.2651819187396498,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0027.png",
+      "sha256": "f1c10de96b51a546dc0fa1901f746c1be3869c36c07d1c9d256d21700d609283",
+      "bytes": 2015924,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 27,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0027.hdf5",
+        "exists": true,
+        "z": 14.331814598205613,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35387371121,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 35387371121,
+        "source_mtime_ns": 1748980505000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18750000003,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ee6f05b718b367841ef98183bafe65a7176c788731e9324aa7bced691db97e94"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7473610fb018709e567bbf09c27aa3072279535971afd5fe40de5f715bc78306"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "869e7ddfc793ef521edc1902fc0d697e175c323499df352e25b1a633c3bf3c4d"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9568a7c28f311a76623c4ee28ca49b9cf2f70391a3a0167cc0b5890791968997"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3235493c36bd837114ea6b30000ed3afe0a9c42b272f0cefcba62f7749f35d95"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "cff77895bb33ca6cd5ed2632b40444c6ea762c7185f561fc742369f11ce1db49"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "892231340d5b9aeb1e55c99b24cdad76d9515d90235f553a8039230a7550852d"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "74ba941eadce60ae55f58ac914e4959d6bc6e62f9ab7df01cfa73db23e4fedda"
+          }
+        ],
+        "array_sha256": "ccd097eb9297827d41d0827dd0187b0be076a4e2a12448491053024986011420",
+        "cache_sha256": "ac738243f568668de9fbee361afb0dfe8b97d00b53e12843745d5ba1033d1e7c",
+        "elapsed_seconds": 90.28660759096965,
+        "slurm_job": "2127892"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.18705997506625155,
+        "log10_max": 0.2651819187396498,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/PL-0030.png",
+      "sha256": "9ad04864890b8ada7f33a51220f312b9c2f572866876e6f21c8c63b676b65942",
+      "bytes": 1855975,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 30,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0030.hdf5",
+        "exists": true,
+        "z": 10.51901923231075,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35233350425,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 35233350425,
+        "source_mtime_ns": 1748811920000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18750000003,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6821d5f97ef52c91f5ef29abb19ed0fd10ec5ad4bf8bad71835580b0faf45f8c"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "891082bda2dc4c3e24570bf7d121e8106e8d4973c7f5543b7b8e4a8f4573eb18"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "48e91f732206254a53ff39781a15287f589d6877a310d2c7c1527d7a042e0969"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1cd44e5fbcc7799bace5eb7dbf60421c95e1f3ec328b8f0abfb89d61a35e76e6"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "659a5a4e214d79bf8376de8a9b3c3436c290d5130837aa38d81183f2a28c9689"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "81de80fc0d034b1fc0ca576155dda96d51aa052a2aae1d929ace0d98fadeb5bb"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "af9b31d670c540fd8189b8a6eb15f70774a77679d9aab52a2e3f6befd7a9e66f"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0af26229dffc214e07b9c5425114134595a34055cee64e1bd4e1448ca965b32d"
+          }
+        ],
+        "array_sha256": "d18b2ad438e358e6162a5ee7ab0a9eb5becd45f76925e909dd66de2b0aca1ae3",
+        "cache_sha256": "a0c730cb5f271b0bde0aba3c48ece0fe3d1afebf50cfb7f7e1ec0d8b7d37620c",
+        "elapsed_seconds": 51.21424186602235,
+        "slurm_job": "2127869"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.2510920652546552,
+        "log10_max": 0.4013481976828263,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0030.png",
+      "sha256": "1834ab6aefeaf9a8bc288ebfa05dddcf0c1240246843e5d4568f393fb23ed682",
+      "bytes": 2566157,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 30,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0030.hdf5",
+        "exists": true,
+        "z": 10.51901923231075,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36647610790,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36647610790,
+        "source_mtime_ns": 1748902211000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999997,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ff2ab3b8d246d53d718b08c79484ace7e46ded42bae49298586bebc71a313999"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "a08cf13f7f9d2c98d71edb8d1eb67721aab6c7198f5e091378a056d823eef4f7"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9dc43bf873897737558a9329a3e879c22b35c86f16a9c7215a8a4a557f4c98f4"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6c2dfcf9027125e8e540361f8c8ccc207dd084cd4df2549ef6590c643eb69da6"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1953d42f397b14274edd36ce5d7aa136b053cd3be532bf9986892027f07c6ace"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8afd62e8d1715e4ce6c2f47c7a28fa1942a3a413896b41f896827e2bca2574f0"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4376d5c37fd3ef42d5d2ec229c1e1469253ef829a04641743bb676f88a5c4092"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "03f7a77d6972479ff64ab7ed0545f68d3e2b095c8fa396819e1a84f2e686454f"
+          }
+        ],
+        "array_sha256": "682f842308b4248b10ec2caecea6fc6c420c84c09a56c980b428c38570d0463c",
+        "cache_sha256": "47a9321e3162b237d2654eca833a977a77c52efcd2a73b3cff7fd2d66916e41b",
+        "elapsed_seconds": 48.53644983796403,
+        "slurm_job": "2127879"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.2510920652546552,
+        "log10_max": 0.4013481976828263,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0030.png",
+      "sha256": "b1de18a09b96d6980d09940a87b537e8d3f300b0c7d684ddad3cad744ff3e515",
+      "bytes": 2070251,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 30,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0030.hdf5",
+        "exists": true,
+        "z": 10.51901923231075,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35865885650,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 35865885650,
+        "source_mtime_ns": 1749005648000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999994,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "70d99eea3d309329b06f7717d3fbb0fad0e8b8090d7efc839a71ff9aadbac02e"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6d165f5df28808766f6c648798e5ee884362e8dd3c5bbd51a777747e3c704859"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1a9e0fad99b83d1e8e720b123545a6e4492221b11ac33351ac245276b60dff85"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "898d553d2d74ac781e26095c7bf42d708ff7a1c1442e5913db38f68dc35efe1b"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "76630a429f202b2310ed444f623b55ce356d10a2bb9507474bd5d690e95ed530"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "710d29be8371cdc7345cf8038b3ec3a9a3523d9e87a6114d2f229c43e6cbac72"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "215739e95e15c92b3cbf9d71b158a858443c91b64b2baf892bcc3037855190bf"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "93d5997f50f7e8c2904b6e887ff7c28e4420ca0b726b81fb329175cfc0cbef94"
+          }
+        ],
+        "array_sha256": "b8d6aa607df3a4a6caff625406e508ca98af0599a83fe77c809f7fd3e98c09b5",
+        "cache_sha256": "f0e2dfafd337ffa76ecabdb55eff18d6ea71a9232c8a17522aa8973fd7a0fca7",
+        "elapsed_seconds": 53.53638012427837,
+        "slurm_job": "2127893"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.2510920652546552,
+        "log10_max": 0.4013481976828263,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/PL-0032.png",
+      "sha256": "33ed1e10193be99edc01394f1de862ccdf9dc2a6b1e4840f3d7f7a03038d2b06",
+      "bytes": 1930489,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 32,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0032.hdf5",
+        "exists": true,
+        "z": 8.519850605215494,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35546628766,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 35546628766,
+        "source_mtime_ns": 1748828344000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18750000012,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b15fc94813f8cd9bbbe29087f7af0c010c1b3a83f57101aef7103582953af9e0"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "74c132e9b7b4e79f64a0ffb2dda836c4079dd45e2fa3ce932608df0cb65d08ca"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3777dce8f33aa5d34ee0618276f8a07af23ecb1108e60791aec01e7811cbb3ff"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ba330f6252187db861a2fc001eed2399714d1ca04adcd4904823b82380fa774e"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9856f2907f372bc7933f61d4de0b0af3fe6407ddb4454ee597bf6b4cf114c7bc"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "815e2dbf4109522285ff33e28bfc808c848262f7e4b052c7638f7fafa399ebbd"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "feac4b31e9a637750c47819f4f67cfb52869b406548d49f09a247147b38bbd5c"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "bdf57a912299c6817f5b80db587eab03f82ea8c5600c82f0671d3ab5ca0cdad2"
+          }
+        ],
+        "array_sha256": "c3b1ad7899ade94d1a45655b84674bf46da9dc633a556e7fd604bf4109f03629",
+        "cache_sha256": "1f79c8d67b692645713d71e89fcb89e3e05bba1062f6b45222d4001ecc7542b1",
+        "elapsed_seconds": 43.29039528314024,
+        "slurm_job": "2127870"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.30524905633128924,
+        "log10_max": 0.5137395022180699,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0032.png",
+      "sha256": "b4bfbca353ef98e73435d500cc7456d4aa7073ac45b211fa3f075d1af2856e0c",
+      "bytes": 2548191,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 32,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0032.hdf5",
+        "exists": true,
+        "z": 8.519850605215494,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36684452040,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36684452040,
+        "source_mtime_ns": 1749233506000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.1875000001,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "81b03f89500054ee374ba71625e1fc66b46f480e1a03051ab9a48474bd4eb150"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "edd3aecfefc84f7b367552152aca8e64d85bc95f859b4a38b677fac7611116be"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "5b10098c8a1c02974f8939364184c5d5f5d39442fa101c818bc5f1071666736c"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f5538a0f9466c5629c792b2286dcab679d53867170668b6901a4ae5e826173a1"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "e208559550e00791441265a4a01d02baf1010855209a4267820c428324575561"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "28d96567b788e6554d3e7698e7a0195840124a0f370ead6f78657c50462929ec"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b510bb7f47809eeebdff8d7d967386f54a3c78062d7bf647d8882903d0165d3e"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2b12dbcc2879785a7e0fbd7bff88908762d417840f7bee02974bb4fc734d5d5c"
+          }
+        ],
+        "array_sha256": "418bd096db656a3cca5a25428880d0ccd2e45f0e78ce1cdd7483c56a033856d6",
+        "cache_sha256": "39d0ed1301fa707c829bce000cc9357ab48a055e8a4167273e5011384ded34f0",
+        "elapsed_seconds": 43.27978378767148,
+        "slurm_job": "2127881"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.30524905633128924,
+        "log10_max": 0.5137395022180699,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0032.png",
+      "sha256": "9ccbc69ceab6bba1512ed931fbb35d78a1ed09dafbaabffce77e05f898c03a30",
+      "bytes": 2106261,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 32,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0032.hdf5",
+        "exists": true,
+        "z": 8.519850605215494,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36101639283,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36101639283,
+        "source_mtime_ns": 1749030070000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.1875,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "70a42ee3b7de241b921bf90cbe04df8203b535ab0238026590adf08295f8dfcc"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b69ebaa54ba854143a8d6670ff4cbeb7cc22263dd712944cd8adb395070e6549"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "5b404feda63515ebf8e473bb8b08acccd7732da78140b20334335ba47dc67ab8"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f2ce9f3c51d363b96d3f1bdb12d80e6e7c396ce5e50c495b2202d0131cca903b"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "54381ade191c3faaf3aa800be6f1b153b2bc83330ed7cf5c2fe2e5a1a1bd348b"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ba3b13f5c5f783aa7ebf3a2ee37f172c6c8a807521af426396ee6ee0021d0e23"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "fb6cd980a07aacb8b2127bd2efab5255e2681646bcb1f0cfe4a8e91aae7a438f"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "aefed92f6a658322b3ea5161e6f0a119546abf1f73c7f7ea4562488a12b745c3"
+          }
+        ],
+        "array_sha256": "e8e1f9187f4a88ac3cd75f86570ec1995f0b0e78c3ff189c3807d93301d9fce1",
+        "cache_sha256": "707ec980fc9049a3cf3f288b42c66b43b4c239b13ddd7479af0e6427aedb58dc",
+        "elapsed_seconds": 47.99976645875722,
+        "slurm_job": "2127896"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.30524905633128924,
+        "log10_max": 0.5137395022180699,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/PL-0040.png",
+      "sha256": "2af05ffeb2acf6b546c50ed1e46fe0de556a5cba23b53f51bff2960668aba926",
+      "bytes": 2073626,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 40,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0040.hdf5",
+        "exists": true,
+        "z": 3.4410805658271224,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36280511860,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36280511860,
+        "source_mtime_ns": 1748977439000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18750000003,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "203757fee5a6c34df8bdc704dabdd02716d22d6a90143bf44d74ca7678265854"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "e2ff6ad7aad591094d92f9b1956565560c8c9c6fbde9a6c84545daced23b1153"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c25fbb67b20084482824e5972727dfe5dc70a8ad71cea06b850ad210f9171657"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "5c07eeb8d240d82742ae23faf0e4bd587aa4c04c101ba220c16a61b80e4a28c1"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "e6e592a11ea1671cfaa7d0fd906783562dd3a0908b95a09bd276662e9e10697f"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8b3c111ac9c7341d3080816277546e52fb47a1fd696a8d84b62a832344a7f4b6"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "517b1998db2c9e8c7c3f752d572075255838ae881d601c550335a6e00bb8a804"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "49a9bb6b2f4d505a265c70cc4a5df0cc1113dbb6196af68f6da7d6bc256bfbca"
+          }
+        ],
+        "array_sha256": "0b8b76b8496c0fc504ed823939568784f63f5a49d5e4e2123efe0b0554ce721f",
+        "cache_sha256": "d84ba9d835e933bab7292872136b232d3d67dfb9ea793daf6ffef2dccdfd8ba7",
+        "elapsed_seconds": 79.31865714164451,
+        "slurm_job": "2127873"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.6002008388471063,
+        "log10_max": 1.009124845356012,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0040.png",
+      "sha256": "285ff52a705a45ce429e9a2a857ce199c89eba231d1ac9d965b8923c71d212a5",
+      "bytes": 2454675,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 40,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0040.hdf5",
+        "exists": true,
+        "z": 3.4410805658271224,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36522226229,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36522226229,
+        "source_mtime_ns": 1749612432000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18750000003,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "11b104d0ff58a5667d94584a00a35e0a11a93415280a34adda055c7f208a67e4"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "13c7ddbbd669cf74f5c5710fc97006234af4cc9dafc3142e83356f5ef49b25ae"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ef465016742e43489c9b1f66307bfe3d2f1cd18163dd89f3cca13050d14ac8e8"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "bb7711cc31b5ccf1c323a3ca53a6972d8e1b4f72b236705cd057d08e4c8b72c0"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f3e786996b98f35deffe2a766c949a10db598f980d23abd4332286f42311ae33"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6490176c8917caf05e8efbfa9fe4b88e6f1abcf638c0265282310c71c064583e"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0f9fad1a8e8966bc1bc9c87e27ec91218d2372e04c811952ce018fa14d1acdae"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7a748b6894dbc4989d3c39f9cd9058c41ff7939281b3ca65520e796471782187"
+          }
+        ],
+        "array_sha256": "977dd28f068f6c206e6d5a976d103c22f68c58738d8208b698d9a3b930d1a547",
+        "cache_sha256": "3afaafa75e545b34916d129f8a5e03446d879d80604460956cf273c5f5b490b8",
+        "elapsed_seconds": 79.45219401130453,
+        "slurm_job": "2127884"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.6002008388471063,
+        "log10_max": 1.009124845356012,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0040.png",
+      "sha256": "1479f685c77526e7979a8624cf6d659883ad0eaa4349c68399e15eba518243d2",
+      "bytes": 2173138,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 40,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0040.hdf5",
+        "exists": true,
+        "z": 3.4410805658271224,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36483815819,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36483815819,
+        "source_mtime_ns": 1749676253000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.1875,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "73b7ae2e38c6cb3f590081498524f4fc406645cf0168ed470acd8d37fd97cbe0"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "894f16fa0cc475c689bc9fbdb7b66463b98b80063608c7ebe7e63058de18f408"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "10b30466064b52c8c8802adfa7407c180fe3237cdaeb84fd28e50d387a551c6c"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "369dd60665294b5d5498b0944580b2caad5437aee86a9ce106ed6c9ed42b820a"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8eb749588cf5a65f0d6c2a0563169cc5cb08fd3304ee6b52b4339f13aa1bf455"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "96801887907a40b376390eb57564c5ef37793a59af2e3d1d9976f79543126255"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "00e46567ac96169c8e015cbc0b162b7f547a3926d1552c39317021093da74722"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f16faebd9514ab5d3cd6b3efd60117f6b11d884d9b8e46dfdfd56fff2c8fa760"
+          }
+        ],
+        "array_sha256": "990ffea69e985fec0838cd84487f70a32ee71361cafbdf099cb516c46ba1bf49",
+        "cache_sha256": "f30996f6e288ccc8348de28806f93660b6198b2ba70764876be805645fef6f35",
+        "elapsed_seconds": 90.9414432789199,
+        "slurm_job": "2127899"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.6002008388471063,
+        "log10_max": 1.009124845356012,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/PL-0044.png",
+      "sha256": "9e2368df938feb602c35407be35f2bd1c7b65e57d4213f6ccc3ba3fdefc8301e",
+      "bytes": 2066583,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 44,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0044.hdf5",
+        "exists": true,
+        "z": 2.0333177828202462,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36385849790,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36385849790,
+        "source_mtime_ns": 1749111878000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999988,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "97b5317f0a25eca7e2011a84593819853f0025224ae14b112ad3f76b9b375a84"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "30c32754a745f80572d497b94046dd3cf63660573605545ba8ecbbc156b6c4a9"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "5e07bb59bbaf749ef20064d212fd31b769778de96d1a4b08739a8aa2c215105d"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "23b63f7a7450a7b1beab5712b29f55dc71782ddc4a6d25a9b93e81ff799dbf41"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b5fc22f42c5bbfcbcf28aacecdf73b8dc5918c8097f72ae692222c043f4fdffc"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "441c4ace0a5c242005f7e5231d2a7e237c7b26bdfb0360d2508d8e2893e685f5"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2470dd948037c1e783615e5df0e1870be70c30e4885c98cc6777e7b5dc65c9d4"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c3eae8707a125e9290559fd670abe89048ce475bfb7c4244033430eefd61d071"
+          }
+        ],
+        "array_sha256": "f368c660961aa7cf386113ced8140da57ad75bb0133a9a1f98367b46941b8645",
+        "cache_sha256": "760addce18fb0245bbdbda45caaa8e05b24e71684402c70bdca9c0c3d658b408",
+        "elapsed_seconds": 81.3462611460127,
+        "slurm_job": "2127874"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.7878034745492573,
+        "log10_max": 1.2377407180874702,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0044.png",
+      "sha256": "62af8df47a3f3724c67cc3cadb70c3979281c5b5b3eef8b745b96e981b7e9e13",
+      "bytes": 2408239,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 44,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0044.hdf5",
+        "exists": true,
+        "z": 2.0333177828202462,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36369338422,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36369338422,
+        "source_mtime_ns": 1749842194000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18750000003,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "06d0ae7344061f21a113cb0a56349f9db19be776ef80070473d48355c096dbf1"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "e978cf60a255f0e153a79579e198a214b1ef15769831aec29566bc55680b9256"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0f9e64a38ac7bdd55021b7358ac59eb57e9c057ae471d512df569307265439a6"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "038457e6783d5cce8b25df3833bba817d8ffc5fa05525403877eaf2c7901cb1b"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "138722edb70dd2c7b8a063c754186121e405b52cdc40925e2df6440898353949"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "04e33fd0b869e619942b99f59e184918b8f8e6798f50e192daf011d7213b5e81"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "64239171e4fad0c71246d351aaede1b98d4c3fe4c1b77d0f4aba16f716af61b4"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c3870ea8585b9dc0d51523de39c1bfc4fa955f6c2de85cfb9f49e611f87a9765"
+          }
+        ],
+        "array_sha256": "5883cf7c371f1acee0de2f5e10bbd90bd7c53d233f4ce0874d8e5f0907b7501f",
+        "cache_sha256": "dcb039b5af9d67da6fb2c489626c7cf51c3e32ef331cd5398b928c3192b848f9",
+        "elapsed_seconds": 81.04980463115498,
+        "slurm_job": "2127885"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.7878034745492573,
+        "log10_max": 1.2377407180874702,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0044.png",
+      "sha256": "2dc65bc1c1738f4b3e0d7ab2b2670b2fa142baf018fecb838e77c5d3165c5a45",
+      "bytes": 2160120,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 44,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0044.hdf5",
+        "exists": true,
+        "z": 2.0333177828202462,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36475874316,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36475874316,
+        "source_mtime_ns": 1749828425000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18750000006,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "016c22c9218bae0a5bd15c3c9d8e35e2bd2ec690af641af66290c69ac8d8febd"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f2c30d410f499c626d817aa421c97bfce5d9bfe93ad21758ff612a04c260d0e3"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3d5fc228d8d4aa2d83db9c00c6e238b1fda6b226a5c3771c51edc3ca591097dd"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7379741dba62cf06b123d648328a85a06f77ede9836dc698f93674b54ecbf0ea"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "de753998435017403370f0c669f97068d41e23c7ae20fdf4df1a7fdabd8ff47e"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "64646d3f0dbac8f35abd88b246419bd7ecd502a4e8fb7b7a77a5af29441fe049"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "edf1098b05b0402a969de6cf8812b3aad08d10acc1783ddd1551c77ca8b1571e"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "212a8c2e7d28c9ddc12677b1072c20eec28ff2367cdd1931e1900386723a9326"
+          }
+        ],
+        "array_sha256": "0b2f0b5de14b88d87ad8c502ceb2ca64c05e12da1d0e83d64f82afc2ae24b8d7",
+        "cache_sha256": "572bf97bdcf2eaaa2cf763f8492d16712492468b215ea3caa6e1370b1a30d9b7",
+        "elapsed_seconds": 93.26756613096222,
+        "slurm_job": "2127900"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.7878034745492573,
+        "log10_max": 1.2377407180874702,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/PL-0048.png",
+      "sha256": "fdcf79534afc2e771fb135451cba8fd1d336f298572badc88e3d7674c757223d",
+      "bytes": 2041769,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 48,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0048.hdf5",
+        "exists": true,
+        "z": 1.0717968600643704,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36413648123,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36413648123,
+        "source_mtime_ns": 1749288565000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999997,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8f4102a8546bb5def4c40897166d030e15cba7ffcce0497dcae4d325230881a4"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "cc71ee40e6c0d110dd32f50dbca625056e12938a2befde30bd8c987cadbe90cd"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "958665c575e47896750d2802d7a69fceecebcc302dd4b62d3eb32a451bbea624"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8d690c61ea0c38a941a7315be8ccffe1ccc71c7b8148206998035e8e63447d92"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c94a37f10a64f139835065341f67d5e0ac9afbe69a6eae878e1083fe6bf330a4"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4ded032a5b65f8768a3bd6d0fe047a7f061101f904ea2a054bbae99f887f9107"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "62c2c770a2de097268fde114863f1a78b75f3ecbecb122829fe28369b6947873"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "10d0ccd1c28cf06182211a37b1aeb7f9cdd3c2a613605907cb4ebf88d885f6c9"
+          }
+        ],
+        "array_sha256": "e082aa927e62307a53bb7ea68313de199a9820e106509e5ee3d99eb2d2d5e5ad",
+        "cache_sha256": "4b4cbe32847f51f74f0fc3eb0ad5cc0e2ab3c2eef8a52867ef742d1c4762269a",
+        "elapsed_seconds": 54.04771916102618,
+        "slurm_job": "2127875"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.9940426963174872,
+        "log10_max": 1.43427226716383,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0048.png",
+      "sha256": "991eeadc3559377200076d1d5702ff7efb69af8849534c0b0b360f494d5fb058",
+      "bytes": 2368244,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 48,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0048.hdf5",
+        "exists": true,
+        "z": 1.0717968600643704,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36227345088,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36227345088,
+        "source_mtime_ns": 1751364202000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999994,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b4345df84500561ff68224548ec224ee82861717293d8a8d35e55a4c9457743d"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "daa60d2609825247a6f1c7c7e15b08cbc7a113c4f552b11982f3f540422e26dd"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "37da60786774120457a58cb9ca76bf540468263194ef8c5b7b1c4e430d8827ed"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8309a0a4aa1f8af200c664682cb85aafe90d65597257a35a22c4b383e54cc1c0"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "fe7bd9d946f295e21771b67a014d8d7ccce50aae10b524b99653e767352df36b"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "07735ae70b2a0d4c0d58fb0c94abee691a71b8c20320ac8bdec9d55ed03633e1"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8922927c8fc2f9b68594abbc7d89a5b305fb16a244d46c062164e9f5488afa7f"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "303fcef46ca0871d14e79f70c79ae96f096adbbceae2b9f5c222414434959ae2"
+          }
+        ],
+        "array_sha256": "201d4f27db6d2aeb52b67c79e951d11f5e7b526dbece9625dd069bf3b098379b",
+        "cache_sha256": "e0839a6d9dd41984f93bf3334080adbf0484d8cc460c0b0b33f498ae5b374eb0",
+        "elapsed_seconds": 49.25570820085704,
+        "slurm_job": "2127886"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.9940426963174872,
+        "log10_max": 1.43427226716383,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0048.png",
+      "sha256": "af889f1a8757e99165cc561627cae28e1c7f537221f3d695192f709a0908acda",
+      "bytes": 2139522,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 48,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0048.hdf5",
+        "exists": true,
+        "z": 1.0717968600643704,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36436178069,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36436178069,
+        "source_mtime_ns": 1750011857000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.1875,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9dac765912ba24574a168b9c9bfb4c70c08ffd683ef92eb58c1bac78b5b5e4bc"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6328506df82a76f7e9c6f7c310695e9837f2222eae66a1f11e35056e4c91075c"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4b1ae2c58d8f1710337e7f72b165619528f649ec43dc7aa74bbc60ac1414ae2a"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2e47111a21e6aa1bb159bedd240d1a5d6b53c9245d51be4ccd6bc46c57f54191"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1265128a2a114e4dc4bef3a21508776ef933a12326d3d59c4e2e02720cf26549"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "465b9f25d1ed9f332007923c89b2949ec288e1699faf49d283f13f55d04c173d"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2297051da794374f2f474223201d43a11b765afed2150594f6d39f50b184c106"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c228d10ee71b0f9781030b2cac52d0e3266d3d73476c56bd5780c1a4bd782c74"
+          }
+        ],
+        "array_sha256": "8c5775dda03bc53b6d4417333bb8962bb3eba79de994fd9fcc77a6331b3fe526",
+        "cache_sha256": "0652746839cd3d08f295558789a7c7780b6574443a4d1f679e0403d461c03070",
+        "elapsed_seconds": 58.13335603103042,
+        "slurm_job": "2127901"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -0.9940426963174872,
+        "log10_max": 1.43427226716383,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/PL-0056.png",
+      "sha256": "13466ec78f0984099157bc2a2e3ec7135ff86289efa81891ebe8f4d968b7c8f3",
+      "bytes": 2005559,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 56,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0056.hdf5",
+        "exists": true,
+        "z": 0,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36276517058,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36276517058,
+        "source_mtime_ns": 1749671964000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999997,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "90e4edbc5ee4a84d2ddb38d3ab8e42de6e22090c8d5df96d953a76fe2177bbc8"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7e414f68688d056a9daf11174e1070bdb8fa064d1fc6d179312b583c46942a9b"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "d3e3b247bdfc9af4b807d9e5b7ec9ffc0c66b18911dbd3f387c545092fcfe667"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "de9991dd121592623a3de0ebc83a86ed0ddf1d065969907b7cd6301d2ca897dd"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "761e18ca9039f239346af8c21835eb3260a8421b7666e0d2392851b78707530d"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "41791121b5c589c6bc54f8f18ee1ca0496360427b35a9129c45968b5c35611b5"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4f3687fcccabf63992a564e6f87ba269f4118e4cd1751425c67b0b257daaa814"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7f9bfb1b0cefb2fb20b23360bf8959fe881c3f17f49b543a05632c7328157cee"
+          }
+        ],
+        "array_sha256": "b2de9a5dc32a9bacbdb3c80978e1360b2d8e5fe5f6f59ce031376f64f7fd1b50",
+        "cache_sha256": "0e400039aecdaf31558126d0aeae43b4f9fbe03b11b30cb79bb24ca4b2cc5193",
+        "elapsed_seconds": 46.55131557537243,
+        "slurm_job": "2127876"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -1.3575076549202088,
+        "log10_max": 1.7275521491514514,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0056.png",
+      "sha256": "f5d4331055ba9c0bf35fa30c873a438675df6f2659e30736d8c2a0a5bbf275a4",
+      "bytes": 2322813,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 56,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0056.hdf5",
+        "exists": true,
+        "z": 0,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35945578101,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 35945578101,
+        "source_mtime_ns": 1752157166000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18749999994,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "fe4ebf233940625ea29949c4a16e15318257fab94ef7243c76a0816f04cf7623"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b8ee42e39617b47313a3a3cacca2fc6beb0b19c115d78783811e610c51c53620"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "34a45198e9b23cfa7dce9b2e2027f3bdfb23de8b82dc5f3bd0bbc3af3cfa5597"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "50fd9399ada8b0ac128c8e11749b2f9afaf7045921531e76d05b81aeb556492b"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "afea0c3a3be0d95d612ee6c74b705ddd4bf31b49748850aa24d5e840bc63f8cb"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "220c36373fe72ab28a71deac4b8d374d6ff8f566b2d4c79bb9a86d2a0b8aab34"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2314d54ee38deb6b1a84a73500a064a3db00bea664435203babf72c9c16a4be3"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0d1db19395c8a392784f860f29a9b700b4782e65096a342993d9b029fa74cd5a"
+          }
+        ],
+        "array_sha256": "f0d64e84c5d9c1800eae03930e77dff0a323466d1c54039c52af064224193751",
+        "cache_sha256": "1675db6419c80648033d8e4d7e4b483d3e1c9b8d227cceb5770bbee6a5857a5e",
+        "elapsed_seconds": 43.64193372707814,
+        "slurm_job": "2127890"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -1.3575076549202088,
+        "log10_max": 1.7275521491514514,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0056.png",
+      "sha256": "a0c4ee674fbc134f7665e326c1313ef0a08e55d1c3af8d61e31332d233741d6b",
+      "bytes": 2116947,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 56,
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0056.hdf5",
+        "exists": true,
+        "z": 0,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36236495322,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "method": "periodic_CIC_all_particles_1024",
+        "grid": 1024,
+        "projection_axis": "z",
+        "image_orientation": "x right, y up",
+        "source_bytes": 36236495322,
+        "source_mtime_ns": 1750455312000000000,
+        "mass_sum_code": 202984.1875,
+        "projected_mass_sum_code": 202984.18750000003,
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4adbdec26d38f8c74e71bc94b0efceee422fd10a82a72c9cec11e6466b9e9f0b"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ac7aadf962153d3626ed2e74dbf56503c9e9dd67b8d0e7e4c15e1e9b149bbf81"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "85d9697024b8d29b39b52071c73c7eff5a49eadfdbbd1d9a643a4744d55c9a69"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "26532100059e8e9d77b952d4a33436f5d71f27c9560ed8fc8982e162c3a6a328"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9e8e9c48b287cc8206395ae6a0e32326caee9b3cc7d0fc713364b77fa195709a"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "77a69bd18d2469346f776f596c4189f2aa6e3d9b0bda819fe899ab22b559ca37"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "bd0da8343ec703e7df5e6bde8bbd2b31fbac74fdf42407705f427f814f3b983b"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "a76df9a0b3ad5f2599dada6c904e25176d516251dfa5c096f92829c0f5a00f72"
+          }
+        ],
+        "array_sha256": "e0ac142b6c657d30494b935f76cbf36a07f23153f522218f31045aaf6012ae33",
+        "cache_sha256": "689d5d48fe6deccc1575b1a0dd4d5adb324acd6065060f0dc74f9fd6dca84a4d",
+        "elapsed_seconds": 49.64193168282509,
+        "slurm_job": "2127864"
+      },
+      "display": {
+        "quantity": "surface_density_over_mean",
+        "log10_min": -1.3575076549202088,
+        "log10_max": 1.7275521491514514,
+        "percentile_clip": [
+          0.1,
+          99.9
+        ],
+        "shared_across_models": true,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno"
+      }
+    },
+    {
+      "file": "assets/animations/particle-rotation.gif",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/full_particle_projection/archive/2026-05-08_before_faceon_cleanup/PL_512_0056_full_particle_density_projection_rotation.gif",
+      "sha256": "a28563a4b82f688b0e055d28f1df75a7a7558b31d1d16fd3be69adf5c417f85f",
+      "bytes": 49249263,
+      "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
+      "kind": "rotation"
+    },
+    {
+      "file": "assets/animations/volume-rotation.gif",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/volume_density_grid/PL_512_0056_volume_density_grid384_p80_1600px_noflash_rotation.gif",
+      "sha256": "c329518d024dfe39f6d064939eafc9d48bcde5a16490ec37ba528279df985e99",
+      "bytes": 72585049,
+      "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
+      "kind": "rotation"
+    },
+    {
+      "file": "assets/animations/particle-evolution.gif",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/full_particle_projection/oblique_slow.gif",
+      "sha256": "32664cbe93e2021e0aa7f54bb6afcff44fb2ced18789a495833a582ff14d968d",
+      "bytes": 37421044,
+      "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
+      "kind": "evolution"
+    },
+    {
+      "file": "assets/animations/volume-evolution.gif",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/volume_density_grid/PL_512_0000_0056_volume_density_grid256_p70_fixed_view.gif",
+      "sha256": "b32657a39dbe4a2f3786ece6629b64b3f880dde9554dfe423ed54fa309c1f9e2",
+      "bytes": 33183995,
+      "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
+      "kind": "evolution"
+    }
+  ],
+  "animation_snapshot_headers": [
+    {
+      "snapshot": 0,
+      "z": 200.00000032762998,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0000.hdf5"
+    },
+    {
+      "snapshot": 1,
+      "z": 181.72727302511814,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0001.hdf5"
+    },
+    {
+      "snapshot": 2,
+      "z": 165.1157027501074,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0002.hdf5"
+    },
+    {
+      "snapshot": 3,
+      "z": 150.01427522737038,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0003.hdf5"
+    },
+    {
+      "snapshot": 4,
+      "z": 136.28570475215486,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0004.hdf5"
+    },
+    {
+      "snapshot": 5,
+      "z": 123.80518613832263,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0005.hdf5"
+    },
+    {
+      "snapshot": 6,
+      "z": 112.4592601257478,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0006.hdf5"
+    },
+    {
+      "snapshot": 7,
+      "z": 102.144781932498,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0007.hdf5"
+    },
+    {
+      "snapshot": 8,
+      "z": 92.76798357499818,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0008.hdf5"
+    },
+    {
+      "snapshot": 9,
+      "z": 84.24362143181649,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0009.hdf5"
+    },
+    {
+      "snapshot": 10,
+      "z": 76.49420130165134,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0010.hdf5"
+    },
+    {
+      "snapshot": 11,
+      "z": 69.44927391059213,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0011.hdf5"
+    },
+    {
+      "snapshot": 12,
+      "z": 63.04479446417467,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0012.hdf5"
+    },
+    {
+      "snapshot": 13,
+      "z": 57.22254042197697,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0013.hdf5"
+    },
+    {
+      "snapshot": 14,
+      "z": 51.92958220179724,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0014.hdf5"
+    },
+    {
+      "snapshot": 15,
+      "z": 47.11780200163385,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0015.hdf5"
+    },
+    {
+      "snapshot": 16,
+      "z": 42.743456365121666,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0016.hdf5"
+    },
+    {
+      "snapshot": 17,
+      "z": 38.766778513746964,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0017.hdf5"
+    },
+    {
+      "snapshot": 18,
+      "z": 35.15161683067906,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0018.hdf5"
+    },
+    {
+      "snapshot": 19,
+      "z": 31.86510620970823,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0019.hdf5"
+    },
+    {
+      "snapshot": 20,
+      "z": 28.87736928155293,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0020.hdf5"
+    },
+    {
+      "snapshot": 21,
+      "z": 26.16124480141175,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0021.hdf5"
+    },
+    {
+      "snapshot": 22,
+      "z": 23.692040728556133,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0022.hdf5"
+    },
+    {
+      "snapshot": 23,
+      "z": 21.44730975323285,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0023.hdf5"
+    },
+    {
+      "snapshot": 24,
+      "z": 19.40664523021168,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0024.hdf5"
+    },
+    {
+      "snapshot": 25,
+      "z": 17.551495663828796,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0025.hdf5"
+    },
+    {
+      "snapshot": 26,
+      "z": 15.864996058026179,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0026.hdf5"
+    },
+    {
+      "snapshot": 27,
+      "z": 14.331814598205613,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0027.hdf5"
+    },
+    {
+      "snapshot": 28,
+      "z": 12.938013271096011,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0028.hdf5"
+    },
+    {
+      "snapshot": 29,
+      "z": 11.670921155541825,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0029.hdf5"
+    },
+    {
+      "snapshot": 30,
+      "z": 10.51901923231075,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0030.hdf5"
+    },
+    {
+      "snapshot": 31,
+      "z": 9.471835665737043,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0031.hdf5"
+    },
+    {
+      "snapshot": 32,
+      "z": 8.519850605215494,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0032.hdf5"
+    },
+    {
+      "snapshot": 33,
+      "z": 7.654409641104996,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0033.hdf5"
+    },
+    {
+      "snapshot": 34,
+      "z": 6.867645128277267,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0034.hdf5"
+    },
+    {
+      "snapshot": 35,
+      "z": 6.152404662070242,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0035.hdf5"
+    },
+    {
+      "snapshot": 36,
+      "z": 5.502186056427491,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0036.hdf5"
+    },
+    {
+      "snapshot": 37,
+      "z": 4.9110782331159015,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0037.hdf5"
+    },
+    {
+      "snapshot": 38,
+      "z": 4.373707484650818,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0038.hdf5"
+    },
+    {
+      "snapshot": 39,
+      "z": 3.885188622409834,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0039.hdf5"
+    },
+    {
+      "snapshot": 40,
+      "z": 3.4410805658271224,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0040.hdf5"
+    },
+    {
+      "snapshot": 41,
+      "z": 3.0373459689337468,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0041.hdf5"
+    },
+    {
+      "snapshot": 42,
+      "z": 2.670314517212497,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0042.hdf5"
+    },
+    {
+      "snapshot": 43,
+      "z": 2.3366495611022704,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0043.hdf5"
+    },
+    {
+      "snapshot": 44,
+      "z": 2.0333177828202462,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0044.hdf5"
+    },
+    {
+      "snapshot": 45,
+      "z": 1.7575616207456761,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0045.hdf5"
+    },
+    {
+      "snapshot": 46,
+      "z": 1.506874200677888,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0046.hdf5"
+    },
+    {
+      "snapshot": 47,
+      "z": 1.2789765460708074,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0047.hdf5"
+    },
+    {
+      "snapshot": 48,
+      "z": 1.0717968600643704,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0048.hdf5"
+    },
+    {
+      "snapshot": 49,
+      "z": 0.8834516909676096,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0049.hdf5"
+    },
+    {
+      "snapshot": 50,
+      "z": 0.7122288099705543,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0050.hdf5"
+    },
+    {
+      "snapshot": 51,
+      "z": 0.5565716454277756,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0051.hdf5"
+    },
+    {
+      "snapshot": 52,
+      "z": 0.4150651322070684,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0052.hdf5"
+    },
+    {
+      "snapshot": 53,
+      "z": 0.2864228474609716,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0053.hdf5"
+    },
+    {
+      "snapshot": 54,
+      "z": 0.16947531587361064,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0054.hdf5"
+    },
+    {
+      "snapshot": 55,
+      "z": 0.06315937806691885,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0055.hdf5"
+    },
+    {
+      "snapshot": 56,
+      "z": 0,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0056.hdf5"
+    }
+  ]
+}

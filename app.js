@@ -2,6 +2,7 @@
 (() => {
   'use strict';
   const D = window.ARTICLE_DATA;
+  const M = window.ARTICLE_MEDIA;
   const $ = id => document.getElementById(id);
   if (!D) {
     $('load-error').hidden = false;
@@ -12,8 +13,11 @@
   const MODELS = ['PL', 'kp1', 'kp10'];
   const LABELS = {PL:'PL', kp1:'BT kₚ = 1', kp10:'BT kₚ = 10'};
   const COLORS = {PL:'#53657e', kp1:'#377caf', kp10:'#298773'};
-  const S = {frame:0, zoom:1, panX:0, panY:0};
+  const S = {frame:M?Math.max(0,M.projection.frames.findIndex(f=>Math.abs(f.z-8.52)<.015)):0, projectionSet:M?'extended':'paper', zoom:1, panX:0, panY:0};
   const projectionState=S;
+  const projectionFrames=()=>S.projectionSet==='extended'?M.projection.frames:D.projection.frames;
+  const projectionImages=new Map();
+  let projectionRequest=0;
   const TOPICS={input:'输入功率谱',hmf:'质量函数',power:'物质功率谱',assembly:'形成历史',structure:'内部结构',reliability:'数值可靠性'};
   const TABS=Object.keys(TOPICS);
   const controllers={};
@@ -23,6 +27,13 @@
   const nearly = (a,b) => Math.abs(a-b)<0.015;
   const ztext = z => Math.abs(z)<0.005 ? '0' : Number(z).toFixed(2);
   const unique = a => [...new Set(a.map(v=>Number(v.toFixed(5))))].sort((a,b)=>b-a);
+  function mediaLink(file,label) {
+    const a=document.createElement('a');a.href=file;
+    if(location.protocol==='file:') {
+      a.target='_blank';a.rel='noopener';a.textContent=label.replace('下载','打开').replace('↓','↗');
+    } else {a.download=file.split('/').pop();a.textContent=label;}
+    return a;
+  }
   const fmt = (n, precision=3) => {
     if (!Number.isFinite(n)) return '—';
     if (n===0) return '0';
@@ -56,7 +67,7 @@
     });
     document.getElementById('topic-sections').append(section);
     const $=id=>section.querySelector('[data-local-id="'+id+'"]')||document.getElementById(id);
-    const S={tab:topic,statsZ:8.52,following:true,definition:'fof',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25};
+    const S={tab:topic,statsZ:projectionFrames()[projectionState.frame].z,following:true,definition:'fof',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25};
     let downloadRows=[];
     $('topic-title').textContent='02.'+(TABS.indexOf(topic)+1)+'  '+TOPICS[topic];
   function chart(id, series, config={}) {
@@ -174,7 +185,7 @@
   }
   function renderStats() {
     $('tooltip').hidden=true;
-    const projectionZ=D.projection.frames[projectionState.frame].z;
+    const projectionZ=projectionFrames()[projectionState.frame].z;
     TABS.forEach(tab=>{
       $(tab+'-control').hidden=S.tab!==tab;
     });
@@ -269,7 +280,7 @@
     $('download-data').setAttribute('aria-disabled',String(!downloadRows.length));
   }
   $('stats-redshift').addEventListener('change',event=>{stop();S.statsZ=Number(event.target.value);S.following=false;renderStats();});
-  $('follow-projection').addEventListener('click',()=>{S.following=true;S.statsZ=D.projection.frames[projectionState.frame].z;renderStats();});
+  $('follow-projection').addEventListener('click',()=>{S.following=true;S.statsZ=projectionFrames()[projectionState.frame].z;renderStats();});
   $('mass-definition').addEventListener('change',event=>{S.definition=event.target.value;renderStats();});
   $('box-size').addEventListener('change',event=>{S.box=Number(event.target.value);renderStats();});
   for(const [id,key] of [['power-comparison','powerComparison'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id).addEventListener('change',event=>{S[key]=event.target.value;renderStats();});
@@ -291,13 +302,13 @@
   $('download-data').href='#';
   renderStats();
   return {
-    projectionChanged(){if(S.following)S.statsZ=D.projection.frames[projectionState.frame].z;renderStats();},
+    projectionChanged(){if(S.following)S.statsZ=projectionFrames()[projectionState.frame].z;renderStats();},
     select(z,definition){S.statsZ=z;S.following=false;if(definition){S.definition=definition;$('mass-definition').value=definition;}renderStats();section.scrollIntoView();$('topic-title').focus({preventScroll:true});}
   };
   }
   function renderCoverage() {
     const columns=[
-      {label:'密度投影',zs:D.projection.frames.map(r=>r.z),tab:'projection'},
+      {label:'密度投影',zs:(M?M.projection.frames:D.projection.frames).map(r=>r.z),tab:'projection'},
       {label:'FOF 质量函数',zs:D.hmf.fof.map(r=>r.z),tab:'hmf',definition:'fof'},
       {label:'M₂₀₀c 质量函数',zs:D.hmf.m200c.map(r=>r.z),tab:'hmf',definition:'m200c'},
       {label:'物质功率谱',zs:D.power.map(r=>r.z),tab:'power'},
@@ -316,7 +327,8 @@
           button.addEventListener('click',()=>{
             stop();
             if(column.tab==='projection') {
-              chooseFrame(D.projection.frames.findIndex(r=>nearly(r.z,z)));$('evolution').scrollIntoView();
+              if(!projectionFrames().some(r=>nearly(r.z,z))){S.projectionSet='extended';$('projection-set').value='extended';renderFrameButtons();}
+              chooseFrame(projectionFrames().findIndex(r=>nearly(r.z,z)));$('evolution').scrollIntoView();
             } else {
               controllers[column.tab].select(z,column.definition);
             }
@@ -373,8 +385,27 @@
     $('library-count').textContent=`${selected.length} / ${items.length} 项`;
     $('library-empty').hidden=selected.length>0;
   }
+  function renderFrameButtons() {
+    const frames=projectionFrames();
+    $('redshift').max=frames.length-1;
+    $('redshift-ticks').style.setProperty('--frame-count',frames.length);
+    $('redshift-ticks').style.setProperty('--mobile-frame-count',Math.min(frames.length,4));
+    $('redshift-ticks').replaceChildren(...frames.map((f,i)=>{
+      const b=document.createElement('button');b.type='button';b.dataset.frame=i;b.dataset.z=f.z;b.textContent='z = '+ztext(f.z);
+      b.addEventListener('click',()=>chooseFrame(i));return b;
+    }));
+  }
+  function loadProjectionImage(url) {
+    if(projectionImages.has(url))return projectionImages.get(url);
+    const record={ready:false};
+    record.promise=new Promise((resolve,reject)=>{
+      const img=new Image();img.onload=()=>{record.ready=true;resolve();};img.onerror=()=>{projectionImages.delete(url);reject(new Error(url));};img.src=url;
+    });
+    projectionImages.set(url,record);return record;
+  }
   function renderProjection() {
-    const f=D.projection.frames[S.frame];
+    const f=projectionFrames()[S.frame],paper=S.projectionSet==='paper';
+    const request=++projectionRequest;
     document.querySelectorAll('#coverage-body tr').forEach(row=>row.classList.toggle('active',nearly(Number(row.dataset.z),f.z)));
     $('redshift').value=S.frame;
     $('redshift-output').textContent='z = '+ztext(f.z);
@@ -383,23 +414,56 @@
     document.querySelectorAll('[data-frame]').forEach(el=>el.classList.toggle('active',Number(el.dataset.frame)===S.frame));
     document.querySelectorAll('.projection-viewport').forEach(view=>{
       const sprite=view.querySelector('.projection-sprite');
-      sprite.style.backgroundPosition=`${Number(view.dataset.col)*50}% ${f.row*50}%`;
+      const model=MODELS[Number(view.dataset.col)];
+      const url=paper?'assets/projection-clean.png':f.images[model];
+      sprite.style.backgroundImage=`url("${url}")`;
+      sprite.style.backgroundSize=paper?'312% 312%':'100% 100%';
+      sprite.style.backgroundPosition=paper?`${Number(view.dataset.col)*50}% ${f.row*50}%`:'50% 50%';
+      sprite.dataset.source=url;view.dataset.z=f.z;
       sprite.style.transform=`translate(${S.panX*100}%,${S.panY*100}%) scale(${S.zoom})`;
       view.classList.toggle('is-zoomed',S.zoom>1);
     });
+    $('projection-tag').textContent=paper?'论文原图 · 3 个快照':'全粒子网格投影 · '+projectionFrames().length+' 个快照';
+    $('projection-colorbar').hidden=paper;
+    $('projection-note').textContent=paper?'完整盒子沿视线投影；各面板沿用论文的独立色标，颜色用于形态比较。缩放后拖动可同步查看同一区域。':'三个主模型均使用全部粒子沿 z 方向作 1024² 周期 CIC 网格投影。同红移共用色标，跨红移分别定标；色标端点外截断显示。可切换到论文原图查看原有平滑投影。';
+    $('projection-snapshot-label').textContent=paper?'论文原图视图':'快照 '+String(f.snapshot).padStart(4,'0')+' · 当前三幅投影';
+    $('projection-downloads').replaceChildren(...(paper?[]:MODELS.map(model=>mediaLink(f.images[model],LABELS[model]+' PNG ↓'))));
+    if(!paper){
+      $('projection-color-min').textContent=fmt(f.color_min);
+      $('projection-color-max').textContent=fmt(f.color_max);
+      $('projection-gradient').style.background='linear-gradient(to right,'+M.projection.gradient.join(',')+')';
+    }
+    const urls=paper?['assets/projection-clean.png']:MODELS.map(model=>f.images[model]);
+    const images=urls.map(loadProjectionImage);
+    const ready=images.every(r=>r.ready);
+    $('projection-loading').hidden=ready;$('projection-grid').classList.toggle('is-loading',!ready);$('load-error').hidden=true;
+    Promise.all(images.map(r=>r.promise)).then(()=>{
+      if(request!==projectionRequest)return;
+      $('projection-loading').hidden=true;$('projection-grid').classList.remove('is-loading');
+    }).catch(()=>{
+      if(request!==projectionRequest)return;
+      $('projection-loading').hidden=true;$('projection-grid').classList.remove('is-loading');
+      $('load-error').hidden=false;$('load-error').textContent='当前投影未能完整加载。请检查网络，或确认 assets/projections 目录与离线页面一同保存。';
+    });
   }
   function chooseFrame(frame, pause=true) {
-    S.frame=Math.max(0,Math.min(2,Number(frame)));
+    S.frame=Math.max(0,Math.min(projectionFrames().length-1,Number(frame)));
     if(pause)stop();
     renderProjection();Object.values(controllers).forEach(controller=>controller.projectionChanged());
   }
   function stop(){if(timer)clearInterval(timer);timer=null;$('play').textContent='▶';$('play').setAttribute('aria-label','播放红移演化');$('play').setAttribute('aria-pressed','false');}
-  function start(){stop();timer=setInterval(()=>chooseFrame((S.frame+1)%3,false),Number($('speed').value));$('play').textContent='Ⅱ';$('play').setAttribute('aria-label','暂停红移演化');$('play').setAttribute('aria-pressed','true');}
+  function start(){stop();timer=setInterval(()=>{if($('projection-loading').hidden)chooseFrame((S.frame+1)%projectionFrames().length,false);},Number($('speed').value));$('play').textContent='Ⅱ';$('play').setAttribute('aria-label','暂停红移演化');$('play').setAttribute('aria-pressed','true');}
   $('play').addEventListener('click',()=>timer?stop():start());
   $('speed').addEventListener('change',()=>{if(timer)start();});
   $('redshift').addEventListener('input',event=>chooseFrame(event.target.value));
-  document.querySelectorAll('[data-frame]').forEach(button=>button.addEventListener('click',()=>chooseFrame(button.dataset.frame)));
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+  $('projection-set').value=S.projectionSet;
+  if(!M)$('projection-set').querySelector('[value=extended]').disabled=true;
+  $('projection-set').addEventListener('change',event=>{
+    stop();const previous=projectionFrames()[S.frame].z;S.projectionSet=event.target.value;
+    S.frame=projectionFrames().reduce((best,f,i)=>Math.abs(f.z-previous)<Math.abs(projectionFrames()[best].z-previous)?i:best,0);
+    renderFrameButtons();chooseFrame(S.frame);
+  });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();document.querySelectorAll('#animation-grid video').forEach(video=>video.pause());}});
   window.addEventListener('scroll',()=>{
     const active=document.activeElement;
     if(active?.classList.contains('point')) {
@@ -423,8 +487,26 @@
   $('library-search').addEventListener('input',renderLibrary);
   $('library-kind').addEventListener('change',renderLibrary);
   $('build-date').textContent='数据打包 '+D.built.slice(0,10)+' · 离线可用';
-  const image=new Image();image.src='assets/projection-clean.png';
-  image.onerror=()=>{$('load-error').hidden=false;$('load-error').textContent='投影图片未加载，请确认 assets/projection-clean.png 与页面一同保存。';};
+  function renderAnimations() {
+    if(!M){$('animations').hidden=true;return;}
+    $('animation-grid').replaceChildren(...M.animations.map(item=>{
+      const card=document.createElement('article');card.className='animation-card';card.dataset.animation=item.id;
+      const heading=document.createElement('div');heading.className='animation-heading';
+      const title=document.createElement('h3');title.textContent=item.title;
+      const badge=document.createElement('span');badge.textContent=item.kind==='rotation'?item.frame_count+' 个视角 · 固定 z = 0':item.frame_count+' 个真实快照';heading.append(title,badge);
+      const video=document.createElement('video');video.controls=true;video.playsInline=true;video.preload='none';video.poster=item.poster;video.width=960;video.height=960;video.setAttribute('aria-label',item.title+'；PL，256 h⁻¹ Mpc，512³ 粒子');
+      for(const [src,type] of [[item.mp4,'video/mp4'],[item.webm,'video/webm']]){const source=document.createElement('source');source.src=src;source.type=type;video.append(source);}
+      const status=document.createElement('output');status.className='animation-status';status.textContent=item.kind==='rotation'?'固定快照 0056 · z = 0':'封面 z = 0 · 播放从 z = '+ztext(item.frames[0].z)+' 开始';
+      const update=()=>{const frame=item.frames.reduce((current,f)=>f.time<=video.currentTime+.001?f:current,item.frames[0]);status.textContent='快照 '+String(frame.snapshot).padStart(4,'0')+' · z = '+ztext(frame.z)+(item.kind==='rotation'?' · 视角旋转':'');status.dataset.z=frame.z;};
+      video.addEventListener('timeupdate',update);video.addEventListener('seeked',update);
+      video.addEventListener('play',()=>{stop();document.querySelectorAll('#animation-grid video').forEach(other=>{if(other!==video)other.pause();});update();});
+      const description=document.createElement('p');description.textContent=item.description;
+      const links=document.createElement('div');links.className='animation-links';
+      for(const [file,label] of [[item.gif,'原 GIF · '+(item.gif_bytes/1e6).toFixed(1)+' MB ↓'],[item.mp4,'下载视频 ↓']])links.append(mediaLink(file,label));
+      const error=document.createElement('p');error.className='animation-error';error.hidden=true;error.textContent='视频未能播放，可以下载原 GIF 查看。';video.addEventListener('error',()=>{error.hidden=false;});
+      card.append(heading,video,status,description,links,error);return card;
+    }));
+  }
   TABS.forEach(topic=>{controllers[topic]=createTopic(topic);});
-  renderCoverage();renderSimulations();renderLibrary();renderProjection();
+  renderFrameButtons();renderCoverage();renderSimulations();renderLibrary();renderProjection();renderAnimations();
 })();
