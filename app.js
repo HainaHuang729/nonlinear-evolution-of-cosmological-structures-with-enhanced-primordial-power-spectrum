@@ -12,12 +12,14 @@
   const MODELS = ['PL', 'kp1', 'kp10'];
   const LABELS = {PL:'PL', kp1:'BT kₚ = 1', kp10:'BT kₚ = 10'};
   const COLORS = {PL:'#53657e', kp1:'#377caf', kp10:'#298773'};
-  const S = {frame:0, tab:'hmf', statsZ:8.52, definition:'fof', box:25, powerComparison:'ratio', mass:1e10, profileMass:1e10, concentrationReference:'none', profileView:'density', meshBox:25, zoom:1, panX:0, panY:0};
-  const TABS=['hmf','power','assembly','structure','input','reliability'];
+  const S = {frame:0, zoom:1, panX:0, panY:0};
+  const projectionState=S;
+  const TOPICS={input:'输入功率谱',hmf:'质量函数',power:'物质功率谱',assembly:'形成历史',structure:'内部结构',reliability:'数值可靠性'};
+  const TABS=Object.keys(TOPICS);
+  const controllers={};
   const RUN_COLORS={'PL-25-1024':'#53657e','PL-25-512':'#377caf','PL-25-256':'#b07c3e','PL-50-512':'#298773'};
   const THEORY_LABELS={diemer19:'Diemer–Joyce19',ishiyama21_fit:'Ishiyama21',ludlow16:'Ludlow16'};
   let timer = null;
-  let downloadRows = [];
   const nearly = (a,b) => Math.abs(a-b)<0.015;
   const ztext = z => Math.abs(z)<0.005 ? '0' : Number(z).toFixed(2);
   const unique = a => [...new Set(a.map(v=>Number(v.toFixed(5))))].sort((a,b)=>b-a);
@@ -45,6 +47,18 @@
     el.style.left=Math.min(Math.max(8,x+14),window.innerWidth-el.offsetWidth-8)+'px';
     el.style.top=Math.min(Math.max(8,y+12),window.innerHeight-el.offsetHeight-8)+'px';
   }
+  function createTopic(topic) {
+    const section=document.getElementById('stats-topic-template').content.firstElementChild.cloneNode(true);
+    section.id='topic-'+topic;
+    section.querySelectorAll('[id]').forEach(el=>{el.dataset.localId=el.id;el.id=topic+'-'+el.id;});
+    [section,...section.querySelectorAll('[for],[aria-labelledby]')].forEach(el=>{
+      for(const attribute of ['for','aria-labelledby'])if(el.hasAttribute(attribute))el.setAttribute(attribute,el.getAttribute(attribute).split(' ').map(id=>topic+'-'+id).join(' '));
+    });
+    document.getElementById('topic-sections').append(section);
+    const $=id=>section.querySelector('[data-local-id="'+id+'"]')||document.getElementById(id);
+    const S={tab:topic,statsZ:8.52,following:true,definition:'fof',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25};
+    let downloadRows=[];
+    $('topic-title').textContent='02.'+(TABS.indexOf(topic)+1)+'  '+TOPICS[topic];
   function chart(id, series, config={}) {
     const host=$(id); host.replaceChildren();
     const W=620,H=338,L=70,R=20,T=25,B=53;
@@ -65,8 +79,8 @@
     const y=n=>H-B-(ty(n)-ymin)/(ymax-ymin)*(H-T-B);
     const svg=elem('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':`${config.title}. 横轴 ${config.xLabel}；纵轴 ${config.yLabel}`});
     const title=elem('title',{},config.title);svg.append(title);
-    const defs=elem('defs');const clip=elem('clipPath',{id:`clip-${id}`});clip.append(elem('rect',{x:L,y:T,width:W-L-R,height:H-T-B}));defs.append(clip);svg.append(defs);
-    const plot=elem('g',{'clip-path':`url(#clip-${id})`});
+    const defs=elem('defs');const clip=elem('clipPath',{id:`clip-${topic}-${id}`});clip.append(elem('rect',{x:L,y:T,width:W-L-R,height:H-T-B}));defs.append(clip);svg.append(defs);
+    const plot=elem('g',{'clip-path':`url(#clip-${topic}-${id})`});
     const ticks=(min,max,log)=>{
       if(log){const arr=[];for(let p=Math.ceil(min);p<=Math.floor(max);p++)arr.push(p);if(arr.length>6)return arr.filter((_,i)=>i%Math.ceil(arr.length/6)===0);if(arr.length>=2)return arr;}
       const raw=(max-min)/4, pow=10**Math.floor(Math.log10(raw));
@@ -139,10 +153,11 @@
     const title=document.createElement('strong');title.textContent=`z = ${ztext(S.statsZ)} 暂无对应数值表`;
     const note=document.createElement('span');note.textContent='选择已有红移查看；投影继续保留当前帧。';
     const choices=document.createElement('div');choices.className='choices';
-    available.forEach(z=>{const b=document.createElement('button');b.type='button';b.textContent='z = '+ztext(z);b.addEventListener('click',()=>{S.statsZ=z;renderStats();});choices.append(b);});
+    available.forEach(z=>{const b=document.createElement('button');b.type='button';b.textContent='z = '+ztext(z);b.addEventListener('click',()=>{S.statsZ=z;S.following=false;renderStats();});choices.append(b);});
     box.append(icon,title,note,choices);$(id).replaceChildren(box);
   }
   function refs(files) {
+    if($('reference-figures').childElementCount)return;
     $('reference-figures').replaceChildren(...files.map(([file,label])=>{
       const a=document.createElement('a');a.href='assets/'+file;a.target='_blank';a.rel='noopener';
       const figure=document.createElement('figure');const img=document.createElement('img');img.src=a.href;img.alt=label;img.loading='lazy';
@@ -154,17 +169,15 @@
   }
   function legend(entries=MODELS.map(model=>({label:LABELS[model],color:COLORS[model]}))) {
     const labels=entries.map(entry=>{const span=document.createElement('span');const dot=document.createElement('i');dot.style.background=entry.color;span.append(dot,document.createTextNode(entry.label));return span;});
-    const note=document.createElement('span');note.id='legend-note';note.className='legend-note';
+    const note=document.createElement('span');note.id=topic+'-legend-note';note.dataset.localId='legend-note';note.className='legend-note';
     $('model-legend').replaceChildren(...labels,note);
   }
   function renderStats() {
     $('tooltip').hidden=true;
-    const projectionZ=D.projection.frames[S.frame].z;
+    const projectionZ=D.projection.frames[projectionState.frame].z;
     TABS.forEach(tab=>{
-      $('tab-'+tab).setAttribute('aria-selected',String(S.tab===tab));$('tab-'+tab).tabIndex=S.tab===tab?0:-1;
       $(tab+'-control').hidden=S.tab!==tab;
     });
-    $('chart-panel').setAttribute('aria-labelledby','tab-'+S.tab);
     $('redshift-control').hidden=['assembly','input'].includes(S.tab);
     const source=S.tab==='hmf'?D.hmf[S.definition]:S.tab==='power'?D.power:S.tab==='reliability'?D.resolution:D.concentration;
     const available=unique(source.map(r=>r.z));
@@ -172,9 +185,9 @@
     $('stats-redshift').replaceChildren(...choices.map(z=>{
       const option=document.createElement('option');option.value=z;option.textContent='z = '+ztext(z)+(available.some(a=>nearly(a,z))?'':' · 暂无统计');option.selected=nearly(z,S.statsZ);return option;
     }));
-    const matching=nearly(S.statsZ,projectionZ);
-    $('sync-status').classList.toggle('is-independent',!matching);
-    $('sync-status').textContent=S.tab==='input'?'输入模型 · 不随投影快照变化':S.tab==='assembly'?'完整形成历史 · 选定最终质量样本':matching?'与投影红移一致':`统计 z = ${ztext(S.statsZ)} · 投影 z = ${ztext(projectionZ)}`;
+    $('sync-status').classList.toggle('is-independent',!S.following);
+    $('follow-projection').setAttribute('aria-pressed',String(S.following));
+    $('sync-status').textContent=S.tab==='input'?'输入模型 · 不随投影快照变化':S.tab==='assembly'?'完整形成历史 · 选定最终质量样本':S.following?'跟随投影 · z = '+ztext(projectionZ):`独立统计 z = ${ztext(S.statsZ)} · 投影 z = ${ztext(projectionZ)}`;
     if(S.tab==='input'||S.tab==='assembly')$('sync-status').classList.remove('is-independent');
     legend(S.tab==='reliability'?Object.entries(RUN_COLORS).map(([label,color])=>({label,color})):undefined);
     const atZ=rows=>rows.filter(r=>nearly(r.z,S.statsZ));
@@ -190,7 +203,7 @@
       setHeading('b','相对于 PL 的丰度',zr,'将论文配套逐 halo 目录按相同固定质量区间重新分箱后计算 BT/PL；误差由双方 Poisson 计数传播。该交互面板采用统一分箱，论文原图见下方。');
       chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Reed07'}))],{title:'Halo 质量函数',xLabel:massLabel,yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,intervalLabel:'Poisson ±1σ',available});
       chart('chart-b',grouped(ratio),{title:'共同质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z))});
-      refs([[S.definition==='fof'?'mass-function.png':'mass-function-m200c-bocquet16.png','论文质量函数图']]);
+      refs([['mass-function.png','论文 FOF 质量函数图'],['mass-function-m200c-bocquet16.png','论文 M₂₀₀c 质量函数图']]);
       downloadRows=[...rows.map(r=>({...r,series:'published_hmf'})),...ratio.map(r=>({...r,series:'shared_bin_BT_over_PL'}))];
     } else if(S.tab==='power') {
       const rows=atZ(D.power).filter(r=>r.box===S.box),ratio=atZ(D.powerRatios).filter(r=>r.box===S.box);
@@ -202,7 +215,7 @@
       setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'直接使用论文发布的同盒子 BT/PL 数据。灰区外保留原始趋势供查看；不跨盒子计算比值。':'每个模型的模拟功率除以该模型对应的 HMcode2020 表值。HMcode 曲线是参考预测，未重新拟合模拟结果。');
       chart('chart-a',[...grouped(rows),...grouped(rows.map(r=>({...r,y:r.theory})),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available});
       chart('chart-b',grouped(comparison),{title:S.powerComparison==='ratio'?'同盒子 BT/PL 功率比':'模拟与 HMcode2020 的功率比',xLabel:'k [h Mpc⁻¹]',yLabel:S.powerComparison==='ratio'?'P_BT / P_PL':'P_sim / P_HMcode2020',baseline:1,trusted,available});
-      refs([['power-spectrum_finite_box.png','论文非线性功率谱图'],['input-power-spectrum.png','输入线性物质功率谱']]);
+      refs([['power-spectrum_finite_box.png','论文非线性功率谱图']]);
       downloadRows=[...rows.map(r=>({...r,series:'power'})),...comparison.map(r=>({...r,series:S.powerComparison==='ratio'?'BT_over_PL':'sim_over_HMcode2020'}))];
     } else if(S.tab==='assembly') {
       const rows=D.assembly.filter(r=>r.mass===S.mass);
@@ -226,8 +239,7 @@
       setHeading('b',S.profileView==='ratio'?'相对于 PL 的径向密度':'直接粒子密度剖面',`固定 z = 0 · ${fmt(S.profileMass)} M☉`,S.profileView==='ratio'?'直接读取发布的 BT/PL 密度比；阴影由两组剖面的 bootstrap 边界构造，并非比值的配对 bootstrap 区间。灰区沿用保守 Power 收敛半径。':'粒子计数得到的中位径向密度；阴影为中位数的 bootstrap 16–84% 区间。左侧灰区采用三个模型中最大的 Power 收敛半径。');
       chart('chart-a',grouped(rows),{title:theoryMode?'浓度与理论参考的比值':'浓度与质量',xLabel:'M₂₀₀c [M☉]',yLabel:theoryMode?'c_sim / c_theory':'c₂₀₀c',bands:true,baseline:theoryMode?1:undefined,trusted:[1.89e9,1e15],available,intervalLabel:theoryMode?'halo 分位数 / 理论值':'halo 16–84%'});
       chart('chart-b',grouped(profiles),{title:S.profileView==='ratio'?'z=0 BT/PL 密度比':'z=0 直接粒子密度剖面',xLabel:'r / R₂₀₀m',yLabel:S.profileView==='ratio'?'ρ_BT / ρ_PL':'ρ [M☉ kpc⁻³]',bands:true,baseline:S.profileView==='ratio'?1:undefined,trusted:[convergence,10],intervalLabel:S.profileView==='ratio'?'bootstrap 边界构造区间':'bootstrap 16–84%'});
-      const referenceFile={none:'concentration-qc-i21-fit.png',ishiyama21_fit:'concentration-qc-i21-fit.png',diemer19:'concentration-qc-d19.png',ludlow16:'concentration-qc-l16.png'}[S.concentrationReference];
-      refs([[referenceFile,'论文浓度–质量关系'],['halo-density-radial-n100-power.png','论文直接粒子密度剖面']]);
+      refs([['concentration-qc-i21-fit.png','论文浓度参考：Ishiyama21'],['concentration-qc-d19.png','论文浓度参考：Diemer–Joyce19'],['concentration-qc-l16.png','论文浓度参考：Ludlow16'],['halo-density-radial-n100-power.png','论文直接粒子密度剖面']]);
       downloadRows=[...rows.map(r=>({...r,series:theoryMode?'concentration_over_theory':'concentration'})),...profiles.map(r=>({...r,series:S.profileView==='ratio'?'density_BT_over_PL':'density_profile'}))];
     } else if(S.tab==='input') {
       const rows=D.inputPower.filter(r=>r.x>=1e-3&&r.x<=1e3),ratios=D.inputRatios.filter(r=>r.x>=1e-3&&r.x<=1e3);
@@ -250,12 +262,38 @@
       setHeading('b','功率谱网格收敛',`固定 z = 0 · L = ${S.meshBox}`,'相同 PL 模拟分别使用 512³ 和 1024³ 功率谱网格；显示源表中的 P₅₁₂/P₁₀₂₄。此处改变的是测量网格，灰区标出论文采用的 k 范围之外。');
       chart('chart-a',series,{title:'FOF 分辨率和体积检查',xLabel:'M_FOF [M☉]',yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,available,intervalLabel:'Poisson ±1σ'});
       chart('chart-b',[{model:'PL',label:'PL · 网格 512³ / 1024³',color:COLORS.PL,points:mesh}],{title:'PL 功率谱网格收敛',xLabel:'k [h Mpc⁻¹]',yLabel:'P_mesh512 / P_mesh1024',yLog:false,baseline:1,trusted});
-      refs([['fof-hmf-resolution-volume.png','论文 FOF 分辨率与体积附录'],['power-spectrum_finite_box.png','论文功率谱采用区间']]);
+      refs([['fof-hmf-resolution-volume.png','论文 FOF 分辨率与体积附录']]);
       downloadRows=[...rows.map(r=>({...r,series:'fof_resolution'})),...mesh.map(r=>({...r,series:'power_mesh_convergence'}))];
     }
-    $('download-data').textContent=downloadRows.length?'下载当前数据 ↓':'当前无可下载数据';
+    $('download-data').textContent=downloadRows.length?'下载本主题数据 ↓':'当前无可下载数据';
     $('download-data').setAttribute('aria-disabled',String(!downloadRows.length));
-    document.querySelectorAll('#coverage-body tr').forEach(row=>row.classList.toggle('active',nearly(Number(row.dataset.z),S.statsZ)));
+  }
+  $('stats-redshift').addEventListener('change',event=>{stop();S.statsZ=Number(event.target.value);S.following=false;renderStats();});
+  $('follow-projection').addEventListener('click',()=>{S.following=true;S.statsZ=D.projection.frames[projectionState.frame].z;renderStats();});
+  $('mass-definition').addEventListener('change',event=>{S.definition=event.target.value;renderStats();});
+  $('box-size').addEventListener('change',event=>{S.box=Number(event.target.value);renderStats();});
+  for(const [id,key] of [['power-comparison','powerComparison'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id).addEventListener('change',event=>{S[key]=event.target.value;renderStats();});
+  $('mesh-box').addEventListener('change',event=>{S.meshBox=Number(event.target.value);renderStats();});
+  for(const [id,rows,key,stateKey] of [['final-mass',D.assembly,'mass','mass'],['profile-mass',D.profiles,'mass','profileMass']]) {
+    $(id).replaceChildren(...[...new Set(rows.map(r=>r[key]))].sort((a,b)=>a-b).map(m=>{const option=document.createElement('option');option.value=m;option.textContent=fmt(m)+' M☉';option.selected=m===S[stateKey];return option;}));
+    $(id).addEventListener('change',event=>{S[stateKey]=Number(event.target.value);renderStats();});
+  }
+  $('download-data').addEventListener('click',event=>{
+    event.preventDefault();
+    if(!downloadRows.length)return;
+    const keys=[...new Set(downloadRows.flatMap(r=>Object.keys(r)))];
+    const quote=value=>'"'+String(value??'').replaceAll('"','""')+'"';
+    const csv='\uFEFF'+[keys.map(quote).join(','),...downloadRows.map(r=>keys.map(k=>quote(r[k])).join(','))].join('\r\n');
+    const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+    const scope=S.tab==='assembly'?'history':S.tab==='input'?'input-models':'z'+ztext(S.statsZ);
+    const a=document.createElement('a');a.href=url;a.download=`article-${S.tab}-${scope}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+  $('download-data').href='#';
+  renderStats();
+  return {
+    projectionChanged(){if(S.following)S.statsZ=D.projection.frames[projectionState.frame].z;renderStats();},
+    select(z,definition){S.statsZ=z;S.following=false;if(definition){S.definition=definition;$('mass-definition').value=definition;}renderStats();section.scrollIntoView();$('topic-title').focus({preventScroll:true});}
+  };
   }
   function renderCoverage() {
     const columns=[
@@ -280,9 +318,7 @@
             if(column.tab==='projection') {
               chooseFrame(D.projection.frames.findIndex(r=>nearly(r.z,z)));$('evolution').scrollIntoView();
             } else {
-              S.tab=column.tab;S.statsZ=z;
-              if(column.definition){S.definition=column.definition;$('mass-definition').value=column.definition;}
-              renderStats();$('statistics').scrollIntoView();$('tab-'+S.tab).focus({preventScroll:true});
+              controllers[column.tab].select(z,column.definition);
             }
           });cell.append(button);
         } else {const unavailable=document.createElement('span');unavailable.className='missing';unavailable.textContent='—';unavailable.setAttribute('aria-label','当前展示包未收录');cell.append(unavailable);}
@@ -339,6 +375,7 @@
   }
   function renderProjection() {
     const f=D.projection.frames[S.frame];
+    document.querySelectorAll('#coverage-body tr').forEach(row=>row.classList.toggle('active',nearly(Number(row.dataset.z),f.z)));
     $('redshift').value=S.frame;
     $('redshift-output').textContent='z = '+ztext(f.z);
     $('redshift').setAttribute('aria-valuetext','红移 '+ztext(f.z));
@@ -354,8 +391,7 @@
   function chooseFrame(frame, pause=true) {
     S.frame=Math.max(0,Math.min(2,Number(frame)));
     if(pause)stop();
-    S.statsZ=D.projection.frames[S.frame].z;
-    renderProjection();renderStats();
+    renderProjection();Object.values(controllers).forEach(controller=>controller.projectionChanged());
   }
   function stop(){if(timer)clearInterval(timer);timer=null;$('play').textContent='▶';$('play').setAttribute('aria-label','播放红移演化');$('play').setAttribute('aria-pressed','false');}
   function start(){stop();timer=setInterval(()=>chooseFrame((S.frame+1)%3,false),Number($('speed').value));$('play').textContent='Ⅱ';$('play').setAttribute('aria-label','暂停红移演化');$('play').setAttribute('aria-pressed','true');}
@@ -364,7 +400,14 @@
   $('redshift').addEventListener('input',event=>chooseFrame(event.target.value));
   document.querySelectorAll('[data-frame]').forEach(button=>button.addEventListener('click',()=>chooseFrame(button.dataset.frame)));
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
-  window.addEventListener('scroll',()=>{$('tooltip').hidden=true;},{passive:true});
+  window.addEventListener('scroll',()=>{
+    const active=document.activeElement;
+    if(active?.classList.contains('point')) {
+      const rect=active.getBoundingClientRect();
+      if(rect.bottom>=0&&rect.top<=window.innerHeight){tooltip(active.getAttribute('aria-label'),active);return;}
+    }
+    $('tooltip').hidden=true;
+  },{passive:true});
   $('zoom').addEventListener('change',event=>{S.zoom=Number(event.target.value);S.panX=0;S.panY=0;renderProjection();});
   $('reset-view').addEventListener('click',()=>{S.zoom=1;S.panX=0;S.panY=0;$('zoom').value='1';renderProjection();});
   const clampPan=()=>{const limit=(S.zoom-1)/2;S.panX=Math.max(-limit,Math.min(limit,S.panX));S.panY=Math.max(-limit,Math.min(limit,S.panY));};
@@ -376,37 +419,12 @@
     view.addEventListener('pointerup',finish);view.addEventListener('pointercancel',finish);
     view.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)||S.zoom<=1)return;event.preventDefault();S.panX+=event.key==='ArrowLeft'?.05:event.key==='ArrowRight'?-.05:0;S.panY+=event.key==='ArrowUp'?.05:event.key==='ArrowDown'?-.05:0;clampPan();renderProjection();});
   });
-  const tabButtons=[...document.querySelectorAll('[role=tab]')];
-  tabButtons.forEach((button,i)=>{
-    button.addEventListener('click',()=>{S.tab=button.dataset.tab;renderStats();});
-    button.addEventListener('keydown',event=>{let index;if(event.key==='ArrowRight')index=(i+1)%tabButtons.length;if(event.key==='ArrowLeft')index=(i+tabButtons.length-1)%tabButtons.length;if(event.key==='Home')index=0;if(event.key==='End')index=tabButtons.length-1;if(index!==undefined){event.preventDefault();tabButtons[index].click();tabButtons[index].focus();}});
-  });
-  $('stats-redshift').addEventListener('change',event=>{stop();S.statsZ=Number(event.target.value);renderStats();});
-  $('follow-projection').addEventListener('click',()=>{S.statsZ=D.projection.frames[S.frame].z;renderStats();});
-  $('mass-definition').addEventListener('change',event=>{S.definition=event.target.value;renderStats();});
-  $('box-size').addEventListener('change',event=>{S.box=Number(event.target.value);renderStats();});
-  for(const [id,key] of [['power-comparison','powerComparison'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id).addEventListener('change',event=>{S[key]=event.target.value;renderStats();});
-  $('mesh-box').addEventListener('change',event=>{S.meshBox=Number(event.target.value);renderStats();});
   $('simulation-filter').addEventListener('change',renderSimulations);
   $('library-search').addEventListener('input',renderLibrary);
   $('library-kind').addEventListener('change',renderLibrary);
-  for(const [id,rows,key,stateKey] of [['final-mass',D.assembly,'mass','mass'],['profile-mass',D.profiles,'mass','profileMass']]) {
-    $(id).replaceChildren(...[...new Set(rows.map(r=>r[key]))].sort((a,b)=>a-b).map(m=>{const option=document.createElement('option');option.value=m;option.textContent=fmt(m)+' M☉';option.selected=m===S[stateKey];return option;}));
-    $(id).addEventListener('change',event=>{S[stateKey]=Number(event.target.value);renderStats();});
-  }
-  $('download-data').addEventListener('click',event=>{
-    event.preventDefault();
-    if(!downloadRows.length)return;
-    const keys=[...new Set(downloadRows.flatMap(r=>Object.keys(r)))];
-    const quote=value=>'"'+String(value??'').replaceAll('"','""')+'"';
-    const csv='\uFEFF'+[keys.map(quote).join(','),...downloadRows.map(r=>keys.map(k=>quote(r[k])).join(','))].join('\r\n');
-    const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
-    const scope=S.tab==='assembly'?'history':S.tab==='input'?'input-models':'z'+ztext(S.statsZ);
-    const a=document.createElement('a');a.href=url;a.download=`article-${S.tab}-${scope}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-  });
-  $('download-data').href='#';
   $('build-date').textContent='数据打包 '+D.built.slice(0,10)+' · 离线可用';
   const image=new Image();image.src='assets/projection-clean.png';
   image.onerror=()=>{$('load-error').hidden=false;$('load-error').textContent='投影图片未加载，请确认 assets/projection-clean.png 与页面一同保存。';};
-  renderCoverage();renderSimulations();renderLibrary();renderProjection();renderStats();
+  TABS.forEach(topic=>{controllers[topic]=createTopic(topic);});
+  renderCoverage();renderSimulations();renderLibrary();renderProjection();
 })();

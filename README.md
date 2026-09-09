@@ -7,7 +7,8 @@ Interactive companion to **Dark Matter Halo Formation with Enhanced Small-Scale 
 This branch hosts the static article site on GitHub Pages. Open `index.html` locally for offline use.
 
 - Matched density projections at z=8.52, 2.03, and 0 with synchronized zoom and pan.
-- Six statistical topics: halo abundance, nonlinear power, assembly, internal structure, input spectra, and numerical reliability.
+- All six statistical topics and eleven article reference figures are expanded together, with per-topic controls and CSV downloads.
+- Independent redshift selections persist while other topics follow projection playback.
 - HMcode2020 comparisons, three concentration references, and radial BT/PL density ratios.
 - Clickable redshift coverage, thirteen simulation configurations, twelve original figures, and nineteen downloadable CSV tables.
 

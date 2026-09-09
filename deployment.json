@@ -1,11 +1,11 @@
 {
-  "version": 2,
+  "version": 3,
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "075626a6665dc2268809ab6dc372239f15afe86f",
-  "created": "2026-09-09T07:46:10.329439+00:00",
-  "local_validation_checks": 139,
+  "parent_commit": "20acf9e26cc7d24eabfecf0eaf8d6feca7dc2297",
+  "created": "2026-09-09T11:08:29.420554+00:00",
+  "local_validation_checks": 113,
   "files": [
     {
       "file": ".nojekyll",
@@ -14,13 +14,13 @@
     },
     {
       "file": "README.md",
-      "sha256": "4da78c004c51751fa7f48725a7e2ec8bbd2fc3f9661f597584ead087e2beecd7",
-      "bytes": 1241
+      "sha256": "a67b2c4341f059252120e1ddd77f29adef3fd9179fdb267044e0033715bf8677",
+      "bytes": 1331
     },
     {
       "file": "app.js",
-      "sha256": "a90cdf0b0c8735217264a8fc7e634b7e64ec5a29d5ab52773eaf07780db255e5",
-      "bytes": 37315
+      "sha256": "00bc9a8bcefa64e61181764886ffeb25c61a2dd3e8cd3d08b44a4c54f348d4ba",
+      "bytes": 38161
     },
     {
       "file": "assets/FONT-LICENSE.txt",
@@ -29,8 +29,8 @@
     },
     {
       "file": "assets/article-sans.woff2",
-      "sha256": "545a2af82b440695c7d1f5e80dc9ac1b457f886cf080b5505cd022efd52e9fae",
-      "bytes": 125056
+      "sha256": "77323eee1049cd340b643a69885ccffb9ab2b9514b5680ac92a0970a01dbc169",
+      "bytes": 126104
     },
     {
       "file": "assets/concentration-qc-d19.png",
@@ -214,13 +214,13 @@
     },
     {
       "file": "index.html",
-      "sha256": "ed7d9e9ac53608cf137f78cfc1d416921e1307707fd1a39cb27d2a09d0e6c991",
-      "bytes": 14691
+      "sha256": "1f05b2773bae79e7ead5ce890e6475ca9db3636310fc1d64c8c7c952180222f4",
+      "bytes": 14471
     },
     {
       "file": "styles.css",
-      "sha256": "a626d6edc6c2c1488019b8a4936b2c0165b56e9ab1f1a458ec4c4d3bb7b76cc7",
-      "bytes": 18065
+      "sha256": "c648f8e028db0b2bc65853670c4396a132076a4336ebb2dc3f9bc62226dc6bc4",
+      "bytes": 19963
     }
   ]
 }
