@@ -12,7 +12,9 @@
   }
   const MODELS = ['PL', 'kp1', 'kp10'];
   const LABELS = {PL:'PL', kp1:'BT kₚ = 1', kp10:'BT kₚ = 10'};
-  const COLORS = {PL:'#53657e', kp1:'#377caf', kp10:'#298773'};
+  const theme=getComputedStyle(document.documentElement);
+  const color=(token,fallback)=>theme.getPropertyValue(token).trim()||fallback;
+  const COLORS = {PL:color('--data-primary','#40443f'),kp1:color('--data-secondary','#3f7d7a'),kp10:color('--data-tertiary','#a84d41')};
   const S = {frame:M?Math.max(0,M.projection.frames.findIndex(f=>Math.abs(f.z-8.52)<.015)):0, projectionSet:M?'extended':'paper', zoom:1, panX:0, panY:0};
   const projectionState=S;
   const projectionFrames=()=>S.projectionSet==='extended'?M.projection.frames:D.projection.frames;
@@ -21,7 +23,7 @@
   const TOPICS={input:'输入功率谱',hmf:'质量函数',power:'物质功率谱',assembly:'形成历史',structure:'内部结构',reliability:'数值可靠性'};
   const TABS=Object.keys(TOPICS);
   const controllers={};
-  const RUN_COLORS={'PL-25-1024':'#53657e','PL-25-512':'#377caf','PL-25-256':'#b07c3e','PL-50-512':'#298773'};
+  const RUN_COLORS={'PL-25-1024':COLORS.PL,'PL-25-512':COLORS.kp1,'PL-25-256':color('--data-fourth','#937633'),'PL-50-512':COLORS.kp10};
   const THEORY_LABELS={diemer19:'Diemer–Joyce19',ishiyama21_fit:'Ishiyama21',ludlow16:'Ludlow16'};
   let timer = null;
   const nearly = (a,b) => Math.abs(a-b)<0.015;
@@ -42,7 +44,8 @@
   };
   const elem = (tag, attrs={}, text) => {
     const el=document.createElementNS('http://www.w3.org/2000/svg',tag);
-    Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));
+    const tones={'#e8ece5':'var(--chart-grid)','#bcc6b6':'var(--chart-axis)','#e9eae5':'var(--background)','#a2ad9c':'var(--chart-axis)','#abb5a3':'var(--chart-axis)','#aeb9a7':'var(--chart-axis)','#b48b50':'var(--orange)','#fff':'var(--surface)'};
+    Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String((k==='stroke'||k==='fill')?(tones[v]||v):v)));
     if(text!==undefined) el.textContent=text;
     return el;
   };
@@ -69,7 +72,7 @@
     const $=id=>section.querySelector('[data-local-id="'+id+'"]')||document.getElementById(id);
     const S={tab:topic,statsZ:projectionFrames()[projectionState.frame].z,following:true,definition:'fof',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25};
     let downloadRows=[];
-    $('topic-title').textContent='02.'+(TABS.indexOf(topic)+1)+'  '+TOPICS[topic];
+    $('topic-title').textContent='03.'+(TABS.indexOf(topic)+1)+'  '+TOPICS[topic];
   function chart(id, series, config={}) {
     const host=$(id); host.replaceChildren();
     const W=620,H=338,L=70,R=20,T=25,B=53;
@@ -409,9 +412,10 @@
     document.querySelectorAll('#coverage-body tr').forEach(row=>row.classList.toggle('active',nearly(Number(row.dataset.z),f.z)));
     $('redshift').value=S.frame;
     $('redshift-output').textContent='z = '+ztext(f.z);
+    window.ScientificModernism?.frameIndex($('snapshot-index'),{items:projectionFrames().map(frame=>({label:'z = '+ztext(frame.z)})),index:S.frame,onSelect:chooseFrame,selectLabel:'选择快照'});
     $('redshift').setAttribute('aria-valuetext','红移 '+ztext(f.z));
     document.querySelectorAll('.frame-z').forEach(el=>{el.textContent='z = '+ztext(f.z);});
-    document.querySelectorAll('[data-frame]').forEach(el=>el.classList.toggle('active',Number(el.dataset.frame)===S.frame));
+    document.querySelectorAll('[data-frame]').forEach(el=>{const active=Number(el.dataset.frame)===S.frame;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});
     document.querySelectorAll('.projection-viewport').forEach(view=>{
       const sprite=view.querySelector('.projection-sprite');
       const model=MODELS[Number(view.dataset.col)];
@@ -507,6 +511,7 @@
       card.append(heading,video,status,description,links,error);return card;
     }));
   }
+  $('redshift').closest('.timeline').dataset.mobileBefore='#projection-grid';
   TABS.forEach(topic=>{controllers[topic]=createTopic(topic);});
   renderFrameButtons();renderCoverage();renderSimulations();renderLibrary();renderProjection();renderAnimations();
 })();

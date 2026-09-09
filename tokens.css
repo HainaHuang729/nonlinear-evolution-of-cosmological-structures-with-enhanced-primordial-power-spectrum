@@ -1,0 +1,74 @@
+/* Retro Aerospace Scientific Modernism · reusable, content-independent tokens. */
+@font-face {
+  font-family: ArticleSans;
+  src: url("assets/article-sans.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --background: #e8e7df;
+  --surface: #f0efe8;
+  --surface-bright: #f7f6f0;
+  --ink: #181a19;
+  --ink-secondary: #62655f;
+  --ink-muted: #73766e;
+  --line: rgba(24,26,25,.18);
+  --line-strong: rgba(24,26,25,.45);
+  --orange: #df5a2e;
+  --orange-ink: #ae3f1b;
+  --cyan: #578f8c;
+  --red: #a84d41;
+  --yellow: #c8a64a;
+  --night: #111311;
+  --on-dark: #e8e7df;
+  --on-dark-secondary: #a8aca3;
+  --line-dark: rgba(232,231,223,.22);
+  --data-primary: #40443f;
+  --data-secondary: #3f7d7a;
+  --data-tertiary: #a84d41;
+  --data-fourth: #937633;
+  --chart-grid: #d9dad1;
+  --chart-axis: #8c9086;
+  --font-sans: Arial, ArticleSans, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "Liberation Mono", "Courier New", ArticleSans, monospace;
+  --font-display: Arial, ArticleSans, sans-serif;
+  --text-hero: clamp(64px, 8.2vw, 132px);
+  --text-section: clamp(36px, 4.25vw, 68px);
+  --text-heading: clamp(24px, 2.3vw, 36px);
+  --text-body: 16px;
+  --text-small: 13px;
+  --text-micro: 10px;
+  --tracking-display: -.055em;
+  --tracking-label: .12em;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 144px;
+  --page-max: 1600px;
+  --page-gutter: clamp(32px, 3.3vw, 48px);
+  --grid-columns: 12;
+  --grid-gap: 24px;
+  --radius: 2px;
+  --rule: 1px;
+  --duration-fast: 180ms;
+  --duration-reveal: 580ms;
+  --ease: cubic-bezier(.2,.65,.25,1);
+  /* Adapter aliases for the existing scientific explorer components. */
+  --sans: var(--font-sans);
+  --serif: var(--font-mono);
+  --paper: var(--background);
+  --muted: var(--ink-secondary);
+  --accent: var(--orange-ink);
+  --pl: var(--data-primary);
+  --kp1: var(--data-secondary);
+  --kp10: var(--data-tertiary);
+}
+@media(max-width:1100px) { :root { --grid-columns:8; --grid-gap:20px; } }
+@media(max-width:720px) { :root { --page-gutter:20px; --grid-columns:1; --grid-gap:20px; --text-body:15px; --text-hero:clamp(46px,10.6vw,76px); } }

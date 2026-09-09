@@ -1,10 +1,10 @@
 {
-  "version": 4,
+  "version": 5,
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "6013406040e33dc2e4c28c4ba3e371b1e4ed00b8",
-  "created": "2026-09-09T12:14:12.530238+00:00",
+  "parent_commit": "be5e137164e04ae1145a8a704eb83bd9536e4e67",
+  "created": "2026-09-09T13:11:45.005368+00:00",
   "local_validation_checks": 169,
   "files": [
     {
@@ -13,14 +13,19 @@
       "bytes": 0
     },
     {
+      "file": "DESIGN-SYSTEM.md",
+      "sha256": "2b4e26ed11adb5d3e44f2301674246c943f3242194644e3c52402baab31c66ab",
+      "bytes": 4828
+    },
+    {
       "file": "README.md",
-      "sha256": "1729df57d7108374ab5ad790a538922553aa1333d52c8c2fde419d6051ad5b14",
-      "bytes": 1714
+      "sha256": "f5f7145cc18e4f1c02285d99bd0defd91f98dd0b06eb87b95fabf76167dbf17c",
+      "bytes": 2058
     },
     {
       "file": "app.js",
-      "sha256": "d9ab804ced673432454c1acc105096a0126f561ca7d3d442a2b726a684b92819",
-      "bytes": 45101
+      "sha256": "3fea2c920ff0292511822a35e0e27a50f899d95d313236e3592defbec57a9b87",
+      "bytes": 45974
     },
     {
       "file": "assets/FONT-LICENSE.txt",
@@ -109,8 +114,8 @@
     },
     {
       "file": "assets/article-sans.woff2",
-      "sha256": "543c52fe8a31579181e01ea5fa09039d01d7a4788706e18c0819c3d2bf487572",
-      "bytes": 136724
+      "sha256": "6995ca0a835d8b1f4bbfaa97d6f22ee5a86e164ca307617855547a6e1f3ed104",
+      "bytes": 141188
     },
     {
       "file": "assets/concentration-qc-d19.png",
@@ -424,8 +429,8 @@
     },
     {
       "file": "index.html",
-      "sha256": "df364e2917cfa6a51090e196ac59f80489949689a27558e34dc2d1c34635c616",
-      "bytes": 15782
+      "sha256": "28900fb18ae9f71a1961f0a6f2154c3d4fd454b1fc0609e8d5a8f4d86a8888bc",
+      "bytes": 17612
     },
     {
       "file": "media.js",
@@ -434,8 +439,18 @@
     },
     {
       "file": "styles.css",
-      "sha256": "1f1aaf038d2f2d3370d89e603efb48779c31eef301097850bc28f597cff39fd3",
-      "bytes": 23121
+      "sha256": "8f0c619d4661d1562008662105375a650a6004a45bcb6d384281379e38fc084e",
+      "bytes": 37014
+    },
+    {
+      "file": "system.js",
+      "sha256": "96227bbab81e618d703f6be2bd2b60fe4ae852b8cd4dc19dab7cb302e2e99e50",
+      "bytes": 7072
+    },
+    {
+      "file": "tokens.css",
+      "sha256": "59887a31f8fc84ca5fb327e6766e5c11a02fa1f840124ac755331a44be70f593",
+      "bytes": 2265
     }
   ]
 }
