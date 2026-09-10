@@ -1,11 +1,11 @@
 {
-  "version": 6,
+  "version": 7,
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "79f5148e0fd7433e949d7ed5d7edfbba6966e50b",
-  "created": "2026-09-10T04:30:51.707087+00:00",
-  "local_validation_checks": 164,
+  "parent_commit": "b4d6b0762f80c61f54fe85ebc735c6c9be46ebda",
+  "created": "2026-09-10T04:42:19.455912+00:00",
+  "local_validation_checks": 166,
   "files": [
     {
       "file": ".nojekyll",
@@ -14,18 +14,18 @@
     },
     {
       "file": "DESIGN-SYSTEM.md",
-      "sha256": "2b4e26ed11adb5d3e44f2301674246c943f3242194644e3c52402baab31c66ab",
-      "bytes": 4828
+      "sha256": "4db41d23563732f61cb4fac541d4eab13e29cc402cd841893918c4533ab1ad94",
+      "bytes": 5076
     },
     {
       "file": "README.md",
-      "sha256": "3daf1058cc8bf4bd08b03b4842e429d37881aa0dfe4026e66504fb2d0ad3fce3",
-      "bytes": 2225
+      "sha256": "f4f58120c4d25315085fe3b192b75310513ca68c7ee8cd7f1e3847030a2514bc",
+      "bytes": 2319
     },
     {
       "file": "app.js",
-      "sha256": "8cac05b2c80e454daca917bf4570dbd2056881533f773b6dc84c762811ad8c0d",
-      "bytes": 46235
+      "sha256": "5188e38eb852a5e0c16076346eba879bdbc8f29e41d7fa35dd133b4edb95a031",
+      "bytes": 44699
     },
     {
       "file": "assets/FONT-LICENSE.txt",
@@ -74,8 +74,8 @@
     },
     {
       "file": "assets/article-sans.woff2",
-      "sha256": "5eb7fe4669380bfa5033acc5ed090704f9844d4e6e912a073e3e14feb30fc65a",
-      "bytes": 142088
+      "sha256": "4599acda984b88e6634dfca38ca08a6a625cf24b8e93406b28eb6947428b1cd3",
+      "bytes": 141660
     },
     {
       "file": "assets/concentration-qc-d19.png",
@@ -389,8 +389,8 @@
     },
     {
       "file": "index.html",
-      "sha256": "9c3cad12c21e175588f216d8af641b35f65947a975bae40148cc73cc8a49e465",
-      "bytes": 17618
+      "sha256": "74a3526ec5ca8f759b7a0639afdc27ca40eda10c245816fcef247e9cb05bb167",
+      "bytes": 18032
     },
     {
       "file": "media.js",
@@ -399,8 +399,8 @@
     },
     {
       "file": "styles.css",
-      "sha256": "61c380f1a13d093ebd979e8dedb5c76ce2bdaf15f85581ee397850b2ceec378b",
-      "bytes": 37083
+      "sha256": "978009716065c6bed0139f0af0df9782d92f524982517e7684ebad6135478589",
+      "bytes": 37942
     },
     {
       "file": "system.js",

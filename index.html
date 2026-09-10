@@ -20,7 +20,7 @@
     <a class="brand" href="#index" aria-label="Structure Atlas · 返回首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>STRUCTURE / ATLAS<span class="brand-sub">暗物质结构演化 · 数据图集</span></span></a>
     <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
     <nav id="site-navigation" aria-label="页面导航"><a href="#evolution"><span>01</span> 空间演化</a><a href="#animations"><span>02</span> 3D 动画</a><a href="#statistics"><span>03</span> 论文统计</a><a href="#data-library"><span>06</span> 图表与数据</a></nav>
-    <span class="header-revision">INTERACTIVE ATLAS<br>EDITION / 06</span>
+    <span class="header-revision">INTERACTIVE ATLAS<br>EDITION / 07</span>
   </header>
   <main>
     <section class="hero page-width" id="index" aria-labelledby="page-title">
@@ -52,7 +52,7 @@
       <div class="animation-grid" id="animation-grid"></div>
     </section>
     <section class="statistics page-width" id="statistics" aria-labelledby="statistics-title">
-      <div class="section-heading"><div><p class="eyebrow muted">03 / MEASURE & COMPARE</p><h2 id="statistics-title">用数据，<br>理解差异。</h2></div><p>六个交互主题与两张精选原图。<br>完整论文图表可在资料目录查看。</p></div>
+      <div class="section-heading"><div><p class="eyebrow muted">03 / MEASURE & COMPARE</p><h2 id="statistics-title">用数据，<br>理解差异。</h2></div><p>六个交互主题，独立选择参数。<br>论文原图统一收录在资料目录。</p></div>
       <nav class="topic-nav" aria-label="跳转到统计主题"><a href="#topic-input">输入功率谱</a><a href="#topic-hmf">质量函数</a><a href="#topic-power">物质功率谱</a><a href="#topic-assembly">形成历史</a><a href="#topic-structure">内部结构</a><a href="#topic-reliability">数值可靠性</a></nav>
       <p class="topics-note">投影红移默认联动各快照统计。单独选择某个主题的红移后，该主题保持独立；点击「跟随投影」恢复联动。悬停或聚焦曲线点可读数。</p>
       <div id="topic-sections"></div>
@@ -62,7 +62,6 @@
       <div class="data-controls"><div id="redshift-control"><label for="stats-redshift">统计红移</label><select id="stats-redshift"></select><button id="follow-projection" type="button" class="text-button">跟随投影</button></div><div id="hmf-control"><label for="mass-definition">质量定义</label><select id="mass-definition"><option value="fof">FOF · Warren 修正</option><option value="m200c">M₂₀₀c</option></select></div><div id="power-control" hidden><label for="box-size">盒子边长</label><select id="box-size"><option value="25">25 h⁻¹ Mpc</option><option value="256">256 h⁻¹ Mpc</option></select><label for="power-comparison">右图</label><select id="power-comparison"><option value="ratio">BT / PL</option><option value="theory">模拟 / HMcode2020</option></select></div><div id="assembly-control" hidden><label for="final-mass">最终质量 M₀</label><select id="final-mass"></select></div><div id="structure-control" hidden><label for="concentration-reference">浓度图</label><select id="concentration-reference"><option value="none">浓度–质量</option><option value="diemer19">相对 Diemer–Joyce19</option><option value="ishiyama21_fit">相对 Ishiyama21</option><option value="ludlow16">相对 Ludlow16</option></select><label for="profile-mass">剖面质量 M₂₀₀m</label><select id="profile-mass"></select><label class="sr-only" for="profile-view">径向剖面展示量</label><select id="profile-view"><option value="density">径向密度</option><option value="ratio">密度 BT / PL</option></select></div><div id="input-control" hidden><span>源表输入线性谱 · m<sub>s</sub> = 1.5</span></div><div id="reliability-control" hidden><label for="mesh-box">网格检查盒子</label><select id="mesh-box"><option value="25">25 h⁻¹ Mpc</option><option value="256">256 h⁻¹ Mpc</option></select></div><span id="sync-status" class="sync-status" aria-live="polite"></span></div>
       <div class="model-legend" id="model-legend"><span><i class="pl"></i>PL</span><span><i class="kp1"></i>BT k<sub>p</sub> = 1</span><span><i class="kp10"></i>BT k<sub>p</sub> = 10</span><span class="legend-note" id="legend-note"></span></div>
       <div id="chart-panel"><p class="science-question" id="science-question"></p><div class="chart-grid"><article class="chart-card"><div class="chart-title"><h4 id="chart-title-a"></h4><span id="chart-meta-a"></span></div><div class="chart" id="chart-a"></div><p class="chart-caption" id="chart-caption-a"></p></article><article class="chart-card"><div class="chart-title"><h4 id="chart-title-b"></h4><span id="chart-meta-b"></span></div><div class="chart" id="chart-b"></div><p class="chart-caption" id="chart-caption-b"></p></article></div></div>
-      <div class="figure-reference"><h4>论文对应原图 <span>FIGURE REFERENCE ↗</span></h4><div id="reference-figures"></div></div>
       </section>
       </template>
     </section>
@@ -78,9 +77,14 @@
     </section>
     <section class="data-library page-width" id="data-library" aria-labelledby="library-title">
       <div class="section-heading"><div><p class="eyebrow muted">06 / OPEN ARCHIVE</p><h2 id="library-title">图表与数值资料</h2></div><p>论文图表和已接入的 CSV 数值表，<br>可独立下载、核对和继续分析。</p></div>
+      <details class="library-disclosure" id="library-disclosure">
+      <summary class="library-summary" aria-controls="library-content"><span><span class="when-closed">展开资料目录</span><span class="when-open">收起资料目录</span></span><span class="technical-label" id="library-total">论文图表 / 数值表</span><span class="disclosure-sign" aria-hidden="true"><span class="when-closed">＋</span><span class="when-open">−</span></span></summary>
+      <div class="library-content" id="library-content">
       <div class="library-controls"><label class="sr-only" for="library-search">搜索图表或数据文件</label><input id="library-search" type="search" placeholder="搜索图表、数据名称或关键词…"><label class="sr-only" for="library-kind">资料类型</label><select id="library-kind"><option value="all">全部资料</option><option value="figure">论文图表</option><option value="data">CSV 数据表</option></select><span id="library-count" aria-live="polite"></span></div>
       <div class="library-grid" id="library-grid"></div>
       <p class="library-empty" id="library-empty" hidden>没有匹配的资料。可以尝试「质量函数」「浓度」「power」等关键词。</p>
+      </div>
+      </details>
     </section>
     <section class="about page-width" id="about" aria-labelledby="about-title"><div class="closing-statement"><p class="technical-label">07 / CONTEXT & PROVENANCE</p><h2 id="about-title">每一次观察，<br>都是新的起点。</h2><span class="closing-index technical-label">THE EXPLORATION CONTINUES</span></div><div class="about-paper"><p class="eyebrow muted">本篇论文的数据窗口</p><p class="paper-title">Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power</p><p>展示小尺度初始功率增强对暗物质结构、halo 形成与内部结构的影响。所有面板保留模型、红移、质量定义和单位。</p><a class="text-button" href="data/provenance.json" download>下载数据来源与校验记录 ↓</a></div><div class="data-notes"><div><span>01</span><p><strong>三个匹配模型</strong>主比较采用相同初始相位的 25 h⁻¹ Mpc、1024³ 粒子模拟。k<sub>p</sub> 的单位为 h Mpc⁻¹。</p></div><div><span>02</span><p><strong>按实际快照展示</strong>扩展投影包含八个真实红移，论文原图模式保留三个红移。统计图支持各自已有的红移；缺失处明确留空，不插值生成快照。</p></div><div><span>03</span><p><strong>保留统计口径</strong>误差、halo 间散布和理论参考分别标注。功率谱默认突出 4k<sub>f</sub> 至 0.25k<sub>Ny</sub> 的论文采用区间。</p></div></div></section>
   </main>

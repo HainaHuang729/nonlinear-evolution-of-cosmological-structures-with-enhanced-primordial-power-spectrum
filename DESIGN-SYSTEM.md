@@ -34,6 +34,9 @@ item supplies a `label`. Values and selection state belong to the consuming app.
   the legacy class name does not imply a bordered card container.
 - `.chart-card`: open chart area with a top rule, title and caption.
 - `.library-item`: numbered archive row, document type, title, filename and action.
+- `.library-disclosure`: a native, initially closed `details` element. Its summary
+  displays the archive count and an open/close label. Keyboard and pointer users
+  can reveal the search, filters and file list; closing retains the current filter.
 - `.about`: quiet dark close with broader spacing and reduced visual density.
 
 The header, hero, section heading, media figure, chart panel, table, index row

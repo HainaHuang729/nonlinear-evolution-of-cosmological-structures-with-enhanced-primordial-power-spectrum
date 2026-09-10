@@ -13,7 +13,8 @@ See [the design system](DESIGN-SYSTEM.md) for components and reuse instructions.
 - Matched density projections at z=8.52, 2.03, and 0 with synchronized zoom and pan.
 - Eight real redshifts in the full-particle projection view, with a shared color scale across models at each redshift; the original three-frame paper view remains available.
 - Two PL-256-512 full-particle animations (rotation and redshift evolution), with controllable MP4/WebM playback and original GIF downloads. Voxel animations are excluded.
-- All six statistical topics remain expanded, with per-topic controls and CSV downloads. Two selected reference figures accompany the mass-function and assembly-history topics; the complete figure collection remains in the archive.
+- All six statistical topics remain expanded, with per-topic controls and CSV downloads. Inline paper reference images are removed; the complete figure collection remains in the archive.
+- The figure and data archive starts collapsed. Expand it to search, filter or download; collapsing it preserves the current filter state.
 - Independent redshift selections persist while other topics follow projection playback.
 - HMcode2020 comparisons, three concentration references, and radial BT/PL density ratios.
 - Clickable redshift coverage, thirteen simulation configurations, twelve original figures, and nineteen downloadable CSV tables.

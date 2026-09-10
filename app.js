@@ -22,7 +22,6 @@
   let projectionRequest=0;
   const TOPICS={input:'输入功率谱',hmf:'质量函数',power:'物质功率谱',assembly:'形成历史',structure:'内部结构',reliability:'数值可靠性'};
   const TABS=Object.keys(TOPICS);
-  const INLINE_FIGURES=new Set(['mass-function.png','mass-assembly-history-correa.png']);
   const controllers={};
   const RUN_COLORS={'PL-25-1024':COLORS.PL,'PL-25-512':COLORS.kp1,'PL-25-256':color('--data-fourth','#937633'),'PL-50-512':COLORS.kp10};
   const THEORY_LABELS={diemer19:'Diemer–Joyce19',ishiyama21_fit:'Ishiyama21',ludlow16:'Ludlow16'};
@@ -171,16 +170,6 @@
     available.forEach(z=>{const b=document.createElement('button');b.type='button';b.textContent='z = '+ztext(z);b.addEventListener('click',()=>{S.statsZ=z;S.following=false;renderStats();});choices.append(b);});
     box.append(icon,title,note,choices);$(id).replaceChildren(box);
   }
-  function refs(files) {
-    if($('reference-figures').childElementCount)return;
-    const selected=files.filter(([file])=>INLINE_FIGURES.has(file));
-    $('reference-figures').closest('.figure-reference').hidden=selected.length===0;
-    $('reference-figures').replaceChildren(...selected.map(([file,label])=>{
-      const a=document.createElement('a');a.href='assets/'+file;a.target='_blank';a.rel='noopener';
-      const figure=document.createElement('figure');const img=document.createElement('img');img.src=a.href;img.alt=label;img.loading='lazy';
-      const caption=document.createElement('figcaption');caption.textContent=label+' · 点击查看原图';figure.append(img,caption);a.append(figure);return a;
-    }));
-  }
   function setHeading(side,title,meta,caption) {
     $('chart-title-'+side).textContent=title;$('chart-meta-'+side).textContent=meta;$('chart-caption-'+side).textContent=caption;
   }
@@ -220,7 +209,6 @@
       setHeading('b','相对于 PL 的丰度',zr,'将论文配套逐 halo 目录按相同固定质量区间重新分箱后计算 BT/PL；误差由双方 Poisson 计数传播。该交互面板采用统一分箱，论文原图可在资料目录查看。');
       chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Reed07'}))],{title:'Halo 质量函数',xLabel:massLabel,yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,intervalLabel:'Poisson ±1σ',available});
       chart('chart-b',grouped(ratio),{title:'共同质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z))});
-      refs([['mass-function.png','论文 FOF 质量函数图'],['mass-function-m200c-bocquet16.png','论文 M₂₀₀c 质量函数图']]);
       downloadRows=[...rows.map(r=>({...r,series:'published_hmf'})),...ratio.map(r=>({...r,series:'shared_bin_BT_over_PL'}))];
     } else if(S.tab==='power') {
       const rows=atZ(D.power).filter(r=>r.box===S.box),ratio=atZ(D.powerRatios).filter(r=>r.box===S.box);
@@ -232,7 +220,6 @@
       setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'直接使用论文发布的同盒子 BT/PL 数据。灰区外保留原始趋势供查看；不跨盒子计算比值。':'每个模型的模拟功率除以该模型对应的 HMcode2020 表值。HMcode 曲线是参考预测，未重新拟合模拟结果。');
       chart('chart-a',[...grouped(rows),...grouped(rows.map(r=>({...r,y:r.theory})),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available});
       chart('chart-b',grouped(comparison),{title:S.powerComparison==='ratio'?'同盒子 BT/PL 功率比':'模拟与 HMcode2020 的功率比',xLabel:'k [h Mpc⁻¹]',yLabel:S.powerComparison==='ratio'?'P_BT / P_PL':'P_sim / P_HMcode2020',baseline:1,trusted,available});
-      refs([['power-spectrum_finite_box.png','论文非线性功率谱图']]);
       downloadRows=[...rows.map(r=>({...r,series:'power'})),...comparison.map(r=>({...r,series:S.powerComparison==='ratio'?'BT_over_PL':'sim_over_HMcode2020'}))];
     } else if(S.tab==='assembly') {
       const rows=D.assembly.filter(r=>r.mass===S.mass);
@@ -242,7 +229,6 @@
       setHeading('b','半质量形成红移','z = 0 选样','按最终 FOF 质量分组，显示 z₁/₂ 中位数与 halo 间 16–84% 分位数。该面板不随当前投影红移改写样本。');
       chart('chart-a',grouped(rows),{title:'质量组装历史',xLabel:'红移 z',yLabel:'median[M(z) / M₀]',xLog:false,bands:true,marker:projectionZ,intervalLabel:'halo 16–84%'});
       chart('chart-b',grouped(D.halfmass),{title:'半质量形成红移',xLabel:'最终 M_FOF [M☉]',yLabel:'z₁/₂',yLog:false,bands:true,intervalLabel:'halo 16–84%'});
-      refs([['mass-assembly-history-correa.png','论文质量组装历史图'],['halfmass-redshift-trackid-no-envelope.png','论文半质量形成红移图']]);
       downloadRows=[...rows.map(r=>({...r,series:'assembly'})),...D.halfmass.map(r=>({...r,series:'half_mass_redshift'}))];
     } else if(S.tab==='structure') {
       const theoryMode=S.concentrationReference!=='none';
@@ -256,7 +242,6 @@
       setHeading('b',S.profileView==='ratio'?'相对于 PL 的径向密度':'直接粒子密度剖面',`固定 z = 0 · ${fmt(S.profileMass)} M☉`,S.profileView==='ratio'?'直接读取发布的 BT/PL 密度比；阴影由两组剖面的 bootstrap 边界构造，并非比值的配对 bootstrap 区间。灰区沿用保守 Power 收敛半径。':'粒子计数得到的中位径向密度；阴影为中位数的 bootstrap 16–84% 区间。左侧灰区采用三个模型中最大的 Power 收敛半径。');
       chart('chart-a',grouped(rows),{title:theoryMode?'浓度与理论参考的比值':'浓度与质量',xLabel:'M₂₀₀c [M☉]',yLabel:theoryMode?'c_sim / c_theory':'c₂₀₀c',bands:true,baseline:theoryMode?1:undefined,trusted:[1.89e9,1e15],available,intervalLabel:theoryMode?'halo 分位数 / 理论值':'halo 16–84%'});
       chart('chart-b',grouped(profiles),{title:S.profileView==='ratio'?'z=0 BT/PL 密度比':'z=0 直接粒子密度剖面',xLabel:'r / R₂₀₀m',yLabel:S.profileView==='ratio'?'ρ_BT / ρ_PL':'ρ [M☉ kpc⁻³]',bands:true,baseline:S.profileView==='ratio'?1:undefined,trusted:[convergence,10],intervalLabel:S.profileView==='ratio'?'bootstrap 边界构造区间':'bootstrap 16–84%'});
-      refs([['concentration-qc-i21-fit.png','论文浓度参考：Ishiyama21'],['concentration-qc-d19.png','论文浓度参考：Diemer–Joyce19'],['concentration-qc-l16.png','论文浓度参考：Ludlow16'],['halo-density-radial-n100-power.png','论文直接粒子密度剖面']]);
       downloadRows=[...rows.map(r=>({...r,series:theoryMode?'concentration_over_theory':'concentration'})),...profiles.map(r=>({...r,series:S.profileView==='ratio'?'density_BT_over_PL':'density_profile'}))];
     } else if(S.tab==='input') {
       const rows=D.inputPower.filter(r=>r.x>=1e-3&&r.x<=1e3),ratios=D.inputRatios.filter(r=>r.x>=1e-3&&r.x<=1e3);
@@ -267,7 +252,6 @@
       setHeading('b','输入谱相对于 PL 的增强','相同 k 采样点','在源表完全相同的 k 采样点计算 BT/PL，没有插值或外推。kₚ = 1 与 10 h Mpc⁻¹，两个 BT 模型均采用 mₛ = 1.5。');
       chart('chart-a',grouped(rows),{title:'输入线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P_input(k) [(Mpc/h)³]',vlines:pivots});
       chart('chart-b',grouped(ratios),{title:'输入谱 BT/PL',xLabel:'k [h Mpc⁻¹]',yLabel:'P_input,BT / P_input,PL',baseline:1,vlines:pivots});
-      refs([['input-power-spectrum.png','论文输入功率谱图']]);
       downloadRows=[...rows.map(r=>({...r,series:'input_linear_power'})),...ratios.map(r=>({...r,series:'input_BT_over_PL'}))];
     } else if(S.tab==='reliability') {
       const rows=atZ(D.resolution),mesh=D.meshConvergence.filter(r=>r.box===S.meshBox);
@@ -279,7 +263,6 @@
       setHeading('b','功率谱网格收敛',`固定 z = 0 · L = ${S.meshBox}`,'相同 PL 模拟分别使用 512³ 和 1024³ 功率谱网格；显示源表中的 P₅₁₂/P₁₀₂₄。此处改变的是测量网格，灰区标出论文采用的 k 范围之外。');
       chart('chart-a',series,{title:'FOF 分辨率和体积检查',xLabel:'M_FOF [M☉]',yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,available,intervalLabel:'Poisson ±1σ'});
       chart('chart-b',[{model:'PL',label:'PL · 网格 512³ / 1024³',color:COLORS.PL,points:mesh}],{title:'PL 功率谱网格收敛',xLabel:'k [h Mpc⁻¹]',yLabel:'P_mesh512 / P_mesh1024',yLog:false,baseline:1,trusted});
-      refs([['fof-hmf-resolution-volume.png','论文 FOF 分辨率与体积附录']]);
       downloadRows=[...rows.map(r=>({...r,series:'fof_resolution'})),...mesh.map(r=>({...r,series:'power_mesh_convergence'}))];
     }
     $('download-data').textContent=downloadRows.length?'下载本主题数据 ↓':'当前无可下载数据';
@@ -377,6 +360,7 @@
     'power_spectrum_mesh_convergence_z0.csv':'z=0 功率谱网格收敛检查'
   };
   function renderLibrary() {
+    $('library-total').textContent=D.figures.length+' 张图表 / '+D.downloads.length+' 份数值表';
     const query=$('library-search').value.trim().toLowerCase(),kind=$('library-kind').value;
     const items=[...D.figures.map(r=>({...r,kind:'figure',name:r.file.split('/').pop()})),...D.downloads.map(r=>({...r,kind:'data',title:DATA_LABELS[r.name]||r.name}))];
     const selected=items.filter(r=>(kind==='all'||r.kind===kind)&&`${r.title} ${r.name} ${r.category||''}`.toLowerCase().includes(query));
