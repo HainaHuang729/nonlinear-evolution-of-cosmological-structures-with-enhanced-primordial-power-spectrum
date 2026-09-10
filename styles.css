@@ -134,6 +134,7 @@ footer.page-width{max-width:none;display:flex;align-items:baseline;justify-conte
 }
 @media(max-width:720px){.timeline{top:var(--header-height,74px);bottom:auto;margin-top:0;margin-bottom:24px}}
 @media(max-width:360px){.run-facts .technical-label{font-size:7px}.brand{font-size:12px}.brand-sub{font-size:8px}.navigation-toggle{font-size:11px;gap:10px}.projection-card figcaption{font-size:12px}.model-desc{font-size:9px}.viewer-heading .tag{font-size:8px}}
+.figure-reference>div>a:only-child{grid-column:1/-1;max-width:680px}
 html:not(.js) .navigation-toggle{display:none}html:not(.js) .topbar nav{display:flex}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal-pending,.reveal-visible{opacity:1;transform:none}}
 @media print{

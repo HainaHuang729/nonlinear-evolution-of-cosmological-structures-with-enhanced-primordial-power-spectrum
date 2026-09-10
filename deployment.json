@@ -1,11 +1,11 @@
 {
-  "version": 5,
+  "version": 6,
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "be5e137164e04ae1145a8a704eb83bd9536e4e67",
-  "created": "2026-09-09T13:11:45.005368+00:00",
-  "local_validation_checks": 169,
+  "parent_commit": "79f5148e0fd7433e949d7ed5d7edfbba6966e50b",
+  "created": "2026-09-10T04:30:51.707087+00:00",
+  "local_validation_checks": 164,
   "files": [
     {
       "file": ".nojekyll",
@@ -19,13 +19,13 @@
     },
     {
       "file": "README.md",
-      "sha256": "f5f7145cc18e4f1c02285d99bd0defd91f98dd0b06eb87b95fabf76167dbf17c",
-      "bytes": 2058
+      "sha256": "3daf1058cc8bf4bd08b03b4842e429d37881aa0dfe4026e66504fb2d0ad3fce3",
+      "bytes": 2225
     },
     {
       "file": "app.js",
-      "sha256": "3fea2c920ff0292511822a35e0e27a50f899d95d313236e3592defbec57a9b87",
-      "bytes": 45974
+      "sha256": "8cac05b2c80e454daca917bf4570dbd2056881533f773b6dc84c762811ad8c0d",
+      "bytes": 46235
     },
     {
       "file": "assets/FONT-LICENSE.txt",
@@ -73,49 +73,9 @@
       "bytes": 6863124
     },
     {
-      "file": "assets/animations/volume-evolution-poster.jpg",
-      "sha256": "06947ea166df998462d4060cadcdeb33efdd9ed2f115531121e36e6f2557af36",
-      "bytes": 104331
-    },
-    {
-      "file": "assets/animations/volume-evolution.gif",
-      "sha256": "b32657a39dbe4a2f3786ece6629b64b3f880dde9554dfe423ed54fa309c1f9e2",
-      "bytes": 33183995
-    },
-    {
-      "file": "assets/animations/volume-evolution.mp4",
-      "sha256": "3add413c06a82c51de5806416a3f1205fc2e69eea307960ffb9a1c29c516f696",
-      "bytes": 1508507
-    },
-    {
-      "file": "assets/animations/volume-evolution.webm",
-      "sha256": "69f8212c7d1869edc226b221d43d96e8588d47a07e5d7dd1c0da2c78bdb1c227",
-      "bytes": 734041
-    },
-    {
-      "file": "assets/animations/volume-rotation-poster.jpg",
-      "sha256": "72d761ada2491108dd8e61755d19a47683b6f483a31bb1acc3ed9faa29245060",
-      "bytes": 121523
-    },
-    {
-      "file": "assets/animations/volume-rotation.gif",
-      "sha256": "c329518d024dfe39f6d064939eafc9d48bcde5a16490ec37ba528279df985e99",
-      "bytes": 72585049
-    },
-    {
-      "file": "assets/animations/volume-rotation.mp4",
-      "sha256": "fbadd240a513d49829f357f38d77e7570a9d36a1d87bf94c4799d6c3515d9c72",
-      "bytes": 3863801
-    },
-    {
-      "file": "assets/animations/volume-rotation.webm",
-      "sha256": "df60450e9c97142e570ac6cedaa225ce4fa66bb7a43dec5899d81d0cc5d7273e",
-      "bytes": 1580274
-    },
-    {
       "file": "assets/article-sans.woff2",
-      "sha256": "6995ca0a835d8b1f4bbfaa97d6f22ee5a86e164ca307617855547a6e1f3ed104",
-      "bytes": 141188
+      "sha256": "5eb7fe4669380bfa5033acc5ed090704f9844d4e6e912a073e3e14feb30fc65a",
+      "bytes": 142088
     },
     {
       "file": "assets/concentration-qc-d19.png",
@@ -359,13 +319,13 @@
     },
     {
       "file": "data/media-data.json",
-      "sha256": "2e1a51506d60be5162ae29b8e71c7fd9133f724bf7c449d69e7b690249e2c4eb",
-      "bytes": 37797
+      "sha256": "2f80dab7b60b112842904f2db605d7108634dd0db77867533d49a584ca5e769d",
+      "bytes": 20552
     },
     {
       "file": "data/media-provenance.json",
-      "sha256": "02b6803ee234e9ea016ef6cf4b8dc648049dfa111fe38a3cd034b3d9a6a16dee",
-      "bytes": 144846
+      "sha256": "f176cb70e6a909854330223eebf7728da4a407f27bffbc2c71238b83d90225a6",
+      "bytes": 143642
     },
     {
       "file": "data/page-data.json",
@@ -429,18 +389,18 @@
     },
     {
       "file": "index.html",
-      "sha256": "28900fb18ae9f71a1961f0a6f2154c3d4fd454b1fc0609e8d5a8f4d86a8888bc",
-      "bytes": 17612
+      "sha256": "9c3cad12c21e175588f216d8af641b35f65947a975bae40148cc73cc8a49e465",
+      "bytes": 17618
     },
     {
       "file": "media.js",
-      "sha256": "32ca94a7c72ee573b5dd9014c95c739e5f958a4282e6b574f8ba995fd31465cb",
-      "bytes": 19115
+      "sha256": "e8fb726b1cc17b8bdaf0b5c70a0132e8ff51db3b5dc486317715f39fabc5b254",
+      "bytes": 10690
     },
     {
       "file": "styles.css",
-      "sha256": "8f0c619d4661d1562008662105375a650a6004a45bcb6d384281379e38fc084e",
-      "bytes": 37014
+      "sha256": "61c380f1a13d093ebd979e8dedb5c76ce2bdaf15f85581ee397850b2ceec378b",
+      "bytes": 37083
     },
     {
       "file": "system.js",

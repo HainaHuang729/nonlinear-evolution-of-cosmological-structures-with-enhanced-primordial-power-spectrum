@@ -1,5 +1,5 @@
 {
-  "built": "2026-09-09T12:01:36.227227+00:00",
+  "built": "2026-09-10T04:26:32.785558+00:00",
   "description": "Additional real-snapshot projections for the article main simulations and existing PL auxiliary animations.",
   "projection_checks": [
     {
@@ -3589,26 +3589,10 @@
       "kind": "rotation"
     },
     {
-      "file": "assets/animations/volume-rotation.gif",
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/volume_density_grid/PL_512_0056_volume_density_grid384_p80_1600px_noflash_rotation.gif",
-      "sha256": "c329518d024dfe39f6d064939eafc9d48bcde5a16490ec37ba528279df985e99",
-      "bytes": 72585049,
-      "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
-      "kind": "rotation"
-    },
-    {
       "file": "assets/animations/particle-evolution.gif",
       "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/full_particle_projection/oblique_slow.gif",
       "sha256": "32664cbe93e2021e0aa7f54bb6afcff44fb2ced18789a495833a582ff14d968d",
       "bytes": 37421044,
-      "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
-      "kind": "evolution"
-    },
-    {
-      "file": "assets/animations/volume-evolution.gif",
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/volume_density_grid/PL_512_0000_0056_volume_density_grid256_p70_fixed_view.gif",
-      "sha256": "b32657a39dbe4a2f3786ece6629b64b3f880dde9554dfe423ed54fa309c1f9e2",
-      "bytes": 33183995,
       "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
       "kind": "evolution"
     }

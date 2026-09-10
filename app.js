@@ -22,6 +22,7 @@
   let projectionRequest=0;
   const TOPICS={input:'输入功率谱',hmf:'质量函数',power:'物质功率谱',assembly:'形成历史',structure:'内部结构',reliability:'数值可靠性'};
   const TABS=Object.keys(TOPICS);
+  const INLINE_FIGURES=new Set(['mass-function.png','mass-assembly-history-correa.png']);
   const controllers={};
   const RUN_COLORS={'PL-25-1024':COLORS.PL,'PL-25-512':COLORS.kp1,'PL-25-256':color('--data-fourth','#937633'),'PL-50-512':COLORS.kp10};
   const THEORY_LABELS={diemer19:'Diemer–Joyce19',ishiyama21_fit:'Ishiyama21',ludlow16:'Ludlow16'};
@@ -172,7 +173,9 @@
   }
   function refs(files) {
     if($('reference-figures').childElementCount)return;
-    $('reference-figures').replaceChildren(...files.map(([file,label])=>{
+    const selected=files.filter(([file])=>INLINE_FIGURES.has(file));
+    $('reference-figures').closest('.figure-reference').hidden=selected.length===0;
+    $('reference-figures').replaceChildren(...selected.map(([file,label])=>{
       const a=document.createElement('a');a.href='assets/'+file;a.target='_blank';a.rel='noopener';
       const figure=document.createElement('figure');const img=document.createElement('img');img.src=a.href;img.alt=label;img.loading='lazy';
       const caption=document.createElement('figcaption');caption.textContent=label+' · 点击查看原图';figure.append(img,caption);a.append(figure);return a;
@@ -214,7 +217,7 @@
       $('science-question').textContent='小尺度功率增强后，同一质量范围内的 halo 数量如何变化？';
       $('legend-note').textContent=S.definition==='fof'?'虚线：Reed07 理论参考；误差：Poisson':'误差：Poisson 计数不确定性';
       setHeading('a',S.definition==='fof'?'FOF halo 质量函数':'M₂₀₀c halo 质量函数',zr,`直接读取论文中的质量函数点。质量下限 ${fmt(threshold)} M☉；横轴保留源表中的质量坐标。`);
-      setHeading('b','相对于 PL 的丰度',zr,'将论文配套逐 halo 目录按相同固定质量区间重新分箱后计算 BT/PL；误差由双方 Poisson 计数传播。该交互面板采用统一分箱，论文原图见下方。');
+      setHeading('b','相对于 PL 的丰度',zr,'将论文配套逐 halo 目录按相同固定质量区间重新分箱后计算 BT/PL；误差由双方 Poisson 计数传播。该交互面板采用统一分箱，论文原图可在资料目录查看。');
       chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Reed07'}))],{title:'Halo 质量函数',xLabel:massLabel,yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,intervalLabel:'Poisson ±1σ',available});
       chart('chart-b',grouped(ratio),{title:'共同质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z))});
       refs([['mass-function.png','论文 FOF 质量函数图'],['mass-function-m200c-bocquet16.png','论文 M₂₀₀c 质量函数图']]);
