@@ -395,6 +395,7 @@
   }
   function renderProjection() {
     const f=projectionFrames()[S.frame],paper=S.projectionSet==='paper';
+    const imageURL=url=>paper?url:url+'?method='+encodeURIComponent(M.projection.method);
     const request=++projectionRequest;
     document.querySelectorAll('#coverage-body tr').forEach(row=>row.classList.toggle('active',nearly(Number(row.dataset.z),f.z)));
     $('redshift').value=S.frame;
@@ -407,25 +408,19 @@
       const sprite=view.querySelector('.projection-sprite');
       const model=MODELS[Number(view.dataset.col)];
       const url=paper?'assets/projection-clean.png':f.images[model];
-      sprite.style.backgroundImage=`url("${url}")`;
+      sprite.style.backgroundImage=`url("${imageURL(url)}")`;
       sprite.style.backgroundSize=paper?'312% 312%':'100% 100%';
       sprite.style.backgroundPosition=paper?`${Number(view.dataset.col)*50}% ${f.row*50}%`:'50% 50%';
       sprite.dataset.source=url;view.dataset.z=f.z;
       sprite.style.transform=`translate(${S.panX*100}%,${S.panY*100}%) scale(${S.zoom})`;
       view.classList.toggle('is-zoomed',S.zoom>1);
     });
-    $('projection-tag').textContent=paper?'论文原图 · 3 个快照':'全粒子网格投影 · '+projectionFrames().length+' 个快照';
-    $('projection-colorbar').hidden=paper;
-    $('projection-note').textContent=paper?'完整盒子沿视线投影；各面板沿用论文的独立色标，颜色用于形态比较。缩放后拖动可同步查看同一区域。':'三个主模型均使用全部粒子沿 z 方向作 1024² 周期 CIC 网格投影。同红移共用色标，跨红移分别定标；色标端点外截断显示。可切换到论文原图查看原有平滑投影。';
+    $('projection-tag').textContent=paper?'论文原图 · 3 个快照':'论文方法投影 · '+projectionFrames().length+' 个快照';
+    $('projection-note').textContent=paper?'完整盒子沿视线投影；各面板沿用论文的独立色标，颜色用于形态比较。缩放后拖动可同步查看同一区域。':'三个主模型均使用全部粒子沿 z 方向作 1024² 自适应平滑投影，与论文采用相同参数（57 邻居，kernel_gamma = 1.8）。投影质量取对数，各面板独立定标；颜色用于形态比较，不能直接作跨面板的绝对密度比较。';
     $('projection-snapshot-label').textContent=paper?'论文原图视图':'快照 '+String(f.snapshot).padStart(4,'0')+' · 当前三幅投影';
     $('projection-downloads').replaceChildren(...(paper?[]:MODELS.map(model=>mediaLink(f.images[model],LABELS[model]+' PNG ↓'))));
-    if(!paper){
-      $('projection-color-min').textContent=fmt(f.color_min);
-      $('projection-color-max').textContent=fmt(f.color_max);
-      $('projection-gradient').style.background='linear-gradient(to right,'+M.projection.gradient.join(',')+')';
-    }
     const urls=paper?['assets/projection-clean.png']:MODELS.map(model=>f.images[model]);
-    const images=urls.map(loadProjectionImage);
+    const images=urls.map(url=>loadProjectionImage(imageURL(url)));
     const ready=images.every(r=>r.ready);
     $('projection-loading').hidden=ready;$('projection-grid').classList.toggle('is-loading',!ready);$('load-error').hidden=true;
     Promise.all(images.map(r=>r.promise)).then(()=>{

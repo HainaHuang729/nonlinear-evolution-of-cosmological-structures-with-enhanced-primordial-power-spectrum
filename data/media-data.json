@@ -1,12 +1,18 @@
 {
-  "version": 1,
-  "built": "2026-09-10T04:26:32.785558+00:00",
+  "version": 2,
+  "built": "2026-09-10T08:08:18.091134+00:00",
   "projection": {
-    "method": "periodic_CIC_all_particles_1024",
+    "method": "swiftsimio_paper_adaptive_1024",
     "grid": 1024,
     "box_hinv_mpc": 25,
     "particles_per_model": 1073741824,
-    "normalization": "shared_per_redshift",
+    "normalization": "independent_per_panel",
+    "smoothing": {
+      "kernel_gamma": 1.8,
+      "neighbours": 57,
+      "speedup_fac": 2,
+      "dimension": 3
+    },
     "frames": [
       {
         "snapshot": 24,
@@ -16,8 +22,20 @@
           "kp1": "assets/projections/kp1-0024.png",
           "kp10": "assets/projections/kp10-0024.png"
         },
-        "color_min": 0.726348916904316,
-        "color_max": 1.4803197782151116
+        "panel_scales": {
+          "PL": {
+            "log10_min": 5.1676926612854,
+            "log10_max": 5.485002517700195
+          },
+          "kp1": {
+            "log10_min": 5.0951361656188965,
+            "log10_max": 5.767838478088379
+          },
+          "kp10": {
+            "log10_min": 5.159488677978516,
+            "log10_max": 5.506748199462891
+          }
+        }
       },
       {
         "snapshot": 27,
@@ -27,8 +45,20 @@
           "kp1": "assets/projections/kp1-0027.png",
           "kp10": "assets/projections/kp10-0027.png"
         },
-        "color_min": 0.6500399151313946,
-        "color_max": 1.8415432317796603
+        "panel_scales": {
+          "PL": {
+            "log10_min": 5.123674392700195,
+            "log10_max": 5.772770404815674
+          },
+          "kp1": {
+            "log10_min": 5.02349328994751,
+            "log10_max": 6.063347816467285
+          },
+          "kp10": {
+            "log10_min": 5.113340377807617,
+            "log10_max": 5.783832550048828
+          }
+        }
       },
       {
         "snapshot": 30,
@@ -38,8 +68,20 @@
           "kp1": "assets/projections/kp1-0030.png",
           "kp10": "assets/projections/kp10-0030.png"
         },
-        "color_min": 0.5609290531531493,
-        "color_max": 2.5196962967163534
+        "panel_scales": {
+          "PL": {
+            "log10_min": 5.054487228393555,
+            "log10_max": 6.120266914367676
+          },
+          "kp1": {
+            "log10_min": 4.921507835388184,
+            "log10_max": 6.367389678955078
+          },
+          "kp10": {
+            "log10_min": 5.045029163360596,
+            "log10_max": 6.14601469039917
+          }
+        }
       },
       {
         "snapshot": 32,
@@ -49,8 +91,20 @@
           "kp1": "assets/projections/kp1-0032.png",
           "kp10": "assets/projections/kp10-0032.png"
         },
-        "color_min": 0.4951661447556589,
-        "color_max": 3.263919975494294
+        "panel_scales": {
+          "PL": {
+            "log10_min": 4.991894245147705,
+            "log10_max": 6.330916881561279
+          },
+          "kp1": {
+            "log10_min": 4.833475589752197,
+            "log10_max": 6.582946300506592
+          },
+          "kp10": {
+            "log10_min": 4.970252513885498,
+            "log10_max": 6.320333480834961
+          }
+        }
       },
       {
         "snapshot": 40,
@@ -60,8 +114,20 @@
           "kp1": "assets/projections/kp1-0040.png",
           "kp10": "assets/projections/kp10-0040.png"
         },
-        "color_min": 0.2510725081861053,
-        "color_max": 10.212330123629794
+        "panel_scales": {
+          "PL": {
+            "log10_min": 4.763721466064453,
+            "log10_max": 7.2208662033081055
+          },
+          "kp1": {
+            "log10_min": 4.544163703918457,
+            "log10_max": 7.2317938804626465
+          },
+          "kp10": {
+            "log10_min": 4.731573104858398,
+            "log10_max": 7.219814300537109
+          }
+        }
       },
       {
         "snapshot": 44,
@@ -71,8 +137,20 @@
           "kp1": "assets/projections/kp1-0044.png",
           "kp10": "assets/projections/kp10-0044.png"
         },
-        "color_min": 0.16300334829389188,
-        "color_max": 17.287839347777282
+        "panel_scales": {
+          "PL": {
+            "log10_min": 4.618688106536865,
+            "log10_max": 7.304703712463379
+          },
+          "kp1": {
+            "log10_min": 4.338802814483643,
+            "log10_max": 7.4313764572143555
+          },
+          "kp10": {
+            "log10_min": 4.546693325042725,
+            "log10_max": 7.28386926651001
+          }
+        }
       },
       {
         "snapshot": 48,
@@ -82,8 +160,20 @@
           "kp1": "assets/projections/kp1-0048.png",
           "kp10": "assets/projections/kp10-0048.png"
         },
-        "color_min": 0.10138117110773692,
-        "color_max": 27.181427882901577
+        "panel_scales": {
+          "PL": {
+            "log10_min": 4.399471759796143,
+            "log10_max": 7.662195682525635
+          },
+          "kp1": {
+            "log10_min": 4.159332275390625,
+            "log10_max": 7.761846542358398
+          },
+          "kp10": {
+            "log10_min": 4.333246231079102,
+            "log10_max": 7.6168599128723145
+          }
+        }
       },
       {
         "snapshot": 56,
@@ -93,28 +183,21 @@
           "kp1": "assets/projections/kp1-0056.png",
           "kp10": "assets/projections/kp10-0056.png"
         },
-        "color_min": 0.04390281272168069,
-        "color_max": 53.40133929092047
+        "panel_scales": {
+          "PL": {
+            "log10_min": 4.110315799713135,
+            "log10_max": 8.107184410095215
+          },
+          "kp1": {
+            "log10_min": 3.819974660873413,
+            "log10_max": 8.017658233642578
+          },
+          "kp10": {
+            "log10_min": 4.069379806518555,
+            "log10_max": 8.116652488708496
+          }
+        }
       }
-    ],
-    "gradient": [
-      "#000003",
-      "#0a0723",
-      "#200c4a",
-      "#3c0965",
-      "#570f6d",
-      "#70196e",
-      "#892269",
-      "#a32b61",
-      "#bb3754",
-      "#d14643",
-      "#e45a31",
-      "#f1721d",
-      "#f98e08",
-      "#fbac10",
-      "#f8cb34",
-      "#f1e968",
-      "#fcfea4"
     ]
   },
   "animations": [

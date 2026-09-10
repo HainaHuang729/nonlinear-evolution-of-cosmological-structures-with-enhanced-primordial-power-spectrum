@@ -9,12 +9,12 @@
   <meta name="theme-color" content="#e8e7df">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
-  <script defer src="locales.js"></script>
+  <script defer src="locales.js?rev=10"></script>
   <script defer src="i18n.js"></script>
   <script defer src="system.js"></script>
   <script defer src="data.js"></script>
-  <script defer src="media.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="media.js?rev=10"></script>
+  <script defer src="app.js?rev=10"></script>
 </head>
 <body>
   <a class="skip" href="#statistics">跳转到统计图</a>
@@ -23,7 +23,7 @@
     <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
     <nav id="site-navigation" aria-label="页面导航"><a href="#evolution"><span>01</span> 空间演化</a><a href="#animations"><span>02</span> 3D 动画</a><a href="#statistics"><span>03</span> 论文统计</a><a href="#data-library"><span>06</span> 图表与数据</a></nav>
     <button class="language-toggle" id="language-toggle" type="button" data-no-i18n lang="en" aria-label="Switch to English">EN</button>
-    <span class="header-revision">INTERACTIVE ATLAS<br>EDITION / 09</span>
+    <span class="header-revision">INTERACTIVE ATLAS<br>EDITION / 10</span>
   </header>
   <main>
     <section class="hero page-width" id="index" aria-labelledby="page-title">
@@ -37,7 +37,7 @@
     </section>
     <section class="evolution" id="evolution" aria-labelledby="projection-title">
       <div class="section-heading viewer-intro"><div><p class="eyebrow">01 / SPATIAL EVOLUTION</p><h2 id="projection-title">让结构显现。</h2></div><p>从高红移到今天，<br>观察三个模型中的同一区域。</p></div>
-      <div class="viewer-heading"><div><span class="technical-label">DENSITY PROJECTION</span><span class="tag dark-tag" id="projection-tag">真实快照投影</span></div><div class="zoom-tools"><label for="projection-set">视图</label><select id="projection-set"><option value="extended">扩展快照 · 全粒子网格投影</option><option value="paper">论文原图 · 3 个快照</option></select><label for="zoom">同步缩放</label><select id="zoom"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3">3×</option></select><button id="reset-view" class="dark-button" type="button">重置视角</button></div></div>
+      <div class="viewer-heading"><div><span class="technical-label">DENSITY PROJECTION</span><span class="tag dark-tag" id="projection-tag">真实快照投影</span></div><div class="zoom-tools"><label for="projection-set">视图</label><select id="projection-set"><option value="extended">扩展快照 · 论文投影方法</option><option value="paper">论文原图 · 3 个快照</option></select><label for="zoom">同步缩放</label><select id="zoom"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3">3×</option></select><button id="reset-view" class="dark-button" type="button">重置视角</button></div></div>
       <div class="projection-grid" id="projection-grid">
         <figure class="projection-card"><figcaption><div><span class="model-dot pl"></span><strong>PL</strong><span class="model-desc">基准功率律</span></div><span class="frame-z"></span></figcaption><div class="projection-viewport" tabindex="0" data-col="0" role="img" aria-label="PL 密度投影；缩放后可拖动或使用方向键平移"><div class="projection-sprite"></div><div class="image-corner">PL <span class="frame-z"></span></div></div></figure>
         <figure class="projection-card"><figcaption><div><span class="model-dot kp1"></span><strong>BT <i>k</i><sub>p</sub> = 1</strong><span class="model-desc">m<sub>s</sub> = 1.5</span></div><span class="frame-z"></span></figcaption><div class="projection-viewport" tabindex="0" data-col="1" role="img" aria-label="BT kp=1 密度投影；缩放后可拖动或使用方向键平移"><div class="projection-sprite"></div><div class="image-corner">BT k<sub>p</sub>=1 <span class="frame-z"></span></div></div></figure>
@@ -45,7 +45,6 @@
       </div>
       <div id="projection-loading" class="projection-loading" role="status" hidden>正在加载当前快照投影…</div>
       <div class="timeline"><div class="transport"><button id="play" class="play-button" type="button" aria-label="播放红移演化">▶</button><div><span class="control-caption">当前投影红移</span><output id="redshift-output" for="redshift">z = 8.52</output></div></div><div class="timeline-track"><label class="sr-only" for="redshift">投影快照，从高红移到低红移</label><input id="redshift" type="range" min="0" max="2" step="1" value="0"><div class="redshift-ticks" id="redshift-ticks"></div></div><div class="speed-control"><label for="speed">每帧停留</label><select id="speed"><option value="1800">1.8 秒</option><option value="3000">3 秒</option><option value="5000">5 秒</option></select></div></div>
-      <div class="projection-scale" id="projection-colorbar"><span>Σ / ⟨Σ⟩</span><span id="projection-color-min"></span><span class="color-gradient" id="projection-gradient"></span><span id="projection-color-max"></span><span>同红移三模型共用色标</span></div>
       <div class="projection-footnote"><p id="projection-note"></p><a href="assets/projection-clean.png" download>下载论文投影原图 ↓</a></div>
       <div class="projection-downloads"><span id="projection-snapshot-label"></span><div id="projection-downloads"></div><a href="data/media-provenance.json" download>媒体来源记录 ↓</a></div>
       <div id="load-error" class="load-error" hidden role="alert"></div>
