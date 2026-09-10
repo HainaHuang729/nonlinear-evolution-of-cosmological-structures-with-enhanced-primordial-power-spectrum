@@ -64,6 +64,15 @@ resampled for this visual update.
 
 ## Interaction and accessibility
 
+The header language button switches between Chinese and English. `locales.js`
+holds the English catalog separately from presentation; `i18n.js` translates
+text and accessible labels in place, including newly rendered chart captions.
+Switching retains the existing controls, plot values, focus, video position and
+archive disclosure state. Original scientific files are not translated.
+The browser remembers the selected language when local storage is available;
+`?lang=en` and `?lang=zh` override it for a visit. Chinese is the default.
+Keep both scripts in offline distributions. The control is hidden without JavaScript.
+
 Navigation is a normal link list. On mobile a real disclosure button exposes
 all links; Escape closes it and returns focus. Without JavaScript the link list
 remains visible. Scroll position sets `aria-current="location"` on the

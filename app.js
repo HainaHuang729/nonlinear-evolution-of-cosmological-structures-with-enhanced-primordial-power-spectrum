@@ -363,7 +363,7 @@
     $('library-total').textContent=D.figures.length+' 张图表 / '+D.downloads.length+' 份数值表';
     const query=$('library-search').value.trim().toLowerCase(),kind=$('library-kind').value;
     const items=[...D.figures.map(r=>({...r,kind:'figure',name:r.file.split('/').pop()})),...D.downloads.map(r=>({...r,kind:'data',title:DATA_LABELS[r.name]||r.name}))];
-    const selected=items.filter(r=>(kind==='all'||r.kind===kind)&&`${r.title} ${r.name} ${r.category||''}`.toLowerCase().includes(query));
+    const selected=items.filter(r=>(kind==='all'||r.kind===kind)&&`${r.title} ${window.ArticleI18n?.english(r.title)||''} ${r.name} ${r.category||''}`.toLowerCase().includes(query));
     $('library-grid').replaceChildren(...selected.map(item=>{
       const a=document.createElement('a');a.className='library-item';a.href=item.file;
       if(item.kind==='data')a.download=item.name;else{a.target='_blank';a.rel='noopener';}
@@ -459,7 +459,7 @@
     const active=document.activeElement;
     if(active?.classList.contains('point')) {
       const rect=active.getBoundingClientRect();
-      if(rect.bottom>=0&&rect.top<=window.innerHeight){tooltip(active.getAttribute('aria-label'),active);return;}
+      if(rect.bottom>=0&&rect.top<=window.innerHeight){tooltip(window.ArticleI18n?.sourceAttribute(active,'aria-label')??active.getAttribute('aria-label'),active);return;}
     }
     $('tooltip').hidden=true;
   },{passive:true});

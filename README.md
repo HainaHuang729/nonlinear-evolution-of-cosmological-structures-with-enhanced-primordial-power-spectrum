@@ -10,6 +10,7 @@ The original Retro Aerospace Scientific Modernism visual system uses reusable
 design tokens, editorial layouts, accessible controls and reduced-motion support.
 See [the design system](DESIGN-SYSTEM.md) for components and reuse instructions.
 
+- A header button switches between Chinese and English and remembers the preference. Switching retains redshift, zoom, video position, filters and archive state; original scientific files remain unchanged. Both languages also work offline.
 - Matched density projections at z=8.52, 2.03, and 0 with synchronized zoom and pan.
 - Eight real redshifts in the full-particle projection view, with a shared color scale across models at each redshift; the original three-frame paper view remains available.
 - Two PL-256-512 full-particle animations (rotation and redshift evolution), with controllable MP4/WebM playback and original GIF downloads. Voxel animations are excluded.

@@ -143,7 +143,14 @@ footer.page-width{max-width:none;display:flex;align-items:baseline;justify-conte
 .library-disclosure:not([open]) .when-open,.library-disclosure[open] .when-closed{display:none}
 .library-content{padding-top:24px}
 @media(max-width:720px){.library-summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px}.library-summary .technical-label{grid-column:1;margin-left:0;font-size:9px}.disclosure-sign{grid-column:2;grid-row:1/3}}
-html:not(.js) .navigation-toggle{display:none}html:not(.js) .topbar nav{display:flex}
+.language-toggle{flex-shrink:0;min-width:42px;min-height:38px;padding:6px 10px;border:1px solid var(--line-strong);font:11px var(--font-mono);border-radius:var(--radius)}
+.language-toggle:hover{background:var(--ink);color:var(--background)}
+html[lang=en] .section-heading>p{max-width:360px}
+html[lang=en] .zoom-tools select{max-width:270px}
+html[lang=en] .closing-statement h2{letter-spacing:-.02em}
+@media(max-width:720px){.topbar{column-gap:12px}.topbar .brand{order:0}.language-toggle{order:1;margin-left:auto}.navigation-toggle{order:2;margin-left:0;padding-left:0;gap:8px}.topbar nav{order:3}html[lang=en] .topic-nav a{font-size:11px}html[lang=en] .brand-sub{font-size:8px;letter-spacing:.01em}html[lang=en] .hero-subheading{font-size:21px}html[lang=en] .closing-statement h2{font-size:36px}}
+@media(max-width:360px){.navigation-toggle{font-size:0}.language-toggle{min-width:38px;padding-inline:6px}}
+html:not(.js) .navigation-toggle,html:not(.js) .language-toggle{display:none}html:not(.js) .topbar nav{display:flex}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal-pending,.reveal-visible{opacity:1;transform:none}}
 @media print{
  body{background:white;color:black;font-size:11px}.topbar{position:static}.topbar nav,.navigation-toggle,.header-revision,.hero-link,.hero-instrument,.timeline,.zoom-tools,.data-controls,.text-button,.topic-nav,.tooltip,.animation-links,.projection-downloads,.library-controls{display:none!important}
