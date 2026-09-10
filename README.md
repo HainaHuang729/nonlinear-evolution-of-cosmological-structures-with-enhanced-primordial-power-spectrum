@@ -8,6 +8,7 @@ This branch hosts the static article site on GitHub Pages. Open `index.html` loc
 
 The original Retro Aerospace Scientific Modernism visual system uses reusable
 design tokens, editorial layouts, accessible controls and reduced-motion support.
+Muted red, yellow and blue ribbons mark the hero register and section boundaries.
 See [the design system](DESIGN-SYSTEM.md) for components and reuse instructions.
 
 - A header button switches between Chinese and English and remembers the preference. Switching retains redshift, zoom, video position, filters and archive state; original scientific files remain unchanged. Both languages also work offline.

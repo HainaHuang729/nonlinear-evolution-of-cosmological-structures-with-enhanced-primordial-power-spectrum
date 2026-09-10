@@ -62,6 +62,16 @@ Original scientific image pixels and their color scales remain unchanged.
 Only interactive chart presentation consumes the new palette. No data are
 resampled for this visual update.
 
+The identity ribbon uses muted red `#B84B3E`, yellow `#D6A62E` and blue/cyan
+`#4D8F9C`, exposed as `--ribbon-red`, `--ribbon-yellow` and `--ribbon-blue`.
+Three solid parallel bands curve into a shared return above the hero register.
+The brand mark, header rule, section labels and footer repeat compact versions.
+The reusable `.tricolor-ribbon` is an inline SVG with non-scaling strokes;
+mobile crops its long straight run while retaining the curved end. Short rules
+use `--ribbon-rule`, a hard-stop gradient with no blended colors. These identity
+accents are decorative and excluded from accessibility labels; they do not
+encode the three simulation models or alter scientific image color scales.
+
 ## Interaction and accessibility
 
 The header language button switches between Chinese and English. `locales.js`

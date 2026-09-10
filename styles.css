@@ -49,6 +49,15 @@ h1{font-family:var(--font-display);font-size:var(--text-hero);font-weight:500;li
 .hero-register{display:grid;grid-template-columns:3fr 7fr 2fr;align-items:center;gap:24px;border-top:1px solid var(--line-strong);padding:25px 0 27px}.register-title{display:flex;flex-direction:column;gap:9px;font-size:13px}.register-title .technical-label{color:var(--ink-secondary)}
 .run-facts{display:flex;gap:clamp(24px,4vw,64px)}.run-facts>div{display:flex;flex-direction:column;gap:6px}.run-facts .technical-label{font-size:9px;color:var(--ink-secondary)}.run-facts strong{font:28px/1.4 var(--font-display);letter-spacing:-.04em;white-space:nowrap}.run-facts small{font:11px var(--font-mono);letter-spacing:0;color:var(--ink-secondary)}.register-index{justify-self:end;white-space:nowrap}.register-index span{font-size:18px;margin-left:8px}
 
+/* Tricolor identity: hard color bands, with a structural return at the register. */
+.brand-mark i:first-child{background:var(--ribbon-red)}.brand-mark i:nth-child(2){background:var(--ribbon-yellow)}.brand-mark i:nth-child(3){background:var(--ribbon-blue)}
+.topbar:after{content:"";position:absolute;left:max(var(--page-gutter),calc((100vw - 1504px)/2));bottom:-1px;width:132px;height:3px;background:var(--ribbon-rule);pointer-events:none}
+.tricolor-ribbon{display:block;width:100%;height:88px;fill:none;overflow:hidden;pointer-events:none}.tricolor-ribbon path{stroke-width:8;vector-effect:non-scaling-stroke}.ribbon-red{stroke:var(--ribbon-red)}.ribbon-yellow{stroke:var(--ribbon-yellow)}.ribbon-blue{stroke:var(--ribbon-blue)}
+.hero .hero-grid{padding-bottom:28px}.hero-ribbon{margin-bottom:18px}
+.section-heading .eyebrow:before{content:"";display:inline-block;width:36px;height:4px;margin-right:12px;vertical-align:middle;background:var(--ribbon-rule)}
+footer.page-width{position:relative}footer.page-width:before{content:"";position:absolute;top:-1px;right:var(--page-gutter);width:132px;height:4px;background:var(--ribbon-rule);pointer-events:none}
+@media(max-width:720px){.hero .hero-grid{padding-bottom:24px}.hero-ribbon{height:78px;margin-bottom:12px}.tricolor-ribbon path{stroke-width:7}.topbar:after{width:90px}.section-heading .eyebrow:before{width:27px;margin-right:10px}footer.page-width:before{width:90px}}
+
 /* 03 / SECTION RHYTHM & PROJECTION INSTRUMENT */
 .section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:42px;position:relative}.section-heading>p{font-size:13px;line-height:1.9;max-width:340px;color:var(--ink-secondary);padding-bottom:5px}
 .evolution{max-width:var(--page-max);margin-inline:auto;padding:78px var(--page-gutter) 72px;background:var(--surface);border-top:1px solid var(--line)}

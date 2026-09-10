@@ -20,6 +20,10 @@
   --cyan: #578f8c;
   --red: #a84d41;
   --yellow: #c8a64a;
+  --ribbon-red: #B84B3E;
+  --ribbon-yellow: #D6A62E;
+  --ribbon-blue: #4D8F9C;
+  --ribbon-rule: linear-gradient(to right, var(--ribbon-red) 0 33.333%, var(--ribbon-yellow) 33.333% 66.667%, var(--ribbon-blue) 66.667% 100%);
   --night: #111311;
   --on-dark: #e8e7df;
   --on-dark-secondary: #a8aca3;

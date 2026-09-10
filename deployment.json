@@ -1,10 +1,10 @@
 {
-  "version": 8,
+  "version": 9,
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "50048248c29f5f48da3483fe903e987e2ced1f44",
-  "created": "2026-09-10T05:04:56.644648+00:00",
+  "parent_commit": "2026ea5ded14e502c986eb6fd354c893e984bbc0",
+  "created": "2026-09-10T05:24:47.459260+00:00",
   "local_validation_checks": 166,
   "language_validation_checks": 23,
   "files": [
@@ -15,13 +15,13 @@
     },
     {
       "file": "DESIGN-SYSTEM.md",
-      "sha256": "8c53aef9c5258f51c3b9d04eca58305db96cdf1700c784c60fbab78306fa16cd",
-      "bytes": 5700
+      "sha256": "a94ae418df01ebac0e9b8ac92a614dbb3f3c52216f2b4315b49a681470aafe61",
+      "bytes": 6399
     },
     {
       "file": "README.md",
-      "sha256": "640337041362e6c6817e502292ff0e56d17760af4d9ff6e64cfffdfe4c888787",
-      "bytes": 2559
+      "sha256": "16f2128cf21a3344faf5d336f2d92265ecfe5f53a4ae27857b4809289714b903",
+      "bytes": 2641
     },
     {
       "file": "app.js",
@@ -395,8 +395,8 @@
     },
     {
       "file": "index.html",
-      "sha256": "f54ebf3025772398ca3ba66be063593a355f1affdeaf4696a2fd0feef6c6dacb",
-      "bytes": 18252
+      "sha256": "a5532bf8e7ca61026c60e5adfb018d5a7c290d82007b713dbd1abe4633a799e8",
+      "bytes": 18598
     },
     {
       "file": "locales.js",
@@ -410,8 +410,8 @@
     },
     {
       "file": "styles.css",
-      "sha256": "3e371625a4e2e43216f10c22b2b1606eee028e565be97a6ca57a28726e41e937",
-      "bytes": 38879
+      "sha256": "4920fd1013f266f02f8b07a2e06457da1cb0ac91762fdf6f21eb9ec98fbd83c2",
+      "bytes": 40303
     },
     {
       "file": "system.js",
@@ -420,8 +420,8 @@
     },
     {
       "file": "tokens.css",
-      "sha256": "59887a31f8fc84ca5fb327e6766e5c11a02fa1f840124ac755331a44be70f593",
-      "bytes": 2265
+      "sha256": "38573bcd232c5463ff3d6c123fe759ee0e97313334191c071208989b07c16809",
+      "bytes": 2488
     }
   ]
 }
