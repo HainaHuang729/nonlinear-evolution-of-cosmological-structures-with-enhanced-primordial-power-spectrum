@@ -1,13 +1,14 @@
 {
-  "version": 11,
+  "version": 12,
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "8702fff0c3d4139542eda3b88bfad26b89dbbd70",
-  "created": "2026-09-14T03:35:44.128398+00:00",
-  "local_validation_checks": 171,
+  "parent_commit": "3fca83be6fe4d11dda626ce0b5c18e16c688c991",
+  "created": "2026-09-14T07:07:19.521745+00:00",
+  "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
+  "redshift_extension_checks": 211,
   "files": [
     {
       "file": ".nojekyll",
@@ -21,13 +22,13 @@
     },
     {
       "file": "README.md",
-      "sha256": "1d333f94908d90cf3fd5cb4071ae72b94429fa5b4a7aa8dce6766f6368097e7b",
-      "bytes": 3093
+      "sha256": "616c65a0064e95b7e6c79b09a670ccda471a4df6f5c5e32acb30ea19d4c372a9",
+      "bytes": 3451
     },
     {
       "file": "app.js",
-      "sha256": "3473989eb9e86684a0e439f6c35a5bfe56ddf2d7f6b2628a917b6c641ef03639",
-      "bytes": 44822
+      "sha256": "14fe8a5e8b8557984701f904a618f31850a44a524e244dca3df7d3c362078fd2",
+      "bytes": 45164
     },
     {
       "file": "assets/FONT-LICENSE.txt",
@@ -266,7 +267,7 @@
     },
     {
       "file": "data/chart-data-audit.json",
-      "sha256": "68c56e37594a025722b0cd5e45e89cfd647f4529eebd4b402f547e232d352f43",
+      "sha256": "75ecd2073d5de690111356d2b3e6bcdae3107d85abc726eed2b9e71cc33ba0e1",
       "bytes": 10262
     },
     {
@@ -278,6 +279,21 @@
       "file": "data/concentration_qc_theory_ratios.csv",
       "sha256": "eb034acf5306eb1224b8442ad70cd922b380f8c4b300edcceedf2951ec86f04a",
       "bytes": 213103
+    },
+    {
+      "file": "data/extended-halo-statistics.csv",
+      "sha256": "cc9349ad5ae3987731cc7091eabc179834c3ecd2ecfad9326743e83dcf4963f4",
+      "bytes": 272896
+    },
+    {
+      "file": "data/extended-power-measurements.csv",
+      "sha256": "a8a0e952450265534241d0632ef0e22c2e45357d018285e4bd3d0874c5928f15",
+      "bytes": 2610419
+    },
+    {
+      "file": "data/extended-power-statistics.csv",
+      "sha256": "40dced683855f78f96de4503858c5bc37ccc034335dac79651bc2167121dfd95",
+      "bytes": 512122
     },
     {
       "file": "data/fof_hmf_resolution_points.csv",
@@ -336,8 +352,8 @@
     },
     {
       "file": "data/page-data.json",
-      "sha256": "b401983f86291190b7a8f8f843af22b6abcdc8581c9b2c4c49464ec90058ba7b",
-      "bytes": 1486199
+      "sha256": "de5999841fd4f35af108600a9fd7943f060857c4013d24808b13dff36c7cc814",
+      "bytes": 2772043
     },
     {
       "file": "data/pl_warren_median_mah.csv",
@@ -371,8 +387,8 @@
     },
     {
       "file": "data/provenance.json",
-      "sha256": "3868ef6d470f79ea141c7d9299ab67463beb4108b46d9016cd237e24a349cba4",
-      "bytes": 19698
+      "sha256": "6472461fb4bc2ea70eb46386dabd0067700ff3cd1f73875a2b4409e502a84586",
+      "bytes": 21823
     },
     {
       "file": "data/radial_density_profiles_n100_power03.csv",
@@ -383,6 +399,11 @@
       "file": "data/radial_density_ratios_n100_power03.csv",
       "sha256": "d9b2cd53b41e22bc7bced065b401c80c8a7e2a7814a5c0db0cf440db138a6abd",
       "bytes": 15473
+    },
+    {
+      "file": "data/redshift-extension-provenance.json",
+      "sha256": "0a7f5e854fbd08c15ff89babd0827e8c7ce6a5fea3a8fc4fb5ec6af2df36b293",
+      "bytes": 52000
     },
     {
       "file": "data/same_trackid_no_envelope_points.csv",
@@ -396,8 +417,8 @@
     },
     {
       "file": "data.js",
-      "sha256": "e9956eaa7cc3763fc216f827f4c3fed3226ff7f4c96d0bab74ae673a46edd8c4",
-      "bytes": 1486222
+      "sha256": "8a7bc42b7d7478b0aaf0bf7bfd344a9b9f0fff11480d38c8de6730098042d319",
+      "bytes": 2772066
     },
     {
       "file": "i18n.js",
@@ -406,13 +427,13 @@
     },
     {
       "file": "index.html",
-      "sha256": "33177213f8a80f50f594f61ca6ce11e015d9ce7526cdc3b3efec439251c3113d",
+      "sha256": "6bad827b44bf3e2bd787a6e4a5399098487f35d84821936ff9032a780ff35810",
       "bytes": 18347
     },
     {
       "file": "locales.js",
-      "sha256": "af87f76588831ce27ea3c3ccd547c7ad7afd1b22001582f477e78019806b5d92",
-      "bytes": 24645
+      "sha256": "c556153c00f8cd2a673f0d4132e3a74394defae3cf8b1d25b67172a7ff5afb03",
+      "bytes": 27351
     },
     {
       "file": "media.js",

@@ -1,5 +1,5 @@
 {
-  "built": "2026-09-14T03:28:48.938356+00:00",
+  "built": "2026-09-14T07:06:38.536168+00:00",
   "paper_title": "Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power",
   "sources": [
     {
@@ -193,6 +193,27 @@
       "bytes": 6653140,
       "sha256": "a723bf373ab7aa50597c2d8bfd2fc81b146878f0cd75f5acf8efbf93d7da0833",
       "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/nonlinear_power_spectrum/power_spectrum_measurements.csv"
+    },
+    {
+      "file": "data/extended-halo-statistics.csv",
+      "name": "extended-halo-statistics.csv",
+      "bytes": 272896,
+      "sha256": "cc9349ad5ae3987731cc7091eabc179834c3ecd2ecfad9326743e83dcf4963f4",
+      "source": "Real-snapshot extension generated with the paper reduction scripts; see data/redshift-extension-provenance.json"
+    },
+    {
+      "file": "data/extended-power-measurements.csv",
+      "name": "extended-power-measurements.csv",
+      "bytes": 2610419,
+      "sha256": "a8a0e952450265534241d0632ef0e22c2e45357d018285e4bd3d0874c5928f15",
+      "source": "Real-snapshot extension generated with the paper reduction scripts; see data/redshift-extension-provenance.json"
+    },
+    {
+      "file": "data/extended-power-statistics.csv",
+      "name": "extended-power-statistics.csv",
+      "bytes": 512122,
+      "sha256": "40dced683855f78f96de4503858c5bc37ccc034335dac79651bc2167121dfd95",
+      "source": "Real-snapshot extension generated with the paper reduction scripts; see data/redshift-extension-provenance.json"
     }
   ],
   "derivations": {
@@ -252,5 +273,57 @@
       "system.js": "96227bbab81e618d703f6be2bd2b60fe4ae852b8cd4dc19dab7cb302e2e99e50",
       "DESIGN-SYSTEM.md": "a94ae418df01ebac0e9b8ac92a614dbb3f3c52216f2b4315b49a681470aafe61"
     }
+  },
+  "redshift_extension": {
+    "targets": [
+      {
+        "snapshot": 24,
+        "z": 19.40664523021168
+      },
+      {
+        "snapshot": 27,
+        "z": 14.331814598205613
+      },
+      {
+        "snapshot": 30,
+        "z": 10.51901923231075
+      },
+      {
+        "snapshot": 32,
+        "z": 8.519850605215494
+      },
+      {
+        "snapshot": 40,
+        "z": 3.4410805658271224
+      },
+      {
+        "snapshot": 44,
+        "z": 2.0333177828202462
+      },
+      {
+        "snapshot": 48,
+        "z": 1.0717968600643704
+      },
+      {
+        "snapshot": 56,
+        "z": 0
+      }
+    ],
+    "added_points": {
+      "hmf.fof": 179,
+      "hmf.m200c": 193,
+      "hmfRatios.fof": 119,
+      "hmfRatios.m200c": 128,
+      "hmfReference": 179,
+      "concentration": 131,
+      "concentrationTheory": 393,
+      "resolution": 581,
+      "power": 3048,
+      "powerRatios": 2032,
+      "powerResidual": 670,
+      "powerTheory": 865
+    },
+    "method": "paper_methods_on_real_snapshots",
+    "provenance": "data/redshift-extension-provenance.json"
   }
 }

@@ -131,6 +131,15 @@ window.ARTICLE_EN = {
   '视频未能播放，可以下载原 GIF 查看。':'The video could not be played. Download the original GIF to view it.',
 
   /* Reusable phrases within dynamic labels, units and accessible descriptions. */
+  '沿用论文的质量分箱与匹配方式计算 BT/PL；FOF 使用配对分箱的几何平均质量，M₂₀₀c 匹配相同质量中心。误差由双方的 Poisson 不确定性传播。':'BT/PL follows the paper’s bins and matching rules: geometric mean masses of paired FOF bins, and matching mass centers for M₂₀₀c. Errors propagate Poisson uncertainties of both samples.',
+  '同盒子 BT/PL 使用原始快照测量，缺失红移按论文方法补算，舍去 k > 0.25 k_Ny 的点；低 k 灰区保留供检查。完整源表可下载。':'BT/PL uses matching snapshot boxes. Missing redshifts are computed with the paper’s method, omitting k > 0.25 k_Ny. Low-k samples remain in the gray region for inspection; complete source tables are downloadable.',
+  '沿用论文的模拟 / HMcode2020 残差分箱与理论设置，缺失红移重新计算，舍去 k > 0.25 k_Ny 的点。理论参考保留跨盒子合并采样。':'Uses the paper’s simulation / HMcode2020 residual bins and theoretical settings, recomputed at missing redshifts and omitting k > 0.25 k_Ny. The theoretical reference retains sampling combined across box sizes.',
+  '模拟中位浓度与所选理论值的比值；新增红移按论文设置重新计算理论。阴影为 halo 分位区间除以同一参考值，灰区为 1000 粒子尺度以下。':'Median simulated concentration divided by the selected prediction, recomputed at added redshifts with the paper’s settings. Shading divides halo percentiles by the same reference; gray marks masses below the 1000-particle scale.',
+  'SOAP c₂₀₀c 的中位数及 halo 间 16–84% 散布；缺失红移从对应 SOAP 目录按论文筛选补算。灰区标出 1000 粒子尺度以下。':'Median SOAP c₂₀₀c and the 16–84% halo scatter, computed at missing redshifts from matching SOAP catalogs with the paper’s cuts. Gray marks masses below the 1000-particle scale.',
+  '沿用论文附录的四组 PL 模拟与计算方法，补充对应红移的 FOF 目录测量。空心点低于各模拟 50 个粒子的质量，误差为 Poisson 计数不确定性。':'The four PL runs and reduction method from the paper appendix, extended with FOF catalog measurements at matching redshifts. Open markers lie below each run’s 50-particle mass; errors are Poisson counting uncertainties.',
+  '补充红移的 halo 统计':'Halo statistics at added redshifts',
+  '补充红移的功率谱原始测量':'Raw power measurements at added redshifts',
+  '补充红移的功率谱与理论比值':'Power spectra and reference ratios at added redshifts',
   '三个红移的密度投影':'Density projections at three redshifts',
   '浓度参考':'Concentration reference','FOF 分辨率与盒子体积检查':'FOF resolution and box-volume checks',
   'FOF 质量函数数值点':'FOF mass-function data points','FOF 与 Reed07 参考比较':'FOF vs. Reed07 reference',
@@ -154,7 +163,7 @@ window.ARTICLE_EN = {
 };
 
 window.ARTICLE_EN_PATTERNS = [
-  [/^直接读取论文中的质量函数点。质量下限 (.+) M☉；横轴保留源表中的质量坐标。$/,(_,mass)=>`Uses the published mass-function points with a minimum mass of ${mass} M☉. The horizontal coordinates retain the source-table masses.`],
+  [/^保留论文数值点，缺失红移按同一方法从真实 halo 目录补算。质量下限 (.+) M☉；横轴沿用论文的质量坐标定义。$/,(_,mass)=>`Published points are retained; missing redshifts are measured from real halo catalogs using the same method. The minimum mass is ${mass} M☉; mass coordinates follow the paper’s definition.`],
   [/^L = (.+) h⁻¹ Mpc。采用区间 (.+) h Mpc⁻¹；HMcode2020 曲线为理论参考。$/,(_,box,range)=>`L = ${box} h⁻¹ Mpc. Adopted range: ${range} h Mpc⁻¹. HMcode2020 provides a theoretical reference.`],
   [/^显示 (\d+) \/ (\d+) 组模拟。参数来自论文发布的 simulation_suite.csv；单位保留源表口径。$/,(_,shown,total)=>`Showing ${shown} / ${total} simulations. Parameters come from the published simulation_suite.csv; source units are retained.`],
   [/^(\d+) 张图表 \/ (\d+) 份数值表$/,(_,figures,tables)=>`${figures} figures / ${tables} tables`],

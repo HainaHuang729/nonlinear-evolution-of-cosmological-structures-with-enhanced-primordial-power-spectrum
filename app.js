@@ -205,8 +205,8 @@
       const threshold=S.definition==='fof'?1e8:2e8;
       $('science-question').textContent='小尺度功率增强后，同一质量范围内的 halo 数量如何变化？';
       $('legend-note').textContent=S.definition==='fof'?'虚线：Reed07 理论参考；误差：Poisson':'误差：Poisson 计数不确定性';
-      setHeading('a',S.definition==='fof'?'FOF halo 质量函数':'M₂₀₀c halo 质量函数',zr,`直接读取论文中的质量函数点。质量下限 ${fmt(threshold)} M☉；横轴保留源表中的质量坐标。`);
-      setHeading('b','相对于 PL 的丰度',zr,'沿用论文发布的质量分箱与匹配方式计算 BT/PL；FOF 使用配对分箱的几何平均质量，M₂₀₀c 匹配相同质量中心。误差由源表双方的 Poisson 不确定性传播。');
+      setHeading('a',S.definition==='fof'?'FOF halo 质量函数':'M₂₀₀c halo 质量函数',zr,`保留论文数值点，缺失红移按同一方法从真实 halo 目录补算。质量下限 ${fmt(threshold)} M☉；横轴沿用论文的质量坐标定义。`);
+      setHeading('b','相对于 PL 的丰度',zr,'沿用论文的质量分箱与匹配方式计算 BT/PL；FOF 使用配对分箱的几何平均质量，M₂₀₀c 匹配相同质量中心。误差由双方的 Poisson 不确定性传播。');
       chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Reed07'}))],{title:'Halo 质量函数',xLabel:massLabel,yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,intervalLabel:'Poisson ±1σ',available});
       chart('chart-b',grouped(ratio),{title:'论文质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z))});
       downloadRows=[...rows.map(r=>({...r,series:'published_hmf'})),...ratio.map(r=>({...r,series:'paper_bin_BT_over_PL'}))];
@@ -217,7 +217,7 @@
       $('science-question').textContent='初始的小尺度功率增强，在非线性演化后保留在哪些尺度？';
       $('legend-note').textContent='虚线：HMcode2020；灰区：采用范围之外';
       setHeading('a','非线性物质功率谱',`${zr} · L = ${S.box}`,`L = ${S.box} h⁻¹ Mpc。采用区间 ${trusted[0].toFixed(2)} ≤ k ≤ ${trusted[1].toFixed(2)} h Mpc⁻¹；HMcode2020 曲线为理论参考。`);
-      setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'使用论文原始采样的同盒子 BT/PL 数据，按论文舍去 k > 0.25 k_Ny 的点；低 k 灰区保留供检查。完整源表可下载。':'直接读取论文发布的模拟 / HMcode2020 残差分箱与比值，按论文舍去 k > 0.25 k_Ny 的点。理论参考保留论文的跨盒子合并采样。');
+      setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'同盒子 BT/PL 使用原始快照测量，缺失红移按论文方法补算，舍去 k > 0.25 k_Ny 的点；低 k 灰区保留供检查。完整源表可下载。':'沿用论文的模拟 / HMcode2020 残差分箱与理论设置，缺失红移重新计算，舍去 k > 0.25 k_Ny 的点。理论参考保留跨盒子合并采样。');
       chart('chart-a',[...grouped(rows),...grouped(atZ(D.powerTheory),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available});
       chart('chart-b',grouped(comparison),{title:S.powerComparison==='ratio'?'同盒子 BT/PL 功率比':'模拟与 HMcode2020 的功率比',xLabel:'k [h Mpc⁻¹]',yLabel:S.powerComparison==='ratio'?'P_BT / P_PL':'P_sim / P_HMcode2020',baseline:1,trusted,available});
       downloadRows=[...rows.map(r=>({...r,series:'power'})),...comparison.map(r=>({...r,series:S.powerComparison==='ratio'?'BT_over_PL':'sim_over_HMcode2020'}))];
@@ -238,7 +238,7 @@
       const convergence=Math.max(...originalProfiles.map(r=>r.convergence));
       $('science-question').textContent='halo 的内部密度分布与浓度，是否随输入功率模型改变？';
       $('legend-note').textContent=S.profileView==='ratio'?'浓度阴影：halo 散布；密度比区间：由 bootstrap 边界构造':'浓度阴影：halo 散布；剖面阴影：bootstrap';
-      setHeading('a',theoryMode?'浓度 / '+THEORY_LABELS[S.concentrationReference]:'浓度–质量关系',zr,theoryMode?'模拟中位浓度与所选理论表值的比值；阴影为 halo 的浓度分位区间除以同一参考值。灰区为 1000 粒子尺度以下。':'SOAP c₂₀₀c 的中位数及 halo 间 16–84% 散布。保留源表的浓度质量筛选；灰区标出 1000 粒子尺度以下。');
+      setHeading('a',theoryMode?'浓度 / '+THEORY_LABELS[S.concentrationReference]:'浓度–质量关系',zr,theoryMode?'模拟中位浓度与所选理论值的比值；新增红移按论文设置重新计算理论。阴影为 halo 分位区间除以同一参考值，灰区为 1000 粒子尺度以下。':'SOAP c₂₀₀c 的中位数及 halo 间 16–84% 散布；缺失红移从对应 SOAP 目录按论文筛选补算。灰区标出 1000 粒子尺度以下。');
       setHeading('b',S.profileView==='ratio'?'相对于 PL 的径向密度':'直接粒子密度剖面',`固定 z = 0 · ${fmt(S.profileMass)} M☉`,S.profileView==='ratio'?'直接读取发布的 BT/PL 密度比；阴影由两组剖面的 bootstrap 边界构造，并非比值的配对 bootstrap 区间。灰区沿用保守 Power 收敛半径。':'粒子计数得到的中位径向密度；阴影为中位数的 bootstrap 16–84% 区间。左侧灰区采用三个模型中最大的 Power 收敛半径。');
       chart('chart-a',grouped(rows),{title:theoryMode?'浓度与理论参考的比值':'浓度与质量',xLabel:'M₂₀₀c [M☉]',yLabel:theoryMode?'c_sim / c_theory':'c₂₀₀c',bands:true,baseline:theoryMode?1:undefined,trusted:[1.89e9,1e15],available,intervalLabel:theoryMode?'halo 分位数 / 理论值':'halo 16–84%'});
       chart('chart-b',grouped(profiles),{title:S.profileView==='ratio'?'z=0 BT/PL 密度比':'z=0 直接粒子密度剖面',xLabel:'r / R₂₀₀m',yLabel:S.profileView==='ratio'?'ρ_BT / ρ_PL':'ρ [M☉ kpc⁻³]',bands:true,baseline:S.profileView==='ratio'?1:undefined,trusted:[convergence,10],intervalLabel:S.profileView==='ratio'?'bootstrap 边界构造区间':'bootstrap 16–84%'});
@@ -259,7 +259,7 @@
       const trusted=[4*2*Math.PI/S.meshBox,.25*Math.PI*1024/S.meshBox];
       $('science-question').textContent='改变粒子分辨率、盒子体积或功率谱网格后，测量会怎样变化？';
       $('legend-note').textContent='左图空心点：低于各模拟的 50 粒子质量；右图固定 z = 0';
-      setHeading('a','FOF 分辨率与体积检查',zr,'论文附录的四组 PL 模拟；包含原始低质量点供检查。空心点的平均质量低于该模拟 50 个粒子的质量，误差为 Poisson 计数不确定性。');
+      setHeading('a','FOF 分辨率与体积检查',zr,'沿用论文附录的四组 PL 模拟与计算方法，补充对应红移的 FOF 目录测量。空心点低于各模拟 50 个粒子的质量，误差为 Poisson 计数不确定性。');
       setHeading('b','功率谱网格收敛',`固定 z = 0 · L = ${S.meshBox}`,'相同 PL 模拟分别使用 512³ 和 1024³ 功率谱网格；显示源表中的 P₅₁₂/P₁₀₂₄。此处改变的是测量网格，灰区标出论文采用的 k 范围之外。');
       chart('chart-a',series,{title:'FOF 分辨率和体积检查',xLabel:'M_FOF [M☉]',yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,available,intervalLabel:'Poisson ±1σ'});
       chart('chart-b',[{model:'PL',label:'PL · 网格 512³ / 1024³',color:COLORS.PL,points:mesh}],{title:'PL 功率谱网格收敛',xLabel:'k [h Mpc⁻¹]',yLabel:'P_mesh512 / P_mesh1024',yLog:false,baseline:1,trusted});
@@ -346,6 +346,9 @@
     'fof_shared_bin_ratios.csv':'FOF 论文分箱 BT/PL 比值',
     'm200c_shared_bin_ratios.csv':'M₂₀₀c 论文分箱 BT/PL 比值',
     'power_spectrum_measurements.csv':'非线性功率谱原始采样',
+    'extended-halo-statistics.csv':'补充红移的 halo 统计',
+    'extended-power-measurements.csv':'补充红移的功率谱原始测量',
+    'extended-power-statistics.csv':'补充红移的功率谱与理论比值',
     'power_spectrum_hmcode_residuals_finite_box.csv':'非线性功率谱与 HMcode2020',
     'power_spectrum_ratios.csv':'同盒子 BT/PL 功率谱比值',
     'input_power_spectra.csv':'输入线性物质功率谱',

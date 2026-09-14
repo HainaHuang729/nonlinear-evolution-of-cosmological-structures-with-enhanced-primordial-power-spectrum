@@ -1,0 +1,1077 @@
+{
+  "status": "passed",
+  "created": "2026-09-14T07:06:38.536168+00:00",
+  "paper_methods": {
+    "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/halomass_fof_reed07.py": "ec11223f5864a8a5abf4d682d2308a67d8eb5fc0e39bcfb6c276b6cbcace5e20",
+    "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/concentration_qc_kp10.py": "631fdea2939fd46c9ee8f4ce52b83c09714e29e2370eb1b3e2cf2cb2f8125c38",
+    "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_bocquet16_m200c_hmf.py": "d5b9171916ceed9fda7424383bfcbde3fb12c78730b1547a0e6887d7fdf2afbc",
+    "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_power_spectrum_bt_over_pl.py": "34c4d7965f388c5cc244c46bb9019567056645b4b2592c369b4da5d94cd8fb15",
+    "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/compute_sim_power_spectrum.py": "e125606f1fa111a0511f9d962881ce833ad0d50709c1398daa99da90a555b7fe",
+    "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_fof_hmf_resolution.py": "cc782be8aa4bd4319b1d0e006eb0fa3e622b2ba373057da231414bfcc838d978"
+  },
+  "halo": {
+    "sources": [
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0024.hdf5",
+        "bytes": 2820540,
+        "mtime_ns": 1778008281948889574
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0027.hdf5",
+        "bytes": 44235308,
+        "mtime_ns": 1778010988750101617
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0030.hdf5",
+        "bytes": 197748292,
+        "mtime_ns": 1778015038870010898
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0032.hdf5",
+        "bytes": 35546628766,
+        "mtime_ns": 1748828344000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0032.hdf5",
+        "bytes": 1040686663,
+        "mtime_ns": 1748827292000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0032.hdf5",
+        "bytes": 342846040,
+        "mtime_ns": 1778018980116102904
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0032.hdf5",
+        "bytes": 342846040,
+        "mtime_ns": 1778018980116102904
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0044.hdf5",
+        "bytes": 36385849790,
+        "mtime_ns": 1749111878000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0044.hdf5",
+        "bytes": 1514970347,
+        "mtime_ns": 1749110781000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0044.hdf5",
+        "bytes": 611400676,
+        "mtime_ns": 1778056749923575132
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0044.hdf5",
+        "bytes": 611400676,
+        "mtime_ns": 1778056749923575132
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0048.hdf5",
+        "bytes": 36413648123,
+        "mtime_ns": 1749288565000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0048.hdf5",
+        "bytes": 1408300058,
+        "mtime_ns": 1749287462000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0048.hdf5",
+        "bytes": 550289172,
+        "mtime_ns": 1778070737337646103
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0024.hdf5",
+        "bytes": 536072100,
+        "mtime_ns": 1778020551090790911
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0027.hdf5",
+        "bytes": 965694728,
+        "mtime_ns": 1778032491768715083
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0030.hdf5",
+        "bytes": 1249576508,
+        "mtime_ns": 1778048313002666546
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0032.hdf5",
+        "bytes": 36684452040,
+        "mtime_ns": 1749233506000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/fof_output_0032.hdf5",
+        "bytes": 1848619016,
+        "mtime_ns": 1749232400000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0032.hdf5",
+        "bytes": 1332001000,
+        "mtime_ns": 1778060007426068994
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0032.hdf5",
+        "bytes": 1332001000,
+        "mtime_ns": 1778060007426068994
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0044.hdf5",
+        "bytes": 36369338422,
+        "mtime_ns": 1749842194000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/fof_output_0044.hdf5",
+        "bytes": 1371872834,
+        "mtime_ns": 1749841093000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0044.hdf5",
+        "bytes": 1006162068,
+        "mtime_ns": 1778128102487577609
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0044.hdf5",
+        "bytes": 1006162068,
+        "mtime_ns": 1778128102487577609
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0048.hdf5",
+        "bytes": 36227345088,
+        "mtime_ns": 1751364202000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/fof_output_0048.hdf5",
+        "bytes": 1194440851,
+        "mtime_ns": 1751363113000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0048.hdf5",
+        "bytes": 868055144,
+        "mtime_ns": 1778149380435366614
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0024.hdf5",
+        "bytes": 21637960,
+        "mtime_ns": 1778009806665335517
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0027.hdf5",
+        "bytes": 169172948,
+        "mtime_ns": 1778013242531656639
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0030.hdf5",
+        "bytes": 498443200,
+        "mtime_ns": 1778019692247716118
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0032.hdf5",
+        "bytes": 36101639283,
+        "mtime_ns": 1749030070000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/fof_output_0032.hdf5",
+        "bytes": 1593697167,
+        "mtime_ns": 1749028754000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0032.hdf5",
+        "bytes": 738927720,
+        "mtime_ns": 1778026141363699900
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0032.hdf5",
+        "bytes": 738927720,
+        "mtime_ns": 1778026141363699900
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0044.hdf5",
+        "bytes": 36475874316,
+        "mtime_ns": 1749828425000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/fof_output_0044.hdf5",
+        "bytes": 1632878702,
+        "mtime_ns": 1749827330000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0044.hdf5",
+        "bytes": 1018017424,
+        "mtime_ns": 1778080868594917540
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0044.hdf5",
+        "bytes": 1018017424,
+        "mtime_ns": 1778080868594917540
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0048.hdf5",
+        "bytes": 36436178069,
+        "mtime_ns": 1750011857000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/fof_output_0048.hdf5",
+        "bytes": 1467960338,
+        "mtime_ns": 1750010762000000000
+      },
+      {
+        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0048.hdf5",
+        "bytes": 902443852,
+        "mtime_ns": 1778099858624572773
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0024.hdf5",
+        "bytes": 34472300637,
+        "mtime_ns": 1748776495000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0024.hdf5",
+        "bytes": 53918273,
+        "mtime_ns": 1748775483000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0027.hdf5",
+        "bytes": 34772310367,
+        "mtime_ns": 1748793283000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0027.hdf5",
+        "bytes": 305057941,
+        "mtime_ns": 1748792260000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0030.hdf5",
+        "bytes": 35233350425,
+        "mtime_ns": 1748811920000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0030.hdf5",
+        "bytes": 748451489,
+        "mtime_ns": 1748810864000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0032.hdf5",
+        "bytes": 35546628766,
+        "mtime_ns": 1748828344000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0032.hdf5",
+        "bytes": 1040686663,
+        "mtime_ns": 1748827292000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0040.hdf5",
+        "bytes": 36280511860,
+        "mtime_ns": 1748977439000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0040.hdf5",
+        "bytes": 1548679935,
+        "mtime_ns": 1748976329000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0044.hdf5",
+        "bytes": 36385849790,
+        "mtime_ns": 1749111878000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0044.hdf5",
+        "bytes": 1514970347,
+        "mtime_ns": 1749110781000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0048.hdf5",
+        "bytes": 36413648123,
+        "mtime_ns": 1749288565000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0048.hdf5",
+        "bytes": 1408300058,
+        "mtime_ns": 1749287462000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/PL_25_512_0024.hdf5",
+        "bytes": 4376408366,
+        "mtime_ns": 1746814252000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/fof_output_0024.hdf5",
+        "bytes": 1733918,
+        "mtime_ns": 1746814124000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/PL_25_512_0027.hdf5",
+        "bytes": 4400894773,
+        "mtime_ns": 1746817254000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/fof_output_0027.hdf5",
+        "bytes": 18472812,
+        "mtime_ns": 1746817127000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/PL_25_512_0030.hdf5",
+        "bytes": 4451078235,
+        "mtime_ns": 1746820173000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/fof_output_0030.hdf5",
+        "bytes": 66146904,
+        "mtime_ns": 1746820045000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/PL_25_512_0032.hdf5",
+        "bytes": 4490709864,
+        "mtime_ns": 1746822024000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/fof_output_0032.hdf5",
+        "bytes": 106493331,
+        "mtime_ns": 1746821894000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/PL_25_512_0040.hdf5",
+        "bytes": 4597479807,
+        "mtime_ns": 1746832944000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/fof_output_0040.hdf5",
+        "bytes": 198638363,
+        "mtime_ns": 1746832809000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/PL_25_512_0044.hdf5",
+        "bytes": 4616367574,
+        "mtime_ns": 1746842989000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/fof_output_0044.hdf5",
+        "bytes": 200555952,
+        "mtime_ns": 1746842852000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/PL_25_512_0048.hdf5",
+        "bytes": 4622294472,
+        "mtime_ns": 1746857689000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_512/fof_output_0048.hdf5",
+        "bytes": 189406686,
+        "mtime_ns": 1746857551000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/PL_25_256_0024.hdf5",
+        "bytes": 556695616,
+        "mtime_ns": 1757391774000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/fof_output_0024.hdf5",
+        "bytes": 82307,
+        "mtime_ns": 1757391756000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/PL_25_256_0027.hdf5",
+        "bytes": 558414908,
+        "mtime_ns": 1757392162000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/fof_output_0027.hdf5",
+        "bytes": 775196,
+        "mtime_ns": 1757392146000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/PL_25_256_0030.hdf5",
+        "bytes": 563003070,
+        "mtime_ns": 1757392536000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/fof_output_0030.hdf5",
+        "bytes": 4612889,
+        "mtime_ns": 1757392519000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/PL_25_256_0032.hdf5",
+        "bytes": 567630186,
+        "mtime_ns": 1757392778000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/fof_output_0032.hdf5",
+        "bytes": 9380147,
+        "mtime_ns": 1757392761000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/PL_25_256_0040.hdf5",
+        "bytes": 582560065,
+        "mtime_ns": 1757393947000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/fof_output_0040.hdf5",
+        "bytes": 25295170,
+        "mtime_ns": 1757393930000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/PL_25_256_0044.hdf5",
+        "bytes": 585038280,
+        "mtime_ns": 1757395033000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/fof_output_0044.hdf5",
+        "bytes": 26766863,
+        "mtime_ns": 1757395016000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/PL_25_256_0048.hdf5",
+        "bytes": 585532995,
+        "mtime_ns": 1757396885000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_256/fof_output_0048.hdf5",
+        "bytes": 25893809,
+        "mtime_ns": 1757396868000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/PL_50_512_0024.hdf5",
+        "bytes": 4381412403,
+        "mtime_ns": 1747092236000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/fof_output_0024.hdf5",
+        "bytes": 251943,
+        "mtime_ns": 1747092109000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/PL_50_512_0027.hdf5",
+        "bytes": 4394984367,
+        "mtime_ns": 1747095832000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/fof_output_0027.hdf5",
+        "bytes": 5816064,
+        "mtime_ns": 1747095705000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/PL_50_512_0030.hdf5",
+        "bytes": 4432293246,
+        "mtime_ns": 1747099164000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/fof_output_0030.hdf5",
+        "bytes": 36272382,
+        "mtime_ns": 1747099035000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/PL_50_512_0032.hdf5",
+        "bytes": 4471103135,
+        "mtime_ns": 1747101252000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/fof_output_0032.hdf5",
+        "bytes": 73403725,
+        "mtime_ns": 1747101123000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/PL_50_512_0040.hdf5",
+        "bytes": 4597809034,
+        "mtime_ns": 1747110729000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/fof_output_0040.hdf5",
+        "bytes": 195113347,
+        "mtime_ns": 1747110594000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/PL_50_512_0044.hdf5",
+        "bytes": 4620996825,
+        "mtime_ns": 1747118957000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/fof_output_0044.hdf5",
+        "bytes": 205945591,
+        "mtime_ns": 1747118821000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/PL_50_512_0048.hdf5",
+        "bytes": 4628323607,
+        "mtime_ns": 1747130827000000000
+      },
+      {
+        "file": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_50_512/fof_output_0048.hdf5",
+        "bytes": 198368295,
+        "mtime_ns": 1747130690000000000
+      }
+    ],
+    "paper_overlap_checks": [
+      "hmf.fof reproduces paper snapshot 0032",
+      "hmf.m200c reproduces paper snapshot 0032",
+      "hmfRatios.fof reproduces paper snapshot 0032",
+      "hmfRatios.m200c reproduces paper snapshot 0032",
+      "hmfReference reproduces paper snapshot 0032",
+      "concentration reproduces paper snapshot 0032",
+      "concentrationTheory reproduces paper snapshot 0032",
+      "resolution reproduces paper snapshot 0032"
+    ],
+    "scripts": {
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/halomass_fof_reed07.py": "ec11223f5864a8a5abf4d682d2308a67d8eb5fc0e39bcfb6c276b6cbcace5e20",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/concentration_qc_kp10.py": "631fdea2939fd46c9ee8f4ce52b83c09714e29e2370eb1b3e2cf2cb2f8125c38",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_bocquet16_m200c_hmf.py": "d5b9171916ceed9fda7424383bfcbde3fb12c78730b1547a0e6887d7fdf2afbc",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_power_spectrum_bt_over_pl.py": "34c4d7965f388c5cc244c46bb9019567056645b4b2592c369b4da5d94cd8fb15",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/compute_sim_power_spectrum.py": "e125606f1fa111a0511f9d962881ce833ad0d50709c1398daa99da90a555b7fe",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_fof_hmf_resolution.py": "cc782be8aa4bd4319b1d0e006eb0fa3e622b2ba373057da231414bfcc838d978"
+    },
+    "method": "unchanged_paper_reduction_functions",
+    "job": "2132257",
+    "overlap_precision": [
+      {
+        "dataset": "hmf.fof",
+        "maximum_relative_error": 1.1202314159243443e-09,
+        "tolerance": 3e-08
+      },
+      {
+        "dataset": "hmf.m200c",
+        "maximum_relative_error": 1.3051252295495416e-10,
+        "tolerance": 3e-08
+      },
+      {
+        "dataset": "hmfRatios.fof",
+        "maximum_relative_error": 1.0724600910269419e-09,
+        "tolerance": 3e-08
+      },
+      {
+        "dataset": "hmfRatios.m200c",
+        "maximum_relative_error": 0.0038737568708313574,
+        "tolerance": 3e-08
+      },
+      {
+        "dataset": "hmfReference",
+        "maximum_relative_error": 1.1202314159243443e-09,
+        "tolerance": 3e-08
+      },
+      {
+        "dataset": "concentration",
+        "maximum_relative_error": 1.1397231318515046e-11,
+        "tolerance": 3e-08
+      },
+      {
+        "dataset": "concentrationTheory",
+        "maximum_relative_error": 6.108533445041926e-11,
+        "tolerance": 3e-08
+      },
+      {
+        "dataset": "resolution",
+        "maximum_relative_error": 1.142956767190233e-09,
+        "tolerance": 3e-08
+      }
+    ],
+    "backend_sources": {
+      "/project/tkcastrosim/HNHuang/project_big_sim/software/colossus/colossus/halo/concentration.py": "1070caec5f3eb4760f3613121aa4f03fa2b5bc1903548e42db906e856bf15ae8",
+      "/project/tkcastrosim/HNHuang/project_big_sim/software/colossus/colossus/lss/peaks.py": "b06857a12270c5cdc5f1d487bed612845f1e058196504bb14f7164fd4d47eaa1",
+      "/project/tkcastrosim/HNHuang/envs/Miniconda3/envs/21cmfast/lib/python3.10/site-packages/colossus/cosmology/power_spectrum.py": "a20ac8eff23b5d514c1bf865fabb12da35840051d05bf61867e0b57b633b187a"
+    },
+    "compatibility": "Paper-bundled ps_args-aware Ludlow16 and table-era D19/I21 peak-to-mass slope convention, with installed custom PL/BT spectra; formation redshifts above the cached growth table use the same cosmology exact growth integral, without extrapolation. SOAP quantities are converted to float64 as in the released compact catalogs."
+  },
+  "power_inputs": [
+    {
+      "model": "PL",
+      "box": 25,
+      "snapshot": 24,
+      "z": 19.40664523021168,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0024.hdf5",
+      "source_bytes": 34472300637,
+      "source_mtime_ns": 1748776495000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/cdm_25_snap0024.npz",
+      "prefix": "cdm_25",
+      "existing": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/cdm_25_snap0024.npz",
+      "existing_points": 512,
+      "existing_sha256": "a26e1b610ed3a5c1ee060d1b795f37d07bf0e218f1807d7809afa298456d97f2",
+      "cache": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/cdm_25_snap0024.npz",
+      "cache_sha256": "a26e1b610ed3a5c1ee060d1b795f37d07bf0e218f1807d7809afa298456d97f2",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "PL",
+      "box": 25,
+      "snapshot": 27,
+      "z": 14.331814598205613,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0027.hdf5",
+      "source_bytes": 34772310367,
+      "source_mtime_ns": 1748793283000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/cdm_25_snap0027.npz",
+      "prefix": "cdm_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/cdm_25_snap0027.npz",
+      "cache_sha256": "ab6bf533947f1c81160b2bdd90c61d2b6911f9a6e3a1ee77fba97f9a0766808a",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "PL",
+      "box": 25,
+      "snapshot": 30,
+      "z": 10.51901923231075,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0030.hdf5",
+      "source_bytes": 35233350425,
+      "source_mtime_ns": 1748811920000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/cdm_25_snap0030.npz",
+      "prefix": "cdm_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/cdm_25_snap0030.npz",
+      "cache_sha256": "2f28895cd17db745d00bb6d892d39f8813f7c711f9c615fe078f4e35d4e43297",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "PL",
+      "box": 25,
+      "snapshot": 44,
+      "z": 2.0333177828202462,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0044.hdf5",
+      "source_bytes": 36385849790,
+      "source_mtime_ns": 1749111878000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/cdm_25_snap0044.npz",
+      "prefix": "cdm_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/cdm_25_snap0044.npz",
+      "cache_sha256": "468567755ae254ec30a745a0c1c6808efb98b4005838dba898ad4871114bc7a6",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "kp1",
+      "box": 25,
+      "snapshot": 24,
+      "z": 19.40664523021168,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0024.hdf5",
+      "source_bytes": 36174963264,
+      "source_mtime_ns": 1748804010000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_25_snap0024.npz",
+      "prefix": "bluetilted_kp1_ms1.5_25",
+      "existing": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/bluetilted_kp1_ms1.5_25_snap0024.npz",
+      "existing_points": 512,
+      "existing_sha256": "0d466f9ae062584bc7dabc21c972bddf7f2ea2e94de93c32beee4aa1f93e39f0",
+      "cache": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/bluetilted_kp1_ms1.5_25_snap0024.npz",
+      "cache_sha256": "0d466f9ae062584bc7dabc21c972bddf7f2ea2e94de93c32beee4aa1f93e39f0",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "kp1",
+      "box": 25,
+      "snapshot": 27,
+      "z": 14.331814598205613,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0027.hdf5",
+      "source_bytes": 36497213953,
+      "source_mtime_ns": 1748842016000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_25_snap0027.npz",
+      "prefix": "bluetilted_kp1_ms1.5_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_25_snap0027.npz",
+      "cache_sha256": "075a0a55ce58dfdc541b9c9c15e11bddfe81f3fe92bc38b484e1ed927480bb13",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "kp1",
+      "box": 25,
+      "snapshot": 30,
+      "z": 10.51901923231075,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0030.hdf5",
+      "source_bytes": 36647610790,
+      "source_mtime_ns": 1748902211000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_25_snap0030.npz",
+      "prefix": "bluetilted_kp1_ms1.5_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_25_snap0030.npz",
+      "cache_sha256": "f9a497f987d3d41b250a2ef9fb047aff58c292c77891391354042565e9e95223",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "kp1",
+      "box": 25,
+      "snapshot": 44,
+      "z": 2.0333177828202462,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0044.hdf5",
+      "source_bytes": 36369338422,
+      "source_mtime_ns": 1749842194000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_25_snap0044.npz",
+      "prefix": "bluetilted_kp1_ms1.5_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_25_snap0044.npz",
+      "cache_sha256": "ceb013b7f50d954f8267a5860dfecb53d0d344f6bd990d886e801efba92279c4",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "kp10",
+      "box": 25,
+      "snapshot": 24,
+      "z": 19.40664523021168,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0024.hdf5",
+      "source_bytes": 34876713847,
+      "source_mtime_ns": 1748957783000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_25_snap0024.npz",
+      "prefix": "bluetilted_kp10_ms1.5_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_25_snap0024.npz",
+      "cache_sha256": "a55372fb031b7abfd59d08d44eeb32049ae892522fc9b6d611fdc3a88ec589b7",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "kp10",
+      "box": 25,
+      "snapshot": 27,
+      "z": 14.331814598205613,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0027.hdf5",
+      "source_bytes": 35387371121,
+      "source_mtime_ns": 1748980505000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_25_snap0027.npz",
+      "prefix": "bluetilted_kp10_ms1.5_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_25_snap0027.npz",
+      "cache_sha256": "74f9b45b81bbe3344927d8a1247ab4e596bbc4bde0b364ba82881ae5664011a1",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "kp10",
+      "box": 25,
+      "snapshot": 30,
+      "z": 10.51901923231075,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0030.hdf5",
+      "source_bytes": 35865885650,
+      "source_mtime_ns": 1749005648000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_25_snap0030.npz",
+      "prefix": "bluetilted_kp10_ms1.5_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_25_snap0030.npz",
+      "cache_sha256": "07bec195b3d9552b1f3bdf6e82a644fa9905e77d8143f578f6dd56160722a0c7",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "kp10",
+      "box": 25,
+      "snapshot": 44,
+      "z": 2.0333177828202462,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0044.hdf5",
+      "source_bytes": 36475874316,
+      "source_mtime_ns": 1749828425000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_25_snap0044.npz",
+      "prefix": "bluetilted_kp10_ms1.5_25",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_25_snap0044.npz",
+      "cache_sha256": "e004c42623e2193bc419809086b018080a1af734ab254374630082bdbb46fb84",
+      "particles": 1073741824,
+      "box_mpc": 37.11401426970295
+    },
+    {
+      "model": "PL",
+      "box": 256,
+      "snapshot": 24,
+      "z": 19.40664523021168,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_1024/PL_1024_0024.hdf5",
+      "source_bytes": 34489982473,
+      "source_mtime_ns": 1746939338000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/new_PL_256_1024_snap0024.npz",
+      "prefix": "new_PL_256_1024",
+      "existing": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/new_PL_256_1024_snap0024.npz",
+      "existing_points": 512,
+      "existing_sha256": "99e1085bcb710a1c8d3e757b4c7e8ba196c6a0d9ca0adb6a3a8811f6402fbe8e",
+      "cache": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/new_PL_256_1024_snap0024.npz",
+      "cache_sha256": "99e1085bcb710a1c8d3e757b4c7e8ba196c6a0d9ca0adb6a3a8811f6402fbe8e",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "PL",
+      "box": 256,
+      "snapshot": 27,
+      "z": 14.331814598205613,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_1024/PL_1024_0027.hdf5",
+      "source_bytes": 34588609201,
+      "source_mtime_ns": 1746971447000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/new_PL_256_1024_snap0027.npz",
+      "prefix": "new_PL_256_1024",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/new_PL_256_1024_snap0027.npz",
+      "cache_sha256": "eab314c40b6dfe42956bb97e3d755ec85a89056e65c7ee16b83d51d734d2ef50",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "PL",
+      "box": 256,
+      "snapshot": 30,
+      "z": 10.51901923231075,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_1024/PL_1024_0030.hdf5",
+      "source_bytes": 34766736025,
+      "source_mtime_ns": 1747003488000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/new_PL_256_1024_snap0030.npz",
+      "prefix": "new_PL_256_1024",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/new_PL_256_1024_snap0030.npz",
+      "cache_sha256": "e4026f28f70cb2a41c2ccc62997f7f24ec06445f0cc8f119f2809861212a83dd",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "PL",
+      "box": 256,
+      "snapshot": 44,
+      "z": 2.0333177828202462,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_1024/PL_1024_0044.hdf5",
+      "source_bytes": 36749641467,
+      "source_mtime_ns": 1750218492000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/new_PL_256_1024_snap0044.npz",
+      "prefix": "new_PL_256_1024",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/new_PL_256_1024_snap0044.npz",
+      "cache_sha256": "80f096ed66a8008b721e7c14a184a2c8a193ea578fe4e5ff380555fb0f8d0ff9",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "kp1",
+      "box": 256,
+      "snapshot": 24,
+      "z": 19.40664523021168,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_256_1024/kp_1_ms_1.5_256_0024.hdf5",
+      "source_bytes": 34672690343,
+      "source_mtime_ns": 1775176160164651021,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_256_snap0024.npz",
+      "prefix": "bluetilted_kp1_ms1.5_256",
+      "existing": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/bluetilted_kp1_ms1.5_256_snap0024.npz",
+      "existing_points": 512,
+      "existing_sha256": "5bc88783213fe9c2fe49488290d64655ef17806325d36015a29bae1a49196c1e",
+      "cache": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/bluetilted_kp1_ms1.5_256_snap0024.npz",
+      "cache_sha256": "5bc88783213fe9c2fe49488290d64655ef17806325d36015a29bae1a49196c1e",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "kp1",
+      "box": 256,
+      "snapshot": 27,
+      "z": 14.331814598205613,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_256_1024/kp_1_ms_1.5_256_0027.hdf5",
+      "source_bytes": 34896092039,
+      "source_mtime_ns": 1775252872886931117,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_256_snap0027.npz",
+      "prefix": "bluetilted_kp1_ms1.5_256",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_256_snap0027.npz",
+      "cache_sha256": "9862ca27e085aca988df1e49fd43e2afd6dc3978b199c3fd18d6295d1789d8e9",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "kp1",
+      "box": 256,
+      "snapshot": 30,
+      "z": 10.51901923231075,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_256_1024/kp_1_ms_1.5_256_0030.hdf5",
+      "source_bytes": 35368471247,
+      "source_mtime_ns": 1775333829186112986,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_256_snap0030.npz",
+      "prefix": "bluetilted_kp1_ms1.5_256",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_256_snap0030.npz",
+      "cache_sha256": "b50de41ff29f31a78e6ef725cc76762ae3a2326124343452826a1aa360a2d089",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "kp1",
+      "box": 256,
+      "snapshot": 44,
+      "z": 2.0333177828202462,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_256_1024/kp_1_ms_1.5_256_0044.hdf5",
+      "source_bytes": 37090916086,
+      "source_mtime_ns": 1775875380212511602,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_256_snap0044.npz",
+      "prefix": "bluetilted_kp1_ms1.5_256",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp1_ms1.5_256_snap0044.npz",
+      "cache_sha256": "da2519efc6ee33fb66177938b2c59ca8fda80f1565ed8eb85ba1aa0248f41c54",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "kp10",
+      "box": 256,
+      "snapshot": 24,
+      "z": 19.40664523021168,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_256_1024/kp_10_ms_1.5_256_0024.hdf5",
+      "source_bytes": 34509130647,
+      "source_mtime_ns": 1775045540381552259,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_256_snap0024.npz",
+      "prefix": "bluetilted_kp10_ms1.5_256",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_256_snap0024.npz",
+      "cache_sha256": "f58968b534c5ae57125081e1b98c2a13aa9b16851ec0f4f2ca76046810bcec79",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "kp10",
+      "box": 256,
+      "snapshot": 27,
+      "z": 14.331814598205613,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_256_1024/kp_10_ms_1.5_256_0027.hdf5",
+      "source_bytes": 34607443960,
+      "source_mtime_ns": 1775116325351694107,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_256_snap0027.npz",
+      "prefix": "bluetilted_kp10_ms1.5_256",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_256_snap0027.npz",
+      "cache_sha256": "7c539f198c9da72186b5dd3b2ebc44df7b3cefcc9c75fca77732fec408fff6a0",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "kp10",
+      "box": 256,
+      "snapshot": 30,
+      "z": 10.51901923231075,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_256_1024/kp_10_ms_1.5_256_0030.hdf5",
+      "source_bytes": 34791456086,
+      "source_mtime_ns": 1775187162442028691,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_256_snap0030.npz",
+      "prefix": "bluetilted_kp10_ms1.5_256",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_256_snap0030.npz",
+      "cache_sha256": "e506b477e04000d91f4c66a26c5331a07aae4bbbdb6a73aa307d981a81793201",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    },
+    {
+      "model": "kp10",
+      "box": 256,
+      "snapshot": 44,
+      "z": 2.0333177828202462,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_256_1024/kp_10_ms_1.5_256_0044.hdf5",
+      "source_bytes": 36791094132,
+      "source_mtime_ns": 1776302836051070398,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_256_snap0044.npz",
+      "prefix": "bluetilted_kp10_ms1.5_256",
+      "existing": null,
+      "cache": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/bluetilted_kp10_ms1.5_256_snap0044.npz",
+      "cache_sha256": "fa718fb3546038cd539f5f042b71cff31e4a3282eca00d702edae4c233f6251f",
+      "particles": 1073741824,
+      "box_mpc": 380.0475061217582
+    }
+  ],
+  "power_overlap": {
+    "identity": {
+      "model": "PL",
+      "box": 25,
+      "snapshot": 32,
+      "z": 8.519850605215494,
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0032.hdf5",
+      "source_bytes": 35546628766,
+      "source_mtime_ns": 1748828344000000000,
+      "output": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_data_page/.cache/redshift-extension/power/cdm_25_snap0032.npz",
+      "prefix": "cdm_25",
+      "existing": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/powerspectrum/sim_power_data/cdm_25_snap0032.npz",
+      "existing_points": 512,
+      "existing_sha256": "576dcef01655adaa712d0f7904f6c980b233791c4eb2c8f59229e6dfac36cde5",
+      "fof": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/fof_output_0032.hdf5",
+      "soap": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0032.hdf5",
+      "control": true,
+      "method": "paper_swiftsimio_1024_shot_noise_subtracted",
+      "mesh": 1024,
+      "paper_script_sha256": "e125606f1fa111a0511f9d962881ce833ad0d50709c1398daa99da90a555b7fe"
+    },
+    "sha256": "8c366bcb6705cd3c60d0bdf3c6a587663c63abc01716ecb49e11d0a7793df67d",
+    "job": "2132215",
+    "seconds": 0.006008028984069824,
+    "paper_overlap_max_relative_error": 2.2065100857560083e-09
+  },
+  "theory_overlap": [
+    {
+      "model": "PL",
+      "snapshot": 32,
+      "maximum_relative_error": 1.0688960827565097e-10
+    },
+    {
+      "model": "kp1",
+      "snapshot": 32,
+      "maximum_relative_error": 8.15179035384972e-11
+    },
+    {
+      "model": "kp10",
+      "snapshot": 32,
+      "maximum_relative_error": 8.6424756240433e-11
+    }
+  ],
+  "baseline_hashes": {
+    "data.js": "e9956eaa7cc3763fc216f827f4c3fed3226ff7f4c96d0bab74ae673a46edd8c4",
+    "data/page-data.json": "b401983f86291190b7a8f8f843af22b6abcdc8581c9b2c4c49464ec90058ba7b",
+    "app.js": "3473989eb9e86684a0e439f6c35a5bfe56ddf2d7f6b2628a917b6c641ef03639",
+    "locales.js": "af87f76588831ce27ea3c3ccd547c7ad7afd1b22001582f477e78019806b5d92",
+    "index.html": "33177213f8a80f50f594f61ca6ce11e015d9ce7526cdc3b3efec439251c3113d",
+    "tokens.css": "38573bcd232c5463ff3d6c123fe759ee0e97313334191c071208989b07c16809",
+    "styles.css": "4920fd1013f266f02f8b07a2e06457da1cb0ac91762fdf6f21eb9ec98fbd83c2",
+    "system.js": "96227bbab81e618d703f6be2bd2b60fe4ae852b8cd4dc19dab7cb302e2e99e50",
+    "DESIGN-SYSTEM.md": "a94ae418df01ebac0e9b8ac92a614dbb3f3c52216f2b4315b49a681470aafe61",
+    "media.js": "29a958bb2fa7bbba0c24990cbb9c6641d51e0271a652af70ff07e44bca0d5737",
+    "data/media-data.json": "d5968ea3e7a5e4771c74b78ea59bb9d794a388f802fd18dfeb5b7c0a581bded2"
+  },
+  "summary": {
+    "targets": [
+      {
+        "snapshot": 24,
+        "z": 19.40664523021168
+      },
+      {
+        "snapshot": 27,
+        "z": 14.331814598205613
+      },
+      {
+        "snapshot": 30,
+        "z": 10.51901923231075
+      },
+      {
+        "snapshot": 32,
+        "z": 8.519850605215494
+      },
+      {
+        "snapshot": 40,
+        "z": 3.4410805658271224
+      },
+      {
+        "snapshot": 44,
+        "z": 2.0333177828202462
+      },
+      {
+        "snapshot": 48,
+        "z": 1.0717968600643704
+      },
+      {
+        "snapshot": 56,
+        "z": 0
+      }
+    ],
+    "added_points": {
+      "hmf.fof": 179,
+      "hmf.m200c": 193,
+      "hmfRatios.fof": 119,
+      "hmfRatios.m200c": 128,
+      "hmfReference": 179,
+      "concentration": 131,
+      "concentrationTheory": 393,
+      "resolution": 581,
+      "power": 3048,
+      "powerRatios": 2032,
+      "powerResidual": 670,
+      "powerTheory": 865
+    },
+    "method": "paper_methods_on_real_snapshots",
+    "provenance": "data/redshift-extension-provenance.json"
+  },
+  "notes": "Published points are retained unchanged. New points are measurements of real snapshots, not redshift interpolation. Fixed-selection histories, z=0 radial profiles and mesh diagnostics retain their original scope."
+}
