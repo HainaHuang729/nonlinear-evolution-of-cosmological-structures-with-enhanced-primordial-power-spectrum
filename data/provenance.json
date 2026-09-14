@@ -1,5 +1,5 @@
 {
-  "built": "2026-09-09T07:32:36.944664+00:00",
+  "built": "2026-09-14T03:28:48.938356+00:00",
   "paper_title": "Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power",
   "sources": [
     {
@@ -9,46 +9,10 @@
       "bytes": 198706
     },
     {
-      "file": null,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/public_catalog_release_2026-07-23/fof_hmf_source_PL.hdf5",
-      "sha256": "dac1f728a0bb3875c38f385e51dda44faeb03faaae9edb8db8dfdc650e3f0022",
-      "purpose": "HMF ratio: shared logarithmic bins; ratio uncertainty propagated from Poisson counts"
-    },
-    {
-      "file": null,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/public_catalog_release_2026-07-23/fof_hmf_source_BT_kp1.hdf5",
-      "sha256": "a6936a2abb328f471e037ec2aab6e5cf8c0da0e18654a7ce1f3d4f81d07bd908",
-      "purpose": "HMF ratio: shared logarithmic bins; ratio uncertainty propagated from Poisson counts"
-    },
-    {
-      "file": null,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/public_catalog_release_2026-07-23/fof_hmf_source_BT_kp10.hdf5",
-      "sha256": "ce108d24a5018876ea358ca760ae7147fbe31d54759bf1600e3b41bd437d9852",
-      "purpose": "HMF ratio: shared logarithmic bins; ratio uncertainty propagated from Poisson counts"
-    },
-    {
       "file": "data/m200c_bocquet16_hmf_points.csv",
       "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/m200c_hmf/m200c_bocquet16_hmf_points.csv",
       "sha256": "9889f050c65d2a28d8aede5034aaf4a7041db8a1d5e6a0c1e438a677924c2936",
       "bytes": 193708
-    },
-    {
-      "file": null,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/public_catalog_release_2026-07-23/m200c_concentration_source_PL.hdf5",
-      "sha256": "e16124698ae82a616c4da20a82b55eaf727f2e0b829ea2d0994b07c9aed3461b",
-      "purpose": "HMF ratio: shared logarithmic bins; ratio uncertainty propagated from Poisson counts"
-    },
-    {
-      "file": null,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/public_catalog_release_2026-07-23/m200c_concentration_source_BT_kp1.hdf5",
-      "sha256": "7eaf8adba911b65ce37c686cf1bd8de38f6c2cfaf5c1cce85b9b45a346ba2b0d",
-      "purpose": "HMF ratio: shared logarithmic bins; ratio uncertainty propagated from Poisson counts"
-    },
-    {
-      "file": null,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/public_catalog_release_2026-07-23/m200c_concentration_source_BT_kp10.hdf5",
-      "sha256": "20861e0d251d2ea739bb1cfb8f472ff79e59fd66f261f442128987d3c44e566c",
-      "purpose": "HMF ratio: shared logarithmic bins; ratio uncertainty propagated from Poisson counts"
     },
     {
       "file": "data/fof_reed07_hmf_residuals.csv",
@@ -223,17 +187,70 @@
       "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/main.tex",
       "sha256": "b21920ea5b7ff0695f35fa8c8c929a8f6354639b56cd5187a0bd95ddd10a3a58",
       "bytes": 90603
+    },
+    {
+      "file": "data/power_spectrum_measurements.csv",
+      "bytes": 6653140,
+      "sha256": "a723bf373ab7aa50597c2d8bfd2fc81b146878f0cd75f5acf8efbf93d7da0833",
+      "source": "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/nonlinear_power_spectrum/power_spectrum_measurements.csv"
     }
   ],
   "derivations": {
-    "hmf_ratio": "Rebinned compact per-halo catalogs using identical fixed log10 mass edges in each model; ratios include propagated independent Poisson counting uncertainties. FOF edges: linspace(8,13,31); M200c edges: linspace(8.3,13.1,33); M200c cut 2e8 Msun. This is a page diagnostic, not a pixel reproduction of the published ratio panel.",
-    "assembly": "PL and BT kp1 identified by source file and selection provenance; show median of individual M(z)/M0, with halo 16–84 percentiles.",
-    "halfmass": "Show zhalf_median and halo percentile spread from the same-TrackId table; the original paper image is provided separately.",
+    "hmf_ratio": "Use the paper scripts and released HMF bins. FOF: preserve sorted published-bin pairs and geometric mean mass coordinates. M200c: match published mass centers after the 2e8 Msun completeness cut. Ratios and asymmetric plotted bounds use the released Poisson uncertainties; no catalog rebinning.",
+    "assembly": "Use median_M_msun, p16_M_msun and p84_M_msun from the paper’s Warren-corrected positive-mass histories, in the same six final-mass windows and z<=8. These are absolute masses in Msun, not medians of individual normalized histories.",
+    "halfmass": "Use the paper’s zhalf column (mean individual-halo formation redshift), M0_mean_msun and halo 16/84 percentiles from the same-TrackId table.",
     "projection": "Original PNG bytes; CSS viewports select existing panels. Independent original color normalization. No generated or interpolated fields.",
-    "power": "Use current finite-box table; shade outside 4*(2*pi/L) <= k <= 0.25*(pi*1024/L). Original published BT/PL ratio samples.",
+    "power": "Simulation curves use original power_spectrum_measurements.csv samples selected by the paper family/snapshot mapping and k<=0.25*pi*1024/L. BT/PL uses the released ratio samples with the same limit. HMcode curves use the paper’s theory_curve aggregation of published HMcode values; simulation/HMcode uses the separate released residual bins, preserving its tabulated sim_over_hmcode values. Low-k points remain visible with the existing 4*kf indicator. No finite-volume or grid-window correction.",
     "input_ratio": "Divide input spectra on identical stored k samples only. Retain the source normalization; this is input linear matter power, not the nonlinear output or a newly normalized primordial spectrum.",
     "resolution": "Published FOF resolution/volume table. Open markers indicate mean-bin masses below 50 times that run's particle mass. Mesh convergence is the tabulated PL P_mesh512/P_mesh1024 at z=0; no new simulations.",
     "concentration_reference": "Use tabulated simulation/theory ratios. Reconstruct halo percentile bounds by dividing retained simulation percentiles by theory_c200c. The source ratio_low/high fields are not used as absolute interval endpoints.",
     "profile_ratio": "Retain released radial density ratios and intervals constructed from separate bootstrap bounds; these are not a paired bootstrap distribution of the ratio."
+  },
+  "chart_data_alignment": {
+    "changed_datasets": [
+      "hmfRatios.fof",
+      "hmfRatios.m200c",
+      "assembly",
+      "halfmass",
+      "power",
+      "powerRatios",
+      "powerResidual",
+      "powerTheory"
+    ],
+    "reference_sources": {
+      "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/fof_hmf/fof_reed07_hmf_points.csv": "fc5b6c12c34e0fe69a869d2300910c8c6492b8484cecb7ce0b2c1a44ad76c17b",
+      "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/fof_hmf/fof_reed07_hmf_residuals.csv": "bb857c52e84c349edae83003d3a0a13f345e28572a2f8abeb3cdf009ab9ae1bd",
+      "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/nonlinear_power_spectrum/power_spectrum_hmcode_residuals_finite_box.csv": "552b55d86e0f63ce4eff6df003045b29e65d8db9aa47a487cef957ea2e4a9634",
+      "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/nonlinear_power_spectrum/power_spectrum_measurements.csv": "a723bf373ab7aa50597c2d8bfd2fc81b146878f0cd75f5acf8efbf93d7da0833",
+      "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/nonlinear_power_spectrum/power_spectrum_ratios.csv": "8c58d3585480eafed74fa850f3031356ba34b719b8f11df14b9573534791645f",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/concentration/concentration_qc_binned_points.csv": "325ea807b108743c29cbf95b80574f702c164cf1b3e1a0a25826636c83d56aa5",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/concentration/concentration_qc_theory_ratios.csv": "eb034acf5306eb1224b8442ad70cd922b380f8c4b300edcceedf2951ec86f04a",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/fof_hmf/fof_reed07_hmf_residuals.csv": "bb857c52e84c349edae83003d3a0a13f345e28572a2f8abeb3cdf009ab9ae1bd",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/fof_hmf_resolution/fof_hmf_resolution_points.csv": "59f103ba3601005e8fd298b4494bfe0b05451a6a3d00b1350ffe0e3abc33e15f",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/halfmass_redshift/same_trackid_no_envelope_points.csv": "dbce5aeef41adab1dc7b075fccd41f9561b80209978e69c70754ddfd98b279ea",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/halo_density_radial/radial_density_profiles_n100_power03.csv": "2228f3784158d9579e9e3af34306c5bc3f9832a408412186973f35642275e7a3",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/halo_density_radial/radial_density_ratios_n100_power03.csv": "d9b2cd53b41e22bc7bced065b401c80c8a7e2a7814a5c0db0cf440db138a6abd",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/input_power_spectra/input_power_spectra.csv": "ea357c2376084202407d51f6055279a528a6007bfd1c8f066009b4240f76852d",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/m200c_hmf/m200c_bocquet16_hmf_points.csv": "9889f050c65d2a28d8aede5034aaf4a7041db8a1d5e6a0c1e438a677924c2936",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/mass_assembly_history/bt_soft_warren_median_mah.csv": "cdea4d3aad870009a9da8b5153f027fce86bfb4764f7082a08ce823aef4f6bf2",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/mass_assembly_history/pl_warren_median_mah.csv": "9fa985c8fd5905edd469b025bf58c188edcff30f3dabd13985465c0e3adb114a",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/figure_data/nonlinear_power_spectrum/power_spectrum_mesh_convergence_z0.csv": "30ff2259520cb1f387e3a07319f1c7163afe25ea72b90663933b8b1d431de7c4",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/bt_plot_halo_density_radial_trial_png.py": "aa9be0a721111e2efa68becd776cb6150a3c9f0f0fce7dacba0fc350c9bcd02f",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/concentration_qc_kp10.py": "631fdea2939fd46c9ee8f4ce52b83c09714e29e2370eb1b3e2cf2cb2f8125c38",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_bocquet16_m200c_hmf.py": "d5b9171916ceed9fda7424383bfcbde3fb12c78730b1547a0e6887d7fdf2afbc",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_fof_hmf_resolution.py": "cc782be8aa4bd4319b1d0e006eb0fa3e622b2ba373057da231414bfcc838d978",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_hmf_public_ratio.py": "3b9a1316cf04e47a6958e36a57795f2ce0e95f84e6b03ed32f6ee903384c86b2",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_input_power_spectrum.py": "de35e3ece15b585c2987c1bceeaf69c1bb39d26efc78bdf99d39e5b43b01e884",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_mass_assembly_history_correa.py": "bc8b43a77be01f2eeb715b49367e6177d44fca5b713473e917cac6d3581b5ffc",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_power_spectrum_public_ratio.py": "27f04cc10f29049e9cd947d6f0bfb50a0ea763e542f227acbf3240cdd719a454",
+      "/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/scripts/plot_same_trackid_no_envelope_allmodels.py": "e7406f40744100951d4b4b0182dabc05f5e6b8f19bc75a01d68d13c50e3ced27"
+    },
+    "report": "data/chart-data-audit.json",
+    "styles_preserved": {
+      "tokens.css": "38573bcd232c5463ff3d6c123fe759ee0e97313334191c071208989b07c16809",
+      "styles.css": "4920fd1013f266f02f8b07a2e06457da1cb0ac91762fdf6f21eb9ec98fbd83c2",
+      "system.js": "96227bbab81e618d703f6be2bd2b60fe4ae852b8cd4dc19dab7cb302e2e99e50",
+      "DESIGN-SYSTEM.md": "a94ae418df01ebac0e9b8ac92a614dbb3f3c52216f2b4315b49a681470aafe61"
+    }
   }
 }

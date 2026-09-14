@@ -19,10 +19,12 @@ See [the design system](DESIGN-SYSTEM.md) for components and reuse instructions.
 - The figure and data archive starts collapsed. Expand it to search, filter or download; collapsing it preserves the current filter state.
 - Independent redshift selections persist while other topics follow projection playback.
 - HMcode2020 comparisons, three concentration references, and radial BT/PL density ratios.
-- Clickable redshift coverage, thirteen simulation configurations, twelve original figures, and nineteen downloadable CSV tables.
+- Clickable redshift coverage, thirteen simulation configurations, twelve original figures, and twenty downloadable CSV tables.
+- Numerical series follow the paper’s HMF bins, absolute median assembly masses, mean half-mass redshifts, original power-spectrum samples and high-k limits. The existing visual system is preserved.
 
 Both projection views use the paper’s independent panel color normalization. Colors show morphology and cannot be directly compared as absolute density between panels. Statistical panels identify missing snapshots, units, theoretical references, and uncertainty definitions.
 Source hashes and display derivations are recorded in `data/provenance.json`.
+The 19-series numerical comparison with the paper is recorded in `data/chart-data-audit.json`.
 Full-particle projection settings, comparison with all nine overlapping paper panels, and animation provenance are in `data/media-provenance.json`.
 The offline Chinese font uses the license in `assets/FONT-LICENSE.txt`.
 

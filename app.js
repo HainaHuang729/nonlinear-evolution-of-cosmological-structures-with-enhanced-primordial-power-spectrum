@@ -206,28 +206,28 @@
       $('science-question').textContent='小尺度功率增强后，同一质量范围内的 halo 数量如何变化？';
       $('legend-note').textContent=S.definition==='fof'?'虚线：Reed07 理论参考；误差：Poisson':'误差：Poisson 计数不确定性';
       setHeading('a',S.definition==='fof'?'FOF halo 质量函数':'M₂₀₀c halo 质量函数',zr,`直接读取论文中的质量函数点。质量下限 ${fmt(threshold)} M☉；横轴保留源表中的质量坐标。`);
-      setHeading('b','相对于 PL 的丰度',zr,'将论文配套逐 halo 目录按相同固定质量区间重新分箱后计算 BT/PL；误差由双方 Poisson 计数传播。该交互面板采用统一分箱，论文原图可在资料目录查看。');
+      setHeading('b','相对于 PL 的丰度',zr,'沿用论文发布的质量分箱与匹配方式计算 BT/PL；FOF 使用配对分箱的几何平均质量，M₂₀₀c 匹配相同质量中心。误差由源表双方的 Poisson 不确定性传播。');
       chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Reed07'}))],{title:'Halo 质量函数',xLabel:massLabel,yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,intervalLabel:'Poisson ±1σ',available});
-      chart('chart-b',grouped(ratio),{title:'共同质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z))});
-      downloadRows=[...rows.map(r=>({...r,series:'published_hmf'})),...ratio.map(r=>({...r,series:'shared_bin_BT_over_PL'}))];
+      chart('chart-b',grouped(ratio),{title:'论文质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z))});
+      downloadRows=[...rows.map(r=>({...r,series:'published_hmf'})),...ratio.map(r=>({...r,series:'paper_bin_BT_over_PL'}))];
     } else if(S.tab==='power') {
       const rows=atZ(D.power).filter(r=>r.box===S.box),ratio=atZ(D.powerRatios).filter(r=>r.box===S.box);
-      const comparison=S.powerComparison==='ratio'?ratio:rows.map(r=>({...r,y:r.y/r.theory}));
+      const comparison=S.powerComparison==='ratio'?ratio:atZ(D.powerResidual).filter(r=>r.box===S.box);
       const trusted=[4*2*Math.PI/S.box,.25*Math.PI*1024/S.box];
       $('science-question').textContent='初始的小尺度功率增强，在非线性演化后保留在哪些尺度？';
       $('legend-note').textContent='虚线：HMcode2020；灰区：采用范围之外';
       setHeading('a','非线性物质功率谱',`${zr} · L = ${S.box}`,`L = ${S.box} h⁻¹ Mpc。采用区间 ${trusted[0].toFixed(2)} ≤ k ≤ ${trusted[1].toFixed(2)} h Mpc⁻¹；HMcode2020 曲线为理论参考。`);
-      setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'直接使用论文发布的同盒子 BT/PL 数据。灰区外保留原始趋势供查看；不跨盒子计算比值。':'每个模型的模拟功率除以该模型对应的 HMcode2020 表值。HMcode 曲线是参考预测，未重新拟合模拟结果。');
-      chart('chart-a',[...grouped(rows),...grouped(rows.map(r=>({...r,y:r.theory})),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available});
+      setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'使用论文原始采样的同盒子 BT/PL 数据，按论文舍去 k > 0.25 k_Ny 的点；低 k 灰区保留供检查。完整源表可下载。':'直接读取论文发布的模拟 / HMcode2020 残差分箱与比值，按论文舍去 k > 0.25 k_Ny 的点。理论参考保留论文的跨盒子合并采样。');
+      chart('chart-a',[...grouped(rows),...grouped(atZ(D.powerTheory),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available});
       chart('chart-b',grouped(comparison),{title:S.powerComparison==='ratio'?'同盒子 BT/PL 功率比':'模拟与 HMcode2020 的功率比',xLabel:'k [h Mpc⁻¹]',yLabel:S.powerComparison==='ratio'?'P_BT / P_PL':'P_sim / P_HMcode2020',baseline:1,trusted,available});
       downloadRows=[...rows.map(r=>({...r,series:'power'})),...comparison.map(r=>({...r,series:S.powerComparison==='ratio'?'BT_over_PL':'sim_over_HMcode2020'}))];
     } else if(S.tab==='assembly') {
       const rows=D.assembly.filter(r=>r.mass===S.mass);
       $('science-question').textContent='今天质量相近的 halo，过去怎样组装，又在何时达到一半质量？';
       $('legend-note').textContent='阴影：halo 间 16–84% 分位区间';
-      setHeading('a','质量组装历史',`M₀ ≈ ${fmt(S.mass)} M☉`,'PL 与 BT kₚ=1 的相同最终质量窗口样本；显示逐 halo 的 M(z)/M₀ 中位数和散布。保留 same-TrackId 的原始历史口径。');
-      setHeading('b','半质量形成红移','z = 0 选样','按最终 FOF 质量分组，显示 z₁/₂ 中位数与 halo 间 16–84% 分位数。该面板不随当前投影红移改写样本。');
-      chart('chart-a',grouped(rows),{title:'质量组装历史',xLabel:'红移 z',yLabel:'median[M(z) / M₀]',xLog:false,bands:true,marker:projectionZ,intervalLabel:'halo 16–84%'});
+      setHeading('a','质量组装历史',`M₀ ≈ ${fmt(S.mass)} M☉`,'PL 与 BT kₚ=1 的相同最终质量窗口样本；按论文显示 Warren 修正后正质量样本的 M_FOF(z) 中位数及 16–84% 分位数，单位为 M☉。');
+      setHeading('b','半质量形成红移','z = 0 选样','按最终 FOF 质量分组，按论文显示 z₁/₂ 均值与 halo 间 16–84% 分位数。该面板不随当前投影红移改写样本。');
+      chart('chart-a',grouped(rows),{title:'质量组装历史',xLabel:'红移 z',yLabel:'median M_FOF(z) [M☉]',xLog:false,bands:true,marker:projectionZ,intervalLabel:'halo 16–84%'});
       chart('chart-b',grouped(D.halfmass),{title:'半质量形成红移',xLabel:'最终 M_FOF [M☉]',yLabel:'z₁/₂',yLog:false,bands:true,intervalLabel:'halo 16–84%'});
       downloadRows=[...rows.map(r=>({...r,series:'assembly'})),...D.halfmass.map(r=>({...r,series:'half_mass_redshift'}))];
     } else if(S.tab==='structure') {
@@ -343,8 +343,9 @@
     'fof_reed07_hmf_points.csv':'FOF 质量函数数值点',
     'fof_reed07_hmf_residuals.csv':'FOF 与 Reed07 参考比较',
     'm200c_bocquet16_hmf_points.csv':'M₂₀₀c 质量函数数值点',
-    'fof_shared_bin_ratios.csv':'FOF 统一分箱 BT/PL 比值',
-    'm200c_shared_bin_ratios.csv':'M₂₀₀c 统一分箱 BT/PL 比值',
+    'fof_shared_bin_ratios.csv':'FOF 论文分箱 BT/PL 比值',
+    'm200c_shared_bin_ratios.csv':'M₂₀₀c 论文分箱 BT/PL 比值',
+    'power_spectrum_measurements.csv':'非线性功率谱原始采样',
     'power_spectrum_hmcode_residuals_finite_box.csv':'非线性功率谱与 HMcode2020',
     'power_spectrum_ratios.csv':'同盒子 BT/PL 功率谱比值',
     'input_power_spectra.csv':'输入线性物质功率谱',
