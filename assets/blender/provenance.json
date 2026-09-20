@@ -1,0 +1,101 @@
+{
+  "sequence": "bluetilted/kp_10_ms_1.5_25_1024",
+  "particles_per_snapshot": 1073741824,
+  "particle_snapshots": 57,
+  "preview_cohort": 100000,
+  "still_cohort": 1000000,
+  "volume_resolution": 128,
+  "volume_snapshots": [
+    0,
+    28,
+    56
+  ],
+  "video_seconds": 14.2,
+  "video_resolution": [
+    640,
+    360
+  ],
+  "video_fps": 5,
+  "files": [
+    {
+      "file": "blender-pipeline-source.zip",
+      "bytes": 59261,
+      "sha256": "74567047752957b7c42c8cb99d217bdc30d8113598afc65174819a76feca4b93"
+    },
+    {
+      "file": "blender-sans.woff2",
+      "bytes": 75512,
+      "sha256": "bc020269c93c72c4fdd4947c2b18387e894a45ddf0e7383e38a3f131b2126592"
+    },
+    {
+      "file": "blender.css",
+      "bytes": 1443,
+      "sha256": "24faa391e32f23efd71f66184d9a32032f36cb7354bff021730bf6bf9dce34ec"
+    },
+    {
+      "file": "blender_performance_report.md",
+      "bytes": 5866,
+      "sha256": "8cfdb07e196c550265e0962088f565afa72205e6d827999f3d015f4f2190df9a"
+    },
+    {
+      "file": "cosmic_evolution_preview.mp4",
+      "bytes": 1416449,
+      "sha256": "5938b1680a5a2c2addfc5f37495b668a67624765d01da843eca85e67209f11ba"
+    },
+    {
+      "file": "early_hybrid.png",
+      "bytes": 210069,
+      "sha256": "72fbbc0a5b7825a82e74a4d015f47a7c1a9d360a2ef34e3a0ed2d39a6df17edb"
+    },
+    {
+      "file": "early_particles.png",
+      "bytes": 206624,
+      "sha256": "362e82d8ee18116ebed288f5e633acc9fad5bb5321358d14685f307a533dfa4e"
+    },
+    {
+      "file": "early_volume.png",
+      "bytes": 121855,
+      "sha256": "2a4939d9b0efdca72acef037ccdb53b84641940bd754914cb42d2ae765a8ab73"
+    },
+    {
+      "file": "index.html",
+      "bytes": 6331,
+      "sha256": "c934ee522c660f3012fc198e683bb16fc87a5b5624d164e8c141ab9fb798a17b"
+    },
+    {
+      "file": "late_hybrid.png",
+      "bytes": 204562,
+      "sha256": "dabe4584dc7c1fad9d5c8d61b5c29162b105d0003f374abeb1e7a87fc6d3b82a"
+    },
+    {
+      "file": "late_particles.png",
+      "bytes": 201832,
+      "sha256": "8b4065cc3ef66a371d3bbfae4e3fb697867c13834a6e36e882b2cc6adfdee0d8"
+    },
+    {
+      "file": "late_volume.png",
+      "bytes": 160832,
+      "sha256": "3f42170c7aa5d6c397d495b306a6950425c24097d6f82afd31bcfae2170b6979"
+    },
+    {
+      "file": "middle_hybrid.png",
+      "bytes": 274452,
+      "sha256": "9a2f22383529d5e064e715f3d5469fd8c48b279254ef21c74d38130d3a061e3b"
+    },
+    {
+      "file": "middle_particles.png",
+      "bytes": 279088,
+      "sha256": "84a7d57cec8bf92e0b7ad7d6f21ef079ef3ac8cd42b3100f32f731c9e5f89687"
+    },
+    {
+      "file": "middle_volume.png",
+      "bytes": 195530,
+      "sha256": "d65048ff14a2ea955c108bd1154d86005abe45e4acea8225c08fe79aa2cec052"
+    },
+    {
+      "file": "pipeline_report.md",
+      "bytes": 11075,
+      "sha256": "3c7986f27400b7ad8290d2659d86e4a793961430b24ff1d76911be276266e35d"
+    }
+  ]
+}

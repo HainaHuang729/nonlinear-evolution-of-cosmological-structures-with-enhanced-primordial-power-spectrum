@@ -15,6 +15,7 @@ See [the design system](DESIGN-SYSTEM.md) for components and reuse instructions.
 - Matched density projections at z=8.52, 2.03, and 0 with synchronized zoom and pan.
 - Eight real redshifts projected with the paper’s adaptive smoothing settings (57 neighbours, kernel_gamma=1.8, speedup_fac=2, dimension=3) onto 1024² grids. All panels use independent logarithmic color normalization, as in the paper; the original three-frame paper view remains available.
 - Two PL-256-512 full-particle animations (rotation and redshift evolution), with controllable MP4/WebM playback and original GIF downloads. Voxel animations are excluded.
+- A separate [BT Blender gallery](assets/blender/index.html) includes a 100k-cohort evolution preview, nine 1M-particle / full-particle-density stills, reports and preprocessing source. Three discrete 128-cubed density volumes accompany 57 particle snapshots; this is pre-rendered media, not an interactive WebGL viewer. The full Blender scene/cache bundle is not hosted on Pages.
 - All six statistical topics remain expanded, with per-topic controls and CSV downloads. Inline paper reference images are removed; the complete figure collection remains in the archive.
 - The figure and data archive starts collapsed. Expand it to search, filter or download; collapsing it preserves the current filter state.
 - Independent redshift selections persist while other topics follow projection playback.

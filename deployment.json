@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "3fca83be6fe4d11dda626ce0b5c18e16c688c991",
-  "created": "2026-09-14T07:07:19.521745+00:00",
+  "parent_commit": "b7c5ff47c676cfdac3b05ff538852819e9dea803",
+  "created": "2026-09-20T16:55:39.855986+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -22,8 +22,8 @@
     },
     {
       "file": "README.md",
-      "sha256": "616c65a0064e95b7e6c79b09a670ccda471a4df6f5c5e32acb30ea19d4c372a9",
-      "bytes": 3451
+      "sha256": "31ed2f40853adc42b5881169ad780df04cd45f9c9029efa2dd56b635fc7f1662",
+      "bytes": 3832
     },
     {
       "file": "app.js",
@@ -79,6 +79,91 @@
       "file": "assets/article-sans.woff2",
       "sha256": "c3d90025d9816d0d896878c94bb4f80307fe35ab89380dcc394545fc22197a26",
       "bytes": 139940
+    },
+    {
+      "file": "assets/blender/blender-pipeline-source.zip",
+      "sha256": "74567047752957b7c42c8cb99d217bdc30d8113598afc65174819a76feca4b93",
+      "bytes": 59261
+    },
+    {
+      "file": "assets/blender/blender-sans.woff2",
+      "sha256": "bc020269c93c72c4fdd4947c2b18387e894a45ddf0e7383e38a3f131b2126592",
+      "bytes": 75512
+    },
+    {
+      "file": "assets/blender/blender.css",
+      "sha256": "24faa391e32f23efd71f66184d9a32032f36cb7354bff021730bf6bf9dce34ec",
+      "bytes": 1443
+    },
+    {
+      "file": "assets/blender/blender_performance_report.md",
+      "sha256": "8cfdb07e196c550265e0962088f565afa72205e6d827999f3d015f4f2190df9a",
+      "bytes": 5866
+    },
+    {
+      "file": "assets/blender/cosmic_evolution_preview.mp4",
+      "sha256": "5938b1680a5a2c2addfc5f37495b668a67624765d01da843eca85e67209f11ba",
+      "bytes": 1416449
+    },
+    {
+      "file": "assets/blender/early_hybrid.png",
+      "sha256": "72fbbc0a5b7825a82e74a4d015f47a7c1a9d360a2ef34e3a0ed2d39a6df17edb",
+      "bytes": 210069
+    },
+    {
+      "file": "assets/blender/early_particles.png",
+      "sha256": "362e82d8ee18116ebed288f5e633acc9fad5bb5321358d14685f307a533dfa4e",
+      "bytes": 206624
+    },
+    {
+      "file": "assets/blender/early_volume.png",
+      "sha256": "2a4939d9b0efdca72acef037ccdb53b84641940bd754914cb42d2ae765a8ab73",
+      "bytes": 121855
+    },
+    {
+      "file": "assets/blender/index.html",
+      "sha256": "c934ee522c660f3012fc198e683bb16fc87a5b5624d164e8c141ab9fb798a17b",
+      "bytes": 6331
+    },
+    {
+      "file": "assets/blender/late_hybrid.png",
+      "sha256": "dabe4584dc7c1fad9d5c8d61b5c29162b105d0003f374abeb1e7a87fc6d3b82a",
+      "bytes": 204562
+    },
+    {
+      "file": "assets/blender/late_particles.png",
+      "sha256": "8b4065cc3ef66a371d3bbfae4e3fb697867c13834a6e36e882b2cc6adfdee0d8",
+      "bytes": 201832
+    },
+    {
+      "file": "assets/blender/late_volume.png",
+      "sha256": "3f42170c7aa5d6c397d495b306a6950425c24097d6f82afd31bcfae2170b6979",
+      "bytes": 160832
+    },
+    {
+      "file": "assets/blender/middle_hybrid.png",
+      "sha256": "9a2f22383529d5e064e715f3d5469fd8c48b279254ef21c74d38130d3a061e3b",
+      "bytes": 274452
+    },
+    {
+      "file": "assets/blender/middle_particles.png",
+      "sha256": "84a7d57cec8bf92e0b7ad7d6f21ef079ef3ac8cd42b3100f32f731c9e5f89687",
+      "bytes": 279088
+    },
+    {
+      "file": "assets/blender/middle_volume.png",
+      "sha256": "d65048ff14a2ea955c108bd1154d86005abe45e4acea8225c08fe79aa2cec052",
+      "bytes": 195530
+    },
+    {
+      "file": "assets/blender/pipeline_report.md",
+      "sha256": "3c7986f27400b7ad8290d2659d86e4a793961430b24ff1d76911be276266e35d",
+      "bytes": 11075
+    },
+    {
+      "file": "assets/blender/provenance.json",
+      "sha256": "ec150e8c707b916320c3312c2484219622dca2ed95adffee3319be5838f84daf",
+      "bytes": 2838
     },
     {
       "file": "assets/concentration-qc-d19.png",
@@ -267,7 +352,7 @@
     },
     {
       "file": "data/chart-data-audit.json",
-      "sha256": "75ecd2073d5de690111356d2b3e6bcdae3107d85abc726eed2b9e71cc33ba0e1",
+      "sha256": "6526de30e0c074a10c7119b59b243d98e9e26c05411a3fa28ce4fc8e24c5d1d4",
       "bytes": 10262
     },
     {
@@ -427,8 +512,8 @@
     },
     {
       "file": "index.html",
-      "sha256": "6bad827b44bf3e2bd787a6e4a5399098487f35d84821936ff9032a780ff35810",
-      "bytes": 18347
+      "sha256": "9db514e511938231ad3622703eed6a67c5ffd815896b67209268c404666a9df6",
+      "bytes": 18481
     },
     {
       "file": "locales.js",
