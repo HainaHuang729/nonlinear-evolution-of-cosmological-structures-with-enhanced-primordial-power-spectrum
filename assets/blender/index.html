@@ -4,12 +4,32 @@
 <main><p class="eyebrow">BT · kₚ = 10 · mₛ = 1.5</p><h1>宇宙结构的三维演化<br><span lang="en">Cosmic structure in motion.</span></h1>
 <p>固定粒子身份，观察暗物质从近乎均匀的初始状态形成丝状结构与晕。共动盒子为 37.114 Mpc（25 Mpc/h），每个原始快照含 1024³ 个粒子。</p>
 <p lang="en">A fixed ParticleID cohort follows the formation of filaments and halos in a 37.114 comoving Mpc (25 Mpc/h) box. Each original snapshot contains 1024³ dark matter particles.</p>
-<section aria-labelledby="preview"><h2 id="preview">演化预览 / Evolution preview</h2>
-<video controls playsinline preload="none" poster="late_hybrid.png" aria-label="BT cosmic evolution, 14.2 second Blender preview"><source src="cosmic_evolution_preview.mp4" type="video/mp4"></video>
-<p><a href="cosmic_evolution_preview.mp4" download>下载 MP4 / Download MP4 · 1.42 MB</a></p>
-<p>14.2 秒，640 × 360，5 fps。视频使用固定 100k 粒子；57 个真实快照之间按 ParticleID 匹配，以最小镜像约定插值位置。颜色表示速度。密度体由全部 1,073,741,824 个粒子作质量加权 CIC 沉积，仅有早、中、晚三个 128³ 时刻，播放时切换至最近的 scale factor；画面分别标出粒子与密度体红移。</p>
-<p lang="en">14.2 seconds, 640 × 360, 5 fps. The video follows a fixed 100k cohort across 57 real snapshots, with ParticleID matching and minimum-image position interpolation. Color encodes speed. Mass-weighted CIC uses all 1,073,741,824 particles for each of three 128³ density volumes. The nearest volume in scale factor is selected; particle and volume redshifts are labelled separately.</p>
-<p class="note">这是 Blender 预渲染预览，可播放、暂停与拖动进度；网页内不提供三维旋转。密度显示采用固定对数映射，早期近均匀密度较暗；亮度不是跨渲染模式的定量密度标尺。<br><span lang="en">This is a pre-rendered Blender preview with playback and seeking, not an interactive 3D viewer. A fixed logarithmic density mapping makes the nearly uniform early state faint; brightness is not a quantitative density scale across rendering modes.</span></p></section>
+<section aria-labelledby="preview"><h2 id="preview">纯粒子演化 / Particle-only evolution</h2>
+<p>当前默认：纯粒子、统一冷白色、深色背景。显示固定 ID 抽样的 1M 粒子，不是全部 1024³ 粒子；不使用密度体或背景星点。</p>
+<p lang="en">Particle-first default: a fixed 1M ParticleID sample in uniform cool-white on a dark background, not all 1024³ particles. No density volume or decorative stars.</p>
+<h3>固定相机，观察时间演化 / Fixed camera, evolving structure</h3>
+<video id="fixed-preview" controls playsinline preload="none" poster="restrained_uniform.png" aria-label="Fixed-camera particle evolution, 5.92 seconds"><source src="particles_fixed.mp4" type="video/mp4"></video>
+<p><a href="particles_fixed.mp4" download>下载固定相机视频 / Download fixed-camera video</a> · 5.92 s · 1280 × 720 · 12 fps · 1M particles</p>
+<p>覆盖 57 个已有快照的时间范围，按固定 ParticleID 和周期最小镜像插值，输出 71 个显示帧；字幕显示实际 a/z，插值帧另有标注。显示帧不是等 cosmic time 间隔。</p>
+<p lang="en">71 display frames span the existing 57-snapshot sequence, using fixed ParticleIDs and periodic minimum-image interpolation. Labels show metadata-derived a/z and identify interpolated frames. Display frames are not equally spaced in cosmic time.</p>
+<h3>固定晚期快照，缓慢环绕 / Frozen late snapshot, slow orbit</h3>
+<video id="orbit-preview" controls playsinline preload="none" poster="restrained_uniform.png" aria-label="Slow orbit at fixed redshift zero, 6 seconds"><source src="particles_orbit.mp4" type="video/mp4"></video>
+<p><a href="particles_orbit.mp4" download>下载环绕视频 / Download orbit video</a> · 6 s · 1280 × 720 · 12 fps · snapshot 0056 · z = 0</p>
+<p>这段只改变相机，粒子时间固定，便于单独评价纵深和镜头效果。<br><span lang="en">Only the camera moves; particle time is fixed, separating depth and camera motion from temporal evolution.</span></p>
+<p class="note">两段均为 Blender 预渲染视频，可播放、暂停、拖动；网页内不提供实时三维旋转。GPU、显存和真实视口 FPS 尚未验证。<br><span lang="en">Both are pre-rendered Blender videos with playback and seeking, not interactive 3D views. GPU rendering, VRAM and actual viewport FPS remain unverified.</span></p>
+</section>
+<section aria-labelledby="colors"><h2 id="colors">同设置配色对比 / Matched color comparison</h2>
+<p>同一 snapshot、相机、1M cohort 和 1080p 输出；点半径 0.0003、发光强度 1、曝光 −0.3。统一颜色更突出结构；speed 使用固定 0–1000 km/s 色标，超范围截色，不逐帧自动拉伸。</p>
+<p lang="en">Same snapshot, camera, 1M cohort and 1080p settings: radius 0.0003 in box units, emission 1, exposure −0.3. Uniform color emphasizes morphology; speed uses a fixed, clipped 0–1000 km/s scale without per-frame rescaling.</p>
+<div class="gallery">
+<figure><a href="restrained_uniform.png"><img src="restrained_uniform.png" loading="lazy" alt="Uniform cool-white particles at redshift zero"></a><figcaption>默认 / Default · Uniform</figcaption></figure>
+<figure><a href="restrained_speed.png"><img src="restrained_speed.png" loading="lazy" alt="Speed-colored particles at redshift zero, fixed 0 to 1000 km/s"></a><figcaption>可选 / Optional · Speed · km/s</figcaption></figure>
+</div>
+<p>本轮 1080p、Cycles CPU、24 samples：100k / 500k / 1M 分别为 1.37 / 1.64 / 1.90 秒/帧；1M 软件 Eevee 为 46.97 秒/帧。设置并非同质量标定，不代表 GPU 性能。<br><span lang="en">This CPU trial: 1080p Cycles, 24 samples, 1.37 / 1.64 / 1.90 seconds per frame for 100k / 500k / 1M. Software Eevee: 46.97 seconds for 1M. These are not quality-matched engine benchmarks or GPU measurements.</span></p>
+</section>
+<details><summary>早期 Volume / Hybrid 实验归档 / Earlier volume and hybrid experiments</summary>
+<p>以下为此前试验，不是当前默认展示。密度体仅含早、中、晚三个时刻。<br><span lang="en">Historical experiments, not the current default. Density volumes cover only three epochs.</span></p>
+<p><a href="cosmic_evolution_preview.mp4">旧版 Hybrid 视频 / Previous hybrid preview</a> · 100k · 640 × 360 · 5 fps · 14.2 s</p>
 <section aria-labelledby="stills"><h2 id="stills">三个时期，三种表示 / Three epochs, three representations</h2><p>静帧使用 1M 固定粒子；密度体始终来自全体粒子。点击图像查看原图。<br><span lang="en">Stills use a fixed 1M cohort; volumes always use the full particle population. Open any image at full resolution.</span></p>
 <div class="gallery">
 <figure><a href="early_particles.png"><img src="early_particles.png" loading="lazy" alt="Early particles at z=200"></a><figcaption>Early · z = 200 · Particles / 粒子</figcaption></figure>
@@ -22,10 +42,12 @@
 <figure><a href="late_volume.png"><img src="late_volume.png" loading="lazy" alt="Late full-particle density volume at z=0"></a><figcaption>Late · z = 0 · Volume / 密度体</figcaption></figure>
 <figure><a href="late_hybrid.png"><img src="late_hybrid.png" loading="lazy" alt="Late hybrid at z=0"></a><figcaption>Late · z = 0 · Hybrid / 混合</figcaption></figure>
 </div></section>
+</details>
 <section><h2>方法与下载 / Methods &amp; downloads</h2><ul>
-<li><a href="pipeline_report.md">Pipeline report / 流程报告</a></li><li><a href="blender_performance_report.md">Performance report / 性能报告</a> — CPU measurements; GPU / viewport FPS unmeasured.</li>
+<li><a href="particle_priority_update.zip" download>粒子优先场景更新包 / Particle-first scene update · 32 MB</a> — 覆盖原完整包使用；不含粒子缓存。 Requires the previous full cache bundle.</li>
+<li><a href="pipeline_report.md">Original MVP pipeline report / 初版 MVP 流程报告</a></li><li><a href="blender_performance_report.md">Original MVP performance report / 初版 MVP 性能报告</a> — CPU measurements; GPU / viewport FPS unmeasured.</li>
 <li><a href="blender-pipeline-source.zip" download>Scripts + configuration / 脚本与配置</a> — source only; no scene/cache or raw HDF5.</li><li><a href="provenance.json">Media provenance + SHA-256 / 媒体来源与校验</a></li></ul>
 <p>完整约 1.2 GB 的 Blender 场景与外部缓存包保存在项目 HPC 目录，未放入本站。脚本包不是可直接打开的完整场景。全部 57 帧的 1M 粒子均匹配成功，无所选 ID 缺失或重复；原始 HDF5 未修改。</p>
 <p lang="en">The complete approximately 1.2 GB Blender scene and external-cache bundle remains on project HPC storage and is not hosted here. The source ZIP is not a ready-to-open scene. All selected IDs match in all 57 frames, with no missing or duplicate selected IDs. Original HDF5 files remain unchanged.</p>
-<p class="note">渲染：Blender 4.5.3 LTS。建议 100k 用于交互预览、1M 用于高质量展示；以 density volume + particles 混合表示宇宙网。<br><span lang="en">Rendered in Blender 4.5.3 LTS. Recommended: 100k for interactive previews and 1M for higher-quality display, combining density volumes with particles.</span></p></section>
+<p class="note">渲染：Blender 4.5.3 LTS。建议 100k 用于交互预览、1M 用于高质量展示；当前默认纯粒子，Volume 仅保留手动开关。旧报告中的 Hybrid 推荐已由本页更新。<br><span lang="en">Rendered in Blender 4.5.3 LTS. Recommended: 100k for interactive previews and 1M for higher-quality display, The current default is particles only, with an optional manual Volume toggle. This page supersedes the hybrid recommendation in the original reports.</span></p></section>
 </main><footer><a href="../../index.html#animations">返回论文数据图集 / Back to article atlas ↑</a></footer></body></html>

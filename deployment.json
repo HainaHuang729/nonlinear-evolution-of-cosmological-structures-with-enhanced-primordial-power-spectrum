@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "b7c5ff47c676cfdac3b05ff538852819e9dea803",
-  "created": "2026-09-20T16:55:39.855986+00:00",
+  "parent_commit": "cbd37c5e88f84b19dca9d372efefb496ccc2b8da",
+  "created": "2026-09-21T02:43:26.500096+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -82,13 +82,13 @@
     },
     {
       "file": "assets/blender/blender-pipeline-source.zip",
-      "sha256": "74567047752957b7c42c8cb99d217bdc30d8113598afc65174819a76feca4b93",
-      "bytes": 59261
+      "sha256": "ea74203705d3d00ea57b61293f6080967f80e0241d4be9b1fa877f449bfbff52",
+      "bytes": 68739
     },
     {
       "file": "assets/blender/blender-sans.woff2",
-      "sha256": "bc020269c93c72c4fdd4947c2b18387e894a45ddf0e7383e38a3f131b2126592",
-      "bytes": 75512
+      "sha256": "4fadf02298e56a2dc53033b63d179eb023b43375cab85f376d03ef629977e448",
+      "bytes": 92656
     },
     {
       "file": "assets/blender/blender.css",
@@ -101,9 +101,19 @@
       "bytes": 5866
     },
     {
+      "file": "assets/blender/cohorts_measurements.json",
+      "sha256": "17d75eb1fd91e8af9cc62eed0f75a2a44e556515192a28c611ec75566bd268a6",
+      "bytes": 4068
+    },
+    {
       "file": "assets/blender/cosmic_evolution_preview.mp4",
       "sha256": "5938b1680a5a2c2addfc5f37495b668a67624765d01da843eca85e67209f11ba",
       "bytes": 1416449
+    },
+    {
+      "file": "assets/blender/default_verification.json",
+      "sha256": "436b14ce58f27042a9008e08099acbd308900f4d942964d5f8d79d9346301b96",
+      "bytes": 242
     },
     {
       "file": "assets/blender/early_hybrid.png",
@@ -122,8 +132,8 @@
     },
     {
       "file": "assets/blender/index.html",
-      "sha256": "c934ee522c660f3012fc198e683bb16fc87a5b5624d164e8c141ab9fb798a17b",
-      "bytes": 6331
+      "sha256": "1f734c569a2d60cdf5c9abf4e3d70f3b99bafcaf21e0f8d7602a4e17dd0f893f",
+      "bytes": 9431
     },
     {
       "file": "assets/blender/late_hybrid.png",
@@ -156,14 +166,39 @@
       "bytes": 195530
     },
     {
+      "file": "assets/blender/particle_priority_update.zip",
+      "sha256": "64846a58821b4a7cd01d9407b3f7bdb9ac7c3c8def7d11cd61ea0f2d547f2e78",
+      "bytes": 31982892
+    },
+    {
+      "file": "assets/blender/particles_fixed.mp4",
+      "sha256": "7b6a5a3ea1a46546b8266af27e3b7472a75d5a16ee22dde5de08c9a5058608d7",
+      "bytes": 7272083
+    },
+    {
+      "file": "assets/blender/particles_orbit.mp4",
+      "sha256": "a5660982d79346d9a214689788cef9e1e8941c90438470e619d51bed621925c0",
+      "bytes": 7151140
+    },
+    {
       "file": "assets/blender/pipeline_report.md",
       "sha256": "3c7986f27400b7ad8290d2659d86e4a793961430b24ff1d76911be276266e35d",
       "bytes": 11075
     },
     {
       "file": "assets/blender/provenance.json",
-      "sha256": "ec150e8c707b916320c3312c2484219622dca2ed95adffee3319be5838f84daf",
-      "bytes": 2838
+      "sha256": "ea1fc402f10b69c4375e1c6aeff039db414924aa0ca9367d498cb29aa4a8366b",
+      "bytes": 4449
+    },
+    {
+      "file": "assets/blender/restrained_speed.png",
+      "sha256": "2b5850cc70be0b253ae3a74ea7126a238893e884b9d2a0ca2edbfac696ada877",
+      "bytes": 1635139
+    },
+    {
+      "file": "assets/blender/restrained_uniform.png",
+      "sha256": "8750a78e31a3fe339dbec92a8010eef06aa21a5a7e13815ca89852f1f3b22d57",
+      "bytes": 1445216
     },
     {
       "file": "assets/concentration-qc-d19.png",

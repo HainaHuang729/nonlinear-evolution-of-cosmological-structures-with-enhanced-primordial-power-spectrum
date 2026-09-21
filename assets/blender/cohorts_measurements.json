@@ -1,0 +1,180 @@
+[
+  {
+    "name": "cohort_100000",
+    "frame": 281,
+    "cohort": 100000,
+    "mode": "uniform",
+    "radius": 0.0003,
+    "emission": 1.0,
+    "exposure": -0.3,
+    "render_seconds": 1.3739865622483194,
+    "frame_change_seconds": 0.013357238844037056,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 24,
+    "denoising": false,
+    "hostname": "chpc-cn057.rc.cuhk.edu.hk",
+    "viewport_fps": null,
+    "peak_rss_kib": 605576,
+    "frame_change_series_seconds": [
+      0.02249529119580984,
+      0.014379336033016443,
+      0.013397060334682465,
+      0.01399667328223586,
+      0.013594302348792553,
+      0.013526059687137604
+    ]
+  },
+  {
+    "name": "cohort_500000",
+    "frame": 281,
+    "cohort": 500000,
+    "mode": "uniform",
+    "radius": 0.0003,
+    "emission": 1.0,
+    "exposure": -0.3,
+    "render_seconds": 1.6387281878851354,
+    "frame_change_seconds": 0.05497011821717024,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 24,
+    "denoising": false,
+    "hostname": "chpc-cn057.rc.cuhk.edu.hk",
+    "viewport_fps": null,
+    "peak_rss_kib": 705712,
+    "frame_change_series_seconds": [
+      0.06786438496783376,
+      0.052896975073963404,
+      0.05436459416523576,
+      0.05250078160315752,
+      0.0527662243694067,
+      0.053097586147487164
+    ]
+  },
+  {
+    "name": "cohort_1000000",
+    "frame": 281,
+    "cohort": 1000000,
+    "mode": "uniform",
+    "radius": 0.0003,
+    "emission": 1.0,
+    "exposure": -0.3,
+    "render_seconds": 1.903022970072925,
+    "frame_change_seconds": 0.11233403300866485,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 24,
+    "denoising": false,
+    "hostname": "chpc-cn057.rc.cuhk.edu.hk",
+    "viewport_fps": null,
+    "peak_rss_kib": 831216,
+    "frame_change_series_seconds": [
+      0.13252759911119938,
+      0.11369795305654407,
+      0.11371103208512068,
+      0.11192957125604153,
+      0.12090030079707503,
+      0.11319861933588982
+    ]
+  },
+  {
+    "name": "early_uniform",
+    "frame": 1,
+    "cohort": 1000000,
+    "mode": "uniform",
+    "radius": 0.0003,
+    "emission": 1.0,
+    "exposure": -0.3,
+    "render_seconds": 2.4359972928650677,
+    "frame_change_seconds": 0.15882624499499798,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 24,
+    "denoising": false,
+    "hostname": "chpc-cn057.rc.cuhk.edu.hk",
+    "viewport_fps": null,
+    "peak_rss_kib": 831216
+  },
+  {
+    "name": "middle_uniform",
+    "frame": 141,
+    "cohort": 1000000,
+    "mode": "uniform",
+    "radius": 0.0003,
+    "emission": 1.0,
+    "exposure": -0.3,
+    "render_seconds": 2.4350294577889144,
+    "frame_change_seconds": 0.16084648808464408,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 24,
+    "denoising": false,
+    "hostname": "chpc-cn057.rc.cuhk.edu.hk",
+    "viewport_fps": null,
+    "peak_rss_kib": 831216
+  },
+  {
+    "name": "early_speed",
+    "frame": 1,
+    "cohort": 1000000,
+    "mode": "speed",
+    "radius": 0.0003,
+    "emission": 1.0,
+    "exposure": -0.3,
+    "render_seconds": 2.4327445118688047,
+    "frame_change_seconds": 0.15526427095755935,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 24,
+    "denoising": false,
+    "hostname": "chpc-cn057.rc.cuhk.edu.hk",
+    "viewport_fps": null,
+    "peak_rss_kib": 831216
+  },
+  {
+    "name": "middle_speed",
+    "frame": 141,
+    "cohort": 1000000,
+    "mode": "speed",
+    "radius": 0.0003,
+    "emission": 1.0,
+    "exposure": -0.3,
+    "render_seconds": 2.446944826748222,
+    "frame_change_seconds": 0.15393045218661427,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 24,
+    "denoising": false,
+    "hostname": "chpc-cn057.rc.cuhk.edu.hk",
+    "viewport_fps": null,
+    "peak_rss_kib": 831216
+  }
+]
