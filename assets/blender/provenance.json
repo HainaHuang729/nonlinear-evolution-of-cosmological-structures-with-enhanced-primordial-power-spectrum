@@ -6,8 +6,8 @@
   "files": [
     {
       "file": "blender-pipeline-source.zip",
-      "bytes": 68739,
-      "sha256": "ea74203705d3d00ea57b61293f6080967f80e0241d4be9b1fa877f449bfbff52"
+      "bytes": 72823,
+      "sha256": "b05eb25bc583d50bb8e3620b6ebfb2a9e1ac7a82eaeb5d52eff2d45b3a1d99ef"
     },
     {
       "file": "blender-sans.woff2",
@@ -56,8 +56,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 9431,
-      "sha256": "1f734c569a2d60cdf5c9abf4e3d70f3b99bafcaf21e0f8d7602a4e17dd0f893f"
+      "bytes": 9578,
+      "sha256": "fe618e71b83f9fedf5dea51fd03cd819f2af584a02f02b5d6f7b0e147d15dd5e"
     },
     {
       "file": "late_hybrid.png",
@@ -91,8 +91,8 @@
     },
     {
       "file": "particle_priority_update.zip",
-      "bytes": 31982892,
-      "sha256": "64846a58821b4a7cd01d9407b3f7bdb9ac7c3c8def7d11cd61ea0f2d547f2e78"
+      "bytes": 31987513,
+      "sha256": "0fc1a92c6208845676fe214db0479295ca84457366423fe1ae7b0b4771d781e9"
     },
     {
       "file": "particles_fixed.mp4",
