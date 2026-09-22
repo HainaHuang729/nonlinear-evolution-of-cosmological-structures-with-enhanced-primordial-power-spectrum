@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "46e7c038bc233c08c99f3d3f37fad352f345adeb",
-  "created": "2026-09-22T05:41:33.170321+00:00",
+  "parent_commit": "5d5291bc2f8c83c67298575c906935cf8e6181de",
+  "created": "2026-09-22T05:50:48.103791+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -672,8 +672,8 @@
     },
     {
       "file": "assets/swift-viewer/index.html",
-      "sha256": "773a47a84e02430e79c2a8a4d0a91dcf6f7007d893f686701e56fa81027d1570",
-      "bytes": 1310
+      "sha256": "3fd9446bdba1ea53498393ffb4e78a30a24b65af1c70e29497d40fdf1f42a1e7",
+      "bytes": 1228
     },
     {
       "file": "assets/swift-viewer/metadata.json",
@@ -682,8 +682,8 @@
     },
     {
       "file": "assets/swift-viewer/viewer-sans.woff2",
-      "sha256": "d8351e2e687582fa560612ac0cc6d38348ec5ef473fed25f1432078a08f7dad5",
-      "bytes": 43132
+      "sha256": "cf3e1fe32b807ec83e7793df79eaddd5b63f5655b1f0d7a6f87893232a192af0",
+      "bytes": 41328
     },
     {
       "file": "assets/swift-viewer/viewer.css",
@@ -692,8 +692,8 @@
     },
     {
       "file": "assets/swift-viewer/viewer.js",
-      "sha256": "caf4680a11ed42aad7ba07f8601cca94a9e2a8519dbcdf2c19ee41e1033d2669",
-      "bytes": 12253
+      "sha256": "46669f84cb3bd14e6157d9210cb5e3c76298eaaec4a4cc07b5e6deff113829f8",
+      "bytes": 12237
     },
     {
       "file": "data/bt_soft_warren_median_mah.csv",
@@ -702,7 +702,7 @@
     },
     {
       "file": "data/chart-data-audit.json",
-      "sha256": "6526de30e0c074a10c7119b59b243d98e9e26c05411a3fa28ce4fc8e24c5d1d4",
+      "sha256": "b2a0c220f6f581e29e580c172c2b6945c601459f7283c4c5867004d0c8212417",
       "bytes": 10262
     },
     {
@@ -862,8 +862,8 @@
     },
     {
       "file": "index.html",
-      "sha256": "9db514e511938231ad3622703eed6a67c5ffd815896b67209268c404666a9df6",
-      "bytes": 18481
+      "sha256": "85c3ef38608fabede092c78618852c5f51696490bde6c892fa19eab2ead52cad",
+      "bytes": 19062
     },
     {
       "file": "locales.js",
