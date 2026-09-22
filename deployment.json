@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "8541d1fc097f32b1af40dbbc63b9b91bbbdfd54a",
-  "created": "2026-09-22T05:10:33.644794+00:00",
+  "parent_commit": "6070a72fb6daa221035ca1584c85e776adea08a5",
+  "created": "2026-09-22T05:30:41.921805+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -666,9 +666,14 @@
       "bytes": 1600000
     },
     {
+      "file": "assets/swift-viewer/cache-worker.js",
+      "sha256": "18974e345bf25217d2ac2e2f3cd936f0d844ccebb3f89c3684ee8f289c7aa881",
+      "bytes": 841
+    },
+    {
       "file": "assets/swift-viewer/index.html",
-      "sha256": "c8edd2183232f0f26d2ce548a4276c880a0ffe03f41a87015455d2027178af18",
-      "bytes": 1914
+      "sha256": "c4362b14ba7b567322a4fb209b31056557a70b107249c0050762226d20dc7e52",
+      "bytes": 2158
     },
     {
       "file": "assets/swift-viewer/metadata.json",
@@ -677,8 +682,8 @@
     },
     {
       "file": "assets/swift-viewer/viewer-sans.woff2",
-      "sha256": "7c7defcb90cd107396c8c0130b74c1b72f131b46d3c1fd911eb99de769fa916a",
-      "bytes": 56676
+      "sha256": "e2de8bc1d8a734eb4469e2e128819c5584420302a351a7fb76759d164376f43b",
+      "bytes": 65476
     },
     {
       "file": "assets/swift-viewer/viewer.css",
@@ -687,8 +692,8 @@
     },
     {
       "file": "assets/swift-viewer/viewer.js",
-      "sha256": "ad8e2db25111dd0e2ebbcb0c6a02ded8eaab6c4309a2be1ba14c6ead91eae6a5",
-      "bytes": 9445
+      "sha256": "2d822c887a2103ad67b6d723c9de2ee7643f84badb16242214688393cc6175f2",
+      "bytes": 12544
     },
     {
       "file": "data/bt_soft_warren_median_mah.csv",
