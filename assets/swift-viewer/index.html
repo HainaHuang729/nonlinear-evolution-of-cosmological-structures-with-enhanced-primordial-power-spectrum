@@ -1,9 +1,12 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SWIFT · 实时粒子 Viewer</title><link rel="stylesheet" href="viewer.css"><body>
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SWIFT · 实时粒子 Viewer</title><link rel="stylesheet" href="viewer.css?rev=clean"><body>
 <header><a href="../blender/index.html">← SWIFT 展示</a><strong>SWIFT / LIVE PARTICLES</strong></header>
 <main><canvas id="view" tabindex="0" aria-label="实时三维粒子：拖动旋转，Shift 拖动平移，滚轮缩放"></canvas>
-<aside><h1>宇宙结构演化</h1><p>100,000 固定 ID 抽样粒子 / 原始 1024³。57 个快照；仅读取网页缓存。</p><output id="time">正在加载…</output><label>时间轴（a 等速）<input id="timeline" type="range" min="0.004975" max="1" step="any" value="1"></label><div><button id="play">播放</button> <button id="reset">重置视角</button></div>
-<p><button id="preload">完整预载后播放（约 91 MB 下载）</button></p><p>默认预取 4–12 帧，最多保留 16 帧。完整预载可消除后续网络等待，粒子数组约占 114 MB 内存，另有图形及浏览器开销。</p><label>配色<select id="color"><option value="0">统一冷白</option><option value="1">Speed · 0–1000 km/s</option></select></label>
-<label>仅保留 speed ≥ <output id="threshold-value">0</output> km/s<input id="threshold" type="range" min="0" max="1500" step="10" value="0"></label>
-<label>点大小 <input id="size" type="range" min="1" max="5" step="0.25" value="1.5"></label>
-<label><input id="box" type="checkbox" checked> 显示周期盒边界</label>
-<p>拖动旋转 · Shift / 右键拖动平移 · 滚轮缩放。触屏单指旋转、双指缩放和平移。</p><p>位置采用周期最小镜像插值；speed 插值后过滤。时间轴按 a 等距，播放按 a 等速；全程约 14 秒，加载时暂停计时。不是按 z 或宇宙时间等速。共动盒边长 37.114 Mpc。</p><p id="status" role="status">初始化 WebGL2…</p><p id="error" role="alert" hidden></p><p>先以 100k 验证交互；500k / 1M 尚未开放。FPS 是当前设备绘制统计，不是通用性能保证。</p></aside></main><script src="viewer.js?rev=smooth1"></script></body></html>
+<aside><h1>宇宙结构演化</h1><p class="caption">100k 固定抽样粒子 · 57 个快照</p><output id="time">正在加载…</output>
+<label>时间轴 · a 等速<input id="timeline" type="range" min="0.004975" max="1" step="any" value="1"></label>
+<div class="transport"><button id="play">播放</button><button id="reset">重置视角</button></div>
+<label>配色<select id="color"><option value="0">统一冷白</option><option value="1">Speed · 0–1000 km/s</option></select></label>
+<label><input id="box" type="checkbox" checked> 显示盒边界</label>
+<button id="preload">完整预载 · 91 MB</button>
+<p id="status" role="status">初始化…</p><p id="error" role="alert" hidden></p>
+<p class="hint">拖动旋转 · 滚轮缩放<br>Shift 拖动平移</p>
+</aside></main><script src="viewer.js?rev=clean"></script></body></html>

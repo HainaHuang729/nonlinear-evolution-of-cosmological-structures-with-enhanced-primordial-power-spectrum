@@ -52,7 +52,7 @@ function warm(i){if(fullCache)return;for(let k=i;k<=windowEnd(i);k++)load(k).cat
 function upload(i){if(gpuCache.has(i))return gpuCache.get(i);const data=cache.get(i);if(!data)return null;
  if(gpuCache.size>=4){const protectedKeys=new Set([loaded,Math.min(loaded+1,56),Math.floor(target),Math.min(Math.floor(target)+1,56)]);let victim=[...gpuCache.keys()].find(k=>!protectedKeys.has(k));if(victim===undefined)return null;gl.deleteBuffer(gpuCache.get(victim));gpuCache.delete(victim);}
  const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);gpuCache.set(i,buffer);uploads++;return buffer;}
-function countVisible(force=false){const now=performance.now();if(loaded<0||(!force&&now-lastCount<200))return;lastCount=now;const threshold=+$('threshold').value;countId++;
+function countVisible(force=false){const now=performance.now();if(loaded<0||(!force&&now-lastCount<200))return;lastCount=now;const threshold=0;countId++;
  if(threshold===0){visible=meta.count;return;}worker.postMessage({type:'count',id:countId,i:loaded,j:Math.min(loaded+1,56),alpha:display-loaded,threshold});}
 function updateTime(){const i=Math.floor(display),t=display-i,a=scaleAt(display);$('time').textContent=`z = ${Math.max(0,1/a-1).toFixed(3)} · a = ${a.toFixed(4)}${t>1e-5?' · 插值':''}`;countVisible();}
 async function seek(value){target=Math.max(0,Math.min(56,value));$('timeline').value=scaleAt(target);const i=Math.floor(target);
@@ -73,10 +73,10 @@ $('play').onclick=async()=>{
  }catch(e){if(ticket===playTicket){buffering=false;fail(e);}}
 };
 $('preload').onclick=async()=>{fullCache=true;$('preload').disabled=true;$('preload').textContent='正在预载完整序列…';
- try{await Promise.all(meta.frames.map((_,i)=>load(i)));$('preload').textContent='57 帧已就绪：可离线连续播放';}
+ try{await Promise.all(meta.frames.map((_,i)=>load(i)));$('preload').textContent='完整预载已完成';}
  catch(e){$('preload').disabled=false;$('preload').textContent='重试完整预载';fail(e);}
 };
-$('threshold').oninput=()=>{$('threshold-value').textContent=$('threshold').value;countVisible(true);};
+
 $('reset').onclick=()=>{yaw=-.9;pitch=.42;distance=2.6;center=[0,0,0];};
 function basis(){const f=[-Math.cos(yaw)*Math.cos(pitch),-Math.sin(yaw)*Math.cos(pitch),-Math.sin(pitch)],r=[-Math.sin(yaw),Math.cos(yaw),0],u=[-Math.cos(yaw)*Math.sin(pitch),-Math.sin(yaw)*Math.sin(pitch),Math.cos(pitch)];return {f,r,u};}
 function pan(dx,dy){const {r,u}=basis();center=center.map((v,k)=>v-dx*.0015*distance*r[k]+dy*.0015*distance*u[k]);}
@@ -90,14 +90,14 @@ canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fail(Error('�
 let last=performance.now();function draw(now){const dt=Math.max(0,(now-last)/1000);last=now;
 if(playing&&!fetching){const next=indexAt(scaleAt(target)+dt*rateA);seek(next);if(next>=56){playing=false;$('play').textContent='播放';}}
 const ratio=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(canvas.clientWidth*ratio)),h=Math.max(1,Math.round(canvas.clientHeight*ratio));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}gl.viewport(0,0,w,h);gl.clearColor(.015,.024,.039,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
-if(loaded>=0){const {f,r,u}=basis();gl.uniform3fv(U.eye,center.map((v,k)=>v-distance*f[k]));gl.uniform3fv(U.right,r);gl.uniform3fv(U.up,u);gl.uniform3fv(U.forward,f);gl.uniform1f(U.aspect,w/h);gl.uniform1f(U.alpha,display-loaded);gl.uniform1f(U.threshold,+$('threshold').value);gl.uniform1f(U.pointSize,+$('size').value*ratio);gl.uniform1i(U.colored,+$('color').value);gl.uniform1i(U.line,0);gl.enable(gl.DEPTH_TEST);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+if(loaded>=0){const {f,r,u}=basis();gl.uniform3fv(U.eye,center.map((v,k)=>v-distance*f[k]));gl.uniform3fv(U.right,r);gl.uniform3fv(U.up,u);gl.uniform3fv(U.forward,f);gl.uniform1f(U.aspect,w/h);gl.uniform1f(U.alpha,display-loaded);gl.uniform1f(U.threshold,0);gl.uniform1f(U.pointSize,1.5*ratio);gl.uniform1i(U.colored,+$('color').value);gl.uniform1i(U.line,0);gl.enable(gl.DEPTH_TEST);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
 for(let k=0;k<2;k++){gl.bindBuffer(gl.ARRAY_BUFFER,gpuCache.get(Math.min(loaded+k,56)));gl.enableVertexAttribArray(k);gl.vertexAttribPointer(k,4,gl.FLOAT,false,16,0);}gl.drawArrays(gl.POINTS,0,meta.count);
 if($('box').checked){gl.uniform1i(U.line,1);gl.bindBuffer(gl.ARRAY_BUFFER,boxBuffer);for(let k=0;k<2;k++)gl.vertexAttribPointer(k,4,gl.FLOAT,false,16,0);gl.drawArrays(gl.LINES,0,24);}}
 // Prepare one future GPU buffer per draw instead of uploading both endpoints at the boundary.
 if(loaded>=0){for(let k=loaded+2;k<=Math.min(56,loaded+3);k++)if(cache.has(k)&&!gpuCache.has(k)){upload(k);break;}}
 frames++;if(now-lastPerf>1000){fps=frames*1000/(now-lastPerf);frames=0;lastPerf=now;glError=gl.getError();}
 if(now-lastUI>=200){lastUI=now;updateTime();
-$('status').textContent=`${buffering?'播放前预载':fetching?'等待数据；保留上一帧':playing?'播放中':'就绪'} · 显示 ${visible.toLocaleString()} / 100,000 · ${fps.toFixed(1)} FPS · 已缓存 ${cache.size}/${fullCache?57:16} 帧 · 网络请求 ${activeLoads}`;}
+$('status').textContent=buffering?'正在准备播放…':fetching?'加载中…':fullCache&&cache.size<57?`预载 ${cache.size} / 57` :playing?'播放中':'就绪';}
 window.swiftState={loaded,display,scaleFactor:scaleAt(display),timeMode:'linear-a',visible,cacheCount:cache.size,cacheLimit:fullCache?57:16,gpuFrames:gpuCache.size,fetching,buffering,playing,bufferWaits,uploads,activeLoads,fps,yaw,distance,glError};requestAnimationFrame(draw);}
 requestAnimationFrame(draw);await seek(56);
 }catch(e){fail(e);}
