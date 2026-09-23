@@ -27,7 +27,8 @@ $('quality').value=quality500?'500k':'100k';
 $('cohort-caption').textContent=`${quality500?'500k':'100k'} 固定 ID 抽样 · 非全部 1024³ 粒子`;
 if(quality500){$('preload').hidden=true;$('preload').style.display='none';}
 if(comparison){document.querySelector('header').style.display='none';document.querySelector('aside').style.display='none';document.querySelector('main').style.cssText='display:block;height:100dvh';canvas.style.height='100dvh';}
-const res=await fetch(quality500?'metadata500.json':'metadata.json');if(!res.ok)throw Error('metadata 加载失败');const meta=await res.json();
+const packed=quality500&&new URLSearchParams(location.search).get('encoding')!=='f32';
+const res=await fetch(quality500?(packed?'metadata500u16.json':'metadata500.json'):'metadata.json');if(!res.ok)throw Error('metadata 加载失败');const meta=await res.json();
 const minA=meta.frames[0].a,maxA=meta.frames[56].a,rateA=(maxA-minA)/14;
 if(!meta.frames.every((f,i)=>Number.isFinite(f.a)&&f.a>0&&(!i||f.a>meta.frames[i-1].a)))throw Error('Scale factor metadata must increase strictly');
 function scaleAt(index){const i=Math.floor(index),t=index-i;return meta.frames[i].a*(1-t)+meta.frames[Math.min(i+1,56)].a*t;}
@@ -39,17 +40,18 @@ $('quality').onchange=()=>{const url=new URL(location.href);url.searchParams.set
 const initialParams=new URLSearchParams(location.search),savedCamera=(initialParams.get('camera')||'').split(',').map(Number);
 if(savedCamera.length===6&&savedCamera.every(Number.isFinite)){[yaw,pitch,distance]=savedCamera;pitch=Math.max(-1.45,Math.min(1.45,pitch));distance=Math.max(.7,Math.min(10,distance));center=savedCamera.slice(3);}
 const cache=new Map(),pending=new Map(),queue=[];let visible=0,fullCache=false,activeLoads=0,requestId=0,countId=0,lastCount=0,lastUI=0,glError=0,bufferWaits=0,uploads=0;
-const worker=new Worker('cache-worker.js?rev=smooth1');
+const downloads=[],seeks=[];let receivedBytes=0;
+const worker=new Worker('cache-worker.js?rev=u16-v1');
 worker.onerror=()=>fail(Error('缓存 Worker 出错，请刷新页面。'));
 worker.onmessage=({data:m})=>{
  if(m.type==='counted'){if(m.id===countId)visible=m.visible;return;}
  const item=pending.get(m.index??m.id);if(!item)return;
  pending.delete(item.index);activeLoads--;
  if(m.type==='error')item.reject(Error(m.message));
- else{cache.set(item.index,new Float32Array(m.bytes));prune();item.resolve(cache.get(item.index));}
+ else{receivedBytes+=m.wireBytes;downloads.push({snapshot:item.index,bytes:m.wireBytes,download_ms:m.downloadMs,decode_ms:m.decodeMs});if(downloads.length>120)downloads.shift();cache.set(item.index,new Float32Array(m.bytes));prune();item.resolve(cache.get(item.index));}
  pump();
 };
-function pump(){while(activeLoads<(quality500?2:4)&&queue.length){const item=queue.shift();activeLoads++;worker.postMessage({type:'load',id:item.index,index:item.index,url:new URL(meta.frames[item.index].file,location.href).href,count:meta.count});}}
+function pump(){while(activeLoads<(quality500?2:4)&&queue.length){const item=queue.shift();activeLoads++;worker.postMessage({type:'load',id:item.index,index:item.index,url:new URL(meta.frames[item.index].file,location.href).href,count:meta.count,encoding:meta.encoding,speedMax:meta.speed_max_km_s});}}
 function load(i,priority=false){if(cache.has(i))return Promise.resolve(cache.get(i));if(pending.has(i)){
  const item=pending.get(i),at=queue.indexOf(item);if(priority&&at>=0){queue.splice(at,1);queue.unshift(item);}return item.promise;}
  let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});const item={index:i,promise,resolve,reject};pending.set(i,item);priority?queue.unshift(item):queue.push(item);pump();return promise;}
@@ -66,11 +68,12 @@ function countVisible(force=false){const now=performance.now();if(loaded<0||(!fo
 function updateTime(){const i=Math.floor(display),t=display-i,a=scaleAt(display);$('time').textContent=`z = ${Math.max(0,1/a-1).toFixed(3)} · a = ${a.toFixed(4)}${t>1e-5?' · 插值':''}`;countVisible();}
 async function seek(value){target=Math.max(0,Math.min(56,value));$('timeline').value=scaleAt(target);const i=Math.floor(target);
  if(i===loaded){if(fetching){version++;fetching=false;}display=target;return;}
- const serial=++version;fetching=true;if(!cache.has(i)||!cache.has(Math.min(i+1,56)))bufferWaits++;
+ const serial=++version,seekStart=performance.now();fetching=true;if(!cache.has(i)||!cache.has(Math.min(i+1,56)))bufferWaits++;
+ if(quality500){for(let n=queue.length-1;n>=0;n--){const item=queue[n];if(item.index<i||item.index>windowEnd(i)){queue.splice(n,1);pending.delete(item.index);item.reject(Error('过期预取已跳过'));}}}
  try{await Promise.all([load(i,true),load(Math.min(i+1,56),true)]);if(serial!==version)return;
  // Evict only buffers outside the new pair before switching; never re-upload the shared endpoint.
  for(const k of [...gpuCache.keys()])if(gpuCache.size>2&&k!==i&&k!==Math.min(i+1,56)){gl.deleteBuffer(gpuCache.get(k));gpuCache.delete(k);}
- loaded=i;upload(i);upload(Math.min(i+1,56));display=target;fetching=false;prune();countVisible(true);$('error').hidden=true;warm(i);
+ loaded=i;upload(i);upload(Math.min(i+1,56));display=target;fetching=false;seeks.push({snapshot:i,ready_ms:performance.now()-seekStart});if(seeks.length>120)seeks.shift();prune();countVisible(true);$('error').hidden=true;warm(i);
  }catch(e){if(serial===version){fetching=false;fail(e);}}}
 function stop(){playTicket++;playing=false;buffering=false;$('play').textContent='播放';}
 $('timeline').oninput=()=>{stop();seek(indexAt(+$('timeline').value));};
@@ -97,6 +100,7 @@ canvas.addEventListener('wheel',e=>{e.preventDefault();distance=Math.max(.7,Math
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
 canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fail(Error('图形上下文丢失，请刷新页面。'));});
 let active=true,renderedFrames=0;const renderIntervals=[];
+window.swiftDiagnostics=()=>({encoding:meta.encoding||'float32',received_bytes:receivedBytes,downloads:[...downloads],seeks:[...seeks],draw_intervals_ms:[...renderIntervals],fps,buffer_waits:bufferWaits,cpu_frames:cache.size,gpu_frames:gpuCache.size,gpu_time_ms:null,renderer:gl.getParameter(gl.RENDERER)});
 if(comparison)window.swiftCompare={seek,meta,setActive:v=>{active=v;},camera:()=>({yaw,pitch,distance,center:[...center]}),setCamera:p=>{yaw=p.yaw;pitch=p.pitch;distance=p.distance;center=[...p.center];},metrics:()=>({renderedFrames,intervals:[...renderIntervals],renderer:gl.getParameter(gl.RENDERER),resolution:[canvas.width,canvas.height],dpr:devicePixelRatio})};
 if(comparison){for(const event of ['pointermove','wheel'])canvas.addEventListener(event,()=>{parent.postMessage({type:'swift-camera',camera:window.swiftCompare.camera()},location.origin);});}
 let last=performance.now();function draw(now){const dt=Math.max(0,(now-last)/1000);last=now;

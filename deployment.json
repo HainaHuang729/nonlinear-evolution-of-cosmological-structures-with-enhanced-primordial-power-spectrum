@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "ad407b78ca2dc387ae2bfdc4a34c3c4b33e73d55",
-  "created": "2026-09-23T03:55:01.239434+00:00",
+  "parent_commit": "3be8167e2f7a69417f96abfbce710b6671733678",
+  "created": "2026-09-23T05:26:58.601862+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -667,8 +667,8 @@
     },
     {
       "file": "assets/swift-viewer/cache-worker.js",
-      "sha256": "18974e345bf25217d2ac2e2f3cd936f0d844ccebb3f89c3684ee8f289c7aa881",
-      "bytes": 841
+      "sha256": "d87e1bbb3805b4463823a3541889cbf32af30803769cbe6825c7e1e8342f8159",
+      "bytes": 1320
     },
     {
       "file": "assets/swift-viewer/cache500/0000.bin",
@@ -956,6 +956,291 @@
       "bytes": 8000000
     },
     {
+      "file": "assets/swift-viewer/cache500u16/0000.bin",
+      "sha256": "9656c5a63181e873083a7fbe0ad4cd01d5b77723eabe869a62a47e980da9c466",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0001.bin",
+      "sha256": "bf6d12102d3a50e6ee35a680685b14b4f7fc650f3bb5cce3fd8b2f43a9fd7401",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0002.bin",
+      "sha256": "06ebed3da00543d4bf19b2f913600429b2543a578007ed6a427d9917b02496ff",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0003.bin",
+      "sha256": "9989422bac0fd99c148d7e1b86777daf11b41eea2d88e024a94dc145bc2109df",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0004.bin",
+      "sha256": "52cf32f6ad54a1a6a39b4933d1de20dc66acc660c64f26a2641c7d79f120c7d7",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0005.bin",
+      "sha256": "969388cb23957dbdcfe1ead1af051d68267304e9e6bd742df121d5a42cc5cbe1",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0006.bin",
+      "sha256": "938bbc0516901244c031dc9359ad2ff5ca2331ad1489c4c20c6f51b3234530a6",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0007.bin",
+      "sha256": "3b98037a178ddb69e97b2489f209cb09338d162e5da0bf3ffbc8b5955dc2d85a",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0008.bin",
+      "sha256": "c2c1180773e5e6e1de89efe085ac735b41ebc99a4aa4271287562418883baff5",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0009.bin",
+      "sha256": "6f8841667cf59fb34162b9ec49507efeb67f877cd6e497d3ddbbfbd9bc8c9a66",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0010.bin",
+      "sha256": "5c154d0682716fc873f2ef559a63bb8621ef35e80b96af424b7b964629a19b53",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0011.bin",
+      "sha256": "825b1e25f68f879daf98dee6e331d5ed0c1f8b45d9fda7822d21f81711234ed6",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0012.bin",
+      "sha256": "c09da0e0398ac5c4fcce575f23d26eb9d46feccd799ccf8c21e35a514c478bc3",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0013.bin",
+      "sha256": "38b622b27def204d8139f356d874ff2e43f60eb6a38690f09f5064625a8f6ba8",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0014.bin",
+      "sha256": "a8bb61363c586f53be990e67e4d436240e80746df4aa2ed7affaf36d2167007e",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0015.bin",
+      "sha256": "65250ab81e16c21557fd0f77692285a3318772686779b7a4269d2dad753a331c",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0016.bin",
+      "sha256": "c78012362e763bf13a3367555552b63e46d7849ad14e3e7c120e25dfdbd28c47",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0017.bin",
+      "sha256": "fadfb3ff87707aeb5c85ea2deac69a2a22751f4ff1410f603a61736dab7769c3",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0018.bin",
+      "sha256": "479a3c07c100722e7677cc8d3f932822df83fe18d52aa807cbd52438e89f24a2",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0019.bin",
+      "sha256": "2ae1aa9716b1f267c1531e6f5f75ead91dfe513f352599fd62661967aba88fc6",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0020.bin",
+      "sha256": "213ca1de6fdcb9480296cb4d7fcdf1e5e7b7aa8817c58768c36da15e10435765",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0021.bin",
+      "sha256": "6492d3a4bdedca8c164fa9db0a5d0aa6b8f272b0588eeb8dc737eff82e1b7908",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0022.bin",
+      "sha256": "039f7f1b853af6e60374003fcd8b550858854f7a84d6dd0e7d51044c535edbc8",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0023.bin",
+      "sha256": "c1f87fab786a323d5525260b45f205825dd7f51323c6731c018a130f4ba9c444",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0024.bin",
+      "sha256": "df35b2a1c3895ff0407395e9bf33b88891f901fadf3507901d6a0ebc5bf62bd5",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0025.bin",
+      "sha256": "067e80cddbe054a332414f027fcabbae982c17a0d4cf66d7fbc0f059b8e8ff83",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0026.bin",
+      "sha256": "9ea6cc42d0b243ce87140e2a3addb89a3029d43d05f741d76f29c07b41c853e4",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0027.bin",
+      "sha256": "4bf1cf9070619c3a58cf53cbc70b9352856621b4cd1762fe0cce0064c0cce4bf",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0028.bin",
+      "sha256": "cc496d16c9e51c36a470073c35cbd6f2d75f1e3287747138d8004a7e2588d6fa",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0029.bin",
+      "sha256": "bce45ce75012047e28f5f46cd141b78313048edbaa1e2f01f179f3ab4a907145",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0030.bin",
+      "sha256": "679848b20bd828be4b48c80dc2fd57eeffc92dab3164f5ff556799c898e8e6c2",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0031.bin",
+      "sha256": "50540c7a176be6da2cbfc82c395c75213fcba1d17ae6414deeceff2c39e26aca",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0032.bin",
+      "sha256": "57d344b0f22677fc6e064a814b768b80a49acec86a7b6ad71e114c6754104986",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0033.bin",
+      "sha256": "e7c26138303e0517aa83a53a8eb3ab8d1028e04af54507a44d3d6e29ff8057b8",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0034.bin",
+      "sha256": "30e07dcdb1490a44a42a73ccd39a80f859cf8f8b735e31b8a7c50c7b3972120e",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0035.bin",
+      "sha256": "6cf3db40cbb8a52e0ca165de3e5fb2cd6162ff1d4081dbdac317f3509be53e24",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0036.bin",
+      "sha256": "1113037542129253ea55f219a2132aff044de46e0402abbec660a0e7de08b2e3",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0037.bin",
+      "sha256": "cefeefb73a39fc19032adfa57b98994b7ea2075d3f08f9a5ed51ae475dbaa915",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0038.bin",
+      "sha256": "862df6ad33b3ecaa5eadaa5279c73e3f7a60662cf0e7f7afb843264cb06db1ca",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0039.bin",
+      "sha256": "6ed2072cd67b52ec8ae1c158fd9390567594676adc5b6d9a80b5fc80dd66a257",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0040.bin",
+      "sha256": "2f8489cd714510f2441e673a7b429532e4ab016519f4469c775ad389fbd63a55",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0041.bin",
+      "sha256": "81f028f0db74cc11ea5d77a652b687f38c8777cb3431db958cf4c4b0b5d2b4d0",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0042.bin",
+      "sha256": "aa2ff6d2cc478a783865d1cd42d0772dfb5ec9c5c7e9646b4d9f05e9b8ae6883",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0043.bin",
+      "sha256": "e8e42342042b0ff6b1be5faa40fb6af8708652146f0130aac69fda1f2fbf47a5",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0044.bin",
+      "sha256": "79e50ab1d615c4979e1317d71f5cd47d27c4c7f780219953645d1e608c4fecd2",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0045.bin",
+      "sha256": "5af970294e83087889bf838701421016931108661cef40cb66b5834629171c83",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0046.bin",
+      "sha256": "964ba50a4146fe25960bf0fd74817054d291747aa894e66d2a42cc0c4fe6b253",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0047.bin",
+      "sha256": "91b83736b539fc37ea7813e6561a394fa88cdcc0398db6861c1f33be805481de",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0048.bin",
+      "sha256": "be5c0d56c8df8ebf51faa709a0033e1b88763262b60c0041a57618bf1dab82b9",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0049.bin",
+      "sha256": "17f10844d567355018d5634274b8fc467a5c41003b825cc86dfaa6a05b12ffa7",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0050.bin",
+      "sha256": "bd7dceab837c90db4e9754363c57baa1f3bf5257e98650fd62068b9ffdf66322",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0051.bin",
+      "sha256": "16ba7265ff0513aadbf2eacf81a2249234cb55dba50f3e65f7bf833ee498dbb0",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0052.bin",
+      "sha256": "fe49475a766ea209743ffb067bbc06fa4b248951b62237d8048a585cc19d5b53",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0053.bin",
+      "sha256": "f43727128f8d9c5474288069bb56fc1df75dc8c59ba53541b1513493add1fe5d",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0054.bin",
+      "sha256": "2f769cb45ce1dcbc5017ee9468200567073a9fc09ba9d33ba441d4b902b5372d",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0055.bin",
+      "sha256": "cf73f0ce13b1d2edb79e5885cdb68b9e9e8b467cf61d7b002a00714e7bc7b701",
+      "bytes": 4000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500u16/0056.bin",
+      "sha256": "800ab79e0a226b003706675a01e00fb36f73d1c5bffdfbba76915fe56dd7bf37",
+      "bytes": 4000000
+    },
+    {
       "file": "assets/swift-viewer/compare.html",
       "sha256": "9e5364db343bae24c3dec1a23678da008d3efe2abd432953e966791d4a855bb4",
       "bytes": 1903
@@ -967,8 +1252,8 @@
     },
     {
       "file": "assets/swift-viewer/index.html",
-      "sha256": "478e9c258ec7ac94436df2be955f4cb7996c1dec79da160d0ebaa1cf1b6530ed",
-      "bytes": 1467
+      "sha256": "4b4ffbd41d5cf0c1dbbd5a7220a0d0ad5eaf89a4fb37ae68c9ed9a76202b3d4b",
+      "bytes": 1460
     },
     {
       "file": "assets/swift-viewer/metadata.json",
@@ -981,9 +1266,14 @@
       "bytes": 14380
     },
     {
+      "file": "assets/swift-viewer/metadata500u16.json",
+      "sha256": "20602f4f4501035e97b248579409d7e59799c20ec70a072a7799658081394a77",
+      "bytes": 14640
+    },
+    {
       "file": "assets/swift-viewer/viewer-sans.woff2",
-      "sha256": "a628ae7a865029099d1a169c227d6503fa00908a2c9732e4fea482d75ab32a22",
-      "bytes": 61452
+      "sha256": "c72159644f18fdbf49851117ca799ddfabeb4e39373ea3410bcc53bc4f6742e3",
+      "bytes": 61968
     },
     {
       "file": "assets/swift-viewer/viewer.css",
@@ -992,8 +1282,8 @@
     },
     {
       "file": "assets/swift-viewer/viewer.js",
-      "sha256": "971e0dc8a9aa9d7ae09b3b1ff627c6f9fe37ad761d0e3e3a645a9ee8cc2a4933",
-      "bytes": 14487
+      "sha256": "0239a59fcb092eeeb1c512174d2562125e78f85b4f0649e9be954b05157e180e",
+      "bytes": 15514
     },
     {
       "file": "data/bt_soft_warren_median_mah.csv",
