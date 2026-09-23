@@ -22,7 +22,10 @@ const gpuCache=new Map();const boxBuffer=gl.createBuffer(),edges=[];
 for(let axis=0;axis<3;axis++)for(let b=0;b<2;b++)for(let c=0;c<2;c++)for(let end=0;end<2;end++){let p=[];p[axis]=end-.5;p[(axis+1)%3]=b-.5;p[(axis+2)%3]=c-.5;edges.push(...p,0);}
 gl.bindBuffer(gl.ARRAY_BUFFER,boxBuffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(edges),gl.STATIC_DRAW);
 const comparison=new URLSearchParams(location.search).get('compare')==='1';
-const quality500=comparison&&new URLSearchParams(location.search).get('quality')==='500k';
+const quality500=new URLSearchParams(location.search).get('quality')==='500k',cacheLimit=quality500?8:16;
+$('quality').value=quality500?'500k':'100k';
+$('cohort-caption').textContent=`${quality500?'500k':'100k'} 固定 ID 抽样 · 非全部 1024³ 粒子`;
+if(quality500){$('preload').hidden=true;$('preload').style.display='none';}
 if(comparison){document.querySelector('header').style.display='none';document.querySelector('aside').style.display='none';document.querySelector('main').style.cssText='display:block;height:100dvh';canvas.style.height='100dvh';}
 const res=await fetch(quality500?'metadata500.json':'metadata.json');if(!res.ok)throw Error('metadata 加载失败');const meta=await res.json();
 const minA=meta.frames[0].a,maxA=meta.frames[56].a,rateA=(maxA-minA)/14;
@@ -32,6 +35,9 @@ function indexAt(a){a=Math.max(minA,Math.min(maxA,a));if(a>=maxA-1e-12)return 56
 $('timeline').min=minA;$('timeline').max=maxA;$('timeline').step='any';$('timeline').value=maxA;
 window.swiftTimeline={scaleAt,indexAt,minA,maxA,rateA};
 let target=56,display=56,loaded=-1,version=0,controller=null,fetching=false,yaw=-.9,pitch=.42,distance=2.6,center=[0,0,0],frames=0,lastPerf=performance.now(),fps=0;
+$('quality').onchange=()=>{const url=new URL(location.href);url.searchParams.set('quality',$('quality').value);url.searchParams.set('a',scaleAt(display));url.searchParams.set('camera',[yaw,pitch,distance,...center].join(','));location.assign(url);};
+const initialParams=new URLSearchParams(location.search),savedCamera=(initialParams.get('camera')||'').split(',').map(Number);
+if(savedCamera.length===6&&savedCamera.every(Number.isFinite)){[yaw,pitch,distance]=savedCamera;pitch=Math.max(-1.45,Math.min(1.45,pitch));distance=Math.max(.7,Math.min(10,distance));center=savedCamera.slice(3);}
 const cache=new Map(),pending=new Map(),queue=[];let visible=0,fullCache=false,activeLoads=0,requestId=0,countId=0,lastCount=0,lastUI=0,glError=0,bufferWaits=0,uploads=0;
 const worker=new Worker('cache-worker.js?rev=smooth1');
 worker.onerror=()=>fail(Error('缓存 Worker 出错，请刷新页面。'));
@@ -43,14 +49,14 @@ worker.onmessage=({data:m})=>{
  else{cache.set(item.index,new Float32Array(m.bytes));prune();item.resolve(cache.get(item.index));}
  pump();
 };
-function pump(){while(activeLoads<4&&queue.length){const item=queue.shift();activeLoads++;worker.postMessage({type:'load',id:item.index,index:item.index,url:new URL(meta.frames[item.index].file,location.href).href,count:meta.count});}}
+function pump(){while(activeLoads<(quality500?2:4)&&queue.length){const item=queue.shift();activeLoads++;worker.postMessage({type:'load',id:item.index,index:item.index,url:new URL(meta.frames[item.index].file,location.href).href,count:meta.count});}}
 function load(i,priority=false){if(cache.has(i))return Promise.resolve(cache.get(i));if(pending.has(i)){
  const item=pending.get(i),at=queue.indexOf(item);if(priority&&at>=0){queue.splice(at,1);queue.unshift(item);}return item.promise;}
  let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});const item={index:i,promise,resolve,reject};pending.set(i,item);priority?queue.unshift(item):queue.push(item);pump();return promise;}
-function prune(){const i=Math.floor(target),limit=fullCache?57:16,protect=new Set([i,Math.min(i+1,56),loaded,Math.min(loaded+1,56)]);
+function prune(){const i=Math.floor(target),limit=fullCache?57:cacheLimit,protect=new Set([i,Math.min(i+1,56),loaded,Math.min(loaded+1,56)]);
  const candidates=[...cache.keys()].filter(k=>!protect.has(k)).sort((a,b)=>Math.abs(b-i)-Math.abs(a-i));
  while(cache.size>limit&&candidates.length){const k=candidates.shift();cache.delete(k);worker.postMessage({type:'drop',index:k});}}
-function windowEnd(i){return Math.min(56,i+Math.min(11,Math.max(3,Math.ceil(indexAt(Math.min(maxA,scaleAt(i)+rateA*1.5)))-i+1)));}
+function windowEnd(i){return Math.min(56,i+Math.min(quality500?5:11,Math.max(3,Math.ceil(indexAt(Math.min(maxA,scaleAt(i)+rateA*1.5)))-i+1)));}
 function warm(i){if(fullCache||comparison)return;for(let k=i;k<=windowEnd(i);k++)load(k).catch(()=>{});}
 function upload(i){if(gpuCache.has(i))return gpuCache.get(i);const data=cache.get(i);if(!data)return null;
  if(gpuCache.size>=4){const protectedKeys=new Set([loaded,Math.min(loaded+1,56),Math.floor(target),Math.min(Math.floor(target)+1,56)]);let victim=[...gpuCache.keys()].find(k=>!protectedKeys.has(k));if(victim===undefined)return null;gl.deleteBuffer(gpuCache.get(victim));gpuCache.delete(victim);}
@@ -75,7 +81,7 @@ $('play').onclick=async()=>{
  if(ticket!==playTicket)return;buffering=false;playing=true;$('play').textContent='暂停';
  }catch(e){if(ticket===playTicket){buffering=false;fail(e);}}
 };
-$('preload').onclick=async()=>{fullCache=true;$('preload').disabled=true;$('preload').textContent='正在预载完整序列…';
+$('preload').onclick=async()=>{if(quality500)return;fullCache=true;$('preload').disabled=true;$('preload').textContent='正在预载完整序列…';
  try{await Promise.all(meta.frames.map((_,i)=>load(i)));$('preload').textContent='完整预载已完成';}
  catch(e){$('preload').disabled=false;$('preload').textContent='重试完整预载';fail(e);}
 };
@@ -106,7 +112,8 @@ frames++;if(now-lastPerf>1000){fps=frames*1000/(now-lastPerf);frames=0;lastPerf=
 renderedFrames++;renderIntervals.push(dt*1000);if(renderIntervals.length>120)renderIntervals.shift();
 if(now-lastUI>=200){lastUI=now;updateTime();
 $('status').textContent=buffering?'正在准备播放…':fetching?'加载中…':fullCache&&cache.size<57?`预载 ${cache.size} / 57` :playing?'播放中':'就绪';}
-window.swiftState={loaded,display,scaleFactor:scaleAt(display),timeMode:'linear-a',visible,cacheCount:cache.size,cacheLimit:fullCache?57:16,gpuFrames:gpuCache.size,fetching,buffering,playing,bufferWaits,uploads,activeLoads,fps,yaw,distance,glError};requestAnimationFrame(draw);}
-requestAnimationFrame(draw);await seek(56);
+window.swiftState={loaded,display,scaleFactor:scaleAt(display),timeMode:'linear-a',visible,cacheCount:cache.size,cacheLimit:fullCache?57:cacheLimit,gpuFrames:gpuCache.size,fetching,buffering,playing,bufferWaits,uploads,activeLoads,fps,yaw,distance,glError};requestAnimationFrame(draw);}
+const savedA=Number(initialParams.get('a')),initialTime=initialParams.has('a')&&Number.isFinite(savedA)&&!comparison?indexAt(savedA):56;
+requestAnimationFrame(draw);await seek(initialTime);
 }catch(e){fail(e);}
 })();

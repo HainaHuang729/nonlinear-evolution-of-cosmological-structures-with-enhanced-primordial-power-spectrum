@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SWIFT · 实时粒子 Viewer</title><link rel="stylesheet" href="viewer.css?rev=speed-only"><body>
 <header><a href="../blender/index.html">← SWIFT 展示</a><strong>SWIFT / LIVE PARTICLES</strong></header>
 <main><canvas id="view" tabindex="0" aria-label="实时三维粒子：拖动旋转，Shift 拖动平移，滚轮缩放"></canvas>
-<aside><h1>宇宙结构演化</h1><p class="caption">100k 固定抽样粒子 · 57 个快照</p><output id="time">正在加载…</output>
+<aside><h1>宇宙结构演化</h1><p class="caption" id="cohort-caption">100k 固定 ID 抽样 · 非全部 1024³ 粒子</p><label>粒子档位<select id="quality"><option value="100k">100k · 默认</option><option value="500k">500k · 高清</option></select></label><output id="time">正在加载…</output>
 <label>时间轴 · a 等速<input id="timeline" type="range" min="0.004975" max="1" step="any" value="1"></label>
 <div class="transport"><button id="play">播放</button><button id="reset">重置视角</button></div>
 <p class="caption">Speed · 0–1000 km/s</p>
@@ -9,4 +9,4 @@
 <button id="preload">完整预载 · 91 MB</button>
 <p id="status" role="status">初始化…</p><p id="error" role="alert" hidden></p>
 <p class="hint">拖动旋转 · 滚轮缩放<br>Shift 拖动平移</p><a class="hint" href="compare.html">100k / 500k 对比 ↗</a>
-</aside></main><script src="viewer.js?rev=speed-only"></script></body></html>
+</aside></main><script src="viewer.js?rev=500k-sequence"></script></body></html>
