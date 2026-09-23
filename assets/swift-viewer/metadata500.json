@@ -1,0 +1,473 @@
+{
+  "count": 500000,
+  "source_count": 1073741824,
+  "box_mpc": 37.11401426970295,
+  "layout": "little-endian float32 interleaved x,y,z,speed_km_s; canonical ParticleID order",
+  "cohort_sha256": "946689d7e7dc63471756818c226ecd8c52dd4467d7e1f5238d8b72de60bff44b",
+  "frames": [
+    {
+      "snapshot": 0,
+      "a": 0.00497512437,
+      "z": 200.00000032762998,
+      "file": "cache500/0000.bin",
+      "bytes": 8000000,
+      "sha256": "cce3363c4147072cb8c8d6c4f444e5ac570f90ed5556aede1a6f9ce122f9a38e"
+    },
+    {
+      "snapshot": 1,
+      "a": 0.005472636807000001,
+      "z": 181.72727302511814,
+      "file": "cache500/0001.bin",
+      "bytes": 8000000,
+      "sha256": "af3a52c397de4f5df9faae74e9b378b1364d66c3ee208d2f0d532a5df9333f01"
+    },
+    {
+      "snapshot": 2,
+      "a": 0.006019900487700001,
+      "z": 165.1157027501074,
+      "file": "cache500/0002.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 3,
+      "a": 0.006621890536470001,
+      "z": 150.01427522737038,
+      "file": "cache500/0003.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 4,
+      "a": 0.007284079590117003,
+      "z": 136.28570475215486,
+      "file": "cache500/0004.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 5,
+      "a": 0.008012487549128701,
+      "z": 123.80518613832263,
+      "file": "cache500/0005.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 6,
+      "a": 0.008813736304041574,
+      "z": 112.4592601257478,
+      "file": "cache500/0006.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 7,
+      "a": 0.009695109934445731,
+      "z": 102.144781932498,
+      "file": "cache500/0007.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 8,
+      "a": 0.010664620927890304,
+      "z": 92.76798357499818,
+      "file": "cache500/0008.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 9,
+      "a": 0.01173108302067934,
+      "z": 84.24362143181649,
+      "file": "cache500/0009.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 10,
+      "a": 0.012904191322747276,
+      "z": 76.49420130165134,
+      "file": "cache500/0010.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 11,
+      "a": 0.014194610455022004,
+      "z": 69.44927391059213,
+      "file": "cache500/0011.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 12,
+      "a": 0.015614071500524202,
+      "z": 63.04479446417467,
+      "file": "cache500/0012.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 13,
+      "a": 0.017175478650576625,
+      "z": 57.22254042197697,
+      "file": "cache500/0013.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 14,
+      "a": 0.01889302651563429,
+      "z": 51.92958220179724,
+      "file": "cache500/0014.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 15,
+      "a": 0.02078232916719772,
+      "z": 47.11780200163385,
+      "file": "cache500/0015.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 16,
+      "a": 0.0228605620839175,
+      "z": 42.743456365121666,
+      "file": "cache500/0016.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 17,
+      "a": 0.025146618292309252,
+      "z": 38.766778513746964,
+      "file": "cache500/0017.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 18,
+      "a": 0.027661280121540177,
+      "z": 35.15161683067906,
+      "file": "cache500/0018.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 19,
+      "a": 0.0304274081336942,
+      "z": 31.86510620970823,
+      "file": "cache500/0019.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 20,
+      "a": 0.03347014894706363,
+      "z": 28.87736928155293,
+      "file": "cache500/0020.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 21,
+      "a": 0.036817163841769994,
+      "z": 26.16124480141175,
+      "file": "cache500/0021.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 22,
+      "a": 0.040498880225947005,
+      "z": 23.692040728556133,
+      "file": "cache500/0022.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 23,
+      "a": 0.0445487682485417,
+      "z": 21.44730975323285,
+      "file": "cache500/0023.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 24,
+      "a": 0.04900364507339587,
+      "z": 19.40664523021168,
+      "file": "cache500/0024.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 25,
+      "a": 0.05390400958073547,
+      "z": 17.551495663828796,
+      "file": "cache500/0025.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 26,
+      "a": 0.05929441053880902,
+      "z": 15.864996058026179,
+      "file": "cache500/0026.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 27,
+      "a": 0.06522385159268994,
+      "z": 14.331814598205613,
+      "file": "cache500/0027.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 28,
+      "a": 0.07174623675195893,
+      "z": 12.938013271096011,
+      "file": "cache500/0028.bin",
+      "bytes": 8000000,
+      "sha256": "d3f08947ebd52fb5204fc2112747d531c09a8bfb56d4f93eb5a47204580a8d33"
+    },
+    {
+      "snapshot": 29,
+      "a": 0.07892086042715485,
+      "z": 11.670921155541825,
+      "file": "cache500/0029.bin",
+      "bytes": 8000000,
+      "sha256": "0bc6c7534e10bd6f60d5abf973e4fdd240f91e7094b6275c8786b0342bc0b74e"
+    },
+    {
+      "snapshot": 30,
+      "a": 0.08681294646987033,
+      "z": 10.51901923231075,
+      "file": "cache500/0030.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 31,
+      "a": 0.09549424111685739,
+      "z": 9.471835665737043,
+      "file": "cache500/0031.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 32,
+      "a": 0.10504366522854312,
+      "z": 8.519850605215494,
+      "file": "cache500/0032.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 33,
+      "a": 0.11554803175139743,
+      "z": 7.654409641104996,
+      "file": "cache500/0033.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 34,
+      "a": 0.1271028349265372,
+      "z": 6.867645128277267,
+      "file": "cache500/0034.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 35,
+      "a": 0.13981311841919092,
+      "z": 6.152404662070242,
+      "file": "cache500/0035.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 36,
+      "a": 0.15379443026111006,
+      "z": 5.502186056427491,
+      "file": "cache500/0036.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 37,
+      "a": 0.16917387328722105,
+      "z": 4.9110782331159015,
+      "file": "cache500/0037.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 38,
+      "a": 0.18609126061594322,
+      "z": 4.373707484650818,
+      "file": "cache500/0038.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 39,
+      "a": 0.20470038667753754,
+      "z": 3.885188622409834,
+      "file": "cache500/0039.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 40,
+      "a": 0.22517042534529128,
+      "z": 3.4410805658271224,
+      "file": "cache500/0040.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 41,
+      "a": 0.24768746787982046,
+      "z": 3.0373459689337468,
+      "file": "cache500/0041.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 42,
+      "a": 0.2724562146678025,
+      "z": 2.670314517212497,
+      "file": "cache500/0042.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 43,
+      "a": 0.29970183613458273,
+      "z": 2.3366495611022704,
+      "file": "cache500/0043.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 44,
+      "a": 0.32967201974804095,
+      "z": 2.0333177828202462,
+      "file": "cache500/0044.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 45,
+      "a": 0.36263922172284535,
+      "z": 1.7575616207456761,
+      "file": "cache500/0045.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 46,
+      "a": 0.3989031438951298,
+      "z": 1.506874200677888,
+      "file": "cache500/0046.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 47,
+      "a": 0.4387934582846428,
+      "z": 1.2789765460708074,
+      "file": "cache500/0047.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 48,
+      "a": 0.48267280411310703,
+      "z": 1.0717968600643704,
+      "file": "cache500/0048.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 49,
+      "a": 0.5309400845244177,
+      "z": 0.8834516909676096,
+      "file": "cache500/0049.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 50,
+      "a": 0.5840340929768594,
+      "z": 0.7122288099705543,
+      "file": "cache500/0050.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 51,
+      "a": 0.6424375022745458,
+      "z": 0.5565716454277756,
+      "file": "cache500/0051.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 52,
+      "a": 0.7066812525020004,
+      "z": 0.4150651322070684,
+      "file": "cache500/0052.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 53,
+      "a": 0.7773493777522004,
+      "z": 0.2864228474609716,
+      "file": "cache500/0053.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 54,
+      "a": 0.8550843155274204,
+      "z": 0.16947531587361064,
+      "file": "cache500/0054.bin",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "snapshot": 55,
+      "a": 0.9405927470801622,
+      "z": 0.06315937806691885,
+      "file": "cache500/0055.bin",
+      "bytes": 8000000,
+      "sha256": "127d05b0e00426bc9d04dea7c57c1e68fcd4c569d23e73165f24d7c82b6795a8"
+    },
+    {
+      "snapshot": 56,
+      "a": 1.0000000000000002,
+      "z": 0,
+      "file": "cache500/0056.bin",
+      "bytes": 8000000,
+      "sha256": "16248165b24b1447719ff71bb10df091d90c70e525e345103ab2836202427f0e"
+    }
+  ],
+  "available_snapshots": [
+    0,
+    1,
+    28,
+    29,
+    55,
+    56
+  ]
+}

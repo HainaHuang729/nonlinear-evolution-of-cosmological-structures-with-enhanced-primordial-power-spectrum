@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "5d5291bc2f8c83c67298575c906935cf8e6181de",
-  "created": "2026-09-22T05:50:48.103791+00:00",
+  "parent_commit": "3675976d0f16e9ac2a376f3d5add6e235f9b0661",
+  "created": "2026-09-23T03:25:53.955279+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -671,9 +671,49 @@
       "bytes": 841
     },
     {
+      "file": "assets/swift-viewer/cache500/0000.bin",
+      "sha256": "cce3363c4147072cb8c8d6c4f444e5ac570f90ed5556aede1a6f9ce122f9a38e",
+      "bytes": 8000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500/0001.bin",
+      "sha256": "af3a52c397de4f5df9faae74e9b378b1364d66c3ee208d2f0d532a5df9333f01",
+      "bytes": 8000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500/0028.bin",
+      "sha256": "d3f08947ebd52fb5204fc2112747d531c09a8bfb56d4f93eb5a47204580a8d33",
+      "bytes": 8000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500/0029.bin",
+      "sha256": "0bc6c7534e10bd6f60d5abf973e4fdd240f91e7094b6275c8786b0342bc0b74e",
+      "bytes": 8000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500/0055.bin",
+      "sha256": "127d05b0e00426bc9d04dea7c57c1e68fcd4c569d23e73165f24d7c82b6795a8",
+      "bytes": 8000000
+    },
+    {
+      "file": "assets/swift-viewer/cache500/0056.bin",
+      "sha256": "16248165b24b1447719ff71bb10df091d90c70e525e345103ab2836202427f0e",
+      "bytes": 8000000
+    },
+    {
+      "file": "assets/swift-viewer/compare.html",
+      "sha256": "0f9245dd332ec8f4b1dab4762f7dee81c0bf3670860e2a7409b51fae6d9bd9c6",
+      "bytes": 1834
+    },
+    {
+      "file": "assets/swift-viewer/compare.js",
+      "sha256": "7768936ff985d35586f680ad97f339b74c40431a6912f4c65a66064661bc66d5",
+      "bytes": 3815
+    },
+    {
       "file": "assets/swift-viewer/index.html",
-      "sha256": "3fd9446bdba1ea53498393ffb4e78a30a24b65af1c70e29497d40fdf1f42a1e7",
-      "bytes": 1228
+      "sha256": "76690974d2ecb477e140659b17591a59d550bd1d37fd5cbcb9ba46b6ec94cf79",
+      "bytes": 1290
     },
     {
       "file": "assets/swift-viewer/metadata.json",
@@ -681,9 +721,14 @@
       "bytes": 13732
     },
     {
+      "file": "assets/swift-viewer/metadata500.json",
+      "sha256": "b4a41b557f49c038b929544002663f5183b2a8e6a1d16b8774b152f265356021",
+      "bytes": 10665
+    },
+    {
       "file": "assets/swift-viewer/viewer-sans.woff2",
-      "sha256": "cf3e1fe32b807ec83e7793df79eaddd5b63f5655b1f0d7a6f87893232a192af0",
-      "bytes": 41328
+      "sha256": "84c176d3c556dce29e4910e359e7b71f6820ee09c77785e7f472ef296d88397e",
+      "bytes": 59296
     },
     {
       "file": "assets/swift-viewer/viewer.css",
@@ -692,8 +737,8 @@
     },
     {
       "file": "assets/swift-viewer/viewer.js",
-      "sha256": "46669f84cb3bd14e6157d9210cb5e3c76298eaaec4a4cc07b5e6deff113829f8",
-      "bytes": 12237
+      "sha256": "3359fe716233fcec3ad944cd4f59254db908b26e8736236e3198c17fbf6cf4dc",
+      "bytes": 13443
     },
     {
       "file": "data/bt_soft_warren_median_mah.csv",
