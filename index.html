@@ -9,12 +9,12 @@
   <meta name="theme-color" content="#e8e7df">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
-  <script defer src="locales.js?rev=12"></script>
+  <script defer src="locales.js?rev=portfolio-20260928"></script>
   <script defer src="i18n.js"></script>
   <script defer src="system.js"></script>
   <script defer src="data.js?rev=12"></script>
   <script defer src="media.js?rev=10"></script>
-  <script defer src="app.js?rev=12"></script>
+  <script defer src="app.js?rev=portfolio-20260928"></script>
 </head>
 <body>
   <a class="skip" href="#statistics">跳转到统计图</a>
@@ -29,7 +29,7 @@
     <section class="hero page-width" id="index" aria-labelledby="page-title">
       <div class="hero-kicker"><p class="technical-label"><span class="status-indicator" aria-hidden="true"></span> N-BODY SIMULATIONS / 数据图集</p><span class="technical-label">00 — INTRODUCTION</span></div>
       <div class="hero-grid editorial-grid">
-        <div class="hero-copy"><h1 id="page-title"><span>STRUCTURE</span><span>IN MOTION<span class="title-stop">.</span></span></h1><p class="hero-subheading">从初始涨落，到宇宙结构。</p><p class="subtitle">相同初始相位，三种小尺度功率模型。沿红移探索暗物质结构，再用论文中的统计量比较它们。</p><a class="button hero-link" href="#evolution">开始探索 <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-copy"><h1 id="page-title"><span>STRUCTURE</span><span>IN MOTION<span class="title-stop">.</span></span></h1><p class="hero-subheading">从初始涨落，到宇宙结构。</p><p class="subtitle">相同初始相位，三种小尺度功率模型。沿红移探索暗物质结构，再用论文中的统计量比较它们。</p><div style="display:flex;flex-wrap:wrap;gap:12px"><a class="button hero-link" id="hero-live-link" href="assets/swift-viewer/index.html">交互探索 3D <span aria-hidden="true">↗</span></a><a class="button hero-link" href="#evolution">开始探索 <span aria-hidden="true">↓</span></a></div></div>
         <aside class="hero-instrument" aria-label="投影快照快捷索引"><p class="technical-label">VIEW / SNAPSHOT INDEX</p><div class="snapshot-index" id="snapshot-index"></div><p class="instrument-note">点击刻度选择真实快照<br>等距排列仅表示快照顺序</p></aside>
       </div>
       <svg class="tricolor-ribbon hero-ribbon" viewBox="0 0 1504 88" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false"><path class="ribbon-red" d="M-8 46H1378A38 38 0 0 0 1416 8V-8"/><path class="ribbon-yellow" d="M-8 58H1378A50 50 0 0 0 1428 8V-8"/><path class="ribbon-blue" d="M-8 70H1378A62 62 0 0 0 1440 8V-8"/></svg>
@@ -55,7 +55,7 @@
       <div class="animation-grid" id="animation-grid"></div>
       <p><a class="text-button" id="blender-mvp-link" href="assets/blender/index.html">BT cosmic evolution · Blender MVP →</a></p>
       <details id="swift-live-panel" style="margin:24px 0">
-        <summary style="cursor:pointer;padding:16px 0;font-size:20px">SWIFT / LIVE 3D · 100k particles</summary>
+        <summary style="cursor:pointer;padding:16px 0;font-size:20px">实时粒子演化 · 100k / 500k</summary>
         <p><a id="swift-live-link" class="text-button" href="assets/swift-viewer/index.html" target="_blank" rel="noopener">Open full-screen viewer ↗</a></p>
         <iframe id="swift-live-frame" src="assets/swift-viewer/index.html?rev=speed-only" title="SWIFT live 3D particle evolution" loading="lazy" style="display:block;width:100%;height:720px;border:0" allow="fullscreen"></iframe>
       </details>

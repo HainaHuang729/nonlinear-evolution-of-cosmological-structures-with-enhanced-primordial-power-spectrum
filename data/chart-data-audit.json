@@ -193,9 +193,9 @@
   "site_hashes": {
     "data.js": "8a7bc42b7d7478b0aaf0bf7bfd344a9b9f0fff11480d38c8de6730098042d319",
     "data/page-data.json": "de5999841fd4f35af108600a9fd7943f060857c4013d24808b13dff36c7cc814",
-    "app.js": "14fe8a5e8b8557984701f904a618f31850a44a524e244dca3df7d3c362078fd2",
-    "locales.js": "c556153c00f8cd2a673f0d4132e3a74394defae3cf8b1d25b67172a7ff5afb03",
-    "index.html": "85c3ef38608fabede092c78618852c5f51696490bde6c892fa19eab2ead52cad"
+    "app.js": "3403cb240f2510ba6deb6a746cf0ebe6067a0bed48d4e083c2148fda8682f648",
+    "locales.js": "5642a2d768c307c0c11bdf424cd57d03d4dfc682453c8213c299ed882e4c2c3c",
+    "index.html": "41078ac3f3c701f97bb6db4e4103cab03c6e9bbecb5d31e8f346a9bb1c942d1c"
   },
   "styles_unchanged": true
 }

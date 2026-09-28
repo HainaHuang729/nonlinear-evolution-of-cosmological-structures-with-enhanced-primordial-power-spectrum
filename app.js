@@ -476,7 +476,7 @@
   $('simulation-filter').addEventListener('change',renderSimulations);
   $('library-search').addEventListener('input',renderLibrary);
   $('library-kind').addEventListener('change',renderLibrary);
-  $('build-date').textContent='数据打包 '+D.built.slice(0,10)+' · 离线可用';
+  $('build-date').textContent='数据打包 '+D.built.slice(0,10)+' · 网页更新 2026-09-28 · 离线可用';
   function renderAnimations() {
     if(!M){$('animations').hidden=true;return;}
     $('animation-grid').replaceChildren(...M.animations.map(item=>{

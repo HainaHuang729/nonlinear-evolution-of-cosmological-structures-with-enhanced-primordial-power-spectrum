@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "3be8167e2f7a69417f96abfbce710b6671733678",
-  "created": "2026-09-23T05:26:58.601862+00:00",
+  "parent_commit": "b7a301dba18aa33b9f4bf9b0acd84db1c45eb7af",
+  "created": "2026-09-28T10:57:59.765762+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -27,8 +27,8 @@
     },
     {
       "file": "app.js",
-      "sha256": "14fe8a5e8b8557984701f904a618f31850a44a524e244dca3df7d3c362078fd2",
-      "bytes": 45164
+      "sha256": "3403cb240f2510ba6deb6a746cf0ebe6067a0bed48d4e083c2148fda8682f648",
+      "bytes": 45191
     },
     {
       "file": "assets/FONT-LICENSE.txt",
@@ -77,8 +77,8 @@
     },
     {
       "file": "assets/article-sans.woff2",
-      "sha256": "c3d90025d9816d0d896878c94bb4f80307fe35ab89380dcc394545fc22197a26",
-      "bytes": 139940
+      "sha256": "59fd1cd44e230915234cfa7434e10531bfa8da9c3bbfd42116a0a6dd8aa29fdf",
+      "bytes": 138236
     },
     {
       "file": "assets/blender/blender-pipeline-source.zip",
@@ -1292,7 +1292,7 @@
     },
     {
       "file": "data/chart-data-audit.json",
-      "sha256": "b2a0c220f6f581e29e580c172c2b6945c601459f7283c4c5867004d0c8212417",
+      "sha256": "d2876537e2d9f77527992b63106ae737e5175ac6164b8a7f82b3f958bd1a5c76",
       "bytes": 10262
     },
     {
@@ -1452,13 +1452,13 @@
     },
     {
       "file": "index.html",
-      "sha256": "85c3ef38608fabede092c78618852c5f51696490bde6c892fa19eab2ead52cad",
-      "bytes": 19062
+      "sha256": "41078ac3f3c701f97bb6db4e4103cab03c6e9bbecb5d31e8f346a9bb1c942d1c",
+      "bytes": 19291
     },
     {
       "file": "locales.js",
-      "sha256": "c556153c00f8cd2a673f0d4132e3a74394defae3cf8b1d25b67172a7ff5afb03",
-      "bytes": 27351
+      "sha256": "5642a2d768c307c0c11bdf424cd57d03d4dfc682453c8213c299ed882e4c2c3c",
+      "bytes": 27504
     },
     {
       "file": "media.js",

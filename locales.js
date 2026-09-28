@@ -1,5 +1,8 @@
 /* English catalog. Chinese source strings are retained by the presentation layer. */
 window.ARTICLE_EN = {
+  '交互探索 3D':'Explore in 3D',
+  '网页更新':'Website updated',
+  '实时粒子演化 · 100k / 500k':'Live particle evolution · 100k / 500k',
   '暗物质结构演化 · 论文数据展示':'Dark Matter Structure Evolution · Article Explorer',
   'Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power：密度投影、halo 质量函数、组装历史与非线性物质功率谱的交互展示。':'Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power: interactive density projections, halo mass functions, assembly histories and nonlinear matter power spectra.',
   '跳转到统计图':'Skip to statistics',
