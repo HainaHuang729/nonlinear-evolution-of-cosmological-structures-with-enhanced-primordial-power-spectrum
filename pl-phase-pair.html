@@ -6,30 +6,73 @@
   <title>PL phase-pair power spectra / PL 反相功率谱</title>
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
-  <style>main{max-width:960px;margin:0 auto;padding:40px 24px}h1{font-size:32px;line-height:1.25}h2{font-size:22px;margin-top:32px}p,li{line-height:1.8}nav{display:flex;flex-wrap:wrap;gap:20px}code{overflow-wrap:anywhere}figure{margin:24px 0}figure img{display:block;width:100%;height:auto}figcaption{line-height:1.8;margin-top:12px}.downloads{display:flex;flex-wrap:wrap;gap:20px;margin:12px 0}</style>
+  <script defer src="system.js"></script>
+  <style>
+    .phase-page *{letter-spacing:0!important}
+    .phase-main{max-width:1280px;margin-inline:auto}
+    .phase-intro{padding-top:40px;padding-bottom:36px}
+    .phase-intro h1{font-size:56px;line-height:1.2;margin:28px 0 20px;max-width:900px}
+    .phase-intro>p:not(.technical-label){max-width:780px;font-size:15px;color:var(--ink-secondary)}
+    .phase-links,.downloads{display:flex;flex-wrap:wrap;gap:12px 28px;margin:20px 0}
+    .phase-links a,.downloads a{font-size:12px;color:var(--orange-ink);padding:8px 0;border-bottom:1px solid var(--line-strong)}
+    .phase-register{display:flex;flex-wrap:wrap;gap:20px 48px;padding:24px 0;margin-top:24px;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line)}
+    .phase-register span{display:block;font:10px var(--font-mono);color:var(--ink-secondary);margin-bottom:8px}.phase-register strong{font-size:20px;font-weight:400}
+    .phase-section{padding-top:54px;padding-bottom:32px;border-top:1px solid var(--line)}
+    .phase-section h2{font-size:32px;line-height:1.4;max-width:900px;margin:12px 0 24px}
+    .phase-section>p{max-width:850px;color:var(--ink-secondary);font-size:14px;line-height:1.9}
+    .phase-section figure{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:40px;align-items:start;margin:32px 0 0}
+    .phase-section img{display:block;width:100%;height:auto;background:white}
+    .phase-section figcaption{border-top:1px solid var(--line-strong);padding-top:18px;font-size:14px;line-height:1.95;color:var(--ink-secondary)}
+    .phase-section figcaption:before{content:"READING THE FIGURE / 图中所见";display:block;font:10px/1.8 var(--font-mono);color:var(--ink);margin-bottom:18px}
+    .phase-section li{font-size:14px;line-height:1.9;margin-bottom:16px;max-width:850px}
+    .phase-section ul{padding-left:20px;margin:0}.phase-section code{overflow-wrap:anywhere}
+    .phase-close{background:var(--night);color:var(--on-dark);padding:36px var(--page-gutter);margin-top:32px}
+    .phase-close h2{font-size:26px;line-height:1.5;margin-bottom:18px}.phase-close p{color:var(--on-dark-secondary);font-size:14px;max-width:900px}
+    @media(max-width:720px){.phase-intro h1{font-size:34px}.phase-intro{padding-top:28px}.phase-section{padding-top:32px}.phase-section h2{font-size:25px}.phase-section figure{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:24px}.phase-register{gap:20px 28px}.phase-section figcaption{font-size:13px}.phase-links{gap:12px 20px}}
+    @media(max-width:380px){.phase-intro h1{font-size:29px}.phase-section h2{font-size:23px}}
+  </style>
 </head>
-<body><main>
-  <a href="index.html">返回论文数据页 / Back to the article explorer</a>
-  <h1>PL 反相功率谱检查<br>PL phase-pair power spectra</h1>
+<body class="phase-page">
+  <a class="skip" href="#phase-z1">跳转到功率谱图</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>STRUCTURE / ATLAS<span class="brand-sub">暗物质结构演化 · 数据图集</span></span></a>
+    <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
+    <nav id="site-navigation" aria-label="页面导航"><a href="#phase-z1"><span>01</span> z≈1.07</a><a href="#phase-z0"><span>02</span> z=0</a><a href="#phase-correction"><span>03</span> 线性修正</a><a href="#phase-method"><span>04</span> 计算口径</a></nav>
+    <span class="header-revision">SUPPLEMENT / PL<br>2026-10-07</span>
+  </header>
+  <main class="phase-main">
+  <section class="phase-intro page-width" id="phase-index">
+  <p class="technical-label"><span class="status-indicator" aria-hidden="true"></span> SUPPLEMENT / PHASE-PAIR DIAGNOSTIC</p>
+  <h1>PL 反相功率谱<span class="brand-sub">PL PHASE-PAIR POWER SPECTRA</span></h1>
   <p>这是独立于论文主图的诊断结果，比较 25 h<sup>−1</sup> Mpc、1024³ 粒子 PL 模拟的原相位与反相位功率谱。结果包含 z=0 和 z≈1.07；尚未替换论文图表或主页面的统计数据。</p>
-  <nav aria-label="Power-spectrum viewer">
+  <nav class="phase-links" aria-label="Power-spectrum viewer">
     <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z0/pair" rel="noopener">查看 z=0 / View z=0</a>
     <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z1p07/pair" rel="noopener">查看 z≈1.07 / View z≈1.07</a>
   </nav>
   <p>下方图片及 PNG/PDF 下载可直接公开访问，无需打开外部查看页。外部查看页仍为私有访问；本页不提供原始模拟快照下载。</p>
-  <h2>1. z≈1.07：反相平均后与参考谱更接近</h2>
+  <div class="phase-register"><div><span>BOX / 共动边长</span><strong>25 h<sup>−1</sup> Mpc</strong></div><div><span>PARTICLES / 粒子数</span><strong>1024³</strong></div><div><span>REFERENCE / 理论参考</span><strong>HMcode2020 DMO</strong></div></div>
+  </section>
+  <section class="phase-section page-width" id="phase-z1">
+  <p class="eyebrow">01 / PHASE AVERAGING · z≈1.07</p>
+  <h2>反相平均后与参考谱更接近</h2>
   <figure>
     <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.png" alt="z约1.07的PL功率谱：原相位、反相位、平均结果与HMcode参考，以及平均相对原相位的变化" width="1394" height="1792">
     <figcaption>上 panel 是功率谱；中 panel 是各模拟曲线除以 HMcode；下 panel 是平均结果相对原相位的百分比变化，不是误差条。黑色原相位与蓝色反相位在低 k 端差异明显，绿色平均结果位于两者之间。在 k≈1.02 h Mpc<sup>−1</sup>，平均值约为 HMcode 的 0.91；k≈2.02 时约为 0.79，因此不能说整个范围都已与理论一致。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.pdf" download>PDF</a></p>
-  <h2>2. z=0：平均后仍有明显的低 k 差异</h2>
+  </section>
+  <section class="phase-section page-width" id="phase-z0">
+  <p class="eyebrow">02 / PHASE AVERAGING · z=0</p>
+  <h2>平均后仍有明显的低 k 差异</h2>
   <figure>
     <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.png" alt="z等于0的PL原相位、反相位和平均功率谱及相对HMcode比值" width="1394" height="1792" loading="lazy">
     <figcaption>三个 panel 的定义与上一张相同。反相平均提高了原相位的低 k 功率，但绿色曲线仍低于灰色参考。在 k≈1.02、2.02 h Mpc<sup>−1</sup>，平均/HMcode 约为 0.50、0.64；到 k≈8.05 时接近 1。这是相对于当前参考的测量差异，不能据此单独确定偏差来自有限体积、数值误差还是参考模型。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.pdf" download>PDF</a></p>
-  <h2>3. 初始线性实现修正：没有消除剩余差异</h2>
+  </section>
+  <section class="phase-section page-width" id="phase-correction">
+  <p class="eyebrow">03 / LINEAR-REALIZATION CORRECTION</p>
+  <h2>初始线性实现修正没有消除剩余差异</h2>
   <p>橙色曲线在绿色平均功率上加 ΔP<sub>lin</sub>=G²[P<sub>lin,theory</sub>(z<sub>i</sub>)−P<sub>lin,box</sub>(z<sub>i</sub>)]。这里 G 是从初始时刻到目标时刻的线性增长响应；修正针对初始线性实现差异，不是从模拟中减去非线性耦合。</p>
   <figure>
     <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction.png" alt="z约1.07的Eq16线性实现修正对比，橙色与绿色曲线接近" width="1394" height="1792" loading="lazy">
@@ -41,6 +84,9 @@
     <figcaption>z=0：同样的修正没有消除低 k 差异。在 k≈1.02 时，修正后的模拟/HMcode 从约 0.50 变为 0.497。这里展示的是修正幅度有限，不能据此证明剩余差异的具体原因。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction.pdf" download>PDF</a></p>
+  </section>
+  <section class="phase-section page-width" id="phase-method">
+  <p class="eyebrow">04 / METHOD &amp; REFERENCE</p>
   <h2>曲线与计算口径</h2>
   <ul>
     <li>黑色：原相位；蓝色：反相位；绿色：两份功率谱的算术平均，不是先平均密度场。</li>
@@ -53,7 +99,12 @@
   <p>当前参考采用 Ω<sub>m</sub>=0.3153、Ω<sub>b</sub>=0.0493、Ω<sub>Λ</sub>=0.6847、h=0.6736、n<sub>s</sub>=0.9649、σ<sub>8</sub>=0.8111，线性输入为 Eisenstein–Hu，非线性模型为 HMcode2020 DMO。对应已核查结果作业为 <code>2165281</code>。后来测试的 σ<sub>8</sub>≈0.83549 版本未采用。</p>
   <p>反相平均可抵消部分相位相关偏差，但两份模拟不是独立实现，不能直接声称误差缩小 √2。反相平均和 Eq. (16) 都不能恢复盒子缺失的长波模式，也不能保证消除全部非线性有限体积偏差。z=0 的低 k 差异仍存在，不能仅凭这些曲线确定原因。</p>
   <p>方法来源：<a href="https://arxiv.org/abs/1511.04090">Pontzen et al., arXiv:1511.04090</a>。</p>
+  </section>
+  <section class="phase-close">
   <h2>English Summary</h2>
   <p>The four figures show phase averaging at z≈1.07 and z=0, followed by the corresponding Eq. (16) linear-realization diagnostics. In the pair-only figures the bottom panel is the change relative to the original phase; in the correction figures it is the additional correction relative to the pair mean. Neither is an error bar. Phase averaging moves the original result closer to HMcode but leaves a substantial low-k deficit at z=0. Eq. (16) makes only a small change near k≈1 h Mpc<sup>−1</sup> and does not establish the cause of the residual mismatch. The reference remains HMcode2020 DMO with σ<sub>8</sub>=0.8111 and the simulation background parameters. The PNG/PDF files on this page are public. The external viewer remains private. These diagnostics have not replaced manuscript figures or main explorer data.</p>
   <p>记录日期 / Recorded: 2026-10-07</p>
-</main></body></html>
+  </section>
+  </main>
+  <footer class="page-width"><span>STRUCTURE / ATLAS</span><span>PL PHASE-PAIR / SUPPLEMENT</span><a href="index.html">返回论文数据页 ↑</a></footer>
+</body></html>
