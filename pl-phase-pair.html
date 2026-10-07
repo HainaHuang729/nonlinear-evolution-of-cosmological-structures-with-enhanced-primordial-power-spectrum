@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PL phase-pair power spectra / PL 反相功率谱</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>main{max-width:960px;margin:0 auto;padding:40px 24px}h1{font-size:32px;line-height:1.25}h2{font-size:22px;margin-top:32px}p,li{line-height:1.8}nav{display:flex;flex-wrap:wrap;gap:20px}code{overflow-wrap:anywhere}</style>
+</head>
+<body><main>
+  <a href="index.html">返回论文数据页 / Back to the article explorer</a>
+  <h1>PL 反相功率谱检查<br>PL phase-pair power spectra</h1>
+  <p>这是独立于论文主图的诊断结果，比较 25 h<sup>−1</sup> Mpc、1024³ 粒子 PL 模拟的原相位与反相位功率谱。结果包含 z=0 和 z≈1.07；尚未替换论文图表或主页面的统计数据。</p>
+  <nav aria-label="Power-spectrum viewer">
+    <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z0/pair" rel="noopener">查看 z=0 / View z=0</a>
+    <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z1p07/pair" rel="noopener">查看 z≈1.07 / View z≈1.07</a>
+  </nav>
+  <p><strong>访问说明：</strong>外部查看页当前为私有访问，可能需要已有权限。这个公开说明页不会改变外部页面的访问权限。外部页面提供 PNG/PDF 下载；本页不提供原始模拟快照下载。</p>
+  <h2>曲线与计算口径</h2>
+  <ul>
+    <li>黑色：原相位；蓝色：反相位；绿色：两份功率谱的算术平均，不是先平均密度场。</li>
+    <li>橙色：按 Pontzen et al. 的 Eq. (16) 加入初始线性谱实现差异的诊断修正；灰色：HMcode2020 暗物质参考谱。不同视图显示其中的对应曲线。</li>
+    <li>两种相位采用同一种 1024³ NGP 网格估计器，每份非线性功率谱减去一次 V/N；未做 NGP 窗函数反卷积、折叠或混叠修正。</li>
+    <li>展示范围为 k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，k<sub>f</sub>=2π/L≈0.251327 h Mpc<sup>−1</sup>；k&lt;4k<sub>f</sub> 的点以浅色空心标记显示。</li>
+    <li>z≈1.07 图以反相快照的实际 z=1.0700000000000003 为目标，对原模拟 0048、0049 的功率谱作时间插值。原 0048 的实际红移为 1.0717968600643704。z=0 两份快照为同一时刻。</li>
+  </ul>
+  <h2>理论参考与限制</h2>
+  <p>当前参考采用 Ω<sub>m</sub>=0.3153、Ω<sub>b</sub>=0.0493、Ω<sub>Λ</sub>=0.6847、h=0.6736、n<sub>s</sub>=0.9649、σ<sub>8</sub>=0.8111，线性输入为 Eisenstein–Hu，非线性模型为 HMcode2020 DMO。对应已核查结果作业为 <code>2165281</code>。后来测试的 σ<sub>8</sub>≈0.83549 版本未采用。</p>
+  <p>反相平均可抵消部分相位相关偏差，但两份模拟不是独立实现，不能直接声称误差缩小 √2。反相平均和 Eq. (16) 都不能恢复盒子缺失的长波模式，也不能保证消除全部非线性有限体积偏差。z=0 的低 k 差异仍存在，不能仅凭这些曲线确定原因。</p>
+  <p>方法来源：<a href="https://arxiv.org/abs/1511.04090">Pontzen et al., arXiv:1511.04090</a>。</p>
+  <h2>English Summary</h2>
+  <p>This separate diagnostic compares original-phase and inverted-phase PL simulations in a 25 h<sup>−1</sup> Mpc box with 1024³ particles at z=0 and z≈1.07. The phase-pair curve is the arithmetic mean of the measured powers. The optional Eq. (16) diagnostic adjusts for the initial linear realization, not for all nonlinear finite-volume effects. The reference remains HMcode2020 DMO with σ<sub>8</sub>=0.8111 and the simulation background parameters. These results have not replaced the manuscript figures or the main explorer data. The external viewer is private and may require permission; PNG/PDF downloads are available there. No raw snapshots are hosted here.</p>
+  <p>记录日期 / Recorded: 2026-10-07</p>
+</main></body></html>

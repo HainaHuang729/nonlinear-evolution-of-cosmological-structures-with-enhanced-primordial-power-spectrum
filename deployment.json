@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "b7a301dba18aa33b9f4bf9b0acd84db1c45eb7af",
-  "created": "2026-09-28T10:57:59.765762+00:00",
+  "parent_commit": "616c8e309e02d731210f37744f95f8db88465dbd",
+  "created": "2026-10-07T02:48:56.715405+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -22,8 +22,8 @@
     },
     {
       "file": "README.md",
-      "sha256": "31ed2f40853adc42b5881169ad780df04cd45f9c9029efa2dd56b635fc7f1662",
-      "bytes": 3832
+      "sha256": "64f4e5253299ae367effe9389ce8ed7c39694bd40902b21401e37653033d4948",
+      "bytes": 4011
     },
     {
       "file": "app.js",
@@ -381,6 +381,11 @@
       "bytes": 2124349
     },
     {
+      "file": "assets/swift-viewer/cache-worker.js",
+      "sha256": "d87e1bbb3805b4463823a3541889cbf32af30803769cbe6825c7e1e8342f8159",
+      "bytes": 1320
+    },
+    {
       "file": "assets/swift-viewer/cache/0000.bin",
       "sha256": "011bb08afe42017b2be8f60c828f2750ecf21559b99420149b58c579a87d2368",
       "bytes": 1600000
@@ -664,11 +669,6 @@
       "file": "assets/swift-viewer/cache/0056.bin",
       "sha256": "39ff4cd6ce00dd07bdf19c7c6f3aa500ed277162a0d7a741424b32e92ff20b79",
       "bytes": 1600000
-    },
-    {
-      "file": "assets/swift-viewer/cache-worker.js",
-      "sha256": "d87e1bbb3805b4463823a3541889cbf32af30803769cbe6825c7e1e8342f8159",
-      "bytes": 1320
     },
     {
       "file": "assets/swift-viewer/cache500/0000.bin",
@@ -1286,6 +1286,11 @@
       "bytes": 15514
     },
     {
+      "file": "data.js",
+      "sha256": "8a7bc42b7d7478b0aaf0bf7bfd344a9b9f0fff11480d38c8de6730098042d319",
+      "bytes": 2772066
+    },
+    {
       "file": "data/bt_soft_warren_median_mah.csv",
       "sha256": "cdea4d3aad870009a9da8b5153f027fce86bfb4764f7082a08ce823aef4f6bf2",
       "bytes": 33452
@@ -1441,19 +1446,14 @@
       "bytes": 865
     },
     {
-      "file": "data.js",
-      "sha256": "8a7bc42b7d7478b0aaf0bf7bfd344a9b9f0fff11480d38c8de6730098042d319",
-      "bytes": 2772066
-    },
-    {
       "file": "i18n.js",
       "sha256": "affd1e2d395328a06003777f674002a1b0e3be4a92e2b03efb9dbbebe0324856",
       "bytes": 4648
     },
     {
       "file": "index.html",
-      "sha256": "41078ac3f3c701f97bb6db4e4103cab03c6e9bbecb5d31e8f346a9bb1c942d1c",
-      "bytes": 19291
+      "sha256": "0e48ec1007c57c0ec75846f83f0e4b2101567bb484978b59afff803f4c8083ea",
+      "bytes": 19597
     },
     {
       "file": "locales.js",
@@ -1464,6 +1464,11 @@
       "file": "media.js",
       "sha256": "29a958bb2fa7bbba0c24990cbb9c6641d51e0271a652af70ff07e44bca0d5737",
       "bytes": 11859
+    },
+    {
+      "file": "pl-phase-pair.html",
+      "sha256": "b6b2d5d66f8cfb6aac91da048c9b1d01187828ebd5ef406fde39972b02da1cb9",
+      "bytes": 4010
     },
     {
       "file": "styles.css",
@@ -1480,5 +1485,6 @@
       "sha256": "38573bcd232c5463ff3d6c123fe759ee0e97313334191c071208989b07c16809",
       "bytes": 2488
     }
-  ]
+  ],
+  "supplemental_note": "PL phase-pair note; existing scientific arrays unchanged"
 }

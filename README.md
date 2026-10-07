@@ -32,3 +32,7 @@ Full-particle projection settings, comparison with all nine overlapping paper pa
 The offline Chinese font uses the license in `assets/FONT-LICENSE.txt`.
 
 GitHub Pages source: **gh-pages**, **/ (root)**. No build step or application server is needed.
+
+## PL phase-pair diagnostic
+
+[Separate explanation and viewer links](pl-phase-pair.html) for z=0 and z≈1.07. The external viewer is private; the manuscript data are unchanged.
