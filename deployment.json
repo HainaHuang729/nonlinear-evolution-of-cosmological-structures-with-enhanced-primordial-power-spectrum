@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "08eb7b02b32de29986b6880a722235f966f0e385",
-  "created": "2026-10-07T03:01:29.993666+00:00",
+  "parent_commit": "9fb8e911b09d335b3386936c88b47ee1e57ae6a4",
+  "created": "2026-10-08T03:23:03.294310+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -251,14 +251,24 @@
       "bytes": 180692
     },
     {
+      "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0-preview.webp",
+      "sha256": "189fa289b5861b47018edc41da84d0e36db8834d51ca6fb81965f4ad438d3084",
+      "bytes": 69194
+    },
+    {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.pdf",
-      "sha256": "a4a3f0473029ed95f5e076f088ec3cf2aa3f2a1cfb59e56e889e9026bed26ca9",
-      "bytes": 30227
+      "sha256": "d788834b9ddf4e7eb8cbcbd05d679285106e599e3dc5cc7fa7f87d7035241541",
+      "bytes": 26871
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.png",
-      "sha256": "0ff965517029587269aab57446649bd8a70619656be47f09c18238974f758106",
-      "bytes": 455279
+      "sha256": "81d4c7628d1cb1bc18a6f779211fa43ca838429979754a4b960f8d1620bddc05",
+      "bytes": 459878
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction-preview.webp",
+      "sha256": "82a5f6d93f2f9e255f4e4ed5b96c6747144f3f316482cf30fe40fb127f6e8472",
+      "bytes": 72760
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction.pdf",
@@ -271,14 +281,24 @@
       "bytes": 463620
     },
     {
+      "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07-preview.webp",
+      "sha256": "460461715899a7dff39dd0bad4931072f5002a363a997a41c167f13f44e1ecac",
+      "bytes": 67678
+    },
+    {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.pdf",
-      "sha256": "d6c3d97dbcb85cb71d81b1993a6f2b8d5d08d6e93058e45095df0af1b61282b2",
-      "bytes": 29773
+      "sha256": "8503adfebde783b6bd5c1c22a708745c6251eab93ffe47cd90bcde779a7231c3",
+      "bytes": 26819
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.png",
-      "sha256": "ecc8b28eb9e377f8b7dcf140feb7444ba053f1351742d7da41ad6a8a730d69f6",
-      "bytes": 439331
+      "sha256": "982a2df677feed69792d49acbb85c15297201d60445f2e352b609c25b328972e",
+      "bytes": 469647
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction-preview.webp",
+      "sha256": "067f350984bbd6d76e7b083b3248fcff8241fac4300fe976e157bf454f6d6704",
+      "bytes": 70432
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction.pdf",
@@ -289,6 +309,36 @@
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction.png",
       "sha256": "c1fdaa6058f09f45bc19ae4bcf352bad34b48a66021c7f94bc720dc1119bdf1b",
       "bytes": 458169
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl25-pl256-z0-preview.webp",
+      "sha256": "ef35955ebe88d693d9a6ac4d58065824099ff2f4f14a5c35fb4c0e19f9b3714a",
+      "bytes": 68484
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl25-pl256-z0.pdf",
+      "sha256": "de53ba487693fd6a523074cc65fad255ad9b22b7827212dd059eaed81c0511ce",
+      "bytes": 34152
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl25-pl256-z0.png",
+      "sha256": "845fb664f92ac21dda344eddc0951ee8c2dd2fd5fe397b5a970e96d0cf66c741",
+      "bytes": 824174
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07-preview.webp",
+      "sha256": "40819b420c88647a0dc5171278b7a343f824cece2dc7b6f12a33ebf50093633a",
+      "bytes": 73044
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07.pdf",
+      "sha256": "95033a471432491d122bdeeb948649dc5a3115a80adfd440f50a61605bc76b80",
+      "bytes": 47972
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07.png",
+      "sha256": "d18305a317033c1b19e8b10e64cb083a0eb104b46e84c13209d4fcaefef5cb46",
+      "bytes": 294087
     },
     {
       "file": "assets/power-spectrum_finite_box.png",
@@ -1507,8 +1557,8 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "2d4a4cb8523e2bef6836543b1273dd903d57ef85e708b342be07e1d7a82ba3e9",
-      "bytes": 12066
+      "sha256": "03fb63b28249801159d285259d8ad86193b01691dfe2da30a8371201e035d093",
+      "bytes": 15110
     },
     {
       "file": "styles.css",

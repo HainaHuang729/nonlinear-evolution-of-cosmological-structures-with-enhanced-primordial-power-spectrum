@@ -37,7 +37,7 @@
   <header class="topbar">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>STRUCTURE / ATLAS<span class="brand-sub">暗物质结构演化 · 数据图集</span></span></a>
     <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
-    <nav id="site-navigation" aria-label="页面导航"><a href="#phase-z1"><span>01</span> z≈1.07</a><a href="#phase-z0"><span>02</span> z=0</a><a href="#phase-correction"><span>03</span> 线性修正</a><a href="#phase-method"><span>04</span> 计算口径</a></nav>
+    <nav id="site-navigation" aria-label="页面导航"><a href="#phase-z1"><span>01</span> z≈1.07</a><a href="#phase-z0"><span>02</span> z=0</a><a href="#phase-correction"><span>03</span> 线性修正</a><a href="#phase-volume"><span>04</span> 256盒对比</a><a href="#phase-method"><span>05</span> 计算口径</a></nav>
     <span class="header-revision">SUPPLEMENT / PL<br>2026-10-07</span>
   </header>
   <main class="phase-main">
@@ -49,15 +49,15 @@
     <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z0/pair" rel="noopener">查看 z=0 / View z=0</a>
     <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z1p07/pair" rel="noopener">查看 z≈1.07 / View z≈1.07</a>
   </nav>
-  <p>下方图片及 PNG/PDF 下载可直接公开访问，无需打开外部查看页。外部查看页仍为私有访问；本页不提供原始模拟快照下载。</p>
+  <p>下方图片及 PNG/PDF 下载已更新为当前版本。25盒的相位平均和两盒对比图采用 k≥10k<sub>f</sub>≈2.5133 h Mpc<sup>−1</sup>，首个显示点为2.5367。这是显示下界，尚未证明该范围内的有限体积偏差已经收敛。外部私有查看页仍为旧版。</p>
   <div class="phase-register"><div><span>BOX / 共动边长</span><strong>25 h<sup>−1</sup> Mpc</strong></div><div><span>PARTICLES / 粒子数</span><strong>1024³</strong></div><div><span>REFERENCE / 理论参考</span><strong>HMcode2020 DMO</strong></div></div>
   </section>
   <section class="phase-section page-width" id="phase-z1">
   <p class="eyebrow">01 / PHASE AVERAGING · z≈1.07</p>
   <h2>反相平均后与参考谱更接近</h2>
   <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.png" alt="z约1.07的PL功率谱：原相位、反相位、平均结果与HMcode参考，以及平均相对原相位的变化" width="1394" height="1792">
-    <figcaption>上 panel 是功率谱；中 panel 是各模拟曲线除以 HMcode；下 panel 是平均结果相对原相位的百分比变化，不是误差条。黑色原相位与蓝色反相位在低 k 端差异明显，绿色平均结果位于两者之间。在 k≈1.02 h Mpc<sup>−1</sup>，平均值约为 HMcode 的 0.91；k≈2.02 时约为 0.79，因此不能说整个范围都已与理论一致。</figcaption>
+    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07-preview.webp" alt="z约1.07的PL功率谱：原相位、反相位、平均结果与HMcode参考，以及平均相对原相位的变化" width="1394" height="1792">
+    <figcaption>上 panel 是功率谱；中 panel 是各模拟曲线除以 HMcode；下 panel 是平均结果相对原相位的百分比变化，不是误差条。当前仅显示 k≥10k<sub>f</sub>。在首个显示点 k≈2.5367 h Mpc<sup>−1</sup>，平均值约为 HMcode 的0.859，因此不能说整个显示范围都已与理论一致。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.pdf" download>PDF</a></p>
   </section>
@@ -65,34 +65,51 @@
   <p class="eyebrow">02 / PHASE AVERAGING · z=0</p>
   <h2>平均后仍有明显的低 k 差异</h2>
   <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.png" alt="z等于0的PL原相位、反相位和平均功率谱及相对HMcode比值" width="1394" height="1792" loading="lazy">
-    <figcaption>三个 panel 的定义与上一张相同。反相平均提高了原相位的低 k 功率，但绿色曲线仍低于灰色参考。在 k≈1.02、2.02 h Mpc<sup>−1</sup>，平均/HMcode 约为 0.50、0.64；到 k≈8.05 时接近 1。这是相对于当前参考的测量差异，不能据此单独确定偏差来自有限体积、数值误差还是参考模型。</figcaption>
+    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0-preview.webp" alt="z等于0的PL原相位、反相位和平均功率谱及相对HMcode比值" width="1394" height="1792" loading="lazy">
+    <figcaption>三个 panel 的定义与上一张相同，当前仅显示 k≥10k<sub>f</sub>。反相平均提高了原相位在显示范围低 k 端的功率，但绿色曲线仍低于灰色参考。这是相对于当前参考的测量差异，不能据此单独确定偏差来自有限体积、数值误差还是参考模型。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.pdf" download>PDF</a></p>
   </section>
   <section class="phase-section page-width" id="phase-correction">
   <p class="eyebrow">03 / LINEAR-REALIZATION CORRECTION</p>
   <h2>初始线性实现修正没有消除剩余差异</h2>
+  <p>历史诊断图：本节两图保留原来的完整显示范围，尚未应用10k<sub>f</sub>下界，用于记录此前的线性修正测试。</p>
   <p>橙色曲线在绿色平均功率上加 ΔP<sub>lin</sub>=G²[P<sub>lin,theory</sub>(z<sub>i</sub>)−P<sub>lin,box</sub>(z<sub>i</sub>)]。这里 G 是从初始时刻到目标时刻的线性增长响应；修正针对初始线性实现差异，不是从模拟中减去非线性耦合。</p>
   <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction.png" alt="z约1.07的Eq16线性实现修正对比，橙色与绿色曲线接近" width="1394" height="1792" loading="lazy">
+    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction-preview.webp" alt="z约1.07的Eq16线性实现修正对比，橙色与绿色曲线接近" width="1394" height="1792" loading="lazy">
     <figcaption>z≈1.07：橙色与绿色大部分重合。下 panel 改为 ΔP<sub>lin</sub>/P<sub>pair</sub> 的百分比，表示额外修正的大小，不再是平均相对原相位的变化。在 k≈1.02 时，修正后的模拟/HMcode 从约 0.91 变为 0.90。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction.pdf" download>PDF</a></p>
   <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction.png" alt="z等于0的Eq16线性实现修正对比，低k差异仍存在" width="1394" height="1792" loading="lazy">
+    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction-preview.webp" alt="z等于0的Eq16线性实现修正对比，低k差异仍存在" width="1394" height="1792" loading="lazy">
     <figcaption>z=0：同样的修正没有消除低 k 差异。在 k≈1.02 时，修正后的模拟/HMcode 从约 0.50 变为 0.497。这里展示的是修正幅度有限，不能据此证明剩余差异的具体原因。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction.pdf" download>PDF</a></p>
   </section>
+  <section class="phase-section page-width" id="phase-volume">
+  <p class="eyebrow">04 / BOX COMPARISON · SINGLE REALIZATION</p>
+  <h2>加入256盒后，z=0 的差异仍然存在</h2>
+  <p>棕色曲线是当前论文所用的 256 h<sup>−1</sup> Mpc、1024³ 粒子 PL 单次实现，没有反相平均。两盒采用相同的 1024³ NGP 测量口径，分别只显示 k≤0.25k<sub>Ny</sub>；256盒的上限为 3.14 h Mpc<sup>−1</sup>。25盒仅显示 k≥10k<sub>f</sub>；256盒仍保留原范围，其低于4k<sub>f</sub>的点以浅色空心标记显示。没有按与 HMcode 的吻合程度筛选点。</p>
+  <figure>
+    <img src="assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07-preview.webp" alt="z约1.07的25盒原相位、反相位及平均功率与256盒单次实现比较" width="1760" height="2200" loading="lazy">
+    <figcaption>z≈1.07：上 panel 加入256盒绝对功率，中 panel 各自除以对应实际红移的 HMcode，底 panel 显示25盒原相位/256盒和25盒平均/256盒。当前共有范围内保留3个点；在 k≈2.5367 h Mpc<sup>−1</sup>，平均/256约为0.772。25盒目标红移为1.07000000，256盒实际为1.07179686，未对256盒作时间插值。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07.pdf" download>PDF</a></p>
+  <figure>
+    <img src="assets/pl-phase-pair/power-spectrum-pl25-pl256-z0-preview.webp" alt="z等于0时25盒采用10kf下界后与256盒功率谱的比较" width="1760" height="2200" loading="lazy">
+    <figcaption>z=0：两盒快照为同一时刻。底 panel 只比较当前显示范围内共有的3个点。25盒平均功率仍低于256盒；但不能单凭这两组模拟把原因确定为有限体积。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl25-pl256-z0.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl25-pl256-z0.pdf" download>PDF</a></p>
+  <p>底 panel 只在两盒共有采样范围内计算，对256盒功率作 log k–log P 插值，不外推。两盒粒子数相同，256盒的粒子质量约为25盒的1074倍；同时相位实现和平均方式不同。因此这些曲线是辅助诊断，不是纯粹的盒子体积收敛试验。</p>
+  </section>
   <section class="phase-section page-width" id="phase-method">
-  <p class="eyebrow">04 / METHOD &amp; REFERENCE</p>
+  <p class="eyebrow">05 / METHOD &amp; REFERENCE</p>
   <h2>曲线与计算口径</h2>
   <ul>
     <li>黑色：原相位；蓝色：反相位；绿色：两份功率谱的算术平均，不是先平均密度场。</li>
     <li>橙色：按 Pontzen et al. 的 Eq. (16) 加入初始线性谱实现差异的诊断修正；灰色：HMcode2020 暗物质参考谱。不同视图显示其中的对应曲线。</li>
     <li>两种相位采用同一种 1024³ NGP 网格估计器，每份非线性功率谱减去一次 V/N；未做 NGP 窗函数反卷积、折叠或混叠修正。</li>
-    <li>展示范围为 k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，k<sub>f</sub>=2π/L≈0.251327 h Mpc<sup>−1</sup>；k&lt;4k<sub>f</sub> 的点以浅色空心标记显示。</li>
+    <li>当前25盒相位平均和两盒对比图采用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，其中 k<sub>f</sub>=2π/L≈0.251327 h Mpc<sup>−1</sup>。实际显示点为2.5367至31.9198 h Mpc<sup>−1</sup>。这是显示选择，不是经过收敛验证的可信区间。历史线性修正图保留旧范围。</li>
     <li>z≈1.07 图以反相快照的实际 z=1.0700000000000003 为目标，对原模拟 0048、0049 的功率谱作时间插值。原 0048 的实际红移为 1.0717968600643704。z=0 两份快照为同一时刻。</li>
   </ul>
   <h2>理论参考与限制</h2>
@@ -103,7 +120,8 @@
   <section class="phase-close">
   <h2>English Summary</h2>
   <p>The four figures show phase averaging at z≈1.07 and z=0, followed by the corresponding Eq. (16) linear-realization diagnostics. In the pair-only figures the bottom panel is the change relative to the original phase; in the correction figures it is the additional correction relative to the pair mean. Neither is an error bar. Phase averaging moves the original result closer to HMcode but leaves a substantial low-k deficit at z=0. Eq. (16) makes only a small change near k≈1 h Mpc<sup>−1</sup> and does not establish the cause of the residual mismatch. The reference remains HMcode2020 DMO with σ<sub>8</sub>=0.8111 and the simulation background parameters. The PNG/PDF files on this page are public. The external viewer remains private. These diagnostics have not replaced manuscript figures or main explorer data.</p>
-  <p>记录日期 / Recorded: 2026-10-07</p>
+  <p>Current phase-pair and box-comparison figures apply k≥10k<sub>f</sub> to the 25-box data. The two linear-correction figures retain their historical range. The 256-box selection is unchanged. The external private viewer still shows the earlier version.</p>
+  <p>更新日期 / Updated: 2026-10-08</p>
   </section>
   </main>
   <footer class="page-width"><span>STRUCTURE / ATLAS</span><span>PL PHASE-PAIR / SUPPLEMENT</span><a href="index.html">返回论文数据页 ↑</a></footer>
