@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "11e8722f2586ff1d81d77d0619a5d26075a7baac",
-  "created": "2026-10-10T13:59:09.260494+00:00",
+  "parent_commit": "358f26573fbbbfdc18d659d017f02a4492451897",
+  "created": "2026-10-10T14:08:24.377650+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -252,18 +252,18 @@
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032-preview.webp",
-      "sha256": "2ab8b034ddc7ff316d09326c8e59003444b5afbec26135935c053a98e9267ae1",
-      "bytes": 50152
+      "sha256": "1a7d8bae7dd349b9032f0000eebf54196a98ac7de92693b3e6c2584ecce59cee",
+      "bytes": 49334
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032.pdf",
-      "sha256": "9ae08573359f41341fba1b0540198aefcb60e3c122183801f60ec06b16d8f0cc",
-      "bytes": 21366
+      "sha256": "2e93a6460e5405276250646504d004f99fbedcba9c79beb196400a65b53d4905",
+      "bytes": 23054
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032.png",
-      "sha256": "894dbe0db837d726afc1f2e9b24464f78f908dfec0967e18a87826eacb6f91bb",
-      "bytes": 212057
+      "sha256": "231683f05e565ba02da88d6b74aaf090adb8060e27a879b22c76ceca2c96c1fa",
+      "bytes": 229560
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-hmcode-preview.webp",
@@ -282,18 +282,18 @@
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-preview.webp",
-      "sha256": "04b53049a548c8920f7ed39d785bf9328b5df6b23ea91c168379f0e578dff3ba",
-      "bytes": 48292
+      "sha256": "8f8ce005b7638da6a1d4f1f0c8ef8fdd5763507807b0c74559ce59c241b96b3f",
+      "bytes": 51090
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032.pdf",
-      "sha256": "aee7aa5b4e9c59859a1160d01bc863415946fd57bfccc8a99a998d2805aa95df",
-      "bytes": 21096
+      "sha256": "c576e171c9d8b85f4ad3f9ea9c7c9e1f55822e442ab9ad6604d1438b8f45579a",
+      "bytes": 22727
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032.png",
-      "sha256": "9133f706c1694b45a7e3711a1bfb674ed2740078545e600d61dcff17173f6eca",
-      "bytes": 205212
+      "sha256": "ccbe936c5c1e1256809fd047e6df3d449841a045d313bbf00ebf9325f3b23d83",
+      "bytes": 232407
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0-preview.webp",
@@ -1602,8 +1602,8 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "5df88b80a4d4ac161e991773a84eff5d1a16ca4c5966f7df3ef8f372d6c8eb3e",
-      "bytes": 17901
+      "sha256": "4eb02fffe53603dcddc87b1ef7a7e13d43b2ba3e2e2c49a4042420c4f929cccc",
+      "bytes": 18098
     },
     {
       "file": "styles.css",

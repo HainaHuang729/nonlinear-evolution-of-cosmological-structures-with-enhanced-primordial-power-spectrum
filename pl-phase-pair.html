@@ -108,12 +108,12 @@
   <p>两组原相位0032与反相位0000均对应 a=0.10504366522854312、z=8.519850605215494，没有时间插值。采用1024³ NGP网格，每份功率谱扣除一次 V/N；显示10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>。BT kp1尚未提供本批对应快照。</p>
   <figure>
     <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-preview.webp" alt="PL在红移8.51985的原相位、反相位和平均功率谱" width="1920" height="1920" loading="lazy">
-    <figcaption>PL：上 panel 是功率谱，下 panel 是各曲线相对原相位的比值。显示范围内，平均谱相对原相位的变化约为−3.1%至+4.8%；这是配对平均带来的变化，不是误差条。</figcaption>
+    <figcaption>PL：上 panel 是功率谱，灰色虚线为HMcode2020；下 panel 是原相位、反相位和平均谱各自除以HMcode。模拟数据和显示范围保持不变。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032.pdf" download>PDF</a></p>
   <figure>
     <img src="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032-preview.webp" alt="BT kp10在红移8.51985的原相位、反相位和平均功率谱" width="1920" height="1920" loading="lazy">
-    <figcaption>BT k<sub>p</sub>=10 h Mpc<sup>−1</sup>：panel定义与PL相同，平均谱相对原相位的变化同样约为−3.1%至+4.8%。本图比较模拟的两种相位，没有加入理论参考曲线。</figcaption>
+    <figcaption>BT k<sub>p</sub>=10 h Mpc<sup>−1</sup>：panel定义与PL相同，但HMcode输入采用对应的BT线性谱，不使用PL参考谱。转折位置和斜率从IC配置读取，并保持σ<sub>8</sub>=0.8111归一化。高红移HMcode参考仍属诊断，不能仅凭比值判断模拟精度。</figcaption>
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032.pdf" download>PDF</a></p>
   <figure>
@@ -141,7 +141,7 @@
   <h2>English Summary</h2>
   <p>The four figures show phase averaging at z≈1.07 and z=0, followed by the corresponding Eq. (16) linear-realization diagnostics. In the pair-only figures the bottom panel is the change relative to the original phase; in the correction figures it is the additional correction relative to the pair mean. Neither is an error bar. Phase averaging moves the original result closer to HMcode but leaves a substantial low-k deficit at z=0. Eq. (16) makes only a small change near k≈1 h Mpc<sup>−1</sup> and does not establish the cause of the residual mismatch. The reference remains HMcode2020 DMO with σ<sub>8</sub>=0.8111 and the simulation background parameters. The PNG/PDF files on this page are public. The external viewer remains private. These diagnostics have not replaced manuscript figures or main explorer data.</p>
   <p>Current phase-pair and box-comparison figures apply k≥10k<sub>f</sub> to the 25-box data. The two linear-correction figures retain their historical range. The 256-box selection is unchanged. The external private viewer still shows the earlier version.</p>
-  <p>The high-redshift section adds exact-epoch PL and BT kp10 phase pairs at z=8.519850605215494. The PL HMcode comparison is diagnostic: HMcode reported insufficient low-ν table coverage at this epoch.</p>
+  <p>The high-redshift section adds exact-epoch PL and BT kp10 phase pairs at z=8.519850605215494. Their ratio panels use model-specific HMcode2020 references, with the BT input shape and shared sigma8 normalization matching the IC configuration. These comparisons remain diagnostic: HMcode reported insufficient low-ν table coverage at this epoch.</p>
   <p>更新日期 / Updated: 2026-10-10</p>
   </section>
   </main>
