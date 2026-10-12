@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "358f26573fbbbfdc18d659d017f02a4492451897",
-  "created": "2026-10-10T14:08:24.377650+00:00",
+  "parent_commit": "62b70c9582615420139b44f55c6238047a380085",
+  "created": "2026-10-12T14:07:52.688958+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -251,6 +251,36 @@
       "bytes": 180692
     },
     {
+      "file": "assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032-preview.webp",
+      "sha256": "23e79640f03055716397633897cfff3999313aa3ba0e3fa76d158ff4b25d4190",
+      "bytes": 58814
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032.pdf",
+      "sha256": "a255b610991eaae64259fb50614cfe5b2444c0e24c085b96336c71eab358d200",
+      "bytes": 22986
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032.png",
+      "sha256": "29ac7e0f0c5a47d19b0662326e46a86f75aa6a6ee2f0ff1ccac155ec1a9e9ad4",
+      "bytes": 266095
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048-preview.webp",
+      "sha256": "371fb6ad959250f1336b1d7d0effbe27c9d47e1eaa654f427806547e3e6d575d",
+      "bytes": 56684
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048.pdf",
+      "sha256": "ff0f07d557115e9b47ba995828d7a5b8018cdc83bcf46094f90f08a3e2cc2b7a",
+      "bytes": 23136
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048.png",
+      "sha256": "ba9643caefdbc98c30b0e26a2bcf4225041f7b044771ab9965224f3333fb1be4",
+      "bytes": 251234
+    },
+    {
       "file": "assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032-preview.webp",
       "sha256": "1a7d8bae7dd349b9032f0000eebf54196a98ac7de92693b3e6c2584ecce59cee",
       "bytes": 49334
@@ -264,6 +294,21 @@
       "file": "assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032.png",
       "sha256": "231683f05e565ba02da88d6b74aaf090adb8060e27a879b22c76ceca2c96c1fa",
       "bytes": 229560
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040-preview.webp",
+      "sha256": "79c6bbfdcfb60a69f554c466da67846aa93faa784f229ed4c22fc68c2caa499a",
+      "bytes": 63256
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040.pdf",
+      "sha256": "2c0751ab83f47e922ac90a883cbf252d98140737811d90f794817f53e157c801",
+      "bytes": 22990
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040.png",
+      "sha256": "ecf1a9b856cb46de65113ce65c8849a32f20f309c1ee8a31e0bbef17fe5502cd",
+      "bytes": 284726
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-hmcode-preview.webp",
@@ -294,6 +339,21 @@
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032.png",
       "sha256": "ccbe936c5c1e1256809fd047e6df3d449841a045d313bbf00ebf9325f3b23d83",
       "bytes": 232407
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040-preview.webp",
+      "sha256": "ae826b14d6335eb80094881d96edc4a1fca5bef5b3bee9af498b9e1896043abe",
+      "bytes": 61204
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040.pdf",
+      "sha256": "2ad03f90b9d5974489973ec193efe3118b416263564915ee7fdb8b9fbb303374",
+      "bytes": 22780
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040.png",
+      "sha256": "f45ec8006c0b21ecd2d04516c9a41ef2f04bc486413892dbd0fa11355170fa78",
+      "bytes": 282941
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0-preview.webp",
@@ -1602,8 +1662,8 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "4eb02fffe53603dcddc87b1ef7a7e13d43b2ba3e2e2c49a4042420c4f929cccc",
-      "bytes": 18098
+      "sha256": "5afc87ee0d90f1e277fb5d00c02f4e9b4867a67a36abe4d9a5d1a26c3222dcd2",
+      "bytes": 21457
     },
     {
       "file": "styles.css",

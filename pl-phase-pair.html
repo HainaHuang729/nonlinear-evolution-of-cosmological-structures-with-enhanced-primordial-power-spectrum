@@ -105,7 +105,7 @@
   <section class="phase-section page-width" id="phase-highz">
   <p class="eyebrow">HIGH REDSHIFT / EXACT-EPOCH PHASE PAIRS</p>
   <h2>高红移：PL与BT kp10</h2>
-  <p>两组原相位0032与反相位0000均对应 a=0.10504366522854312、z=8.519850605215494，没有时间插值。采用1024³ NGP网格，每份功率谱扣除一次 V/N；显示10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>。BT kp1尚未提供本批对应快照。</p>
+  <p>两组原相位0032与反相位0000均对应 a=0.10504366522854312、z=8.519850605215494，没有时间插值。采用1024³ NGP网格，每份功率谱扣除一次 V/N；显示10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>。新增的BT kp1及z=3.44108结果见<a href="#phase-new">下方四张新图</a>。</p>
   <figure>
     <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-preview.webp" alt="PL在红移8.51985的原相位、反相位和平均功率谱" width="1920" height="1920" loading="lazy">
     <figcaption>PL：上 panel 是功率谱，灰色虚线为HMcode2020；下 panel 是原相位、反相位和平均谱各自除以HMcode。模拟数据和显示范围保持不变。</figcaption>
@@ -122,6 +122,31 @@
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-hmcode.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-hmcode.pdf" download>PDF</a></p>
   </section>
+  <section class="phase-section page-width" id="phase-new">
+  <p class="eyebrow">2026-10-12 / NEW PHASE PAIRS</p>
+  <h2>新增：PL、BT kp10与BT kp1</h2>
+  <p>以下四组均使用原相位与反相位的同一输出时刻，不作时间插值。上 panel 为功率谱，下 panel 为各自除以对应模型的HMcode2020。黑色为原相位，蓝色为反相位，绿色为两份功率谱的算术平均。测量方法和显示范围与上方一致，未按模拟/HMcode比值筛选点。</p>
+  <figure>
+    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040-preview.webp" alt="PL在红移3.44108的相位配对功率谱及模拟与HMcode比值" width="1920" height="1920" loading="lazy">
+    <figcaption>PL，原快照0040：z=3.4410805658271224，a=0.22517042534529128。显示范围内平均谱/HMcode为0.918至1.055；这是比值范围，不是误差条。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040.pdf" download>PDF</a></p>
+  <figure>
+    <img src="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040-preview.webp" alt="BT kp10在红移3.44108的相位配对功率谱及模拟与HMcode比值" width="1920" height="1920" loading="lazy">
+    <figcaption>BT kp10，同一0040时刻。参考使用BT kp10线性输入谱；显示范围内平均谱/HMcode为0.997至1.149。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040.pdf" download>PDF</a></p>
+  <figure>
+    <img src="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032-preview.webp" alt="BT kp1在红移8.51985的相位配对功率谱及模拟与HMcode比值" width="1920" height="1920" loading="lazy">
+    <figcaption>BT kp1，原快照0032：z=8.519850605215494，a=0.10504366522854312。平均谱/HMcode为1.079至1.197。高红移HMcode比较仍作诊断，不能直接作为精度标准。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032.pdf" download>PDF</a></p>
+  <figure>
+    <img src="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048-preview.webp" alt="BT kp1在精确红移1.07179686的相位配对功率谱及模拟与HMcode比值" width="1920" height="1920" loading="lazy">
+    <figcaption>BT kp1，原快照0048：z=1.0717968600643704，a=0.48267280411310703。两份快照红移完全一致，区别于上方PL旧图的z=1.07时间插值。平均谱/HMcode为0.783至0.955，配对平均后仍有偏差。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048.pdf" download>PDF</a></p>
+  </section>
   <section class="phase-section page-width" id="phase-method">
   <p class="eyebrow">05 / METHOD &amp; REFERENCE</p>
   <h2>曲线与计算口径</h2>
@@ -130,7 +155,7 @@
     <li>橙色：按 Pontzen et al. 的 Eq. (16) 加入初始线性谱实现差异的诊断修正；灰色：HMcode2020 暗物质参考谱。不同视图显示其中的对应曲线。</li>
     <li>两种相位采用同一种 1024³ NGP 网格估计器，每份非线性功率谱减去一次 V/N；未做 NGP 窗函数反卷积、折叠或混叠修正。</li>
     <li>当前25盒相位平均和两盒对比图采用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，其中 k<sub>f</sub>=2π/L≈0.251327 h Mpc<sup>−1</sup>。实际显示点为2.5367至31.9198 h Mpc<sup>−1</sup>。这是显示选择，不是经过收敛验证的可信区间。历史线性修正图保留旧范围。</li>
-    <li>z≈1.07 图以反相快照的实际 z=1.0700000000000003 为目标，对原模拟 0048、0049 的功率谱作时间插值。原 0048 的实际红移为 1.0717968600643704。z=0 两份快照为同一时刻。</li>
+    <li>上方PL的z≈1.07旧图以反相快照的实际 z=1.0700000000000003 为目标，对原模拟 0048、0049 的功率谱作时间插值。原 0048 的实际红移为 1.0717968600643704。新增BT kp1的0048图不作时间插值。z=0 两份快照为同一时刻。</li>
   </ul>
   <h2>理论参考与限制</h2>
   <p>当前参考采用 Ω<sub>m</sub>=0.3153、Ω<sub>b</sub>=0.0493、Ω<sub>Λ</sub>=0.6847、h=0.6736、n<sub>s</sub>=0.9649、σ<sub>8</sub>=0.8111，线性输入为 Eisenstein–Hu，非线性模型为 HMcode2020 DMO。对应已核查结果作业为 <code>2165281</code>。后来测试的 σ<sub>8</sub>≈0.83549 版本未采用。</p>
@@ -142,7 +167,8 @@
   <p>The four figures show phase averaging at z≈1.07 and z=0, followed by the corresponding Eq. (16) linear-realization diagnostics. In the pair-only figures the bottom panel is the change relative to the original phase; in the correction figures it is the additional correction relative to the pair mean. Neither is an error bar. Phase averaging moves the original result closer to HMcode but leaves a substantial low-k deficit at z=0. Eq. (16) makes only a small change near k≈1 h Mpc<sup>−1</sup> and does not establish the cause of the residual mismatch. The reference remains HMcode2020 DMO with σ<sub>8</sub>=0.8111 and the simulation background parameters. The PNG/PDF files on this page are public. The external viewer remains private. These diagnostics have not replaced manuscript figures or main explorer data.</p>
   <p>Current phase-pair and box-comparison figures apply k≥10k<sub>f</sub> to the 25-box data. The two linear-correction figures retain their historical range. The 256-box selection is unchanged. The external private viewer still shows the earlier version.</p>
   <p>The high-redshift section adds exact-epoch PL and BT kp10 phase pairs at z=8.519850605215494. Their ratio panels use model-specific HMcode2020 references, with the BT input shape and shared sigma8 normalization matching the IC configuration. These comparisons remain diagnostic: HMcode reported insufficient low-ν table coverage at this epoch.</p>
-  <p>更新日期 / Updated: 2026-10-10</p>
+  <p>Four additional exact-epoch figures show PL and BT kp10 at z=3.44108, and BT kp1 at z=8.51985 and z=1.0717968600643704. Each uses its model-specific HMcode reference; no interpolation in time or selection by agreement with HMcode is applied.</p>
+  <p>更新日期 / Updated: 2026-10-12</p>
   </section>
   </main>
   <footer class="page-width"><span>STRUCTURE / ATLAS</span><span>PL PHASE-PAIR / SUPPLEMENT</span><a href="index.html">返回论文数据页 ↑</a></footer>
