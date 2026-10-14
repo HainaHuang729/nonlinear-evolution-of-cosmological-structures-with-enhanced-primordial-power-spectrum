@@ -37,7 +37,7 @@
   <header class="topbar">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>STRUCTURE / ATLAS<span class="brand-sub">暗物质结构演化 · 数据图集</span></span></a>
     <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
-    <nav id="site-navigation" aria-label="页面导航"><a href="#phase-z1"><span>01</span> z≈1.07</a><a href="#phase-z0"><span>02</span> z=0</a><a href="#phase-correction"><span>03</span> 线性修正</a><a href="#phase-volume"><span>04</span> 256盒对比</a><a href="#phase-highz">高红移 / High z</a><a href="#phase-method"><span>05</span> 计算口径</a></nav>
+    <nav id="site-navigation" aria-label="页面导航"><a href="#phase-z1"><span>01</span> z≈1.07</a><a href="#phase-z0"><span>02</span> z=0</a><a href="#phase-correction"><span>03</span> 线性修正</a><a href="#phase-volume"><span>04</span> 256盒对比</a><a href="#phase-highz">高红移 / High z</a><a href="#phase-overlay">PL / BT 对比</a><a href="#phase-method"><span>05</span> 计算口径</a></nav>
     <span class="header-revision">SUPPLEMENT / PL<br>2026-10-07</span>
   </header>
   <main class="phase-main">
@@ -147,11 +147,26 @@
   </figure>
   <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048.pdf" download>PDF</a></p>
   </section>
+  <section class="phase-section page-width" id="phase-overlay">
+  <p class="eyebrow">2026-10-14 / PL &amp; BT OVERLAY</p>
+  <h2>PL / BT 同图对比</h2>
+  <p>此节用颜色区分模型：黑色为PL，蓝色为BT kp1，绿色为BT kp10。实线带点是原相位与反相位功率谱的算术平均，虚线是对应模型的HMcode2020。下 panel 为模拟除以各自的理论参考，不是BT除以PL。显示范围和已有图一致，未按模拟与理论的一致程度筛选。</p>
+  <figure>
+    <img src="assets/pl-phase-pair/power-spectrum-bt-pl-0032-preview.webp" alt="PL、BT kp1和BT kp10在红移8.51985的模拟与HMcode同图对比" width="2040" height="2160" loading="lazy">
+    <figcaption>z=8.519850605215494：三个模型在同一时刻比较。这里保留原图的HMcode参考。独立收敛检查发现，PL参考的默认晕质量积分下限偏高；降低下限后参考功率在显示范围内增加约3.84%至10.06%，但这项调整尚未应用到本图。因此本图不能作为模拟精度的判据。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-bt-pl-0032.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-bt-pl-0032.pdf" download>PDF</a></p>
+  <figure>
+    <img src="assets/pl-phase-pair/power-spectrum-bt-pl-0040-preview.webp" alt="PL和BT kp10在红移3.44108的模拟与HMcode同图对比" width="2040" height="2160" loading="lazy">
+    <figcaption>z≈3.44108056582712：使用已核对的PL和BT kp10配对谱，未作时间插值。两组模拟谱很接近，但各自的HMcode参考不同，因此下 panel 的比值并不重合。此处尚未加入BT kp1。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-bt-pl-0040.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-bt-pl-0040.pdf" download>PDF</a></p>
+  </section>
   <section class="phase-section page-width" id="phase-method">
   <p class="eyebrow">05 / METHOD &amp; REFERENCE</p>
   <h2>曲线与计算口径</h2>
   <ul>
-    <li>黑色：原相位；蓝色：反相位；绿色：两份功率谱的算术平均，不是先平均密度场。</li>
+    <li>单模型图中，黑色：原相位；蓝色：反相位；绿色：两份功率谱的算术平均，不是先平均密度场。PL / BT同图对比使用模型配色，见该节说明。</li>
     <li>橙色：按 Pontzen et al. 的 Eq. (16) 加入初始线性谱实现差异的诊断修正；灰色：HMcode2020 暗物质参考谱。不同视图显示其中的对应曲线。</li>
     <li>两种相位采用同一种 1024³ NGP 网格估计器，每份非线性功率谱减去一次 V/N；未做 NGP 窗函数反卷积、折叠或混叠修正。</li>
     <li>当前25盒相位平均和两盒对比图采用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，其中 k<sub>f</sub>=2π/L≈0.251327 h Mpc<sup>−1</sup>。实际显示点为2.5367至31.9198 h Mpc<sup>−1</sup>。这是显示选择，不是经过收敛验证的可信区间。历史线性修正图保留旧范围。</li>
