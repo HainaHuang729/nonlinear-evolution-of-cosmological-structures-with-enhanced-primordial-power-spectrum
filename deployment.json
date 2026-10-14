@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "0359e9aacc1d4bee38d4e7f74ae64ce5bae2695b",
-  "created": "2026-10-14T03:04:06.744288+00:00",
+  "parent_commit": "ffaf2bcb69a24bd743672eb91bad6f46e8aa733c",
+  "created": "2026-10-14T03:21:07.814660+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -279,6 +279,21 @@
       "file": "assets/pl-phase-pair/power-spectrum-bt-pl-0040.png",
       "sha256": "4857d61c7b9db7178c77568def315e491091fa55d9f8ad2b7bad5e312184ff9f",
       "bytes": 268182
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-bt-pl-z1p07-preview.webp",
+      "sha256": "757629e5227d7383e93caad16d96a5a03b810e91d0b09bccb63fb7a0f19ea633",
+      "bytes": 66184
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-bt-pl-z1p07.pdf",
+      "sha256": "44bbb0b9ddc00d6c5888f6e8e8440460ae219afadab5dc46e857998e12e32e63",
+      "bytes": 22464
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-bt-pl-z1p07.png",
+      "sha256": "235002d9df75ecee1415a1e1bb71fd2378e5700468c9c340fadc80d3d27ede8d",
+      "bytes": 315507
     },
     {
       "file": "assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032-preview.webp",
@@ -1692,8 +1707,8 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "97234363519d3accf9874792efb8ece5d196de72638f55d28843b2a2c30df611",
-      "bytes": 23464
+      "sha256": "792e9e8d2ce2b18fc5e477d0e0e7170bc535ee0b0505f2a0ce8a8c63fba007aa",
+      "bytes": 24220
     },
     {
       "file": "styles.css",
