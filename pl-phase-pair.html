@@ -33,6 +33,8 @@
   </style>
 
 <style id="phase-current-style">
+    @font-face{font-family:"Current PS Sans";src:url("assets/pl-phase-pair/current-ps-sans.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+    #phase-current,#phase-current p,#phase-current h2,#phase-current figcaption,#current-ps-link{font-family:"Current PS Sans",sans-serif}
     #phase-current figure{grid-template-columns:minmax(0,1fr);gap:24px}
     #phase-current figcaption{max-width:1000px}
     #phase-current .figure-link{display:block;min-width:0}
@@ -66,7 +68,7 @@
   <p>采用论文的四红移布局：z=0、z≈1.07、z≈3.44、z≈8.52。黑色为PL，蓝色为BT k<sub>p</sub>=1，绿色为BT k<sub>p</sub>=10。实心符号是25盒已完成的原相位与反相位功率谱平均，空心符号是256盒的原始单相位数据，虚线是各模型的HMcode2020参考。</p>
   <figure>
     <a class="figure-link" href="assets/pl-phase-pair/power-spectrum-current-paper-layout.png" target="_blank" rel="noopener" aria-label="打开完整分辨率功率谱汇总图">
-      <img src="assets/pl-phase-pair/power-spectrum-current-paper-layout-preview.webp" alt="PL与两种BT模型在四个红移的功率谱、BT除以PL，以及25和256盒各自的模拟除以HMcode比值" width="3300" height="3480" loading="lazy">
+      <img src="assets/pl-phase-pair/power-spectrum-current-paper-layout-preview.webp" alt="PL与两种BT模型在四个红移的功率谱、BT除以PL，以及25和256盒各自的模拟除以HMcode比值" width="3170" height="3335" loading="lazy">
     </a>
     <figcaption>每组依次显示P(k)、BT/PL、25盒Sim/HM和256盒Sim/HM。两个盒子分别比较，没有拼接为一条模拟谱；未完成的25盒相位平均没有用单相位数据替代。25盒沿用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>；256盒沿用k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，低于4k<sub>f</sub>的点淡化显示。这些是显示范围，不是已经完成收敛验证的精度保证。</figcaption>
   </figure>
