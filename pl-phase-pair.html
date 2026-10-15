@@ -77,14 +77,14 @@
   <h2>25盒：四个红移的功率谱</h2>
   <p>只保留25 h<sup>−1</sup> Mpc盒子，依次比较z=0、z≈1.07、z≈3.44和z≈8.52。黑色为PL，蓝色为BT k<sub>p</sub>=1，绿色为BT k<sub>p</sub>=10。符号是已完成的原相位与反相位功率谱平均，虚线是各模型自己的HMcode2020参考，不是统一除以PL参考。</p>
   <figure>
-    <a class="figure-link" href="assets/pl-phase-pair/power-spectrum-25-four-redshifts.png" target="_blank" rel="noopener" aria-label="打开25盒四红移功率谱原图">
-      <img src="assets/pl-phase-pair/power-spectrum-25-four-redshifts-preview.webp" alt="25盒四个红移的P(k)、BT/PL和Sim/HMcode，显示高红移的剩余差异" width="3171" height="3064" loading="lazy">
+    <a class="figure-link" href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_logy.png" target="_blank" rel="noopener" aria-label="打开25盒四红移功率谱对数纵轴版">
+      <img src="assets/pl-phase-pair/power-spectrum-25-four-redshifts_logy-preview.webp" alt="25盒四个红移的P(k)、BT/PL和Sim/HMcode，Sim/HM采用0.15至2的对数纵轴" width="3171" height="3064" loading="lazy">
     </a>
-    <figcaption>每组从上到下为P(k)、BT/PL、Sim/HM。沿用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，边界为2.5133和32.1699 h Mpc<sup>−1</sup>，实际显示点覆盖2.5367至31.9198。没有根据Sim/HM的偏离程度删点。这是显示范围，不能视为已验证的可信区间。</figcaption>
+    <figcaption>每组从上到下为P(k)、BT/PL、Sim/HM。Sim/HM恢复旧论文的对数纵轴，范围0.15至2；模拟数据、参考谱和保留的点均未改变。沿用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，边界为2.5133和32.1699 h Mpc<sup>−1</sup>，实际显示点覆盖2.5367至31.9198。没有根据Sim/HM的偏离程度删点。这是显示范围，不能视为已验证的可信区间。</figcaption>
   </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts.png" download>四红移 PNG</a><a href="assets/pl-phase-pair/highz-original-inverted-check.png" download>z≈8.52 原相位与反相位核对 PNG</a><a href="assets/pl-phase-pair/paper-vs-current-reference.png" download>旧论文与当前参考谱对照 PNG</a></p>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_logy.png" download>四红移对数纵轴 PNG</a><a href="assets/pl-phase-pair/highz-original-inverted-check.png" download>z≈8.52 原相位与反相位核对 PNG</a><a href="assets/pl-phase-pair/paper-vs-current-reference.png" download>旧论文与当前参考谱对照 PNG</a><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts.png" download>上一版线性纵轴 PNG</a></p>
   <p>在z=8.519850605215494、k≈10.05 h Mpc<sup>−1</sup>，PL的原相位/HM为1.199、相位平均/HM为1.194；kp1为1.118与1.122；kp10为1.501与1.495。三者都使用同一模型、同一红移的参考谱。因此，这里的高红移差异不是反相平均新增的。kp1和kp10的旧原相位缓存与本次重测也在约10<sup>−8</sup>相对精度内一致。</p>
-  <p>另外，直接读取论文保存的旧图数据表，并重算旧绘图脚本，HMcode数值与旧表在约10<sup>−10</sup>相对精度内一致。旧表中，z≈8.52的25盒kp10在当前显示范围的公共采样点上已高出参考约15%至45%。例如k≈10.68时，同一份原相位功率除以旧参考为1.422，除以当前参考为1.479。旧图Sim/HM采用约0.15至2的对数纵轴，视觉上压缩了偏差；当前图改用线性纵轴。z≈3.44确实更接近，两种红移不能一起概括为吻合。</p>
+  <p>另外，直接读取论文保存的旧图数据表，并重算旧绘图脚本，HMcode数值与旧表在约10<sup>−10</sup>相对精度内一致。旧表中，z≈8.52的25盒kp10在当前显示范围的公共采样点上已高出参考约15%至45%。例如k≈10.68时，同一份原相位功率除以旧参考为1.422，除以当前参考为1.479。旧图Sim/HM采用约0.15至2的对数纵轴，视觉上压缩了偏差；本图已恢复相同纵轴，上一版线性纵轴图保留供比较。z≈3.44确实更接近，两种红移不能一起概括为吻合。</p>
   <p>旧参考还存在参数传递问题：重跑旧脚本时，HMcode实际使用Ω<sub>m</sub>=0.3、Ω<sub>b</sub>=0.05、n<sub>s</sub>=0.96，而当前参考使用模拟的0.3153、0.0493和0.9649。旧图看起来更接近并不能验证其参数设置。这个对照确定了新旧图的区别，但没有确定高红移剩余偏差的物理来源。</p>
   <p>参考谱与两盒汇总图相同，使用已核查的内部模板温度和晕质量积分设置；未调整模拟振幅。未完成的相位平均不以单相位补齐。z≈1.07的PL实际为1.0700000000000003，其中原相位经过时间插值；kp1为1.0717968600643704。各自按实际红移计算Sim/HM，不画这两者的BT/PL。虚线即使没有对应模拟符号，也只是理论曲线。</p>
   </section>
