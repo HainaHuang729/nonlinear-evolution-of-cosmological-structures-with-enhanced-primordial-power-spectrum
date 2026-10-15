@@ -31,6 +31,12 @@
     @media(max-width:720px){.phase-intro h1{font-size:34px}.phase-intro{padding-top:28px}.phase-section{padding-top:32px}.phase-section h2{font-size:25px}.phase-section figure{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:24px}.phase-register{gap:20px 28px}.phase-section figcaption{font-size:13px}.phase-links{gap:12px 20px}}
     @media(max-width:380px){.phase-intro h1{font-size:29px}.phase-section h2{font-size:23px}}
   </style>
+
+<style id="phase-current-style">
+    #phase-current figure{grid-template-columns:minmax(0,1fr);gap:24px}
+    #phase-current figcaption{max-width:1000px}
+    #phase-current .figure-link{display:block;min-width:0}
+  </style>
 </head>
 <body class="phase-page">
   <a class="skip" href="#phase-z1">跳转到功率谱图</a>
@@ -46,12 +52,29 @@
   <h1>PL 反相功率谱<span class="brand-sub">PL PHASE-PAIR POWER SPECTRA</span></h1>
   <p>这是独立于论文主图的诊断结果，比较 25 h<sup>−1</sup> Mpc、1024³ 粒子 PL 模拟的原相位与反相位功率谱。结果包含 z=0、z≈1.07，以及新增的<a href="#phase-highz">z=8.51985的PL和BT kp10图</a>；尚未替换论文图表或主页面的统计数据。</p>
   <nav class="phase-links" aria-label="Power-spectrum viewer">
+<a id="current-ps-link" href="#phase-current">四红移汇总 / Combined spectra</a>
+
     <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z0/pair" rel="noopener">查看 z=0 / View z=0</a>
     <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z1p07/pair" rel="noopener">查看 z≈1.07 / View z≈1.07</a>
   </nav>
   <p>下方图片及 PNG/PDF 下载已更新为当前版本。25盒的相位平均和两盒对比图采用 k≥10k<sub>f</sub>≈2.5133 h Mpc<sup>−1</sup>，首个显示点为2.5367。这是显示下界，尚未证明该范围内的有限体积偏差已经收敛。外部私有查看页仍为旧版。</p>
   <div class="phase-register"><div><span>BOX / 共动边长</span><strong>25 h<sup>−1</sup> Mpc</strong></div><div><span>PARTICLES / 粒子数</span><strong>1024³</strong></div><div><span>REFERENCE / 理论参考</span><strong>HMcode2020 DMO</strong></div></div>
   </section>
+<section class="phase-section page-width" id="phase-current">
+  <p class="eyebrow">2026-10-15 / CURRENT PS · 25 &amp; 256 BOXES</p>
+  <h2>四个红移与两个盒子</h2>
+  <p>采用论文的四红移布局：z=0、z≈1.07、z≈3.44、z≈8.52。黑色为PL，蓝色为BT k<sub>p</sub>=1，绿色为BT k<sub>p</sub>=10。实心符号是25盒已完成的原相位与反相位功率谱平均，空心符号是256盒的原始单相位数据，虚线是各模型的HMcode2020参考。</p>
+  <figure>
+    <a class="figure-link" href="assets/pl-phase-pair/power-spectrum-current-paper-layout.png" target="_blank" rel="noopener" aria-label="打开完整分辨率功率谱汇总图">
+      <img src="assets/pl-phase-pair/power-spectrum-current-paper-layout-preview.webp" alt="PL与两种BT模型在四个红移的功率谱、BT除以PL，以及25和256盒各自的模拟除以HMcode比值" width="3300" height="3480" loading="lazy">
+    </a>
+    <figcaption>每组依次显示P(k)、BT/PL、25盒Sim/HM和256盒Sim/HM。两个盒子分别比较，没有拼接为一条模拟谱；未完成的25盒相位平均没有用单相位数据替代。25盒沿用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>；256盒沿用k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，低于4k<sub>f</sub>的点淡化显示。这些是显示范围，不是已经完成收敛验证的精度保证。</figcaption>
+  </figure>
+  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-current-paper-layout.png" download>PNG</a></p>
+  <p>本图采用已核查的HMcode诊断修正：将内部平滑模板的温度与零辐射背景分开处理，并将晕质量积分下限扩展至1 h<sup>−1</sup>M<sub>⊙</sub>、使用512个积分节点。未调整模拟功率，也未采用额外的IC振幅重归一化。下方历史单图仍保留各自当时的参考谱，不能与本图视为同一版本。论文图尚未替换。</p>
+  <p>在z≈1.07，PL平均谱的实际目标为z=1.0700000000000003，其中原相位经过时间插值；BT kp1为z=1.0717968600643704。各自的Sim/HM使用各自红移，但本图不画这两份不同时刻的25盒BT/PL。z=0的BT相位平均、z≈3.44的kp1相位平均，以及z≈1.07的kp10相位平均仍未完成。</p>
+  </section>
+
   <section class="phase-section page-width" id="phase-z1">
   <p class="eyebrow">01 / PHASE AVERAGING · z≈1.07</p>
   <h2>反相平均后与参考谱更接近</h2>
