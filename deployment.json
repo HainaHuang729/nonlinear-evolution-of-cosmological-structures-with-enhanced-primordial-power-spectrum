@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "f0cd24ffb1839b34c20ace97f810490011b67cc1",
-  "created": "2026-10-15T04:03:32.379484+00:00",
+  "parent_commit": "1173c0707d66da1937ee0e85da3ceee5fcc288c9",
+  "created": "2026-10-15T04:55:54.319310+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -256,6 +256,21 @@
       "bytes": 56904
     },
     {
+      "file": "assets/pl-phase-pair/highz-original-inverted-check.png",
+      "sha256": "2cde889614312533b20bc0387b39562f19457aaf16f0db2fb4ce74ec6613f5a0",
+      "bytes": 245287
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-25-four-redshifts-preview.webp",
+      "sha256": "cb8e3b3d0bb949f899883c4177711820beecbce475d222f6c2ddc169c1c12529",
+      "bytes": 166588
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-25-four-redshifts.png",
+      "sha256": "83f7752632e93b9b4214ca825ee489c2e52ebf8a8b3e588eb452ff93f17c49a7",
+      "bytes": 585385
+    },
+    {
       "file": "assets/pl-phase-pair/power-spectrum-bt-pl-0032-preview.webp",
       "sha256": "27cfd89d8b2afdd402179ebfa83345cd66157a104128201f18235608127140bb",
       "bytes": 74026
@@ -504,6 +519,11 @@
       "file": "assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07.png",
       "sha256": "d18305a317033c1b19e8b10e64cb083a0eb104b46e84c13209d4fcaefef5cb46",
       "bytes": 294087
+    },
+    {
+      "file": "assets/pl-phase-pair/ps25-sans.woff2",
+      "sha256": "f173694a15527e56ca4df96f214f8cbbe89102dd559b02e005b18cbaf8fc002e",
+      "bytes": 53748
     },
     {
       "file": "assets/power-spectrum_finite_box.png",
@@ -1722,8 +1742,8 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "1f20436f91f26df8a6c8042ffef48b8217f19d0a102bc314b86b27aff254b9a6",
-      "bytes": 27084
+      "sha256": "6e6d8842e1d902acb148aa50a54b6ff8e8616eacc2bc469dfd15a75d92879171",
+      "bytes": 30020
     },
     {
       "file": "styles.css",
@@ -1741,5 +1761,5 @@
       "bytes": 2488
     }
   ],
-  "supplemental_note": "Current four-epoch PS summary; PNG only; historical figures unchanged"
+  "supplemental_note": "ps25 four-epoch PS summary; PNG only; historical figures unchanged"
 }
