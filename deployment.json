@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "14c9a9a6c5abeddc740b237d771d354d2919a4b2",
-  "created": "2026-10-20T03:56:05.438098+00:00",
+  "parent_commit": "404698637a5c0425dccd7f561451d61cf7a0dec5",
+  "created": "2026-10-20T14:41:35.955701+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -346,6 +346,16 @@
       "bytes": 769104
     },
     {
+      "file": "assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper_linear_original_compact_20261020_kp1z0-preview.webp",
+      "sha256": "24fc5e0b1218cd124d907d536b384d16ec197523a0a8303fa7a8232bc275ae93",
+      "bytes": 195780
+    },
+    {
+      "file": "assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper_linear_original_compact_20261020_kp1z0.png",
+      "sha256": "3cbf3c8bb2491c3f248626512b0a5401aedca8c8f5a3120f07841f951099115b",
+      "bytes": 782700
+    },
+    {
       "file": "assets/pl-phase-pair/power-spectrum-bt-pl-0032-preview.webp",
       "sha256": "27cfd89d8b2afdd402179ebfa83345cd66157a104128201f18235608127140bb",
       "bytes": 74026
@@ -597,8 +607,8 @@
     },
     {
       "file": "assets/pl-phase-pair/ps25-sans.woff2",
-      "sha256": "1c0d99b4cdf54c5e464999f85f795909a685098668123054a607cebfce9ca6ce",
-      "bytes": 90732
+      "sha256": "3fd8d652f34dac7a11d3120b9e50b5369f8cf01b5ed00b7f0df84b030758c876",
+      "bytes": 93484
     },
     {
       "file": "assets/power-spectrum_finite_box.png",
@@ -1817,8 +1827,8 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "b3e850c1302b11710eb06d78ecc8c2448b016b75ee900615de1422719bd857df",
-      "bytes": 33161
+      "sha256": "c09632bbdbecdd74b3597a4eb6e3d1187a9075ac7333e00e913c64c694428fed",
+      "bytes": 33728
     },
     {
       "file": "styles.css",
