@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "404698637a5c0425dccd7f561451d61cf7a0dec5",
-  "created": "2026-10-20T14:41:35.955701+00:00",
+  "parent_commit": "0582a377b8dcda0a2af3fa71ef9eb10a3fc45c80",
+  "created": "2026-10-21T03:43:28.371618+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -259,6 +259,71 @@
       "file": "assets/pl-phase-pair/highz-original-inverted-check.png",
       "sha256": "2cde889614312533b20bc0387b39562f19457aaf16f0db2fb4ce74ec6613f5a0",
       "bytes": 245287
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056-preview.webp",
+      "sha256": "4e6af196f2e33d9ea751e172501d35e5db2100ff59cc5480a91d12d06ff0c72d",
+      "bytes": 161512
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056.csv",
+      "sha256": "069ee0df3c9f75abbe65806e525c185f77319e811ef71f22daceee2c6600612c",
+      "bytes": 399820
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056.png",
+      "sha256": "2b96b7d4423d23f8ded81eda0a6505124c732470586f51cf0ba059c717c1197c",
+      "bytes": 640582
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048-preview.webp",
+      "sha256": "87c7bf0cc1bebcef9687e794ce891a855875096b8aa0b7f32cc4b2717850adea",
+      "bytes": 176722
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048.csv",
+      "sha256": "c4145a0656bfa62259ece3638a68e387902ec3eda6380ec179787b83e15f9a8f",
+      "bytes": 477792
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048.png",
+      "sha256": "adce79ded7bd752f746618c0e810fd5f4e01a5f7c6ad7524799fb8daaade493a",
+      "bytes": 723279
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040-preview.webp",
+      "sha256": "a1d6104efd0f83a4dcbd89c3c57c3f9cf4ed8754de235a71fd7c67d16d664c1a",
+      "bytes": 203120
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040.csv",
+      "sha256": "400825b36ce06498d92caf7639a7bea8b2ce418756e9f83c4aa6e24cc513108a",
+      "bytes": 477490
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040.png",
+      "sha256": "9da355d1360849d01524e30ebfd82fa7dfa32efbd6d644927345a26419129854",
+      "bytes": 836465
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032-preview.webp",
+      "sha256": "2182a77b51be942cf47fd5dc0d24f3341aed9e7771d02be72bf505a92a6a9990",
+      "bytes": 171770
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032.csv",
+      "sha256": "37aa16ff892426981660dfc3d6655c56d5cc227135f331fa11c47af08599aa2f",
+      "bytes": 471835
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032.png",
+      "sha256": "daf8321bf2f6a914618d38b812cc28134cc7d4a2b11c8405be704a959a36724d",
+      "bytes": 701271
+    },
+    {
+      "file": "assets/pl-phase-pair/hmf-sans.woff2",
+      "sha256": "819a24727cf47ffb96106a8458ad6d934e7517eff7b0ca6da692f709fc5fa052",
+      "bytes": 61176
     },
     {
       "file": "assets/pl-phase-pair/paper-vs-current-reference.png",
@@ -1827,8 +1892,8 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "c09632bbdbecdd74b3597a4eb6e3d1187a9075ac7333e00e913c64c694428fed",
-      "bytes": 33728
+      "sha256": "11e526e41af0a78fe882061da252a0183bbfb5a832d1babb3fbb1df5d35429b0",
+      "bytes": 39428
     },
     {
       "file": "styles.css",
@@ -1846,5 +1911,5 @@
       "bytes": 2488
     }
   ],
-  "supplemental_note": "ps25 four-epoch PS summary; PNG only; historical figures unchanged"
+  "supplemental_note": "Four HMF redshift diagnostics; PNG and CSV, no PDF"
 }

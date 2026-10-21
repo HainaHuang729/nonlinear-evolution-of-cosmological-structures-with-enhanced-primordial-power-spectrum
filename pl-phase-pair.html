@@ -47,6 +47,14 @@
     #phase-25-current figcaption{max-width:1000px}
     #phase-25-current .figure-link{display:block;min-width:0}
   </style>
+<style id="phase-hmf-style">
+@font-face{font-family:"HMF Sans";src:url("assets/pl-phase-pair/hmf-sans.woff2") format("woff2");font-display:swap}
+#phase-hmf,#hmf-link{font-family:"HMF Sans",sans-serif}
+#phase-hmf figure{grid-template-columns:minmax(0,1fr);gap:20px}
+#phase-hmf .figure-link{display:block;min-width:0}
+#phase-hmf h3{font-size:22px;margin:40px 0 12px;scroll-margin-top:100px}
+#phase-hmf figcaption{max-width:1000px}
+</style>
 </head>
 <body class="phase-page">
   <a class="skip" href="#phase-z1">跳转到功率谱图</a>
@@ -62,6 +70,7 @@
   <h1>PL 反相功率谱<span class="brand-sub">PL PHASE-PAIR POWER SPECTRA</span></h1>
   <p>这是独立于论文主图的诊断结果，比较 25 h<sup>−1</sup> Mpc、1024³ 粒子 PL 模拟的原相位与反相位功率谱。结果包含 z=0、z≈1.07，以及新增的<a href="#phase-highz">z=8.51985的PL和BT kp10图</a>；尚未替换论文图表或主页面的统计数据。</p>
   <nav class="phase-links" aria-label="Power-spectrum viewer">
+<a id="hmf-link" href="#phase-hmf">HMF 比较 / Four redshifts</a>
 <a id="ps25-link" href="#phase-25-current">25盒四红移 / 25-box spectra</a>
 
 <a id="current-ps-link" href="#phase-current">四红移汇总 / Combined spectra</a>
@@ -72,6 +81,39 @@
   <p>下方图片及 PNG/PDF 下载已更新为当前版本。25盒的相位平均和两盒对比图采用 k≥10k<sub>f</sub>≈2.5133 h Mpc<sup>−1</sup>，首个显示点为2.5367。这是显示下界，尚未证明该范围内的有限体积偏差已经收敛。外部私有查看页仍为旧版。</p>
   <div class="phase-register"><div><span>BOX / 共动边长</span><strong>25 h<sup>−1</sup> Mpc</strong></div><div><span>PARTICLES / 粒子数</span><strong>1024³</strong></div><div><span>REFERENCE / 理论参考</span><strong>HMcode2020 DMO</strong></div></div>
   </section>
+<section class="phase-section page-width" id="phase-hmf">
+  <p class="eyebrow">2026-10-21 / HMF SENSITIVITY · FOUR REDSHIFTS</p>
+  <h2>不同晕质量函数的功率谱比较</h2>
+  <p>比较 15 种晕模型组合。使用相同的模拟数据、各模型自己的线性输入谱和既有显示范围，未拟合振幅，也未根据与理论的偏差删点。这些是诊断图，没有替换论文参考谱。</p>
+  <nav class="phase-links" aria-label="HMF redshifts"><a href="#hmf-z-0056">z=0.00000000</a><a href="#hmf-z-0048">z=1.07179686</a><a href="#hmf-z-0040">z=3.44108057</a><a href="#hmf-z-0032">z=8.51985061</a></nav>
+  <p>整体相对偏差 RMS 最小的是现用 HMcode/ST99，约 15.7%。z=0 和 z≈1.07 的合并比较中 Despali16 更接近；z≈3.44 和 z≈8.52 则仍为 ST99 更接近。排名使用相同 k 点、均匀 log k 权重和相同案例权重，并非独立验证。</p>
+  <p>统计包含 11 组相位平均结果。kp10 的 z=0 尚无相位平均，本图明确标为原始单相位，不计入整体排名。显示点覆盖 k≈2.5367–31.9198 h Mpc<sup>−1</sup>，不是已完成收敛验证的可信区间。</p>
+  <p>不同行不仅 HMF 不同，轮廓、浓度和 bias 等假设也可能不同，因此不能把跨框架差异全部归因于 HMF。CCL 使用 200m NFW、Duffy08 浓度及固定 Tinker10 bias；Bocquet16 在 z&gt;2 为外推。FoF 行使用近似质量边界映射和固定 ST99 bias，库提示 HMF 与 bias 归一化不匹配；其结果仅供探索，并非已补全的 HMcode/Reed07。所有 BT 应用均缺乏专门标定。</p>
+  <h3 id="hmf-z-0056">z = 0.00000000</h3>
+      <figure><a class="figure-link" href="assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056.png" target="_blank" rel="noopener">
+      <img src="assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056-preview.webp" width="3240" height="2520" loading="lazy"
+        alt="z=0.00000000: PL and BT simulation-to-theory ratios for 15 halo-model combinations"></a>
+      <figcaption>三列依次为 PL、BT k<sub>p</sub>=1 和 BT k<sub>p</sub>=10；三行依次为 HMcode、CCL 200m 和探索性 halomod FoF。纵轴为模拟除以各自理论，1 表示一致；同一行共用纵轴范围。</figcaption></figure>
+      <p class="downloads"><a href="assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056.png" download>完整 PNG · z=0.00000000</a><a href="assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056.csv" download>曲线数据 CSV</a></p>
+<h3 id="hmf-z-0048">z = 1.07179686</h3>
+      <figure><a class="figure-link" href="assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048.png" target="_blank" rel="noopener">
+      <img src="assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048-preview.webp" width="3240" height="2520" loading="lazy"
+        alt="z=1.07179686: PL and BT simulation-to-theory ratios for 15 halo-model combinations"></a>
+      <figcaption>三列依次为 PL、BT k<sub>p</sub>=1 和 BT k<sub>p</sub>=10；三行依次为 HMcode、CCL 200m 和探索性 halomod FoF。纵轴为模拟除以各自理论，1 表示一致；同一行共用纵轴范围。</figcaption></figure>
+      <p class="downloads"><a href="assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048.png" download>完整 PNG · z=1.07179686</a><a href="assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048.csv" download>曲线数据 CSV</a></p>
+<h3 id="hmf-z-0040">z = 3.44108057</h3>
+      <figure><a class="figure-link" href="assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040.png" target="_blank" rel="noopener">
+      <img src="assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040-preview.webp" width="3240" height="2520" loading="lazy"
+        alt="z=3.44108057: PL and BT simulation-to-theory ratios for 15 halo-model combinations"></a>
+      <figcaption>三列依次为 PL、BT k<sub>p</sub>=1 和 BT k<sub>p</sub>=10；三行依次为 HMcode、CCL 200m 和探索性 halomod FoF。纵轴为模拟除以各自理论，1 表示一致；同一行共用纵轴范围。</figcaption></figure>
+      <p class="downloads"><a href="assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040.png" download>完整 PNG · z=3.44108057</a><a href="assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040.csv" download>曲线数据 CSV</a></p>
+<h3 id="hmf-z-0032">z = 8.51985061</h3>
+      <figure><a class="figure-link" href="assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032.png" target="_blank" rel="noopener">
+      <img src="assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032-preview.webp" width="3240" height="2520" loading="lazy"
+        alt="z=8.51985061: PL and BT simulation-to-theory ratios for 15 halo-model combinations"></a>
+      <figcaption>三列依次为 PL、BT k<sub>p</sub>=1 和 BT k<sub>p</sub>=10；三行依次为 HMcode、CCL 200m 和探索性 halomod FoF。纵轴为模拟除以各自理论，1 表示一致；同一行共用纵轴范围。</figcaption></figure>
+      <p class="downloads"><a href="assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032.png" download>完整 PNG · z=8.51985061</a><a href="assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032.csv" download>曲线数据 CSV</a></p>
+</section>
 <section class="phase-section page-width" id="phase-25-current">
   <p class="eyebrow">2026-10-20 / FOUR REDSHIFTS · 25 BOX ONLY</p>
   <h2>25盒：四个红移的功率谱</h2>
