@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "0582a377b8dcda0a2af3fa71ef9eb10a3fc45c80",
-  "created": "2026-10-21T03:43:28.371618+00:00",
+  "parent_commit": "78628258b69ec9ce1a6996af6c9dc4a272a863c9",
+  "created": "2026-10-22T06:16:46.642689+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -229,6 +229,46 @@
       "file": "assets/halo-density-radial-n100-power.png",
       "sha256": "a5067e6f458193139af7813fac791addfcb7f6008ae9aa83d2814219062fc4da",
       "bytes": 992159
+    },
+    {
+      "file": "assets/hmf-theory/hmcode-hmf-theory-0032.png",
+      "sha256": "6e95f75f5140fa1c345f8cde09756e5c6aa3de936b26f33bc271617fb5dcea21",
+      "bytes": 269415
+    },
+    {
+      "file": "assets/hmf-theory/hmcode-hmf-theory-0032.webp",
+      "sha256": "54e9549c60c693caf7b0f38d0e329fc49affdd6dd0566106760348ce2e79cd89",
+      "bytes": 92650
+    },
+    {
+      "file": "assets/hmf-theory/hmcode-hmf-theory-0040.png",
+      "sha256": "deb44459041ef87c854d302c95deb5fc0bc7aef30d96371f12ea5aa4163bba14",
+      "bytes": 285178
+    },
+    {
+      "file": "assets/hmf-theory/hmcode-hmf-theory-0040.webp",
+      "sha256": "628bc298ea2d5eed5ee1e87ecbca6b061fe22f299962fa09bb865535465d0eb7",
+      "bytes": 98354
+    },
+    {
+      "file": "assets/hmf-theory/hmcode-hmf-theory-0048.png",
+      "sha256": "97cb2db165ec3ecb2ae0d81751db5fefacdc4a0bd2c4c2f4c0e74e614241da6f",
+      "bytes": 288172
+    },
+    {
+      "file": "assets/hmf-theory/hmcode-hmf-theory-0048.webp",
+      "sha256": "449d108caec94e9c716b72d3c5f04d0ac189343b6f748e2d144a8d6e176e53ce",
+      "bytes": 100428
+    },
+    {
+      "file": "assets/hmf-theory/hmcode-hmf-theory-0056.png",
+      "sha256": "48e70bffdfb68e62bfb17a729dc65e1052c1f4d242db7c3ab2a9c2a757b41159",
+      "bytes": 279044
+    },
+    {
+      "file": "assets/hmf-theory/hmcode-hmf-theory-0056.webp",
+      "sha256": "ea0c6b247c76cfec6a43ab9a6d7f17261025166525bff086e8bba8d67a135cf6",
+      "bytes": 99270
     },
     {
       "file": "assets/input-power-spectrum.png",
@@ -804,6 +844,11 @@
       "file": "assets/projections/kp10-0056.png",
       "sha256": "04586105334bdb592cecba67100e337ed390f7a3c44b957eeeb38f927c029f21",
       "bytes": 2124349
+    },
+    {
+      "file": "assets/ps-topics-sans.woff2",
+      "sha256": "acc5ee167607bbe46f20c8af61ef21a829a4c9ba74fcc21c7881ae8c7a1a1499",
+      "bytes": 147964
     },
     {
       "file": "assets/swift-viewer/cache-worker.js",
@@ -1892,8 +1937,43 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "11e526e41af0a78fe882061da252a0183bbfb5a832d1babb3fbb1df5d35429b0",
-      "bytes": 39428
+      "sha256": "4295c2e0ff18ad337294a122c2db3ae49bb698e0b9bb6dd0b58db154ed57fd62",
+      "bytes": 9751
+    },
+    {
+      "file": "ps-high-redshift.html",
+      "sha256": "fdc5728bd6af9ad1b4a676b7e4c430df246b39f616b45f1dad0c62a508707911",
+      "bytes": 12867
+    },
+    {
+      "file": "ps-hmf-comparison.html",
+      "sha256": "93710114abd18e48c34a1efb79b9916d389126c940983030cd0abb1e784d8493",
+      "bytes": 12503
+    },
+    {
+      "file": "ps-hmf-theory.html",
+      "sha256": "fcbab75eb60f375d9f2af0e27b326056de0791be5fb7b41270a97310321c7ba7",
+      "bytes": 10724
+    },
+    {
+      "file": "ps-methods.html",
+      "sha256": "4cbc5264bc9f94a25d6f689afee6b1f3902a531666351d4a545e24e22611e42f",
+      "bytes": 11292
+    },
+    {
+      "file": "ps-model-comparison.html",
+      "sha256": "007831068bd367687e4c0df9c77996cfe6e854034e04d799c6e24d09b7c399c2",
+      "bytes": 9952
+    },
+    {
+      "file": "ps-phase-comparison.html",
+      "sha256": "8fbeb0b5bf51e1e461a17d526e3da9c902744c60fb622aefffc421987a80daf4",
+      "bytes": 13722
+    },
+    {
+      "file": "ps-summary.html",
+      "sha256": "c05174d47d94acdf1e1830f3828e2ae890f516cf0bea810c8ad16fb263fdd2d2",
+      "bytes": 15570
     },
     {
       "file": "styles.css",
@@ -1911,5 +1991,5 @@
       "bytes": 2488
     }
   ],
-  "supplemental_note": "Four HMF redshift diagnostics; PNG and CSV, no PDF"
+  "supplemental_note": "Topic pages and four native-HMF theory PNGs"
 }

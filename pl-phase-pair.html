@@ -1,9 +1,7 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
+<!doctype html><html lang="zh-CN"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PL phase-pair power spectra / PL 反相功率谱</title>
+  <title>功率谱结果与诊断 · Structure Atlas</title>
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
   <script defer src="system.js"></script>
@@ -55,239 +53,23 @@
 #phase-hmf h3{font-size:22px;margin:40px 0 12px;scroll-margin-top:100px}
 #phase-hmf figcaption{max-width:1000px}
 </style>
-</head>
-<body class="phase-page">
-  <a class="skip" href="#phase-z1">跳转到功率谱图</a>
-  <header class="topbar">
-    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>STRUCTURE / ATLAS<span class="brand-sub">暗物质结构演化 · 数据图集</span></span></a>
-    <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
-    <nav id="site-navigation" aria-label="页面导航"><a href="#phase-z1"><span>01</span> z≈1.07</a><a href="#phase-z0"><span>02</span> z=0</a><a href="#phase-correction"><span>03</span> 线性修正</a><a href="#phase-volume"><span>04</span> 256盒对比</a><a href="#phase-highz">高红移 / High z</a><a href="#phase-overlay">PL / BT 对比</a><a href="#phase-method"><span>05</span> 计算口径</a></nav>
-    <span class="header-revision">SUPPLEMENT / PL<br>2026-10-07</span>
-  </header>
-  <main class="phase-main">
-  <section class="phase-intro page-width" id="phase-index">
-  <p class="technical-label"><span class="status-indicator" aria-hidden="true"></span> SUPPLEMENT / PHASE-PAIR DIAGNOSTIC</p>
-  <h1>PL 反相功率谱<span class="brand-sub">PL PHASE-PAIR POWER SPECTRA</span></h1>
-  <p>这是独立于论文主图的诊断结果，比较 25 h<sup>−1</sup> Mpc、1024³ 粒子 PL 模拟的原相位与反相位功率谱。结果包含 z=0、z≈1.07，以及新增的<a href="#phase-highz">z=8.51985的PL和BT kp10图</a>；尚未替换论文图表或主页面的统计数据。</p>
-  <nav class="phase-links" aria-label="Power-spectrum viewer">
-<a id="hmf-link" href="#phase-hmf">HMF 比较 / Four redshifts</a>
-<a id="ps25-link" href="#phase-25-current">25盒四红移 / 25-box spectra</a>
-
-<a id="current-ps-link" href="#phase-current">四红移汇总 / Combined spectra</a>
-
-    <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z0/pair" rel="noopener">查看 z=0 / View z=0</a>
-    <a href="https://pl-z0-phase-pair-20261003.xiaoxuesheng729.chatgpt.site/#z1p07/pair" rel="noopener">查看 z≈1.07 / View z≈1.07</a>
-  </nav>
-  <p>下方图片及 PNG/PDF 下载已更新为当前版本。25盒的相位平均和两盒对比图采用 k≥10k<sub>f</sub>≈2.5133 h Mpc<sup>−1</sup>，首个显示点为2.5367。这是显示下界，尚未证明该范围内的有限体积偏差已经收敛。外部私有查看页仍为旧版。</p>
-  <div class="phase-register"><div><span>BOX / 共动边长</span><strong>25 h<sup>−1</sup> Mpc</strong></div><div><span>PARTICLES / 粒子数</span><strong>1024³</strong></div><div><span>REFERENCE / 理论参考</span><strong>HMcode2020 DMO</strong></div></div>
-  </section>
-<section class="phase-section page-width" id="phase-hmf">
-  <p class="eyebrow">2026-10-21 / HMF SENSITIVITY · FOUR REDSHIFTS</p>
-  <h2>不同晕质量函数的功率谱比较</h2>
-  <p>比较 15 种晕模型组合。使用相同的模拟数据、各模型自己的线性输入谱和既有显示范围，未拟合振幅，也未根据与理论的偏差删点。这些是诊断图，没有替换论文参考谱。</p>
-  <nav class="phase-links" aria-label="HMF redshifts"><a href="#hmf-z-0056">z=0.00000000</a><a href="#hmf-z-0048">z=1.07179686</a><a href="#hmf-z-0040">z=3.44108057</a><a href="#hmf-z-0032">z=8.51985061</a></nav>
-  <p>整体相对偏差 RMS 最小的是现用 HMcode/ST99，约 15.7%。z=0 和 z≈1.07 的合并比较中 Despali16 更接近；z≈3.44 和 z≈8.52 则仍为 ST99 更接近。排名使用相同 k 点、均匀 log k 权重和相同案例权重，并非独立验证。</p>
-  <p>统计包含 11 组相位平均结果。kp10 的 z=0 尚无相位平均，本图明确标为原始单相位，不计入整体排名。显示点覆盖 k≈2.5367–31.9198 h Mpc<sup>−1</sup>，不是已完成收敛验证的可信区间。</p>
-  <p>不同行不仅 HMF 不同，轮廓、浓度和 bias 等假设也可能不同，因此不能把跨框架差异全部归因于 HMF。CCL 使用 200m NFW、Duffy08 浓度及固定 Tinker10 bias；Bocquet16 在 z&gt;2 为外推。FoF 行使用近似质量边界映射和固定 ST99 bias，库提示 HMF 与 bias 归一化不匹配；其结果仅供探索，并非已补全的 HMcode/Reed07。所有 BT 应用均缺乏专门标定。</p>
-  <h3 id="hmf-z-0056">z = 0.00000000</h3>
-      <figure><a class="figure-link" href="assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056.png" target="_blank" rel="noopener">
-      <img src="assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056-preview.webp" width="3240" height="2520" loading="lazy"
-        alt="z=0.00000000: PL and BT simulation-to-theory ratios for 15 halo-model combinations"></a>
-      <figcaption>三列依次为 PL、BT k<sub>p</sub>=1 和 BT k<sub>p</sub>=10；三行依次为 HMcode、CCL 200m 和探索性 halomod FoF。纵轴为模拟除以各自理论，1 表示一致；同一行共用纵轴范围。</figcaption></figure>
-      <p class="downloads"><a href="assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056.png" download>完整 PNG · z=0.00000000</a><a href="assets/pl-phase-pair/hmf-ps-comparison-z0.00000000-0056.csv" download>曲线数据 CSV</a></p>
-<h3 id="hmf-z-0048">z = 1.07179686</h3>
-      <figure><a class="figure-link" href="assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048.png" target="_blank" rel="noopener">
-      <img src="assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048-preview.webp" width="3240" height="2520" loading="lazy"
-        alt="z=1.07179686: PL and BT simulation-to-theory ratios for 15 halo-model combinations"></a>
-      <figcaption>三列依次为 PL、BT k<sub>p</sub>=1 和 BT k<sub>p</sub>=10；三行依次为 HMcode、CCL 200m 和探索性 halomod FoF。纵轴为模拟除以各自理论，1 表示一致；同一行共用纵轴范围。</figcaption></figure>
-      <p class="downloads"><a href="assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048.png" download>完整 PNG · z=1.07179686</a><a href="assets/pl-phase-pair/hmf-ps-comparison-z1.07179686-0048.csv" download>曲线数据 CSV</a></p>
-<h3 id="hmf-z-0040">z = 3.44108057</h3>
-      <figure><a class="figure-link" href="assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040.png" target="_blank" rel="noopener">
-      <img src="assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040-preview.webp" width="3240" height="2520" loading="lazy"
-        alt="z=3.44108057: PL and BT simulation-to-theory ratios for 15 halo-model combinations"></a>
-      <figcaption>三列依次为 PL、BT k<sub>p</sub>=1 和 BT k<sub>p</sub>=10；三行依次为 HMcode、CCL 200m 和探索性 halomod FoF。纵轴为模拟除以各自理论，1 表示一致；同一行共用纵轴范围。</figcaption></figure>
-      <p class="downloads"><a href="assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040.png" download>完整 PNG · z=3.44108057</a><a href="assets/pl-phase-pair/hmf-ps-comparison-z3.44108057-0040.csv" download>曲线数据 CSV</a></p>
-<h3 id="hmf-z-0032">z = 8.51985061</h3>
-      <figure><a class="figure-link" href="assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032.png" target="_blank" rel="noopener">
-      <img src="assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032-preview.webp" width="3240" height="2520" loading="lazy"
-        alt="z=8.51985061: PL and BT simulation-to-theory ratios for 15 halo-model combinations"></a>
-      <figcaption>三列依次为 PL、BT k<sub>p</sub>=1 和 BT k<sub>p</sub>=10；三行依次为 HMcode、CCL 200m 和探索性 halomod FoF。纵轴为模拟除以各自理论，1 表示一致；同一行共用纵轴范围。</figcaption></figure>
-      <p class="downloads"><a href="assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032.png" download>完整 PNG · z=8.51985061</a><a href="assets/pl-phase-pair/hmf-ps-comparison-z8.51985061-0032.csv" download>曲线数据 CSV</a></p>
-</section>
-<section class="phase-section page-width" id="phase-25-current">
-  <p class="eyebrow">2026-10-20 / FOUR REDSHIFTS · 25 BOX ONLY</p>
-  <h2>25盒：四个红移的功率谱</h2>
-  <p>只保留25 h<sup>−1</sup> Mpc盒子，依次比较z=0、z≈1.07、z≈3.44和z≈8.52。黑色为PL，蓝色为BT k<sub>p</sub>=1，绿色为BT k<sub>p</sub>=10。实心点是原相位与反相位功率谱的平均；浅色空心点是未经平均的原始单相位数据。主面板曲线是各模型自己的HMcode2020参考，不是统一除以PL参考。</p>
-  <figure>
-    <a class="figure-link" href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper_linear_original_compact_20261020_kp1z0.png" target="_blank" rel="noopener" aria-label="打开新增kp1红移零平均谱的完整图">
-      <img src="assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper_linear_original_compact_20261020_kp1z0-preview.webp" alt="25盒四红移功率谱，新增kp1在红移零的相位平均及BT/PL；浅色空心点为原始单相位，实心点为平均，Sim/HM为线性纵轴" width="2529" height="2501" loading="lazy">
-    </a>
-    <figcaption>保留2×2布局和黑蓝绿配色，横轴为2.3至35 h Mpc<sup>−1</sup>。每组从上到下为P(k)、BT/PL、Sim/HM。P(k)纵轴上下两排分别取值，同一排共用刻度；BT/PL为0.5至10，两者均为对数轴。Sim/HM为0.3至1.6的线性轴。浅色空心点表示原始单相位，实心点表示相位平均；Sim/HM的浅虚线连接原始点。本次补入左上角z=0的kp1平均谱及其BT/PL，其余红移和取点标准不变。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper_linear_original_compact_20261020_kp1z0.png" download>新增kp1红移零 PNG</a><a href="assets/pl-phase-pair/highz-original-inverted-check.png" download>z≈8.52 原相位与反相位核对 PNG</a><a href="assets/pl-phase-pair/paper-vs-current-reference.png" download>旧论文与当前参考谱对照 PNG</a><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts.png" download>窄横轴线性版 PNG</a><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_logy.png" download>窄横轴对数版 PNG</a><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper.png" download>旧论文格式：Sim/HM对数 PNG</a><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper_linear.png" download>不含原始对照的线性版 PNG</a><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper_linear_original.png" download>原始与平均：宽坐标版 PNG</a><a href="assets/pl-phase-pair/power-spectrum-25-four-redshifts_paper_linear_original_compact.png" download>10月16日收紧坐标版 PNG</a></p>
-  <p>kp1反相模拟已到z=0，左上角新增其原相位与反相位的算术平均，并与已有PL平均谱计算BT/PL。kp1在四个红移的平均谱现已全部就绪。kp10的z=0平均谱仍未完成，因此该处只保留其浅色原始单相位点。新结果沿用1024³ NGP和当前已核查的kp1 HMcode参考，没有调整振幅或按与参考的偏差删点。</p>
-  <p>kp1在z=0的原相位重测与旧缓存最大相对差异约为0.0023%，没有对重测结果作额外修正。浅色原始对照仍沿用旧缓存，实心平均点使用本次重测的两份功率谱。</p>
-  <p>PL精确0048补跑已完成，原相位和反相位均为z=1.0717968600643704，不再将邻近时刻的原相位插值到z=1.07。现在三种模型在这个时刻的相位平均均已就绪，因此同时显示两个BT/PL平均比值。此前新增的kp1在z=3.4410805658271206及kp10在精确0048时刻的平均谱继续保留。本节是10月20日更新，后面的两盒汇总和历史单图仍保留各自日期的版本。</p>
-  <p>原始数据来自旧模拟的功率谱缓存，没有恢复旧HMcode参数。原始与平均结果使用相同的当前参考和显示范围，符号疏密沿用旧绘图脚本。模拟仍按10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>选点，实际点覆盖2.5367至31.9198 h Mpc<sup>−1</sup>，全部位于新的坐标范围内。收紧坐标不改变选点标准，也不代表这个范围已经通过收敛验证。没有根据Sim/HM偏差删点。</p>
-  <p>在z=8.519850605215494、k≈10.05 h Mpc<sup>−1</sup>，PL的原相位/HM为1.199、相位平均/HM为1.194；kp1为1.118与1.122；kp10为1.501与1.495。三者都使用同一模型、同一红移的参考谱。因此，这里的高红移差异不是反相平均新增的。kp1和kp10的旧原相位缓存与本次重测也在约10<sup>−8</sup>相对精度内一致。</p>
-  <p>另外，直接读取论文保存的旧图数据表，并重算旧绘图脚本，HMcode数值与旧表在约10<sup>−10</sup>相对精度内一致。旧表中，z≈8.52的25盒kp10在当前显示范围的公共采样点上已高出参考约15%至45%。例如k≈10.68时，同一份原相位功率除以旧参考为1.422，除以当前参考为1.479。旧图Sim/HM采用约0.15至2的对数纵轴，视觉上压缩了偏差；本图现在使用0.3至1.6的线性纵轴，旧范围和对数版均保留供比较。z≈3.44确实更接近，两种红移不能一起概括为吻合。</p>
-  <p>旧参考还存在参数传递问题：重跑旧脚本时，HMcode实际使用Ω<sub>m</sub>=0.3、Ω<sub>b</sub>=0.05、n<sub>s</sub>=0.96，而当前参考使用模拟的0.3153、0.0493和0.9649。旧图看起来更接近并不能验证其参数设置。这个对照确定了新旧图的区别，但没有确定高红移剩余偏差的物理来源。</p>
-  <p>参考谱沿用已核查的内部模板温度和晕质量积分设置；未调整模拟振幅。尚无平均结果的模型只显示浅色原始点。新PL平均谱继续使用1024³ NGP、一次V/N散粒项扣除、不反卷积网格窗函数，并使用与其他曲线相同的已核查HMcode参考。各自的Sim/HM均使用对应模型和实际红移；未将新结果强行归一化到参考谱。</p>
-  </section>
-
-<section class="phase-section page-width" id="phase-current">
-  <p class="eyebrow">2026-10-15 / CURRENT PS · 25 &amp; 256 BOXES</p>
-  <h2>四个红移与两个盒子</h2>
-  <p>采用论文的四红移布局：z=0、z≈1.07、z≈3.44、z≈8.52。黑色为PL，蓝色为BT k<sub>p</sub>=1，绿色为BT k<sub>p</sub>=10。实心符号是25盒已完成的原相位与反相位功率谱平均，空心符号是256盒的原始单相位数据，虚线是各模型的HMcode2020参考。</p>
-  <figure>
-    <a class="figure-link" href="assets/pl-phase-pair/power-spectrum-current-paper-layout.png" target="_blank" rel="noopener" aria-label="打开完整分辨率功率谱汇总图">
-      <img src="assets/pl-phase-pair/power-spectrum-current-paper-layout-preview.webp" alt="PL与两种BT模型在四个红移的功率谱、BT除以PL，以及25和256盒各自的模拟除以HMcode比值" width="3170" height="3335" loading="lazy">
-    </a>
-    <figcaption>每组依次显示P(k)、BT/PL、25盒Sim/HM和256盒Sim/HM。两个盒子分别比较，没有拼接为一条模拟谱；未完成的25盒相位平均没有用单相位数据替代。25盒沿用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>；256盒沿用k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，低于4k<sub>f</sub>的点淡化显示。这些是显示范围，不是已经完成收敛验证的精度保证。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-current-paper-layout.png" download>PNG</a></p>
-  <p>本图采用已核查的HMcode诊断修正：将内部平滑模板的温度与零辐射背景分开处理，并将晕质量积分下限扩展至1 h<sup>−1</sup>M<sub>⊙</sub>、使用512个积分节点。未调整模拟功率，也未采用额外的IC振幅重归一化。下方历史单图仍保留各自当时的参考谱，不能与本图视为同一版本。论文图尚未替换。</p>
-  <p>在z≈1.07，PL平均谱的实际目标为z=1.0700000000000003，其中原相位经过时间插值；BT kp1为z=1.0717968600643704。各自的Sim/HM使用各自红移，但本图不画这两份不同时刻的25盒BT/PL。z=0的BT相位平均、z≈3.44的kp1相位平均，以及z≈1.07的kp10相位平均仍未完成。</p>
-  </section>
-
-  <section class="phase-section page-width" id="phase-z1">
-  <p class="eyebrow">01 / PHASE AVERAGING · z≈1.07</p>
-  <h2>反相平均后与参考谱更接近</h2>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07-preview.webp" alt="z约1.07的PL功率谱：原相位、反相位、平均结果与HMcode参考，以及平均相对原相位的变化" width="1394" height="1792">
-    <figcaption>上 panel 是功率谱；中 panel 是各模拟曲线除以 HMcode；下 panel 是平均结果相对原相位的百分比变化，不是误差条。当前仅显示 k≥10k<sub>f</sub>。在首个显示点 k≈2.5367 h Mpc<sup>−1</sup>，平均值约为 HMcode 的0.859，因此不能说整个显示范围都已与理论一致。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07.pdf" download>PDF</a></p>
-  </section>
-  <section class="phase-section page-width" id="phase-z0">
-  <p class="eyebrow">02 / PHASE AVERAGING · z=0</p>
-  <h2>平均后仍有明显的低 k 差异</h2>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0-preview.webp" alt="z等于0的PL原相位、反相位和平均功率谱及相对HMcode比值" width="1394" height="1792" loading="lazy">
-    <figcaption>三个 panel 的定义与上一张相同，当前仅显示 k≥10k<sub>f</sub>。反相平均提高了原相位在显示范围低 k 端的功率，但绿色曲线仍低于灰色参考。这是相对于当前参考的测量差异，不能据此单独确定偏差来自有限体积、数值误差还是参考模型。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0.pdf" download>PDF</a></p>
-  </section>
-  <section class="phase-section page-width" id="phase-correction">
-  <p class="eyebrow">03 / LINEAR-REALIZATION CORRECTION</p>
-  <h2>初始线性实现修正没有消除剩余差异</h2>
-  <p>历史诊断图：本节两图保留原来的完整显示范围，尚未应用10k<sub>f</sub>下界，用于记录此前的线性修正测试。</p>
-  <p>橙色曲线在绿色平均功率上加 ΔP<sub>lin</sub>=G²[P<sub>lin,theory</sub>(z<sub>i</sub>)−P<sub>lin,box</sub>(z<sub>i</sub>)]。这里 G 是从初始时刻到目标时刻的线性增长响应；修正针对初始线性实现差异，不是从模拟中减去非线性耦合。</p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction-preview.webp" alt="z约1.07的Eq16线性实现修正对比，橙色与绿色曲线接近" width="1394" height="1792" loading="lazy">
-    <figcaption>z≈1.07：橙色与绿色大部分重合。下 panel 改为 ΔP<sub>lin</sub>/P<sub>pair</sub> 的百分比，表示额外修正的大小，不再是平均相对原相位的变化。在 k≈1.02 时，修正后的模拟/HMcode 从约 0.91 变为 0.90。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z1p07_linear_correction.pdf" download>PDF</a></p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction-preview.webp" alt="z等于0的Eq16线性实现修正对比，低k差异仍存在" width="1394" height="1792" loading="lazy">
-    <figcaption>z=0：同样的修正没有消除低 k 差异。在 k≈1.02 时，修正后的模拟/HMcode 从约 0.50 变为 0.497。这里展示的是修正幅度有限，不能据此证明剩余差异的具体原因。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-z0_linear_correction.pdf" download>PDF</a></p>
-  </section>
-  <section class="phase-section page-width" id="phase-volume">
-  <p class="eyebrow">04 / BOX COMPARISON · SINGLE REALIZATION</p>
-  <h2>加入256盒后，z=0 的差异仍然存在</h2>
-  <p>棕色曲线是当前论文所用的 256 h<sup>−1</sup> Mpc、1024³ 粒子 PL 单次实现，没有反相平均。两盒采用相同的 1024³ NGP 测量口径，分别只显示 k≤0.25k<sub>Ny</sub>；256盒的上限为 3.14 h Mpc<sup>−1</sup>。25盒仅显示 k≥10k<sub>f</sub>；256盒仍保留原范围，其低于4k<sub>f</sub>的点以浅色空心标记显示。没有按与 HMcode 的吻合程度筛选点。</p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07-preview.webp" alt="z约1.07的25盒原相位、反相位及平均功率与256盒单次实现比较" width="1760" height="2200" loading="lazy">
-    <figcaption>z≈1.07：上 panel 加入256盒绝对功率，中 panel 各自除以对应实际红移的 HMcode，底 panel 显示25盒原相位/256盒和25盒平均/256盒。当前共有范围内保留3个点；在 k≈2.5367 h Mpc<sup>−1</sup>，平均/256约为0.772。25盒目标红移为1.07000000，256盒实际为1.07179686，未对256盒作时间插值。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl25-pl256-z1p07.pdf" download>PDF</a></p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl25-pl256-z0-preview.webp" alt="z等于0时25盒采用10kf下界后与256盒功率谱的比较" width="1760" height="2200" loading="lazy">
-    <figcaption>z=0：两盒快照为同一时刻。底 panel 只比较当前显示范围内共有的3个点。25盒平均功率仍低于256盒；但不能单凭这两组模拟把原因确定为有限体积。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl25-pl256-z0.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl25-pl256-z0.pdf" download>PDF</a></p>
-  <p>底 panel 只在两盒共有采样范围内计算，对256盒功率作 log k–log P 插值，不外推。两盒粒子数相同，256盒的粒子质量约为25盒的1074倍；同时相位实现和平均方式不同。因此这些曲线是辅助诊断，不是纯粹的盒子体积收敛试验。</p>
-  </section>
-  <section class="phase-section page-width" id="phase-highz">
-  <p class="eyebrow">HIGH REDSHIFT / EXACT-EPOCH PHASE PAIRS</p>
-  <h2>高红移：PL与BT kp10</h2>
-  <p>两组原相位0032与反相位0000均对应 a=0.10504366522854312、z=8.519850605215494，没有时间插值。采用1024³ NGP网格，每份功率谱扣除一次 V/N；显示10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>。新增的BT kp1及z=3.44108结果见<a href="#phase-new">下方四张新图</a>。</p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-preview.webp" alt="PL在红移8.51985的原相位、反相位和平均功率谱" width="1920" height="1920" loading="lazy">
-    <figcaption>PL：上 panel 是功率谱，灰色虚线为HMcode2020；下 panel 是原相位、反相位和平均谱各自除以HMcode。模拟数据和显示范围保持不变。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032.pdf" download>PDF</a></p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032-preview.webp" alt="BT kp10在红移8.51985的原相位、反相位和平均功率谱" width="1920" height="1920" loading="lazy">
-    <figcaption>BT k<sub>p</sub>=10 h Mpc<sup>−1</sup>：panel定义与PL相同，但HMcode输入采用对应的BT线性谱，不使用PL参考谱。转折位置和斜率从IC配置读取，并保持σ<sub>8</sub>=0.8111归一化。高红移HMcode参考仍属诊断，不能仅凭比值判断模拟精度。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0032.pdf" download>PDF</a></p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-hmcode-preview.webp" alt="PL高红移功率谱与HMcode的诊断比较" width="2880" height="3465" loading="lazy">
-    <figcaption>PL的额外HMcode比较：中 panel 为模拟/HMcode，下 panel 为平均谱相对原相位的百分比变化。HMcode在此红移报告最低已存储峰高ν大于1的内部表覆盖警告，因此灰色曲线暂作诊断参考，不能据此判定模拟精度。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-hmcode.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0032-hmcode.pdf" download>PDF</a></p>
-  </section>
-  <section class="phase-section page-width" id="phase-new">
-  <p class="eyebrow">2026-10-12 / NEW PHASE PAIRS</p>
-  <h2>新增：PL、BT kp10与BT kp1</h2>
-  <p>以下四组均使用原相位与反相位的同一输出时刻，不作时间插值。上 panel 为功率谱，下 panel 为各自除以对应模型的HMcode2020。黑色为原相位，蓝色为反相位，绿色为两份功率谱的算术平均。测量方法和显示范围与上方一致，未按模拟/HMcode比值筛选点。</p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040-preview.webp" alt="PL在红移3.44108的相位配对功率谱及模拟与HMcode比值" width="1920" height="1920" loading="lazy">
-    <figcaption>PL，原快照0040：z=3.4410805658271224，a=0.22517042534529128。显示范围内平均谱/HMcode为0.918至1.055；这是比值范围，不是误差条。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-pl-phase-pair-0040.pdf" download>PDF</a></p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040-preview.webp" alt="BT kp10在红移3.44108的相位配对功率谱及模拟与HMcode比值" width="1920" height="1920" loading="lazy">
-    <figcaption>BT kp10，同一0040时刻。参考使用BT kp10线性输入谱；显示范围内平均谱/HMcode为0.997至1.149。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp10-phase-pair-0040.pdf" download>PDF</a></p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032-preview.webp" alt="BT kp1在红移8.51985的相位配对功率谱及模拟与HMcode比值" width="1920" height="1920" loading="lazy">
-    <figcaption>BT kp1，原快照0032：z=8.519850605215494，a=0.10504366522854312。平均谱/HMcode为1.079至1.197。高红移HMcode比较仍作诊断，不能直接作为精度标准。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0032.pdf" download>PDF</a></p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048-preview.webp" alt="BT kp1在精确红移1.07179686的相位配对功率谱及模拟与HMcode比值" width="1920" height="1920" loading="lazy">
-    <figcaption>BT kp1，原快照0048：z=1.0717968600643704，a=0.48267280411310703。两份快照红移完全一致，区别于上方PL旧图的z=1.07时间插值。平均谱/HMcode为0.783至0.955，配对平均后仍有偏差。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-kp1-phase-pair-0048.pdf" download>PDF</a></p>
-  </section>
-  <section class="phase-section page-width" id="phase-overlay">
-  <p class="eyebrow">2026-10-14 / PL &amp; BT OVERLAY</p>
-  <h2>PL / BT 同图对比</h2>
-  <p>此节用颜色区分模型：黑色为PL，蓝色为BT kp1，绿色为BT kp10。实线带点是原相位与反相位功率谱的算术平均，虚线是对应模型的HMcode2020。下 panel 为模拟除以各自的理论参考，不是BT除以PL。显示范围和已有图一致，未按模拟与理论的一致程度筛选。</p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-bt-pl-0032-preview.webp" alt="PL、BT kp1和BT kp10在红移8.51985的模拟与HMcode同图对比" width="2040" height="2160" loading="lazy">
-    <figcaption>z=8.519850605215494：三个模型在同一时刻比较。这里保留原图的HMcode参考。独立收敛检查发现，PL参考的默认晕质量积分下限偏高；降低下限后参考功率在显示范围内增加约3.84%至10.06%，但这项调整尚未应用到本图。因此本图不能作为模拟精度的判据。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-bt-pl-0032.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-bt-pl-0032.pdf" download>PDF</a></p>
-  <figure>
-    <img src="assets/pl-phase-pair/power-spectrum-bt-pl-0040-preview.webp" alt="PL和BT kp10在红移3.44108的模拟与HMcode同图对比" width="2040" height="2160" loading="lazy">
-    <figcaption>z≈3.44108056582712：使用已核对的PL和BT kp10配对谱，未作时间插值。两组模拟谱很接近，但各自的HMcode参考不同，因此下 panel 的比值并不重合。此处尚未加入BT kp1。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-bt-pl-0040.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-bt-pl-0040.pdf" download>PDF</a></p>
-  <figure id="phase-overlay-z1">
-    <img src="assets/pl-phase-pair/power-spectrum-bt-pl-z1p07-preview.webp" alt="PL和BT kp1在红移约1.07的模拟与各自HMcode对比" width="2040" height="2160" loading="lazy">
-    <figcaption>z≈1.07：黑色PL，蓝色BT kp1。PL以z=1.07000000为目标，对原相位功率谱作时间插值；BT使用精确快照z=1.0717968600643704，不作时间插值。两者时刻接近但不完全相同，各自的HMcode参考使用各自红移。本图尚未加入BT kp10，未应用额外线性实现修正。</figcaption>
-  </figure>
-  <p class="downloads"><a href="assets/pl-phase-pair/power-spectrum-bt-pl-z1p07.png" download>PNG</a><a href="assets/pl-phase-pair/power-spectrum-bt-pl-z1p07.pdf" download>PDF</a></p>
-  </section>
-  <section class="phase-section page-width" id="phase-method">
-  <p class="eyebrow">05 / METHOD &amp; REFERENCE</p>
-  <h2>曲线与计算口径</h2>
-  <ul>
-    <li>单模型图中，黑色：原相位；蓝色：反相位；绿色：两份功率谱的算术平均，不是先平均密度场。PL / BT同图对比使用模型配色，见该节说明。</li>
-    <li>橙色：按 Pontzen et al. 的 Eq. (16) 加入初始线性谱实现差异的诊断修正；灰色：HMcode2020 暗物质参考谱。不同视图显示其中的对应曲线。</li>
-    <li>两种相位采用同一种 1024³ NGP 网格估计器，每份非线性功率谱减去一次 V/N；未做 NGP 窗函数反卷积、折叠或混叠修正。</li>
-    <li>当前25盒相位平均和两盒对比图采用10k<sub>f</sub>≤k≤0.25k<sub>Ny</sub>，其中 k<sub>f</sub>=2π/L≈0.251327 h Mpc<sup>−1</sup>。实际显示点为2.5367至31.9198 h Mpc<sup>−1</sup>。这是显示选择，不是经过收敛验证的可信区间。历史线性修正图保留旧范围。</li>
-    <li>上方PL的z≈1.07旧图以反相快照的实际 z=1.0700000000000003 为目标，对原模拟 0048、0049 的功率谱作时间插值。原 0048 的实际红移为 1.0717968600643704。新增BT kp1的0048图不作时间插值。z=0 两份快照为同一时刻。</li>
-  </ul>
-  <h2>理论参考与限制</h2>
-  <p>当前参考采用 Ω<sub>m</sub>=0.3153、Ω<sub>b</sub>=0.0493、Ω<sub>Λ</sub>=0.6847、h=0.6736、n<sub>s</sub>=0.9649、σ<sub>8</sub>=0.8111，线性输入为 Eisenstein–Hu，非线性模型为 HMcode2020 DMO。对应已核查结果作业为 <code>2165281</code>。后来测试的 σ<sub>8</sub>≈0.83549 版本未采用。</p>
-  <p>反相平均可抵消部分相位相关偏差，但两份模拟不是独立实现，不能直接声称误差缩小 √2。反相平均和 Eq. (16) 都不能恢复盒子缺失的长波模式，也不能保证消除全部非线性有限体积偏差。z=0 的低 k 差异仍存在，不能仅凭这些曲线确定原因。</p>
-  <p>方法来源：<a href="https://arxiv.org/abs/1511.04090">Pontzen et al., arXiv:1511.04090</a>。</p>
-  </section>
-  <section class="phase-close">
-  <h2>English Summary</h2>
-  <p>The four figures show phase averaging at z≈1.07 and z=0, followed by the corresponding Eq. (16) linear-realization diagnostics. In the pair-only figures the bottom panel is the change relative to the original phase; in the correction figures it is the additional correction relative to the pair mean. Neither is an error bar. Phase averaging moves the original result closer to HMcode but leaves a substantial low-k deficit at z=0. Eq. (16) makes only a small change near k≈1 h Mpc<sup>−1</sup> and does not establish the cause of the residual mismatch. The reference remains HMcode2020 DMO with σ<sub>8</sub>=0.8111 and the simulation background parameters. The PNG/PDF files on this page are public. The external viewer remains private. These diagnostics have not replaced manuscript figures or main explorer data.</p>
-  <p>Current phase-pair and box-comparison figures apply k≥10k<sub>f</sub> to the 25-box data. The two linear-correction figures retain their historical range. The 256-box selection is unchanged. The external private viewer still shows the earlier version.</p>
-  <p>The high-redshift section adds exact-epoch PL and BT kp10 phase pairs at z=8.519850605215494. Their ratio panels use model-specific HMcode2020 references, with the BT input shape and shared sigma8 normalization matching the IC configuration. These comparisons remain diagnostic: HMcode reported insufficient low-ν table coverage at this epoch.</p>
-  <p>Four additional exact-epoch figures show PL and BT kp10 at z=3.44108, and BT kp1 at z=8.51985 and z=1.0717968600643704. Each uses its model-specific HMcode reference; no interpolation in time or selection by agreement with HMcode is applied.</p>
-  <p>更新日期 / Updated: 2026-10-12</p>
-  </section>
-  </main>
-  <footer class="page-width"><span>STRUCTURE / ATLAS</span><span>PL PHASE-PAIR / SUPPLEMENT</span><a href="index.html">返回论文数据页 ↑</a></footer>
-</body></html>
+<style id="topic-pages-style">
+@font-face{font-family:"PS Topics";src:url("assets/ps-topics-sans.woff2") format("woff2");font-display:swap}
+.phase-page,.phase-page h1,.phase-page h2,.phase-page h3,.phase-page p,.phase-page a,.phase-page li{font-family:"PS Topics",sans-serif!important}
+.phase-intro h1{font-size:38px}.phase-section h3{font-size:22px;line-height:1.5;margin:32px 0 12px}
+.phase-page section,.phase-page h3{scroll-margin-top:110px}
+.topic-list{margin:0;padding:0;list-style:none}.topic-list li{border-top:1px solid var(--line);padding:22px 0;display:grid;grid-template-columns:48px minmax(0,1fr);gap:18px}
+.topic-list a{font-size:23px;line-height:1.5;text-decoration:none}.topic-list p{margin:6px 0 0;color:var(--ink-secondary);font-size:14px}
+.topic-number{font:13px var(--font-mono);padding-top:8px;color:var(--ink-secondary)}
+.topic-subnav{border-bottom:1px solid var(--line);padding-bottom:18px}.topic-subnav a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
+.theory-section figure{grid-template-columns:minmax(0,1fr);gap:16px}.theory-section figcaption{max-width:950px}
+.phase-page img{max-width:100%}.phase-page a,.phase-page code{overflow-wrap:anywhere}
+@media(max-width:720px){.phase-intro h1{font-size:29px}.topic-list a{font-size:21px}.topic-list li{grid-template-columns:32px minmax(0,1fr);gap:12px}.phase-page .topbar nav a{white-space:normal}}
+</style><script>const psLegacyRoutes={"hmf-z-0056": "ps-hmf-comparison.html", "hmf-z-0048": "ps-hmf-comparison.html", "hmf-z-0040": "ps-hmf-comparison.html", "hmf-z-0032": "ps-hmf-comparison.html", "phase-hmf": "ps-hmf-comparison.html", "phase-25-current": "ps-summary.html", "phase-current": "ps-summary.html", "phase-z1": "ps-phase-comparison.html", "phase-z0": "ps-phase-comparison.html", "phase-correction": "ps-phase-comparison.html", "phase-volume": "ps-phase-comparison.html", "phase-highz": "ps-high-redshift.html", "phase-new": "ps-high-redshift.html", "phase-overlay-z1": "ps-model-comparison.html", "phase-overlay": "ps-model-comparison.html", "phase-method": "ps-methods.html", "phase-english-summary": "ps-methods.html", "theory-0056": "ps-hmf-theory.html", "theory-0048": "ps-hmf-theory.html", "theory-0040": "ps-hmf-theory.html", "theory-0032": "ps-hmf-theory.html"};function psRoute(){const id=decodeURIComponent(location.hash.slice(1));if(psLegacyRoutes[id])location.replace(psLegacyRoutes[id]+location.hash)}psRoute();addEventListener("hashchange",psRoute);</script></head>
+<body class="phase-page"><a class="skip" href="#page-content">跳转到内容</a>
+<header class="topbar"><a class="brand" href="index.html"><span>STRUCTURE / ATLAS<span class="brand-sub">暗物质结构演化 · 数据图集</span></span></a>
+<button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
+<nav id="site-navigation" aria-label="页面导航"><a href="index.html">论文图集</a><a href="pl-phase-pair.html">功率谱目录</a><a href="ps-hmf-theory.html">HMF 理论</a></nav><span class="header-revision">PS / SUPPLEMENT<br>2026-10-22</span></header>
+<main class="phase-main" id="page-content"><section class="phase-intro page-width" id="phase-index"><p class="technical-label">POWER SPECTRUM / DIAGNOSTICS</p><h1>功率谱结果与诊断</h1>
+<nav class="phase-links topic-subnav" aria-label="功率谱主题"><a href="ps-summary.html">功率谱汇总</a><a href="ps-phase-comparison.html">相位与盒子对比</a><a href="ps-high-redshift.html">高红移结果</a><a href="ps-model-comparison.html">PL / BT 同图比较</a><a href="ps-hmf-comparison.html">HMF 与模拟比较</a><a href="ps-hmf-theory.html">HMF 纯理论比较</a><a href="ps-methods.html">方法与参考</a></nav></section><section class="page-width"><p>论文之外的功率谱诊断与对照结果，按主题归档。原有图表、数值与下载文件保持不变。</p></section><section class="page-width"><ol class="topic-list"><li><span class="topic-number">01</span><div><a href="ps-summary.html">功率谱汇总 ↗</a><p>25 盒与两盒比较，四个红移。</p></div></li><li><span class="topic-number">02</span><div><a href="ps-phase-comparison.html">相位与盒子对比 ↗</a><p>原相位、反相平均与历史修正测试。</p></div></li><li><span class="topic-number">03</span><div><a href="ps-high-redshift.html">高红移结果 ↗</a><p>按模型和精确快照红移查看相位对比。</p></div></li><li><span class="topic-number">04</span><div><a href="ps-model-comparison.html">PL / BT 同图比较 ↗</a><p>不同功率谱模型的理论与模拟。</p></div></li><li><span class="topic-number">05</span><div><a href="ps-hmf-comparison.html">HMF 与模拟比较 ↗</a><p>不同晕模型组合与模拟的比较。</p></div></li><li><span class="topic-number">06</span><div><a href="ps-hmf-theory.html">HMF 纯理论比较 ↗</a><p>五种原生 HMF 设置，四个红移。</p></div></li><li><span class="topic-number">07</span><div><a href="ps-methods.html">方法与参考 ↗</a><p>功率谱估计、显示范围及理论限制。</p></div></li></ol></section></main>
+<footer class="page-width"><span>STRUCTURE / ATLAS</span><a href="pl-phase-pair.html">功率谱目录</a><a href="index.html">返回论文图集</a></footer></body></html>
