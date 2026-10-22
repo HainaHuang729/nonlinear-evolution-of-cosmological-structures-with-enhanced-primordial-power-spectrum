@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "78628258b69ec9ce1a6996af6c9dc4a272a863c9",
-  "created": "2026-10-22T06:16:46.642689+00:00",
+  "parent_commit": "541db217fb11ce89da71ac199745c1da15e1a9f0",
+  "created": "2026-10-22T06:24:47.809619+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -229,6 +229,51 @@
       "file": "assets/halo-density-radial-n100-power.png",
       "sha256": "a5067e6f458193139af7813fac791addfcb7f6008ae9aa83d2814219062fc4da",
       "bytes": 992159
+    },
+    {
+      "file": "assets/hmf-sim-baseline/comparison.csv",
+      "sha256": "0d13647147c839bdb30524201f0da6f53f88f42add696339ed4a10e04b0202e4",
+      "bytes": 858149
+    },
+    {
+      "file": "assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0032.png",
+      "sha256": "95002f1cd4db409195c850f0eb6981a1d1717cc23a18bd31683c1b37a32aafa4",
+      "bytes": 409820
+    },
+    {
+      "file": "assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0032.webp",
+      "sha256": "b84b34b77b8f05dd6079ec5e7d42c10f805d0a8ba45ad59e68b9765a503a476c",
+      "bytes": 115866
+    },
+    {
+      "file": "assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0040.png",
+      "sha256": "3208bfe4c311858c0c830350c257e889b31adc636ad07589cfb97a838f228181",
+      "bytes": 465617
+    },
+    {
+      "file": "assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0040.webp",
+      "sha256": "ea3e6a07f1a4d574b34fc2c8693ad1f63cd11ff048680245013119f74bf06836",
+      "bytes": 127970
+    },
+    {
+      "file": "assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0048.png",
+      "sha256": "aebe8458b8cd83b4f922534b0e2e3023cdffed7084b68da02503179bef9f438b",
+      "bytes": 368157
+    },
+    {
+      "file": "assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0048.webp",
+      "sha256": "92603e2f7178f27e051f75eb94bef8465b053b34373343c799251ff250106717",
+      "bytes": 105146
+    },
+    {
+      "file": "assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0056.png",
+      "sha256": "aa64af068ba1b2d315a2019937e142968e94bda438b21cca4ae3dd8443d8c98e",
+      "bytes": 308151
+    },
+    {
+      "file": "assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0056.webp",
+      "sha256": "c0aedec02361f21e7e65d4d7f5b8784cec17b66b30979cdf99b42994903c38c4",
+      "bytes": 88008
     },
     {
       "file": "assets/hmf-theory/hmcode-hmf-theory-0032.png",
@@ -847,8 +892,8 @@
     },
     {
       "file": "assets/ps-topics-sans.woff2",
-      "sha256": "acc5ee167607bbe46f20c8af61ef21a829a4c9ba74fcc21c7881ae8c7a1a1499",
-      "bytes": 147964
+      "sha256": "14e5fd3916e2b8a1532d97422cb4a213d553b5ccdf5d157aed4117608830e6af",
+      "bytes": 149772
     },
     {
       "file": "assets/swift-viewer/cache-worker.js",
@@ -1937,42 +1982,42 @@
     },
     {
       "file": "pl-phase-pair.html",
-      "sha256": "4295c2e0ff18ad337294a122c2db3ae49bb698e0b9bb6dd0b58db154ed57fd62",
+      "sha256": "ae7e750160d752630ff573fda25fe44869dec95c1bf879d2cbe1e6c1dac63210",
       "bytes": 9751
     },
     {
       "file": "ps-high-redshift.html",
-      "sha256": "fdc5728bd6af9ad1b4a676b7e4c430df246b39f616b45f1dad0c62a508707911",
+      "sha256": "585685e40f11f000447f6b96cb59084c44eada4f7e35f131b72c7bed1ba9e43e",
       "bytes": 12867
     },
     {
       "file": "ps-hmf-comparison.html",
-      "sha256": "93710114abd18e48c34a1efb79b9916d389126c940983030cd0abb1e784d8493",
+      "sha256": "387bb32e37a741fe7bf4f908ec826cd5ac70c64f2d0dcf4e3490dcf881f713da",
       "bytes": 12503
     },
     {
       "file": "ps-hmf-theory.html",
-      "sha256": "fcbab75eb60f375d9f2af0e27b326056de0791be5fb7b41270a97310321c7ba7",
-      "bytes": 10724
+      "sha256": "8b97ce9e379e1ca44f31e0b0235b437482b124725215d9c4fe3ddc6804d38f96",
+      "bytes": 11688
     },
     {
       "file": "ps-methods.html",
-      "sha256": "4cbc5264bc9f94a25d6f689afee6b1f3902a531666351d4a545e24e22611e42f",
+      "sha256": "a4acd7d5a8ff930948bd5d7ce63a4e0ce6ca72811f246da7f812b1348bb8043b",
       "bytes": 11292
     },
     {
       "file": "ps-model-comparison.html",
-      "sha256": "007831068bd367687e4c0df9c77996cfe6e854034e04d799c6e24d09b7c399c2",
+      "sha256": "adabacf249477d7cc62f665e7c871a88b6782a9f0a09766fb7b68ca388858310",
       "bytes": 9952
     },
     {
       "file": "ps-phase-comparison.html",
-      "sha256": "8fbeb0b5bf51e1e461a17d526e3da9c902744c60fb622aefffc421987a80daf4",
+      "sha256": "8d0c1e3aba9818a4eb5a6c9778bbc3608ccb448cccc5b2fa7f0c0f3844b9be87",
       "bytes": 13722
     },
     {
       "file": "ps-summary.html",
-      "sha256": "c05174d47d94acdf1e1830f3828e2ae890f516cf0bea810c8ad16fb263fdd2d2",
+      "sha256": "9f417fd072c75c4927e0f25d1d164b90efc995a7be51c8f29cc93371a47373e3",
       "bytes": 15570
     },
     {
@@ -1991,5 +2036,5 @@
       "bytes": 2488
     }
   ],
-  "supplemental_note": "Topic pages and four native-HMF theory PNGs"
+  "supplemental_note": "HMF theory comparison using simulation denominator"
 }

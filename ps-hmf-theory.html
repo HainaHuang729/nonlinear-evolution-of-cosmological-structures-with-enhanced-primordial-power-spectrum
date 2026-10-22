@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>HMF 纯理论比较 · Structure Atlas</title>
+  <title>HMF 理论与模拟 · Structure Atlas</title>
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
   <script defer src="system.js"></script>
@@ -70,26 +70,28 @@
 <header class="topbar"><a class="brand" href="index.html"><span>STRUCTURE / ATLAS<span class="brand-sub">暗物质结构演化 · 数据图集</span></span></a>
 <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
 <nav id="site-navigation" aria-label="页面导航"><a href="index.html">论文图集</a><a href="pl-phase-pair.html">功率谱目录</a><a href="ps-hmf-theory.html">HMF 理论</a></nav><span class="header-revision">PS / SUPPLEMENT<br>2026-10-22</span></header>
-<main class="phase-main" id="page-content"><section class="phase-intro page-width" id="phase-index"><p class="technical-label">POWER SPECTRUM / DIAGNOSTICS</p><h1>HMF 纯理论比较</h1>
-<nav class="phase-links topic-subnav" aria-label="功率谱主题"><a href="ps-summary.html">功率谱汇总</a><a href="ps-phase-comparison.html">相位与盒子对比</a><a href="ps-high-redshift.html">高红移结果</a><a href="ps-model-comparison.html">PL / BT 同图比较</a><a href="ps-hmf-comparison.html">HMF 与模拟比较</a><a href="ps-hmf-theory.html" aria-current="page">HMF 纯理论比较</a><a href="ps-methods.html">方法与参考</a></nav></section><section class="phase-section page-width theory-section" id="hmf-theory">
-<p class="eyebrow">2026-10-22 / NATIVE HMF SENSITIVITY</p><h2>不同 HMF 的 HMcode 理论预测</h2>
-<p>采用已有的 ST99、Despali16、Tinker08、Tinker10、Warren06 结果，不包含模拟数据，也没有重新拟合。每个 PL 或 BT 模型使用自己的线性输入谱。</p>
-<p>这些曲线用于检查更换 HMF 设置的影响，不是重新校准的 HMcode2020。原生代码还会选择对应的 bias；其他晕模型设置保持原测试口径。Warren06 的 FoF 质量未转换，Tinker 的原生红移演化在 z=3 截止，因此高红移应用涉及外推。Reed07 实验混合模型未纳入。</p>
-<p>显示范围为 0.01–100 h Mpc<sup>−1</sup>，不代表整个范围内的预测均已验证。源结果作业 2251094；绘图作业 2263403。</p>
-<nav class="phase-links" aria-label="选择理论图红移"><a href="#theory-0056">z=0</a><a href="#theory-0048">z=1.07</a><a href="#theory-0040">z=3.44</a><a href="#theory-0032">z=8.52</a></nav><h3 id="theory-0056">z = 0</h3>
-<figure><a class="figure-link" href="assets/hmf-theory/hmcode-hmf-theory-0056.png"><img src="assets/hmf-theory/hmcode-hmf-theory-0056.webp" width="2832" height="1512" loading="lazy" alt="z=0，五种 HMF 的 HMcode 理论功率谱与相对 ST99 的比值"></a>
-<figcaption>三列依次为 PL、BT k<sub>p</sub>=1、BT k<sub>p</sub>=10。上排为 P(k)，下排为各设置与同模型 ST99 结果的比值。</figcaption></figure>
-<p class="downloads"><a href="assets/hmf-theory/hmcode-hmf-theory-0056.png" download>下载完整 PNG</a></p>
+<main class="phase-main" id="page-content"><section class="phase-intro page-width" id="phase-index"><p class="technical-label">POWER SPECTRUM / DIAGNOSTICS</p><h1>HMF 理论与模拟</h1>
+<nav class="phase-links topic-subnav" aria-label="功率谱主题"><a href="ps-summary.html">功率谱汇总</a><a href="ps-phase-comparison.html">相位与盒子对比</a><a href="ps-high-redshift.html">高红移结果</a><a href="ps-model-comparison.html">PL / BT 同图比较</a><a href="ps-hmf-comparison.html">HMF 与模拟比较</a><a href="ps-hmf-theory.html" aria-current="page">HMF 理论与模拟</a><a href="ps-methods.html">方法与参考</a></nav></section><section class="phase-section page-width theory-section" id="hmf-theory">
+<p class="eyebrow">2026-10-22 / SIMULATION BASELINE</p><h2>以模拟为基准比较 HMF 理论</h2>
+<p>比较 ST99、Despali16、Tinker08、Tinker10、Warren06 的 HMcode 结果。上排叠加模拟功率谱，下排改用模拟作分母，不再除以 ST99。每个 PL 或 BT 模型使用自己的线性输入谱，没有重新拟合或修正模拟数据。</p>
+<p>优先使用原相位与反相位的功率谱平均值，图中标为 Phase mean。BT k<sub>p</sub>=10 的 z=0 目前仍用 Original single phase，不能当作相位平均。所有比较使用相同的模拟 k 点；仅对理论谱作 log-log 插值，不对模拟作插值或外推。</p>
+<p>这些曲线是 HMF 设置敏感性测试，不是重新校准的 HMcode2020。原生代码还会选择对应的 bias；其他晕模型设置保持原测试口径。Warren06 的 FoF 质量未转换，Tinker 的原生红移演化在 z=3 截止，高红移应用涉及外推。Reed07 实验混合模型未纳入。</p>
+<p>沿用当前模拟图的显示点，k 约为 2.5367–31.9198 h Mpc<sup>−1</sup>，不是已验证的可信区间，也没有按与理论的一致程度删点。</p>
+<nav class="phase-links" aria-label="选择红移"><a href="#theory-0056">z=0</a><a href="#theory-0048">z=1.07</a><a href="#theory-0040">z=3.44</a><a href="#theory-0032">z=8.52</a></nav>
+<p class="downloads"><a href="assets/hmf-sim-baseline/comparison.csv" download>下载全部比较数据 CSV</a></p><h3 id="theory-0056">z = 0</h3>
+<figure><a class="figure-link" href="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0056.png"><img src="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0056.webp" width="2832" height="1512" loading="lazy" alt="z=0，五种 HMF 的 HMcode 理论与模拟比较，模拟为比值分母"></a>
+<figcaption>三列依次为 PL、BT k<sub>p</sub>=1、BT k<sub>p</sub>=10。上排为理论曲线及灰色模拟点；下排为 P<sub>HMF</sub>/P<sub>sim</sub>，1 表示一致。同一红移的三列共用比值纵轴范围。</figcaption></figure>
+<p class="downloads"><a href="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0056.png" download>下载完整 PNG</a></p>
 <h3 id="theory-0048">z = 1.0717968601</h3>
-<figure><a class="figure-link" href="assets/hmf-theory/hmcode-hmf-theory-0048.png"><img src="assets/hmf-theory/hmcode-hmf-theory-0048.webp" width="2832" height="1512" loading="lazy" alt="z=1.0717968601，五种 HMF 的 HMcode 理论功率谱与相对 ST99 的比值"></a>
-<figcaption>三列依次为 PL、BT k<sub>p</sub>=1、BT k<sub>p</sub>=10。上排为 P(k)，下排为各设置与同模型 ST99 结果的比值。</figcaption></figure>
-<p class="downloads"><a href="assets/hmf-theory/hmcode-hmf-theory-0048.png" download>下载完整 PNG</a></p>
+<figure><a class="figure-link" href="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0048.png"><img src="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0048.webp" width="2832" height="1512" loading="lazy" alt="z=1.0717968601，五种 HMF 的 HMcode 理论与模拟比较，模拟为比值分母"></a>
+<figcaption>三列依次为 PL、BT k<sub>p</sub>=1、BT k<sub>p</sub>=10。上排为理论曲线及灰色模拟点；下排为 P<sub>HMF</sub>/P<sub>sim</sub>，1 表示一致。同一红移的三列共用比值纵轴范围。</figcaption></figure>
+<p class="downloads"><a href="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0048.png" download>下载完整 PNG</a></p>
 <h3 id="theory-0040">z = 3.4410805658</h3>
-<figure><a class="figure-link" href="assets/hmf-theory/hmcode-hmf-theory-0040.png"><img src="assets/hmf-theory/hmcode-hmf-theory-0040.webp" width="2832" height="1512" loading="lazy" alt="z=3.4410805658，五种 HMF 的 HMcode 理论功率谱与相对 ST99 的比值"></a>
-<figcaption>三列依次为 PL、BT k<sub>p</sub>=1、BT k<sub>p</sub>=10。上排为 P(k)，下排为各设置与同模型 ST99 结果的比值。</figcaption></figure>
-<p class="downloads"><a href="assets/hmf-theory/hmcode-hmf-theory-0040.png" download>下载完整 PNG</a></p>
+<figure><a class="figure-link" href="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0040.png"><img src="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0040.webp" width="2832" height="1512" loading="lazy" alt="z=3.4410805658，五种 HMF 的 HMcode 理论与模拟比较，模拟为比值分母"></a>
+<figcaption>三列依次为 PL、BT k<sub>p</sub>=1、BT k<sub>p</sub>=10。上排为理论曲线及灰色模拟点；下排为 P<sub>HMF</sub>/P<sub>sim</sub>，1 表示一致。同一红移的三列共用比值纵轴范围。</figcaption></figure>
+<p class="downloads"><a href="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0040.png" download>下载完整 PNG</a></p>
 <h3 id="theory-0032">z = 8.5198506052</h3>
-<figure><a class="figure-link" href="assets/hmf-theory/hmcode-hmf-theory-0032.png"><img src="assets/hmf-theory/hmcode-hmf-theory-0032.webp" width="2832" height="1512" loading="lazy" alt="z=8.5198506052，五种 HMF 的 HMcode 理论功率谱与相对 ST99 的比值"></a>
-<figcaption>三列依次为 PL、BT k<sub>p</sub>=1、BT k<sub>p</sub>=10。上排为 P(k)，下排为各设置与同模型 ST99 结果的比值。</figcaption></figure>
-<p class="downloads"><a href="assets/hmf-theory/hmcode-hmf-theory-0032.png" download>下载完整 PNG</a></p></section></main>
+<figure><a class="figure-link" href="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0032.png"><img src="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0032.webp" width="2832" height="1512" loading="lazy" alt="z=8.5198506052，五种 HMF 的 HMcode 理论与模拟比较，模拟为比值分母"></a>
+<figcaption>三列依次为 PL、BT k<sub>p</sub>=1、BT k<sub>p</sub>=10。上排为理论曲线及灰色模拟点；下排为 P<sub>HMF</sub>/P<sub>sim</sub>，1 表示一致。同一红移的三列共用比值纵轴范围。</figcaption></figure>
+<p class="downloads"><a href="assets/hmf-sim-baseline/hmcode-hmf-sim-baseline-0032.png" download>下载完整 PNG</a></p></section></main>
 <footer class="page-width"><span>STRUCTURE / ATLAS</span><a href="pl-phase-pair.html">功率谱目录</a><a href="index.html">返回论文图集</a></footer></body></html>
