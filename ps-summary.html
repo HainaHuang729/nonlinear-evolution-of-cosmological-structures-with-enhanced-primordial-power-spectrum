@@ -71,7 +71,39 @@
 <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
 <nav id="site-navigation" aria-label="页面导航"><a href="index.html">论文图集</a><a href="pl-phase-pair.html">功率谱目录</a><a href="ps-hmf-theory.html">HMF 理论</a></nav><span class="header-revision">PS / SUPPLEMENT<br>2026-10-22</span></header>
 <main class="phase-main" id="page-content"><section class="phase-intro page-width" id="phase-index"><p class="technical-label">POWER SPECTRUM / DIAGNOSTICS</p><h1>功率谱汇总</h1>
-<nav class="phase-links topic-subnav" aria-label="功率谱主题"><a href="ps-summary.html" aria-current="page">功率谱汇总</a><a href="ps-phase-comparison.html">相位与盒子对比</a><a href="ps-high-redshift.html">高红移结果</a><a href="ps-model-comparison.html">PL / BT 同图比较</a><a href="ps-hmf-comparison.html">HMF 与模拟比较</a><a href="ps-hmf-theory.html">HMF 理论与模拟</a><a href="ps-methods.html">方法与参考</a></nav></section><section class="phase-section page-width" id="phase-25-current">
+<nav class="phase-links topic-subnav" aria-label="功率谱主题"><a href="ps-summary.html" aria-current="page">功率谱汇总</a><a href="ps-phase-comparison.html">相位与盒子对比</a><a href="ps-high-redshift.html">高红移结果</a><a href="ps-model-comparison.html">PL / BT 同图比较</a><a href="ps-hmf-comparison.html">HMF 与模拟比较</a><a href="ps-hmf-theory.html">HMF 理论与模拟</a><a href="ps-methods.html">方法与参考</a></nav></section><section class="phase-section page-width" id="five-percent-agreement">
+<style>
+@font-face{font-family:"PS Agreement";src:url("assets/ps-five-percent-20261023/agreement-sans.woff2") format("woff2");font-display:swap}
+#five-percent-agreement,#five-percent-agreement p,#five-percent-agreement h2,#five-percent-agreement h3,#five-percent-agreement a,#five-percent-agreement figcaption,#five-percent-agreement th,#five-percent-agreement td{font-family:"PS Agreement",sans-serif!important}
+#five-percent-agreement figure{grid-template-columns:minmax(0,1fr);gap:18px}#five-percent-agreement .figure-link{display:block;min-width:0}#five-percent-agreement figcaption{max-width:1000px}
+#five-percent-agreement .agreement-table{overflow-x:auto;max-width:100%;margin:22px 0}
+#five-percent-agreement table{border-collapse:collapse;width:100%;max-width:850px;min-width:420px;font-size:14px;line-height:1.7}
+#five-percent-agreement th,#five-percent-agreement td{border-bottom:1px solid var(--line);padding:12px 14px;text-align:left;white-space:nowrap}
+#five-percent-agreement th{font-weight:500}#five-percent-agreement .agreement-pass{color:#007453;font-weight:600}
+@media(max-width:720px){#five-percent-agreement table{font-size:13px}#five-percent-agreement th,#five-percent-agreement td{padding:10px}}
+</style>
+<p class="eyebrow">2026-10-23 / FIVE-PERCENT AGREEMENT</p><h2>25盒：与 HMcode 的 5% 一致区间</h2>
+<p>比较四个精确红移的现有相位平均功率谱，不调整振幅，不按偏差删除数据。黑色为 PL，蓝色为 BT k<sub>p</sub>=1，绿色为 BT k<sub>p</sub>=10；每个模型都除以自己的 HMcode2020 参考。下方历史图继续保留各自日期的版本。</p>
+<h3>当前显示范围</h3>
+<figure><a class="figure-link" href="assets/ps-five-percent-20261023/power-spectrum-five-percent-ranges.png" target="_blank" rel="noopener"><img src="assets/ps-five-percent-20261023/power-spectrum-five-percent-ranges.webp" width="2796" height="2595" loading="lazy" alt="25盒四红移Sim除以HMcode，灰带为正负5%，粗曲线和下方模型区间条标出逐点达标的相邻采样段"></a>
+<figcaption>完整范围保留全部当前采样点，不按偏差删点。各面板下方的黑、蓝、绿区间条与上方对应模型使用相同条件。细线显示全部数据，粗线和彩色区间条表示每个 bin 都满足 |P<sub>sim</sub>/P<sub>HMcode</sub>−1|≤0.05；单独一个达标 bin 用圆点标出。灰色水平带为 0.95–1.05。None 表示该模型在所示范围没有达标 bin，No phase pair 表示当前缺少配对结果，二者不同。</figcaption></figure>
+<p class="downloads"><a href="assets/ps-five-percent-20261023/power-spectrum-five-percent-ranges.png" download>下载完整 PNG</a></p>
+<h3>k≤10 内的 PL 高 k 连续段</h3>
+<p>从表中起点到最后一个采样点，每个 bin 都满足 5%；这不是仅要求 RMS 小于 5%。边界使用实际 bin 中心，没有插值寻找交点。所有 k 的单位均为 h Mpc<sup>−1</sup>。</p>
+<div class="agreement-table" tabindex="0" role="region" aria-label="PL的逐点5%连续区间"><table><thead><tr><th scope="col">红移 z</th><th scope="col">k 区间</th><th scope="col">bin 数</th><th scope="col">最大偏差</th></tr></thead><tbody><tr><th scope="row">0</th><td>6.54–9.80</td><td>14</td><td>3.43%</td></tr><tr><th scope="row">1.0718</th><td>5.79–9.80</td><td>17</td><td>4.43%</td></tr><tr><th scope="row">3.4411</th><td>6.79–9.80</td><td>13</td><td>4.40%</td></tr><tr><th scope="row">8.5199</th><td>无</td><td>0</td><td>不适用</td></tr></tbody></table></div>
+<h3>k≤10 的放大图</h3>
+<figure><a class="figure-link" href="assets/ps-five-percent-20261023/power-spectrum-five-percent-k10.png" target="_blank" rel="noopener"><img src="assets/ps-five-percent-20261023/power-spectrum-five-percent-k10.webp" width="2790" height="2595" loading="lazy" alt="25盒四红移Sim除以HMcode，灰带为正负5%，粗曲线和下方模型区间条标出逐点达标的相邻采样段"></a>
+<figcaption>仅放大横轴到 k≤10，未重新拟合或改变功率。PL 标注的是从该点到最后一个 k&lt;10 采样点均满足 5% 的高 k 连续段；其他较短片段也保留。细线显示全部数据，粗线和彩色区间条表示每个 bin 都满足 |P<sub>sim</sub>/P<sub>HMcode</sub>−1|≤0.05；单独一个达标 bin 用圆点标出。灰色水平带为 0.95–1.05。None 表示该模型在所示范围没有达标 bin，No phase pair 表示当前缺少配对结果，二者不同。</figcaption></figure>
+<p class="downloads"><a href="assets/ps-five-percent-20261023/power-spectrum-five-percent-k10.png" download>下载完整 PNG</a></p>
+<h3>固定 8≤k≤10 的最大逐点偏差</h3>
+<p>实际采用 8 个现有 bin，k=8.0457–9.8049。下表不是 RMS；— 表示当前没有该相位平均结果，没有用原始单相位替代。</p>
+<div class="agreement-table" tabindex="0" role="region" aria-label="三个模型在8到10内的最大逐点偏差"><table><thead><tr><th scope="col">红移 z</th><th scope="col">PL</th><th scope="col">BT kp1</th><th scope="col">BT kp10</th></tr></thead><tbody><tr><th scope="row">0</th><td class="agreement-pass">1.42%</td><td>6.35%</td><td>—</td></tr><tr><th scope="row">1.0718</th><td class="agreement-pass">4.43%</td><td>9.14%</td><td class="agreement-pass">4.61%</td></tr><tr><th scope="row">3.4411</th><td class="agreement-pass">4.03%</td><td class="agreement-pass">4.11%</td><td>10.87%</td></tr><tr><th scope="row">8.5199</th><td>23.33%</td><td>14.59%</td><td>52.58%</td></tr></tbody></table></div>
+<h3>如何理解这些区间</h3>
+<p>提高 k 下界后，PL 的前三个红移在 8–10 内均与 HMcode 相差不到 5%，但 BT 不普遍满足。在 z≈8.52，三个模型在完整显示范围的 118 个 bin 都不满足 5%，不是只有低 k 不匹配。</p>
+<p>独立 CIC 窗函数修正后，PL 在固定 8–10 内的最大偏差依次为 1.79%、4.09%、3.72%、23.78%，表中前三个红移的 PL 连续段边界也保持不变。不过继续扩展到 k≈32 后，修正后的曲线不再具有全部达标的高 k 尾段。本图仍保留当前 NGP 口径，没有将 CIC 诊断替换进正式数据。</p>
+<p>这些是与参考谱的一致区间，不是已证明的模拟可信区间。相邻采样点达标也不保证其间任意 k 都达标。HMcode2020 的主要公开精度检验覆盖 k 约不超过 10、z 约不超过 2；高红移和 BT 形状不能直接套用其精度结论。模拟的有限体积、力与粒子分辨率，以及模型外推仍需独立验证。<a href="https://academic.oup.com/mnras/article/502/1/1401/6102542">HMcode2020 原论文</a></p>
+<p class="downloads"><a href="assets/ps-five-percent-20261023/intervals.csv" download>全部连续段统计 CSV</a><a href="assets/ps-five-percent-20261023/per-bin.csv" download>逐点功率与偏差 CSV</a><a href="assets/ps-five-percent-20261023/audit-summary.json" download>完整检查 JSON</a><a href="assets/ps-five-percent-20261023/plot_ps_five_percent_intervals.py" download>绘图脚本</a><a href="#phase-25-current">此前的四红移功率谱图</a></p>
+</section><section class="phase-section page-width" id="phase-25-current">
   <p class="eyebrow">2026-10-20 / FOUR REDSHIFTS · 25 BOX ONLY</p>
   <h2>25盒：四个红移的功率谱</h2>
   <p>只保留25 h<sup>−1</sup> Mpc盒子，依次比较z=0、z≈1.07、z≈3.44和z≈8.52。黑色为PL，蓝色为BT k<sub>p</sub>=1，绿色为BT k<sub>p</sub>=10。实心点是原相位与反相位功率谱的平均；浅色空心点是未经平均的原始单相位数据。主面板曲线是各模型自己的HMcode2020参考，不是统一除以PL参考。</p>

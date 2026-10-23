@@ -3,8 +3,8 @@
   "repository": "HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
   "branch": "gh-pages",
   "url": "https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/",
-  "parent_commit": "541db217fb11ce89da71ac199745c1da15e1a9f0",
-  "created": "2026-10-22T06:24:47.809619+00:00",
+  "parent_commit": "62356a63747889cdc8750ca609a8a44d5fe6cf7f",
+  "created": "2026-10-23T03:25:12.966558+00:00",
   "local_validation_checks": 174,
   "language_validation_checks": 23,
   "numerical_browser_checks": 107,
@@ -889,6 +889,61 @@
       "file": "assets/projections/kp10-0056.png",
       "sha256": "04586105334bdb592cecba67100e337ed390f7a3c44b957eeeb38f927c029f21",
       "bytes": 2124349
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/agreement-sans.woff2",
+      "sha256": "37de3b4541984f031b7d3cbb1d7bf176f0269a164b63452603c9da7471c7d200",
+      "bytes": 85524
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/audit-summary.json",
+      "sha256": "3c98d5be49d5198155e2c58440f0f3507fc0e01a7b738df8a6ae8c03e257434b",
+      "bytes": 207392
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/cosmology_plot_style.py",
+      "sha256": "14d6305c108a5c1881f122cddfa4f72c6f1247a4a9fdedacb844e57361a78aad",
+      "bytes": 3692
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/intervals.csv",
+      "sha256": "69dde51e9997a71da3f5c0dffa50491fa54952f5331549f78c43b6195094e43a",
+      "bytes": 33289
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/per-bin.csv",
+      "sha256": "ad622a59fb2a5f4bdecdf1d30d569487ef0c4228611463ba8b1cb6d3475f74ab",
+      "bytes": 393072
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/plot_ps_five_percent_intervals.py",
+      "sha256": "f598af3a299f55399f8817dbbba5296463fd8132bbd10d541a3cec0029940b65",
+      "bytes": 9634
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/power-spectrum-five-percent-k10.png",
+      "sha256": "c77acce6cebf3a0ee5833066a6a079e51d5ddbc3c1234158c7e8f278aac7ac52",
+      "bytes": 304325
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/power-spectrum-five-percent-k10.webp",
+      "sha256": "d7b2be5e03bed71cf2b266bb50bf326c1b6d17b1b84faa5b528f28954ff4367e",
+      "bytes": 130686
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/power-spectrum-five-percent-ranges.png",
+      "sha256": "8df02b4d7d38bc824c4ca9625096dcd07feecd055461ec7e236ab3896e66782c",
+      "bytes": 366100
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/power-spectrum-five-percent-ranges.webp",
+      "sha256": "b70c4543d31b9f4a77c62dff14cc180456d924ebb799aeb85a74cb20566e0c48",
+      "bytes": 151304
+    },
+    {
+      "file": "assets/ps-five-percent-20261023/verification.json",
+      "sha256": "8fe7d54463eddc610158024943fd7216886049834e57b63fc13a00c67b9d1796",
+      "bytes": 2594
     },
     {
       "file": "assets/ps-topics-sans.woff2",
@@ -2017,8 +2072,8 @@
     },
     {
       "file": "ps-summary.html",
-      "sha256": "9f417fd072c75c4927e0f25d1d164b90efc995a7be51c8f29cc93371a47373e3",
-      "bytes": 15570
+      "sha256": "fd6eb01ca036290691df8d14bad9d86a2a15e591a8d11aa9553e9bfeecedf54c",
+      "bytes": 22743
     },
     {
       "file": "styles.css",
@@ -2036,5 +2091,5 @@
       "bytes": 2488
     }
   ],
-  "supplemental_note": "HMF theory comparison using simulation denominator"
+  "supplemental_note": "25-box five-percent agreement intervals; all adopted bins retained"
 }
