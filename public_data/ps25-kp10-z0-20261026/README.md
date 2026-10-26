@@ -9,3 +9,9 @@ Plot: ps25_paper_format_job2289693 (Slurm 2289693), five phase supplements
 
 Files: figure, spectra.csv, ratios.csv, plot summary, measurement phase_pair.npz and summary.
 No simulation snapshots are included.
+
+## BT/PL variant (no HMcode, no Sim/HM row)
+
+power-spectrum-25-btpl_20261026.png is drawn by plot_ps25_btpl.py: same colours/markers as the original
+style module, BT/PL ratio row kept on the right-hand axis of each panel, HMcode curves and the
+Sim/HM residual row removed. Text-overlap check reports 0 overlapping labels.
