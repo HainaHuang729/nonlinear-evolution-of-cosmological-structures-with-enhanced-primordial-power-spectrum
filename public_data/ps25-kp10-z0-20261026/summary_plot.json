@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "case": "kp10_0056",
+  "model": "kp10",
+  "snapshot": "0056",
+  "job": "2288271",
+  "inverted_parameter_source": "/project/tkcastrosim/HNHuang/project_21cmFast/experiments/kp10_lowz_2026-10-13/runs/run_2206684/used_parameters.yml",
+  "inverted_run": "/project/tkcastrosim/HNHuang/project_21cmFast/experiments/kp10_lowz_2026-10-13/runs/resume_2243608",
+  "z": 0.0,
+  "a": 1.0,
+  "L_box_hMpc": 25.000000012071904,
+  "original": {
+    "path": "/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0056.hdf5",
+    "bytes": 36236495322,
+    "mtime_ns": 1750455312000000000,
+    "a": 1.0000000000000002,
+    "z": -2.220446049250313e-16,
+    "n_particles": 1073741824
+  },
+  "inverted": {
+    "path": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/experiments/kp10_lowz_2026-10-13/snapshots/kp10_inv_lowz_0001.hdf5",
+    "bytes": 35135126707,
+    "mtime_ns": 1792919111615401807,
+    "a": 1.0,
+    "z": 0.0,
+    "n_particles": 1073741824
+  },
+  "actual_inverted_interval": {
+    "a_begin": 0.2251704253452914,
+    "a_end": 1.0
+  },
+  "resolution": 1024,
+  "limits": {
+    "k_f": 0.25132741216582344,
+    "k_min": 2.513274121658234,
+    "k_max": 32.1699087572254,
+    "mesh": 1024
+  },
+  "displayed_bins": 118,
+  "sim_over_hm_range": [
+    0.7437977652983405,
+    1.0237959810122463
+  ],
+  "original_cache_fractional_difference": [
+    -1.5529175945272478e-05,
+    -1.875663677819439e-06
+  ],
+  "original_cache_comparison_rtol": 0.0001,
+  "measurement_reuse_source": null,
+  "method": "Native 1024^3 NGP, one V/N shot subtraction, no window deconvolution; exact-epoch arithmetic phase mean",
+  "reference": "/project/tkcastrosim/HNHuang/project_21cmFast/article_figure_check_2026-07-08/ps25_four_redshifts_job2216698/reference_kp10.npz",
+  "reference_sha256": "2c3b4289635c0d64a29b9841aff355cc2d1db68dfdfa3200f58dbe9e10d211f6",
+  "estimator_sha256": "8be21ecde230d917cfe9e27a68edcec1b8e441f20020c346b7400fd175405e59",
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "swiftsimio": "8.0.1",
+    "numba": "0.61.2",
+    "h5py": "3.12.1"
+  },
+  "raw_data_changed": false,
+  "manuscript_changed": false
+}
