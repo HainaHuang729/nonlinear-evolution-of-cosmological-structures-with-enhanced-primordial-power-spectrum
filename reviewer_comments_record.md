@@ -2,6 +2,445 @@
 
 This document records requested manuscript changes and the corresponding revisions.
 
+## 2026-10-27. Full-Manuscript Language Audit
+
+**Source:** main.tex at commit ae359b0. Line references below refer to that version.
+
+**Status:** Implemented at the author's request. The 32 audit items and eight overlapping terminology recommendations have been addressed. The current redline uses the changes package: removed wording is struck through in black and added wording is blue; unchanged wording remains black. The original excerpts and recommendations below document the audit against ae359b0. Numerical measurements, equations, citation keys, labels, and model names were retained. Summary statements were narrowed where the measured range or compared model set required it. The pending catalog release remains a separate task.
+
+**Method:** Read the abstract, introduction, theory, numerical methods, results, discussion, conclusions, data availability, acknowledgments, every caption, and all appendices using academic-humanizer and the local cosmology-manuscript requirements. Commented-out revision history was excluded from prose findings. This is an editorial and internal-consistency audit, not an independent numerical reanalysis or a fresh literature survey.
+
+**Findings:** Nine scope or method-description checks (C01--C09), twenty language-edit candidates (S01--S20), and three optional edits (O01--O03). The second pass added C08 and S15--S19; the third added C09, S20, and O03 and independently checked the statistical terminology against the plotting scripts. Scope checks should be resolved before polishing the affected statements. Not every repeated technical definition or negative statement needs removal.
+
+### Coverage
+
+| Part | Assessment |
+| --- | --- |
+| Abstract | Generally direct; clarify the redshift scope of the power-spectrum comparison. |
+| Introduction | Mostly natural; one unnecessary negative opening and repeated setup descriptions. |
+| Theory | Two residual uses of template; the section opener can begin with definitions. |
+| Numerical methods and simulation table | Core definitions are useful; update the role of the 256-box runs and explain phase-pair averaging. |
+| Projection and HMF | Projection prose is clear; remove one HMF tautology and a repeated threshold warning. |
+| Half-mass assembly and MAH | Preserve the formation-time distinctions; simplify reference-model framing and one sample-description sentence. |
+| Density profiles and concentration | Some duplicated result statements and empty framing remain; retain uncertainty and mass-cut definitions. |
+| Matter power spectrum | The revised results paragraph is direct; the phase-pair construction still needs a methods definition. |
+| Discussion and limitations | The main remaining defensive sentence repeats the stated dark-matter-only scope. |
+| Conclusions | Correct the scope of the full-history comparison and state the D19 comparison selection precisely. |
+| Availability and acknowledgments | Keep the verified archive status; remove the generic acknowledgment before the specific credits. |
+| Numerical-range and other appendices | Most detail is necessary; review the strength of the lowest-mass resolution statement and shorten repeated scatter disclaimers. |
+
+### C01. Update the stated role of the 256-box simulations
+
+**Location:** main.tex:226, Simulation Suite and Terminology.
+
+**Original:** "The 256 h^-1 Mpc PL and BT runs are used only for the nonlinear matter power spectrum."
+
+**Issue:** The displayed power-spectrum figure, quantitative range table, and conclusion now use only the 25 h^-1 Mpc phase-pair spectra. The simulation-suite text still reads as though both boxes contribute to the current analysis.
+
+**Proposed action:** State whether the 256-box runs remain an auxiliary numerical check or are retained only in the released historical products. Align the sentence and the table description with that verified role. Keep the simulation parameters and table rows until their intended role is confirmed.
+
+### C02. Limit the full-history conclusion to the models actually plotted
+
+**Location:** main.tex:602, Conclusions; compare main.tex:379 and 433.
+
+**Original:** "The full mass-assembly histories show the same ordering."
+
+**Issue:** This follows numerical half-mass results for three models, but the full-history figure contains only PL and BT kp=1. It cannot independently establish the three-model ordering.
+
+**Proposed wording:** "The full mass-assembly histories also show earlier assembly in the kp=1 model than in PL (Sec. ...)."
+
+**Preserve:** All three half-mass redshifts and their model assignments. Use the existing BT macro in the actual TeX edit.
+
+### C03. Qualify the abstract's power-spectrum comparison by epoch
+
+**Location:** main.tex:110; related framing at main.tex:528.
+
+**Original:** "The nonlinear matter power spectrum changes more modestly."
+
+**Issue:** The current results report BT/PL approximately 4.21 at z=8.52 near k=20 h Mpc^-1, compared with approximately 1.16 at z=0. The unqualified sentence does not say which epoch or halo statistic supplies the comparison.
+
+**Proposed wording:** "The nonlinear matter power enhancement grows toward higher redshift and higher wavenumber."
+
+**Alternative:** Retain the comparison with halo statistics only after specifying its mass, scale, and redshift. Do not introduce a universal ordering among different statistics.
+
+### C04. Define phase-pair averaging in the methods
+
+**Location:** main.tex:197--199, 506, and 565.
+
+**Original:** "We use the released phase-pair-averaged spectra ..."
+
+**Issue:** The methods describe a shared seed, while the current power-spectrum section introduces phase-pair averages without explaining the pair. The averaging procedure is a methodological fact, not optional reproducibility jargon.
+
+**Proposed action:** Add a short definition based on the measurement metadata: identify the original and phase-inverted runs, the equal-epoch averaging rule, and the outputs to which it applies. Keep the single-realization statement explicitly scoped to the halo measurements. Do not call the pairs independent or amplitude-fixed unless that is verified.
+
+### C05. Retain the actual D19 accuracy selection in the conclusion
+
+**Location:** main.tex:609; compare main.tex:482.
+
+**Original:** "In Sec. ..., for the resolved mass bins, the Diemer & Joyce (2019) relation agrees with the simulation medians within 20% ..."
+
+**Issue:** "Resolved mass bins" is less specific than the selection used to establish this accuracy: 0.25-dex bins wholly above 1.89 x 10^9 solar masses and containing at least 20 halos. The figure also displays lower-mass points, so an unqualified reference to resolved bins can obscure the stricter accuracy test.
+
+**Proposed action:** Lead with the result and identify the strict selection, or explicitly refer to the selection defined in the concentration subsection. Preserve the 20% result, all three models, four redshifts, and the Diemer2019 citation.
+
+### C06. Specify which external half-mass reference uses a different mass definition
+
+**Location:** main.tex:360.
+
+**Original:** "The external simulations differ from all of our runs, including PL, in their background cosmologies and halo-mass definitions."
+
+**Issue:** The same paragraph says that COCO/Hellwing16 uses FOF masses. The blanket statement about different mass definitions is broader than the preceding description supports.
+
+**Proposed wording:** "The background cosmologies differ from ours, and BK09 uses virial rather than FOF masses. We therefore use these relations as qualitative comparisons with PL."
+
+**Preserve:** The two source citations, their stated methods, and the restriction to comparisons with PL. The next sentence need not repeat that these are not BT predictions once this scope is clear.
+
+### C07. Check the strength of the lowest-mass resolution claim
+
+**Location:** main.tex:694; compare main.tex:318 and 688--692.
+
+**Original:** "The fiducial 1024^3 HMF has substantial resolution margin above 10^8 solar masses."
+
+**Issue:** "Substantial resolution margin" is vague and reassuring. The lower-resolution numerical comparisons quoted in this appendix start at higher masses, for example 10^8.92 solar masses for the 512^3 run. They do not directly demonstrate convergence at the adopted 10^8-solar-mass threshold.
+
+**Proposed action:** Distinguish the approximately 50-particle catalog threshold from the mass ranges over which cross-resolution agreement has been tested. Keep every measured ratio and mass interval. Do not replace this sentence with a stronger claim of convergence without additional evidence.
+
+### C08. Restrict the earlier-assembly statement to low-mass halos
+
+**Location:** main.tex:364--366.
+
+**Original:** "At fixed final mass, halos in both blue-tilted models form earlier than PL halos, with the largest shift in ..."
+
+**Issue:** The next paragraph gives z_1/2 = 1.43, 1.78, and 1.39 for PL, BT kp=1, and BT kp=10 near a final mass of 2.0 x 10^11 solar masses. The kp=10 value is slightly lower than PL, so the opening is not a valid statement for every mass bin. This small difference should not be called statistically significant without an appropriate test.
+
+**Proposed wording:** "At low final halo masses, both BT models assemble earlier than PL, with the largest shift in BT kp=1."
+
+**Preserve:** All quoted half-mass redshifts and mass bins. This change narrows the summary to the range where the stated ordering is observed; it does not change the measurements.
+
+### C09. State how the half-mass crossing redshift is interpolated
+
+**Location:** main.tex:356 and 371.
+
+**Original:** "We assign z_1/2 when two consecutive snapshots lie on opposite sides of M0/2."
+
+**Source check:** zhalf_raw_adjacent in public_data/scripts/plot_same_trackid_no_envelope_allmodels.py selects the first valid increasing-mass crossing and linearly interpolates the crossing redshift between the two recorded masses. It does not just assign either snapshot's redshift or fill a missing snapshot.
+
+**Proposed wording:** "We determine z_1/2 by linear interpolation between the first pair of consecutive snapshots in which the recorded FOF mass increases through M0/2."
+
+**Reason:** Specify the measured quantity in ordinary numerical-cosmology language. Preserve the existing mass correction, tracking selection, and rule against filling missing snapshots. This is clarification of the existing calculation, not a request to recompute it.
+
+### S01. Correct the power-spectrum interval's subject--verb agreement
+
+**Location:** main.tex:571.
+
+**Original:** "The power-spectrum interval used for quantitative interpretation are ..."
+
+**Proposed wording:** "The power-spectrum interval used for quantitative interpretation is ..."
+
+**Reason:** Direct grammar correction. This mismatch was introduced when the two-box wording was shortened in the preceding revision.
+
+### S02. Replace the two remaining uses of template
+
+**Location:** main.tex:142.
+
+**Original excerpts:** "primordial power-spectrum templates"; "a PL or BT template".
+
+**Proposed wording:** "primordial power-spectrum models"; "a PL or BT model".
+
+**Reason:** Restore the established terminology preference. No model definition changes.
+
+### S03. Start the early-universe model paragraph with the adopted approach
+
+**Location:** main.tex:126.
+
+**Original:** "We do not model these mechanisms explicitly. Instead, we use broken-power-law blue-tilted spectra as examples for testing how enhanced small-scale primordial power changes nonlinear structure formation."
+
+**Proposed wording:** "We use broken-power-law blue-tilted spectra to study how enhanced small-scale primordial power changes nonlinear structure formation."
+
+**Reason:** The surrounding paragraphs already distinguish possible early-universe mechanisms from the adopted PL/BT models. Keep the following definition of BT and every attached citation.
+
+### S04. Open the theory section with the terminology it defines
+
+**Location:** main.tex:142.
+
+**Original:** "We define ... We also relate ... Throughout the paper ..."
+
+**Proposed action:** Remove the two roadmap sentences and begin with the existing definitions of primordial and input linear matter power spectra. Apply S02 to those definitions. The pivot-mass calculation is already introduced immediately before its equation.
+
+**Reason:** The section headings and equations provide the structure; the opening can deliver information directly. Keep the transfer-function, normalization, and zi=200 distinction.
+
+### S05. Remove the repeated initial-redshift sentence from the input-spectrum caption
+
+**Location:** main.tex:206.
+
+**Original:** "The spectra are evaluated at the initial redshift, zi=200."
+
+**Proposed action:** Delete this sentence only. The caption already opens with "Input linear matter power spectra at zi=200 ...".
+
+**Reason:** Remove a literal repetition while retaining the value in the caption's first sentence.
+
+### S06. Consolidate the adjacent simulation-suite setup descriptions
+
+**Location:** main.tex:224--226.
+
+**Original:** One paragraph lists matching numerical settings and initial phases; the next again introduces three matching 25 h^-1 Mpc, 1024^3 runs.
+
+**Proposed action:** Introduce the three runs and their common settings once. Retain the two BT parameter definitions because this subsection should be readable independently. Resolve C01 before describing auxiliary runs.
+
+**Reason:** Reduce repetition within a single subsection. The initial-condition explanation and standalone table caption can still state the shared phases where useful.
+
+### S07. Delete the HMF paragraph's explanation of what its points and ratios mean
+
+**Location:** main.tex:322.
+
+**Original:** "The simulation points are the measured nonlinear abundances, and the BT/PL ratios quantify changes relative to PL."
+
+**Proposed action:** Delete this sentence. Retain the preceding Reed07 prescription, its citation, and the model-specific input spectra.
+
+**Reason:** The measurement procedure and figure already define the plotted points and ratios.
+
+### S08. Remove the second statement of the same HMF lower cut
+
+**Location:** main.tex:328; compare main.tex:318.
+
+**Original:** "This interpretation is restricted to the bins above the plotted catalog cut, M_FOF >= 10^8 solar masses."
+
+**Proposed action:** Delete this closing sentence while retaining the explicit adopted cut at the beginning of the subsection and in the figure caption.
+
+**Reason:** Keep the numerical limit where the sample is defined instead of repeating it as a warning after the results.
+
+### S09. Describe the MAH sample without an ambiguous adjective or filler justification
+
+**Location:** main.tex:379.
+
+**Original excerpts:** "the central final FOF mass of a selection window"; "For simplicity, we only consider the PL and ... models."
+
+**Proposed wording:** "the final FOF mass at the center of a selection window"; "This comparison includes PL and BT kp=1."
+
+**Reason:** "Central" can be confused with central-halo status, and "for simplicity" gives no methodological explanation. Preserve the six window centers, 0.1-dex selection, tracking method, and actual model scope.
+
+### S10. Remove a repeated non-fitting disclaimer from the MAH caption
+
+**Location:** main.tex:433; compare main.tex:412.
+
+**Original:** "The analytic curves are not fitted to the plotted histories."
+
+**Proposed action:** Delete this caption sentence. The caption already identifies published parameter relations, and the text explicitly states that the parameters are not fitted to these simulations.
+
+**Reason:** The origin of the curves is clear from the positive description. Retain the one explicit methodological statement in the text.
+
+### S11. Merge repeated radial-profile trends
+
+**Location:** main.tex:454.
+
+**Original:** "The BT models differ most from PL in the resolved inner profiles. ... The lower ratio panels show that the ... enhancement is strongest ... while ... remains closer to PL."
+
+**Proposed wording:** "The largest resolved inner-density enhancement occurs in BT kp=1, particularly in the low- and intermediate-mass bins. BT kp=10 remains closer to PL, and both enhancements weaken toward larger r/R200m."
+
+**Reason:** The paragraph states the same model ordering twice. Preserve the mass dependence, radial dependence, resolved-radius qualifier, and model notation.
+
+### S12. Remove two empty concentration-result framing sentences
+
+**Location:** main.tex:474.
+
+**Original:** "The measured medians vary with mass and redshift." / "We therefore compare the models using binned medians and percentile ranges."
+
+**Proposed action:** Begin directly with the existing z=0 concentration ratios. Retain the following statement about low-mass halo-to-halo scatter. Remove the closing sentence, since the preceding methods paragraph already defines the binned medians and percentiles.
+
+**Reason:** The actual numbers and scatter are the content; the framing adds no new result.
+
+### S13. Delete the repeated instruction on how readers should interpret the simulations
+
+**Location:** main.tex:563.
+
+**Original:** "The results should therefore be interpreted as predictions for the underlying dark matter distribution, not as direct predictions for observed galaxies or lensing samples without further modeling."
+
+**Proposed action:** Delete this standalone sentence. Keep the preceding list of omitted gas, stellar, AGN, and reionization processes and their effects. Keep the galaxy-formation requirement in the observations subsection.
+
+**Reason:** The scope is already explicit. This is the clearest remaining repeated defensive statement.
+
+### S14. Remove the generic acknowledgment before the specific credits
+
+**Location:** main.tex:628.
+
+**Original:** "The authors acknowledge the computational resources and software infrastructure used to carry out the simulations and analyses presented in this work."
+
+**Proposed action:** Delete this sentence only. Keep every software citation, version, funding statement, institution, and named acknowledgment below it.
+
+**Reason:** The following paragraphs already supply the specific credits.
+
+### S15. Specify the shared normalization target
+
+**Location:** main.tex:142 and 159; compare main.tex:197 and 206.
+
+**Original excerpts:** "the common normalization"; "The transfer function and common normalization are applied ..."
+
+**Issue:** The initial-condition methods correctly describe a common sigma8 target reached through small model-dependent global factors. "Common normalization" alone can be read as the same amplitude factor for all spectra.
+
+**Proposed wording:** "normalization to the common sigma8 target".
+
+**Preserve:** The shared target sigma8 = 0.8111 and the model-dependent normalization factors. Keep the distinction between the primordial spectrum and the linear matter spectrum at zi = 200.
+
+### S16. Name the dimensionless power instead of an input value
+
+**Location:** main.tex:201.
+
+**Original:** "The largest BT input value over this range is ..."
+
+**Proposed wording:** "The largest dimensionless linear power over this range is Delta squared(k, zi) approximately 5.8 x 10^-5 for BT kp=1."
+
+**Reason:** The sentence refers to a defined physical quantity, not a generic software input. Keep the original mathematical notation, number, redshift, and restriction to the stated wavenumber range in the TeX revision.
+
+### S17. Separate sparse-bin deviations from an asserted cause
+
+**Location:** main.tex:346.
+
+**Original:** "Individual high-mass bins show larger deviations because they contain fewer halos."
+
+**Proposed wording:** "Larger deviations occur in sparsely populated high-mass bins."
+
+**Reason:** This states the observed association directly. Fewer halos increase counting uncertainty, but this alone does not identify the cause of every simulation-to-model residual. A stronger causal explanation should be retained only with supporting analysis. No error bar or quoted residual is changed.
+
+### S18. Describe evaluation of the B16 mass function directly
+
+**Location:** main.tex:342.
+
+**Original:** "The analytic curves use the Bocquet et al. (2016) M200c halo mass function ... given the PL, ... linear matter power spectra."
+
+**Proposed wording:** "We evaluate the Bocquet et al. (2016) M200c mass function using the linear matter power spectrum of each PL or BT model."
+
+**Reason:** This is a direct description of an analytic calculation. Keep the Bocquet2016 citation, the M200c definition, and all sample cuts in the preceding sentence. Do not call this training, optimization, or model performance.
+
+### S19. Identify the high-mass trend in the concentration appendix
+
+**Location:** main.tex:712.
+
+**Original:** "The I21 and D19 predictions show a similar trend."
+
+**Proposed wording:** "The I21 and D19 predictions also show an upturn at high mass."
+
+**Reason:** "A similar trend" has an uncertain antecedent after sentences about rising simulated concentrations, declining L16 concentrations, and small halo counts. State which curve behavior is meant. Retain the warning about the sparsely populated highest-mass bins and the restriction to z = 8.52.
+
+### S20. Replace a stacked noun phrase in the radial-profile caption
+
+**Location:** main.tex:459.
+
+**Original:** "Direct particle radial density profiles ..."
+
+**Proposed wording:** "Spherically averaged halo density profiles measured from simulation particles ..."
+
+**Reason:** Name the physical measurement and geometry rather than stacking implementation-oriented modifiers. The method already specifies spherical shells. Keep the model names, M200m bins, bootstrap intervals, and convergence-radius definition in the rest of the caption.
+
+### O01. Describe concentration scatter positively in the three captions
+
+**Location:** main.tex:500, 717, and 724.
+
+**Original excerpts:** "not model uncertainty"; "not model-uncertainty bands".
+
+**Proposed wording:** "The lower row shows the halo-to-halo scatter of log10 c in each mass bin."
+
+**Decision:** Optional caption compression. Keep the precise percentile formula, units, and distinction between scatter and bootstrap uncertainty. If a reader could otherwise confuse the quantities, retain one clear explanatory sentence in the main text.
+
+### O02. Reduce repeated adversarial contrasts in the previous-work subsection
+
+**Location:** main.tex:536 and 540.
+
+**Original excerpts:** "We instead measure ... without refitting ..."; "We instead analyze ... rather than only around ...".
+
+**Proposed approach:** Describe what each previous study measured, then state the present contribution positively: "Our periodic-box simulations measure halo abundance and structure across the simulation volume." Retain the actual difference from host-centered zoom-in studies, the comparisons with analytic prescriptions, and every citation.
+
+**Decision:** Optional tone edit. The literature comparisons themselves are relevant and should remain; contrasts are not automatically a writing defect.
+
+### O03. Give local mass ranges rather than one universal definition of low mass
+
+**Location:** main.tex:110, 454, 474, and 606.
+
+**Issue:** The concentration enhancement is quoted in M200c = 10^9--10^9.5 solar-mass bins, while the direct density-profile figure uses M200m bins centered on 10^10--10^11.5 solar masses. These are different measurements and mass definitions. A universal replacement of every low-mass phrase by a cutoff of 10^10 solar masses would misdescribe part of the profile sample.
+
+**Proposed action:** Use the applicable mass definition and measured range at the first discussion of each result. In the profile paragraph, refer to the lower-mass bins of that figure when that is what is meant. In the conclusion, distinguish the resolved inner-density result from the concentration result instead of implying that both were measured in the same low-mass bin. Keep the abstract qualitative unless a specific verified range is selected.
+
+**Decision:** Optional clarification of the summary, not a new halo classification or a change in the reported data.
+
+### Third-Pass Checks That Do Not Require a Correction
+
+- **Half-mass redshift:** The plotting script and released fields distinguish the mean zhalf, the median, and the 16th--84th percentile interval. The current caption correctly describes a mean and halo-to-halo range. Do not relabel those bars as uncertainty on the mean.
+- **Concentration:** plot_simulation in concentration_qc_kp10.py plots logc_median, with percentile offsets in log10 c, and labels the vertical axis log10(c200c). The manuscript's statement that these points show the median log10 c is correct. The residual calculation converts these values back to c before forming the simulation-to-prediction ratio.
+- **Radial profiles:** The released profile table labels its interval columns as bootstrap percentiles of the median density. This supports the caption's distinction between uncertainty on a median profile and halo-to-halo concentration scatter. Do not use a single generic error description for both figures.
+- **Filter and bin terminology:** A spherical top-hat filter is a physical smoothing operation, whereas a mass-selection window or a mass bin defines a sample. Window is not inherently computer jargon; any replacement must keep these meanings distinct.
+
+### Wording and qualifications to retain
+
+- The model-specific use of primordial power spectrum and enhanced small-scale power is accurate; no global synonym replacement is proposed.
+- The distinction between the primordial spectrum and the input linear matter spectrum is necessary.
+- The initial-condition linearity check does not establish nonlinear convergence. That qualification should remain.
+- The FOF, M200c, and M200m definitions, different centering choices, particle thresholds, and concentration selection must remain distinct.
+- The Correa formation parameter is not the measured half-mass redshift. The new distinction should remain.
+- The sigma definition and the stated origin of q and a are useful; they should not be shortened merely because they are technical.
+- The 90 per cent MAH completeness statement, the strict D19 accuracy selection, and the small high-mass sample warning affect interpretation and should remain.
+- Phase-pair averaging does not establish box-size convergence. Keep the methodological limitation without repeating it in every result paragraph.
+- The Maccio comparison requires its mass-definition and scatter-estimator qualifier.
+- The current Zenodo archive does not contain the catalog. Keep the accurate availability statement until the release changes.
+- Existing numerical results in the Results and Conclusions are intentionally repeated for different reading contexts; no wholesale deletion of conclusion numbers is proposed.
+
+### Original Review Order and Implementation Authorization
+
+The audit originally proposed resolving C01--C09 before applying S01--S20 and O01--O03. The author subsequently requested that the complete set be applied and marked blue. That request superseded the earlier one-item-at-a-time workflow for this pass.
+
+### Terminology Addendum: Prefer Physics and Cosmology Usage
+
+The author's additional requirement is to reduce terminology borrowed from software engineering and machine learning and use the conventional vocabulary of physics and cosmology. This requirement has also been added to the local academic-humanizer reference. The eight candidates below supplement the 32 audit findings and have now been applied to main.tex. The two uses of template were addressed under S02.
+
+| ID | Location | Current wording | Suggested wording or action |
+| --- | --- | --- | --- |
+| T01 | main.tex:110 and 206 | dark-matter baseline; standard power-law baseline | dark-matter-only simulation results; standard power-law reference spectrum. Choose the expression matching the object being described. |
+| T02 | main.tex:197 | modify the transfer-function plugin | Describe the modification to the transfer function above kp. Keep the plugin implementation details in methods documentation where needed for reproduction. |
+| T03 | main.tex:540 | population-level trends across halo mass | halo statistics as functions of mass across the simulation volume. Do not replace this with field-halo statistics unless the halo selection supports that restriction. |
+| T04 | main.tex:482 | For the strict comparison | For the comparison with D19. Retain the full particle-count and mass-bin selection immediately afterward. |
+| T05 | main.tex:500 | the model-accuracy statement in the text | the quoted agreement with D19. This states the actual comparison rather than sounding like a model-evaluation score. |
+| T06 | main.tex:644 and 651 | Numerical Interpretation Ranges; adopted numerical interpretation ranges | Numerical Limits; mass, redshift, and wavenumber ranges used for the comparisons. Preserve the existing labels and all numerical limits. |
+| T07 | main.tex:506 | released phase-pair-averaged spectra | phase-pair-averaged spectra. Explain their physical and statistical construction in the methods; describe their release in Data Availability. |
+| T08 | main.tex:199 | uncertainty associated with the particular random realization | sample variance in the PL--BT comparison. Keep the statement that the shared phases reduce this contribution; do not imply that cosmic variance is eliminated or that a variance estimate has been measured from independent realizations. |
+
+**Retain conventional technical terms:** Extended Press--Schechter formalism, analytic prescriptions, fitting functions, calibration, mass-accretion histories, halo-to-halo scatter, covariance, power-spectrum estimators, transfer functions, mesh assignment, shot noise, window functions, and Nyquist wavenumbers are normal scientific or numerical-cosmology terminology. They should not be removed solely because they also appear in computing. The distinction between an initial linear matter spectrum and a primordial spectrum must remain explicit.
+
+**Editorial criterion:** Name the physical quantity, numerical method, or measured difference. Do not replace a familiar scientific term with an unusual synonym merely to avoid repetition. For example, enhanced primordial power remains enhanced primordial power, not improved power. Preserve model names, equations, units, citations, and conclusions.
+
+## 2026-10-27. Full-Audit Implementation Record
+
+| Items | Revision made |
+| --- | --- |
+| C01 | The simulation-suite description now identifies the 256-box spectra as auxiliary released data and the 25-box runs as the source of the displayed power-spectrum comparison. The table rows and numerical parameters were retained. |
+| C02 | The full-history conclusion now compares only PL and BT kp=1. The three-model half-mass-redshift results remain unchanged. |
+| C03 | The abstract now states the redshift and wavenumber dependence of the power enhancement. The Discussion no longer assumes that its fractional amplitude is universally smaller than the halo-statistic changes. |
+| C04 | The initial-condition methods now define a phase pair and the arithmetic averaging of equal-epoch power spectra before taking BT/PL. The halo measurements remain explicitly scoped to the original simulations. This wording follows the released phase-pair measurement metadata and does not assume amplitude fixing or independent realizations. |
+| C05 | The conclusion now states the D19 selection: 0.25-dex bins lying wholly above 1.89 x 10^9 solar masses and containing at least 20 halos. The 20 per cent result is unchanged. |
+| C06 | The BK09 virial-mass difference is stated separately from the shared background-cosmology differences. The external relations remain qualitative PL comparisons. |
+| C07 | The approximately 50-particle catalog threshold is distinguished from the higher mass intervals covered by cross-resolution comparisons. No new convergence claim or numerical analysis was introduced. |
+| C08 | The earlier-assembly summary is restricted to low final halo masses. All quoted half-mass redshifts, including the high-mass kp=10 value, are unchanged. |
+| C09 | The half-mass method and caption now state the linear interpolation at the first increasing-mass crossing between consecutive snapshots, matching the existing calculation. |
+| S01 | Corrected the singular power-spectrum interval to use is. |
+| S02, S04 | Replaced both template occurrences with model and opened the theory section with its physical definitions. |
+| S03 | Replaced the negative early-universe-model opener with the adopted broken-power-law approach. |
+| S05, S06 | Removed the repeated initial-redshift caption sentence and consolidated the simulation-suite setup. |
+| S07, S08 | Removed the HMF point/ratio tautology and the repeated closing mass-cut warning. The sample definition and caption retain the threshold. |
+| S09 | Clarified that M0 is the mass at the center of a selection window and removed for simplicity from the PL/kp=1 sample description. |
+| S10 | Removed the repeated non-fitting disclaimer from the MAH caption. The origin of the parameters remains explicit in the text. |
+| S11, S20 | Condensed the radial-profile trends and described the plotted quantity as spherically averaged halo density profiles measured from simulation particles. |
+| S12 | Removed the empty concentration-result framing sentences while retaining every ratio and scatter statement. |
+| S13 | Removed the repeated instruction that the simulations are not direct galaxy or lensing predictions. The omitted physical processes and observational modeling requirement remain stated. |
+| S14 | Removed the generic acknowledgment while retaining specific credits, software versions, citations, funding, and names. |
+| S15, S16 | Named the common sigma8 target and dimensionless linear power explicitly. |
+| S17, S18 | Described sparse-bin residuals without assigning an untested sole cause, and stated directly how the B16 mass function is evaluated. |
+| S19 | Specified that the I21 and D19 high-mass concentration predictions turn upward. The sparse-bin qualification remains. |
+| O01 | Concentration captions now describe halo-to-halo scatter positively instead of repeatedly contrasting it with model uncertainty. |
+| O02 | Previous-work comparisons now state the present periodic-box contribution directly, retaining all cited studies and their methods. |
+| O03 | The radial-profile text identifies its M200m sample, and the conclusion separates the resolved inner-profile result from the low-mass concentration result. No universal low-mass cutoff was imposed. |
+| T01--T08 | Replaced generic baseline, plugin, population-level, strict-comparison, model-accuracy, and release-oriented phrasing at the audited locations. The appendix is titled Numerical Limits; the initial-phase comparison uses sample variance. Exact software names and established numerical-cosmology terms remain. |
+
+The changes use blue paragraph or caption text rather than recoloring historical revisions. Deleted filler sentences are documented by the original audit excerpts above. Figures, data tables, scripts, bibliography entries, labels, and simulation models were not changed in this pass. The remaining active catalog-release comment is retained.
+
+**Validation:** LaTeX compilation completed successfully with 23 pages. All 44 labels and all 106 citation-key occurrences were preserved, including their occurrence counts. No original numeric token was lost. The final log contains no undefined citations, undefined references, overfull boxes, or PDF-bookmark token errors. Forty revised text regions use the new blue macro. All 23 PDF pages were rendered and checked in a contact sheet, with the abstract and conclusion also inspected at full-page resolution; blue revised text and black unchanged text render correctly. Existing underfull-box and REVTeX float-placement warnings remain. No data analysis or figure regeneration was performed, and no changes have been pushed.
+
 ## 2026-10-27. Review of comments still visible in the manuscript
 
 The local branch was fast-forwarded to GitHub main at `ece6392`. The five comments below are active LaTeX comments displayed in the manuscript; commented-out historical requests are not counted as unresolved requests. Earlier status summaries below describe earlier revision rounds.
@@ -869,3 +1308,11 @@ simulation data remain outside the public package.
 
 The D19 and I21 concentration PNGs were regenerated from the assembled release
 so the article figures now match the portable plotting scripts exactly.
+## Redline Display for the Language Revision
+
+The current manuscript shows the language edits relative to commit `ae359b0`
+using the LaTeX `changes` package. Replaced or removed wording is black with
+strikethrough; added wording is blue; unchanged wording remains black. This
+display applies only to the current language revision, not earlier revisions.
+It does not introduce further scientific changes. The existing unresolved
+catalog-release comment is retained.
