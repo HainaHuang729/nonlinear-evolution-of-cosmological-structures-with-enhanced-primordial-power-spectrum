@@ -1,8 +1,14 @@
 # Article Figure Reproducibility Package
 
-This package contains the reduced numerical inputs and plotting code needed to
-regenerate all 12 figures used by the manuscript. It also includes a compact
-per-halo catalog for rebinning the main halo statistics.
+This document specifies the complete package assembled by
+`scripts/build_reproducibility_release.py`. The GitHub checkout and published
+Zenodo v1.0.0 archive do not contain all of its inputs. The compact catalog,
+clean projection inputs, radial-profile caches, and project Colossus source
+still need to be included in a public complete-package release.
+
+The commands below apply after that complete package has been assembled.
+The simulation-only power-spectrum figure can already be regenerated from the
+GitHub checkout; see the root README.
 
 ## Quick Start
 
@@ -24,6 +30,8 @@ The one-command driver uses only the current portable plotting scripts.
 ## Included Inputs
 
 - `public_data/figure_data/`: reduced figure-level CSV tables.
+- `public_data/ps25-kp10-z0-20261026/`: current phase-pair spectra, BT/PL
+  ratios, and the simulation-only plotting script.
 - `public_data/figure_data/projection/projection-clean.png`: the unlabeled 3 by
   3 projected-density mosaic used to regenerate `projection.png`.
 - `public_data/figure_data/halo_density_radial/cache/`: compact bootstrap
@@ -48,7 +56,7 @@ cluster paths. The full SWIFT snapshots, particle coordinates, and complete
 HBT-HERONS/SOAP catalogs are not included because they are hundreds of
 gigabytes per model.
 
-All 29 scripts retained with the article are included in the archive. This set
+The article scripts are included in the assembled archive. This set
 contains the portable figure scripts, upstream cluster reductions, validation
 tools, Slurm wrappers, and archived scripts kept for revision provenance.
 Archived scripts are identified in `SCRIPT_MANIFEST.csv` and are not called by

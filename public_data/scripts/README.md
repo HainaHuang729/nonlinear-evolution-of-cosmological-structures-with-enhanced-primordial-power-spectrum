@@ -27,7 +27,7 @@ figures. It does not read the full SWIFT snapshots or complete halo catalogs.
 - `plot_mass_assembly_history_correa.py`: median mass-assembly histories.
 - `bt_plot_halo_density_radial_trial_png.py`: radial density profiles.
 - `concentration_qc_kp10.py`: three concentration figures.
-- `plot_power_spectrum_public_ratio.py`: nonlinear matter power spectrum.
+- `../ps25-kp10-z0-20261026/plot_ps25_btpl.py`: current simulation-only nonlinear matter power spectrum and BT/PL ratios. The older `plot_power_spectrum_public_ratio.py` retains the historical HMcode comparison.
 - `plot_fof_hmf_resolution.py`: FOF resolution and volume appendix.
 
 ## Upstream cluster reductions

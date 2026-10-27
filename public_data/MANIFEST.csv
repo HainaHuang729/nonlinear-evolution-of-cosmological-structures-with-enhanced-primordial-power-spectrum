@@ -1,4 +1,7 @@
 file,format,n_rows,description,source
+public_data/ps25-kp10-z0-20261026/spectra.csv,csv,6144,Current phase-pair nonlinear spectra used in power-spectrum-btpl.png.,Released PS25 phase-pair measurements dated 2026-10-26
+public_data/ps25-kp10-z0-20261026/ratios.csv,csv,944,Current BT/PL ratios used in power-spectrum-btpl.png.,Released PS25 phase-pair measurements dated 2026-10-26
+public_data/ps25-kp10-z0-20261026/plot_ps25_btpl.py,py,,Portable simulation-only power-spectrum plotting script.,Released PS25 phase-pair tables
 public_data/REPRODUCIBILITY_PACKAGE.md,md,,Quick-start and scope for the self-contained all-figure reproducibility archive.,/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/REPRODUCIBILITY_PACKAGE.md
 public_data/requirements-figures.txt,txt,,Python dependencies for regenerating all manuscript figures.,/oss06/data/project/tkcastrosim/HNHuang/project_big_sim/papers/article_nonlinear_evolution_pps/public_data/requirements-figures.txt
 public_data/CATALOG_RELEASE.md,md,,Schema selection rules and validation record for the separately distributed compact per-halo catalog.,/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/public_catalog_release_2026-07-23

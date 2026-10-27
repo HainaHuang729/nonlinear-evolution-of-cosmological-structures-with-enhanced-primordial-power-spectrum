@@ -20,7 +20,8 @@ plot_mass_assembly_history_correa.py,figure,current,portable,yes,Median mass-ass
 plot_mass_assembly_history_correa.sbatch,workflow,current,cluster,no,Slurm wrapper for the MAH figure
 plot_power_spectrum_bt_over_pl.py,reduction,current,cluster,no,Nonlinear power-spectrum table generation
 plot_power_spectrum_halofit.py,archived,archived,cluster,no,Superseded direct theory comparison
-plot_power_spectrum_public_ratio.py,figure,current,portable,yes,Nonlinear matter power spectrum
+plot_power_spectrum_public_ratio.py,figure,historical,portable,no,Historical nonlinear power spectrum and HMcode comparison
+../ps25-kp10-z0-20261026/plot_ps25_btpl.py,figure,current,portable,yes,Simulation-only phase-pair spectra and BT/PL ratios
 plot_projection_public.py,figure,current,portable,yes,Projected-density mosaic labels
 plot_same_trackid_no_envelope_allmodels.py,figure,current,portable,yes,Half-mass redshift
 reproduce_all_figures.py,workflow,current,portable,entrypoint,Complete figure regeneration and validation

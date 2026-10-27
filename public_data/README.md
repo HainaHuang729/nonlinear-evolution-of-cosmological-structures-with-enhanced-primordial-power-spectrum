@@ -7,8 +7,8 @@ product rather than by raw simulation output.
 ## Contents
 
 - `MANIFEST.csv`: file-by-file inventory with descriptions and source paths.
-- `CATALOG_RELEASE.md`: schema, selections, and validation for the separately distributed compact per-halo catalog.
-- `REPRODUCIBILITY_PACKAGE.md`: quick-start instructions and the scope of the self-contained archive.
+- `CATALOG_RELEASE.md`: schema, selections, validation, and pending publication status of the prepared compact per-halo catalog.
+- `REPRODUCIBILITY_PACKAGE.md`: assembly specification and instructions for the complete package; the published v1.0.0 archive is not yet this complete package.
 - `requirements-figures.txt`: Python dependencies for regenerating the manuscript figures.
 - `figure_data/metadata/`: simulation-suite and figure-file manifests.
 - `figure_data/input_power_spectra/`: input linear matter spectra.
@@ -20,7 +20,8 @@ product rather than by raw simulation output.
 - `figure_data/halo_density/`: archived concentration-derived NFW curves for the retired `halo-density.png`; not used by the current manuscript figures.
 - `figure_data/halo_density_radial/`: direct particle-count radial density profiles and BT/PL ratios used in `halo-density-radial-n100-power.png`.
 - `figure_data/concentration/`: binned `c200c` measurements, theory ratios, mass-dependent scatter, and derived accuracy summaries.
-- `figure_data/nonlinear_power_spectrum/`: nonlinear matter power spectra, BT/PL ratios, and the (z=0) FFT-mesh convergence diagnostic.
+- `ps25-kp10-z0-20261026/`: current phase-pair nonlinear matter spectra and BT/PL ratios for the 25 h^-1 Mpc box, with the portable plotting script.
+- `figure_data/nonlinear_power_spectrum/`: historical power-spectrum comparisons and the (z=0) FFT-mesh convergence diagnostic.
 - `figure_data/appendix_fof_gap_stitching/`: archived gap-stitching diagnostic retained for revision traceability; not used by the current manuscript.
 - `figure_data/fof_hmf_resolution/`: appendix FOF mass-function resolution and volume check data.
 - `scripts/reproduce_all_figures.py`: one-command regeneration and validation of all 12 manuscript figures.
@@ -38,13 +39,15 @@ The raw SWIFT snapshots and complete HBT+/SOAP catalogs are much larger than
 the manuscript source package; the reduced files here are the data products
 used for the manuscript figures and numerical comparisons.
 
-A separate 74.2 MiB compact catalog provides the individual halo inputs used
+A separate 74.2 MiB compact catalog has been prepared with individual halo inputs used
 for the FOF and `M200c` mass functions, concentration relation, mass-assembly
 histories, and radial-profile sample. The self-contained archive combines this
 catalog with `figure_data/`, the clean projection mosaic, radial-profile
 bootstrap caches, and the project Colossus source. See `CATALOG_RELEASE.md` for
 the catalog contents, selection rules, checksums, and validation procedure. The
-large binary files are kept outside the manuscript Git repository.
+large binary files are kept outside the manuscript Git repository and have not
+yet been included in the published Zenodo archive. The clean projection inputs,
+radial caches, and project Colossus source are also absent from that archive.
 
 Paths recorded in `MANIFEST.csv` point to the local project locations from
 which the reduced products were assembled. In the assembled archive, run

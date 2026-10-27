@@ -386,7 +386,7 @@ The half-mass assembly redshift, \(z_{1/2}\), is the redshift at which a \(z=0\)
 
 \currentrevisionblue{We compare these histories with the \citet{Correa2015MAHI} mass-assembly model. This model is based on the extended Press--Schechter (EPS) framework \citep{Bond1991ExcursionSet,LaceyCole1993MergerRates}:}
 
-\Tk{Check M(zf)=M0/2. State clearly how you derive q and a}
+\currentrevisionblue{In the Correa model, \(\widetilde z_{\rm f}\) is defined by \(M(\widetilde z_{\rm f})=M_0/q\). This differs from the half-mass redshift \(z_{1/2}\), defined by \(M(z_{1/2})=M_0/2\).}
 \begin{equation}
 \label{eq:correa2015_mah}
 \revisionblue{M(z)=M_0(1+z)^{a f(M_0)}\exp[-f(M_0)z],}
@@ -395,6 +395,9 @@ The half-mass assembly redshift, \(z_{1/2}\), is the redshift at which a \(z=0\)
 \label{eq:correa2015_fm0}
 \revisionblue{f(M_0)=\left[S(M_0/q)-S(M_0)\right]^{-1/2},}
 \end{equation}
+\currentrevisionblue{where \(S(M)=\sigma^2(M)\) is the variance of the linear density contrast at \(z=0\), smoothed with a spherical top-hat filter. Thus \(\sigma(M)\) is the root-mean-square density contrast on mass scale \(M\). The filter radius encloses mass \(M\) at the present mean matter density. We compute this variance from the corresponding PL or \BTKPone{} linear matter power spectrum.}
+
+\currentrevisionblue{The published mass-dependent relations for \(\widetilde z_{\rm f}\) and \(q\) are}
 %\Tk{Need to say what are q; i.e. the numerical form of q.}
 \begin{equation}
 \revisionblue{
@@ -406,8 +409,7 @@ q&=4.137\,\widetilde z_{\rm f}^{-0.9476}.
 \label{eq:correa_q_closure}
 \end{equation}
 
-\Tk{what is $\sigma$}
-\currentrevisionblue{The quantity \(\sigma(M)\) is the root-mean-square linear density contrast at \(z=0\) after smoothing with a spherical top-hat filter. The filter radius encloses mass \(M\) at the present mean matter density, and \(S(M)=\sigma^2(M)\). We compute \(\sigma(M)\) from the corresponding PL or \BTKPone{} linear matter power spectrum. We use the published \(q\) and \(\widetilde z_{\rm f}\) relations from \citet{Correa2015MAHI}, which were derived for the WMAP5 cosmology. The coefficient \(a=1+1.686\sqrt{2/\pi}\,[\mathrm{d}D/\mathrm{d}z]_{z=0}=0.292\) is instead evaluated for our background cosmology, with \(D(0)=1\). The parameter \(q\) sets the progenitor mass scale \(M_0/q\) in the EPS calculation. Across the six mass bins in Fig.~\ref{fig:mass_assembly_history_correa}, \(q\) ranges from 2.68 to 3.20. At fixed \(M_0\), we use the same \(q\), \(\widetilde z_{\rm f}\), and \(a\) for PL and \BTKPone{}. The two predictions differ only because their linear matter power spectra give different values of \(S(M_0/q)-S(M_0)\). None of these parameters is fitted to our simulations.}
+\currentrevisionblue{These relations from \citet{Correa2015MAHI} were derived for the WMAP5 cosmology. The coefficient \(a=1+1.686\sqrt{2/\pi}\,[\mathrm{d}D/\mathrm{d}z]_{z=0}=0.292\) is instead evaluated for our background cosmology, with \(D(0)=1\). The parameter \(q\) sets the progenitor mass scale \(M_0/q\) in the EPS calculation. Across the six mass bins in Fig.~\ref{fig:mass_assembly_history_correa}, \(q\) ranges from 2.68 to 3.20. At fixed \(M_0\), we use the same \(q\), \(\widetilde z_{\rm f}\), and \(a\) for PL and \BTKPone{}. The two predictions differ only because their linear matter power spectra give different values of \(S(M_0/q)-S(M_0)\). None of these parameters is fitted to our simulations.}
 
 
 %\Tk{I don't think we need ``The faint curves use the published mass-dependent relations''. Take it out from the text and figure.}
@@ -428,7 +430,7 @@ q&=4.137\,\widetilde z_{\rm f}^{-0.9476}.
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\textwidth]{mass-assembly-history-correa.png}
-    \caption{\currentrevisionblue{{\it Upper panel:} Median FOF mass-assembly histories for halos selected at \(z=0\). Circles show PL simulation medians, and triangles show \BTKPone{} medians; the figure legend abbreviates the latter as BT. Colors indicate six final-mass windows centered on \(10^9\), \(3\times10^9\), \(10^{10}\), \(3\times10^{10}\), \(10^{11}\), and \(3\times10^{11}\,M_\odot\), each with a half-width of 0.1 dex. Halos are followed through their persistent \texttt{TrackId}, and each point is the median positive Warren-corrected FOF mass among the selected halos detected at that snapshot. Error bars show the 16th--84th percentile halo-to-halo range of \(M(z)\) in each final-mass window. Dashed and dotted curves show the Correa-EPS calculations using the published \(q\) and \(\widetilde z_{\rm f}\) relations and the PL or \BTKPone{} linear matter power spectrum. The analytic curves are not fitted to the plotted histories. {\it Middle panel:} Ratio of each simulation median to the corresponding Correa-EPS curve at the same redshift. The error bars show the same halo-to-halo intervals divided by the Correa-EPS value. {\it Lower panel:} Ratio of the normalized \BTKPone{} and PL simulation histories, \((M/M_0)_{\rm BT}/(M/M_0)_{\rm PL}\), in each final-mass window. Horizontal lines mark unity. Quantitative interpretation is restricted to \(M_0\ge10^9\,M_\odot\).} \Tk{Check why z>6 is shaded? I don't think it is justified?}}
+    \caption{\currentrevisionblue{{\it Upper panel:} Median FOF mass-assembly histories for halos selected at \(z=0\). Circles show PL simulation medians, and triangles show \BTKPone{} medians; the figure legend abbreviates the latter as BT. Colors indicate six final-mass windows centered on \(10^9\), \(3\times10^9\), \(10^{10}\), \(3\times10^{10}\), \(10^{11}\), and \(3\times10^{11}\,M_\odot\), each with a half-width of 0.1 dex. Halos are followed through their persistent \texttt{TrackId}, and each point is the median positive Warren-corrected FOF mass among the selected halos detected at that snapshot. Error bars show the 16th--84th percentile halo-to-halo range of \(M(z)\) in each final-mass window. Dashed and dotted curves show the Correa-EPS calculations using the published \(q\) and \(\widetilde z_{\rm f}\) relations and the PL or \BTKPone{} linear matter power spectrum. The analytic curves are not fitted to the plotted histories. {\it Middle panel:} Ratio of each simulation median to the corresponding Correa-EPS curve at the same redshift. The error bars show the same halo-to-halo intervals divided by the Correa-EPS value. {\it Lower panel:} Ratio of the normalized \BTKPone{} and PL simulation histories, \((M/M_0)_{\rm BT}/(M/M_0)_{\rm PL}\), in each final-mass window. Horizontal lines mark unity. Quantitative interpretation is restricted to \(M_0\ge10^9\,M_\odot\).}}
     \label{fig:mass_assembly_history_correa}
 \end{figure*}
 
@@ -501,34 +503,16 @@ We next test whether earlier halo growth also changes internal structure. We use
 
 \subsection{Power Spectrum\label{subsub:PS}}
 
-\currentrevisionblue{We measure the nonlinear matter power spectrum from the full dark matter density field. For each snapshot, we assign each particle mass to the nearest cell of a \(1024^3\) Cartesian mesh and compute the isotropically averaged spectrum with the \textsc{swiftsimio} power-spectrum utilities. The routine subtracts the Poisson term \(P_{\rm shot}=L_{\rm box}^3/N_{\rm p}\), where \(N_{\rm p}\) is the total number of simulation particles in the box. We pass \(N_{\rm p}\) to the routine as \texttt{shot\_noise\_norm}. We do not deconvolve the nearest-grid-point window or apply an aliasing correction. For plotting, we group the measurements in logarithmic bins and use the geometric-mean wavenumber and median power in each bin.}
+\currentrevisionblue{We measure the nonlinear matter power spectrum from the full dark matter density field. For each snapshot, we assign particle masses to the nearest cells of a \(1024^3\) Cartesian mesh and compute the isotropically averaged spectrum with the \textsc{swiftsimio} power-spectrum utilities. We subtract the Poisson term \(P_{\rm shot}=L_{\rm box}^3/N_{\rm p}\), where \(N_{\rm p}\) is the total number of particles. The nearest-grid-point window is not deconvolved. We use the released phase-pair-averaged spectra for the \(25\,h^{-1}{\rm Mpc}\) runs and form the BT/PL ratios from these spectra.}
 
-%\Tk{Need to cite HMcode2020 and reference \texttt{pyhmcode} url}
+\currentrevisionblue{Figure~\ref{fig:power_spectra_ratio_z0} compares PL, \BTKPone{}, and \BTKPten{} at four redshifts. The displayed interval is \(10k_{\rm f}\le k\le0.25k_{\rm Ny}\), or \(2.51\lesssim k/(h\,{\rm Mpc}^{-1})\lesssim32.2\), where \(k_{\rm f}=2\pi/L_{\rm box}\) and \(k_{\rm Ny}=\pi N_{\rm mesh}/L_{\rm box}\), with \(N_{\rm mesh}=1024\). The finite box excludes long-wavelength modes and can shift the absolute power; we focus here on BT/PL measured within the same box \citep{Takahashi2008FiniteModes}.}
 
-\currentrevisionblue{The nonlinear theory curves are computed with the HMcode2020 dark-matter-only prescription \citep{Mead2021HMcode2020}, using the \texttt{pyhmcode} implementation.\footnote{\url{https://github.com/tilmantroester/pyhmcode}}} We first construct the PL linear matter spectrum from the Eisenstein--Hu transfer function and the adopted cosmological parameters. For each BT model, we apply the broken-power-law enhancement above its \(k_p\) and supply the resulting linear spectrum to HMcode2020. The theory ratios are HMcode2020 predictions; no parameters are fitted to the simulated BT/PL ratios.
-
-Fig.~\ref{fig:power_spectra_ratio_z0} shows BT/PL ratios for the \(k_p=1\) and \(k_p=10\), \(m_s=1.5\) models in the \(25\) and \(256\,h^{-1}{\rm Mpc}\) boxes. The sim/HMcode2020 panels show \(P_{\rm sim}/P_{\rm HMcode2020}\) for each model and box. \currentrevisionblue{The lowest nonzero mode in a periodic box is \(k_{\min}=k_{\rm f}=2\pi/L_{\rm box}\). It is \(0.251\,h\,{\rm Mpc}^{-1}\) for the \(25\,h^{-1}{\rm Mpc}\) box and \(0.0245\,h\,{\rm Mpc}^{-1}\) for the \(256\,h^{-1}{\rm Mpc}\) box. Modes with \(k<k_{\min}\) are not sampled. We show measurements below \(4k_{\rm f}\) as faded open symbols. At high \(k\), we omit simulation measurements above \(0.25k_{\rm Ny}\), where \(k_{\rm Ny}=\pi N_{\rm mesh}/L_{\rm box}\). Here, \(N_{\rm mesh}=1024\) is the number of mesh cells per dimension. The power-spectrum intervals used for quantitative interpretation are therefore \(1.0\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the 25 box and \(0.098\le k/(h\,{\rm Mpc}^{-1})\le3.14\) for the 256 box. The two boxes are not spliced into a single spectrum. We interpret each box only over its adopted interval and calculate BT/PL only from runs with the same box size.}
-
-\currentrevisionblue{We test the mesh dependence by remeasuring the \(z=0\) PL spectra on a \(512^3\) mesh using the same simulation particles. Near \(0.25k_{\rm Ny}\) of the \(1024^3\) mesh, \(P_{512}/P_{1024}=0.871\) for the 25 box and \(0.864\) for the 256 box. If the leading grid error scales as the square of the cell size, these differences imply \(1024^3\)-mesh errors of \(4.3\%\) and \(4.5\%\), respectively. This test supports the adopted cutoff at the \(5\%\) level. It tests the power-spectrum estimator, not the particle-mass or force resolution of the simulations.}
-
-\currentrevisionblue{We estimate the Gaussian finite-mode uncertainty using \citeauthor{Takahashi2008FiniteModes}'s mode-count approximation \citep{Takahashi2008FiniteModes},
-\begin{equation}
-N_{\rm mode}(k)=\frac{L_{\rm box}^{3}k^2\Delta k}{2\pi^2},
-\qquad
-\frac{\sigma_P}{P}=\left(\frac{2}{N_{\rm mode}N_{\rm real}}\right)^{1/2}.
-\label{eq:finite_mode_power_error}
-\end{equation}
-Here, \(\Delta k\) is the width of the plotted bin, \(N_{\rm mode}\) is the estimated number of Fourier modes in that bin, and \(N_{\rm real}\) is the number of independent realizations. The quantity \(\sigma_P/P\) is the fractional \(1\sigma\) uncertainty. We use \(N_{\rm real}=1\). Equation~\eqref{eq:finite_mode_power_error} is a continuum approximation because the reduced data do not retain the discrete Fourier wavevectors. It is least accurate close to \(k_{\min}\). We use this estimate to assess low-\(k\) sampling, but do not apply it as a correction. We do not assign it to BT/PL because the PL and BT runs use the same initial random phases and their errors are correlated.}
-
-\currentrevisionblue{At \(z=0\) and \(1.07\), the absolute spectra from the \(25\,h^{-1}{\rm Mpc}\) box lie below both HMcode2020 and the \(256\,h^{-1}{\rm Mpc}\) measurements over their common displayed interval. Here, \(P_{25}\) and \(P_{256}\) denote spectra measured in the \(25\) and \(256\,h^{-1}{\rm Mpc}\) boxes, respectively. At \(z=0\), for example, \(P_{25}/P_{256}=0.27\) near \(k=1\,h\,{\rm Mpc}^{-1}\) and \(0.38\) near \(k=2\,h\,{\rm Mpc}^{-1}\). These differences exceed the Gaussian mode-count estimates of \(13\%\) and \(5\%\), respectively. They therefore cannot be explained by mode counting alone. Missing long-wavelength modes, nonlinear finite-volume coupling, and differences between realizations may all contribute. These effects partly cancel in BT/PL because the PL and BT runs within each box use the same initial random phases. We therefore interpret the absolute normalization of the small-box spectrum cautiously and place more weight on BT/PL.}
-
-\currentrevisionblue{At \(z=0\), both boxes give \(\BTKPone/\mathrm{PL}\simeq1\) over their common displayed interval, \(1\lesssim k/(h\,{\rm Mpc}^{-1})\lesssim3\). In the \(25\,h^{-1}{\rm Mpc}\) box, the ratio then rises to \(1.06\), \(1.10\), and \(1.17\) at \(k=5\), \(10\), and \(20\,h\,{\rm Mpc}^{-1}\), respectively. The displayed \(256\,h^{-1}{\rm Mpc}\) measurements end at \(k=3.14\,h\,{\rm Mpc}^{-1}\) and therefore do not test this higher-\(k\) rise.}
+\currentrevisionblue{\BTKPone{} has more small-scale power than PL, with a larger enhancement at higher redshift and higher \(k\). At \(z=0\), BT/PL is approximately \(1.05\), \(1.11\), and \(1.16\) near \(k=5\), \(10\), and \(20\,h\,{\rm Mpc}^{-1}\), respectively. At \(z=8.52\), it reaches approximately \(4.21\) near \(k=20\,h\,{\rm Mpc}^{-1}\). In contrast, \BTKPten{} remains close to PL at low redshift and shows a modest high-\(k\) enhancement at \(z=8.52\). The lower pivot in \BTKPone{} therefore leaves a stronger imprint on nonlinear matter clustering.}
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\textwidth]{power-spectrum_finite_box.png}
-    \caption{Nonlinear matter power spectra and BT/PL ratios at representative redshifts. The upper panels show the simulation measurements and HMcode2020 curves. Filled and open symbols identify the \(25\) and \(256\,h^{-1}{\rm Mpc}\) boxes. The middle panels show BT/PL for simulations and theory. The two bottom rows show \(P_{\rm sim}/P_{\rm HMcode2020}\) for each box. \currentrevisionblue{Faded open symbols have \(k<4k_{\rm f}\). Simulation measurements above \(0.25k_{\rm Ny}\) are omitted, giving upper limits of \(32.2\) and \(3.14\,h\,{\rm Mpc}^{-1}\) for the 25 and \(256\,h^{-1}{\rm Mpc}\) boxes, respectively. The omitted measurements remain available in the released table. No finite-volume or grid-window correction is applied.} For each box size, the PL and BT simulations use the same initial random phases. The theory curves use the corresponding input linear spectra and are not fitted to the simulations. In the fiducial \(k_p=1\), \(25\,h^{-1}{\rm Mpc}\) box at \(z=0\), BT/PL reaches \(1.17\) at \(k=20\,h\,{\rm Mpc}^{-1}\).\Tk{understand the deviation of small box pwoer spectrum.}}
-    %\Tk{If the simulation data is outside of the reliable regime, we should indicate that. Maybe using empty symbol? There should be a box-size reliable limit too. For the small box, the low k data is not reliable.}
+    \includegraphics[width=\textwidth]{power-spectrum-btpl.png}
+    \caption{\currentrevisionblue{Nonlinear matter power spectra and BT/PL ratios in the \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) simulations at \(z=0\), \(1.07\), \(3.44\), and \(8.52\). Upper panels show the phase-pair-averaged PL, \BTKPone{}, and \BTKPten{} spectra. Lower panels show the corresponding BT/PL ratios; horizontal dotted lines mark unity. Both BT models use \(m_s=1.5\), with \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\), respectively. The plotted range is \(10k_{\rm f}\le k\le0.25k_{\rm Ny}\).}}
     \label{fig:power_spectra_ratio_z0}
 \end{figure*}
 
@@ -570,7 +554,7 @@ Here, \(\Delta k\) is the width of the plotted bin, \(N_{\rm mode}\) is the esti
 
 \subsection{Numerical and Modeling Limitations}
 
-\revisionblue{The main limitations are the dark-matter-only setup, a single realization for each model using the same initial random phases, finite mass resolution, finite force resolution, and finite box size.}
+\revisionblue{The main limitations are the dark-matter-only setup, limited sampling of initial random phases, finite mass resolution, finite force resolution, and finite box size.}
 %\Tk{resolution and box size?}
 
 \currentrevisionblue{First, the simulations are collisionless dark-matter-only runs. This setup isolates the gravitational effect of the modified primordial power-spectrum model, but it omits gas cooling, star formation, stellar and active galactic nucleus (AGN) feedback, and reionization. These processes can change halo density profiles, subhalo survival, and the connection between halos and galaxies.}
@@ -578,14 +562,13 @@ Here, \(\Delta k\) is the width of the plotted bin, \(N_{\rm mode}\) is the esti
 %\Tk{I don't think they will make these interpretations.}
 The results should therefore be interpreted as predictions for the underlying dark matter distribution, not as direct predictions for observed galaxies or lensing samples without further modeling.
 
-\currentrevisionblue{Second, we have one initial realization for each model. Using the same initial random phases reduces the uncertainty associated with the chosen realization in the PL--BT ratios, but it does not quantify the variation among independent realizations. The HMF error bars include only Poisson counting uncertainties, while the concentration error bars show halo-to-halo scatter. Neither includes cosmic variance. This omission matters most for rare high-mass halos, large-scale power-spectrum modes, and statistics measured in the smaller auxiliary boxes.}
+\currentrevisionblue{Second, the main halo comparisons use one initial realization per model. Using the same initial random phases reduces the uncertainty in PL--BT ratios, but it does not measure the variation among independent realizations. The HMF error bars include only Poisson counting uncertainties, while the concentration error bars show halo-to-halo scatter. Neither includes cosmic variance. The power spectra use phase-pair averages, which reduce phase-dependent fluctuations but do not establish convergence with box size.}
 
-\currentrevisionblue{The mode-count estimate in Eq.~\eqref{eq:finite_mode_power_error} describes only the finite number of sampled Fourier modes. At low redshift, nonlinear coupling between modes can add further realization-dependent deviations. In second-order perturbation theory, this contribution relative to the linear density field grows approximately with the linear growth factor \(D(z)\), so it is expected to be larger at \(z=0\) than at high redshift \citep{Takahashi2008FiniteModes}. Missing long-wavelength modes can also shift the mean power spectrum in a finite box. We do not subtract either effect from the measurements.}
 
 
 %For the assembly histories, temporary FOF bridge or split events can interrupt a \texttt{TrackId} history.
 
-\currentrevisionblue{Third, our results are limited by resolution and box sizes, summarized in Table~\ref{tab:trusted_ranges}. The main FOF mass-function results are restricted to \(M_{\rm FOF}\ge10^8\,M_\odot\), and the assembly-history comparisons use halos with \(M_0\ge10^9\,M_\odot\) and \(z\le6\). The density profiles are not reliable for \(r<r_{\rm conv}\). The concentration-model comparisons are restricted to masses above the 1000-particle scale, \(M_{200c}=1.89\times10^9\,M_\odot\). The power-spectrum intervals used for quantitative interpretation are \(1.0\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the \(25\,h^{-1}{\rm Mpc}\) box and \(0.098\le k/(h\,{\rm Mpc}^{-1})\le3.14\) for the \(256\,h^{-1}{\rm Mpc}\) box. Appendix~\ref{app:fof_hmf_resolution} separately tests the effects of mass resolution and box volume on the FOF mass function.}
+\currentrevisionblue{Third, our results are limited by resolution and box sizes, summarized in Table~\ref{tab:trusted_ranges}. The main FOF mass-function results are restricted to \(M_{\rm FOF}\ge10^8\,M_\odot\), and the assembly-history comparisons use halos with \(M_0\ge10^9\,M_\odot\) and \(z\le6\). The density profiles are not reliable for \(r<r_{\rm conv}\). The concentration-model comparisons are restricted to masses above the 1000-particle scale, \(M_{200c}=1.89\times10^9\,M_\odot\). The power-spectrum interval used for quantitative interpretation are \(2.51\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the \(25\,h^{-1}{\rm Mpc}\) box. Appendix~\ref{app:fof_hmf_resolution} separately tests the effects of mass resolution and box volume on the FOF mass function.}
 
 %\Tk{no need to repeat}
 %\currentrevisionblue{Finally, the halo mass-function and concentration prescriptions were calibrated over finite ranges of cosmology, mass, and redshift. We evaluate each prescription with the corresponding PL or BT linear matter spectrum without refitting its parameters.}
@@ -626,7 +609,7 @@ The main conclusions are as follows:
     \currentrevisionblue{In Sec.~\ref{subsub:concentration}, for the resolved mass bins, the Diemer \& Joyce (2019) relation agrees with the simulation medians within \(20\%\) for PL, \BTKPone{}, and \BTKPten{} at all four redshifts \citep{Diemer2019}.}
 
     
-    \item \currentrevisionblue{\BTKPone{} increases the nonlinear matter power at high \(k\), but less strongly than it changes the halo statistics. At \(z=0\), \(P_{\rm BT}/P_{\rm PL}=1.17\) at \(k=20\,h\,{\rm Mpc}^{-1}\) in the fiducial box, while \BTKPten{} remains close to unity (Sec.~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}). Across the adopted intervals, the HMcode2020 BT/PL ratios differ from the simulation ratios by less than \(17\%\). The largest difference occurs for \BTKPone{} at \(z=8.52\) in the \(25\,h^{-1}{\rm Mpc}\) box. The absolute spectra show larger box-dependent differences at low redshift, so we interpret the small-box normalization cautiously.}
+    \item \currentrevisionblue{\BTKPone{} increases the nonlinear matter power at high \(k\), with a larger enhancement at higher redshift. In the \(25\,h^{-1}{\rm Mpc}\) box, \(P_{\rm BT}/P_{\rm PL}\simeq1.16\) at \(z=0\) and \(k\simeq20\,h\,{\rm Mpc}^{-1}\), while \BTKPten{} remains close to unity (Sec.~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}).}
 \end{enumerate}
 
 %\Tk{I think this paragraph can be merged into the previous bullet points. For example, the first bullet talks about halo abundance. We can say how good Reed et al. (2007) FOF and Bocquet et al. (2016) are the fit. Similarly for mass-concentration. Talk about Ishiyama et al. (2021) relation at the end}
@@ -637,9 +620,9 @@ The main conclusions are as follows:
 
 
 \Tk{Update the github to be more user friendly. Add requirement file and readme. Can upload catalogs of six redshift to Zenodo. }
-\currentrevisionblue{The reduced data files supporting the figures and quantitative comparisons are available in the \texttt{public\_data/} directory on \href{https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum}{GitHub} and are archived on \href{https://doi.org/10.5281/zenodo.22007478}{Zenodo}.} %\Tk{Use github and/or zenodo.org}
+\currentrevisionblue{The current reduced data and analysis scripts are available in the \texttt{public\_data/} directory on \href{https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum}{GitHub}. Version 1.0.0 is archived on \href{https://doi.org/10.5281/zenodo.22007478}{Zenodo}.} %\Tk{Use github and/or zenodo.org}
 The repository contains the input linear matter power spectra, binned halo mass functions, half-mass redshift summaries, median mass-assembly histories, Correa-comparison curves, radial-density profile summaries, concentration--mass summaries, nonlinear matter power-spectrum measurements, and the analysis scripts used to generate the figures. The full simulation snapshots and complete \textsc{HBT-HERONS}/\textsc{SOAP} catalogs are substantially larger than the reduced data package and are not included in the repository.
-\currentrevisionblue{The Zenodo release also contains a compact per-halo catalog with the FOF and \(M_{200c}\) inputs used at six snapshots, together with the tracked mass histories and radial-profile selection metadata. This compact catalog is sufficient to recompute the main halo statistics without distributing the complete simulation catalogs.}
+\currentrevisionblue{The compact per-halo catalog described in the repository has not yet been included in the Zenodo archive.}
 
 \begin{acknowledgments}
 The authors acknowledge the computational resources and software infrastructure used to carry out the simulations and analyses presented in this work.
@@ -680,11 +663,20 @@ TKC is supported by the `Improvement on Competitiveness in Hiring New Faculties'
 \tabcell{0.18\textwidth}{Median mass-assembly history} & \tabcell{0.17\textwidth}{\(M_{\rm FOF}(z=0)\), median \(M_{\rm FOF}(z)\)} & \tabcell{0.20\textwidth}{Quantitative use: \(M_0\ge10^9\,M_\odot\), \(z\le6\)} & \tabcell{0.36\textwidth}{\revisionblue{Halos are selected at \(z=0\) and followed through \texttt{TrackId}. Only finite positive detections enter each median. More than 90 per cent of each selected sample is detected over the quoted range.}} \\
 \tabcell{0.18\textwidth}{Direct radial halo density profiles} & \tabcell{0.17\textwidth}{Particle radial profiles in \(M_{200m}\) bins} & \tabcell{0.20\textwidth}{Plotted bins use \(10^{10}\)--\(10^{11.5}\,M_\odot\)} & \tabcell{0.36\textwidth}{\currentrevisionblue{Profiles are measured directly from simulation particles and compared with NFW profiles whose concentrations are set by the Diemer \& Joyce (2019) relation; the gray region marks radii that do not satisfy the plotted convergence criterion.}} \\
 \tabcell{0.18\textwidth}{Concentration--mass relation} & \tabcell{0.17\textwidth}{\(M_{200c}\), \(c_{200c}\)} & \tabcell{0.20\textwidth}{Plotted points require a per-halo dark matter particle count \(N_{\rm DM}\ge100\); quoted low-mass ratios use \(10^9\)--\(10^{9.5}\,M_\odot\)} & \tabcell{0.36\textwidth}{Concentrations must be finite and positive, with \(c_{200c}<500\); the quoted bin is near or above the \(\simeq500\)-particle scale.} \\
-\tabcell{0.18\textwidth}{Nonlinear matter power spectrum} & \tabcell{0.17\textwidth}{\(P(k)\), \(P_{\rm BT}/P_{\rm PL}\)} & \tabcell{0.20\textwidth}{Ratios use only PL and BT runs initialized with the same random phases; \(1.0\lesssim k/(h\,{\rm Mpc}^{-1})\lesssim32.2\) for the 25 box and \(0.098\lesssim k/(h\,{\rm Mpc}^{-1})\lesssim3.14\) for the 256 box} & \tabcell{0.36\textwidth}{The low-\(k\) limit is \(4k_{\rm f}\), where \(k_{\rm f}=2\pi/L_{\rm box}\). Points below this limit are faded and open. Simulation measurements above \(0.25k_{\rm Ny}\) are omitted to reduce uncorrected grid-assignment effects.} \\
+\tabcell{0.18\textwidth}{Nonlinear matter power spectrum} & \tabcell{0.17\textwidth}{\(P(k)\), \(P_{\rm BT}/P_{\rm PL}\)} & \tabcell{0.20\textwidth}{\(2.51\lesssim k/(h\,{\rm Mpc}^{-1})\lesssim32.2\) in the 25 box} & \tabcell{0.36\textwidth}{Phase-pair-averaged spectra; BT/PL is formed within the same box. The displayed interval is \(10k_{\rm f}\le k\le0.25k_{\rm Ny}\), with \(k_{\rm f}=2\pi/L_{\rm box}\).} \\
 \bottomrule
 \end{tabular}
 \endgroup
 \end{table*}
+
+\currentrevisionblue{We estimate the Gaussian finite-mode uncertainty using \citeauthor{Takahashi2008FiniteModes}'s mode-count approximation \citep{Takahashi2008FiniteModes},
+\begin{equation}
+N_{\rm mode}(k)=\frac{L_{\rm box}^{3}k^2\Delta k}{2\pi^2},
+\qquad
+\frac{\sigma_P}{P}=\left(\frac{2}{N_{\rm mode}N_{\rm real}}\right)^{1/2}.
+\label{eq:finite_mode_power_error}
+\end{equation}
+Here, \(\Delta k\) is the bin width, \(N_{\rm mode}\) is the estimated number of Fourier modes, and \(N_{\rm real}\) is the number of independent realizations. For an individual realization, \(N_{\rm real}=1\). The quantity \(\sigma_P/P\) is the fractional \(1\sigma\) uncertainty. This continuum approximation is least accurate near the fundamental mode \(k_{\rm f}=2\pi/L_{\rm box}\). It is a sampling diagnostic for an absolute spectrum; the correlated PL and BT measurements require a covariance estimate to assign uncertainties to BT/PL.}
 
 \section{FOF Mass-Function Resolution and Volume Check}
 \label{app:fof_hmf_resolution}

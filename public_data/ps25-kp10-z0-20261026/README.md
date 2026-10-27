@@ -15,3 +15,13 @@ No simulation snapshots are included.
 power-spectrum-25-btpl_20261026.png is drawn by plot_ps25_btpl.py: same colours/markers as the original
 style module, BT/PL ratio row kept on the right-hand axis of each panel, HMcode curves and the
 Sim/HM residual row removed. Text-overlap check reports 0 overlapping labels.
+
+## Current manuscript figure
+
+The manuscript uses `power-spectrum-btpl.png` at the repository root. Regenerate it from the released tables with:
+
+```bash
+python public_data/ps25-kp10-z0-20261026/plot_ps25_btpl.py
+```
+
+Use `--output PATH` for another destination. This version preserves the CSV measurements and extends each ratio axis to include all plotted data, including the high-redshift kp1 ratio above 2. The older PNG in this directory is retained as a historical figure. The spectra are phase-pair averages, and the displayed interval is 10 times the box fundamental wavenumber to one quarter of the mesh Nyquist wavenumber.

@@ -2,6 +2,66 @@
 
 This document records requested manuscript changes and the corresponding revisions.
 
+## 2026-10-27. Review of comments still visible in the manuscript
+
+The local branch was fast-forwarded to GitHub main at `ece6392`. The five comments below are active LaTeX comments displayed in the manuscript; commented-out historical requests are not counted as unresolved requests. Earlier status summaries below describe earlier revision rounds.
+
+| Order | Location | Comment | Current status and next action |
+| --- | --- | --- | --- |
+| 1 | Median Mass-Assembly Histories | Check the half-mass condition and explain how q and a are obtained. | Addressed in this pass: distinguish the Correa formation definition from the measured half-mass redshift; retain the published q relation and background-dependent a. |
+| 2 | Median Mass-Assembly Histories | Define sigma. | Addressed: define S(M) and sigma(M) immediately after the f(M0) equation, separately from the q and a discussion. |
+| 3 | Mass-assembly-history figure caption | Explain or remove the shading at z > 6. | Addressed: the current image and script contain no high-redshift shading; the obsolete visible comment has been removed. |
+| 4 | Nonlinear matter power-spectrum figure | Understand the small-box power-spectrum deviation. | Revised scope at the author's request: show simulation spectra and BT/PL only, with a short finite-box statement. No unique cause of the absolute-spectrum offset is claimed. |
+| 5 | Data Availability | Add a user-friendly README and requirements file; release six-snapshot catalogs on Zenodo. | Partly addressed: README and dependency files are present; the published v1.0.0 archive contains no HDF5 catalog. Catalog and complete-input publication remain pending, and the visible comment is retained. |
+
+### Item 1: distinguish the Correa formation redshift from the half-mass redshift
+
+**Comment:** Check M(zf) = M0/2 and state clearly how q and a are derived.
+
+**Revision:** Added an explicit statement that Correa's formation parameter is defined by M(tilde z_f) = M0/q, whereas the measured half-mass redshift uses M(z_1/2) = M0/2. The calculation uses the published mass-dependent q and tilde z_f relations rather than imposing a half-mass condition. The existing explanation of a from the normalized linear growth factor, including a = 0.292 for the adopted background cosmology, is retained. The resolved visible comment was removed.
+
+**Verification:** Checked Section 2.3, equations (14) and (17)--(21), of Correa et al. (2015), [Paper I](https://arxiv.org/html/1409.5228v2). The plotting script reads the published-relation curve tables; the older half-mass-closure tables are not used for the current figure. No curve, measurement, or quoted numerical result was changed.
+
+### Item 2: define sigma next to the variance formula
+
+**Comment:** What is sigma?
+
+**Revision:** Moved the definition immediately after the equation containing S(M0/q) - S(M0). The text identifies S(M) = sigma squared as the variance of the present-day linear density contrast smoothed with a spherical top-hat filter, and sigma(M) as its root-mean-square value. It also identifies the smoothing mass and the model-specific linear matter power spectrum used in the calculation. The published q relations and the explanation of a now form a separate discussion. The resolved visible comment was removed. No calculation or numerical value was changed.
+
+### Item 3: verify removal of the high-redshift shading
+
+**Comment:** Check why z > 6 is shaded and whether the shading is justified.
+
+**Revision:** Inspected the current mass-assembly-history image and its plotting script. None of the three panels contains high-redshift shading, and the caption does not describe any. Removed the obsolete visible comment. The text still uses z <= 6 for quantitative comparisons because more than 90 per cent of each selected sample is identified there. This sample-selection condition is separate from a resolution boundary. No image or data was changed.
+
+### Item 4: focus the power-spectrum comparison on BT/PL
+
+**Comment:** Understand the deviation of the small-box power spectrum.
+
+**Author's direction:** Use the simulation-only figure without HMcode. Describe the differences between BT and PL and mention finite box size briefly.
+
+**Revision:** Replaced the displayed figure with the released 25 h^-1 Mpc phase-pair spectra and BT/PL ratios. Removed the HMcode implementation and residual discussion from the main text and conclusion, along with the detailed comparison of absolute spectra from the two boxes. A single sentence explains that a finite box excludes long-wavelength modes and can shift the absolute power. It does not identify this as the demonstrated sole cause of the earlier offset. The finite-mode equation and its citation were retained in the numerical-range appendix as a diagnostic.
+
+**Data consistency:** The new ratios table gives BT(kp=1)/PL = 1.04784, 1.10605, and 1.15520 at z = 0 near k = 5, 10, and 20 h Mpc^-1. The text now rounds these to 1.05, 1.11, and 1.16 instead of the earlier single-measurement values 1.06, 1.10, and 1.17. At z = 8.52 the ratio near k = 20 h Mpc^-1 is 4.20539, reported as approximately 4.21. These are updates to the displayed measurement product, not changes to the simulation models or the direction of the result. The displayed wavenumber interval is approximately 2.51--32.2 h Mpc^-1, matching the new figure and metadata. The numerical-range table and conclusion were updated accordingly.
+
+**Figure and reproduction:** The supplied simulation-only plot clipped the high-redshift ratio because its vertical limit was 2 while the data reach approximately 5. The plotting script now chooses a limit that includes the full ratio range, uses the manuscript's BT notation, and reads the released CSV files through relative paths. It writes power-spectrum-btpl.png; the all-figure reproduction command now invokes this script. No spectrum or ratio values were altered. Historical HMcode figures and data remain in the release.
+
+**Validation:** Regenerated the figure from a separate working directory; its SHA-256 matches the manuscript image. The plot reports no overlapping labels, and visual inspection confirms that the high-redshift ratios are no longer clipped. The edited Python files pass syntax checks. The manuscript compiles to 23 pages without undefined references, undefined citations, or overfull boxes. The complete all-figure regeneration and catalog-release build were not rerun in this pass.
+
+### Item 5: verify the public release and correct its stated scope
+
+**Comment:** Make GitHub easier to use, add requirements and a README, and publish six-snapshot catalogs on Zenodo.
+
+**Verified:** The root README and requirements file exist. The root requirements file points to the six maintained figure dependencies. The current power-spectrum script runs directly from the released CSV tables. The Zenodo record is published, but its only file is a 37,259,793-byte GitHub v1.0.0 source ZIP corresponding to commit bb7891e. Its central directory contains 122 entries and no HDF5 catalog, clean projection input, radial cache, or project Colossus source. The GitHub tag and local input checks independently confirm those omissions. Metadata was checked through the [Zenodo record API](https://zenodo.org/api/records/22007478), and the archive directory was inspected using an HTTP range request.
+
+**Revision:** Corrected Data Availability and the READMEs to distinguish the current GitHub data from the archived v1.0.0 snapshot. Removed the unsupported statement that the Zenodo archive already contains the compact per-halo catalog. The quick start now gives a working command for the current power-spectrum figure and identifies the extra inputs required for the all-figure command. The catalog and complete-package documentation now state that publication remains pending. Existing extraction and validation results are retained as historical records of the prepared catalog.
+
+**Pending:** Publish the nine prepared HDF5 catalog files, their checksum manifest, the clean projection inputs, radial bootstrap caches, and project Colossus source in a complete release. The release should also include the current phase-pair power-spectrum tables and scripts. After publication, verify the uploaded archive and update the manuscript DOI and availability text. This pass did not upload or modify the Zenodo record. The active comment remains in the manuscript.
+
+### Editorial preferences applied in this review
+
+The local academic-humanizer skill now includes manuscript-specific terminology and editing requirements. In item 1, the repeated explanation that a half-mass condition is not imposed was shortened to a direct distinction between the Correa formation parameter and the measured half-mass redshift. All values, equations, and citation keys were retained. Revision text follows the manuscript's existing black-text configuration.
+
 ## Current Status
 
 - Thirty-nine requested revisions have been addressed. The EPS foundations, concentration scatter, HMcode2020 implementation, L16 high-mass limitation, final prose-consistency pass, symbol-definition audit, mass-assembly-history updates, and GitHub/Zenodo release documentation are now recorded.

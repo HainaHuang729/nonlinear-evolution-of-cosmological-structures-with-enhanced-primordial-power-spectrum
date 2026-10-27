@@ -1,4 +1,5 @@
 """PS25 BT/PL version, original colours, HMcode and Sim/HM removed; explicit layout spacing."""
+import argparse
 import csv
 from collections import defaultdict
 from pathlib import Path
@@ -8,13 +9,16 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-BASE = Path("/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_figure_check_2026-07-08/ps25_paper_format_job2289693")
-OUT = Path("/storage01/users/s1155206606/.dsh/qq-workspace/ps25_btpl.png")
+BASE = Path(__file__).resolve().parent
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output", type=Path, default=BASE.parents[1] / "power-spectrum-btpl.png")
+OUT = parser.parse_args().output
+OUT.parent.mkdir(parents=True, exist_ok=True)
 
 COLORS = {"PL": "#000000", "BTKP1": "#0072B2", "BTKP10": "#009E73"}
 MARKERS = {"PL": "o", "BTKP1": "^", "BTKP10": "s"}
 LABELS = {"pl": "PL", "kp1": "BTKP1", "kp10": "BTKP10"}
-RATIO_YLIM = (0.15, 2.0)
+DISPLAY = {"PL": "PL", "BTKP1": r"BT $k_p=1$", "BTKP10": r"BT $k_p=10$"}
 ZLIST = [0.0, 1.0717968600643704, 3.4410805658271204, 8.519850605215494]
 
 spec = defaultdict(list)
@@ -27,7 +31,7 @@ for r in csv.DictReader(open(BASE / "ratios.csv")):
     rat[(r["model"], round(float(r["redshift"]), 3))].append((float(r["k_hMpc"]), float(r["BT_over_PL"])))
 
 fig = plt.figure(figsize=(12.5, 10.5))
-outer = fig.add_gridspec(2, 2, left=0.085, right=0.975, bottom=0.075, top=0.895, hspace=0.30, wspace=0.24)
+outer = fig.add_gridspec(2, 2, left=0.085, right=0.94, bottom=0.075, top=0.895, hspace=0.30, wspace=0.30)
 axes = []
 for i, z in enumerate(ZLIST):
     inner = outer[i // 2, i % 2].subgridspec(2, 1, height_ratios=[3.0, 1.0], hspace=0.30)
@@ -45,7 +49,7 @@ for i, z in enumerate(ZLIST):
             low.plot(k, r, color=COLORS[label], marker=MARKERS[label], ls="-", lw=0.9, ms=3.4, mfc="none")
     top.set_xscale("log"); top.set_yscale("log")
     top.set_xlim(2.3, 35.0); top.set_ylim(1e-3, 1e3)
-    low.set_xscale("log"); low.set_ylim(*RATIO_YLIM)
+    low.set_xscale("log")
     low.axhline(1.0, color="0.45", lw=0.7, ls=":")
     top.set_title(rf"$z={z:.3f}$", fontsize=11, pad=6)
     for ax in (top, low):
@@ -56,15 +60,19 @@ for i, z in enumerate(ZLIST):
     top.set_yticks([1e-3, 1e-2, 1e-1, 1.0, 10.0, 100.0, 1000.0])
     low.yaxis.tick_right()
     low.yaxis.set_label_position("right")
-    low.set_yticks([0.25, 0.5, 1.0, 1.5, 2.0])
-    low.set_ylim(0.15, 2.0)
+    row_ratios = [value for (model, redshift), points in rat.items()
+                  if model != "pl" and redshift == round(z, 3)
+                  for k, value in points if 2.3 <= k <= 35.0]
+    ratio_max = max(2.0, float(np.ceil(max(row_ratios, default=1.0) * 1.08)))
+    low.set_yticks(np.arange(1.0, ratio_max + 0.1, 1.0))
+    low.set_ylim(0.8, ratio_max)
     low.tick_params(axis="y", labelsize=8)
     if i % 2 == 0:
         top.set_ylabel(r"$P(k)\ [h^{-3}\,\mathrm{Mpc}^{3}]$", fontsize=10, labelpad=4)
     low.set_ylabel(r"$\mathrm{BT/PL}$", fontsize=10, labelpad=4)
     plt.setp(top.get_xticklabels(), visible=False)
 
-handles = [plt.Line2D([], [], color=COLORS[v], marker=MARKERS[v], ls="none", mfc="none", label=v) for v in ("PL", "BTKP1", "BTKP10")]
+handles = [plt.Line2D([], [], color=COLORS[v], marker=MARKERS[v], ls="none", mfc="none", label=DISPLAY[v]) for v in ("PL", "BTKP1", "BTKP10")]
 fig.legend(handles=handles, loc="upper center", ncol=3, frameon=False, fontsize=10, bbox_to_anchor=(0.5, 0.935))
 fig.suptitle("Matter power spectrum and BT/PL ratio (simulations only)", fontsize=12, y=0.975)
 

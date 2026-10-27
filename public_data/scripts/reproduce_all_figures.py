@@ -29,7 +29,7 @@ FIGURE_NAMES = [
     "mass-assembly-history-correa.png",
     "halo-density-radial-n100-power.png",
     "concentration-qc-i21-fit.png",
-    "power-spectrum_finite_box.png",
+    "power-spectrum-btpl.png",
     "fof-hmf-resolution-volume.png",
     "concentration-qc-d19.png",
     "concentration-qc-l16.png",
@@ -208,8 +208,13 @@ def main() -> None:
     )
     run_script("8/10 concentration", "concentration_qc_kp10.py", env)
 
-    env["POWER_SPECTRUM_OUTPUT_PATH"] = str(output_dir / FIGURE_NAMES[8])
-    run_script("9/10 nonlinear power", "plot_power_spectrum_public_ratio.py", env)
+    run_script(
+        "9/10 nonlinear power",
+        str(ARTICLE_ROOT / "public_data" / "ps25-kp10-z0-20261026" / "plot_ps25_btpl.py"),
+        env,
+        "--output",
+        str(output_dir / FIGURE_NAMES[8]),
+    )
 
     env["FOF_HMF_RESOLUTION_OUTPUT_PATH"] = str(output_dir / FIGURE_NAMES[9])
     run_script("10/10 resolution appendix", "plot_fof_hmf_resolution.py", env)

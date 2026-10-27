@@ -1,10 +1,17 @@
 # Compact Article Halo Catalog
 
+## Publication Status
+
+The compact catalog was prepared and validated on the cluster. The published
+Zenodo v1.0.0 archive contains the GitHub source and reduced tables, but no HDF5
+catalog files. A separate catalog release is still pending. The schema and
+validation results below describe the prepared catalog.
+
 ## Scope
 
 The compact catalog contains the per-halo inputs needed for the main halo
-statistics in the article. It is distributed separately from the manuscript
-source because the nine compressed HDF5 files total 74.2 MiB. The existing
+statistics in the article. It is stored separately from the manuscript
+source; the nine compressed HDF5 files total 74.2 MiB. The existing
 `figure_data/` directory remains the smaller package for reproducing plotted
 points directly.
 

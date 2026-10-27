@@ -136,6 +136,12 @@ def main() -> None:
         ignore=ignore_generated,
     )
 
+    shutil.copytree(
+        ARTICLE_ROOT / "public_data" / "ps25-kp10-z0-20261026",
+        output / "public_data" / "ps25-kp10-z0-20261026",
+        ignore=ignore_generated,
+    )
+
     projection_target = output / "public_data" / "figure_data" / "projection"
     copy_file(args.projection_dir / "projection-clean.png", projection_target / "projection-clean.png")
     copy_file(
