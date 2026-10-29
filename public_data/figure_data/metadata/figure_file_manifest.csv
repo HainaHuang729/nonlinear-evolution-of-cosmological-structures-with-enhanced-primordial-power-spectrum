@@ -1,10 +1,10 @@
 figure_file,present_in_manuscript_dir,size_bytes,notes
 input-power-spectrum.png,True,175205,Input linear matter power spectra.
 projection.png,True,25306016,Projected density-field comparison.
-mass-function.png,True,180692,FOF halo mass functions and Reed07 relative differences.
+mass-function.png,True,1069681,FOF halo mass functions and Reed07 relative differences.
 mass-function-m200c-bocquet16.png,True,776104,M200c halo mass functions and B16 relative differences.
-halfmass-redshift-trackid-no-envelope.png,True,327256,Same-TrackId half-mass assembly redshifts.
-mass-assembly-history-correa.png,True,1089777,Median FOF mass-assembly histories with halo-to-halo intervals for PL and the kp=1 BT model with Correa EPS comparisons simulation-to-reference ratios and normalized BT/PL ratios.
+halfmass-redshift-trackid-no-envelope.png,True,287351,Same-TrackId half-mass assembly redshifts.
+mass-assembly-history-correa.png,True,957656,Median FOF mass-assembly histories with halo-to-halo intervals for PL and the kp=1 BT model with Correa EPS comparisons simulation-to-reference ratios and normalized BT/PL ratios.
 halo-density-radial-n100-power.png,True,992159,Direct radial density profiles and BT/PL ratios.
 concentration-qc-i21-fit.png,True,560568,Appendix concentration-mass comparison with the I21 prescription.
 power-spectrum-btpl.png,True,665742,Phase-pair nonlinear matter spectra and BT/PL ratios in the 25 h^-1 Mpc box; no HMcode comparison.

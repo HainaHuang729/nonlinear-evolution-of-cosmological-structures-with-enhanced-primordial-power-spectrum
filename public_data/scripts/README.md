@@ -77,3 +77,15 @@ They are retained for provenance and are not called by
 Temporary diagnostics, failed release copies, version snapshots, and legacy
 power-spectrum scripts are intentionally excluded because they do not produce
 the current manuscript results.
+
+## Sparse measurement display (2026-10-29)
+
+The FOF HMF, half-mass redshift, and mass-assembly history plots use the shared
+`sparse_errorbar` helper. Every original measured centre is shown as a small dot,
+with larger model symbols spaced every two samples. All original uncertainty
+segments remain plotted at every sample; caps are removed and strokes lightened.
+The MAH lower comparison spaces its large symbols every three samples while
+retaining small dots at all original centres. Continuous lines retain all their
+values. This changes display density only, without rebinning, fitting, changing
+interval definitions, or selecting by value. The FOF image is now exported at
+600 dpi. See `../FIGURE_SPARSITY_20261029.md` for the verification record.

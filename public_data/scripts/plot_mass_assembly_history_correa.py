@@ -24,7 +24,7 @@ BT_OVER_PL_OUTPUT = DATA_DIR / "bt_over_pl_mass_fraction_ratio.csv"
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from cosmology_plot_style import apply_journal_style, format_axes, save_publication_figure  # noqa: E402
+from cosmology_plot_style import apply_journal_style, format_axes, save_publication_figure, sparse_errorbar  # noqa: E402
 
 
 apply_journal_style(base_fontsize=8.5)
@@ -173,7 +173,7 @@ def make_figure(
                 bt_direct["z"].to_numpy(dtype=float),
                 interval_kind,
             )
-        ax.errorbar(
+        sparse_errorbar(ax,
             np.log10(1.0 + pl_direct["z"]),
             pl_direct["median_M_msun"],
             yerr=pl_mass_errors,
@@ -185,7 +185,7 @@ def make_figure(
             capsize=1.2,
             capthick=0.65,
         )
-        ax.errorbar(
+        sparse_errorbar(ax,
             np.log10(1.0 + bt_direct["z"]),
             bt_direct["median_M_msun"],
             yerr=bt_mass_errors,
@@ -211,7 +211,7 @@ def make_figure(
         bt_ratio_errors = (
             bt_mass_errors / bt_reference_mass if bt_mass_errors is not None else None
         )
-        ratio_ax.errorbar(
+        sparse_errorbar(ratio_ax,
             pl_ratio_x,
             pl_ratio,
             yerr=pl_ratio_errors,
@@ -223,7 +223,7 @@ def make_figure(
             capsize=1.1,
             capthick=0.6,
         )
-        ratio_ax.errorbar(
+        sparse_errorbar(ratio_ax,
             bt_ratio_x,
             bt_ratio,
             yerr=bt_ratio_errors,
@@ -247,8 +247,11 @@ def make_figure(
             ls="none",
             marker="o",
             markersize=2.6,
+            markevery=3,
             alpha=0.95,
         )
+        bt_pl_ax.plot(bt_pl_x, bt_pl_ratio, color=color, ls="none",
+                      marker=".", markersize=1.35, alpha=0.65)
         for index, row in bt_direct.reset_index(drop=True).iterrows():
             bt_over_pl_rows.append(
                 {

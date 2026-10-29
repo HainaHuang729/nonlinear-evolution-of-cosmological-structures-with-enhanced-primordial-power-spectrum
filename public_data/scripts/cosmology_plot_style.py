@@ -91,6 +91,33 @@ def format_axes(ax, *, grid: bool = False) -> None:
         ax.grid(True, which="major", color="0.88", linestyle="-", linewidth=0.5)
 
 
+def sparse_errorbar(ax, *args, marker_stride=2, marker_offset=0, **kwargs):
+    """Space large symbols while retaining every measurement and error bar.
+
+    Small dots show all measured centres. The original interval segments are
+    retained at every x coordinate, with no caps and lighter strokes. No input
+    arrays, bin definitions, or uncertainty values are subsampled.
+    """
+    kwargs = dict(kwargs)
+    kwargs["capsize"] = 0
+    kwargs["elinewidth"] = min(kwargs.get("elinewidth", 0.5), 0.5)
+    kwargs["markersize"] = min(kwargs.get("markersize", 3.0), 3.0)
+    container = ax.errorbar(*args, **kwargs)
+    line, _, bars = container.lines
+    if line is not None:
+        line.set_markevery((marker_offset, marker_stride))
+        # Retain the smaller marker at every original centre, including values
+        # with zero uncertainty or missing/nonfinite error extents.
+        ax.plot(
+            line.get_xdata(), line.get_ydata(), linestyle="none", marker=".",
+            markersize=1.35, color=line.get_color(), alpha=0.65,
+            zorder=line.get_zorder() - 0.05, label="_nolegend_",
+        )
+    for bar in bars:
+        bar.set_alpha(0.60)
+    return container
+
+
 def panel_label(ax, text, loc=(0.05, 0.90), fontsize=None, ha="left"):
     """Place a small unobtrusive label inside a panel."""
     ax.text(

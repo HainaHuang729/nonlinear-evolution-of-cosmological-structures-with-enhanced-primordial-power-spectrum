@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FixedLocator, FuncFormatter, LogFormatterMathtext, LogLocator, NullFormatter
 
-from cosmology_plot_style import JOURNAL_COLORS, apply_journal_style, format_axes, format_redshift, panel_label
+from cosmology_plot_style import JOURNAL_COLORS, apply_journal_style, format_axes, format_redshift, panel_label, sparse_errorbar
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -263,7 +263,7 @@ def main():
             r = ratios.get((snap, model), [])
             if r:
                 ax.plot(10 ** values(r, "log10_M_FOF_Msun"), values(r, "reed07_dndlog10M_interp"), style["linestyle"], color=style["color"], lw=1.15)
-                ax_model.errorbar(
+                sparse_errorbar(ax_model,
                     10 ** values(r, "log10_M_FOF_Msun"),
                     values(r, "relative_difference"),
                     yerr=values(r, "ratio_err"),
@@ -276,7 +276,7 @@ def main():
                     elinewidth=0.55,
                 )
             if p:
-                ax.errorbar(
+                sparse_errorbar(ax,
                     10 ** values(p, "log10_M_FOF_Msun"),
                     values(p, "dn_dlog10M"),
                     yerr=values(p, "poisson_err"),
@@ -294,7 +294,7 @@ def main():
                 continue
             mass, ratio, err = bt_pl_cache[(snap, model)]
             style = MODELS[model]
-            ax_bt.errorbar(mass, ratio, yerr=err, fmt=style["marker"], color=style["color"], markersize=2.9, capsize=1.2, markerfacecolor="white", markeredgewidth=0.7, elinewidth=0.55)
+            sparse_errorbar(ax_bt, mass, ratio, yerr=err, fmt=style["marker"], color=style["color"], markersize=2.9, capsize=1.2, markerfacecolor="white", markeredgewidth=0.7, elinewidth=0.55)
 
         ax_bt.axhline(1.0, color="0.2", lw=0.7, alpha=0.65)
         ax_bt.axhline(2.0, color="0.5", ls=":", lw=0.6, alpha=0.55)
@@ -343,7 +343,7 @@ def main():
         handles.append((line, point))
         labels.append(MODEL_LABELS[model])
     fig.axes[0].legend(handles, labels, loc="lower left", fontsize=8.8, frameon=True, framealpha=0.75, edgecolor="none")
-    fig.savefig(OUTPUT_PATH, dpi=120, bbox_inches=None)
+    fig.savefig(OUTPUT_PATH, dpi=600, bbox_inches=None)
     plt.close(fig)
     print(f"Saved {OUTPUT_PATH}")
 

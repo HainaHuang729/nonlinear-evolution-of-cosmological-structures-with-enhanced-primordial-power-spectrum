@@ -33,6 +33,7 @@ if str(TOOLS_DIR) not in sys.path:
 from cosmology_plot_style import (  # noqa: E402
     JOURNAL_COLORS,
     apply_journal_style,
+    sparse_errorbar,
     format_axes,
     save_publication_figure,
 )
@@ -307,7 +308,7 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
     for model, info in MODELS.items():
         sub = points[points["model"] == model].sort_values("M0_mean_msun")
         yerr = [sub["zhalf"] - sub["zhalf_q16"], sub["zhalf_q84"] - sub["zhalf"]]
-        ax.errorbar(
+        sparse_errorbar(ax,
             sub["M0_mean_msun"],
             sub["zhalf"],
             yerr=yerr,
@@ -330,6 +331,7 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
             markerfacecolor="white",
             markeredgewidth=0.8,
             linewidth=1.05,
+            markevery=2,
             label=info["label"],
         )
 
