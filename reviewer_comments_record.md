@@ -1316,3 +1316,18 @@ strikethrough; added wording is blue; unchanged wording remains black. This
 display applies only to the current language revision, not earlier revisions.
 It does not introduce further scientific changes. The existing unresolved
 catalog-release comment is retained.
+
+
+## 2026-10-29: Remove defensive phrasing around the power-spectrum comparison
+
+**Request:** Revise the two identified passages while retaining necessary objective limitations.
+
+**Passage 1, original:** "The finite box excludes long-wavelength modes and can shift the absolute power; we focus here on BT/PL measured within the same box."
+
+**Revision:** "The BT and PL spectra in each ratio are measured within the same box. The finite box excludes long-wavelength modes and can shift the absolute power." The finite-mode citation is retained. The measurement definition and finite-volume limitation are stated separately, without presenting the comparison as a response to a possible objection.
+
+**Passage 2:** Removed "Their fractional changes need not be equal." The preceding distinction between fluctuations in the full matter distribution and halo abundance and internal structure is retained.
+
+**Scope:** Existing blue additions and struck-through deletions are preserved. No numerical value, equation, citation key, figure, measurement, or conclusion was changed. The NGP-window treatment, phase-pair construction, wavenumber interval, and limitations concerning cosmic variance and box-size convergence are retained.
+
+**Validation:** The manuscript compiles successfully with latexmk. No undefined-reference or undefined-citation warnings were found; git diff --check passes.

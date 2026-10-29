@@ -1,97 +1,79 @@
-"""PS25 BT/PL version, original colours, HMcode and Sim/HM removed; explicit layout spacing."""
+"""Selected thin-line PS25 layout; all released samples retained, no smoothing."""
 import argparse
 import csv
-from collections import defaultdict
 from pathlib import Path
-
+from collections import defaultdict
 import matplotlib
-matplotlib.use("Agg")
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.lines import Line2D
+from matplotlib.ticker import FixedLocator,FuncFormatter,NullFormatter,LogLocator
 
-BASE = Path(__file__).resolve().parent
-parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("--output", type=Path, default=BASE.parents[1] / "power-spectrum-btpl.png")
-OUT = parser.parse_args().output
-OUT.parent.mkdir(parents=True, exist_ok=True)
+DATA=Path(__file__).resolve().parent
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output',type=Path,default=DATA.parents[1]/'power-spectrum-btpl.png')
+OUT=parser.parse_args().output
+OUT.parent.mkdir(parents=True,exist_ok=True)
+zs=[0,1.0717968600643704,3.4410805658271204,8.519850605215494]
+spec=defaultdict(list);rat=defaultdict(list)
+for row in csv.DictReader((DATA/'spectra.csv').open()):
+    if int(row['displayed']):spec[row['model'],round(float(row['redshift']),3)].append((float(row['k_hMpc']),float(row['P_sim'])))
+for row in csv.DictReader((DATA/'ratios.csv').open()):
+    rat[row['model'],round(float(row['redshift']),3)].append((float(row['k_hMpc']),float(row['BT_over_PL'])))
+plt.rcParams.update({'font.family':'STIXGeneral','mathtext.fontset':'stix',
+                     'font.size':10,'axes.labelsize':11,'axes.linewidth':.85,
+                     'xtick.labelsize':9,'ytick.labelsize':9,
+                     'xtick.direction':'in','ytick.direction':'in','pdf.fonttype':42})
+models=['pl','kp1','kp10']; markers=['o','^','s']
+labels=['PL',r'BT $k_p=1$',r'BT $k_p=10$']
+limits=[(.97,1.28),(.97,1.60),(.97,2.12),(.9,5.5)]
+ticks=[[1,1.1,1.2],[1,1.2,1.4,1.6],[1,1.5,2],[1,2,3,4,5]]
 
-COLORS = {"PL": "#000000", "BTKP1": "#0072B2", "BTKP10": "#009E73"}
-MARKERS = {"PL": "o", "BTKP1": "^", "BTKP10": "s"}
-LABELS = {"pl": "PL", "kp1": "BTKP1", "kp10": "BTKP10"}
-DISPLAY = {"PL": "PL", "BTKP1": r"BT $k_p=1$", "BTKP10": r"BT $k_p=10$"}
-ZLIST = [0.0, 1.0717968600643704, 3.4410805658271204, 8.519850605215494]
-
-spec = defaultdict(list)
-for r in csv.DictReader(open(BASE / "spectra.csv")):
-    if int(float(r["displayed"])) != 1:
-        continue
-    spec[(r["model"], round(float(r["redshift"]), 3))].append((float(r["k_hMpc"]), float(r["P_sim"])))
-rat = defaultdict(list)
-for r in csv.DictReader(open(BASE / "ratios.csv")):
-    rat[(r["model"], round(float(r["redshift"]), 3))].append((float(r["k_hMpc"]), float(r["BT_over_PL"])))
-
-fig = plt.figure(figsize=(12.5, 10.5))
-outer = fig.add_gridspec(2, 2, left=0.085, right=0.94, bottom=0.075, top=0.895, hspace=0.30, wspace=0.30)
-axes = []
-for i, z in enumerate(ZLIST):
-    inner = outer[i // 2, i % 2].subgridspec(2, 1, height_ratios=[3.0, 1.0], hspace=0.30)
-    top = fig.add_subplot(inner[0])
-    low = fig.add_subplot(inner[1], sharex=top)
-    axes.append((top, low, z))
-    for model, label in LABELS.items():
-        pts = sorted(spec.get((model, round(z, 3)), []))
-        if pts:
-            k, p = np.asarray(pts).T
-            top.plot(k, p, color=COLORS[label], marker=MARKERS[label], ls="none", ms=3.4, mfc="none")
-        pr = sorted(rat.get((model, round(z, 3)), []))
-        if pr and model != "pl":
-            k, r = np.asarray(pr).T
-            low.plot(k, r, color=COLORS[label], marker=MARKERS[label], ls="-", lw=0.9, ms=3.4, mfc="none")
-    top.set_xscale("log"); top.set_yscale("log")
-    top.set_xlim(2.3, 35.0); top.set_ylim(1e-3, 1e3)
-    low.set_xscale("log")
-    low.axhline(1.0, color="0.45", lw=0.7, ls=":")
-    top.set_title(rf"$z={z:.3f}$", fontsize=11, pad=6)
-    for ax in (top, low):
-        ax.grid(alpha=0.22, which="both", lw=0.4)
-        for side in ("top", "right"):
-            ax.spines[side].set_visible(False)
-    low.set_xlabel(r"$k\ [h\,\mathrm{Mpc}^{-1}]$", fontsize=10, labelpad=3)
-    top.set_yticks([1e-3, 1e-2, 1e-1, 1.0, 10.0, 100.0, 1000.0])
-    low.yaxis.tick_right()
-    low.yaxis.set_label_position("right")
-    row_ratios = [value for (model, redshift), points in rat.items()
-                  if model != "pl" and redshift == round(z, 3)
-                  for k, value in points if 2.3 <= k <= 35.0]
-    ratio_max = max(2.0, float(np.ceil(max(row_ratios, default=1.0) * 1.08)))
-    low.set_yticks(np.arange(1.0, ratio_max + 0.1, 1.0))
-    low.set_ylim(0.8, ratio_max)
-    low.tick_params(axis="y", labelsize=8)
-    if i % 2 == 0:
-        top.set_ylabel(r"$P(k)\ [h^{-3}\,\mathrm{Mpc}^{3}]$", fontsize=10, labelpad=4)
-    low.set_ylabel(r"$\mathrm{BT/PL}$", fontsize=10, labelpad=4)
-    plt.setp(top.get_xticklabels(), visible=False)
-
-handles = [plt.Line2D([], [], color=COLORS[v], marker=MARKERS[v], ls="none", mfc="none", label=DISPLAY[v]) for v in ("PL", "BTKP1", "BTKP10")]
-fig.legend(handles=handles, loc="upper center", ncol=3, frameon=False, fontsize=10, bbox_to_anchor=(0.5, 0.935))
-fig.suptitle("Matter power spectrum and BT/PL ratio (simulations only)", fontsize=12, y=0.975)
-
-fig.canvas.draw()
-renderer = fig.canvas.get_renderer()
-texts = []
-for ax in fig.axes:
-    for t in [ax.title, ax.xaxis.label, ax.yaxis.label, *ax.get_xticklabels(), *ax.get_yticklabels()]:
-        if t.get_text().strip() and t.get_visible():
-            bb = t.get_window_extent(renderer)
-            if bb.width > 1 and bb.height > 1:
-                texts.append((t.get_text().strip(), bb))
-overlaps = 0
-for i in range(len(texts)):
-    for j in range(i + 1, len(texts)):
-        a, b = texts[i][1], texts[j][1]
-        if a.overlaps(b):
-            overlaps += 1
-            if overlaps <= 5:
-                print("overlap:", repr(texts[i][0]), "<->", repr(texts[j][0]))
-fig.savefig(OUT, dpi=250, bbox_inches=None)
-print("saved", OUT, "text_overlaps:", overlaps)
+colors=['#000000','#0072B2','#009E73']
+fig=plt.figure(figsize=(7.8,6.45))
+outer=fig.add_gridspec(2,2,left=.095,right=.982,bottom=.083,top=.925,
+                      hspace=.27,wspace=.23)
+pairs=[]
+for i,z in enumerate(zs):
+    sub=outer[i//2,i%2].subgridspec(2,1,height_ratios=[2.7,1],hspace=.045)
+    p=fig.add_subplot(sub[0]);r=fig.add_subplot(sub[1],sharex=p);pairs.append((p,r))
+    for ax in (p,r):
+        ax.set_xscale('log');ax.set_xlim(2.4,33.5)
+        ax.xaxis.set_major_locator(FixedLocator([3,5,10,20,30]))
+        ax.xaxis.set_major_formatter(FuncFormatter(lambda v,_:f'{v:g}'))
+        ax.xaxis.set_minor_formatter(NullFormatter())
+        ax.tick_params(which='both',top=True,right=True)
+        ax.tick_params(which='major',length=4,width=.85,pad=3)
+        ax.tick_params(which='minor',length=2,width=.65)
+    p.set_yscale('log');p.yaxis.set_minor_formatter(NullFormatter())
+    for j,m in enumerate(models):
+        xy=np.array(sorted(spec[m,round(z,3)]))
+        p.plot(xy[:,0],xy[:,1],color=colors[j],lw=1.25,
+               ls=['-','-','--'][j],marker=markers[j],markevery=(j*2,11),
+               ms=3,mfc='white',mew=.7,zorder=3-j*.1)
+        if m!='pl':
+            xy=np.array(sorted(rat[m,round(z,3)]))
+            r.plot(xy[:,0],xy[:,1],color=colors[j],lw=1.05,
+                   ls='-' if j==1 else '--',marker=markers[j],
+                   markevery=(j*2,12),ms=2.5,mfc='white',mew=.65)
+    allp=[v for m in models for k,v in spec[m,round(z,3)]]
+    p.set_ylim(min(allp)/1.3,max(allp)*1.55)
+    p.text(.94,.90,rf'$z={z:.2f}$',transform=p.transAxes,ha='right',va='top',fontsize=12)
+    p.tick_params(labelbottom=False)
+    r.set_ylim(*limits[i]);r.yaxis.set_major_locator(FixedLocator(ticks[i]))
+    r.yaxis.set_major_formatter(FuncFormatter(lambda v,_:f'{v:g}'))
+    r.axhline(1,color='.50',lw=.65,ls=':',zorder=0)
+    r.set_xlabel(r'$k\ [h\,\mathrm{Mpc}^{-1}]$',labelpad=3)
+    if i%2==0:p.set_ylabel(r'$P(k)\ [h^{-3}\,\mathrm{Mpc}^{3}]$',labelpad=5)
+    r.set_ylabel('BT / PL',labelpad=5)
+    # Keep every local ratio scale visible: ranges differ between epochs.
+    r.grid(axis='y',color='#E5E7EA',lw=.45,zorder=0)
+handles=[Line2D([],[],color=c,marker=m,ls=['-','-','--'][j],
+                lw=1.25,ms=4,mfc='white',mew=.8,label=l)
+         for j,(c,m,l) in enumerate(zip(colors,markers,labels))]
+fig.legend(handles=handles,loc='upper center',ncol=3,frameon=False,
+           bbox_to_anchor=(.54,.991),fontsize=10.5,columnspacing=2.8,handlelength=2)
+fig.savefig(OUT,dpi=300)
+plt.close(fig)
+print('saved',OUT)
