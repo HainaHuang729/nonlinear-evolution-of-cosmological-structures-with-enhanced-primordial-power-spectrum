@@ -1331,3 +1331,14 @@ catalog-release comment is retained.
 **Scope:** Existing blue additions and struck-through deletions are preserved. No numerical value, equation, citation key, figure, measurement, or conclusion was changed. The NGP-window treatment, phase-pair construction, wavenumber interval, and limitations concerning cosmic variance and box-size convergence are retained.
 
 **Validation:** The manuscript compiles successfully with latexmk. No undefined-reference or undefined-citation warnings were found; git diff --check passes.
+
+
+## 2026-10-30: Explain inverted phases and accept the language revisions
+
+**Request:** Cite the inverted-phase paper, explain the purpose of the phase pair, and clean up the blue additions and edited text.
+
+**Revision:** The initial-conditions paragraph now cites Pontzen et al. (2016), Physical Review D 93, 103519, doi:10.1103/PhysRevD.93.103519. It defines the reversed initial linear density field and the equivalent Fourier-phase shift by pi with amplitudes retained. The arithmetic mean of the two measured spectra is taken before forming BT/PL. Averaging cancels contributions odd under the initial-field reversal, reducing phase-dependent fluctuations in the finite simulation volume. This explanation concerns phase pairing; it does not assert fixed Fourier amplitudes or a measured variance-reduction factor for this simulation set. Halo measurements still use the original simulations. Existing statements about missing long-wavelength modes, finite box size, and the absence of a box-size convergence test are retained.
+
+**Presentation:** Accepted all existing blue additions and removed struck-through deletions and their LaTeX diff machinery. Removed the addressed phase-pair comment. Other unresolved author comments and commented-out historical notes are retained. The adopted scientific results, numerical values, figures, and existing active citations are unchanged. The only substantive addition is the explanation and its reference.
+
+**Verification:** latexmk compiled the manuscript successfully, including the new bibliography entry, with no undefined citations or references. Existing float-placement and box-layout warnings remain. git diff --check passes. A comparison against the accepted pre-edit text confirms that prose outside the requested paragraph is unchanged apart from whitespace and diff-artifact cleanup; figure paths and labels are unchanged, and exactly one active citation was added.
