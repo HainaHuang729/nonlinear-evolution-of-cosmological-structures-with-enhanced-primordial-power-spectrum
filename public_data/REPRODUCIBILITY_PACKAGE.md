@@ -1,14 +1,23 @@
 # Article Figure Reproducibility Package
 
-This document specifies the complete package assembled by
-`scripts/build_reproducibility_release.py`. The GitHub checkout and published
-Zenodo v1.0.0 archive do not contain all of its inputs. The compact catalog,
-clean projection inputs, radial-profile caches, and project Colossus source
-still need to be included in a public complete-package release.
+The complete v1.1.0 package is available on
+[Zenodo](https://doi.org/10.5281/zenodo.23788725) as
+`nonlinear-complete-v1.1.0.tar.gz`, with a SHA-256 sidecar and validation report.
+It includes all nine compact catalogs, clean projection inputs, radial-profile
+caches, and the project Colossus source. The smaller GitHub checkout and the
+original v1.0.0 archive do not include all of these binary inputs.
 
-The commands below apply after that complete package has been assembled.
-The simulation-only power-spectrum figure can already be regenerated from the
-GitHub checkout; see the root README.
+Catalog checksums and comparisons with the current article tables pass. All
+12 figures were regenerated from an isolated package directory. The archive
+contains original manuscript images and verification outputs, validation logs,
+and exact tested dependency versions under `verification/`. Small image-bound
+and font-rendering differences can occur across environments. The package
+also contains the manuscript TeX source, original figures, and required
+bibliography style. The compiled PDF and duplicate validation images are
+kept outside the archive to reduce download size.
+
+The commands below apply inside the extracted complete archive. The current
+simulation-only power spectrum can also be regenerated directly from GitHub.
 
 ## Quick Start
 

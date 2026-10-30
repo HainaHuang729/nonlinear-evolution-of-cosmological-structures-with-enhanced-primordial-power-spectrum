@@ -7,8 +7,8 @@ product rather than by raw simulation output.
 ## Contents
 
 - `MANIFEST.csv`: file-by-file inventory with descriptions and source paths.
-- `CATALOG_RELEASE.md`: schema, selections, validation, and pending publication status of the prepared compact per-halo catalog.
-- `REPRODUCIBILITY_PACKAGE.md`: assembly specification and instructions for the complete package; the published v1.0.0 archive is not yet this complete package.
+- `CATALOG_RELEASE.md`: schema, selections, validation, and download location of the compact per-halo catalog.
+- `REPRODUCIBILITY_PACKAGE.md`: download and reproduction instructions for the complete v1.1.0 package.
 - `requirements-figures.txt`: Python dependencies for regenerating the manuscript figures.
 - `figure_data/metadata/`: simulation-suite and figure-file manifests.
 - `figure_data/input_power_spectra/`: input linear matter spectra.
@@ -39,15 +39,16 @@ The raw SWIFT snapshots and complete HBT+/SOAP catalogs are much larger than
 the manuscript source package; the reduced files here are the data products
 used for the manuscript figures and numerical comparisons.
 
-A separate 74.2 MiB compact catalog has been prepared with individual halo inputs used
+The complete v1.1.0 archive includes a 74.2 MiB compact catalog with individual halo inputs used
 for the FOF and `M200c` mass functions, concentration relation, mass-assembly
 histories, and radial-profile sample. The self-contained archive combines this
 catalog with `figure_data/`, the clean projection mosaic, radial-profile
 bootstrap caches, and the project Colossus source. See `CATALOG_RELEASE.md` for
 the catalog contents, selection rules, checksums, and validation procedure. The
-large binary files are kept outside the manuscript Git repository and have not
-yet been included in the published Zenodo archive. The clean projection inputs,
-radial caches, and project Colossus source are also absent from that archive.
+large binary files are kept outside the manuscript Git repository and are
+included in the [complete v1.1.0 release](https://doi.org/10.5281/zenodo.23788725),
+together with clean projection inputs, radial caches, and project Colossus
+source. The original v1.0.0 archive did not include these materials.
 
 Paths recorded in `MANIFEST.csv` point to the local project locations from
 which the reduced products were assembled. In the assembled archive, run

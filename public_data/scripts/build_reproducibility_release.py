@@ -7,6 +7,7 @@ import argparse
 import csv
 import hashlib
 from pathlib import Path
+import re
 import shutil
 import tarfile
 
@@ -115,12 +116,22 @@ def main() -> None:
         if source.exists():
             copy_file(source, output / optional_name)
 
+    # Keep the manuscript compilable as well as its figures reproducible.
+    manuscript = (ARTICLE_ROOT / "main.tex").read_text(encoding="utf-8")
+    active_tex = "\n".join(re.split(r"(?<!\\)%", line, maxsplit=1)[0] for line in manuscript.splitlines())
+    for image_name in sorted(set(re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", active_tex))):
+        copy_file(ARTICLE_ROOT / image_name, output / image_name)
+    for style_name in re.findall(r"\\bibliographystyle\{([^}]+)\}", active_tex):
+        source = ARTICLE_ROOT / f"{style_name}.bst"
+        if source.exists():
+            copy_file(source, output / source.name)
+
     shutil.copytree(
         ARTICLE_ROOT / "public_data" / "figure_data",
         output / "public_data" / "figure_data",
         ignore=ignore_generated,
     )
-    for name in ("README.md", "CATALOG_RELEASE.md", "MANIFEST.csv"):
+    for name in ("README.md", "CATALOG_RELEASE.md", "MANIFEST.csv", "REPRODUCIBILITY_PACKAGE.md", "requirements-figures.txt"):
         copy_file(ARTICLE_ROOT / "public_data" / name, output / "public_data" / name)
     copy_file(
         ARTICLE_ROOT / "public_data" / "REPRODUCIBILITY_PACKAGE.md",

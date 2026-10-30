@@ -2,10 +2,12 @@
 
 ## Publication Status
 
-The compact catalog was prepared and validated on the cluster. The published
-Zenodo v1.0.0 archive contains the GitHub source and reduced tables, but no HDF5
-catalog files. A separate catalog release is still pending. The schema and
-validation results below describe the prepared catalog.
+The nine compressed HDF5 files and their manifest are included in the
+[complete v1.1.0 Zenodo release](https://doi.org/10.5281/zenodo.23788725),
+under `halo_catalog/`. Their sizes and SHA-256 checksums match the prepared
+2026-07-23 catalog. Validation against the current reduced article tables
+passes; the archive includes the validation log and tested dependency versions.
+The original v1.0.0 source archive did not contain these catalogs.
 
 ## Scope
 

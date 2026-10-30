@@ -1,0 +1,118 @@
+{
+  "release": "v1.1.0",
+  "date": "2026-10-30",
+  "python": "3.9.6",
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "packages": {
+    "numpy": "1.25.2",
+    "pandas": "2.3.3",
+    "matplotlib": "3.9.4",
+    "scipy": "1.13.1",
+    "h5py": "3.9.0",
+    "PIL": "11.3.0"
+  },
+  "catalog_checksums": [
+    {
+      "file": "fof_hmf_source_BT_kp1.hdf5",
+      "bytes": 2424408,
+      "sha256": "a6936a2abb328f471e037ec2aab6e5cf8c0da0e18654a7ce1f3d4f81d07bd908"
+    },
+    {
+      "file": "fof_hmf_source_BT_kp10.hdf5",
+      "bytes": 1476201,
+      "sha256": "ce108d24a5018876ea358ca760ae7147fbe31d54759bf1600e3b41bd437d9852"
+    },
+    {
+      "file": "fof_hmf_source_PL.hdf5",
+      "bytes": 1108228,
+      "sha256": "dac1f728a0bb3875c38f385e51dda44faeb03faaae9edb8db8dfdc650e3f0022"
+    },
+    {
+      "file": "m200c_concentration_source_BT_kp1.hdf5",
+      "bytes": 25844280,
+      "sha256": "7eaf8adba911b65ce37c686cf1bd8de38f6c2cfaf5c1cce85b9b45a346ba2b0d"
+    },
+    {
+      "file": "m200c_concentration_source_BT_kp10.hdf5",
+      "bytes": 12378596,
+      "sha256": "20861e0d251d2ea739bb1cfb8f472ff79e59fd66f261f442128987d3c44e566c"
+    },
+    {
+      "file": "m200c_concentration_source_PL.hdf5",
+      "bytes": 7889926,
+      "sha256": "e16124698ae82a616c4da20a82b55eaf727f2e0b829ea2d0994b07c9aed3461b"
+    },
+    {
+      "file": "mah_track_source_BT_kp1.hdf5",
+      "bytes": 16876001,
+      "sha256": "083bc43f9feb06cdcd6579a98b1670223d5a03b91e13c1836d485c97e0b73bf7"
+    },
+    {
+      "file": "mah_track_source_PL.hdf5",
+      "bytes": 9539428,
+      "sha256": "1a9902e7774e0dd3db16553a350b408e4699bbd5565b423c6855020024b93af5"
+    },
+    {
+      "file": "radial_profile_selection.hdf5",
+      "bytes": 288505,
+      "sha256": "d4b2a8d26dcaf8324893f48ccf5652ff696d62994b4cee89e42821ec9fcdac5c"
+    }
+  ],
+  "catalog_validation": {
+    "fof_points": 540,
+    "m200c_rows": 3183867,
+    "mah_bin_snapshots": 336,
+    "radial_selections": 1198,
+    "passed": true
+  },
+  "figure_reproduction": {
+    "count": 12,
+    "passed": true,
+    "working_directory": "isolated complete-package directory",
+    "reference_unchanged": true,
+    "bitwise_matches": [
+      "power-spectrum-btpl.png",
+      "mass-assembly-history-correa.png",
+      "halfmass-redshift-trackid-no-envelope.png"
+    ],
+    "projection_pixels_match": true,
+    "notes": "Remaining PNGs have small bounding-box/font-rendering differences across environments. Scientific inputs and displayed numerical tables are preserved; concentration output tables agree within 1e-10 absolute tolerance.",
+    "csv_serialization_note": "Two plotting scripts rewrote CSV serialization during regeneration. Numerical equivalence was verified at rtol=atol=1e-12; the distributed CSVs were restored to the original byte-identical inputs."
+  },
+  "colossus": {
+    "upstream_commit": "e51408a3eaffef073da1df767160cb2441177cc0",
+    "concentration_py_sha256": "1070caec5f3eb4760f3613121aa4f03fa2b5bc1903548e42db906e856bf15ae8",
+    "license": "MIT",
+    "project_extensions": [
+      "eisenstein98_pl",
+      "eisenstein98_bt",
+      "eisenstein98_bt_soft"
+    ]
+  },
+  "version_doi": "10.5281/zenodo.23788725",
+  "latex": {
+    "passed": true,
+    "undefined_citations_or_references": false,
+    "notes": "Existing float-placement and box-layout warnings remain."
+  },
+  "manuscript_source_base_commit": "e558200",
+  "release_specific_edits": [
+    "Data Availability updated to this version DOI and addressed release comment removed",
+    "Complete-package builder includes manuscript images and bibliography style"
+  ],
+  "requirements_distribution_names_verified": true,
+  "archive": {
+    "file": "nonlinear-complete-v1.1.0.tar.gz",
+    "bytes": 137547631,
+    "sha256": "7942879c060b535b11d122366cf2acb9a1a0a709e626eb1bb53eb683b8db2c7f"
+  },
+  "public_verification": {
+    "record_id": 23788725,
+    "version": "v1.1.0",
+    "doi": "10.5281/zenodo.23788725",
+    "archive_download_sha256": "7942879c060b535b11d122366cf2acb9a1a0a709e626eb1bb53eb683b8db2c7f",
+    "all_three_files_verified": true
+  },
+  "doi_resolves_to_public_record": true,
+  "manuscript_tex_sha256": "5f475e99e7bb0308bd5efc1de97a9eca71d62871c3ed713cafa90ea9401bb49c"
+}

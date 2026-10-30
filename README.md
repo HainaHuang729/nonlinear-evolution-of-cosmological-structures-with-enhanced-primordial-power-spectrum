@@ -24,20 +24,24 @@ python public_data/ps25-kp10-z0-20261026/plot_ps25_btpl.py
 
 This writes `power-spectrum-btpl.png` at the repository root.
 
-Regenerating all 12 manuscript figures also requires the project Colossus
-source under `software/colossus/`, the clean projection mosaic and its metadata,
-and the radial-profile bootstrap caches. These inputs are not in the GitHub
-checkout or the published Zenodo v1.0.0 archive. See
-`public_data/REPRODUCIBILITY_PACKAGE.md` for the complete-package specification.
-After those inputs have been assembled, run:
+The complete v1.1.0 reproduction package, including the compact halo catalog,
+projection inputs, radial-profile caches, and project Colossus source, is
+available on [Zenodo](https://doi.org/10.5281/zenodo.23788725). Download
+`nonlinear-complete-v1.1.0.tar.gz` and its SHA-256 sidecar from that record.
+After checking the archive checksum and extracting it, run inside the package:
 
 ```bash
+python -m pip install -r requirements.txt
+python public_data/scripts/validate_article_halo_catalog.py halo_catalog --article-root .
 python public_data/scripts/reproduce_all_figures.py
 ```
 
-The command writes the figures to `reproduced_figures/` and creates
-`figure_manifest_sha256.csv` with their dimensions, sizes, and SHA-256
-checksums. Add `--overwrite` to replace an existing output directory.
+The command writes 12 figures to `reproduced_figures/` and records dimensions,
+byte sizes, and SHA-256 checksums in `figure_manifest_sha256.csv`. The archive
+also includes the original manuscript figures and successful verification
+outputs. See `verification/requirements-tested.txt` for the exact tested
+dependency versions. The smaller GitHub checkout contains the reduced tables
+and scripts; download the complete archive for all binary inputs.
 
 ## Repository Layout
 
@@ -56,16 +60,15 @@ checksums. Add `--overwrite` to replace an existing output directory.
 
 ## Data Release
 
-The v1.0.0 source and reduced-data archive is available on
-[Zenodo](https://doi.org/10.5281/zenodo.22007478). It preserves the repository
-at commit `bb7891e`; later manuscript changes and the October power-spectrum
-tables are available in the current GitHub branch.
+The [complete v1.1.0 release](https://doi.org/10.5281/zenodo.23788725) contains
+all figure inputs and a 74.2 MiB compact catalog: nine HDF5 files with FOF and
+`M200c` halo inputs at snapshots 24, 27, 30, 32, 40, and 56, tracked mass
+histories, and radial-profile selections. All catalog checksum and table
+validation checks pass, and all 12 figures were regenerated from the package.
 
-A 74.2 MiB compact catalog has been prepared separately, with FOF and `M200c`
-halo inputs at snapshots 24, 27, 30, 32, 40, and 56, tracked mass histories,
-and radial-profile selection metadata. It is not included in the current
-Zenodo archive. Publication of that catalog and the complete figure inputs
-remains pending.
+The [original v1.0.0 archive](https://doi.org/10.5281/zenodo.22007478) preserves
+the source and reduced tables at commit `bb7891e`. It remains available as a
+historical version; use v1.1.0 for the complete current reproduction package.
 
 The full SWIFT snapshots and complete HBT-HERONS and SOAP catalogs are not
 included because they are hundreds of gigabytes per model and are not required
