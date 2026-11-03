@@ -251,7 +251,7 @@ Volume & PL-256-512 & -- & -- & \(512^3\) & 256 & \(1.09\times 10^{10}\) & 14.85
 
 We use Friends-of-Friends (FOF) and spherical-overdensity (SO) masses for different measurements. \textsc{SWIFT} identifies FOF groups with a linking length equal to $0.2$ times the mean interparticle separation \citep{Davis1985FOF}. We denote the total dark matter mass of each group by $M_{\rm FOF}$. \textsc{HBT-HERONS} identifies the bound objects associated with these groups and retains candidates with at least 20 particles \citep{Victor25HBTHERONS}.
 
-We use \textsc{SOAP} to measure SO properties around the position of the most-bound \textsc{HBT-HERONS} particle \citep{McGibbon2025SOAP}. For a reference density $\rho_{\rm ref}(z)$, $R_{200}$ encloses a mean density $200\rho_{\rm ref}(z)$, and
+We use \textsc{SOAP} to measure SO properties around the position of the most-bound \textsc{HBT-HERONS} particle \citep{McGibbon2025SOAP}. For a reference density $\rho_{\rm ref}(z)$, $R_{200}$ is the radius of a sphere within which the matter has an average density of $200\rho_{\rm ref}(z)$, and
 \begin{equation}
 M_{200}=\frac{4\pi}{3}\,200\rho_{\rm ref}(z)R_{200}^3.
 \end{equation}
@@ -266,7 +266,7 @@ We describe halo structure with the Navarro--Frenk--White (NFW) density profile 
 \end{equation}
 where \(r_s\) is the scale radius and \(\rho_s\) is the characteristic density. The \(200c\) concentration is \(c_{200c}=R_{200c}/r_s\).
 
-The direct radial density profiles are recentered on the \textsc{SOAP} \texttt{SO/200\_mean/CentreOfMass} position and measured by binning simulation particles in spherical shells.
+The direct radial density profiles are centered on the center of mass of the matter within \(R_{200m}\), as calculated by \textsc{SOAP}, and measured by binning simulation particles in spherical shells.
 
 The concentration analysis instead uses the \textsc{SOAP} \(c_{200c}\) value for the SO aperture centered on the most-bound-particle position supplied by \textsc{HBT-HERONS}. \textsc{SOAP} derives this concentration from the first radial moment of the mass distribution inside \(R_{200c}\), assuming an NFW profile. Particle radii smaller than the force-softening length are set to that length in this calculation.
 
@@ -427,7 +427,7 @@ The same trend follows from Eqs.~(\ref{eq:correa2015_mah}) and (\ref{eq:correa20
 We next test whether earlier halo growth also changes internal structure. We use direct radial density profiles and the concentration--mass relation.
 
 \subsubsection{Radial Halo Density Profiles\label{subsub:DensityProfile}}
-The direct radial profiles use the \textsc{SOAP} \texttt{SO/200\_mean/CentreOfMass} position and the \(M_{200m}\) definition given in Sec.~\ref{subsec:halo_catalogs}. The concentration analysis in Sec.~\ref{subsub:concentration} instead uses the \textsc{SOAP} \(c_{200c}\) value for an aperture centered on the most-bound-particle position supplied by \textsc{HBT-HERONS}. Figure~\ref{fig:halo_density_analysis} compares median profiles measured directly from simulation particles with NFW profiles (Eq.~\ref{eq:nfw_profile}) computed using the Diemer \& Joyce (2019) concentration--mass relation for the corresponding PL and BT models \citep{Diemer2019}. The error bars show bootstrap 16th--84th percentile intervals for the median profile in each bin.
+The direct radial profiles use the center of mass of the matter within \(R_{200m}\), as calculated by \textsc{SOAP}, and the \(M_{200m}\) definition given in Sec.~\ref{subsec:halo_catalogs}. The concentration analysis in Sec.~\ref{subsub:concentration} instead uses the \textsc{SOAP} \(c_{200c}\) value for an aperture centered on the most-bound-particle position supplied by \textsc{HBT-HERONS}. Figure~\ref{fig:halo_density_analysis} compares median profiles measured directly from simulation particles with NFW profiles (Eq.~\ref{eq:nfw_profile}) computed using the Diemer \& Joyce (2019) concentration--mass relation for the corresponding PL and BT models \citep{Diemer2019}. The error bars show bootstrap 16th--84th percentile intervals for the median profile in each bin.
 
 To identify the radial convergence limit, we follow \citet{Power2003} and calculate
 %\Tk{There is no Diemer NFW profile, but NFW profile with the concentration from Diemer's mass-concentration relation.}

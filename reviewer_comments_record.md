@@ -1355,3 +1355,14 @@ catalog-release comment is retained.
 **Manuscript:** Replaced the pending-release description with the version-specific DOI and a factual list of distributed materials. Removed the addressed Data Availability comment. Retained the scope excluding full simulation snapshots, particle coordinates, and complete HBT-HERONS/SOAP catalogs. The released projection and radial products preserve the viewing geometry and halo selections used in the article. Scientific results, figures, and measurements are unchanged.
 
 **Public verification:** The published record is the latest version of the original Zenodo record. All three public file sizes and server MD5 values match the local files. A complete public archive download reproduces SHA-256 7942879c060b535b11d122366cf2acb9a1a0a709e626eb1bb53eb683b8db2c7f. The version DOI resolves to the public record. The final archive contains 213 checksummed files; fixed dependency distribution names were validated, including Pillow. Duplicate regenerated PNGs and the compiled PDF were kept outside the archive to reduce its size; original manuscript figures, TeX, bibliography style, inputs, output checksums, contact sheet, and validation logs remain included.
+
+
+## 2026-11-03: Clarify the SO radius and radial-profile center
+
+**Comments:** Use average rather than mean for the density averaged within the SO radius; describe the enclosed matter rather than saying that a radius encloses a density. Replace the technical radial-profile center field with its physical meaning.
+
+**Revision:** Defined R200 as the radius of a sphere within which matter has an average density of 200 times the reference density. Replaced the raw SOAP center-field path with the center of mass of the matter within R200m in both the catalog methods and the radial-profile results. The distinction from the most-bound-particle center used for concentrations is retained.
+
+**Scope:** Wording only. Mass definitions, centers used in the analysis, equations, numerical values, citations, figures, and scientific conclusions are unchanged.
+
+**Verification:** The radial-profile and catalog-extraction scripts read the SOAP SO/200_mean/CentreOfMass field, consistent with the revised physical description. latexmk compiled the manuscript successfully with no undefined citations or references; existing float-placement and box-layout warnings remain. git diff --check passes.
