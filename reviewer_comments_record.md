@@ -1471,3 +1471,8 @@ catalog-release comment is retained.
 **Scope:** The original PL/BT colors, model assignments, all plotted samples, phase-pair averages and wavenumber interval are retained. Spectra, ratios, numerical results and measurement methods are unchanged.
 
 **Verification:** Regenerating with the default command reproduces the selected B preview byte for byte. latexmk compiled the updated manuscript successfully with no undefined citations or references. Existing float-placement and box-layout warnings remain. git diff --check passes; the only changed image is power-spectrum-btpl.png and no measurement table was modified.
+
+
+## 2026-11-04: Add headroom above the power-spectrum difference curves
+
+**Request and revision:** Increased the lower-panel upper limits by 12% of each symmetric-logarithmic axis span in transformed coordinates. This gives the kp=1 curves additional space below the top frame consistently across redshifts. The lower limits, data, colors and all scientific results are unchanged. The default plotting command regenerates the figure successfully; git diff --check passes.

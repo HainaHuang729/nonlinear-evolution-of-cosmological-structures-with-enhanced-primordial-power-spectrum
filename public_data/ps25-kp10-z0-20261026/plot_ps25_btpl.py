@@ -70,6 +70,11 @@ for i,z in enumerate(zs):
     if args.ratio_scale == 'symlog-difference':
         r.set_yscale('symlog', linthresh=1.0, linscale=0.8)
         r.set_ylim(100.0*(limits[i][0]-1.0), 100.0*(limits[i][1]-1.0))
+        # Add headroom in display coordinates so all symlog panels gain equal space.
+        transform = r.yaxis.get_transform()
+        lower, upper = transform.transform(r.get_ylim())
+        padded_upper = transform.inverted().transform(upper + 0.12 * (upper - lower))
+        r.set_ylim(top=float(padded_upper))
         r.yaxis.set_major_locator(FixedLocator([-10,-1,0,1,10,100]))
         r.yaxis.set_minor_locator(FixedLocator([]))
     else:
