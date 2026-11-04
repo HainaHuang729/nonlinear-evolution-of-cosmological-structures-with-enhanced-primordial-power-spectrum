@@ -1460,3 +1460,14 @@ catalog-release comment is retained.
 **Verification:** latexmk compiled the manuscript successfully with no undefined citations or references. Existing float-placement and box-layout warnings remain. git diff --check passes. The four editorial requests are implemented; O30 and O33 are deferred at the author's request, and the 20 unidentifiable legacy requests remain open.
 
 **Sidebar verification:** O16, O22, O51 and O68 were marked resolved after the manuscript push. The Review overview now shows 22 open threads: the two deferred requests and 20 unidentifiable legacy requests.
+
+
+## 2026-11-04: Adopt the B power-spectrum display
+
+**Request:** Replace the manuscript power-spectrum figure with the B preview and push the change.
+
+**Revision:** Lower panels now display 100*(P_BT/P_PL - 1) in percent on symmetric logarithmic axes with a linear interval from -1% to +1% and a dotted zero line. Updated the figure caption to define the plotted quantity and scale. The plotting script defaults to this display so the figure-reproduction driver regenerates the adopted version without extra arguments; linear and logarithmic BT/PL displays remain optional. Updated the figure-data README.
+
+**Scope:** The original PL/BT colors, model assignments, all plotted samples, phase-pair averages and wavenumber interval are retained. Spectra, ratios, numerical results and measurement methods are unchanged.
+
+**Verification:** Regenerating with the default command reproduces the selected B preview byte for byte. latexmk compiled the updated manuscript successfully with no undefined citations or references. Existing float-placement and box-layout warnings remain. git diff --check passes; the only changed image is power-spectrum-btpl.png and no measurement table was modified.

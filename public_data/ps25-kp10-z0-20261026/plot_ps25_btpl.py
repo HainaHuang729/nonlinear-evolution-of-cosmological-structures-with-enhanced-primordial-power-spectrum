@@ -20,7 +20,10 @@ from cosmology_plot_style import (
 apply_journal_style()
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output',type=Path,default=DATA.parents[1]/'power-spectrum-btpl.png')
-OUT=parser.parse_args().output
+parser.add_argument('--ratio-scale', choices=['linear', 'log', 'symlog-difference'], default='symlog-difference',
+                    help='Ratio-axis display; symlog-difference shows 100*(BT/PL-1).')
+args=parser.parse_args()
+OUT=args.output
 OUT.parent.mkdir(parents=True,exist_ok=True)
 zs=[0,1.0717968600643704,3.4410805658271204,8.519850605215494]
 spec=defaultdict(list);rat=defaultdict(list)
@@ -55,7 +58,8 @@ for i,z in enumerate(zs):
                mfc='white',mew=.8,zorder=3-j*.1)
         if m!='pl':
             xy=np.array(sorted(rat[m,round(z,3)]))
-            r.plot(xy[:,0],xy[:,1],color=colors[j],
+            ratio_y = 100.0 * (xy[:,1] - 1.0) if args.ratio_scale == 'symlog-difference' else xy[:,1]
+            r.plot(xy[:,0],ratio_y,color=colors[j],
                    ls='-' if j==1 else '--',marker=markers[j],
                    markevery=(j*2,12),mfc='white',mew=.8)
     allp=[v for m in models for k,v in spec[m,round(z,3)]]
@@ -63,12 +67,22 @@ for i,z in enumerate(zs):
     panel_label(p, rf'$z={format_redshift(z)}$', loc=(.94,.90),
                 ha='right', fontsize=plt.rcParams['axes.titlesize'])
     p.tick_params(labelbottom=False)
-    r.set_ylim(*limits[i]);r.yaxis.set_major_locator(FixedLocator(ticks[i]))
+    if args.ratio_scale == 'symlog-difference':
+        r.set_yscale('symlog', linthresh=1.0, linscale=0.8)
+        r.set_ylim(100.0*(limits[i][0]-1.0), 100.0*(limits[i][1]-1.0))
+        r.yaxis.set_major_locator(FixedLocator([-10,-1,0,1,10,100]))
+        r.yaxis.set_minor_locator(FixedLocator([]))
+    else:
+        r.set_yscale(args.ratio_scale)
+        r.set_ylim(*limits[i])
+        r.yaxis.set_major_locator(FixedLocator(ticks[i]))
+        if args.ratio_scale == 'log':
+            r.yaxis.set_minor_locator(FixedLocator([]))
     r.yaxis.set_major_formatter(FuncFormatter(lambda v,_:f'{v:g}'))
-    r.axhline(1,color='.45',lw=.9,ls=':',zorder=0)
+    r.axhline(0 if args.ratio_scale == 'symlog-difference' else 1,color='.45',lw=.9,ls=':',zorder=0)
     r.set_xlabel(r'$k\ [h\,\mathrm{Mpc}^{-1}]$',labelpad=3)
     if i%2==0:p.set_ylabel(r'$P(k)\ [h^{-3}\,\mathrm{Mpc}^{3}]$',labelpad=5)
-    r.set_ylabel('BT / PL',labelpad=5)
+    r.set_ylabel(r'$\Delta P/P_{\rm PL}\ [\%]$' if args.ratio_scale == 'symlog-difference' else 'BT / PL',labelpad=5)
     # Keep every local ratio scale visible: ranges differ between epochs.
     r.grid(axis='y',color='0.88',lw=.5,zorder=0)
 handles=[Line2D([],[],color=c,marker=m,ls=['-','-','--'][j],
