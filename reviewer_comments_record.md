@@ -1476,3 +1476,10 @@ catalog-release comment is retained.
 ## 2026-11-04: Add headroom above the power-spectrum difference curves
 
 **Request and revision:** Increased the lower-panel upper limits by 12% of each symmetric-logarithmic axis span in transformed coordinates. This gives the kp=1 curves additional space below the top frame consistently across redshifts. The lower limits, data, colors and all scientific results are unchanged. The default plotting command regenerates the figure successfully; git diff --check passes.
+
+
+## 2026-11-05: Correct grammar and align the lensing-study status
+
+**Request and revision:** Corrected retains to retain in the HBT-HERONS methods sentence and removed the space before its full stop. Aligned the strong-lensing study status in the conclusions with submitted in the updated observational discussion, and normalized the punctuation of that author list. The separate concentration-study description remains in preparation. Preserved all other incoming Overleaf edits, including the new title and cross-references.
+
+**Verification:** latexmk compiled the complete updated manuscript successfully with no undefined citations or references. Existing float-placement and box-layout warnings remain. git diff --check passes. No scientific result, figure, measurement or citation key was changed by these corrections.
