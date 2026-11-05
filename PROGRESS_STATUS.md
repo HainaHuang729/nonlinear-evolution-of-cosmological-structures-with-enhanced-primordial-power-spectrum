@@ -1,26 +1,26 @@
-# Status 2026-11-06T05:21:40+08:00
+# Status 2026-11-06T07:21:51+08:00
 
 | item | value |
 |---|---|
-| 10-D PS npz files | 143 |
+| 10-D PS npz files | 168 |
 | cores in use | 772 |
 
 ## running jobs
 ```
-   2354765             ps10d_auto_624   R   64       1:42
-   2354757             ps10d_auto_592   R   64      31:47
-   2354744             ps10d_auto_560   R   64    1:31:54
-   2354741             ps10d_auto_528   R   64    1:46:58
-   2354637             ps10d_auto_496   R   64    5:02:06
-   2354636             ps10d_auto_464   R   64    5:02:11
-   2354635             ps10d_auto_432   R   64    5:02:17
-   2354634             ps10d_auto_400   R   64    5:02:22
-   2354633             ps10d_auto_368   R   64    5:02:27
-   2354632             ps10d_auto_336   R   64    5:02:31
-   2354631             ps10d_auto_304   R   64    5:02:37
-   2354630             ps10d_auto_272   R   64    5:02:40
-   2354629       ps10d_supervisor3000   R    1    5:02:43
-   2354464             status_pusher2   R    1    8:00:47
+   2354813             ps10d_auto_880   R   64       1:13
+   2354806             ps10d_auto_848   R   64      16:18
+   2354805             ps10d_auto_816   R   64      16:23
+   2354804             ps10d_auto_784   R   64      16:28
+   2354803             ps10d_auto_752   R   64      16:33
+   2354802             ps10d_auto_720   R   64      46:38
+   2354781             ps10d_auto_688   R   64    1:16:42
+   2354776             ps10d_auto_656   R   64    1:46:49
+   2354765             ps10d_auto_624   R   64    2:01:53
+   2354757             ps10d_auto_592   R   64    2:31:58
+   2354744             ps10d_auto_560   R   64    3:32:05
+   2354741             ps10d_auto_528   R   64    3:47:09
+   2354629       ps10d_supervisor3000   R    1    7:02:54
+   2354464             status_pusher2   R    1   10:00:58
 ```
 
 ## particle profiles
