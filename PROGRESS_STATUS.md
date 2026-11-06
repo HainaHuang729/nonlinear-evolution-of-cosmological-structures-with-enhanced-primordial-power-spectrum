@@ -1,29 +1,28 @@
-# Status 2026-11-06T17:22:42+08:00
+# Status 2026-11-06T19:22:52+08:00
 
 | item | value |
 |---|---|
-| 10-D PS npz files | 355 |
-| cores in use | 788 |
+| 10-D PS npz files | 407 |
+| cores in use | 780 |
 
 ## running jobs
 ```
-   2355400            ps10d_auto_1872   R   64      16:43
-   2355399            ps10d_auto_1840   R   64      16:48
-   2355384            ps10d_auto_1808   R   64      31:50
-   2355359            ps10d_auto_1776   R   64      46:58
-   2355335            ps10d_auto_1744   R   64    1:02:03
-   2355334            ps10d_auto_1712   R   64    1:02:08
-   2355333            ps10d_auto_1680   R   64    1:02:13
-   2355314            ps10d_auto_1648   R   64    1:17:18
-   2355313            ps10d_auto_1616   R   64    1:17:23
-   2355285            ps10d_auto_1584   R   64    1:32:28
-   2355284            ps10d_auto_1552   R   64    1:32:32
-   2355267            ps10d_auto_1520   R   64    1:47:36
-   2355129         chains_postprocess   R    2    2:48:11
-   2355121              kpms8_indep3x   R    6    2:54:04
-   2355117                 kpms8_run4   R    8    2:57:32
-   2354893       ps10d_supervisor5000   R    1    6:49:01
-   2354464             status_pusher2   R    1   20:01:49
+   2355499            ps10d_auto_2256   R   64       0:52
+   2355490            ps10d_auto_2224   R   64      15:57
+   2355472            ps10d_auto_2192   R   64      31:02
+   2355471            ps10d_auto_2160   R   64      31:07
+   2355467            ps10d_auto_2128   R   64      46:12
+   2355466            ps10d_auto_2096   R   64      46:17
+   2355459            ps10d_auto_2064   R   64    1:01:22
+   2355445            ps10d_auto_2032   R   64    1:16:27
+   2355444            ps10d_auto_2000   R   64    1:16:30
+   2355442            ps10d_auto_1968   R   64    1:16:37
+   2355441            ps10d_auto_1936   R   64    1:16:42
+   2355419            ps10d_auto_1904   R   64    1:31:45
+   2355129         chains_postprocess   R    2    4:48:21
+   2355121              kpms8_indep3x   R    6    4:54:14
+   2354893       ps10d_supervisor5000   R    1    8:49:11
+   2354464             status_pusher2   R    1   22:01:59
 ```
 
 ## particle profiles
