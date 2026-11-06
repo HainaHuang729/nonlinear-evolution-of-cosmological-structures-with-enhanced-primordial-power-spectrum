@@ -1,28 +1,26 @@
-# Status 2026-11-06T19:22:52+08:00
+# Status 2026-11-06T21:23:01+08:00
 
 | item | value |
 |---|---|
-| 10-D PS npz files | 407 |
-| cores in use | 780 |
+| 10-D PS npz files | 463 |
+| cores in use | 772 |
 
 ## running jobs
 ```
-   2355499            ps10d_auto_2256   R   64       0:52
-   2355490            ps10d_auto_2224   R   64      15:57
-   2355472            ps10d_auto_2192   R   64      31:02
-   2355471            ps10d_auto_2160   R   64      31:07
-   2355467            ps10d_auto_2128   R   64      46:12
-   2355466            ps10d_auto_2096   R   64      46:17
-   2355459            ps10d_auto_2064   R   64    1:01:22
-   2355445            ps10d_auto_2032   R   64    1:16:27
-   2355444            ps10d_auto_2000   R   64    1:16:30
-   2355442            ps10d_auto_1968   R   64    1:16:37
-   2355441            ps10d_auto_1936   R   64    1:16:42
-   2355419            ps10d_auto_1904   R   64    1:31:45
-   2355129         chains_postprocess   R    2    4:48:21
-   2355121              kpms8_indep3x   R    6    4:54:14
-   2354893       ps10d_supervisor5000   R    1    8:49:11
-   2354464             status_pusher2   R    1   22:01:59
+   2355685            ps10d_auto_2608   R   64       0:04
+   2355668            ps10d_auto_2576   R   64      15:10
+   2355644            ps10d_auto_2544   R   64      30:15
+   2355643            ps10d_auto_2512   R   64      30:18
+   2355634            ps10d_auto_2480   R   64      45:25
+   2355633            ps10d_auto_2448   R   64      45:30
+   2355627            ps10d_auto_2416   R   64    1:00:35
+   2355626            ps10d_auto_2384   R   64    1:00:40
+   2355617            ps10d_auto_2352   R   64    1:15:45
+   2355616            ps10d_auto_2320   R   64    1:15:50
+   2355615            ps10d_auto_2288   R   64    1:15:54
+   2355499            ps10d_auto_2256   R   64    2:01:01
+   2354893       ps10d_supervisor5000   R    1   10:49:20
+   2354464             status_pusher2   R    1 1-00:02:08
 ```
 
 ## particle profiles
