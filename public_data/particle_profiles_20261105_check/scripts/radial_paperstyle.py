@@ -58,7 +58,7 @@ for k, mass in enumerate(bins):
         ax.plot(x, med, color=colour, lw=1.5, label=label)
         ax.fill_between(x, lo, hi, color=colour, alpha=0.18, lw=0)
         curves[label] = (x, med)
-    if "PL" in curves and "BTKP1" in curves:
+    if "PL" in curves:   # gate each ratio independently on the PL denominator only
         xp, yp = curves["PL"]
         for label in ("BTKP1", "BTKP10"):
             if label not in curves:

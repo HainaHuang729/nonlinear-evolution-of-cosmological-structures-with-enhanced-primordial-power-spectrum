@@ -1,33 +1,44 @@
 # Particle-binned halo density profiles (2026-11-05)
 
-## What changed relative to the original figure
+## Relationship to the manuscript figure
 
-The manuscript figure `halo-density-radial-n100-power.png` is produced by
-`bt_plot_halo_density_radial_trial_png.py`: for every halo it takes the SOAP
-concentration C200, draws the **analytic NFW profile** with that concentration,
-and stacks the median over the haloes in a mass bin. That curve is therefore an
-NFW by construction; the central shape, substructure and any deviation from NFW
-are invisible, and comparing it to a theoretical NFW is largely circular.
+The manuscript figure `halo-density-radial-n100-power.png` is **already a
+particle-binned calculation**, produced by
+`public_data/scripts/bt_plot_halo_density_radial_trial_png.py` with reduced
+tables in `public_data/figure_data/halo_density_radial/`. An earlier progress
+note in this repository described it as an analytic NFW stack; that statement
+was wrong and is superseded.
 
-The new figure uses the **simulation particles directly**:
+This directory therefore contains an **independent candidate pipeline**, not a
+replacement for the released one. It differs from the released pipeline in every
+choice that matters:
+
+| aspect | released pipeline | this candidate |
+|---|---|---|
+| mass bins | 1e10, 10^10.5, 1e11, 10^11.5 | 1e9, 1e10, 1e11, 1e12 |
+| halo selection | 0.8-1.2 x M200m, <=100 halos, reproducible subset | within 0.2 dex, 5 closest |
+| catalog entries | all entries | centrals only (`IsCentral == 1`) |
+| centring | `SO/200_mean/CentreOfMass` | both that and `BoundSubhalo/CentreOfMass` |
+| uncertainty band | 160 bootstrap resamples of the median | 16th-84th percentile of halos (halo-to-halo scatter) |
+| convergence | Power03, kappa = 0.6 | shells with fewer than 10 particles masked |
+
+Because every one of those choices differs, panel-to-panel differences between
+this figure and the manuscript figure mix sample selection, binning and
+statistics; they are not a physical effect.
+
+## Candidate pipeline steps
 
 1. read SOAP `halo_properties_0056.hdf5`; convert `SO/200_mean/TotalMass` with
    `U_M = 1e10 Msun` and `SORadius` with `U_L = 1 Mpc`;
-2. keep central haloes (`InputHalos/IsCentral == 1`) within 0.2 dex of the target
-   mass and take the 5 closest per bin;
-3. stream the snapshot `PL_25_1024_0056.hdf5` in chunks of 4e6 particles; for each
-   chunk compute the periodic-wrapped distance to every selected halo centre
-   (box = 37.1 Mpc physical, i.e. 25 h^-1 Mpc);
-4. accumulate particle mass and particle count in 20 logarithmic shells of
-   `r/R200m` between 0.01 and 1, then `rho = M_shell / V_shell` in Msun/kpc^3;
-5. mask shells whose median particle count is below 10 (resolution limit) and
-   shade that region in the figure;
-6. NFW reference: amplitude-matched with the same M200 and c,
-   `rho_s = M200 / (4 pi rs^3 [ln(1+c) - c/(1+c)])`, `rs = R200/c`.
-
-Two centrings are computed and compared: `SO/200_mean/CentreOfMass` (the
-"centre of mass within R200m" used by the original description) and
-`BoundSubhalo/CentreOfMass` (more stable, closer to the potential minimum).
+2. keep central haloes within 0.2 dex of the target mass and take the 5 closest;
+3. stream the snapshot in chunks of 4e6 particles; for each chunk compute the
+   periodic-wrapped distance to every selected halo centre (box = 37.1 Mpc);
+4. accumulate mass and particle count in 20 logarithmic shells of `r/R200m`
+   between 0.01 and 1, then `rho = M_shell / V_shell` in Msun/kpc^3;
+5. mask a shell when at least half of the haloes in the bin have fewer than ten
+   particles in it (the earlier README described this as a median-count rule; the
+   implemented rule is the "half of the haloes" rule);
+6. optional NFW reference: amplitude-matched with the same M200 and c.
 
 ## Contents
 
