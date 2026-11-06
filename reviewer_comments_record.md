@@ -1483,3 +1483,15 @@ catalog-release comment is retained.
 **Request and revision:** Corrected retains to retain in the HBT-HERONS methods sentence and removed the space before its full stop. Aligned the strong-lensing study status in the conclusions with submitted in the updated observational discussion, and normalized the punctuation of that author list. The separate concentration-study description remains in preparation. Preserved all other incoming Overleaf edits, including the new title and cross-references.
 
 **Verification:** latexmk compiled the complete updated manuscript successfully with no undefined citations or references. Existing float-placement and box-layout warnings remain. git diff --check passes. No scientific result, figure, measurement or citation key was changed by these corrections.
+
+## 2026-11-06: Restrict the simulation table to the main runs
+
+Request: show only the boxes used for the main analysis.
+
+Revision: Table 1 now lists only the PL, BTKP1 and BTKP10 25 h^-1 Mpc,
+1024^3 simulations. Removed the Set and Appendix analysis columns and shortened
+the caption. The surrounding text directs readers to the appendix for the PL
+resolution and volume tests. All retained numerical parameters and citations
+are unchanged.
+
+Verification: manuscript compiled with latexmk; no figure or measurement changed.
