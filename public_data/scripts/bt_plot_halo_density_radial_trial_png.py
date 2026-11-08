@@ -565,6 +565,26 @@ def plot_trial():
         if RADIAL_OUTPUT_PATH_ENV
         else PAPERPLOT_ROOT / "figures" / RADIAL_OUTPUT_BASENAME
     )
+    if os.environ.get("RADIAL_MANUSCRIPT_MB_LAYOUT") == "1":
+        for row, panel_row in enumerate(axes):
+            for ax in panel_row:
+                ax.grid(False)
+                if row % 2 == 0:
+                    for label in ax.texts:
+                        label.set_position((0.42, 0.12))
+                        label.set_fontsize(9.5)
+                    legend = ax.get_legend()
+                    if legend:
+                        legend.get_title().set_fontsize(7.5)
+                        for label in legend.get_texts():
+                            label.set_fontsize(7.5)
+                        legend.set_bbox_to_anchor((0.98, 0.96), transform=ax.transAxes)
+                else:
+                    ax.set_yticks([0.5, 1, 2, 4])
+                    ax.tick_params(axis="y", which="major", labelsize=9, pad=4)
+                    if row == len(axes) - 1:
+                        ax.tick_params(axis="x", which="major", pad=5)
+
     out.parent.mkdir(parents=True, exist_ok=True)
     save_publication_figure(fig, out)
     print(f"Figure saved: {out}")

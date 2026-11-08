@@ -1495,3 +1495,13 @@ resolution and volume tests. All retained numerical parameters and citations
 are unchanged.
 
 Verification: manuscript compiled with latexmk; no figure or measurement changed.
+
+## Most-bound particle centering for the radial profiles
+
+Updated the methods, results, caption and conclusion to use the most-bound
+particle position for the radial profiles. Slurm job 2358490 reran both centers
+on the 1,198 published halo selections. All selected TrackIds matched when all
+HBT shards were read. The center-of-mass rerun agrees with the released density
+medians to within 5e-10 relative. The revised figure uses the uniformly
+most-bound-centered stacks and their recalculated Power03 limits. The GitHub
+reproduction inputs are in public_data/particle_profiles_paired/.

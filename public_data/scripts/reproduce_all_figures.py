@@ -27,7 +27,7 @@ FIGURE_NAMES = [
     "mass-function-m200c-bocquet16.png",
     "halfmass-redshift-trackid-no-envelope.png",
     "mass-assembly-history-correa.png",
-    "halo-density-radial-n100-power.png",
+    "halo-density-radial-mb-corrected.png",
     "concentration-qc-i21-fit.png",
     "power-spectrum-btpl.png",
     "fof-hmf-resolution-volume.png",
@@ -185,10 +185,13 @@ def main() -> None:
     env.update(
         {
             "RADIAL_PROFILE_CACHE_DIR": str(
-                ARTICLE_ROOT / "public_data" / "figure_data" / "halo_density_radial" / "cache"
+                ARTICLE_ROOT / "public_data" / "particle_profiles_paired" / "cache"
             ),
             "RADIAL_MAX_HALOS_PER_BIN": "100",
             "RADIAL_BOOTSTRAPS": "160",
+            "RADIAL_CENTRALS_ONLY": "0",
+            "RADIAL_MANUSCRIPT_MB_LAYOUT": "1",
+            "POWER_REFERENCE_OVERDENSITY_CRIT": "63",
             "POWER_KAPPA_THRESHOLD": "0.6",
             "RADIAL_OUTPUT_BASENAME": FIGURE_NAMES[6],
             "RADIAL_OUTPUT_PATH": str(output_dir / FIGURE_NAMES[6]),
