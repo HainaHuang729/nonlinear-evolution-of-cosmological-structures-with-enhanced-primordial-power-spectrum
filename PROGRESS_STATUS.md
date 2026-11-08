@@ -1,4 +1,4 @@
-# Status 2026-11-08T17:25:58+08:00
+# Status 2026-11-08T19:26:09+08:00
 
 | item | value |
 |---|---|
@@ -7,9 +7,9 @@
 
 ## running jobs
 ```
-   2358164               prof_mb_kp10   R    8      47:39
-   2357861                 logkp64_v4   R   64    4:18:20
-   2354464             status_pusher2   R    1 2-20:05:05
+   2358164               prof_mb_kp10   R    8    2:47:50
+   2357861                 logkp64_v4   R   64    6:18:31
+   2354464             status_pusher2   R    1 2-22:05:16
 ```
 
 ## particle profiles
