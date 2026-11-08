@@ -1,20 +1,19 @@
-# Status 2026-11-09T01:26:39+08:00
+# Status 2026-11-09T03:26:48+08:00
 
 | item | value |
 |---|---|
-| 10-D PS npz files | 1108 |
-| cores in use | 388 |
+| 10-D PS npz files | 1130 |
+| cores in use | 324 |
 
 ## running jobs
 ```
-   2358864            ps10d_auto_7344   R   64       2:21
-   2358653           logkp64_to50k_v2   R   64       2:38
-   2358650            ps10d_auto_7312   R   64       7:51
-   2358649            ps10d_auto_7280   R   64       9:25
-   2358645            ps10d_auto_7152   R   64    2:08:42
-   2358644            ps10d_auto_7120   R   64    2:08:47
-   2358642          ps10d_sup_resume2   R    1    2:08:53
-   2354464             status_pusher2   R    1 3-04:05:46
+   2359047            ps10d_auto_7536   R   64       7:38
+   2358903            ps10d_auto_7504   R   64       7:41
+   2358881            ps10d_auto_7472   R   64       7:58
+   2358880            ps10d_auto_7440   R   64    1:32:22
+   2358878            ps10d_auto_7376   R   64    1:58:13
+   2358642          ps10d_sup_resume2   R    1    4:09:02
+   2354464             status_pusher2   R    1 3-06:05:55
 ```
 
 ## particle profiles
