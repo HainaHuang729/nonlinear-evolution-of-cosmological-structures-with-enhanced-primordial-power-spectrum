@@ -192,7 +192,7 @@ def power_radius_from_counts(power_shell_count, r200_mpc, mass_msun):
     return float(np.exp(log_x0 + frac * (log_x1 - log_x0)))
 
 
-def halo_particle_profile(snapshot, center, r200_mpc, cell_mins, cell_maxs, offsets, counts):
+def halo_particle_profile(snapshot, center, r200_mpc, cell_mins, cell_maxs, offsets, counts, *, return_counts=False):
     """Measure one halo profile from DM particles in intersecting SWIFT cells."""
     coords_ds = snapshot["/PartType1/Coordinates"]
     mass_msun = float(np.median(snapshot["/PartType1/Masses"][:2048])) * 1.0e10
@@ -224,6 +224,8 @@ def halo_particle_profile(snapshot, center, r200_mpc, cell_mins, cell_maxs, offs
     rho = shell_mass / shell_vol_kpc3
     rho[rho <= 0.0] = np.nan
     power_radius = power_radius_from_counts(power_shell_count, r200_mpc, mass_msun)
+    if return_counts:
+        return rho, power_radius, power_shell_count.astype(np.int64)
     return rho, power_radius
 
 
