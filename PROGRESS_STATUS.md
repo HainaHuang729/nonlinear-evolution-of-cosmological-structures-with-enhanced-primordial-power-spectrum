@@ -1,18 +1,17 @@
-# Status 2026-11-09T23:28:11+08:00
+# Status 2026-11-10T01:28:19+08:00
 
 | item | value |
 |---|---|
-| 10-D PS npz files | 1240 |
-| cores in use | 68 |
+| 10-D PS npz files | 1353 |
+| cores in use | 52 |
 
 ## running jobs
 ```
-   2362172                    ps1d_27   R   16       9:38
-   2362153                    ps1d_22   R   16      19:38
-   2362130                     ps1d_0   R   16      29:37
-   2362129           ps10d_single_sup   R    1      29:40
-   2362119             fullbox_pilot2   R   16      36:36
-   2354464             status_pusher2   R    1 4-02:07:18
+   2362438                   ps1d_145   R   16       4:38
+   2362439                   ps1d_146   R   16       4:38
+   2362416                   ps1d_132   R   16      19:41
+   2362129           ps10d_single_sup   R    1    2:29:48
+   2354464             status_pusher2   R    1 4-04:07:26
 ```
 
 ## particle profiles
