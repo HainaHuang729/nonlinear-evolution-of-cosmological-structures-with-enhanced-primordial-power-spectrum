@@ -1,4 +1,4 @@
-# Status 2026-11-09T13:27:29+08:00
+# Status 2026-11-09T15:27:37+08:00
 
 | item | value |
 |---|---|
@@ -7,9 +7,9 @@
 
 ## running jobs
 ```
-   2359640           logkp64_to50k_v3   R   64    3:47:07
-   2358642          ps10d_sup_resume2   R    1   14:09:43
-   2354464             status_pusher2   R    1 3-16:06:36
+   2359640           logkp64_to50k_v3   R   64    5:47:15
+   2358642          ps10d_sup_resume2   R    1   16:09:51
+   2354464             status_pusher2   R    1 3-18:06:44
 ```
 
 ## particle profiles
