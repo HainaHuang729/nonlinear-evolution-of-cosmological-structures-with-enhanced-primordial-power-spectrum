@@ -1,14 +1,15 @@
-# Status 2026-11-09T09:27:12+08:00
+# Status 2026-11-09T11:27:22+08:00
 
 | item | value |
 |---|---|
 | 10-D PS npz files | 1211 |
-| cores in use | 4 |
+| cores in use | 68 |
 
 ## running jobs
 ```
-   2358642          ps10d_sup_resume2   R    1   10:09:26
-   2354464             status_pusher2   R    1 3-12:06:19
+   2359640           logkp64_to50k_v3   R   64    1:47:00
+   2358642          ps10d_sup_resume2   R    1   12:09:36
+   2354464             status_pusher2   R    1 3-14:06:29
 ```
 
 ## particle profiles
