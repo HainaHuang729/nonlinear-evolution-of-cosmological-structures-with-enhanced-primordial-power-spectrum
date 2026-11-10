@@ -1,15 +1,14 @@
-# Status 2026-11-10T23:29:50+08:00
+# Status 2026-11-11T01:29:58+08:00
 
 | item | value |
 |---|---|
 | 10-D PS npz files | 2397 |
-| cores in use | 19 |
+| cores in use | 3 |
 
 ## running jobs
 ```
-   2366785               ms_probe_run   R   16       2:03
-   2362129           ps10d_single_sup   R    1 1-00:31:19
-   2354464             status_pusher2   R    1 5-02:08:57
+   2362129           ps10d_single_sup   R    1 1-02:31:27
+   2354464             status_pusher2   R    1 5-04:09:05
 ```
 
 ## particle profiles
