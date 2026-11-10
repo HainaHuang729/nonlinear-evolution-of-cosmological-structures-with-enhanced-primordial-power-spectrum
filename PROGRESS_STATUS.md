@@ -1,4 +1,4 @@
-# Status 2026-11-11T05:30:18+08:00
+# Status 2026-11-11T07:30:40+08:00
 
 | item | value |
 |---|---|
@@ -7,8 +7,8 @@
 
 ## running jobs
 ```
-   2362129           ps10d_single_sup   R    1 1-06:31:47
-   2354464             status_pusher2   R    1 5-08:09:25
+   2362129           ps10d_single_sup   R    1 1-08:32:09
+   2354464             status_pusher2   R    1 5-10:09:47
 ```
 
 ## particle profiles
