@@ -36,8 +36,8 @@ from bt_plot_halo_density_profile_png import (  # noqa: E402
     apply_journal_style,
     format_axes,
     save_publication_figure,
-    JOURNAL_COLORS,
 )
+from cosmology_plot_style import MODEL_COLORS  # noqa: E402
 
 
 TARGET_MASSES = [1e10, 10.0**10.5, 1e11, 10.0**11.5]
@@ -47,19 +47,19 @@ MODEL_SPECS = [
         "PL",
         DATA_ROOT / "PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5",
         DATA_ROOT / "PL/PL_25_1024/PL_25_1024_0056.hdf5",
-        JOURNAL_COLORS["black"],
+        MODEL_COLORS["PL"],
     ),
     (
         "BTKP1",
         DATA_ROOT / "bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5",
         DATA_ROOT / "bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0056.hdf5",
-        JOURNAL_COLORS["blue"],
+        MODEL_COLORS["BT1"],
     ),
     (
         "BTKP10",
         DATA_ROOT / "bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5",
         DATA_ROOT / "bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0056.hdf5",
-        JOURNAL_COLORS["green"],
+        MODEL_COLORS["BT10"],
     ),
 ]
 
@@ -437,7 +437,7 @@ def plot_trial():
 
         pl_profile = panel_profiles.get("PL")
         if pl_profile is not None:
-            for label, color in [("BTKP1", JOURNAL_COLORS["blue"]), ("BTKP10", JOURNAL_COLORS["green"])]:
+            for label, color in [("BTKP1", MODEL_COLORS["BT1"]), ("BTKP10", MODEL_COLORS["BT10"])]:
                 bt_profile = panel_profiles.get(label)
                 if bt_profile is None:
                     continue
@@ -461,7 +461,7 @@ def plot_trial():
         theory_pl = theory_profiles.get("PL")
         if theory_pl is not None:
             x_pl, rho_pl = theory_pl
-            for label, color in [("BTKP1", JOURNAL_COLORS["blue"]), ("BTKP10", JOURNAL_COLORS["green"])]:
+            for label, color in [("BTKP1", MODEL_COLORS["BT1"]), ("BTKP10", MODEL_COLORS["BT10"])]:
                 theory_bt = theory_profiles.get(label)
                 if theory_bt is None:
                     continue
@@ -517,14 +517,14 @@ def plot_trial():
         ratio_ax.tick_params(labelleft=(col == 0), labelright=False, labeltop=False)
 
     stack_handles = [
-        Line2D([0], [0], color=JOURNAL_COLORS["black"], linestyle="none", marker="o", markerfacecolor="white", markeredgewidth=0.8, markersize=3.0),
-        Line2D([0], [0], color=JOURNAL_COLORS["blue"], linestyle="none", marker="o", markerfacecolor="white", markeredgewidth=0.8, markersize=3.0),
-        Line2D([0], [0], color=JOURNAL_COLORS["green"], linestyle="none", marker="o", markerfacecolor="white", markeredgewidth=0.8, markersize=3.0),
+        Line2D([0], [0], color=MODEL_COLORS["PL"], linestyle="none", marker="o", markerfacecolor="white", markeredgewidth=0.8, markersize=3.0),
+        Line2D([0], [0], color=MODEL_COLORS["BT1"], linestyle="none", marker="o", markerfacecolor="white", markeredgewidth=0.8, markersize=3.0),
+        Line2D([0], [0], color=MODEL_COLORS["BT10"], linestyle="none", marker="o", markerfacecolor="white", markeredgewidth=0.8, markersize=3.0),
     ]
     theory_handles = [
-        Line2D([0], [0], color=JOURNAL_COLORS["black"], linestyle="--", linewidth=1.0),
-        Line2D([0], [0], color=JOURNAL_COLORS["blue"], linestyle="--", linewidth=1.0),
-        Line2D([0], [0], color=JOURNAL_COLORS["green"], linestyle="--", linewidth=1.0),
+        Line2D([0], [0], color=MODEL_COLORS["PL"], linestyle="--", linewidth=1.0),
+        Line2D([0], [0], color=MODEL_COLORS["BT1"], linestyle="--", linewidth=1.0),
+        Line2D([0], [0], color=MODEL_COLORS["BT10"], linestyle="--", linewidth=1.0),
         Patch(facecolor="0.50", alpha=0.28, edgecolor="none"),
     ]
     legend_kwargs = dict(

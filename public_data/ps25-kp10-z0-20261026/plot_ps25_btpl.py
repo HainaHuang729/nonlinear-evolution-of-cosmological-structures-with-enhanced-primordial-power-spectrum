@@ -14,7 +14,7 @@ from matplotlib.ticker import FixedLocator,FuncFormatter,NullFormatter,LogLocato
 DATA=Path(__file__).resolve().parent
 sys.path.insert(0, str(DATA.parent / 'scripts'))
 from cosmology_plot_style import (
-    JOURNAL_COLORS, apply_journal_style, format_axes, format_redshift, panel_label,
+    MODEL_COLORS, apply_journal_style, format_axes, format_redshift, panel_label,
 )
 
 apply_journal_style()
@@ -36,7 +36,7 @@ labels=['PL',r'BT $k_p=1$',r'BT $k_p=10$']
 limits=[(.97,1.28),(.97,1.60),(.97,2.12),(.9,5.5)]
 ticks=[[1,1.1,1.2],[1,1.2,1.4,1.6],[1,1.5,2],[1,2,3,4,5]]
 
-colors=[JOURNAL_COLORS[name] for name in ['black','blue','green']]
+colors=[MODEL_COLORS[name] for name in ['PL','BT1','BT10']]
 fig=plt.figure(figsize=(7.8,6.45))
 outer=fig.add_gridspec(2,2,left=.095,right=.982,bottom=.083,top=.925,
                       hspace=.27,wspace=.23)

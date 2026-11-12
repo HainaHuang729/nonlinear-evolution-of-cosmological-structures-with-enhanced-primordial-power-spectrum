@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FixedLocator, FuncFormatter, LogFormatterMathtext, LogLocator, NullFormatter
 
-from cosmology_plot_style import JOURNAL_COLORS, apply_journal_style, format_axes, format_redshift, panel_label, sparse_errorbar
+from cosmology_plot_style import MODEL_COLORS, apply_journal_style, format_axes, format_redshift, panel_label, sparse_errorbar
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -24,9 +24,9 @@ OUTPUT_PATH = Path(os.environ.get("FOF_HMF_OUTPUT_PATH", ARTICLE_ROOT / "mass-fu
 SNAPS = ["0056", "0040", "0032", "0030", "0027", "0024"]
 MODEL_MAP = {"PL": "PL", "BT_soft": "BTKP1", "BT_deep": "BTKP10", "BTKP1": "BTKP1", "BTKP10": "BTKP10"}
 MODELS = {
-    "PL": {"color": JOURNAL_COLORS["black"], "marker": "o", "linestyle": "-"},
-    "BTKP1": {"color": JOURNAL_COLORS["blue"], "marker": "^", "linestyle": "--"},
-    "BTKP10": {"color": JOURNAL_COLORS["green"], "marker": "s", "linestyle": "-."},
+    "PL": {"color": MODEL_COLORS["PL"], "marker": "o", "linestyle": "-"},
+    "BTKP1": {"color": MODEL_COLORS["BT1"], "marker": "^", "linestyle": "--"},
+    "BTKP10": {"color": MODEL_COLORS["BT10"], "marker": "s", "linestyle": "-."},
 }
 MODEL_LABELS = {
     "PL": "PL",

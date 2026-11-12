@@ -31,7 +31,7 @@ if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
 from cosmology_plot_style import (  # noqa: E402
-    JOURNAL_COLORS,
+    MODEL_COLORS,
     apply_journal_style,
     sparse_errorbar,
     format_axes,
@@ -63,20 +63,20 @@ MIN_HALOS = 20
 MODELS = {
     "PL": {
         "label": "PL",
-        "color": JOURNAL_COLORS["black"],
+        "color": MODEL_COLORS["PL"],
         "marker": "o",
         "dir": PROJECT / "data/PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
     },
     "BT_soft": {
         "label": r"BT $k_p=1$",
-        "color": JOURNAL_COLORS["blue"],
+        "color": MODEL_COLORS["BT1"],
         "marker": "^",
         "dir": PROJECT
         / "data/bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",
     },
     "BT_deep": {
         "label": r"BT $k_p=10$",
-        "color": JOURNAL_COLORS["green"],
+        "color": MODEL_COLORS["BT10"],
         "marker": "s",
         "dir": PROJECT
         / "data/bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus",

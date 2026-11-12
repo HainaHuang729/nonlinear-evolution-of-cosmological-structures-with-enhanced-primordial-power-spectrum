@@ -304,6 +304,25 @@ We quantify the agreement using the median simulation-to-model ratio across mass
     \label{fig:m200c_bocquet16_hmf}
 \end{figure*}
 
+\subsection{Halo--Matter Bias\label{subsec:halo_bias}}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{halo-bias.pdf}
+    \caption{Halo--matter bias for PL, \BTKPone{}, and \BTKPten{}. Circles and triangles show FOF groups in the \(256\) and \(25\,h^{-1}{\rm Mpc}\) boxes, respectively. Diamonds show \textsc{SOAP} \(M_{200m}\) measurements for \textsc{HBT+} centrals in the smaller box. Error bars are jackknife uncertainties obtained by omitting one independent Fourier mode at a time. Solid and dashed lines show Tinker et al. (2010) at \(M_{200m}\) and Sheth--Tormen (1999), respectively. The two boxes sample the different \(k\) intervals specified in the text. At \(z=10.52\), only the smaller box has mass bins that pass the selection cuts.}
+    \label{fig:halo_bias}
+\end{figure*}
+
+The mass function measures the abundance of halos. To measure how halos trace the matter density field, we compute the halo--matter cross-spectrum \(P_{\rm hm}\) and the matter auto-spectrum \(P_{\rm mm}\) on a \(256^3\) mesh. We use nearest-grid-point assignment with its window correction and estimate the bias in each mass bin as
+\begin{equation}
+    b_{\rm hm} = \frac{\sum_{\boldsymbol{k}} P_{\rm hm}(\boldsymbol{k})}
+                       {\sum_{\boldsymbol{k}} P_{\rm mm}(\boldsymbol{k})},
+    \label{eq:halo_matter_bias}
+\end{equation}
+where the sums run over independent Fourier modes in the selected \(k\) interval. We use \(0.03\leq k/(h\,{\rm Mpc}^{-1})\leq0.15\) for the \(256\,h^{-1}{\rm Mpc}\) box and \(0.25\leq k/(h\,{\rm Mpc}^{-1})\leq0.60\) for the \(25\,h^{-1}{\rm Mpc}\) box. Each halo contains at least 100 dark matter particles, and each \(0.30\)-dex mass bin contains at least 200 halos. We plot the median mass in each bin. The FOF measurements use the group masses as recorded in the catalogs. For PL and \BTKPone{} in the smaller box, we also measure bias for \textsc{HBT+} central halos \citep{Han2018HBTPlus} using their \textsc{SOAP} \(M_{200m}\), the mass enclosed at 200 times the mean matter density.
+
+Figure~\ref{fig:halo_bias} compares the measurements with the \citet{ShethTormen1999Bias} and \citet{Tinker2010HaloBias} relations. We evaluate both at \(\nu=\delta_{\rm c}/\sigma(M,z)\), with \(\delta_{\rm c}=1.686\) and \(\sigma(M,z)\) computed from the linear matter spectrum of each model. At \(z=6.15\) in the smaller box, the median \BTKPone{}/PL bias ratio across the seven common mass bins is \(0.58\) for FOF and \(0.59\) for the \(M_{200m}\) sample. The corresponding \BTKPten{}/PL FOF ratio is \(1.00\). At \(z=10.52\), the small-box \(M_{200m}\) points lie closer to Sheth--Tormen in both PL and \BTKPone{}. This comparison uses the small-box \(k\) window and extends beyond the redshift range of the Tinker calibration, which reaches \(z=2.5\).
+
 \subsection{Half-Mass Redshift\label{subsub:HMR}}
 The half-mass assembly redshift, \(z_{1/2}\), is the redshift at which a \(z=0\) halo first reaches half of its final FOF mass. We use the main progenitor branch defined in Sec.~\ref{subsec:halo_catalogs}. For each \(z=0\) FOF halo, we follow its persistent \textsc{HBT-HERONS} \texttt{TrackId} over snapshots 0021--0056 and record its Warren-corrected FOF mass. We determine \(z_{1/2}\) by linear interpolation between the first pair of consecutive snapshots in which the recorded FOF mass increases through \(M_0/2\). The same procedure is applied to PL, \BTKPone{}, and \BTKPten{}.
 
@@ -521,7 +540,7 @@ Future work should test other enhanced primordial spectra, including localized G
 
 The reduced data, compact per-halo catalogs, and figure reproduction materials are archived in the complete version 1.1.0 release on Zenodo \footnote{\url{https://doi.org/10.5281/zenodo.23788725}}. The manuscript source, reduced tables, and analysis scripts are also available on GitHub\footnote{\url{https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum}}.
 The archive contains the input linear matter power spectra, binned halo mass functions, half-mass redshift summaries, median mass-assembly histories, Correa-comparison curves, radial-density profile summaries, concentration--mass summaries, and nonlinear matter power-spectrum measurements. It also includes nine compressed HDF5 files containing the individual halo inputs at six snapshots, tracked mass histories, and radial-profile selections; the clean projected-density mosaic and panel metadata; radial-profile bootstrap caches; and the project \textsc{Colossus} source. The README, dependency specifications, validation reports, and checksum manifests document catalog validation and figure reproduction.
-The full simulation snapshots, particle coordinates, and complete \textsc{HBT-HERONS}/\textsc{SOAP} catalogs are not included because of their substantially larger size. The released projection and radial-profile products document the viewing geometry and halo selections used in this paper. The reduced profiles and plotting inputs for the updated most-bound-particle measurement are available in the GitHub repository.
+The full simulation snapshots, particle coordinates, and complete \textsc{HBT-HERONS}/\textsc{SOAP} catalogs are not included because of their substantially larger size. The released projection and radial-profile products document the viewing geometry and halo selections used in this paper. The reduced profiles and plotting inputs for the updated most-bound-particle measurement are available in the GitHub repository. The reduced halo--matter bias table and plotting script accompany the manuscript source.
 
 \begin{acknowledgments}
 

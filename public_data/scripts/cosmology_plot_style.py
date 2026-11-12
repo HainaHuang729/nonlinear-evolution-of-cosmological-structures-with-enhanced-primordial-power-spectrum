@@ -21,6 +21,9 @@ JOURNAL_COLORS = {
 }
 
 
+MODEL_COLORS = {"PL": "#222222", "BT1": "#C0392B", "BT10": "#2469AD"}
+
+
 def apply_journal_style(base_fontsize: float = 8.5) -> None:
     """Apply a compact ApJ/MNRAS-like Matplotlib style."""
     mpl.rcParams.update(

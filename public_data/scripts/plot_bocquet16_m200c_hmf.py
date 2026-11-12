@@ -62,7 +62,7 @@ if str(STYLE_ROOT) not in sys.path:
     sys.path.insert(0, str(STYLE_ROOT))
 
 from cosmology_plot_style import (  # noqa: E402
-    JOURNAL_COLORS,
+    MODEL_COLORS,
     apply_journal_style,
     format_axes,
     format_redshift,
@@ -105,7 +105,7 @@ MODELS = {
         "template": DATA_ROOT
         / "PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
         "ps_model": "eisenstein98_pl",
-        "color": JOURNAL_COLORS["black"],
+        "color": MODEL_COLORS["PL"],
         "marker": "o",
         "linestyle": "-",
     },
@@ -114,7 +114,7 @@ MODELS = {
         "template": DATA_ROOT
         / "bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
         "ps_model": "eisenstein98_bt",
-        "color": JOURNAL_COLORS["blue"],
+        "color": MODEL_COLORS["BT1"],
         "marker": "^",
         "linestyle": "--",
     },
@@ -123,7 +123,7 @@ MODELS = {
         "template": DATA_ROOT
         / "bluetilted/kp_10_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_{snap}.hdf5",
         "ps_model": "eisenstein98_bt_soft",
-        "color": JOURNAL_COLORS["green"],
+        "color": MODEL_COLORS["BT10"],
         "marker": "s",
         "linestyle": "-.",
     },

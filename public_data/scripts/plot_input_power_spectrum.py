@@ -33,23 +33,23 @@ OUTPUT_PATH = Path(
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from cosmology_plot_style import JOURNAL_COLORS, apply_journal_style, format_axes  # noqa: E402
+from cosmology_plot_style import MODEL_COLORS, apply_journal_style, format_axes  # noqa: E402
 
 SPECTRA = [
     (
         "PL",
         "PL",
-        {"color": JOURNAL_COLORS["black"], "linestyle": "-", "linewidth": 1.45},
+        {"color": MODEL_COLORS["PL"], "linestyle": "-", "linewidth": 1.45},
     ),
     (
         "BT_soft",
         r"BT $k_p=1$",
-        {"color": JOURNAL_COLORS["blue"], "linestyle": "--", "linewidth": 1.45},
+        {"color": MODEL_COLORS["BT1"], "linestyle": "--", "linewidth": 1.45},
     ),
     (
         "BT_deep",
         r"BT $k_p=10$",
-        {"color": JOURNAL_COLORS["green"], "linestyle": "-.", "linewidth": 1.45},
+        {"color": MODEL_COLORS["BT10"], "linestyle": "-.", "linewidth": 1.45},
     ),
 ]
 
