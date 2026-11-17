@@ -94,7 +94,7 @@ MASS_NPART_STRICT_MSUN = NPART_STRICT * MAIN_PARTICLE_MASS_MSUN
 CONC_MAX = 500.0
 SIMULATION_N_BINS = 22
 OUTER_PANEL_HSPACE = 0.11
-LEFT_LABEL_X = -0.095
+LEFT_LABEL_X = -0.15
 PANEL_X_LIMITS = {
     "0056": (8.0, 13.5),
     "0048": (8.0, 13.5),
@@ -610,7 +610,7 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
     outer_grid = fig.add_gridspec(
         2,
         2,
-        left=0.09,
+        left=0.115,
         right=0.985,
         bottom=0.075,
         top=0.985,
@@ -766,7 +766,7 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
             )
 
     fig.subplots_adjust(
-        left=0.09,
+        left=0.115,
         right=0.985,
         bottom=0.075,
         top=0.985,

@@ -1512,3 +1512,19 @@ reproduction inputs are in public_data/particle_profiles_paired/.
 - **Halo bias.** The bias code uses a spherical top-hat to compute the linear variance. Sheth and Tormen (1999), Section 2, used a spherical-overdensity group finder. The text now states both facts, identifies the mass-definition difference for the FOF comparison, and specifies the mass units in the caption. Table I includes the three 256-box runs used by the bias figure. Snapshot metadata confirms the particle count and softening.
 - **Initial conditions and methods.** Quantified the below-pivot normalization offset from the released input spectra. Distinguished the common NGP window factor from residual aliasing. Moved the Correa formation-redshift definition after the closure equations.
 - **Figures and references.** Cleared the row-label overlaps in the concentration figures, updated the mass-assembly legend and removed the title, and removed the redundant label from the FOF resolution figure. Corrected notation, reference formatting, and the SWIFT citation in the acknowledgments.
+
+## Follow-up manuscript review
+
+- Moved the concentration-panel y-axis labels left and increased the left margin. The rendered label boxes clear the tick labels on all three figures.
+- Corrected the bias caption to solar masses. The plotting script divides both catalog masses and model mass grids by h before plotting.
+- Restored the full and clickable GitHub URL in the data availability footnote. The link is present as a PDF annotation.
+- Added halo–matter bias to the abstract, introduction, conclusions, and numerical ranges table. Recomputed the quoted small-box bias ratios from the figure data and checked the retained mass-bin boundaries.
+- Added the within-box phase statement to Table I. Matching particles by ID in the 256-box initial snapshots at z = 200 gives Cartesian velocity correlations of at least 0.997 for each model pair.
+  Fourier transforms of the three initial density grids independently give normalized cross-correlations above 0.9999 for $0.03\le k<0.1\,h\,\mathrm{Mpc}^{-1}$ across all pairs (cluster job 2382975).
+
+## Follow-up prose review
+
+- Reworked the introduction to guide the reader from the spectra and simulation setup to the measurements and their interpretation. Removed the redundant opening of the theory section and integrated the simulation-code paragraph into the simulation-suite subsection.
+- Recast the halo-catalog and radial-profile methods around the quantities being measured. Added the missing reference to the projection figure and described the changes visible in its panels.
+- Removed repeated interpretations where the preceding result already states the finding. Retained the distinct mass definitions, cosmologies, and sparse-bin limitations.
+- Shortened data availability to the scope of the Zenodo and GitHub releases and retained both links. The manuscript makes no new data-access commitment.
