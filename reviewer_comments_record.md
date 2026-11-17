@@ -1505,3 +1505,10 @@ HBT shards were read. The center-of-mass rerun agrees with the released density
 medians to within 5e-10 relative. The revised figure uses the uniformly
 most-bound-centered stacks and their recalculated Power03 limits. The GitHub
 reproduction inputs are in public_data/particle_profiles_paired/.
+
+## 2026-11-17 Full-manuscript review
+
+- **Figure 4 normalization.** The released number densities and Poisson errors imply a natural-log bin width of $0.15\ln 10$ for all 675 rows. The Bocquet curves use the same differential convention. The text and caption now define $dn/d\ln M_{200c}$, with mass bins spaced by 0.15 dex.
+- **Halo bias.** The bias code uses a spherical top-hat to compute the linear variance. Sheth and Tormen (1999), Section 2, used a spherical-overdensity group finder. The text now states both facts, identifies the mass-definition difference for the FOF comparison, and specifies the mass units in the caption. Table I includes the three 256-box runs used by the bias figure. Snapshot metadata confirms the particle count and softening.
+- **Initial conditions and methods.** Quantified the below-pivot normalization offset from the released input spectra. Distinguished the common NGP window factor from residual aliasing. Moved the Correa formation-redshift definition after the closure equations.
+- **Figures and references.** Cleared the row-label overlaps in the concentration figures, updated the mass-assembly legend and removed the title, and removed the redundant label from the FOF resolution figure. Corrected notation, reference formatting, and the SWIFT citation in the acknowledgments.

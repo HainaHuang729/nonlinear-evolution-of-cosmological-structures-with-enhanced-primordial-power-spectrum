@@ -447,7 +447,6 @@ def make_figure(results):
         ax_hmf.tick_params(labelbottom=False)
 
     axes[0, 0].legend(loc="lower left", fontsize=7.0, handlelength=1.2)
-    fig.text(0.975, 0.35, r"Ratios are to PL-25-$1024^3$", rotation=90, va="center", ha="right", fontsize=8.0)
     fig.savefig(OUTPUT_FIGURE)
     plt.close(fig)
     return OUTPUT_FIGURE

@@ -623,7 +623,7 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
         row = i // 2
         col = i % 2
         inner_grid = outer_grid[row, col].subgridspec(
-            3, 1, height_ratios=[4.0, 1.15, 1.25], hspace=0.10
+            3, 1, height_ratios=[4.0, 1.25, 1.32], hspace=0.16
         )
         ax = fig.add_subplot(inner_grid[0])
         ax_residual = fig.add_subplot(inner_grid[1], sharex=ax)
@@ -699,13 +699,14 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
             ax.set_ylabel(r"$\log_{10}(c_{200c})$", fontweight="bold", labelpad=5)
             ax_residual.set_ylabel(
                 rf"$c_{{\rm sim}}/{theory_style['math_label']}$",
+                fontsize=10,
                 fontweight="bold",
                 labelpad=5,
             )
-            ax_scatter.set_ylabel(r"$\sigma_{68}(\log_{10}c)$", fontweight="bold", labelpad=5)
+            ax_scatter.set_ylabel(r"$\sigma_{68}(\log_{10}c)$", fontsize=10, fontweight="bold", labelpad=5)
             ax.yaxis.set_label_coords(LEFT_LABEL_X, 0.5)
-            ax_residual.yaxis.set_label_coords(LEFT_LABEL_X, 0.56)
-            ax_scatter.yaxis.set_label_coords(LEFT_LABEL_X, 0.42)
+            ax_residual.yaxis.set_label_coords(LEFT_LABEL_X, 0.55)
+            ax_scatter.yaxis.set_label_coords(LEFT_LABEL_X, 0.43)
         else:
             ax.tick_params(axis="y", labelleft=False)
             ax_residual.tick_params(axis="y", labelleft=False)

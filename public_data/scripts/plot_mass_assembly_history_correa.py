@@ -272,7 +272,6 @@ def make_figure(
     ax.set_xlim(0.0, np.log10(1.0 + Z_MAX))
     ax.set_ylim(5.0e6, 7.0e11)
     ax.set_ylabel(r"Median $M(z)\,[M_\odot]$", labelpad=8)
-    ax.set_title("Median MAHs and spectrum-specific Correa-EPS relations", pad=7)
     format_axes(ax, grid=True)
 
     ratio_ax.axhline(1.0, color="0.25", lw=0.75, zorder=1)
@@ -293,9 +292,9 @@ def make_figure(
 
     style_handles = [
         plt.Line2D([], [], color="0.25", ls="none", marker="o", markersize=3.0, label="PL median"),
-        plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label="BT median"),
+        plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label=r"$\mathrm{BT}_{k_p=1}$ median"),
         plt.Line2D([], [], color="0.25", lw=1.1, ls="--", label="PL Correa-EPS"),
-        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label="BT Correa-EPS"),
+        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label=r"$\mathrm{BT}_{k_p=1}$ Correa-EPS"),
     ]
     first = ax.legend(
         handles=style_handles,
@@ -306,10 +305,13 @@ def make_figure(
     )
     ax.add_artist(first)
 
-    mass_handles = [
-        plt.Line2D([], [], color=color, lw=1.8, label=rf"${target:.0e}$")
-        for target, color in zip(TARGETS, colors)
-    ]
+    mass_handles = []
+    for target, color in zip(TARGETS, colors):
+        exponent = int(np.floor(np.log10(target)))
+        coefficient = round(target / 10**exponent)
+        power = "10^{%d}" % exponent
+        label = "$" + (rf"{coefficient}\times" if coefficient != 1 else "") + power + "$"
+        mass_handles.append(plt.Line2D([], [], color=color, lw=1.8, label=label))
     ax.legend(
         handles=mass_handles,
         title=r"$M_0\,[M_\odot]$",
