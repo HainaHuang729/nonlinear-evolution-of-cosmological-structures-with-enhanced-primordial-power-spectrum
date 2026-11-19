@@ -283,14 +283,20 @@ def summarize(points: pd.DataFrame) -> pd.DataFrame:
 
 def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
     apply_journal_style(base_fontsize=8.8)
-    fig, ax = plt.subplots(figsize=(3.55, 2.48))
+    fig, (ax, ratio_ax) = plt.subplots(
+        2, 1, figsize=(3.55, 3.12), sharex=True,
+        gridspec_kw={"height_ratios": [3.05, 1.0], "hspace": 0.08},
+    )
     mgrid = np.logspace(8, 12, 300)
-    ax.axvspan(N20_MASS_MSUN, N100_MASS_MSUN, color="0.82", alpha=0.24, lw=0, zorder=0)
-    ax.axvline(N100_MASS_MSUN, color="0.45", ls="--", lw=0.8, zorder=1)
+    for axis in (ax, ratio_ax):
+        axis.axvspan(N20_MASS_MSUN, N100_MASS_MSUN, color="0.82", alpha=0.24, lw=0, zorder=0)
+        axis.axvline(N100_MASS_MSUN, color="0.45", ls="--", lw=0.8, zorder=1)
+    ratio_ax.axhline(1.0, color="0.45", lw=0.8, ls=":", zorder=1)
     bk09, = ax.plot(mgrid, bk09_original(mgrid), color="0.38", lw=1.3, ls="-.", label="BK09")
     coco, = ax.plot(mgrid, coco_hellwing16(mgrid), color="0.58", lw=1.3, ls="--", label="COCO/H16")
 
     handles = []
+    base = points[points["model"] == "PL"][["mass_bin", "left_msun", "right_msun", "zhalf"]]
     for model, info in MODELS.items():
         sub = points[points["model"] == model].sort_values("M0_mean_msun")
         handle = sparse_errorbar(
@@ -310,12 +316,26 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
             zorder=3,
         )
         handles.append(handle)
+        if model != "PL":
+            common = sub.merge(base, on="mass_bin", suffixes=("", "_pl"), validate="one_to_one")
+            for edge in ("left_msun", "right_msun"):
+                if not np.allclose(common[edge], common[f"{edge}_pl"], rtol=1e-12, atol=0):
+                    raise ValueError(f"{model} and PL have different half-mass bin edges")
+            common = common[np.isfinite(common["zhalf"]) &
+                            np.isfinite(common["zhalf_pl"]) & (common["zhalf_pl"] > 0)]
+            bin_centres = np.sqrt(common["left_msun"] * common["right_msun"])
+            ratio_ax.plot(bin_centres, common["zhalf"] / common["zhalf_pl"],
+                          info["marker"] + "-", color=info["color"], lw=1.1,
+                          ms=3.0, mfc="white", mew=0.75, markevery=2, label=info["label"])
 
-    ax.set(xscale="log", xlim=(9.0e7, 1.2e12),
-           xlabel=r"$M_{\rm FOF}(z=0)\,[M_\odot]$", ylabel=r"$z_{1/2}$")
+    ax.set(xscale="log", xlim=(9.0e7, 1.2e12), ylabel=r"$z_{1/2}$")
     ax.set_ylim(bottom=0)
-    format_axes(ax, grid=True)
-    ax.set_axisbelow(True)
+    ax.tick_params(labelbottom=False)
+    ratio_ax.set(xlabel=r"$M_{\rm FOF}(z=0)\,[M_\odot]$", ylabel="BT/PL")
+    ratio_ax.set_yticks([1.0, 1.5, 2.0])
+    for axis in (ax, ratio_ax):
+        format_axes(axis, grid=True)
+        axis.set_axisbelow(True)
     ax.legend(handles=handles + [bk09, coco], loc="upper right", fontsize=7.2,
               labelspacing=0.25, handletextpad=0.45)
     save_publication_figure(fig, output_path)
