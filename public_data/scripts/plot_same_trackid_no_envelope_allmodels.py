@@ -282,67 +282,42 @@ def summarize(points: pd.DataFrame) -> pd.DataFrame:
 
 
 def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
-    apply_journal_style(base_fontsize=9.2)
-    fig, (ax, rax) = plt.subplots(
-        2,
-        1,
-        figsize=(5.05, 4.85),
-        sharex=True,
-        gridspec_kw={"height_ratios": [2.1, 1.0], "hspace": 0.05},
-    )
+    apply_journal_style(base_fontsize=8.8)
+    fig, ax = plt.subplots(figsize=(3.55, 2.48))
     mgrid = np.logspace(8, 12, 300)
-    for axis in (ax, rax):
-        axis.axvspan(N20_MASS_MSUN, N100_MASS_MSUN, color="0.82", alpha=0.24, lw=0, zorder=0)
-        axis.axvline(N100_MASS_MSUN, color="0.45", linestyle="--", linewidth=0.85, alpha=0.9, zorder=1)
-    ax.plot(mgrid, bk09_original(mgrid), color="0.38", linewidth=1.45, linestyle="-.", label=r"BK09")
-    ax.plot(
-        mgrid,
-        coco_hellwing16(mgrid),
-        color="0.58",
-        linewidth=1.45,
-        linestyle="--",
-        label=r"COCO/H16",
-    )
-    rax.axhline(0.0, color="0.45", linewidth=0.9)
+    ax.axvspan(N20_MASS_MSUN, N100_MASS_MSUN, color="0.82", alpha=0.24, lw=0, zorder=0)
+    ax.axvline(N100_MASS_MSUN, color="0.45", ls="--", lw=0.8, zorder=1)
+    bk09, = ax.plot(mgrid, bk09_original(mgrid), color="0.38", lw=1.3, ls="-.", label="BK09")
+    coco, = ax.plot(mgrid, coco_hellwing16(mgrid), color="0.58", lw=1.3, ls="--", label="COCO/H16")
 
+    handles = []
     for model, info in MODELS.items():
         sub = points[points["model"] == model].sort_values("M0_mean_msun")
-        yerr = [sub["zhalf"] - sub["zhalf_q16"], sub["zhalf_q84"] - sub["zhalf"]]
-        sparse_errorbar(ax,
+        handle = sparse_errorbar(
+            ax,
             sub["M0_mean_msun"],
             sub["zhalf"],
-            yerr=yerr,
+            yerr=[sub["zhalf"] - sub["zhalf_q16"], sub["zhalf_q84"] - sub["zhalf"]],
+            show_caps=True,
+            capsize=1.25,
             fmt=info["marker"] + "-",
             color=info["color"],
-            ecolor=info["color"],
             alpha=0.95,
-            capsize=2,
-            elinewidth=0.65,
             markerfacecolor="white",
-            markeredgewidth=0.8,
+            markeredgewidth=0.75,
             linewidth=1.15,
             label=info["label"],
+            zorder=3,
         )
-        rax.plot(
-            sub["M0_mean_msun"],
-            sub["dz_bk09_original"],
-            info["marker"] + "-",
-            color=info["color"],
-            markerfacecolor="white",
-            markeredgewidth=0.8,
-            linewidth=1.05,
-            markevery=2,
-            label=info["label"],
-        )
+        handles.append(handle)
 
-    ax.set_xscale("log")
-    ax.set_ylabel(r"$z_{1/2}$")
-    rax.set_ylabel(r"$\Delta z_{1/2}$")
-    rax.set_xlabel(r"$M_{\rm FOF}(z=0)\,[M_\odot]$")
-    ax.legend(loc="upper right", fontsize=6.6, ncol=1)
-    for axis in (ax, rax):
-        axis.set_xlim(9.0e7, 1.2e12)
-        format_axes(axis, grid=True)
+    ax.set(xscale="log", xlim=(9.0e7, 1.2e12),
+           xlabel=r"$M_{\rm FOF}(z=0)\,[M_\odot]$", ylabel=r"$z_{1/2}$")
+    ax.set_ylim(bottom=0)
+    format_axes(ax, grid=True)
+    ax.set_axisbelow(True)
+    ax.legend(handles=handles + [bk09, coco], loc="upper right", fontsize=7.2,
+              labelspacing=0.25, handletextpad=0.45)
     save_publication_figure(fig, output_path)
 
 
