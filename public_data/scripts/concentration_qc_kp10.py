@@ -169,7 +169,7 @@ PUBLIC_THEORY_RATIO_INPUT_PATH = (
     / "concentration"
     / "concentration_qc_theory_ratios.csv"
 )
-PUBLIC_THEORY_MODELS = {"diemer19", "ishiyama21_fit"}
+PUBLIC_THEORY_MODELS = set(THEORY_MODELS)
 PUBLIC_THEORY_TABLE = None
 
 MODELS = {
