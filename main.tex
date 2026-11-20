@@ -307,8 +307,8 @@ We quantify the agreement using the median simulation-to-model ratio across mass
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\textwidth]{halo-bias.pdf}
-    \caption{\change{Halo--matter bias for PL, \BTKPone{}, and \BTKPten{}. Circles and triangles show FOF groups in the \(256\) and \(25\,h^{-1}{\rm Mpc}\) boxes, respectively. Diamonds show \textsc{SOAP} \(M_{200m}\) measurements for \textsc{HBT+} centrals in the smaller box. Error bars are jackknife uncertainties obtained by omitting one independent Fourier mode at a time. Solid and dashed lines show Tinker et al. (2010) \protect\cite{Tinker2010HaloBias} at \(M_{200m}\) and Sheth--Tormen (1999) \protect\cite{ShethTormen1999Bias}, respectively. Halo masses are shown in \(M_\odot\). The two boxes sample the different \(k\) intervals specified in the text. At \(z=10.52\), only the smaller box has mass bins that pass the selection cuts.}}
+    \includegraphics[width=\textwidth]{halo-bias-soap-tinker10.pdf}
+    \caption{\change{Halo--matter bias of \textsc{HBT+} central halos binned by their \textsc{SOAP} masses \(M_{200m}\) at \(z=0\), \(1.07\), \(3.44\), and \(8.52\). Open circles show measurements from the \(256\,h^{-1}{\rm Mpc}\) boxes and open triangles show measurements from the \(25\,h^{-1}{\rm Mpc}\) boxes. Error bars show jackknife uncertainties obtained by omitting one independent Fourier mode at a time. The upper panels show measured bias and the Tinker et al. (2010) \protect\cite{Tinker2010HaloBias} prediction. The middle panels show \(b_{\rm BT}/b_{\rm PL}\), with measured ratios at the centers of mass bins shared by BT and PL in the same box. The lower panels show \(b_{\rm sim}/b_{\rm T10}-1\), with the prediction evaluated at each bin's median mass. The large-box points are available for PL and \BTKPone{} through \(z=3.44\).}}
     \label{fig:halo_bias}
 \end{figure*}
 
@@ -318,9 +318,9 @@ The mass function measures the abundance of halos. To measure how halos trace th
                        {\sum_{\boldsymbol{k}} P_{\rm mm}(\boldsymbol{k})},
     \label{eq:halo_matter_bias}
 \end{equation}
-where the sums run over independent Fourier modes in the selected \(k\) interval. We use \(0.03\leq k/(h\,{\rm Mpc}^{-1})\leq0.15\) for the \(256\,h^{-1}{\rm Mpc}\) box and \(0.25\leq k/(h\,{\rm Mpc}^{-1})\leq0.60\) for the \(25\,h^{-1}{\rm Mpc}\) box. Each halo contains at least 100 dark matter particles, and each \(0.30\)-dex mass bin contains at least 200 halos. We plot the median mass in each bin. The FOF measurements use the group masses as recorded in the catalogs. For PL and \BTKPone{} in the smaller box, we also measure bias for \textsc{HBT+} central halos \citep{Han2018HBTPlus} using their \textsc{SOAP} \(M_{200m}\), the mass enclosed at 200 times the mean matter density.
+where the sums run over independent Fourier modes in the selected \(k\) interval. We use \(0.03\leq k/(h\,{\rm Mpc}^{-1})\leq0.15\) for the \(256\,h^{-1}{\rm Mpc}\) box and \(0.25\leq k/(h\,{\rm Mpc}^{-1})\leq0.60\) for the \(25\,h^{-1}{\rm Mpc}\) box. Each halo contains at least 100 dark matter particles, and each \(0.30\)-dex mass bin contains at least 200 halos. We plot the median mass in each bin. \change{Figure~\ref{fig:halo_bias} shows \textsc{HBT+} central halos \citep{Han2018HBTPlus}, using their \textsc{SOAP} mass \(M_{200m}\) enclosed at 200 times the mean matter density. Appendix~\ref{app:fof_bias} gives the corresponding FOF measurements.}
 
-\change{Figure~\ref{fig:halo_bias} shows the \citet{ShethTormen1999Bias} relation, based on spherical-overdensity halo catalogs, and the \citet{Tinker2010HaloBias} relation for \(M_{200m}\). We evaluate both at \(\nu=\delta_{\rm c}/\sigma(M,z)\), with \(\delta_{\rm c}=1.686\). We compute \(\sigma(M,z)\) by smoothing each model's linear density field with a spherical top-hat window whose comoving radius encloses mass \(M\) at the present mean matter density. The comparison with the FOF measurements therefore uses a different halo mass definition. At \(z=6.15\) in the smaller box, the median \BTKPone{}/PL bias ratio across the seven common mass bins is \(0.58\) for FOF and \(0.59\) for the \(M_{200m}\) sample. The corresponding \BTKPten{}/PL FOF ratio is \(1.00\). At \(z=10.52\), the small-box \(M_{200m}\) points lie closer to Sheth--Tormen in both PL and \BTKPone{}. This comparison uses the small-box \(k\) window and extends beyond the redshift range of the Tinker calibration, which reaches \(z=2.5\).}
+\change{We evaluate the \citet{Tinker2010HaloBias} relation at \(\nu=\delta_{\rm c}/\sigma(M,z)\), with \(\delta_{\rm c}=1.686\), using the \(200\bar\rho_{\rm m}\) calibration. We compute \(\sigma(M,z)\) from each model's linear matter power spectrum with a spherical top-hat window whose comoving radius encloses mass \(M\) at the present mean matter density. The uncertainty of the measured BT/PL ratios depends on the covariance between the phase-matched simulations. At \(z=8.52\), the median \BTKPone{}/PL bias ratio is \(0.54\) across the five common mass bins in the smaller box. Comparisons at \(z=3.44\) and \(8.52\) extend beyond the Tinker calibration range of \(z\le2.5\).}
 
 \subsection{Half-Mass Redshift\label{subsub:HMR}}
 \change{The half-mass assembly redshift, \(z_{1/2}\), is the redshift at which a \(z=0\) halo first reaches half of its final FOF mass \(M_0\). We use the main progenitor branch defined in Sec.~\ref{subsec:halo_catalogs}. For each \(z=0\) FOF halo, we follow its persistent \textsc{HBT-HERONS} \texttt{TrackId} over snapshots 0021--0056 and record its Warren-corrected FOF mass. We determine \(z_{1/2}\) by linear interpolation between the first pair of consecutive snapshots in which the recorded FOF mass increases through \(M_0/2\). The same procedure is applied to PL, \BTKPone{}, and \BTKPten{}.}
@@ -520,7 +520,7 @@ The main conclusions are as follows:
 
     The median differences between the simulations and analytic models of Reed et al. (2007) \citep{Reed_2007} and Bocquet et al. (2016) \citep{Bocquet2016} are below \(8\%\) at \(z=0\) and \(3.44\), but reach \(32\%\) at \(z=8.52\).
 
-    \item \change{At \(z=6.15\) in the \(25\,h^{-1}{\rm Mpc}\) box, the median \BTKPone{}/PL halo--matter bias ratio across the seven common mass bins is \(0.58\) for FOF halos and \(0.59\) for SOAP \(M_{200m}\) centrals (Sec.~\ref{subsec:halo_bias}).}
+    \item \change{At \(z=8.52\) in the \(25\,h^{-1}{\rm Mpc}\) box, the median \BTKPone{}/PL halo--matter bias ratio across the five common mass bins is \(0.54\) for SOAP \(M_{200m}\) centrals (Sec.~\ref{subsec:halo_bias}).}
 
     \item \change{Enhanced small-scale primordial power shifts halo assembly earlier (Sec.~\ref{subsub:HMR}). For halos with a present-day halo mass \(M_0\simeq1.25\times10^9\,M_\odot\), the half-mass assembly redshift \(z_{1/2}\) increases from \(2.28\) in PL to \(4.24\) in \BTKPone{} and \(2.61\) in \BTKPten{}. The full mass-assembly histories also show earlier assembly in \BTKPone{} than in PL (Sec.~\ref{subsub:MAH}).}
 
@@ -645,6 +645,21 @@ The \(256^3\) same-volume run and the \(50\,h^{-1}{\rm Mpc}\), \(512^3\) volume 
 \end{figure*}
 
 \clearpage
+\onecolumngrid
+\section{FOF Halo--Matter Bias}
+\label{app:fof_bias}
+
+\change{We apply the estimator and selection cuts in Sec.~\ref{subsec:halo_bias} to the FOF group catalogs. Figure~\ref{fig:halo_bias_fof} compares these measurements with the \citet{ShethTormen1999Bias} prediction, using the FOF catalog mass to compute \(\nu\). At \(z=8.52\) only one FOF bin in the larger box passes the cuts, for \BTKPone{}. Across 147 mass bins shared by the two catalogs at fixed redshift, model, and box size, the median absolute fractional residual is \(5.95\%\) for \textsc{SOAP} compared with Tinker et al. (2010) and \(6.40\%\) for FOF compared with Sheth--Tormen (1999). At \(z=8.52\), the 17 shared bins all come from the smaller box, and the corresponding residuals are \(8.26\%\) and \(2.96\%\). These comparisons involve different halo mass definitions and reference relations.}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{halo-bias-fof-st99.pdf}
+    \caption{\change{Halo--matter bias of FOF groups at the redshifts shown in Fig.~\ref{fig:halo_bias}. Open circles and triangles show the \(256\) and \(25\,h^{-1}{\rm Mpc}\) boxes, respectively. Dashed curves show the Sheth--Tormen (1999) prediction. The middle panels show BT/PL bias ratios in shared mass bins within each box. The lower panels show \(b_{\rm sim}/b_{\rm ST99}-1\) using each bin's median FOF mass. Error bars are jackknife uncertainties obtained by omitting one independent Fourier mode at a time.}}
+    \label{fig:halo_bias_fof}
+\end{figure}
+
+\clearpage
+\twocolumngrid
 
 % ====== bib ====== %
 %\input{main.bbl}
