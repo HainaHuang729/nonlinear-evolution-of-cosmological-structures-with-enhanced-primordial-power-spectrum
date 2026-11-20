@@ -185,7 +185,7 @@ def set_hmf_ratio_ticks(ax, *, ratio_ticks=None):
         ax.yaxis.set_major_formatter(FuncFormatter(ratio_tick_label))
     ax.yaxis.set_minor_locator(LogLocator(base=10, subs=(2, 5), numticks=20))
     ax.yaxis.set_minor_formatter(NullFormatter())
-    ax.tick_params(axis="y", which="major", labelsize=8.0, pad=1.0)
+    ax.tick_params(axis="y", which="major", labelsize=11.0, pad=2.0)
     for tick_label in ax.get_yticklabels():
         tick_label.set_verticalalignment("center")
 
@@ -203,12 +203,14 @@ def residual_ylim(values):
 def set_hmf_residual_ticks(ax):
     set_hmf_x_ticks(ax)
     ymin, ymax = ax.get_ylim()
-    ticks = HMF_RESIDUAL_TICK_POOL[
-        (HMF_RESIDUAL_TICK_POOL >= ymin) & (HMF_RESIDUAL_TICK_POOL <= ymax)
-    ]
+    pool = HMF_RESIDUAL_TICK_POOL
+    decade_ticks = np.isin(np.abs(pool), [0, 1, 10, 100])
+    ticks = pool[(pool >= ymin) & (pool <= ymax) & decade_ticks]
+    if ticks.size == 1:
+        ticks = pool[(pool >= ymin) & (pool <= ymax) & np.isin(pool, [-0.1, 0.0, 0.1])]
     ax.yaxis.set_major_locator(FixedLocator(ticks))
     ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _pos: f"{value:g}"))
-    ax.tick_params(axis="y", which="major", labelsize=8.0, pad=1.0)
+    ax.tick_params(axis="y", which="major", labelsize=11.5, pad=2.0)
 
 
 def apply_completeness_cut(centers, hmf, err):
@@ -454,7 +456,7 @@ def ratio_ylim(values, fallback=(0.5, 10.0), *, expand_large_range=True):
 
 
 def plot_results(sim_results, theory_results):
-    apply_journal_style(base_fontsize=12.8)
+    apply_journal_style(base_fontsize=15.5)
 
     n_panels = len(SNAPSHOTS)
     n_cols = min(PANEL_COLUMNS, n_panels)
@@ -504,7 +506,7 @@ def plot_results(sim_results, theory_results):
         n_rows,
         n_cols,
         figure=fig,
-        left=0.095,
+        left=0.110,
         right=0.995,
         bottom=0.085,
         top=0.985,
@@ -617,7 +619,7 @@ def plot_results(sim_results, theory_results):
                 rf"$z={format_redshift(redshift, 2)}$",
                 loc=(0.95, 0.92),
                 ha="right",
-                fontsize=12.4,
+                fontsize=15.0,
             )
 
         if row == n_rows - 1:
@@ -661,8 +663,8 @@ def plot_results(sim_results, theory_results):
         title=r"B16 $M_{200c}$; BT: $m_s=1.5$",
         handler_map={tuple: HandlerTuple(ndivide=None)},
         loc="lower left",
-        fontsize=10.3,
-        title_fontsize=10.0,
+        fontsize=12.3,
+        title_fontsize=12.0,
         frameon=True,
         framealpha=0.75,
         edgecolor="none",

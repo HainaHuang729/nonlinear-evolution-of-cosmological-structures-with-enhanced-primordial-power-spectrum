@@ -231,8 +231,9 @@ def calculate_ratio_profile(numerator, denominator):
 
 def calculate_theory_nfw_profile(target_mass, ps_args, delta_vir=200, n_points=100):
     """Diemer19 c(M) NFW reference for SO/200_mean at z=0."""
+    mass_msun_h = target_mass * cosmology.getCurrent().h
     c_theory = concentration.concentration(
-        target_mass,
+        mass_msun_h,
         '200m',
         0.0,
         model=THEORY_CONCENTRATION_MODEL,

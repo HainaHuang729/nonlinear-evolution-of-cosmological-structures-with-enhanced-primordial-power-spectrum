@@ -39,11 +39,13 @@ ticks=[[1,1.1,1.2],[1,1.2,1.4,1.6],[1,1.5,2],[1,2,3,4,5]]
 colors=[MODEL_COLORS[name] for name in ['PL','BT1','BT10']]
 fig=plt.figure(figsize=(7.8,6.45))
 outer=fig.add_gridspec(2,2,left=.095,right=.982,bottom=.083,top=.925,
-                      hspace=.27,wspace=.23)
+                      hspace=.15,wspace=.23)
 pairs=[]
 for i,z in enumerate(zs):
     sub=outer[i//2,i%2].subgridspec(2,1,height_ratios=[2.7,1],hspace=.045)
-    p=fig.add_subplot(sub[0]);r=fig.add_subplot(sub[1],sharex=p);pairs.append((p,r))
+    p=fig.add_subplot(sub[0], sharex=pairs[0][0] if pairs else None)
+    r=fig.add_subplot(sub[1],sharex=p)
+    pairs.append((p,r))
     for ax in (p,r):
         ax.set_xscale('log');ax.set_xlim(2.4,33.5)
         ax.xaxis.set_major_locator(FixedLocator([3,5,10,20,30]))
@@ -85,7 +87,7 @@ for i,z in enumerate(zs):
             r.yaxis.set_minor_locator(FixedLocator([]))
     r.yaxis.set_major_formatter(FuncFormatter(lambda v,_:f'{v:g}'))
     r.axhline(0 if args.ratio_scale == 'symlog-difference' else 1,color='.45',lw=.9,ls=':',zorder=0)
-    r.set_xlabel(r'$k\ [h\,\mathrm{Mpc}^{-1}]$',labelpad=3)
+    r.tick_params(labelbottom=(i//2 == 1))
     if i%2==0:p.set_ylabel(r'$P(k)\ [h^{-3}\,\mathrm{Mpc}^{3}]$',labelpad=5)
     r.set_ylabel(r'$\Delta P/P_{\rm PL}\ [\%]$' if args.ratio_scale == 'symlog-difference' else 'BT / PL',labelpad=5)
     # Keep every local ratio scale visible: ranges differ between epochs.
@@ -95,6 +97,7 @@ handles=[Line2D([],[],color=c,marker=m,ls=['-','-','--'][j],
          for j,(c,m,l) in enumerate(zip(colors,markers,labels))]
 fig.legend(handles=handles,loc='upper center',ncol=3,frameon=False,
            bbox_to_anchor=(.54,.991),columnspacing=2.8)
+fig.supxlabel(r'$k\ [h\,\mathrm{Mpc}^{-1}]$', y=.018, fontsize=plt.rcParams['axes.labelsize'])
 fig.savefig(OUT)
 plt.close(fig)
 print('saved',OUT)

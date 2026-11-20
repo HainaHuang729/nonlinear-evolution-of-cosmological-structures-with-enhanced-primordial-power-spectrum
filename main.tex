@@ -271,10 +271,7 @@ Using the FOF groups defined in Sec.~\ref{subsec:halo_catalogs}, we measure the 
 We adopt the conservative lower limit \(M_{\rm FOF}\ge10^8\,M_\odot\) listed in Table~\ref{tab:trusted_ranges}. Appendix~\ref{app:fof_hmf_resolution} tests this limit with lower-resolution PL runs and a larger PL box.
 
 
-For the FOF comparison, we use the Reed et al. (2007, hereafter Reed07) halo mass function \citep{Reed_2007} with the corresponding PL, \BTKPone{}, or \BTKPten{} linear matter spectrum.
-
-
-Because mass-function fits depend on halo definition, we keep the FOF and spherical-overdensity comparisons separate. Fig.~\ref{fig:mass_function} uses FOF masses with Reed et al. (2007), while Fig.~\ref{fig:m200c_bocquet16_hmf} uses SOAP \(M_{200c}\) masses with Bocquet et al. (2016, hereafter B16) \citep{Bocquet2016}. For each model, the analytic curve is computed with its linear matter power spectrum. No parameters are refitted to our simulations.
+\change{We compare the FOF measurements with the Reed et al. (2007, hereafter Reed07) mass function \citep{Reed_2007} in Fig.~\ref{fig:mass_function}. For the SOAP \(M_{200c}\) measurements, we use Bocquet et al. (2016, hereafter B16) \citep{Bocquet2016} in Fig.~\ref{fig:m200c_bocquet16_hmf}. For both prescriptions, we compute the linear variance with a spherical top-hat filter applied to each model's linear matter power spectrum and use the published fit parameters.}
 
 
 Within the resolved mass range, both blue-tilted models increase the low-mass FOF abundance relative to PL, with the largest enhancement in \BTKPone{}. The enhancement is largest at high redshift. For \BTKPone{}, the abundance ratio relative to PL is \(4.81\)--\(6.55\) over \(M_{\rm FOF}\simeq1.2\times10^9\)--\(1.2\times10^{10}\,M_\odot\) at \(z=8.52\). By \(z=0\), the ratio over the same mass range falls to \(1.42\)--\(1.47\). The BT/PL ratio decreases toward higher masses and lower redshifts.
@@ -406,7 +403,7 @@ We next test whether earlier halo growth also changes internal structure. We use
 
 \subsubsection{Radial Halo Density Profiles\label{subsub:DensityProfile}}
 
-We stack the \(z=0\) profiles centered on the most-bound particle in four \(M_{200m}\) bins (Sec.~\ref{subsec:halo_catalogs}). Figure~\ref{fig:halo_density_analysis} compares median profiles measured directly from simulation particles with NFW profiles (Eq.~\ref{eq:nfw_profile}) computed using the Diemer \& Joyce (2019, hereafter D19) concentration--mass relation for the corresponding PL and BT models \citep{Diemer2019}. The error bars show bootstrap 16th--84th percentile intervals for the median profile in each bin.
+We stack the \(z=0\) profiles centered on the most-bound particle in four \(M_{200m}\) bins (Sec.~\ref{subsec:halo_catalogs}). Figure~\ref{fig:halo_density_analysis} compares median profiles measured directly from simulation particles with NFW profiles (Eq.~\ref{eq:nfw_profile}) computed using the Diemer \& Joyce (2019, hereafter D19) concentration--mass relation for the corresponding PL and BT models \citep{Diemer2019}. \change{For each reference curve, we evaluate D19 at the bin's target mass \(M_{200m}\) to obtain \(c_{200m}\), then use that concentration in the NFW profile.} The error bars show bootstrap 16th--84th percentile intervals for the median profile in each bin.
 
 To identify the radial convergence limit, we follow \citet{Power2003} and calculate
 \begin{equation}
@@ -427,9 +424,9 @@ At the innermost radius outside the shaded region in each mass bin, the \BTKPone
 
 \subsubsection{Concentration-Mass Relation\label{subsub:concentration}}
 
-We quantify halo structure using \(c_{200c}\), defined in Sec.~\ref{subsec:halo_catalogs}. We retain halos with at least 100 dark matter particles, corresponding to \(M_{200c}\simeq1.9\times10^8\,M_\odot\) in the main runs.
+We quantify halo structure using \(c_{200c}\), defined in Sec.~\ref{subsec:halo_catalogs}. We retain halos with at least 100 dark matter particles, corresponding to \(M_{200c}\simeq1.9\times10^8\,M_\odot\) in the main runs. \change{The concentration sample includes both relaxed and unrelaxed halos.}
 
-The simulation points in Fig.~\ref{fig:concentration_comparison_d19} show the median \(\log_{10}c_{200c}\) in 0.25-dex mass bins over \(8.0 \le \log_{10}(M_{200c}/M_{\odot}) \le 13.5\), with error bars given by the 16th--84th percentile scatter. The curves show the concentration--mass relation of \citet{Diemer2019}, hereafter D19. \change{We evaluate each concentration--mass prescription in Colossus~1.3.16 \citep{Diemer2018}, using the \(200c\) mass definition and the input linear matter power spectrum of the corresponding simulation. We use the published parameters for each prescription.} Appendix~\ref{app:concentration_alternative_models} shows the prescriptions of \citet{Ishiyama2021}, hereafter I21, and \citet{Ludlow2016WDMConcentration}, hereafter L16.
+The simulation points in Fig.~\ref{fig:concentration_comparison_d19} show the median \(\log_{10}c_{200c}\) in 0.25-dex mass bins over \(8.0 \le \log_{10}(M_{200c}/M_{\odot}) \le 13.5\), with error bars given by the 16th--84th percentile scatter. The curves show the concentration--mass relation of \citet{Diemer2019}, hereafter D19. \change{We evaluate each concentration--mass prescription in Colossus~1.3.16 \citep{Diemer2018}, using the \(200c\) mass definition and the input linear matter power spectrum of the corresponding simulation. We compute the linear variance with a spherical top-hat filter and use the published parameters for each prescription.} Appendix~\ref{app:concentration_alternative_models} shows the prescriptions of \citet{Ishiyama2021}, hereafter I21, and \citet{Ludlow2016WDMConcentration}, hereafter L16.
 
 At \(z=0\), the median concentration in the \(10^9\)--\(10^{9.5}\,M_\odot\) mass interval exceeds the PL value by factors of \(3.20\) for \BTKPone{} and \(1.35\) for \BTKPten{}. The 16th--84th percentile ranges in Fig.~\ref{fig:concentration_comparison_d19} show substantial halo-to-halo scatter, with the largest scatter in the lowest-mass bins.
 
@@ -465,7 +462,7 @@ A separate study in preparation (Wu, Chan, Lange, \& Huang) examines the Diemer 
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\textwidth]{power-spectrum-btpl.png}
-    \caption{Nonlinear matter power spectra and fractional differences relative to PL in the \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) simulations at \(z=0\), \(1.07\), \(3.44\), and \(8.52\). Upper panels show the phase-pair-averaged PL, \BTKPone{}, and \BTKPten{} spectra. Lower panels show \(\Delta P/P_{\rm PL}=(P_{\rm BT}-P_{\rm PL})/P_{\rm PL}\) in percent on symmetric logarithmic axes, with a linear interval from \(-1\%\) to \(1\%\). Horizontal dotted lines mark zero. Both BT models use \(m_s=1.5\), with \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\), respectively. The plotted range is \(10k_{\rm f}\le k\le0.25k_{\rm Ny}\).}
+    \caption{Nonlinear matter power spectra and fractional differences relative to PL in the \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) simulations at \(z=0\), \(1.07\), \(3.44\), and \(8.52\). Upper panels show the phase-pair-averaged PL, \BTKPone{}, and \BTKPten{} spectra. Lower panels show \(\Delta P/P_{\rm PL}=(P_{\rm BT}-P_{\rm PL})/P_{\rm PL}\) in percent on symmetric logarithmic axes, with a linear interval from \(-1\%\) to \(1\%\). Horizontal dotted lines mark zero. Both BT models use \(m_s=1.5\), with \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\), respectively. \change{The panels share a common \(k\) axis over \(10k_{\rm f}\le k\le0.25k_{\rm Ny}\).}}
     \label{fig:power_spectra_ratio_z0}
 \end{figure*}
 
@@ -602,7 +599,7 @@ Here, \(\Delta k\) is the bin width, \(N_{\rm mode}\) is the estimated number of
 
 This appendix tests the FOF halo-mass-function range against changes in mass resolution and box volume. Figure~\ref{fig:fof_hmf_resolution} compares four PL runs at \(z=0\) and \(z=8.52\). The fiducial run has \(L_{\rm box}=25\,h^{-1}{\rm Mpc}\) and \(1024^3\) particles. The same-volume resolution tests use \(512^3\) and \(256^3\) particles, while the volume test uses a \(50\,h^{-1}{\rm Mpc}\), \(512^3\) run. The \(25\,h^{-1}{\rm Mpc}\), \(256^3\) and \(50\,h^{-1}{\rm Mpc}\), \(512^3\) runs have the same particle mass, allowing a volume comparison at fixed mass resolution.
 
-We use the same logarithmic bins, Poisson uncertainties, and Warren correction as in the main FOF mass-function analysis. Vertical dotted lines mark the 50-particle mass for each resolution, and the lower panels show ratios to PL-25-\(1024^3\). The reduced data and plotting script are provided in \texttt{public\_data/figure\_data/fof\_hmf\_resolution/} and \texttt{public\_data/scripts/plot\_fof\_hmf\_resolution.py}, respectively.
+We use the same logarithmic bins, Poisson uncertainties, and Warren correction as in the main FOF mass-function analysis. \change{The Reed07 reference in Sec.~\ref{subsub:HMF} uses the linear variance computed with a spherical top-hat filter.} Vertical dotted lines mark the 50-particle mass for each resolution, and the lower panels show ratios to PL-25-\(1024^3\). The reduced data and plotting script are provided in \texttt{public\_data/figure\_data/fof\_hmf\_resolution/} and \texttt{public\_data/scripts/plot\_fof\_hmf\_resolution.py}, respectively.
 
 At \(z=0\), the same-volume tests agree well above each comparison run's 50-particle mass. Over the common bins with at least 20 objects in both catalogs, PL-25-\(512^3\) has a median ratio of \(0.986\) to PL-25-\(1024^3\) over \(10^{8.92}\)--\(10^{12.25}\,M_\odot\). PL-25-\(256^3\) gives \(0.987\) over \(10^{9.92}\)--\(10^{12.25}\,M_\odot\). The corresponding 16th--84th percentile ranges are \(0.963\)--\(1.029\) and \(0.952\)--\(1.070\).
 
