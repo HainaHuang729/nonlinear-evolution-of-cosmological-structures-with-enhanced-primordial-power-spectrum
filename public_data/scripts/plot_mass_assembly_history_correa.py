@@ -12,6 +12,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.ticker import NullLocator
 import numpy as np
 import pandas as pd
 
@@ -27,7 +28,7 @@ if str(SCRIPT_DIR) not in sys.path:
 from cosmology_plot_style import apply_journal_style, format_axes, save_publication_figure, sparse_errorbar  # noqa: E402
 
 
-apply_journal_style(base_fontsize=8.5)
+apply_journal_style(base_fontsize=10.6)
 
 Z_MAX = 8.0
 TARGETS = [1.0e9, 3.0e9, 1.0e10, 3.0e10, 1.0e11, 3.0e11]
@@ -137,11 +138,11 @@ def make_figure(
     fig, (ax, ratio_ax, bt_pl_ax) = plt.subplots(
         3,
         1,
-        figsize=(7.35, 7.25),
+        figsize=(3.58, 5.15),
         sharex=True,
-        gridspec_kw={"height_ratios": [4.25, 1.25, 1.25], "hspace": 0.07},
+        gridspec_kw={"height_ratios": [4.25, 1.2, 2.0], "hspace": 0.095},
     )
-    colors = plt.get_cmap("viridis")(np.linspace(0.10, 0.88, len(TARGETS)))
+    colors = plt.get_cmap("magma")(np.linspace(0.13, 0.76, len(TARGETS)))
     bt_over_pl_rows = []
 
     for target, color in zip(TARGETS, colors):
@@ -277,33 +278,39 @@ def make_figure(
     ratio_ax.axhline(1.0, color="0.25", lw=0.75, zorder=1)
     ratio_ax.set_yscale("log")
     ratio_ax.set_ylim(0.8, 3.3)
-    ratio_ax.set_yticks([0.8, 1.0, 1.5, 2.0, 3.0])
-    ratio_ax.set_yticklabels(["0.8", "1", "1.5", "2", "3"])
+    ratio_ax.set_yticks([1.0, 2.0, 3.0], labels=["1", "2", "3"])
+    ratio_ax.yaxis.set_minor_locator(NullLocator())
     ratio_ax.set_ylabel(r"$M_{\rm sim}/M_{\rm Correa}$", labelpad=7)
     format_axes(ratio_ax, grid=True)
     plt.setp(ratio_ax.get_xticklabels(), visible=False)
 
     bt_pl_ax.axhline(1.0, color="0.25", lw=0.75, zorder=1)
-    bt_pl_ax.set_ylim(0.9, 5.0)
-    bt_pl_ax.set_yticks([1.0, 2.0, 3.0, 4.0, 5.0])
+    bt_pl_ax.set_ylim(0.68, 5.0)
+    bt_pl_ax.set_yticks([1.0, 3.0, 5.0])
     bt_pl_ax.set_xlabel(r"$\log_{10}(1+z)$", labelpad=7)
-    bt_pl_ax.set_ylabel(r"$(M/M_0)_{\rm BT}/(M/M_0)_{\rm PL}$", labelpad=7)
+    bt_pl_ax.set_ylabel(r"$f_{\rm BT}/f_{\rm PL}$", labelpad=7)
     format_axes(bt_pl_ax, grid=True)
+    bt_pl_ax.tick_params(axis="x", pad=7)
 
     style_handles = [
         plt.Line2D([], [], color="0.25", ls="none", marker="o", markersize=3.0, label="PL median"),
-        plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label=r"$\mathrm{BT}_{k_p=1}$ median"),
+        plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label="BT median"),
         plt.Line2D([], [], color="0.25", lw=1.1, ls="--", label="PL Correa-EPS"),
-        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label=r"$\mathrm{BT}_{k_p=1}$ Correa-EPS"),
+        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label="BT Correa-EPS"),
     ]
-    first = ax.legend(
+    bt_pl_ax.legend(
         handles=style_handles,
-        title="Correa-EPS",
-        loc="lower left",
-        fontsize=7.1,
-        title_fontsize=7.1,
+        loc="upper left",
+        fontsize=9.2,
+        labelspacing=0.24,
+        handletextpad=0.42,
+        handlelength=1.4,
+        borderaxespad=0.38,
+        frameon=True,
+        framealpha=1,
+        facecolor="white",
+        edgecolor="none",
     )
-    ax.add_artist(first)
 
     mass_handles = []
     for target, color in zip(TARGETS, colors):
@@ -315,13 +322,22 @@ def make_figure(
     ax.legend(
         handles=mass_handles,
         title=r"$M_0\,[M_\odot]$",
-        loc="upper right",
-        fontsize=6.1,
-        title_fontsize=7.0,
+        loc="lower left",
+        ncol=2,
+        fontsize=10.4,
+        title_fontsize=11.2,
         handlelength=1.4,
-        borderaxespad=0.25,
+        handletextpad=0.38,
+        columnspacing=0.68,
+        labelspacing=0.18,
+        borderpad=0.18,
+        borderaxespad=0.41,
+        frameon=True,
+        framealpha=1,
+        facecolor="white",
+        edgecolor="none",
     )
-    fig.subplots_adjust(left=0.17, right=0.985, bottom=0.10, top=0.92)
+    fig.subplots_adjust(left=0.21, right=0.98, bottom=0.113, top=0.978)
     save_publication_figure(fig, output)
 
 
