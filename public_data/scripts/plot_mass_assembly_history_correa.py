@@ -125,7 +125,7 @@ def normalized_bt_to_pl_ratio(
 def make_figure(
     output: Path,
     errorbar_table: Path | None = None,
-    interval_kind: str = "halo",
+    interval_kind: str = "track-bootstrap",
 ) -> None:
     pl_curves = pd.read_csv(DATA_DIR / "pl_project_warren_curves.csv")
     bt_curves = pd.read_csv(DATA_DIR / "bt_project_warren_curves.csv")
@@ -134,6 +134,10 @@ def make_figure(
     pl_summary = pd.read_csv(DATA_DIR / "pl_warren_selection_summary.csv")
     bt_summary = pd.read_csv(DATA_DIR / "bt_soft_warren_selection_summary.csv")
     errorbars = pd.read_csv(errorbar_table) if errorbar_table is not None else None
+
+    if interval_kind == "track-bootstrap":
+        table = DATA_DIR / "mah_track_bootstrap.csv" if errorbar_table is None else errorbar_table
+        errorbars = pd.read_csv(table)
 
     fig, (ax, ratio_ax, bt_pl_ax) = plt.subplots(
         3,
@@ -157,6 +161,22 @@ def make_figure(
         if interval_kind == "halo":
             pl_mass_errors = direct_halo_interval_errors(pl_direct)
             bt_mass_errors = direct_halo_interval_errors(bt_direct)
+        elif interval_kind == "track-bootstrap":
+            def track_errors(model, direct):
+                subset = errorbars[(errorbars["model"] == model) & (errorbars["target_M0_msun"] == target)].sort_values("z")
+                np.testing.assert_allclose(subset["z"], direct["z"], atol=1e-8)
+                np.testing.assert_allclose(subset["median_M_msun"], direct["median_M_msun"])
+                for count in ("n_halos", "n_positive_mass"):
+                    np.testing.assert_array_equal(subset[count], direct[count])
+                ax.fill_between(np.log10(1 + direct["z"].to_numpy()),
+                                direct["p16_M_msun"].to_numpy(), direct["p84_M_msun"].to_numpy(),
+                                facecolor=color, alpha=0.11, linewidth=0, zorder=0.8)
+                return subset
+
+            pl_stats = track_errors("PL", pl_direct)
+            bt_stats = track_errors("BT_kp1", bt_direct)
+            pl_mass_errors = pl_stats["median_bootstrap_se"].to_numpy()
+            bt_mass_errors = bt_stats["median_bootstrap_se"].to_numpy()
         elif errorbars is not None:
             pl_mass_errors = mass_interval_errors(
                 errorbars,
@@ -165,8 +185,6 @@ def make_figure(
                 pl_direct["z"].to_numpy(dtype=float),
                 interval_kind,
             )
-        else:
-            raise ValueError("--errorbar-table is required for bootstrap intervals")
             bt_mass_errors = mass_interval_errors(
                 errorbars,
                 "BT_kp1",
@@ -174,6 +192,8 @@ def make_figure(
                 bt_direct["z"].to_numpy(dtype=float),
                 interval_kind,
             )
+        else:
+            raise ValueError("--errorbar-table is required for bootstrap intervals")
         sparse_errorbar(ax,
             np.log10(1.0 + pl_direct["z"]),
             pl_direct["median_M_msun"],
@@ -242,6 +262,10 @@ def make_figure(
         bt_pl_x, bt_pl_ratio, pl_mass, pl_fraction, bt_fraction = normalized_bt_to_pl_ratio(
             bt_direct, pl_direct
         )
+        if interval_kind == "track-bootstrap":
+            np.testing.assert_allclose(bt_pl_ratio, bt_stats["normalized_bt_over_pl"])
+            bt_pl_ax.errorbar(bt_pl_x, bt_pl_ratio, yerr=bt_stats["ratio_bootstrap_se"],
+                              fmt="none", ecolor=color, elinewidth=0.5, capsize=0, alpha=0.85)
         bt_pl_ax.plot(
             bt_pl_x,
             bt_pl_ratio,
@@ -371,8 +395,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--interval-kind",
-        choices=["bootstrap", "halo"],
-        default="halo",
+        choices=["track-bootstrap", "bootstrap", "halo"],
+        default="track-bootstrap",
         help="Show bootstrap uncertainty of the median or halo-to-halo percentiles.",
     )
     return parser.parse_args()
