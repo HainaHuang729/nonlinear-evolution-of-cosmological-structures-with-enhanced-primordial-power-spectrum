@@ -192,10 +192,14 @@ def set_residual_ticks(ax):
     ax.xaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10) * 0.1, numticks=80))
     ax.xaxis.set_minor_formatter(NullFormatter())
     ymin, ymax = ax.get_ylim()
-    ticks = RESIDUAL_TICK_POOL[(RESIDUAL_TICK_POOL >= ymin) & (RESIDUAL_TICK_POOL <= ymax)]
+    if ymax > 5.0:
+        candidates = np.array([-1.0, -0.1, 0.0, 0.1, 1.0, 10.0, 30.0])
+    else:
+        candidates = np.array([-1.0, -0.1, 0.0, 0.1, 1.0, 3.0])
+    ticks = candidates[(candidates >= ymin) & (candidates <= ymax)]
     ax.yaxis.set_major_locator(FixedLocator(ticks))
     ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _pos: f"{value:g}"))
-    ax.tick_params(axis="y", which="major", labelsize=8.0, pad=1.0)
+    ax.tick_params(axis="y", which="major", labelsize=8.5, pad=1.0)
 
 
 def main():
@@ -327,9 +331,9 @@ def main():
         ax.tick_params(labelbottom=False)
         ax_bt.tick_params(labelbottom=False)
         if col == 0:
-            ax.set_ylabel(r"$dn/d\log_{10}M\,[{\rm Mpc}^{-3}]$", fontweight="bold", labelpad=5)
+            ax.set_ylabel(r"$dn/d\log_{10}M_{\rm FOF}\,[{\rm Mpc}^{-3}]$", fontweight="bold", labelpad=5)
             ax_bt.set_ylabel(r"$f_{\rm BT}/f_{\rm PL}$", fontweight="bold", labelpad=5)
-            ax_model.set_ylabel(r"$\Delta f/f_{\rm R07}$", fontweight="bold", labelpad=5)
+            ax_model.set_ylabel(r"$\Delta f/f_{\rm Reed07}$", fontweight="bold", labelpad=5)
         else:
             ax.tick_params(labelleft=False)
             ax_bt.tick_params(labelleft=False)

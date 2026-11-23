@@ -1,1 +1,6 @@
--r public_data/requirements-figures.txt
+numpy>=1.24
+pandas>=2.0
+matplotlib>=3.7
+scipy>=1.10
+h5py>=3.8
+Pillow>=9.4

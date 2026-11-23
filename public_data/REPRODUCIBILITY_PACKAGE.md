@@ -1,14 +1,15 @@
-# Article Figure Reproducibility Package
+# Article Figure Reproducibility Package (v1.2.0)
 
-The complete v1.1.0 package is available on
-[Zenodo](https://doi.org/10.5281/zenodo.23788725) as
-`nonlinear-complete-v1.1.0.tar.gz`, with a SHA-256 sidecar and validation report.
-It includes all nine compact catalogs, clean projection inputs, radial-profile
-caches, and the project Colossus source. The smaller GitHub checkout and the
-original v1.0.0 archive do not include all of these binary inputs.
+The complete v1.2.0 package supersedes v1.1.0 on
+[Zenodo](https://doi.org/10.5281/zenodo.23788725) (`nonlinear-complete-v1.2.0.tar.gz`,
+with a SHA-256 sidecar and validation report).
+It includes all nine compact catalogs, clean projection inputs, most-bound radial-profile
+caches (`cache_mb/`), relaxation-split concentration tables, 256-box ${\rm BT}_{k_p=10}$
+SOAP bias measurements, and the project Colossus source. The smaller GitHub checkout does not
+include the 25 MB `projection-clean.png` binary asset or the compact HDF5 catalogs.
 
 Catalog checksums and comparisons with the current article tables pass. All
-12 figures were regenerated from an isolated package directory. The archive
+14 figures were regenerated from an isolated package directory. The archive
 contains original manuscript images and verification outputs, validation logs,
 and exact tested dependency versions under `verification/`. Small image-bound
 and font-rendering differences can occur across environments. The package
@@ -25,12 +26,12 @@ Create a Python environment, install the plotting dependencies, and run:
 
 ```bash
 python -m pip install -r requirements.txt
-python public_data/scripts/reproduce_all_figures.py
+python public_data/scripts/reproduce_all_figures.py --overwrite
 ```
 
-The second command writes the 12 PNG files to `reproduced_figures/` and writes
-`figure_manifest_sha256.csv` with image dimensions, byte sizes, and SHA-256
-checksums. Use `--overwrite` to replace a previous run.
+The second command writes all 14 active figure files (12 PNGs + 2 PDFs) to
+`reproduced_figures/` and writes `figure_manifest_sha256.csv` with image dimensions,
+byte sizes, and SHA-256 checksums. Use `--overwrite` to replace a previous run.
 
 See `public_data/scripts/README.md` for the script groups and
 `public_data/scripts/SCRIPT_MANIFEST.csv` for the complete file-level index.

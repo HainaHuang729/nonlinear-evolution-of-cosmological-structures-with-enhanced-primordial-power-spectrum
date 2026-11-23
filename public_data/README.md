@@ -8,51 +8,50 @@ product rather than by raw simulation output.
 
 - `MANIFEST.csv`: file-by-file inventory with descriptions and source paths.
 - `CATALOG_RELEASE.md`: schema, selections, validation, and download location of the compact per-halo catalog.
-- `REPRODUCIBILITY_PACKAGE.md`: download and reproduction instructions for the complete v1.1.0 package.
+- `REPRODUCIBILITY_PACKAGE.md`: download and reproduction instructions for the complete v1.2.0 package.
 - `requirements-figures.txt`: Python dependencies for regenerating the manuscript figures.
 - `figure_data/metadata/`: simulation-suite and figure-file manifests.
 - `figure_data/input_power_spectra/`: input linear matter spectra.
 - `figure_data/fof_hmf/`: binned FoF halo mass-function points and Reed07 relative differences.
-- `figure_data/m200c_hmf/`: binned `M200c` halo mass-function points used to derive the B16 relative differences.
+- `figure_data/m200c_hmf/`: binned `M200c` halo mass-function points (`dn_dlnM`) used to derive the B16 relative differences.
+- `figure_data/halo_bias/`: SOAP $M_{200m}$ and FOF halo--matter bias measurements across the $25$ and $256\,h^{-1}{\rm Mpc}$ boxes (including the 23 passing ${\rm BT}_{k_p=10}$ $256\,h^{-1}{\rm Mpc}$ SOAP bins).
 - `figure_data/halfmass_redshift/`: same-TrackId half-mass redshift points and summaries.
 - `figure_data/mass_assembly_history/`: same-TrackId median FOF mass histories and 16th--84th percentile halo-to-halo intervals for PL and the `kp=1` BT model, the Correa curves based on the published mass-dependent relations, and the normalized BT/PL assembly ratio used in `mass-assembly-history-correa.png`. The half-mass-closure tables are retained only as diagnostics and are not used by the figure script.
 - `figure_data/mass_accretion/`: archived accretion diagnostics retained for revision traceability. They are not used by the current manuscript figures.
 - `figure_data/halo_density/`: archived concentration-derived NFW curves for the retired `halo-density.png`; not used by the current manuscript figures.
-- `figure_data/halo_density_radial/`: direct particle-count radial density profiles and BT/PL ratios used in `halo-density-radial-n100-power.png`.
+- `figure_data/halo_density_radial/`: direct particle-count radial density profiles, BT/PL ratios, and compact most-bound caches (`cache_mb/`) used in `halo-density-radial-mb-corrected.png`.
 - `figure_data/concentration/`: binned `c200c` measurements, theory ratios, mass-dependent scatter, and derived accuracy summaries.
+- `figure_data/concentration_relaxation/`: seven reduced CSV tables supporting D19, I21 relaxed fit, and L16 concentration comparisons (`concentration-qc-{d19,i21-relaxed-fit,l16}-relaxation.png`).
 - `ps25-kp10-z0-20261026/`: current phase-pair nonlinear matter spectra and BT/PL ratios for the 25 h^-1 Mpc box, with the portable plotting script.
 - `figure_data/nonlinear_power_spectrum/`: historical power-spectrum comparisons and the (z=0) FFT-mesh convergence diagnostic.
 - `figure_data/appendix_fof_gap_stitching/`: archived gap-stitching diagnostic retained for revision traceability; not used by the current manuscript.
 - `figure_data/fof_hmf_resolution/`: appendix FOF mass-function resolution and volume check data.
-- `scripts/reproduce_all_figures.py`: one-command regeneration and validation of all 12 manuscript figures.
+- `scripts/reproduce_all_figures.py`: one-command regeneration and validation of all 14 active manuscript figures.
 - `scripts/README.md`: scripts grouped by final-figure plotting, upstream reduction, validation, workflow, and archived use.
 - `scripts/SCRIPT_MANIFEST.csv`: one row for every article script, including its status and execution scope.
 - `scripts/summarize_concentration_metrics.py`: regenerates the released concentration accuracy and mass-range scatter summaries.
+- `scripts/measure_bias_paired_jackknife.py`: cluster-ready paired-mode, grouped $k$-shell, and 8-octant jackknife halo-bias estimator (with local `--self-test`).
 - `scripts/build_reproducibility_release.py`: project-side assembler for the self-contained archive.
-- `scripts/`: the complete 29-script article set. The directory remains flat so existing imports and commands continue to work.
+- `scripts/`: the complete article script set. The directory remains flat so existing imports and commands continue to work.
 
 ## Scope
 
 The package is intended to make the plotted trends and quoted figure-level
 statistics reproducible without requiring the full raw simulation snapshots.
-The raw SWIFT snapshots and complete HBT+/SOAP catalogs are much larger than
+The raw SWIFT snapshots and complete HBT-HERONS/SOAP catalogs are much larger than
 the manuscript source package; the reduced files here are the data products
 used for the manuscript figures and numerical comparisons.
 
-The complete v1.1.0 archive includes a 74.2 MiB compact catalog with individual halo inputs used
+The complete v1.2.0 archive supersedes v1.1.0 ([Zenodo v1.1.0](https://doi.org/10.5281/zenodo.23788725)) and includes the 74.2 MiB compact catalog with individual halo inputs used
 for the FOF and `M200c` mass functions, concentration relation, mass-assembly
-histories, and radial-profile sample. The self-contained archive combines this
-catalog with `figure_data/`, the clean projection mosaic, radial-profile
-bootstrap caches, and the project Colossus source. See `CATALOG_RELEASE.md` for
-the catalog contents, selection rules, checksums, and validation procedure. The
-large binary files are kept outside the manuscript Git repository and are
-included in the [complete v1.1.0 release](https://doi.org/10.5281/zenodo.23788725),
-together with clean projection inputs, radial caches, and project Colossus
-source. The original v1.0.0 archive did not include these materials.
+histories, and radial-profile sample, together with clean projection inputs,
+most-bound radial caches, relaxation concentration tables, and project Colossus
+source. See `CATALOG_RELEASE.md` for
+the catalog contents, selection rules, checksums, and validation procedure.
 
 Paths recorded in `MANIFEST.csv` point to the local project locations from
-which the reduced products were assembled. In the assembled archive, run
+which earlier reduced products were assembled. In the assembled archive, run
 `python public_data/scripts/reproduce_all_figures.py` from any location to
-write and validate all 12 figures under `reproduced_figures/`. Raw-data
+write and validate all 14 figures under `reproduced_figures/`. Raw-data
 reduction scripts retain project path defaults because the full snapshots are
 not distributed; the figure-regeneration path does not use those paths.

@@ -192,7 +192,7 @@ def power_radius_from_counts(power_shell_count, r200_mpc, mass_msun):
     return float(np.exp(log_x0 + frac * (log_x1 - log_x0)))
 
 
-def halo_particle_profile(snapshot, center, r200_mpc, cell_mins, cell_maxs, offsets, counts, *, return_counts=False):
+def halo_particle_profile(snapshot, center, r200_mpc, cell_mins, cell_maxs, offsets, counts):
     """Measure one halo profile from DM particles in intersecting SWIFT cells."""
     coords_ds = snapshot["/PartType1/Coordinates"]
     mass_msun = float(np.median(snapshot["/PartType1/Masses"][:2048])) * 1.0e10
@@ -224,8 +224,6 @@ def halo_particle_profile(snapshot, center, r200_mpc, cell_mins, cell_maxs, offs
     rho = shell_mass / shell_vol_kpc3
     rho[rho <= 0.0] = np.nan
     power_radius = power_radius_from_counts(power_shell_count, r200_mpc, mass_msun)
-    if return_counts:
-        return rho, power_radius, power_shell_count.astype(np.int64)
     return rho, power_radius
 
 
@@ -565,26 +563,6 @@ def plot_trial():
         if RADIAL_OUTPUT_PATH_ENV
         else PAPERPLOT_ROOT / "figures" / RADIAL_OUTPUT_BASENAME
     )
-    if os.environ.get("RADIAL_MANUSCRIPT_MB_LAYOUT") == "1":
-        for row, panel_row in enumerate(axes):
-            for ax in panel_row:
-                ax.grid(False)
-                if row % 2 == 0:
-                    for label in ax.texts:
-                        label.set_position((0.42, 0.12))
-                        label.set_fontsize(9.5)
-                    legend = ax.get_legend()
-                    if legend:
-                        legend.get_title().set_fontsize(7.5)
-                        for label in legend.get_texts():
-                            label.set_fontsize(7.5)
-                        legend.set_bbox_to_anchor((0.98, 0.96), transform=ax.transAxes)
-                else:
-                    ax.set_yticks([0.5, 1, 2, 4])
-                    ax.tick_params(axis="y", which="major", labelsize=9, pad=4)
-                    if row == len(axes) - 1:
-                        ax.tick_params(axis="x", which="major", pad=5)
-
     out.parent.mkdir(parents=True, exist_ok=True)
     save_publication_figure(fig, out)
     print(f"Figure saved: {out}")

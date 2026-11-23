@@ -131,7 +131,7 @@ MODELS = {
 
 
 def setup_cosmology():
-    cosmology.setCosmology(
+    cosmo = cosmology.setCosmology(
         "bocquet16_m200c_hmf",
         {
             "flat": True,
@@ -141,8 +141,11 @@ def setup_cosmology():
             "sigma8": 0.8111,
             "ns": 0.9649,
             "relspecies": False,
+            "persistence": "",
         },
     )
+    cosmo.k_Pk_Nbins = [10, 30, 60, 600, 10]
+    return cosmo
 
 
 def set_hmf_x_ticks(ax):
@@ -203,14 +206,11 @@ def residual_ylim(values):
 def set_hmf_residual_ticks(ax):
     set_hmf_x_ticks(ax)
     ymin, ymax = ax.get_ylim()
-    pool = HMF_RESIDUAL_TICK_POOL
-    decade_ticks = np.isin(np.abs(pool), [0, 1, 10, 100])
-    ticks = pool[(pool >= ymin) & (pool <= ymax) & decade_ticks]
-    if ticks.size == 1:
-        ticks = pool[(pool >= ymin) & (pool <= ymax) & np.isin(pool, [-0.1, 0.0, 0.1])]
+    pool = np.array([-10.0, -1.0, -0.1, 0.0, 0.1, 1.0, 10.0])
+    ticks = pool[(pool >= ymin) & (pool <= ymax)]
     ax.yaxis.set_major_locator(FixedLocator(ticks))
     ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _pos: f"{value:g}"))
-    ax.tick_params(axis="y", which="major", labelsize=11.5, pad=2.0)
+    ax.tick_params(axis="y", which="major", labelsize=9.5, pad=2.0)
 
 
 def apply_completeness_cut(centers, hmf, err):
@@ -224,15 +224,15 @@ def mark_m200c_resolution(ax, annotate=False):
     ax.axvline(M200C_COMPLETE_MIN_MSUN, color="0.35", linestyle="--", linewidth=0.85, alpha=0.9, zorder=1)
     if annotate:
         ax.text(
-            0.045,
-            0.80,
+            0.12,
+            0.84,
             r"$N_{\rm DM}\lesssim100$",
             transform=ax.transAxes,
             ha="left",
             va="center",
             fontsize=7.0,
             color="0.35",
-            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.82, "pad": 0.8},
+            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.88, "pad": 0.8},
         )
 
 
@@ -410,7 +410,8 @@ def collect_results_from_public():
                 continue
             rows = sorted(rows, key=lambda item: float(item["M_200c_Msun"]))
             centers = np.asarray([float(row["M_200c_Msun"]) for row in rows], dtype=float)
-            hmf = np.asarray([float(row["dn_dlog10M"]) for row in rows], dtype=float)
+            hmf_key = "dn_dlnM" if "dn_dlnM" in rows[0] else "dn_dlog10M"
+            hmf = np.asarray([float(row[hmf_key]) for row in rows], dtype=float)
             err = np.asarray([float(row["poisson_err"]) for row in rows], dtype=float)
             complete = centers >= M200C_COMPLETE_MIN_MSUN
             centers = centers[complete]
@@ -587,7 +588,7 @@ def plot_results(sim_results, theory_results):
         format_axes(ax_upper, grid=True)
         format_axes(ax_bt, grid=True)
         format_axes(ax_model, grid=True)
-        y_min = 1.0e-8 if redshift is not None and redshift >= 8.0 else 1.0e-7
+        y_min = 1.0e-8 if row > 0 else 1.0e-5
         ax_upper.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=(y_min, 1.0e2))
         ax_bt.set(xscale="log", yscale="log", xlim=(1.0e8, 2.0e11), ylim=bt_pl_ratio_ylims[row])
         ax_model.set_xscale("log")

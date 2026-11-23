@@ -346,10 +346,12 @@ theory_results = {code: {} for code in sim_configs.keys()}
 colors = plt.cm.viridis(np.linspace(0, 1, len(snap_numbers)))
 
 # 设置宇宙学参数
-cosmology.setCosmology('my_cosmo_reed07_without_nu_corrected', {
+_cosmo = cosmology.setCosmology('my_cosmo_reed07_without_nu_corrected', {
     'flat': True, 'H0': 100 * cosmo_params['h'], 'Om0': cosmo_params['omega_m'],
-    'Ob0': cosmo_params['Ob0'], 'sigma8': cosmo_params['sig_8_z0'], 'ns': cosmo_params['ns'], 'relspecies': False
+    'Ob0': cosmo_params['Ob0'], 'sigma8': cosmo_params['sig_8_z0'], 'ns': cosmo_params['ns'], 'relspecies': False,
+    'persistence': '',
 })
+_cosmo.k_Pk_Nbins = [10, 30, 60, 600, 10]
 
 for idx, snap_num in enumerate(snap_numbers):
     for code in sim_configs.keys():

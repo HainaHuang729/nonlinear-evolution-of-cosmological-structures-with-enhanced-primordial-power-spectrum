@@ -22,10 +22,10 @@ H = 0.6736
 SIGMA8 = 0.8111
 DELTA_C = 1.686
 SAMPLES = (
-    ("FOF", 256, "o", "FOF 256"),
-    ("FOF", 25, "^", "FOF 25"),
-    ("M200m", 256, "o", r"SOAP $M_{200m}$ 256"),
-    ("M200m", 25, "^", r"SOAP $M_{200m}$ 25"),
+    ("FOF", 256, "o", r"FOF ($256\,h^{-1}{\rm Mpc}$)"),
+    ("FOF", 25, "^", r"FOF ($25\,h^{-1}{\rm Mpc}$)"),
+    ("M200m", 256, "o", r"SOAP $M_{200m}$ ($256\,h^{-1}{\rm Mpc}$)"),
+    ("M200m", 25, "^", r"SOAP $M_{200m}$ ($25\,h^{-1}{\rm Mpc}$)"),
 )
 
 
@@ -75,13 +75,13 @@ def main(output, *, split=False):
     apply_journal_style(base_fontsize=10.6)
     if split:
         pairs = [draw_figure(points, linear_power, sim, kind) for kind in ("M200m", "FOF")]
-        for groups in zip(*(axes for _, axes in pairs), strict=True):
+        for groups in zip(*(axes for _, axes in pairs)):
             limits = [axes[0].get_ylim() for axes in groups]
             lo = min(limit[0] for limit in limits)
             hi = max(limit[1] for limit in limits)
             for axes in groups:
                 axes[0].set_ylim(lo, hi)
-        for (fig, _), suffix in zip(pairs, ("soap-tinker10", "fof-st99"), strict=True):
+        for (fig, _), suffix in zip(pairs, ("soap-tinker10", "fof-st99")):
             save_figure(fig, output.with_stem(f"{output.stem}-{suffix}"))
     else:
         fig, _ = draw_figure(points, linear_power, sim)
@@ -207,7 +207,7 @@ def draw_figure(points, linear_power, sim, sample_kind=None):
     curves = [Line2D([], [], color="0.25", ls=ls, label=label)
               for _, ls, label in predictions]
     for ax, handles in zip((main_axes[2], main_axes[3], main_axes[1]),
-                           (models, samples, curves), strict=True):
+                           (models, samples, curves)):
         ax.legend(handles=handles, loc="lower right", fontsize=9.5,
                   handlelength=1.8, handletextpad=.45, borderaxespad=.65,
                   labelspacing=.26, frameon=True, framealpha=1,

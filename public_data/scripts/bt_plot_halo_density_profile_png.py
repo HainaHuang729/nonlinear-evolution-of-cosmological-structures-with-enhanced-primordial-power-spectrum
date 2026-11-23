@@ -93,7 +93,8 @@ COLOSSUS_BASE_DIR.mkdir(parents=True, exist_ok=True)
 colossus_settings.BASE_DIR = str(COLOSSUS_BASE_DIR)
 
 # 设置宇宙学。必须在设置 Colossus cache 目录后初始化，避免写入只读 home。
-cosmology.setCosmology('planck18')
+_cosmo = cosmology.setCosmology('planck18', persistence='')
+_cosmo.k_Pk_Nbins = [10, 30, 60, 600, 10]
 
 CDM_SOAP_PATH = DATA_ROOT / "PL/PL_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"
 BT_SOAP_PATH = DATA_ROOT / "bluetilted/kp_1_ms_1.5_25_1024/SOAP_full_000_056/simulation_test/SOAP_uncompressed/HBTplus/halo_properties_0056.hdf5"

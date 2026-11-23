@@ -220,9 +220,10 @@ def make_figure(
             ls="none",
             marker="o",
             markersize=2.8,
-            elinewidth=0.6,
-            capsize=1.1,
-            capthick=0.6,
+            elinewidth=0.45,
+            capsize=0.8,
+            capthick=0.45,
+            alpha=0.95,
         )
         sparse_errorbar(ratio_ax,
             bt_ratio_x,
@@ -232,9 +233,9 @@ def make_figure(
             ls="none",
             marker="^",
             markersize=3.0,
-            elinewidth=0.6,
-            capsize=1.1,
-            capthick=0.6,
+            elinewidth=0.45,
+            capsize=0.8,
+            capthick=0.45,
             alpha=0.95,
         )
 
@@ -292,11 +293,25 @@ def make_figure(
     format_axes(bt_pl_ax, grid=True)
     bt_pl_ax.tick_params(axis="x", pad=7)
 
+    x_z6 = np.log10(1.0 + 6.0)
+    for panel_ax in (ax, ratio_ax, bt_pl_ax):
+        panel_ax.axvline(x_z6, color="0.45", ls="--", lw=0.8, zorder=1)
+    ax.text(
+        x_z6 - 0.015,
+        4.2e11,
+        r"$z=6$",
+        ha="right",
+        va="top",
+        fontsize=9.0,
+        color="0.35",
+        bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.8, "pad": 0.5},
+    )
+
     style_handles = [
         plt.Line2D([], [], color="0.25", ls="none", marker="o", markersize=3.0, label="PL median"),
-        plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label="BT median"),
+        plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label=r"BT $k_p=1$ median"),
         plt.Line2D([], [], color="0.25", lw=1.1, ls="--", label="PL Correa-EPS"),
-        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label="BT Correa-EPS"),
+        plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label=r"BT $k_p=1$ Correa-EPS"),
     ]
     bt_pl_ax.legend(
         handles=style_handles,

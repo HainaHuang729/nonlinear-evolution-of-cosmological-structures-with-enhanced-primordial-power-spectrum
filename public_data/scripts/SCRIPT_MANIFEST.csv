@@ -6,7 +6,10 @@ bt_submit_halo_density_radial_n100_power.sh,workflow,current,cluster,no,Slurm wr
 build_reproducibility_release.py,workflow,current,cluster,no,Self-contained release assembler
 compute_m200c_main_branch_accretion.py,archived,archived,cluster,no,Retired M200c accretion reduction
 compute_sim_power_spectrum.py,reduction,current,cluster,no,Simulation power-spectrum measurement
-concentration_qc_kp10.py,figure,current,portable,yes,Three concentration figures
+concentration_qc_kp10.py,figure,historical,portable,no,Superseded full-sample concentration figures
+plot_concentration_relaxation.py,figure,current,portable,yes,Three relaxation-split and full-sample concentration figures
+plot_halo_bias.py,figure,current,portable,yes,SOAP and FOF halo-matter bias figures
+measure_bias_paired_jackknife.py,reduction,current,cluster,no,Paired-mode k-shell and octant jackknife halo bias estimator
 cosmology_plot_style.py,shared,current,portable,yes,Shared journal plotting style
 extract_article_halo_catalog.py,reduction,current,cluster,no,Compact per-halo catalog extraction
 halomass_fof_reed07.py,reduction,current,cluster,no,FOF mass-function reduction

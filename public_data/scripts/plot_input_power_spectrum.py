@@ -77,23 +77,25 @@ def read_public_spectra() -> dict[str, tuple[np.ndarray, np.ndarray]]:
         if len(selected) == 0:
             raise ValueError(f"No rows for {model} in {PUBLIC_DATA_PATH}")
         order = np.argsort(selected["k_hMpc"])
+        # Convert MonofonIC's (2*pi)^-3 Fourier convention to standard cosmological P(k)
+        # matching Fig. 10 and Delta^2(k) = k^3 P(k) / (2 * pi^2).
         spectra[model] = (
             np.asarray(selected["k_hMpc"][order], dtype=float),
-            np.asarray(selected["P_k_Mpc_over_h_cubed"][order], dtype=float),
+            np.asarray(selected["P_k_Mpc_over_h_cubed"][order], dtype=float) * (2.0 * np.pi) ** 3,
         )
     return spectra
 
 
 def mark_input_scale_reference(ax) -> None:
     """Mark BT pivot positions and the fiducial particle-grid scale."""
-    ax.axvspan(K_HIGHK_CAUTION, K_NY_FIDUCIAL, color="0.75", alpha=0.10, lw=0, zorder=0)
-    ax.axvspan(K_NY_FIDUCIAL, 1.0e3, color="0.82", alpha=0.22, lw=0, zorder=0)
+    ax.axvspan(K_HIGHK_CAUTION, K_NY_FIDUCIAL, color="0.80", alpha=0.22, lw=0, zorder=0)
+    ax.axvspan(K_NY_FIDUCIAL, 1.0e3, color="0.65", alpha=0.35, lw=0, zorder=0)
     for pivot in BT_PIVOTS:
         ax.axvline(pivot, color="0.35", linestyle=":", linewidth=0.8, alpha=0.85, zorder=1)
     ax.axvline(K_NY_FIDUCIAL, color="0.25", linestyle="--", linewidth=0.9, alpha=0.9, zorder=1)
     ax.text(
         K_NY_FIDUCIAL,
-        1.8e-12,
+        4.5e-10,
         r"$k_{\rm Ny}$",
         rotation=90,
         ha="right",
@@ -104,7 +106,7 @@ def mark_input_scale_reference(ax) -> None:
     for pivot, label in zip(BT_PIVOTS, (r"$k_p=1$", r"$k_p=10$")):
         ax.text(
             pivot,
-            4.8e-13,
+            1.2e-10,
             label,
             rotation=90,
             ha="right",
@@ -126,13 +128,13 @@ def main() -> None:
 
     mark_input_scale_reference(ax)
     ax.set_xlim(1e-3, 1e3)
-    ax.set_ylim(1e-13, 1e-2)
+    ax.set_ylim(2.0e-11, 5.0e0)
     ax.xaxis.set_major_locator(FixedLocator(10.0 ** np.arange(-3, 4)))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.yaxis.set_major_locator(FixedLocator(10.0 ** np.arange(-13, -2, 2)))
+    ax.yaxis.set_major_locator(FixedLocator(10.0 ** np.arange(-10, 1, 2)))
     ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
     ax.set_xlabel(r"$k\,[h\,{\rm Mpc}^{-1}]$")
-    ax.set_ylabel(r"$P(k)\,[({\rm Mpc}/h)^3]$")
+    ax.set_ylabel(r"$P(k)\,[h^{-3}\,{\rm Mpc}^3]$")
     format_axes(ax)
     ax.legend(
         loc="lower left",

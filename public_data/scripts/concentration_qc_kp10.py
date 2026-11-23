@@ -211,7 +211,7 @@ PUBLIC_MODEL_ALIASES = {
     "BTKP10": "BT_kp10",
 }
 
-cosmology.setCosmology(
+_cosmo = cosmology.setCosmology(
     "concentration_qc",
     {
         "flat": True,
@@ -221,8 +221,10 @@ cosmology.setCosmology(
         "sigma8": 0.8111,
         "ns": 0.9649,
         "relspecies": False,
+        "persistence": "",
     },
 )
+_cosmo.k_Pk_Nbins = [10, 30, 60, 600, 10]
 
 
 def load_data(file_path):
@@ -606,6 +608,7 @@ def output_path_for_theory(theory_model):
 
 def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
     theory_style = THEORY_MODELS[theory_model]
+    panel_gap = 0.07 if theory_model == "diemer19" else OUTER_PANEL_HSPACE
     fig = plt.figure(figsize=(8.6, 8.25))
     outer_grid = fig.add_gridspec(
         2,
@@ -615,7 +618,7 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
         bottom=0.075,
         top=0.985,
         wspace=0.10,
-        hspace=OUTER_PANEL_HSPACE,
+        hspace=panel_gap,
     )
 
     for i, snap in enumerate(SNAPSHOTS):
@@ -771,14 +774,14 @@ def plot_theory_figure(theory_model, stats_by_snap, mass_msun):
         bottom=0.075,
         top=0.985,
         wspace=0.10,
-        hspace=OUTER_PANEL_HSPACE,
+        hspace=panel_gap,
     )
 
     fig.savefig(
         output_path_for_theory(theory_model),
         dpi=320,
         bbox_inches="tight",
-        pad_inches=0.08,
+        pad_inches=0.025 if theory_model == "diemer19" else 0.08,
     )
     plt.close(fig)
     gc.collect()
