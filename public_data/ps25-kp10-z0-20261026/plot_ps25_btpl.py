@@ -51,7 +51,8 @@ for i,z in enumerate(zs):
         ax.xaxis.set_major_locator(FixedLocator([3,5,10,20,30]))
         ax.xaxis.set_major_formatter(FuncFormatter(lambda v,_:f'{v:g}'))
         ax.xaxis.set_minor_formatter(NullFormatter())
-        format_axes(ax)
+        format_axes(ax, grid=True)
+        ax.set_axisbelow(True)
     p.set_yscale('log');p.yaxis.set_minor_formatter(NullFormatter())
     for j,m in enumerate(models):
         xy=np.array(sorted(spec[m,round(z,3)]))
@@ -91,7 +92,6 @@ for i,z in enumerate(zs):
     if i%2==0:p.set_ylabel(r'$P(k)\ [h^{-3}\,\mathrm{Mpc}^{3}]$',labelpad=5)
     r.set_ylabel(r'$\Delta P/P_{\rm PL}\ [\%]$' if args.ratio_scale == 'symlog-difference' else 'BT / PL',labelpad=5)
     # Keep every local ratio scale visible: ranges differ between epochs.
-    r.grid(axis='y',color='0.88',lw=.5,zorder=0)
 handles=[Line2D([],[],color=c,marker=m,ls=['-','-','--'][j],
                 mfc='white',mew=.8,label=l)
          for j,(c,m,l) in enumerate(zip(colors,markers,labels))]

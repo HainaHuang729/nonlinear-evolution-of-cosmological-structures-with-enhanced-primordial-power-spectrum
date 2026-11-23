@@ -25,7 +25,7 @@ BT_OVER_PL_OUTPUT = DATA_DIR / "bt_over_pl_mass_fraction_ratio.csv"
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from cosmology_plot_style import apply_journal_style, format_axes, save_publication_figure, sparse_errorbar  # noqa: E402
+from cosmology_plot_style import apply_journal_style, format_axes, save_publication_figure  # noqa: E402
 
 
 apply_journal_style(base_fontsize=10.6)
@@ -194,28 +194,28 @@ def make_figure(
             )
         else:
             raise ValueError("--errorbar-table is required for bootstrap intervals")
-        sparse_errorbar(ax,
+        ax.errorbar(
             np.log10(1.0 + pl_direct["z"]),
             pl_direct["median_M_msun"],
             yerr=pl_mass_errors,
             color=color,
             ls="none",
-            marker="o",
+            marker="o", markerfacecolor="none",
             markersize=3.0,
             elinewidth=0.65,
-            capsize=1.2,
+            capsize=0,
             capthick=0.65,
         )
-        sparse_errorbar(ax,
+        ax.errorbar(
             np.log10(1.0 + bt_direct["z"]),
             bt_direct["median_M_msun"],
             yerr=bt_mass_errors,
             color=color,
             ls="none",
-            marker="^",
+            marker="^", markerfacecolor="none",
             markersize=3.2,
             elinewidth=0.65,
-            capsize=1.2,
+            capsize=0,
             capthick=0.65,
             alpha=0.95,
         )
@@ -232,29 +232,29 @@ def make_figure(
         bt_ratio_errors = (
             bt_mass_errors / bt_reference_mass if bt_mass_errors is not None else None
         )
-        sparse_errorbar(ratio_ax,
+        ratio_ax.errorbar(
             pl_ratio_x,
             pl_ratio,
             yerr=pl_ratio_errors,
             color=color,
             ls="none",
-            marker="o",
+            marker="o", markerfacecolor="none",
             markersize=2.8,
             elinewidth=0.45,
-            capsize=0.8,
+            capsize=0,
             capthick=0.45,
             alpha=0.95,
         )
-        sparse_errorbar(ratio_ax,
+        ratio_ax.errorbar(
             bt_ratio_x,
             bt_ratio,
             yerr=bt_ratio_errors,
             color=color,
             ls="none",
-            marker="^",
+            marker="^", markerfacecolor="none",
             markersize=3.0,
             elinewidth=0.45,
-            capsize=0.8,
+            capsize=0,
             capthick=0.45,
             alpha=0.95,
         )
@@ -273,11 +273,8 @@ def make_figure(
             ls="none",
             marker="o",
             markersize=2.6,
-            markevery=3,
             alpha=0.95,
         )
-        bt_pl_ax.plot(bt_pl_x, bt_pl_ratio, color=color, ls="none",
-                      marker=".", markersize=1.35, alpha=0.65)
         for index, row in bt_direct.reset_index(drop=True).iterrows():
             bt_over_pl_rows.append(
                 {
@@ -332,8 +329,8 @@ def make_figure(
     )
 
     style_handles = [
-        plt.Line2D([], [], color="0.25", ls="none", marker="o", markersize=3.0, label="PL median"),
-        plt.Line2D([], [], color="0.25", ls="none", marker="^", markersize=3.2, label=r"BT $k_p=1$ median"),
+        plt.Line2D([], [], color="0.25", ls="none", marker="o", markerfacecolor="none", markersize=3.0, label="PL median"),
+        plt.Line2D([], [], color="0.25", ls="none", marker="^", markerfacecolor="none", markersize=3.2, label=r"BT $k_p=1$ median"),
         plt.Line2D([], [], color="0.25", lw=1.1, ls="--", label="PL Correa-EPS"),
         plt.Line2D([], [], color="0.25", lw=1.1, ls=":", label=r"BT $k_p=1$ Correa-EPS"),
     ]
