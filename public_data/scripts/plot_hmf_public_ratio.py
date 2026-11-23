@@ -327,7 +327,10 @@ def main():
         set_log_ticks(ax)
         panel_label(ax, rf"$z={format_redshift(redshift, 2)}$", loc=(0.95, 0.92), ha="right", fontsize=10.5)
 
-        ax_model.set_xlabel(r"$M_{\mathrm{FOF}}\,[M_\odot]$", fontweight="bold", labelpad=5)
+        if outer[idx].is_last_row():
+            ax_model.set_xlabel(r"$M_{\mathrm{FOF}}\,[M_\odot]$", fontweight="bold", labelpad=5)
+        else:
+            ax_model.tick_params(labelbottom=False)
         ax.tick_params(labelbottom=False)
         ax_bt.tick_params(labelbottom=False)
         if col == 0:
