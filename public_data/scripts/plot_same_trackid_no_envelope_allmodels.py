@@ -295,15 +295,24 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
     bk09, = ax.plot(mgrid, bk09_original(mgrid), color="0.38", lw=1.3, ls="-.", label="BK09")
     coco, = ax.plot(mgrid, coco_hellwing16(mgrid), color="0.58", lw=1.3, ls="--", label="COCO/H16")
 
+    errors = pd.read_csv(LOCAL_PUBLIC_POINTS.with_name("same_trackid_bootstrap.csv"))
     handles = []
     base = points[points["model"] == "PL"][["mass_bin", "left_msun", "right_msun", "zhalf"]]
     for model, info in MODELS.items():
         sub = points[points["model"] == model].sort_values("M0_mean_msun")
+        model_errors = errors.loc[errors["model"] == model].set_index("mass_bin", verify_integrity=True)
+        matched = model_errors.loc[sub["mass_bin"]]
+        if (not np.allclose(sub["zhalf"], matched["mean_zhalf"], rtol=1e-10, atol=0)
+                or not np.array_equal(sub["n_halos"], matched["n_halos"])):
+            raise ValueError(f"{model}: bootstrap sample does not match the plotted means")
+        ax.fill_between(sub["M0_mean_msun"].to_numpy(), sub["zhalf_q16"].to_numpy(),
+                        sub["zhalf_q84"].to_numpy(), facecolor=info["color"],
+                        alpha=0.14, edgecolor="none", zorder=0.8)
         handle = sparse_errorbar(
             ax,
             sub["M0_mean_msun"],
             sub["zhalf"],
-            yerr=[sub["zhalf"] - sub["zhalf_q16"], sub["zhalf_q84"] - sub["zhalf"]],
+            yerr=matched["mean_se"].to_numpy(),
             show_caps=True,
             capsize=1.25,
             fmt=info["marker"] + "-",
@@ -324,9 +333,14 @@ def plot(points: pd.DataFrame, output_path: Path = OUT_FIG) -> None:
             common = common[np.isfinite(common["zhalf"]) &
                             np.isfinite(common["zhalf_pl"]) & (common["zhalf_pl"] > 0)]
             bin_centres = np.sqrt(common["left_msun"] * common["right_msun"])
-            ratio_ax.plot(bin_centres, common["zhalf"] / common["zhalf_pl"],
-                          info["marker"] + "-", color=info["color"], lw=1.1,
-                          ms=3.0, mfc="white", mew=0.75, markevery=2, label=info["label"])
+            matched = model_errors.loc[common["mass_bin"]]
+            ratio = common["zhalf"] / common["zhalf_pl"]
+            if not np.allclose(ratio, matched["ratio"], rtol=1e-10, atol=0):
+                raise ValueError(f"{model}: bootstrap measurements do not match the plotted ratios")
+            ratio_ax.errorbar(bin_centres, ratio, yerr=matched["ratio_se"],
+                              fmt=info["marker"] + "-", color=info["color"], lw=1.1,
+                              ms=3.0, mfc="white", mew=0.75, markevery=2,
+                              elinewidth=0.55, capsize=1.25, label=info["label"])
 
     ax.set(xscale="log", xlim=(9.0e7, 1.2e12), ylabel=r"$z_{1/2}$")
     ax.set_ylim(bottom=0)
