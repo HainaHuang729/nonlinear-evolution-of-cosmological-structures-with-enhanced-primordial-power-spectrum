@@ -18,6 +18,7 @@ from cosmology_plot_style import (
 )
 
 apply_journal_style()
+plt.rcParams.update({"axes.labelsize": 13, "legend.fontsize": 12})
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output',type=Path,default=DATA.parents[1]/'power-spectrum-btpl.png')
 parser.add_argument('--ratio-scale', choices=['linear', 'log', 'symlog-difference'], default='symlog-difference',
@@ -38,8 +39,8 @@ ticks=[[1,1.1,1.2],[1,1.2,1.4,1.6],[1,1.5,2],[1,2,3,4,5]]
 
 colors=[MODEL_COLORS[name] for name in ['PL','BT1','BT10']]
 fig=plt.figure(figsize=(7.8,6.45))
-outer=fig.add_gridspec(2,2,left=.095,right=.982,bottom=.083,top=.925,
-                      hspace=.15,wspace=.23)
+outer=fig.add_gridspec(2,2,left=.108,right=.982,bottom=.083,top=.925,
+                      hspace=.15,wspace=.32)
 pairs=[]
 for i,z in enumerate(zs):
     sub=outer[i//2,i%2].subgridspec(2,1,height_ratios=[2.7,1],hspace=.045)

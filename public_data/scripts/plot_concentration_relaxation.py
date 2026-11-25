@@ -263,6 +263,8 @@ def overview(
         concentration_groups = (("unrelaxed", False), ("relaxed", True))
         ratio_groups = (("all", False), ("relaxed", True))
 
+    axis_title_size = 16 if prescription == "D19" else plt.rcParams["axes.labelsize"]
+    ratio_title_size = 14 if prescription == "D19" else 12
     fig = plt.figure(figsize=(8.6, 8.45))
     grid = fig.add_gridspec(
         2,
@@ -394,13 +396,13 @@ def overview(
         # Keep x-tick labels on both rows because panels have distinct upper mass limits.
         frac.tick_params(labelbottom=True)
         if row == 1:
-            frac.set_xlabel(MASS_LABEL)
+            frac.set_xlabel(MASS_LABEL, fontsize=axis_title_size)
         if column == 0:
-            top.set_ylabel(CONC_LABEL)
+            top.set_ylabel(CONC_LABEL, fontsize=axis_title_size)
             denominator = r"I21,rel" if prescription == "I21R" else prescription
-            ratio.set_ylabel(rf"$c_{{\rm sim}}/c_{{\rm {denominator}}}$", fontsize=12)
+            ratio.set_ylabel(rf"$c_{{\rm sim}}/c_{{\rm {denominator}}}$", fontsize=ratio_title_size)
             bottom_label = r"$c_{\rm BT}/c_{\rm PL}$" if bt_pl else r"$f_{\rm relaxed}$"
-            frac.set_ylabel(bottom_label, fontsize=12)
+            frac.set_ylabel(bottom_label, fontsize=ratio_title_size)
             for ax in (top, ratio, frac):
                 ax.yaxis.set_label_coords(-0.18, 0.5)
 
