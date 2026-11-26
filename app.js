@@ -20,7 +20,7 @@
   const projectionFrames=()=>S.projectionSet==='extended'?M.projection.frames:D.projection.frames;
   const projectionImages=new Map();
   let projectionRequest=0;
-  const TOPICS={input:'输入功率谱',hmf:'质量函数',power:'物质功率谱',assembly:'形成历史',structure:'内部结构',reliability:'数值可靠性'};
+  const TOPICS={input:'输入功率谱',hmf:'质量函数',bias:'晕–物质偏置',assembly:'形成历史',structure:'内部结构',power:'物质功率谱',reliability:'数值可靠性'};
   const TABS=Object.keys(TOPICS);
   const controllers={};
   const RUN_COLORS={'PL-25-1024':COLORS.PL,'PL-25-512':COLORS.kp1,'PL-25-256':color('--data-fourth','#937633'),'PL-50-512':COLORS.kp10};
@@ -70,7 +70,7 @@
     });
     document.getElementById('topic-sections').append(section);
     const $=id=>section.querySelector('[data-local-id="'+id+'"]')||document.getElementById(id);
-    const S={tab:topic,statsZ:projectionFrames()[projectionState.frame].z,following:true,definition:'fof',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25};
+    const S={tab:topic,statsZ:projectionFrames()[projectionState.frame].z,following:true,definition:'fof',biasDefinition:'M200m',biasBox:'all',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25};
     let downloadRows=[];
     $('topic-title').textContent='03.'+(TABS.indexOf(topic)+1)+'  '+TOPICS[topic];
   function chart(id, series, config={}) {
@@ -93,44 +93,72 @@
     const y=n=>H-B-(ty(n)-ymin)/(ymax-ymin)*(H-T-B);
     const svg=elem('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':`${config.title}. 横轴 ${config.xLabel}；纵轴 ${config.yLabel}`});
     const title=elem('title',{},config.title);svg.append(title);
-    const defs=elem('defs');const clip=elem('clipPath',{id:`clip-${topic}-${id}`});clip.append(elem('rect',{x:L,y:T,width:W-L-R,height:H-T-B}));defs.append(clip);svg.append(defs);
+    const defs=elem('defs');const clip=elem('clipPath',{id:`clip-${topic}-${id}`});clip.append(elem('rect',{x:L-4,y:T-4,width:W-L-R+8,height:H-T-B+8}));defs.append(clip);svg.append(defs);
     const plot=elem('g',{'clip-path':`url(#clip-${topic}-${id})`});
     const ticks=(min,max,log)=>{
-      if(log){const arr=[];for(let p=Math.ceil(min);p<=Math.floor(max);p++)arr.push(p);if(arr.length>6)return arr.filter((_,i)=>i%Math.ceil(arr.length/6)===0);if(arr.length>=2)return arr;}
+      if(log){
+        if(max-min>=1.0){
+          const arr=[];for(let p=Math.ceil(min);p<=Math.floor(max);p++)arr.push(p);
+          if(arr.length>6)return arr.filter((_,i)=>i%Math.ceil(arr.length/6)===0);
+          if(arr.length>=2)return arr;
+        }
+        const linMin=10**min, linMax=10**max, linSpan=linMax-linMin;
+        if(Number.isFinite(linSpan)&&linSpan>0){
+          const raw=linSpan/4, pow=10**Math.floor(Math.log10(raw));
+          const step=[1,2,2.5,5,10].find(s=>s*pow>=raw)*pow;
+          const arr=[];
+          for(let v=Math.ceil(linMin/step)*step;v<=linMax+step*1e-6;v+=step){if(v>0)arr.push(Math.log10(v));}
+          if(arr.length>=2)return arr;
+        }
+      }
       const raw=(max-min)/4, pow=10**Math.floor(Math.log10(raw));
       const step=[1,2,2.5,5,10].find(s=>s*pow>=raw)*pow;
       const arr=[];for(let v=Math.ceil(min/step)*step;v<=max+step*1e-6;v+=step)arr.push(v);return arr;
     };
     const superdigits=n=>String(n).split('').map(c=>({'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'}[c]??c)).join('');
-    const tickLabel=(v,log)=>log&&Math.abs(v-Math.round(v))<1e-7?'10'+superdigits(Math.round(v)):fmt(log?10**v:v,2);
-    ticks(ymin,ymax,yLog).forEach(v=>{const py=H-B-(v-ymin)/(ymax-ymin)*(H-T-B);svg.append(elem('line',{x1:L,y1:py,x2:W-R,y2:py,stroke:'#e8ece5','stroke-width':.7}));svg.append(elem('text',{x:L-12,y:py+4,'text-anchor':'end',fill:'#899285','font-size':11},tickLabel(v,yLog)));});
-    ticks(xmin,xmax,xLog).forEach(v=>{const px=L+(v-xmin)/(xmax-xmin)*(W-L-R);svg.append(elem('line',{x1:px,y1:H-B,x2:px,y2:H-B+5,stroke:'#bcc6b6'}));svg.append(elem('text',{x:px,y:H-B+22,'text-anchor':'middle',fill:'#899285','font-size':11},tickLabel(v,xLog)));});
+    const tickLabel=(v,log,span,step)=>{
+      if(log&&span>=1.0&&Math.abs(v-Math.round(v))<1e-7)return '10'+superdigits(Math.round(v));
+      const val=log?10**v:v;
+      if(Number.isFinite(step)&&step>0){
+        if(Math.abs(val)>=1e4||(Math.abs(val)>0&&Math.abs(val)<0.01))return val.toExponential(1);
+        const dec=Math.max(0,Math.min(4,-Math.floor(Math.log10(step))));
+        return Number(val.toFixed(dec)).toString();
+      }
+      return fmt(val,3);
+    };
+    const yTickList=ticks(ymin,ymax,yLog), yStep=yTickList.length>1?Math.abs((yLog?10**yTickList[1]-10**yTickList[0]:yTickList[1]-yTickList[0])):undefined;
+    const seenY=new Set();
+    yTickList.forEach(v=>{const py=H-B-(v-ymin)/(ymax-ymin)*(H-T-B);svg.append(elem('line',{x1:L,y1:py,x2:W-R,y2:py,stroke:'#e8ece5','stroke-width':.7,'pointer-events':'none'}));const lbl=tickLabel(v,yLog,ymax-ymin,yStep);if(!seenY.has(lbl)){seenY.add(lbl);svg.append(elem('text',{x:L-12,y:py+4,'text-anchor':'end',fill:'#899285','font-size':11},lbl));}});
+    const xTickList=ticks(xmin,xmax,xLog), xStep=xTickList.length>1?Math.abs((xLog?10**xTickList[1]-10**xTickList[0]:xTickList[1]-xTickList[0])):undefined;
+    const seenX=new Set();
+    xTickList.forEach(v=>{const px=L+(v-xmin)/(xmax-xmin)*(W-L-R);svg.append(elem('line',{x1:px,y1:H-B,x2:px,y2:H-B+5,stroke:'#bcc6b6','pointer-events':'none'}));const lbl=tickLabel(v,xLog,xmax-xmin,xStep);if(!seenX.has(lbl)){seenX.add(lbl);svg.append(elem('text',{x:px,y:H-B+22,'text-anchor':'middle',fill:'#899285','font-size':11},lbl));}});
     if(config.trusted){const [lo,hi]=config.trusted;
-      for(const [a,b] of [[L,Math.min(W-R,x(lo))],[Math.max(L,x(hi)),W-R]])if(b>a)plot.append(elem('rect',{x:a,y:T,width:b-a,height:H-T-B,fill:'#e9eae5',opacity:.75}));
-      [lo,hi].forEach(v=>plot.append(elem('line',{x1:x(v),y1:T,x2:x(v),y2:H-B,stroke:'#a2ad9c','stroke-dasharray':'3 4','stroke-width':.8})));
+      for(const [a,b] of [[L,Math.min(W-R,x(lo))],[Math.max(L,x(hi)),W-R]])if(b>a)plot.append(elem('rect',{x:a,y:T,width:b-a,height:H-T-B,fill:'#e9eae5',opacity:.75,'pointer-events':'none'}));
+      [lo,hi].forEach(v=>plot.append(elem('line',{x1:x(v),y1:T,x2:x(v),y2:H-B,stroke:'#a2ad9c','stroke-dasharray':'3 4','stroke-width':.8,'pointer-events':'none'})));
     }
-    if(config.baseline!==undefined)plot.append(elem('line',{x1:L,y1:y(config.baseline),x2:W-R,y2:y(config.baseline),stroke:'#abb5a3','stroke-dasharray':'4 4'}));
+    if(config.baseline!==undefined)plot.append(elem('line',{x1:L,y1:y(config.baseline),x2:W-R,y2:y(config.baseline),stroke:'#abb5a3','stroke-dasharray':'4 4','pointer-events':'none'}));
     (config.vlines||[]).forEach(({value,label,color='#a08c6c'})=>{
       if(tx(value)<xmin||tx(value)>xmax)return;
-      plot.append(elem('line',{x1:x(value),y1:T,x2:x(value),y2:H-B,stroke:color,'stroke-dasharray':'3 4','stroke-width':.8}));
-      plot.append(elem('text',{x:x(value)+5,y:T+12,fill:color,'font-size':10},label));
+      plot.append(elem('line',{x1:x(value),y1:T,x2:x(value),y2:H-B,stroke:color,'stroke-dasharray':'3 4','stroke-width':.8,'pointer-events':'none'}));
+      plot.append(elem('text',{x:x(value)+5,y:T+12,fill:color,'font-size':10,'pointer-events':'none'},label));
     });
     if(config.marker!==undefined&&config.marker>= (xLog?10**xmin:xmin)&&config.marker<=(xLog?10**xmax:xmax)) {
-      plot.append(elem('line',{x1:x(config.marker),y1:T,x2:x(config.marker),y2:H-B,stroke:'#b48b50','stroke-dasharray':'4 4'}));
-      plot.append(elem('text',{x:x(config.marker)+5,y:T+11,fill:'#9b783e','font-size':10},'投影 z='+ztext(config.marker)));
+      plot.append(elem('line',{x1:x(config.marker),y1:T,x2:x(config.marker),y2:H-B,stroke:'#b48b50','stroke-dasharray':'4 4','pointer-events':'none'}));
+      plot.append(elem('text',{x:x(config.marker)+5,y:T+11,fill:'#9b783e','font-size':10,'pointer-events':'none'},'投影 z='+ztext(config.marker)));
     }
+    const pointsLayer=elem('g',{class:'points-layer'});
     series.forEach(s=>{
       const points=s.points.filter(good).sort((a,b)=>a.x-b.x);
       if(!points.length)return;
       const color=s.color||COLORS[s.model];
-      const band=points.filter(p=>Number.isFinite(p.lo)&&Number.isFinite(p.hi)&&p.hi>0);
+      const band=points.filter(p=>Number.isFinite(p.lo)&&Number.isFinite(p.hi)&&(!yLog||p.hi>0));
       if(config.bands && band.length>1){
         const floor=yLog?10**ymin:ymin;
         const coords=band.map(p=>`${x(p.x)},${y(Math.max(floor,p.hi))}`).concat([...band].reverse().map(p=>`${x(p.x)},${y(Math.max(floor,p.lo))}`)).join(' ');
-        plot.append(elem('polygon',{points:coords,fill:color,opacity:.10}));
+        plot.append(elem('polygon',{points:coords,fill:color,opacity:.10,'pointer-events':'none'}));
       }
       const path=points.map((p,i)=>`${i?'L':'M'}${x(p.x).toFixed(2)},${y(p.y).toFixed(2)}`).join(' ');
-      plot.append(elem('path',{d:path,fill:'none',stroke:color,'stroke-width':s.dash?1.2:1.65,'stroke-dasharray':s.dash?'5 4':'','data-series':s.label,opacity:s.dash?.65:1}));
+      plot.append(elem('path',{d:path,fill:'none',stroke:color,'stroke-width':s.dash?1.2:1.65,'stroke-dasharray':s.dash?'5 4':'','data-series':s.label,opacity:s.dash?.65:1,'pointer-events':'none'}));
       if(s.dash)return;
       const stride=Math.max(1,Math.ceil(points.length/55));
       points.forEach((p,i)=>{
@@ -138,25 +166,26 @@
         const outside=(config.trusted&&(p.x<config.trusted[0]||p.x>config.trusted[1]))||(s.trusted&&(p.x<s.trusted[0]||p.x>s.trusted[1]));
         if(config.errors&&Number.isFinite(p.lo)&&Number.isFinite(p.hi)) {
           const low=yLog?Math.max(10**ymin,p.lo):p.lo;
-          plot.append(elem('line',{x1:x(p.x),y1:y(low),x2:x(p.x),y2:y(p.hi),stroke:color,'stroke-width':.8,opacity:.5}));
+          plot.append(elem('line',{x1:x(p.x),y1:y(low),x2:x(p.x),y2:y(p.hi),stroke:color,'stroke-width':.8,opacity:.5,'pointer-events':'none'}));
         }
         let tip=`${s.label}\n${config.xLabel}: ${fmt(p.x,5)}\n${config.yLabel}: ${fmt(p.y,5)}`;
         if(Number.isFinite(p.lo)&&Number.isFinite(p.hi))tip+=`\n${config.intervalLabel||'区间'}: ${fmt(p.lo,4)} – ${fmt(p.hi,4)}`;
         if(p.count!==undefined)tip+=`\nN = ${p.count.toLocaleString('en-US')}`;
         if(p.countPL!==undefined)tip+=`；N(PL) = ${p.countPL.toLocaleString('en-US')}`;
         if(outside)tip+='\n在采用的定量解释区间之外';
-        const dot=elem('circle',{cx:x(p.x),cy:y(p.y),r:2.4,fill:outside?'#fff':color,stroke:color,'stroke-width':.9,opacity:outside?.5:1,tabindex:0,class:'point','aria-label':tip,'data-x':p.x,'data-y':p.y,'data-model':s.model});
+        const dot=elem('circle',{cx:x(p.x),cy:y(p.y),r:s.open?2.6:2.6,fill:(outside||s.open)?'#fff':color,stroke:color,'stroke-width':1.05,opacity:outside?.55:1,tabindex:0,class:'point','aria-label':tip,'data-x':p.x,'data-y':p.y,'data-model':s.model});
         dot.append(elem('title',{},tip));
         dot.addEventListener('pointerenter',event=>tooltip(tip,dot,event));
         dot.addEventListener('pointermove',event=>tooltip(tip,dot,event));
         dot.addEventListener('pointerleave',()=>{$('tooltip').hidden=true;});
         dot.addEventListener('focus',()=>tooltip(tip,dot));
         dot.addEventListener('blur',()=>{$('tooltip').hidden=true;});
-        plot.append(dot);
+        pointsLayer.append(dot);
       });
     });
+    plot.append(pointsLayer);
     svg.append(plot);
-    svg.append(elem('line',{x1:L,y1:H-B,x2:W-R,y2:H-B,stroke:'#aeb9a7','stroke-width':.8}));
+    svg.append(elem('line',{x1:L,y1:H-B,x2:W-R,y2:H-B,stroke:'#aeb9a7','stroke-width':.8,'pointer-events':'none'}));
     svg.append(elem('text',{x:(L+W-R)/2,y:H-9,'text-anchor':'middle',fill:'#65765e','font-size':12},config.xLabel));
     svg.append(elem('text',{x:16,y:(T+H-B)/2,transform:`rotate(-90 16 ${(T+H-B)/2})`,'text-anchor':'middle',fill:'#65765e','font-size':12},config.yLabel));
     host.append(svg);
@@ -185,7 +214,7 @@
       $(tab+'-control').hidden=S.tab!==tab;
     });
     $('redshift-control').hidden=['assembly','input'].includes(S.tab);
-    const source=S.tab==='hmf'?D.hmf[S.definition]:S.tab==='power'?D.power:S.tab==='reliability'?D.resolution:D.concentration;
+    const source=S.tab==='hmf'?D.hmf[S.definition]:S.tab==='bias'?(D.bias||[]):S.tab==='power'?D.power:S.tab==='reliability'?D.resolution:D.concentration;
     const available=unique(source.map(r=>r.z));
     const choices=available.some(z=>nearly(z,S.statsZ))?available:[S.statsZ,...available].sort((a,b)=>b-a);
     $('stats-redshift').replaceChildren(...choices.map(z=>{
@@ -210,24 +239,52 @@
       chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Reed07'}))],{title:'Halo 质量函数',xLabel:massLabel,yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,intervalLabel:'Poisson ±1σ',available});
       chart('chart-b',grouped(ratio),{title:'论文质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z))});
       downloadRows=[...rows.map(r=>({...r,series:'published_hmf'})),...ratio.map(r=>({...r,series:'paper_bin_BT_over_PL'}))];
+    } else if(S.tab==='bias') {
+      const boxVal=S.biasBox==='all'?null:Number(S.biasBox);
+      const rows=atZ(D.bias||[]).filter(r=>r.massDefinition===S.biasDefinition&&(!boxVal||r.box===boxVal));
+      const ratio=atZ(D.biasRatios||[]).filter(r=>r.massDefinition===S.biasDefinition&&(!boxVal||r.box===boxVal));
+      const refKey=S.biasDefinition==='M200m'?'tinker10':'st99';
+      const refName=S.biasDefinition==='M200m'?'Tinker10':'ST99';
+      const theory=atZ(D.biasTheory||[]).filter(r=>r.reference===refKey);
+      const massLabel=S.biasDefinition==='M200m'?'M₂₀₀m [M☉]':'M_FOF [M☉]';
+      const boxSeries=(list)=>{
+        const out=[];
+        const boxes=boxVal?[boxVal]:[256,25];
+        for(const b of boxes){
+          for(const model of MODELS){
+            const pts=list.filter(r=>r.model===model&&r.box===b).sort((a,c)=>a.x-c.x);
+            if(pts.length)out.push({model,label:LABELS[model]+` (${b} h⁻¹ Mpc)`,color:COLORS[model],open:b===25,points:pts});
+          }
+        }
+        return out;
+      };
+      $('science-question').textContent='小尺度功率增强如何改变不同质量晕对底层物质密度场的偏置？';
+      $('legend-note').textContent=`实心点：256 h⁻¹ Mpc；空心点：25 h⁻¹ Mpc；虚线：${refName}；误差：jackknife`;
+      setHeading('a',S.biasDefinition==='M200m'?'SOAP M₂₀₀m 晕–物质偏置':'FOF 晕–物质偏置',zr,`按论文在 256 与 25 h⁻¹ Mpc 盒子中分别测量的 b_hm = ΣP_hm/ΣP_mm（k 窗口：256 盒 0.03–0.15，25 盒 0.25–0.60 h Mpc⁻¹），虚线为 ${refName} 理论参考。`);
+      setHeading('b','相对于 PL 的偏置比值',zr,'在相同盒子、相同质量分箱中配对计算 b_BT / b_PL；误差由双方的模态 jackknife 不确定性传播。');
+      chart('chart-a',[...boxSeries(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · '+refName}))],{title:'晕–物质偏置',xLabel:massLabel,yLabel:'b_hm',errors:true,intervalLabel:'jackknife ±1σ',available});
+      chart('chart-b',boxSeries(ratio),{title:'配对分箱 BT/PL 偏置比值',xLabel:massLabel,yLabel:'b_BT / b_PL',baseline:1,errors:true,yLog:false,intervalLabel:'传播的 jackknife ±1σ',available:unique((D.biasRatios||[]).map(r=>r.z))});
+      downloadRows=[...rows.map(r=>({...r,series:'halo_bias'})),...ratio.map(r=>({...r,series:'bias_BT_over_PL'}))];
     } else if(S.tab==='power') {
       const rows=atZ(D.power).filter(r=>r.box===S.box),ratio=atZ(D.powerRatios).filter(r=>r.box===S.box);
       const comparison=S.powerComparison==='ratio'?ratio:atZ(D.powerResidual).filter(r=>r.box===S.box);
-      const trusted=[4*2*Math.PI/S.box,.25*Math.PI*1024/S.box];
+      const kMult=S.box===25?10:4;
+      const trusted=[kMult*2*Math.PI/S.box,.25*Math.PI*1024/S.box];
       $('science-question').textContent='初始的小尺度功率增强，在非线性演化后保留在哪些尺度？';
       $('legend-note').textContent='虚线：HMcode2020；灰区：采用范围之外';
-      setHeading('a','非线性物质功率谱',`${zr} · L = ${S.box}`,`L = ${S.box} h⁻¹ Mpc。采用区间 ${trusted[0].toFixed(2)} ≤ k ≤ ${trusted[1].toFixed(2)} h Mpc⁻¹；HMcode2020 曲线为理论参考。`);
-      setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'同盒子 BT/PL 使用原始快照测量，缺失红移按论文方法补算，舍去 k > 0.25 k_Ny 的点；低 k 灰区保留供检查。完整源表可下载。':'沿用论文的模拟 / HMcode2020 残差分箱与理论设置，缺失红移重新计算，舍去 k > 0.25 k_Ny 的点。理论参考保留跨盒子合并采样。');
+      setHeading('a','非线性物质功率谱',`${zr} · L = ${S.box}`,`L = ${S.box} h⁻¹ Mpc${S.box===25?'（主稿红移采用相位反转配对平均）':''}。采用区间 ${trusted[0].toFixed(2)} ≤ k ≤ ${trusted[1].toFixed(2)} h Mpc⁻¹（${kMult}k_f 至 0.25k_Ny）；HMcode2020 为理论参考。`);
+      setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'同盒子 BT/PL 测量；25 h⁻¹ Mpc 主稿红移采用相位配对平均与 10k_f 起算口径，舍去 k > 0.25 k_Ny 的点；低 k 灰区保留供检查。':'模拟 / HMcode2020 残差分箱与比值，舍去 k > 0.25 k_Ny 的点。25 h⁻¹ Mpc 主稿红移使用相位配对平均谱。');
       chart('chart-a',[...grouped(rows),...grouped(atZ(D.powerTheory),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available});
       chart('chart-b',grouped(comparison),{title:S.powerComparison==='ratio'?'同盒子 BT/PL 功率比':'模拟与 HMcode2020 的功率比',xLabel:'k [h Mpc⁻¹]',yLabel:S.powerComparison==='ratio'?'P_BT / P_PL':'P_sim / P_HMcode2020',baseline:1,trusted,available});
       downloadRows=[...rows.map(r=>({...r,series:'power'})),...comparison.map(r=>({...r,series:S.powerComparison==='ratio'?'BT_over_PL':'sim_over_HMcode2020'}))];
     } else if(S.tab==='assembly') {
       const rows=D.assembly.filter(r=>r.mass===S.mass);
+      const theory=(D.assemblyTheory||[]).filter(r=>r.mass===S.mass);
       $('science-question').textContent='今天质量相近的 halo，过去怎样组装，又在何时达到一半质量？';
-      $('legend-note').textContent='阴影：halo 间 16–84% 分位区间';
-      setHeading('a','质量组装历史',`M₀ ≈ ${fmt(S.mass)} M☉`,'PL 与 BT kₚ=1 的相同最终质量窗口样本；按论文显示 Warren 修正后正质量样本的 M_FOF(z) 中位数及 16–84% 分位数，单位为 M☉。');
+      $('legend-note').textContent='阴影：halo 间 16–84% 分位区间；虚线：Correa-EPS';
+      setHeading('a','质量组装历史',`M₀ ≈ ${fmt(S.mass)} M☉`,'PL 与 BT kₚ=1 的相同最终质量窗口样本；显示 Warren 修正后正质量样本的 M_FOF(z) 中位数、halo 间 16–84% 分位数与 Correa-EPS 预测，单位为 M☉。');
       setHeading('b','半质量形成红移','z = 0 选样','按最终 FOF 质量分组，按论文显示 z₁/₂ 均值与 halo 间 16–84% 分位数。该面板不随当前投影红移改写样本。');
-      chart('chart-a',grouped(rows),{title:'质量组装历史',xLabel:'红移 z',yLabel:'median M_FOF(z) [M☉]',xLog:false,bands:true,marker:projectionZ,intervalLabel:'halo 16–84%'});
+      chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Correa-EPS'}))],{title:'质量组装历史',xLabel:'红移 z',yLabel:'median M_FOF(z) [M☉]',xLog:false,bands:true,marker:projectionZ,intervalLabel:'halo 16–84%'});
       chart('chart-b',grouped(D.halfmass),{title:'半质量形成红移',xLabel:'最终 M_FOF [M☉]',yLabel:'z₁/₂',yLog:false,bands:true,intervalLabel:'halo 16–84%'});
       downloadRows=[...rows.map(r=>({...r,series:'assembly'})),...D.halfmass.map(r=>({...r,series:'half_mass_redshift'}))];
     } else if(S.tab==='structure') {
@@ -267,10 +324,13 @@
     }
     $('download-data').textContent=downloadRows.length?'下载本主题数据 ↓':'当前无可下载数据';
     $('download-data').setAttribute('aria-disabled',String(!downloadRows.length));
+    $('download-data').hidden=!downloadRows.length;
   }
   $('stats-redshift').addEventListener('change',event=>{stop();S.statsZ=Number(event.target.value);S.following=false;renderStats();});
   $('follow-projection').addEventListener('click',()=>{S.following=true;S.statsZ=projectionFrames()[projectionState.frame].z;renderStats();});
   $('mass-definition').addEventListener('change',event=>{S.definition=event.target.value;renderStats();});
+  $('bias-definition').addEventListener('change',event=>{S.biasDefinition=event.target.value;renderStats();});
+  $('bias-box').addEventListener('change',event=>{S.biasBox=event.target.value;renderStats();});
   $('box-size').addEventListener('change',event=>{S.box=Number(event.target.value);renderStats();});
   for(const [id,key] of [['power-comparison','powerComparison'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id).addEventListener('change',event=>{S[key]=event.target.value;renderStats();});
   $('mesh-box').addEventListener('change',event=>{S.meshBox=Number(event.target.value);renderStats();});
@@ -300,6 +360,7 @@
       {label:'密度投影',zs:(M?M.projection.frames:D.projection.frames).map(r=>r.z),tab:'projection'},
       {label:'FOF 质量函数',zs:D.hmf.fof.map(r=>r.z),tab:'hmf',definition:'fof'},
       {label:'M₂₀₀c 质量函数',zs:D.hmf.m200c.map(r=>r.z),tab:'hmf',definition:'m200c'},
+      {label:'晕–物质偏置',zs:(D.bias||[]).map(r=>r.z),tab:'bias'},
       {label:'物质功率谱',zs:D.power.map(r=>r.z),tab:'power'},
       {label:'浓度关系',zs:D.concentration.map(r=>r.z),tab:'structure'}
     ];
@@ -345,7 +406,10 @@
     'm200c_bocquet16_hmf_points.csv':'M₂₀₀c 质量函数数值点',
     'fof_shared_bin_ratios.csv':'FOF 论文分箱 BT/PL 比值',
     'm200c_shared_bin_ratios.csv':'M₂₀₀c 论文分箱 BT/PL 比值',
+    'halo_bias_measurements.csv':'SOAP 与 FOF 晕–物质偏置测量表',
     'power_spectrum_measurements.csv':'非线性功率谱原始采样',
+    'ps25_phase_pair_spectra.csv':'25 h⁻¹ Mpc 相位配对功率谱（v1.2.0）',
+    'ps25_phase_pair_ratios.csv':'25 h⁻¹ Mpc 相位配对 BT/PL 比值',
     'extended-halo-statistics.csv':'补充红移的 halo 统计',
     'extended-power-measurements.csv':'补充红移的功率谱原始测量',
     'extended-power-statistics.csv':'补充红移的功率谱与理论比值',
@@ -354,11 +418,17 @@
     'input_power_spectra.csv':'输入线性物质功率谱',
     'pl_warren_median_mah.csv':'PL 质量组装历史',
     'bt_soft_warren_median_mah.csv':'BT kₚ=1 质量组装历史',
+    'mah_track_bootstrap.csv':'质量组装历史 bootstrap 误差表',
+    'bt_over_pl_mass_fraction_ratio.csv':'归一化质量组装历史 BT/PL 比值',
     'same_trackid_no_envelope_points.csv':'半质量形成红移与散布',
+    'same_trackid_bootstrap.csv':'半质量形成红移 bootstrap 均值误差',
     'concentration_qc_binned_points.csv':'浓度–质量关系与散布',
     'concentration_qc_theory_ratios.csv':'浓度与三种理论参考比较',
-    'radial_density_profiles_n100_power03.csv':'粒子径向密度剖面与 bootstrap',
-    'radial_density_ratios_n100_power03.csv':'径向密度 BT/PL 比值与区间',
+    'concentration_relaxation_by_mass_bin.csv':'松弛态比例按质量分箱汇总',
+    'concentration_prescription_comparison.csv':'松弛态与全部晕浓度理论比较',
+    'concentration_i21_relaxed_curves.csv':'Ishiyama21 松弛态理论曲线',
+    'radial_density_profiles_mb_n100.csv':'最束缚粒子径向密度剖面与 bootstrap',
+    'radial_density_ratios_mb_n100.csv':'最束缚粒子径向密度 BT/PL 比值',
     'fof_hmf_resolution_points.csv':'FOF 分辨率与体积检查',
     'fof_hmf_resolution_summary.csv':'FOF 分辨率检查汇总',
     'power_spectrum_mesh_convergence_z0.csv':'z=0 功率谱网格收敛检查'
@@ -370,11 +440,13 @@
     const selected=items.filter(r=>(kind==='all'||r.kind===kind)&&`${r.title} ${window.ArticleI18n?.english(r.title)||''} ${r.name} ${r.category||''}`.toLowerCase().includes(query));
     $('library-grid').replaceChildren(...selected.map(item=>{
       const a=document.createElement('a');a.className='library-item';a.href=item.file;
-      if(item.kind==='data')a.download=item.name;else{a.target='_blank';a.rel='noopener';}
-      const icon=document.createElement('span');icon.className='library-icon';icon.textContent=item.kind==='figure'?'FIG':'CSV';
+      const isPdf=item.file.endsWith('.pdf');
+      if(item.kind==='data'||item.category==='manuscript')a.download=item.name;else{a.target='_blank';a.rel='noopener';}
+      const icon=document.createElement('span');icon.className='library-icon';icon.textContent=item.kind==='data'?'CSV':(isPdf?'PDF':'FIG');
       const body=document.createElement('div');const title=document.createElement('strong');title.textContent=item.title;
-      const meta=document.createElement('small');meta.textContent=item.name+(item.bytes?' · '+(item.bytes/1024).toFixed(1)+' KB':'');body.append(title,meta);
-      const arrow=document.createElement('span');arrow.className='arrow';arrow.textContent=item.kind==='figure'?'↗':'↓';a.append(icon,body,arrow);return a;
+      const sizeText=item.bytes?(item.bytes>=1e6?(item.bytes/1e6).toFixed(1)+' MB':(item.bytes/1024).toFixed(1)+' KB'):'';
+      const meta=document.createElement('small');meta.textContent=item.name+(sizeText?' · '+sizeText:'');body.append(title,meta);
+      const arrow=document.createElement('span');arrow.className='arrow';arrow.textContent=(item.kind==='data'||item.category==='manuscript')?'↓':'↗';a.append(icon,body,arrow);return a;
     }));
     $('library-count').textContent=`${selected.length} / ${items.length} 项`;
     $('library-empty').hidden=selected.length>0;
@@ -476,7 +548,19 @@
   $('simulation-filter').addEventListener('change',renderSimulations);
   $('library-search').addEventListener('input',renderLibrary);
   $('library-kind').addEventListener('change',renderLibrary);
-  $('build-date').textContent='数据打包 '+D.built.slice(0,10)+' · 网页更新 2026-09-28 · 离线可用';
+  $('build-date').textContent='论文版本 '+(D.release||'v1.2.0')+' · 数据更新 '+D.built.slice(0,10)+' · 离线可用';
+  $('copy-bibtex')?.addEventListener('click',()=>{
+    const text=$('bibtex-code')?.textContent||'';
+    const status=$('bibtex-status');
+    const done=()=>{if(status)status.textContent='已复制 BibTeX';};
+    if(navigator.clipboard?.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(()=>{
+        const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);ta.select();document.execCommand('copy');ta.remove();done();
+      });
+    }else{
+      const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);ta.select();document.execCommand('copy');ta.remove();done();
+    }
+  });
   function renderAnimations() {
     if(!M){$('animations').hidden=true;return;}
     $('animation-grid').replaceChildren(...M.animations.map(item=>{

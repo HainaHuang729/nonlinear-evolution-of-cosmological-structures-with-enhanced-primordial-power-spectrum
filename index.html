@@ -4,32 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power：密度投影、halo 质量函数、组装历史与非线性物质功率谱的交互展示。">
+  <meta name="description" content="Nonlinear Structure Formation with Enhanced Small-Scale Primordial Power Spectrum：密度投影、halo 质量函数、晕–物质偏置、组装历史、内部结构与非线性物质功率谱的交互展示。">
   <title>暗物质结构演化 · 论文数据展示</title>
   <meta name="theme-color" content="#e8e7df">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23111311'/%3E%3Crect x='4' y='11' width='4' height='9' fill='%23b63a2b'/%3E%3Crect x='10' y='4' width='4' height='16' fill='%23c6922c'/%3E%3Crect x='16' y='7' width='4' height='13' fill='%232f6c8e'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
-  <script defer src="locales.js?rev=portfolio-20260928"></script>
-  <script defer src="i18n.js"></script>
-  <script defer src="system.js"></script>
-  <script defer src="data.js?rev=12"></script>
-  <script defer src="media.js?rev=10"></script>
-  <script defer src="app.js?rev=portfolio-20260928"></script>
+  <script defer src="locales.js?rev=v1.2.0"></script>
+  <script defer src="i18n.js?rev=v1.2.0"></script>
+  <script defer src="system.js?rev=v1.2.0"></script>
+  <script defer src="data.js?rev=v1.2.0"></script>
+  <script defer src="media.js?rev=v1.2.0"></script>
+  <script defer src="app.js?rev=v1.2.0"></script>
 </head>
 <body>
   <a class="skip" href="#statistics">跳转到统计图</a>
   <header class="topbar">
     <a class="brand" href="#index" aria-label="Structure Atlas · 返回首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>STRUCTURE / ATLAS<span class="brand-sub">暗物质结构演化 · 数据图集</span></span></a>
     <button class="navigation-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
-    <nav id="site-navigation" aria-label="页面导航"><a href="#evolution"><span>01</span> 空间演化</a><a href="#animations"><span>02</span> 3D 动画</a><a href="#statistics"><span>03</span> 论文统计</a><a href="#data-library"><span>06</span> 图表与数据</a></nav>
+    <nav id="site-navigation" aria-label="页面导航"><a href="#evolution"><span>01</span> 空间演化</a><a href="#animations"><span>02</span> 3D 动画</a><a href="#statistics"><span>03</span> 论文统计</a><a href="#data-map"><span>04</span> 数据索引</a><a href="#simulations"><span>05</span> 模拟设置</a><a href="#data-library"><span>06</span> 图表与数据</a></nav>
     <button class="language-toggle" id="language-toggle" type="button" data-no-i18n lang="en" aria-label="Switch to English">EN</button>
-    <span class="header-revision">INTERACTIVE ATLAS<br>EDITION / 10</span>
+    <span class="header-revision">RELEASE<br>v1.2.0</span>
   </header>
   <main>
     <section class="hero page-width" id="index" aria-labelledby="page-title">
       <div class="hero-kicker"><p class="technical-label"><span class="status-indicator" aria-hidden="true"></span> N-BODY SIMULATIONS / 数据图集</p><span class="technical-label">00 — INTRODUCTION</span></div>
       <div class="hero-grid editorial-grid">
-        <div class="hero-copy"><h1 id="page-title"><span>STRUCTURE</span><span>IN MOTION<span class="title-stop">.</span></span></h1><p class="hero-subheading">从初始涨落，到宇宙结构。</p><p class="subtitle">相同初始相位，三种小尺度功率模型。沿红移探索暗物质结构，再用论文中的统计量比较它们。</p><div style="display:flex;flex-wrap:wrap;gap:12px"><a class="button hero-link" id="hero-live-link" href="assets/swift-viewer/index.html">交互探索 3D <span aria-hidden="true">↗</span></a><a class="button hero-link" href="#evolution">开始探索 <span aria-hidden="true">↓</span></a></div></div>
+        <div class="hero-copy"><h1 id="page-title"><span>STRUCTURE</span><span>IN MOTION<span class="title-stop">.</span></span></h1><p class="hero-subheading">从初始涨落，到宇宙结构。</p><p class="subtitle">相同初始相位，三种小尺度功率模型。沿红移探索暗物质结构，再用论文中的统计量比较它们。</p><div class="hero-actions"><a class="button hero-link" id="hero-live-link" href="assets/swift-viewer/index.html">交互探索 3D <span aria-hidden="true">↗</span></a><a class="button hero-link" href="#evolution">开始探索 <span aria-hidden="true">↓</span></a><a class="button hero-link" id="hero-pdf-link" href="assets/main.pdf" download="Nonlinear_Structure_Formation_v1.2.0.pdf">下载论文 PDF <span aria-hidden="true">↓</span></a></div></div>
         <aside class="hero-instrument" aria-label="投影快照快捷索引"><p class="technical-label">VIEW / SNAPSHOT INDEX</p><div class="snapshot-index" id="snapshot-index"></div><p class="instrument-note">点击刻度选择真实快照<br>等距排列仅表示快照顺序</p></aside>
       </div>
       <svg class="tricolor-ribbon hero-ribbon" viewBox="0 0 1504 88" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false"><path class="ribbon-red" d="M-8 46H1378A38 38 0 0 0 1416 8V-8"/><path class="ribbon-yellow" d="M-8 58H1378A50 50 0 0 0 1428 8V-8"/><path class="ribbon-blue" d="M-8 70H1378A62 62 0 0 0 1440 8V-8"/></svg>
@@ -61,14 +62,14 @@
       </details>
     </section>
     <section class="statistics page-width" id="statistics" aria-labelledby="statistics-title">
-      <div class="section-heading"><div><p class="eyebrow muted">03 / MEASURE & COMPARE</p><h2 id="statistics-title">用数据，<br>理解差异。</h2></div><p>六个交互主题，独立选择参数。<br>论文原图统一收录在资料目录。</p></div>
-      <nav class="topic-nav" aria-label="跳转到统计主题"><a href="#topic-input">输入功率谱</a><a href="#topic-hmf">质量函数</a><a href="#topic-power">物质功率谱</a><a href="#topic-assembly">形成历史</a><a href="#topic-structure">内部结构</a><a href="#topic-reliability">数值可靠性</a></nav>
+      <div class="section-heading"><div><p class="eyebrow muted">03 / MEASURE & COMPARE</p><h2 id="statistics-title">用数据，<br>理解差异。</h2></div><p>七个交互主题，独立选择参数。<br>论文原图统一收录在资料目录。</p></div>
+      <nav class="topic-nav" aria-label="跳转到统计主题"><a href="#topic-input">输入功率谱</a><a href="#topic-hmf">质量函数</a><a href="#topic-bias">晕–物质偏置</a><a href="#topic-assembly">形成历史</a><a href="#topic-structure">内部结构</a><a href="#topic-power">物质功率谱</a><a href="#topic-reliability">数值可靠性</a></nav>
       <p class="topics-note">投影红移默认联动各快照统计。单独选择某个主题的红移后，该主题保持独立；点击「跟随投影」恢复联动。悬停或聚焦曲线点可读数。</p>
       <div id="topic-sections"></div>
       <template id="stats-topic-template">
       <section class="stats-topic" aria-labelledby="topic-title">
-      <div class="topic-heading"><h3 id="topic-title" tabindex="-1"></h3><a id="download-data" class="text-button" download>下载本主题数据 ↓</a></div>
-      <div class="data-controls"><div id="redshift-control"><label for="stats-redshift">统计红移</label><select id="stats-redshift"></select><button id="follow-projection" type="button" class="text-button">跟随投影</button></div><div id="hmf-control"><label for="mass-definition">质量定义</label><select id="mass-definition"><option value="fof">FOF · Warren 修正</option><option value="m200c">M₂₀₀c</option></select></div><div id="power-control" hidden><label for="box-size">盒子边长</label><select id="box-size"><option value="25">25 h⁻¹ Mpc</option><option value="256">256 h⁻¹ Mpc</option></select><label for="power-comparison">右图</label><select id="power-comparison"><option value="ratio">BT / PL</option><option value="theory">模拟 / HMcode2020</option></select></div><div id="assembly-control" hidden><label for="final-mass">最终质量 M₀</label><select id="final-mass"></select></div><div id="structure-control" hidden><label for="concentration-reference">浓度图</label><select id="concentration-reference"><option value="none">浓度–质量</option><option value="diemer19">相对 Diemer–Joyce19</option><option value="ishiyama21_fit">相对 Ishiyama21</option><option value="ludlow16">相对 Ludlow16</option></select><label for="profile-mass">剖面质量 M₂₀₀m</label><select id="profile-mass"></select><label class="sr-only" for="profile-view">径向剖面展示量</label><select id="profile-view"><option value="density">径向密度</option><option value="ratio">密度 BT / PL</option></select></div><div id="input-control" hidden><span>源表输入线性谱 · m<sub>s</sub> = 1.5</span></div><div id="reliability-control" hidden><label for="mesh-box">网格检查盒子</label><select id="mesh-box"><option value="25">25 h⁻¹ Mpc</option><option value="256">256 h⁻¹ Mpc</option></select></div><span id="sync-status" class="sync-status" aria-live="polite"></span></div>
+      <div class="topic-heading"><h3 id="topic-title" tabindex="-1"></h3><a id="download-data" class="text-button" href="#statistics" download>下载本主题数据 ↓</a></div>
+      <div class="data-controls"><div id="redshift-control"><label for="stats-redshift">统计红移</label><select id="stats-redshift"></select><button id="follow-projection" type="button" class="text-button">跟随投影</button></div><div id="hmf-control"><label for="mass-definition">质量定义</label><select id="mass-definition"><option value="fof">FOF · Warren 修正</option><option value="m200c">M₂₀₀c</option></select></div><div id="bias-control" hidden><label for="bias-definition">质量定义</label><select id="bias-definition"><option value="M200m">SOAP M₂₀₀m · Tinker10</option><option value="FOF">FOF · ST99</option></select><label for="bias-box">盒子范围</label><select id="bias-box"><option value="all">25 + 256 h⁻¹ Mpc</option><option value="25">25 h⁻¹ Mpc</option><option value="256">256 h⁻¹ Mpc</option></select></div><div id="power-control" hidden><label for="box-size">盒子边长</label><select id="box-size"><option value="25">25 h⁻¹ Mpc</option><option value="256">256 h⁻¹ Mpc</option></select><label for="power-comparison">右图</label><select id="power-comparison"><option value="ratio">BT / PL</option><option value="theory">模拟 / HMcode2020</option></select></div><div id="assembly-control" hidden><label for="final-mass">最终质量 M₀</label><select id="final-mass"></select></div><div id="structure-control" hidden><label for="concentration-reference">浓度图</label><select id="concentration-reference"><option value="none">浓度–质量</option><option value="diemer19">相对 Diemer–Joyce19</option><option value="ishiyama21_fit">相对 Ishiyama21</option><option value="ludlow16">相对 Ludlow16</option></select><label for="profile-mass">剖面质量 M₂₀₀m</label><select id="profile-mass"></select><label class="sr-only" for="profile-view">径向剖面展示量</label><select id="profile-view" aria-label="径向剖面展示量"><option value="density">径向密度</option><option value="ratio">密度 BT / PL</option></select></div><div id="input-control" hidden><span>源表输入线性谱 · m<sub>s</sub> = 1.5</span></div><div id="reliability-control" hidden><label for="mesh-box">网格检查盒子</label><select id="mesh-box"><option value="25">25 h⁻¹ Mpc</option><option value="256">256 h⁻¹ Mpc</option></select></div><span id="sync-status" class="sync-status" aria-live="polite"></span></div>
       <div class="model-legend" id="model-legend"><span><i class="pl"></i>PL</span><span><i class="kp1"></i>BT k<sub>p</sub> = 1</span><span><i class="kp10"></i>BT k<sub>p</sub> = 10</span><span class="legend-note" id="legend-note"></span></div>
       <div id="chart-panel"><p class="science-question" id="science-question"></p><div class="chart-grid"><article class="chart-card"><div class="chart-title"><h4 id="chart-title-a"></h4><span id="chart-meta-a"></span></div><div class="chart" id="chart-a"></div><p class="chart-caption" id="chart-caption-a"></p></article><article class="chart-card"><div class="chart-title"><h4 id="chart-title-b"></h4><span id="chart-meta-b"></span></div><div class="chart" id="chart-b"></div><p class="chart-caption" id="chart-caption-b"></p></article></div></div>
       </section>
@@ -76,7 +77,7 @@
     </section>
     <section class="data-map page-width" id="data-map" aria-labelledby="data-map-title">
       <div class="section-heading"><div><p class="eyebrow muted">04 / SNAPSHOT DIRECTORY</p><h2 id="data-map-title">从红移找到数据</h2></div><p>点击「查看」跳转到对应面板。<br>横线表示当前展示包未收录。</p></div>
-      <div class="table-scroll"><table class="coverage-table"><caption class="sr-only">投影与论文统计的红移覆盖表</caption><thead><tr><th scope="col">红移 z</th><th scope="col">密度投影</th><th scope="col">FOF 质量函数</th><th scope="col">M₂₀₀c 质量函数</th><th scope="col">物质功率谱</th><th scope="col">浓度关系</th></tr></thead><tbody id="coverage-body"></tbody></table></div>
+      <div class="table-scroll"><table class="coverage-table"><caption class="sr-only">投影与论文统计的红移覆盖表</caption><thead><tr><th scope="col">红移 z</th><th scope="col">密度投影</th><th scope="col">FOF 质量函数</th><th scope="col">M₂₀₀c 质量函数</th><th scope="col">晕–物质偏置</th><th scope="col">物质功率谱</th><th scope="col">浓度关系</th></tr></thead><tbody id="coverage-body"></tbody></table></div>
       <p class="table-note">这里列出已接入的快照；完整质量组装历史在「形成历史」中查看。径向密度剖面和功率谱网格检查固定于 z = 0。</p>
     </section>
     <section class="simulation-section page-width" id="simulations" aria-labelledby="simulation-title">
@@ -89,16 +90,22 @@
       <details class="library-disclosure" id="library-disclosure">
       <summary class="library-summary" aria-controls="library-content"><span><span class="when-closed">展开资料目录</span><span class="when-open">收起资料目录</span></span><span class="technical-label" id="library-total">论文图表 / 数值表</span><span class="disclosure-sign" aria-hidden="true"><span class="when-closed">＋</span><span class="when-open">−</span></span></summary>
       <div class="library-content" id="library-content">
-      <div class="library-controls"><label class="sr-only" for="library-search">搜索图表或数据文件</label><input id="library-search" type="search" placeholder="搜索图表、数据名称或关键词…"><label class="sr-only" for="library-kind">资料类型</label><select id="library-kind"><option value="all">全部资料</option><option value="figure">论文图表</option><option value="data">CSV 数据表</option></select><span id="library-count" aria-live="polite"></span></div>
+      <div class="library-controls"><label class="sr-only" for="library-search">搜索图表或数据文件</label><input id="library-search" type="search" aria-label="搜索图表或数据文件" placeholder="搜索图表、数据名称或关键词…"><label class="sr-only" for="library-kind">资料类型</label><select id="library-kind" aria-label="资料类型"><option value="all">全部资料</option><option value="figure">论文图表</option><option value="data">CSV 数据表</option></select><span id="library-count" aria-live="polite"></span></div>
       <div class="library-grid" id="library-grid"></div>
       <p class="library-empty" id="library-empty" hidden>没有匹配的资料。可以尝试「质量函数」「浓度」「power」等关键词。</p>
       </div>
       </details>
     </section>
-    <section class="about page-width" id="about" aria-labelledby="about-title"><div class="closing-statement"><p class="technical-label">07 / CONTEXT & PROVENANCE</p><h2 id="about-title">每一次观察，<br>都是新的起点。</h2><span class="closing-index technical-label">THE EXPLORATION CONTINUES</span></div><div class="about-paper"><p class="eyebrow muted">本篇论文的数据窗口</p><p class="paper-title">Dark Matter Halo Formation with Enhanced Small-Scale Primordial Power</p><p>展示小尺度初始功率增强对暗物质结构、halo 形成与内部结构的影响。所有面板保留模型、红移、质量定义和单位。</p><a class="text-button" href="data/provenance.json" download>下载数据来源与校验记录 ↓</a></div><div class="data-notes"><div><span>01</span><p><strong>三个匹配模型</strong>主比较采用相同初始相位的 25 h⁻¹ Mpc、1024³ 粒子模拟。k<sub>p</sub> 的单位为 h Mpc⁻¹。</p></div><div><span>02</span><p><strong>按实际快照展示</strong>扩展投影包含八个真实红移，论文原图模式保留三个红移。统计图支持各自已有的红移；缺失处明确留空，不插值生成快照。</p></div><div><span>03</span><p><strong>保留统计口径</strong>误差、halo 间散布和理论参考分别标注。功率谱默认突出 4k<sub>f</sub> 至 0.25k<sub>Ny</sub> 的论文采用区间。</p></div></div></section>
+    <section class="about page-width" id="about" aria-labelledby="about-title"><div class="closing-statement"><p class="technical-label">07 / CONTEXT & PROVENANCE</p><h2 id="about-title">每一次观察，<br>都是新的起点。</h2><span class="closing-index technical-label">THE EXPLORATION CONTINUES</span></div><div class="about-paper"><p class="eyebrow muted">本篇论文的数据窗口</p><p class="paper-title">Nonlinear Structure Formation with Enhanced Small-Scale Primordial Power Spectrum</p><p>展示小尺度初始功率增强对暗物质结构、halo 形成、晕–物质偏置与内部结构的影响。所有面板保留模型、红移、质量定义和单位。</p><ul class="author-list"><li>Haina Huang · CUHK (<a href="https://orcid.org/0009-0004-4765-0358" target="_blank" rel="noopener">ORCID ↗</a>)</li><li>Tsang Keung Chan · CUHK (<a href="https://orcid.org/0000-0003-2544-054X" target="_blank" rel="noopener">ORCID ↗</a>)</li><li>Jianhao Wu · UW-Madison &amp; CUHK (<a href="https://orcid.org/0009-0000-7431-7885" target="_blank" rel="noopener">ORCID ↗</a>)</li></ul><div class="paper-actions"><a class="text-button" href="assets/main.pdf" download="Nonlinear_Structure_Formation_v1.2.0.pdf">下载论文 PDF ↓</a><a class="text-button" href="https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum" target="_blank" rel="noopener">GitHub 仓库 ↗</a><a class="text-button" href="https://doi.org/10.5281/zenodo.24455135" target="_blank" rel="noopener">Zenodo v1.2.0 ↗</a><a class="text-button" href="https://doi.org/10.5281/zenodo.24182716" target="_blank" rel="noopener">Zenodo 快照归档 ↗</a><a class="text-button" href="data/provenance.json" download>下载数据来源与校验记录 ↓</a></div><div class="bibtex-box"><div class="bibtex-copy-row"><span class="technical-label">BIBTEX CITATION</span><button type="button" class="text-button" id="copy-bibtex">复制 BibTeX</button><span id="bibtex-status" class="bibtex-status" role="status" aria-live="polite"></span></div><pre id="bibtex-code" class="bibtex-code" data-no-i18n>@article{Huang2026NonlinearBT,
+  author  = {Huang, Haina and Chan, Tsang Keung and Wu, Jianhao},
+  title   = {Nonlinear Structure Formation with Enhanced Small-Scale Primordial Power Spectrum},
+  year    = {2026},
+  note    = {GitHub \&amp; Zenodo v1.2.0},
+  doi     = {10.5281/zenodo.24455135},
+  url     = {https://doi.org/10.5281/zenodo.24455135}
+}</pre></div></div><div class="data-notes"><div><span>01</span><p><strong>三个匹配模型</strong>主比较采用相同初始相位的 25 h⁻¹ Mpc、1024³ 粒子模拟，分别对比 PL、BT kₚ = 1 与 BT kₚ = 10（mₛ = 1.5）；kₚ 单位为 h Mpc⁻¹。</p></div><div><span>02</span><p><strong>按实际快照展示</strong>扩展投影包含八个真实红移，论文原图模式保留三个红移。统计图支持各自已有的红移；缺失处明确留空，不插值生成快照。</p></div><div><span>03</span><p><strong>保留统计口径</strong>误差、halo 间散布和理论参考分别标注。25 h⁻¹ Mpc 功率谱使用相位反转配对平均，突出 10k_f 至 0.25k_Ny 的论文采用区间。</p></div></div></section>
   </main>
-  <section class="page-width" id="pl-phase-pair-note" data-no-i18n style="padding:24px 0"><h2>PL phase-pair power spectra / PL 反相功率谱</h2><p>z=0 and z≈1.07 · Separate diagnostic / 独立诊断结果</p><a href="pl-phase-pair.html">说明与查看链接 / Details and viewer links</a></section>
-  <footer class="page-width"><span>STRUCTURE / ATLAS</span><span id="build-date">本地静态页面 · 可离线使用</span><a href="#index">返回起点 ↑</a></footer>
+  <footer class="page-width"><span>STRUCTURE / ATLAS</span><span id="build-date">论文版本 v1.2.0 · 本地静态页面</span><a href="#index">返回起点 ↑</a></footer>
   <div id="tooltip" class="tooltip" role="status" hidden></div>
   <noscript><p class="noscript">请启用 JavaScript 以使用红移播放和交互统计图。论文原图仍可从 assets 目录查看。</p></noscript>
 </body>

@@ -313,7 +313,7 @@
       "snapshot_source": {
         "model": "PL",
         "snapshot": 24,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0024.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0024.hdf5",
         "exists": true,
         "z": 19.40664523021168,
         "box": [
@@ -485,7 +485,7 @@
       "snapshot_source": {
         "model": "kp1",
         "snapshot": 24,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0024.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0024.hdf5",
         "exists": true,
         "z": 19.40664523021168,
         "box": [
@@ -657,7 +657,7 @@
       "snapshot_source": {
         "model": "kp10",
         "snapshot": 24,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0024.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0024.hdf5",
         "exists": true,
         "z": 19.40664523021168,
         "box": [
@@ -829,7 +829,7 @@
       "snapshot_source": {
         "model": "PL",
         "snapshot": 27,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0027.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0027.hdf5",
         "exists": true,
         "z": 14.331814598205613,
         "box": [
@@ -1001,7 +1001,7 @@
       "snapshot_source": {
         "model": "kp1",
         "snapshot": 27,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0027.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0027.hdf5",
         "exists": true,
         "z": 14.331814598205613,
         "box": [
@@ -1173,7 +1173,7 @@
       "snapshot_source": {
         "model": "kp10",
         "snapshot": 27,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0027.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0027.hdf5",
         "exists": true,
         "z": 14.331814598205613,
         "box": [
@@ -1345,7 +1345,7 @@
       "snapshot_source": {
         "model": "PL",
         "snapshot": 30,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0030.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0030.hdf5",
         "exists": true,
         "z": 10.51901923231075,
         "box": [
@@ -1517,7 +1517,7 @@
       "snapshot_source": {
         "model": "kp1",
         "snapshot": 30,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0030.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0030.hdf5",
         "exists": true,
         "z": 10.51901923231075,
         "box": [
@@ -1689,7 +1689,7 @@
       "snapshot_source": {
         "model": "kp10",
         "snapshot": 30,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0030.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0030.hdf5",
         "exists": true,
         "z": 10.51901923231075,
         "box": [
@@ -1861,7 +1861,7 @@
       "snapshot_source": {
         "model": "PL",
         "snapshot": 32,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0032.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0032.hdf5",
         "exists": true,
         "z": 8.519850605215494,
         "box": [
@@ -2033,7 +2033,7 @@
       "snapshot_source": {
         "model": "kp1",
         "snapshot": 32,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0032.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0032.hdf5",
         "exists": true,
         "z": 8.519850605215494,
         "box": [
@@ -2205,7 +2205,7 @@
       "snapshot_source": {
         "model": "kp10",
         "snapshot": 32,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0032.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0032.hdf5",
         "exists": true,
         "z": 8.519850605215494,
         "box": [
@@ -2377,7 +2377,7 @@
       "snapshot_source": {
         "model": "PL",
         "snapshot": 40,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0040.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0040.hdf5",
         "exists": true,
         "z": 3.4410805658271224,
         "box": [
@@ -2549,7 +2549,7 @@
       "snapshot_source": {
         "model": "kp1",
         "snapshot": 40,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0040.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0040.hdf5",
         "exists": true,
         "z": 3.4410805658271224,
         "box": [
@@ -2721,7 +2721,7 @@
       "snapshot_source": {
         "model": "kp10",
         "snapshot": 40,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0040.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0040.hdf5",
         "exists": true,
         "z": 3.4410805658271224,
         "box": [
@@ -2893,7 +2893,7 @@
       "snapshot_source": {
         "model": "PL",
         "snapshot": 44,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0044.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0044.hdf5",
         "exists": true,
         "z": 2.0333177828202462,
         "box": [
@@ -3065,7 +3065,7 @@
       "snapshot_source": {
         "model": "kp1",
         "snapshot": 44,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0044.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0044.hdf5",
         "exists": true,
         "z": 2.0333177828202462,
         "box": [
@@ -3237,7 +3237,7 @@
       "snapshot_source": {
         "model": "kp10",
         "snapshot": 44,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0044.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0044.hdf5",
         "exists": true,
         "z": 2.0333177828202462,
         "box": [
@@ -3409,7 +3409,7 @@
       "snapshot_source": {
         "model": "PL",
         "snapshot": 48,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0048.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0048.hdf5",
         "exists": true,
         "z": 1.0717968600643704,
         "box": [
@@ -3581,7 +3581,7 @@
       "snapshot_source": {
         "model": "kp1",
         "snapshot": 48,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0048.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0048.hdf5",
         "exists": true,
         "z": 1.0717968600643704,
         "box": [
@@ -3753,7 +3753,7 @@
       "snapshot_source": {
         "model": "kp10",
         "snapshot": 48,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0048.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0048.hdf5",
         "exists": true,
         "z": 1.0717968600643704,
         "box": [
@@ -3925,7 +3925,7 @@
       "snapshot_source": {
         "model": "PL",
         "snapshot": 56,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_25_1024/PL_25_1024_0056.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0056.hdf5",
         "exists": true,
         "z": 0,
         "box": [
@@ -4097,7 +4097,7 @@
       "snapshot_source": {
         "model": "kp1",
         "snapshot": 56,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0056.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0056.hdf5",
         "exists": true,
         "z": 0,
         "box": [
@@ -4269,7 +4269,7 @@
       "snapshot_source": {
         "model": "kp10",
         "snapshot": 56,
-        "file": "/project/tkcastrosim/HNHuang/project_big_sim/data/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0056.hdf5",
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0056.hdf5",
         "exists": true,
         "z": 0,
         "box": [
@@ -4436,7 +4436,7 @@
     },
     {
       "file": "assets/animations/particle-rotation.gif",
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/full_particle_projection/archive/2026-05-08_before_faceon_cleanup/PL_512_0056_full_particle_density_projection_rotation.gif",
+      "source": "zenodo:10.5281/zenodo.24455135",
       "sha256": "a28563a4b82f688b0e055d28f1df75a7a7558b31d1d16fd3be69adf5c417f85f",
       "bytes": 49249263,
       "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
@@ -4444,7 +4444,7 @@
     },
     {
       "file": "assets/animations/particle-evolution.gif",
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/analysis/_not_used_by_article_nonlinear_evolution_pps/mechanism_tests/group_meeting_2026-05-07/visualizations/full_particle_projection/oblique_slow.gif",
+      "source": "zenodo:10.5281/zenodo.24455135",
       "sha256": "32664cbe93e2021e0aa7f54bb6afcff44fb2ced18789a495833a582ff14d968d",
       "bytes": 37421044,
       "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
@@ -4455,287 +4455,287 @@
     {
       "snapshot": 0,
       "z": 200.00000032762998,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0000.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0000.hdf5"
     },
     {
       "snapshot": 1,
       "z": 181.72727302511814,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0001.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0001.hdf5"
     },
     {
       "snapshot": 2,
       "z": 165.1157027501074,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0002.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0002.hdf5"
     },
     {
       "snapshot": 3,
       "z": 150.01427522737038,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0003.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0003.hdf5"
     },
     {
       "snapshot": 4,
       "z": 136.28570475215486,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0004.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0004.hdf5"
     },
     {
       "snapshot": 5,
       "z": 123.80518613832263,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0005.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0005.hdf5"
     },
     {
       "snapshot": 6,
       "z": 112.4592601257478,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0006.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0006.hdf5"
     },
     {
       "snapshot": 7,
       "z": 102.144781932498,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0007.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0007.hdf5"
     },
     {
       "snapshot": 8,
       "z": 92.76798357499818,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0008.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0008.hdf5"
     },
     {
       "snapshot": 9,
       "z": 84.24362143181649,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0009.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0009.hdf5"
     },
     {
       "snapshot": 10,
       "z": 76.49420130165134,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0010.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0010.hdf5"
     },
     {
       "snapshot": 11,
       "z": 69.44927391059213,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0011.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0011.hdf5"
     },
     {
       "snapshot": 12,
       "z": 63.04479446417467,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0012.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0012.hdf5"
     },
     {
       "snapshot": 13,
       "z": 57.22254042197697,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0013.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0013.hdf5"
     },
     {
       "snapshot": 14,
       "z": 51.92958220179724,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0014.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0014.hdf5"
     },
     {
       "snapshot": 15,
       "z": 47.11780200163385,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0015.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0015.hdf5"
     },
     {
       "snapshot": 16,
       "z": 42.743456365121666,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0016.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0016.hdf5"
     },
     {
       "snapshot": 17,
       "z": 38.766778513746964,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0017.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0017.hdf5"
     },
     {
       "snapshot": 18,
       "z": 35.15161683067906,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0018.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0018.hdf5"
     },
     {
       "snapshot": 19,
       "z": 31.86510620970823,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0019.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0019.hdf5"
     },
     {
       "snapshot": 20,
       "z": 28.87736928155293,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0020.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0020.hdf5"
     },
     {
       "snapshot": 21,
       "z": 26.16124480141175,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0021.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0021.hdf5"
     },
     {
       "snapshot": 22,
       "z": 23.692040728556133,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0022.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0022.hdf5"
     },
     {
       "snapshot": 23,
       "z": 21.44730975323285,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0023.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0023.hdf5"
     },
     {
       "snapshot": 24,
       "z": 19.40664523021168,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0024.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0024.hdf5"
     },
     {
       "snapshot": 25,
       "z": 17.551495663828796,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0025.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0025.hdf5"
     },
     {
       "snapshot": 26,
       "z": 15.864996058026179,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0026.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0026.hdf5"
     },
     {
       "snapshot": 27,
       "z": 14.331814598205613,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0027.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0027.hdf5"
     },
     {
       "snapshot": 28,
       "z": 12.938013271096011,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0028.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0028.hdf5"
     },
     {
       "snapshot": 29,
       "z": 11.670921155541825,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0029.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0029.hdf5"
     },
     {
       "snapshot": 30,
       "z": 10.51901923231075,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0030.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0030.hdf5"
     },
     {
       "snapshot": 31,
       "z": 9.471835665737043,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0031.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0031.hdf5"
     },
     {
       "snapshot": 32,
       "z": 8.519850605215494,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0032.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0032.hdf5"
     },
     {
       "snapshot": 33,
       "z": 7.654409641104996,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0033.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0033.hdf5"
     },
     {
       "snapshot": 34,
       "z": 6.867645128277267,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0034.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0034.hdf5"
     },
     {
       "snapshot": 35,
       "z": 6.152404662070242,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0035.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0035.hdf5"
     },
     {
       "snapshot": 36,
       "z": 5.502186056427491,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0036.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0036.hdf5"
     },
     {
       "snapshot": 37,
       "z": 4.9110782331159015,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0037.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0037.hdf5"
     },
     {
       "snapshot": 38,
       "z": 4.373707484650818,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0038.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0038.hdf5"
     },
     {
       "snapshot": 39,
       "z": 3.885188622409834,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0039.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0039.hdf5"
     },
     {
       "snapshot": 40,
       "z": 3.4410805658271224,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0040.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0040.hdf5"
     },
     {
       "snapshot": 41,
       "z": 3.0373459689337468,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0041.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0041.hdf5"
     },
     {
       "snapshot": 42,
       "z": 2.670314517212497,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0042.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0042.hdf5"
     },
     {
       "snapshot": 43,
       "z": 2.3366495611022704,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0043.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0043.hdf5"
     },
     {
       "snapshot": 44,
       "z": 2.0333177828202462,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0044.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0044.hdf5"
     },
     {
       "snapshot": 45,
       "z": 1.7575616207456761,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0045.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0045.hdf5"
     },
     {
       "snapshot": 46,
       "z": 1.506874200677888,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0046.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0046.hdf5"
     },
     {
       "snapshot": 47,
       "z": 1.2789765460708074,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0047.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0047.hdf5"
     },
     {
       "snapshot": 48,
       "z": 1.0717968600643704,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0048.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0048.hdf5"
     },
     {
       "snapshot": 49,
       "z": 0.8834516909676096,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0049.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0049.hdf5"
     },
     {
       "snapshot": 50,
       "z": 0.7122288099705543,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0050.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0050.hdf5"
     },
     {
       "snapshot": 51,
       "z": 0.5565716454277756,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0051.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0051.hdf5"
     },
     {
       "snapshot": 52,
       "z": 0.4150651322070684,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0052.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0052.hdf5"
     },
     {
       "snapshot": 53,
       "z": 0.2864228474609716,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0053.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0053.hdf5"
     },
     {
       "snapshot": 54,
       "z": 0.16947531587361064,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0054.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0054.hdf5"
     },
     {
       "snapshot": 55,
       "z": 0.06315937806691885,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0055.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0055.hdf5"
     },
     {
       "snapshot": 56,
       "z": 0,
-      "source": "/project/tkcastrosim/HNHuang/project_big_sim/data/PL/PL_256_512/PL_512_0056.hdf5"
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0056.hdf5"
     }
   ]
 }

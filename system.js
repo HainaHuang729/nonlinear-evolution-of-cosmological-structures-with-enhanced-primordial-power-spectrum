@@ -98,20 +98,37 @@
     // remain visible, including when loaded at an anchor or through keyboard focus.
     const motion=matchMedia('(prefers-reduced-motion:reduce)');
     let observer;
+    const revealElement=el=>{
+      if(!el)return;
+      el.classList.remove('reveal-pending');
+      el.classList.add('reveal-visible');
+      observer?.unobserve(el);
+    };
+    const revealInView=()=>{
+      document.querySelectorAll('.reveal-pending').forEach(el=>{
+        if(el.getBoundingClientRect().top<=innerHeight*1.08)revealElement(el);
+      });
+    };
     const revealAll=()=>{
       observer?.disconnect();
-      document.querySelectorAll('.reveal-pending').forEach(el=>el.classList.remove('reveal-pending'));
+      document.querySelectorAll('.reveal-pending').forEach(revealElement);
     };
     if(!motion.matches&&'IntersectionObserver' in window){
       observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
-        if(entry.isIntersecting){entry.target.classList.remove('reveal-pending');entry.target.classList.add('reveal-visible');observer.unobserve(entry.target);}
-      }),{rootMargin:'0px 0px 60px 0px',threshold:0});
+        if(entry.isIntersecting)revealElement(entry.target);
+      }),{rootMargin:'160px 0px 160px 0px',threshold:0});
       document.querySelectorAll('.section-heading,.closing-statement').forEach(el=>{
-        if(el.getBoundingClientRect().top>innerHeight){el.classList.add('reveal-pending');observer.observe(el);}
+        if(el.getBoundingClientRect().top>innerHeight*1.05){el.classList.add('reveal-pending');observer.observe(el);}
+      });
+      window.addEventListener('scroll',revealInView,{passive:true});
+      window.addEventListener('hashchange',revealAll);
+      document.addEventListener('click',event=>{
+        const anchor=event.target.closest('a[href^="#"]');
+        if(anchor){const target=document.getElementById(anchor.hash.slice(1));if(target){revealElement(target.querySelector('.section-heading,.closing-statement'));revealAll();}}
       });
     }
     motion.addEventListener('change',event=>{if(event.matches)revealAll();});
-    document.addEventListener('focusin',event=>event.target.closest('.reveal-pending')?.classList.remove('reveal-pending'));
+    document.addEventListener('focusin',event=>revealElement(event.target.closest('.reveal-pending')));
     window.addEventListener('beforeprint',revealAll);
   });
 })();

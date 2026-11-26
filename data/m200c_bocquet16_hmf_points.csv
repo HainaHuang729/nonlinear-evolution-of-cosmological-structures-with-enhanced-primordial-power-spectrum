@@ -1,4 +1,4 @@
-model,snapshot,redshift,M_200c_Msun,log10_M_200c_Msun,dn_dlog10M,poisson_err,n_kept,n_total,source_file
+model,snapshot,redshift,M_200c_Msun,log10_M_200c_Msun,dn_dlnM,poisson_err,n_kept,n_total,source_file
 BT_deep,0024,19.40664523,1.6788040181e+08,8.2250000000e+00,3.1148845210e-03,4.2001094313e-04,373,49086,/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/HALOMASS/output/m200c_bocquet16_lowhigh_cache/BT_deep_snap0024_m200c_bocquet16_input.npz
 BT_deep,0024,19.40664523,2.3713737057e+08,8.3750000000e+00,1.2233001028e-02,8.3235029281e-04,373,49086,/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/HALOMASS/output/m200c_bocquet16_lowhigh_cache/BT_deep_snap0024_m200c_bocquet16_input.npz
 BT_deep,0024,19.40664523,3.3496543916e+08,8.5250000000e+00,3.5679586331e-03,4.4952053483e-04,373,49086,/project/tkcastrosim/HNHuang/project_big_sim/analysis/_used_by_article_nonlinear_evolution_pps/HALOMASS/output/m200c_bocquet16_lowhigh_cache/BT_deep_snap0024_m200c_bocquet16_input.npz
