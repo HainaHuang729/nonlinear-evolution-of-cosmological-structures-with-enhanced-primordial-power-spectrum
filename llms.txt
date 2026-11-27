@@ -1,0 +1,13 @@
+# Nonlinear Structure Formation with Enhanced Small-Scale Primordial Power Spectrum
+
+> Interactive research showcase and data companion by Haina Huang (CUHK Astrophysics), accompanying the dark matter halo formation manuscript and Zenodo v1.2.0 archival release.
+
+## Canonical URLs
+- Interactive Showcase: https://hainahuang729.github.io/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum/
+- GitHub Repository & Reproduction Package: https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum
+- Author Research Overview: https://formless-observatory.wuxiangguan.workers.dev/research/small-scale-power-halo-formation
+
+## Key Scientific Findings & Data
+- Simulations: Phase-matched dark-matter-only N-body simulations (1024^3 particles in a 25 h^-1 Mpc box, plus 256 h^-1 Mpc halo-bias volumes) produced with Music2-MonofonIC, SWIFT, HBT-HERONS, and SOAP.
+- Models: Standard Power-Law (PL) vs. Broken-Power-Law Blue-Tilted spectra with pivot wavenumbers kp = 1 and 10 h Mpc^-1 (characteristic mass markers M_p indicated across mass-axis diagnostics).
+- Measurements: Halo mass functions (FOF and M200c), scale-dependent halo bias, main-progenitor mass-assembly histories compared with Planck 2018 Neistein–Dekel EPS ODE integration (9% max offset for BT kp=1), relaxed/unrelaxed concentration-mass (c-M) relations, radial density profiles, and nonlinear matter power spectra.
