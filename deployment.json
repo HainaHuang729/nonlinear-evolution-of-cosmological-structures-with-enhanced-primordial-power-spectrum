@@ -1,0 +1,12 @@
+{
+  "version": "v1.2.0",
+  "repository": "https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum",
+  "branch": "gh-pages",
+  "source_commit": "2f97f22",
+  "zenodo_doi": "10.5281/zenodo.24455135",
+  "zenodo_snapshot_doi": "10.5281/zenodo.24182716",
+  "updated": "2026-11-26T10:45:49.316301+00:00",
+  "manuscript_pdf": "assets/main.pdf",
+  "figures_count": 15,
+  "downloads_count": 32
+}

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "engine": "BLENDER_EEVEE_NEXT",
+  "backend": "CPU software rendering; no GPU allocated",
+  "render_seconds": 46.970130048226565,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "cohort": 1000000,
+  "viewport_fps": null
+}

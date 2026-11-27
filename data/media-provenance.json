@@ -1,0 +1,4741 @@
+{
+  "built": "2026-09-10T08:08:18.091134+00:00",
+  "description": "Real-snapshot projections generated with the paper’s adaptive smoothing and independent panel normalization; existing PL animations retained.",
+  "projection_checks": [
+    {
+      "snapshot": 24,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "paper_method": true,
+      "independent_panel_scales": true
+    },
+    {
+      "snapshot": 27,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "paper_method": true,
+      "independent_panel_scales": true
+    },
+    {
+      "snapshot": 30,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "paper_method": true,
+      "independent_panel_scales": true
+    },
+    {
+      "snapshot": 32,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "paper_method": true,
+      "independent_panel_scales": true
+    },
+    {
+      "snapshot": 40,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "paper_method": true,
+      "independent_panel_scales": true
+    },
+    {
+      "snapshot": 44,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "paper_method": true,
+      "independent_panel_scales": true
+    },
+    {
+      "snapshot": 48,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "paper_method": true,
+      "independent_panel_scales": true
+    },
+    {
+      "snapshot": 56,
+      "models": 3,
+      "particles_per_model": 1073741824,
+      "paper_method": true,
+      "independent_panel_scales": true
+    }
+  ],
+  "paper_overlap_validation": {
+    "partial": false,
+    "checks": [
+      "paper algorithm and smoothing: PL-0024",
+      "full periodic box and all particles: PL-0024",
+      "finite original grid and cache integrity: PL-0024",
+      "paper algorithm and smoothing: kp1-0024",
+      "full periodic box and all particles: kp1-0024",
+      "finite original grid and cache integrity: kp1-0024",
+      "paper algorithm and smoothing: kp10-0024",
+      "full periodic box and all particles: kp10-0024",
+      "finite original grid and cache integrity: kp10-0024",
+      "paper algorithm and smoothing: PL-0027",
+      "full periodic box and all particles: PL-0027",
+      "finite original grid and cache integrity: PL-0027",
+      "paper algorithm and smoothing: kp1-0027",
+      "full periodic box and all particles: kp1-0027",
+      "finite original grid and cache integrity: kp1-0027",
+      "paper algorithm and smoothing: kp10-0027",
+      "full periodic box and all particles: kp10-0027",
+      "finite original grid and cache integrity: kp10-0027",
+      "paper algorithm and smoothing: PL-0030",
+      "full periodic box and all particles: PL-0030",
+      "finite original grid and cache integrity: PL-0030",
+      "paper algorithm and smoothing: kp1-0030",
+      "full periodic box and all particles: kp1-0030",
+      "finite original grid and cache integrity: kp1-0030",
+      "paper algorithm and smoothing: kp10-0030",
+      "full periodic box and all particles: kp10-0030",
+      "finite original grid and cache integrity: kp10-0030",
+      "paper algorithm and smoothing: PL-0032",
+      "full periodic box and all particles: PL-0032",
+      "finite original grid and cache integrity: PL-0032",
+      "paper algorithm and smoothing: kp1-0032",
+      "full periodic box and all particles: kp1-0032",
+      "finite original grid and cache integrity: kp1-0032",
+      "paper algorithm and smoothing: kp10-0032",
+      "full periodic box and all particles: kp10-0032",
+      "finite original grid and cache integrity: kp10-0032",
+      "paper algorithm and smoothing: PL-0040",
+      "full periodic box and all particles: PL-0040",
+      "finite original grid and cache integrity: PL-0040",
+      "paper algorithm and smoothing: kp1-0040",
+      "full periodic box and all particles: kp1-0040",
+      "finite original grid and cache integrity: kp1-0040",
+      "paper algorithm and smoothing: kp10-0040",
+      "full periodic box and all particles: kp10-0040",
+      "finite original grid and cache integrity: kp10-0040",
+      "paper algorithm and smoothing: PL-0044",
+      "full periodic box and all particles: PL-0044",
+      "finite original grid and cache integrity: PL-0044",
+      "paper algorithm and smoothing: kp1-0044",
+      "full periodic box and all particles: kp1-0044",
+      "finite original grid and cache integrity: kp1-0044",
+      "paper algorithm and smoothing: kp10-0044",
+      "full periodic box and all particles: kp10-0044",
+      "finite original grid and cache integrity: kp10-0044",
+      "paper algorithm and smoothing: PL-0048",
+      "full periodic box and all particles: PL-0048",
+      "finite original grid and cache integrity: PL-0048",
+      "paper algorithm and smoothing: kp1-0048",
+      "full periodic box and all particles: kp1-0048",
+      "finite original grid and cache integrity: kp1-0048",
+      "paper algorithm and smoothing: kp10-0048",
+      "full periodic box and all particles: kp10-0048",
+      "finite original grid and cache integrity: kp10-0048",
+      "paper algorithm and smoothing: PL-0056",
+      "full periodic box and all particles: PL-0056",
+      "finite original grid and cache integrity: PL-0056",
+      "paper algorithm and smoothing: kp1-0056",
+      "full periodic box and all particles: kp1-0056",
+      "finite original grid and cache integrity: kp1-0056",
+      "paper algorithm and smoothing: kp10-0056",
+      "full periodic box and all particles: kp10-0056",
+      "finite original grid and cache integrity: kp10-0056",
+      "at least one completed adaptive projection",
+      "all 24 adaptive projections are complete",
+      "paper export dimensions reproduced",
+      "regenerated panel agrees with paper appearance: PL-0056",
+      "regenerated panel agrees with paper appearance: kp1-0056",
+      "regenerated panel agrees with paper appearance: kp10-0056",
+      "regenerated panel agrees with paper appearance: PL-0044",
+      "regenerated panel agrees with paper appearance: kp1-0044",
+      "regenerated panel agrees with paper appearance: kp10-0044",
+      "regenerated panel agrees with paper appearance: PL-0032",
+      "regenerated panel agrees with paper appearance: kp1-0032",
+      "regenerated panel agrees with paper appearance: kp10-0032",
+      "overlapping paper panels compared"
+    ],
+    "grids": {
+      "PL-0024": {
+        "cache_sha256": "0e64ad73f377d0c1e49ce15c31fb1a8fcd89c9ee8dd36e2be3eaa54e191bb184",
+        "metadata_sha256": "e9e824763c13b3e6566fe9c351278fdb5b3e6b921c8c2096383c312c97431a36"
+      },
+      "kp1-0024": {
+        "cache_sha256": "888a0d7f1f490baa38435358bfa782b860fe8e4ff7aded5215628dcc20decb48",
+        "metadata_sha256": "00c5c0ed23282e645ca8210b615e4d61faf0fda931a59358f7e2e815ae7170e0"
+      },
+      "kp10-0024": {
+        "cache_sha256": "2b96d7e67afee880a1275731150403af04933e566d702d8cfbc3618a1f7a4adb",
+        "metadata_sha256": "ff3a36ef5b059fe1f387d4d0735beb54b81ab62d35da6a437106b20690727a64"
+      },
+      "PL-0027": {
+        "cache_sha256": "5bf7a339ddce2571787758f4ebf348768ca8c44b1f87ccad47bc6ec7c7883751",
+        "metadata_sha256": "740ac46e79a8d52d2266d6f15787b6fffd33337e8f785b1b5a629b2858626092"
+      },
+      "kp1-0027": {
+        "cache_sha256": "e830f1cbda00d6de83ae8d734ea6d514f51ed883a981dfad10ecac6a5b4dd52b",
+        "metadata_sha256": "2b29f4a414e2e1149367b1e8ea619c2a8fb27a699548d9018f4da748e9da0991"
+      },
+      "kp10-0027": {
+        "cache_sha256": "412e75cd439d0c747027fb0ae0d8ca203f08147e056c887bc850ed78b1f825c5",
+        "metadata_sha256": "e93b0b9d888517e1697c0d4d5615051b9e58cfc6b2a5c4d9e15598615e0cd32f"
+      },
+      "PL-0030": {
+        "cache_sha256": "948b6171475d1a5125856e7e75b345cd906d7a0712a6c2ef4ad39bc853c60301",
+        "metadata_sha256": "0a5dd22f413c5cddf15070a78769c367e84e7062d2f5e7ba3c4e9dc5dea9b9fe"
+      },
+      "kp1-0030": {
+        "cache_sha256": "320d79ee9ce4815dfe9e24ee9c48789f3220a20b40142da09a3edbf0ebce2f62",
+        "metadata_sha256": "888353c70ae70c4efdc2a42eace190428b3a024ac55cc747080ffd2efeb82ae9"
+      },
+      "kp10-0030": {
+        "cache_sha256": "b6403897665c4952a10c886afa26fc73c55a9beeb87e503247d682258d8300b9",
+        "metadata_sha256": "ec5b668b1ed3253da56e5d30594061f095d63b42ad60ebea9a5f51af02b8b5c0"
+      },
+      "PL-0032": {
+        "cache_sha256": "7ccb186de502db0af46749142ec78ba7a3e4f6a252cb7e9a4be42f25d577a05c",
+        "metadata_sha256": "0f2f5561c4c5f91eebd2182859f58b162b2a896b9ad1f5fed247f3ef8b1b2f21"
+      },
+      "kp1-0032": {
+        "cache_sha256": "df987938a45bbd5aec79fb9d2f322ec7e49a843dd9961f38e1a17202021903ff",
+        "metadata_sha256": "53d38ae615ceb31276e300fcfe75ba2ec28760aea9cd4bd90ca5d8fcb50aea2c"
+      },
+      "kp10-0032": {
+        "cache_sha256": "b760aa6e76ace4de23f1275526c3152cbd7da54c3b5f8a3c4eee727769829b43",
+        "metadata_sha256": "dc1637dddf1eded5e939925b4cae4dce903ec5f09fc30730cd372e1f523acb3d"
+      },
+      "PL-0040": {
+        "cache_sha256": "a1bb346b5f937bc7d81fc130607f690e134a34eb8b309541c23293b0e73a6584",
+        "metadata_sha256": "5e9e23a14bf25da4dabb3007935ae67206b504c6258bc963585f5556cbb28b48"
+      },
+      "kp1-0040": {
+        "cache_sha256": "62a280ad598d600286b7a1c9cadf9d0035dda7d3e468d306d0838595d152ef32",
+        "metadata_sha256": "480cd80bc55391fb5266d853409680d3f6ab57613aee164f26a7a70ad7ce3595"
+      },
+      "kp10-0040": {
+        "cache_sha256": "56e7cf6bbfda6a3366d34a372b713c6bb088f05c096001b5e690357ebf7796b4",
+        "metadata_sha256": "3699679f5a1fe7e5f58b227fbf8c27567b79fa2a17be6e3975c4f34f86baae5c"
+      },
+      "PL-0044": {
+        "cache_sha256": "1b82d05710471752770e8994c70cea5f405387104cfdf7faf2aac3d93e1406d6",
+        "metadata_sha256": "1777b84c0dc38b004654a94519120ac2a9c2f3d0dea3ab6c95374d72899e7a85"
+      },
+      "kp1-0044": {
+        "cache_sha256": "b9ce0fbdc20c3ec2c24916462b45e8c4d560c19c14a89072e55dec873110b11f",
+        "metadata_sha256": "1ecaa9c04ea112352cf4277f58c3eecc9c4d1ccc7e641eb7adb689e8d2319559"
+      },
+      "kp10-0044": {
+        "cache_sha256": "a5601d92d818e0dd74a8a8691dc122cf134ccebb7648dddea4d8f0d218c97e15",
+        "metadata_sha256": "066c121fb9bd38035aad39081182823bfd7b3e74ed1e6a220d58ec926e55b8a7"
+      },
+      "PL-0048": {
+        "cache_sha256": "72d2d35d87bcfb6de16b3697066436b1df0ed4304590d49cee46bca7de1e0212",
+        "metadata_sha256": "8713f819b2bff725f1b6d7c8633b445f6b796ffbd991c5c2b24c02252e266e8d"
+      },
+      "kp1-0048": {
+        "cache_sha256": "1ec3a7501f238f7be33a02cedec0e85597b44a007d000fd94b003f05fd37523e",
+        "metadata_sha256": "ead5f11f911c6f3640d3bbe84894243e08be4dba40ff9af59f0b581ca62b3902"
+      },
+      "kp10-0048": {
+        "cache_sha256": "5ae3ff6087e0409a6fb6820c2876b51829d814fbe880dc9fadc88c3fdfd1c5ba",
+        "metadata_sha256": "33d2039adc65db0ea5e664202610e1cbf285d6f646e11b83d596c9a622667784"
+      },
+      "PL-0056": {
+        "cache_sha256": "ab4503de0b8df604b9d604247c3e0f4985d261544fbdaa1c5f339ff4c585cc12",
+        "metadata_sha256": "fcc42335b0b161ba85a391a5fe65ee2d31cf11f18dda14ea980a239259caf109"
+      },
+      "kp1-0056": {
+        "cache_sha256": "4430983a5668eb7b1322f4dc22480059bc5246adc8770c0da37d77757ef9deda",
+        "metadata_sha256": "db7aaf078ebb93080dd29336ddf36d58ed98010befea08686f80cb38fadaeceb"
+      },
+      "kp10-0056": {
+        "cache_sha256": "6fcf28f9dcded54bf68a065f53c2bb29eec48165c275cd286f8bd6038b3a6c5c",
+        "metadata_sha256": "757f8082a60ab33df522d65a97d29e692f224d3c6c0a6cdea74eac23d846f68a"
+      }
+    },
+    "overlap": [
+      {
+        "name": "PL-0056",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      },
+      {
+        "name": "kp1-0056",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      },
+      {
+        "name": "kp10-0056",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      },
+      {
+        "name": "PL-0044",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      },
+      {
+        "name": "kp1-0044",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      },
+      {
+        "name": "kp10-0044",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      },
+      {
+        "name": "PL-0032",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      },
+      {
+        "name": "kp1-0032",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      },
+      {
+        "name": "kp10-0032",
+        "mean_rgb_error_255": 0.0,
+        "p99_rgb_error_255": 0.0,
+        "exact_pixel_fraction": 1.0
+      }
+    ],
+    "paper_image_sha256": "790914e07b1cb5d2db20ef1942aacae789cce618dbb599037c46906672554108",
+    "status": "passed"
+  },
+  "sources": [
+    {
+      "file": "assets/projections/PL-0024.png",
+      "sha256": "c38669d5dd494ea3f5005c19855f1397d140f8b565bc58e2b622a6f57cc16d9d",
+      "bytes": 1593957,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 24,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0024.hdf5",
+        "exists": true,
+        "z": 19.40664523021168,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 34472300637,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 34472300637,
+        "source_mtime_ns": 1748776495000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "12bc1705340717ed8b333d3f8778b270101de663ab8e8bbf6335841378f4b253"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7f9ec5b020abd0475af4a4be683487b92572142feadcedf7c871b81a31b1463c"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8b399ce298e09b78961591340ab60283cbf014a91b355838de7b1332500ebec6"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "d7fd0410b347b909700cf7abb54197aeb0289a8fe1c83646d37a89ef3b3556d0"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "dc47284a4027ee96c8c640afabfbc1f3010a2abeb0cec9e235e410668da95ff3"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "04920ef2faa91fec3e6a602a5d642171be8097bd2026da45dddaf806c3f5f4fc"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "836c01c8d3150262b21e74c876c12aeb6a06456e4a4808bbe0a6b2b4c41fb7b5"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1fdd1b0b79a8bec36dfbdd66c514cca47486e8df5726d87416ff43711a64fa3e"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 147126.90625,
+        "grid_max": 305493.90625,
+        "zero_pixels": 0,
+        "array_sha256": "636cc71587063bb50f8413ce802c239ccfa161acd46ab90a0dfcc9c8eac7d600",
+        "cache_sha256": "0e64ad73f377d0c1e49ce15c31fb1a8fcd89c9ee8dd36e2be3eaa54e191bb184",
+        "elapsed_seconds": 925.8807243700139,
+        "slurm_job": "2128621"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 5.1676926612854,
+        "log10_max": 5.485002517700195,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0024.png",
+      "sha256": "a47c9d799d6b5da48bcdf7298690c0bab3582bf7307ae1c818a19da01d012ee3",
+      "bytes": 2118762,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 24,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0024.hdf5",
+        "exists": true,
+        "z": 19.40664523021168,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36174963264,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36174963264,
+        "source_mtime_ns": 1748804010000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1b10993f3b6f355dbc574ecfcbddbd49f08dba748f52b5e30426dbb3f6ae6ee5"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "fa9008fc2dd47d42ffa0081412af0ff49f78b6671940e49c0895ce800aaa7982"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "61834abc1e1ff8059a00b8df6e49a11fc78354b645370a8550837cf3e65d691a"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8c401fed50caeb490c4c32e3d939f40d93709b2707d196f2a36b2c1a47781727"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "acc9f1a4fefb73e1c0fa811d4e5be87d65d49752e0a77c96c97ff350ad72036e"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7f4db5b3c8c98558cbf5412040e777dec14f2aa082f5d5a7972dc3ac8fbc95cd"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "260f29ff5c5c947aa2959f0b71d8759bca899647ca670753117e803ecd839cd2"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "985b8c64fd52d0ef06df8e3bc2780b527a89e6fde96bb515c988d0df765ce86e"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 124490.3515625,
+        "grid_max": 585919.625,
+        "zero_pixels": 0,
+        "array_sha256": "721bbc6edb6083a5c081e03ed854edc2e58f7faba8c3da68d34e57bbe66e3827",
+        "cache_sha256": "888a0d7f1f490baa38435358bfa782b860fe8e4ff7aded5215628dcc20decb48",
+        "elapsed_seconds": 907.0748529578559,
+        "slurm_job": "2128636"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 5.0951361656188965,
+        "log10_max": 5.767838478088379,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0024.png",
+      "sha256": "9df01cc8949dcfa923ff77f3e59db1eaf2370691c3623d74955dd75da58683cb",
+      "bytes": 1854479,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 24,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0024.hdf5",
+        "exists": true,
+        "z": 19.40664523021168,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 34876713847,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 34876713847,
+        "source_mtime_ns": 1748957783000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3659d657e861475e34abb0985b64133bca676d81861da58f8c4bbc14e32ef2c7"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7398a29f158bdf7fff78cd0c02de66b3ff1badd2b0fedbe32e74ae1d10196091"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "78ded806cfcde2936c2ba0030b510bbeb733c624fb8664e780a191a28d3e2d5c"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "380ce44e36ece4b0a1f5fb8f48ff72dc6005923c2628f859a72624d3ce53390e"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "aaa0712b94d9afdebc7d59ed37b685a19fb113838b29f69976f0749c2453078a"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0387aca51baddfe179711155ccd0ea6c38cf1e36524a19b6e0841efa8ff7d9cd"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "bb37ab971d2214699ff93356b2481afd06890d31193d26f0780f274d254f65d0"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "81d64b9e1fcdda0bcc6b489ba986e7e58c349d2cd2a781a24b938fdf3be9bf33"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 144373.78125,
+        "grid_max": 321179.75,
+        "zero_pixels": 0,
+        "array_sha256": "cc047b356688bc66fbd158ca8ce75892a382b60a667f0e0f4103ea8937e253bb",
+        "cache_sha256": "2b96d7e67afee880a1275731150403af04933e566d702d8cfbc3618a1f7a4adb",
+        "elapsed_seconds": 1518.737880981993,
+        "slurm_job": "2128638"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 5.159488677978516,
+        "log10_max": 5.506748199462891,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/PL-0027.png",
+      "sha256": "b73617b83188093257f07253cc2ec055c1f4edb2828ad2c2862230ea25d61491",
+      "bytes": 1498194,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 27,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0027.hdf5",
+        "exists": true,
+        "z": 14.331814598205613,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 34772310367,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 34772310367,
+        "source_mtime_ns": 1748793283000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8b57080e1bc6a5454ac6a8011245ccca239818a137eb0c0fa1fad63b15b8ae8c"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "802df425058b92ac47aff208d8fb45bc960308e9a5c813c31f1cb83d7601cac9"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1a7e2c8c153278dfe127ca4d991e5961ca829fe494db5c3bf0d7b2b6ba7d6d7a"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ed137d6be435e929be396d7b0a6c340a3968019437876515c7ab63651b13b619"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f078c895ba0cf6ddb7bb809d1794eb7c9c6483bcaac836a4b63b81ed57e7af61"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "666a2c3527f3486cc2b00948e5925d2f0351d84668c6dcd32bfeaebd38fa76b2"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "40afe30f4e42f555babe04723217daf74981d1057bf2be6b3c927d9b21fa1dfb"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c2f2d59733c5ff1568e950fc3c444ac8238b506d27f1f3f57d223b0cea0bfaee"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 132945.59375,
+        "grid_max": 592611.375,
+        "zero_pixels": 0,
+        "array_sha256": "c9d47cbc1ad280a263ac17d7fb66868f4dd293377f0e38d7c9b17a2789c2a0e5",
+        "cache_sha256": "5bf7a339ddce2571787758f4ebf348768ca8c44b1f87ccad47bc6ec7c7883751",
+        "elapsed_seconds": 923.1021115947515,
+        "slurm_job": "2128639"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 5.123674392700195,
+        "log10_max": 5.772770404815674,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0027.png",
+      "sha256": "62dbc7934977c980d0b995759dd4e203672542d67d66d348635a113dc9152a92",
+      "bytes": 2153649,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 27,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0027.hdf5",
+        "exists": true,
+        "z": 14.331814598205613,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36497213953,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36497213953,
+        "source_mtime_ns": 1748842016000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3a3354c850d3c60a6f67392bb67b3e5d26a9bd047105b22894e7d70c6b2f0286"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "d838fbb5d7ef301e31f64ce02c2461889e0e43ee82a01a6075b57bcefd3ac33b"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "aa1a5d18d5e8ee1fce18198d59abd09b502295211858990403128397f868aa97"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0c65dbc41e18c0e3988f6b8d1dcfd783a3d86d628e3f02ae3d7794141781ae10"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "88759973d7de20bf86754b6462d10faf78fb2b57681ac8b748f9c3d361ca1a69"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c9adb3a0a5faa268d57204dd2fbfdbcb153e2b3213eb99787a6dcbcb778d89a5"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c58870d5f081463fabe0c9a7520570f84c6a6160e86265e7d25627d993a47ca8"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ca14078cdb5b060939c3e81cc553331b268bfc5ed45f87b8926b486b69cca8f2"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 105558.375,
+        "grid_max": 1157037.75,
+        "zero_pixels": 0,
+        "array_sha256": "397d3f610bba9e45b9fd521e8d0721a088970424d3f9adbf370de34c7da540ba",
+        "cache_sha256": "e830f1cbda00d6de83ae8d734ea6d514f51ed883a981dfad10ecac6a5b4dd52b",
+        "elapsed_seconds": 900.9657948850654,
+        "slurm_job": "2128674"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 5.02349328994751,
+        "log10_max": 6.063347816467285,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0027.png",
+      "sha256": "1c5b61db5a16196e04fb41b4f55bbf13ae802b8faeb6fee669677fb3de8ffae7",
+      "bytes": 1758215,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 27,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0027.hdf5",
+        "exists": true,
+        "z": 14.331814598205613,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35387371121,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 35387371121,
+        "source_mtime_ns": 1748980505000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ee6f05b718b367841ef98183bafe65a7176c788731e9324aa7bced691db97e94"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7473610fb018709e567bbf09c27aa3072279535971afd5fe40de5f715bc78306"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "869e7ddfc793ef521edc1902fc0d697e175c323499df352e25b1a633c3bf3c4d"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9568a7c28f311a76623c4ee28ca49b9cf2f70391a3a0167cc0b5890791968997"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3235493c36bd837114ea6b30000ed3afe0a9c42b272f0cefcba62f7749f35d95"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "cff77895bb33ca6cd5ed2632b40444c6ea762c7185f561fc742369f11ce1db49"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "892231340d5b9aeb1e55c99b24cdad76d9515d90235f553a8039230a7550852d"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "74ba941eadce60ae55f58ac914e4959d6bc6e62f9ab7df01cfa73db23e4fedda"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 129819.4765625,
+        "grid_max": 607900.0625,
+        "zero_pixels": 0,
+        "array_sha256": "f1bf9f1465ed67a7c2a676e4bff6c3ca20f1e60fe1d2f46bdb1c2f78ccde2778",
+        "cache_sha256": "412e75cd439d0c747027fb0ae0d8ca203f08147e056c887bc850ed78b1f825c5",
+        "elapsed_seconds": 951.0007355641574,
+        "slurm_job": "2128680"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 5.113340377807617,
+        "log10_max": 5.783832550048828,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/PL-0030.png",
+      "sha256": "2115e2afc92469a238c0f82f48e1ae201a607d4fc16f92319532574ae701c65a",
+      "bytes": 1640197,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 30,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0030.hdf5",
+        "exists": true,
+        "z": 10.51901923231075,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35233350425,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 35233350425,
+        "source_mtime_ns": 1748811920000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6821d5f97ef52c91f5ef29abb19ed0fd10ec5ad4bf8bad71835580b0faf45f8c"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "891082bda2dc4c3e24570bf7d121e8106e8d4973c7f5543b7b8e4a8f4573eb18"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "48e91f732206254a53ff39781a15287f589d6877a310d2c7c1527d7a042e0969"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1cd44e5fbcc7799bace5eb7dbf60421c95e1f3ec328b8f0abfb89d61a35e76e6"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "659a5a4e214d79bf8376de8a9b3c3436c290d5130837aa38d81183f2a28c9689"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "81de80fc0d034b1fc0ca576155dda96d51aa052a2aae1d929ace0d98fadeb5bb"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "af9b31d670c540fd8189b8a6eb15f70774a77679d9aab52a2e3f6befd7a9e66f"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0af26229dffc214e07b9c5425114134595a34055cee64e1bd4e1448ca965b32d"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 113367.09375,
+        "grid_max": 1319065.875,
+        "zero_pixels": 0,
+        "array_sha256": "c181ad95563a96a0d4d1f297ddb45562ee3c7c096b07bc48332901b3fd0a793a",
+        "cache_sha256": "948b6171475d1a5125856e7e75b345cd906d7a0712a6c2ef4ad39bc853c60301",
+        "elapsed_seconds": 972.4643479580991,
+        "slurm_job": "2128695"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 5.054487228393555,
+        "log10_max": 6.120266914367676,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0030.png",
+      "sha256": "580653f6719dd989ea7e685cbe8b9f8a32e4e875107c13aecc6d4decb4be1177",
+      "bytes": 2187407,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 30,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0030.hdf5",
+        "exists": true,
+        "z": 10.51901923231075,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36647610790,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36647610790,
+        "source_mtime_ns": 1748902211000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ff2ab3b8d246d53d718b08c79484ace7e46ded42bae49298586bebc71a313999"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "a08cf13f7f9d2c98d71edb8d1eb67721aab6c7198f5e091378a056d823eef4f7"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9dc43bf873897737558a9329a3e879c22b35c86f16a9c7215a8a4a557f4c98f4"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6c2dfcf9027125e8e540361f8c8ccc207dd084cd4df2549ef6590c643eb69da6"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1953d42f397b14274edd36ce5d7aa136b053cd3be532bf9986892027f07c6ace"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8afd62e8d1715e4ce6c2f47c7a28fa1942a3a413896b41f896827e2bca2574f0"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4376d5c37fd3ef42d5d2ec229c1e1469253ef829a04641743bb676f88a5c4092"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "03f7a77d6972479ff64ab7ed0545f68d3e2b095c8fa396819e1a84f2e686454f"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 83465.6015625,
+        "grid_max": 2330179.75,
+        "zero_pixels": 0,
+        "array_sha256": "531e6b8123a6caac14c1ae7e61da78aca2b7fdf648e266a7f08410448cf04ccd",
+        "cache_sha256": "320d79ee9ce4815dfe9e24ee9c48789f3220a20b40142da09a3edbf0ebce2f62",
+        "elapsed_seconds": 909.9509085570462,
+        "slurm_job": "2128697"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.921507835388184,
+        "log10_max": 6.367389678955078,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0030.png",
+      "sha256": "ab742b8a743d242c7046821cef756c3fef98fa2a45cb4ee45f6b8bb6b773f5bf",
+      "bytes": 1854733,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 30,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0030.hdf5",
+        "exists": true,
+        "z": 10.51901923231075,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35865885650,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 35865885650,
+        "source_mtime_ns": 1749005648000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "70d99eea3d309329b06f7717d3fbb0fad0e8b8090d7efc839a71ff9aadbac02e"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6d165f5df28808766f6c648798e5ee884362e8dd3c5bbd51a777747e3c704859"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1a9e0fad99b83d1e8e720b123545a6e4492221b11ac33351ac245276b60dff85"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "898d553d2d74ac781e26095c7bf42d708ff7a1c1442e5913db38f68dc35efe1b"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "76630a429f202b2310ed444f623b55ce356d10a2bb9507474bd5d690e95ed530"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "710d29be8371cdc7345cf8038b3ec3a9a3523d9e87a6114d2f229c43e6cbac72"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "215739e95e15c92b3cbf9d71b158a858443c91b64b2baf892bcc3037855190bf"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "93d5997f50f7e8c2904b6e887ff7c28e4420ca0b726b81fb329175cfc0cbef94"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 110924.8125,
+        "grid_max": 1399633.625,
+        "zero_pixels": 0,
+        "array_sha256": "6a12446bb91e4eda0e4bb70348013d9604f3dd071154ff1efbc0e9636313f72c",
+        "cache_sha256": "b6403897665c4952a10c886afa26fc73c55a9beeb87e503247d682258d8300b9",
+        "elapsed_seconds": 984.7743555707857,
+        "slurm_job": "2128701"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 5.045029163360596,
+        "log10_max": 6.14601469039917,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/PL-0032.png",
+      "sha256": "aa1a46c8b07f1a807a9a1133dbf6f02c975493b3e3da2789594570277f7a509c",
+      "bytes": 1746192,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 32,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0032.hdf5",
+        "exists": true,
+        "z": 8.519850605215494,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35546628766,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 35546628766,
+        "source_mtime_ns": 1748828344000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b15fc94813f8cd9bbbe29087f7af0c010c1b3a83f57101aef7103582953af9e0"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "74c132e9b7b4e79f64a0ffb2dda836c4079dd45e2fa3ce932608df0cb65d08ca"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3777dce8f33aa5d34ee0618276f8a07af23ecb1108e60791aec01e7811cbb3ff"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ba330f6252187db861a2fc001eed2399714d1ca04adcd4904823b82380fa774e"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9856f2907f372bc7933f61d4de0b0af3fe6407ddb4454ee597bf6b4cf114c7bc"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "815e2dbf4109522285ff33e28bfc808c848262f7e4b052c7638f7fafa399ebbd"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "feac4b31e9a637750c47819f4f67cfb52869b406548d49f09a247147b38bbd5c"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "bdf57a912299c6817f5b80db587eab03f82ea8c5600c82f0671d3ab5ca0cdad2"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 98150.8046875,
+        "grid_max": 2142479.75,
+        "zero_pixels": 0,
+        "array_sha256": "1fdfc6f23e75fff9077dd3a77e2cbdda0255e253830d17cd94bf3025b799c0f8",
+        "cache_sha256": "7ccb186de502db0af46749142ec78ba7a3e4f6a252cb7e9a4be42f25d577a05c",
+        "elapsed_seconds": 958.0034153107554,
+        "slurm_job": "2128709"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.991894245147705,
+        "log10_max": 6.330916881561279,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0032.png",
+      "sha256": "a74a0edf52be39b27e35e2281dfa7fb32c8a80b841cd3a96656c978bc3757104",
+      "bytes": 2191507,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 32,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0032.hdf5",
+        "exists": true,
+        "z": 8.519850605215494,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36684452040,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36684452040,
+        "source_mtime_ns": 1749233506000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "81b03f89500054ee374ba71625e1fc66b46f480e1a03051ab9a48474bd4eb150"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "edd3aecfefc84f7b367552152aca8e64d85bc95f859b4a38b677fac7611116be"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "5b10098c8a1c02974f8939364184c5d5f5d39442fa101c818bc5f1071666736c"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f5538a0f9466c5629c792b2286dcab679d53867170668b6901a4ae5e826173a1"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "e208559550e00791441265a4a01d02baf1010855209a4267820c428324575561"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "28d96567b788e6554d3e7698e7a0195840124a0f370ead6f78657c50462929ec"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b510bb7f47809eeebdff8d7d967386f54a3c78062d7bf647d8882903d0165d3e"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2b12dbcc2879785a7e0fbd7bff88908762d417840f7bee02974bb4fc734d5d5c"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 68151.4921875,
+        "grid_max": 3827771.75,
+        "zero_pixels": 0,
+        "array_sha256": "9520844ef4f99c20b7c6e01ba3cc76aac826ae2578bb0108af8e92801210c6ec",
+        "cache_sha256": "df987938a45bbd5aec79fb9d2f322ec7e49a843dd9961f38e1a17202021903ff",
+        "elapsed_seconds": 929.9587084008381,
+        "slurm_job": "2128714"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.833475589752197,
+        "log10_max": 6.582946300506592,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0032.png",
+      "sha256": "686ad03f7428d996d24365c1de7fcb0892a9b23832effd50b88f09faf0e34d32",
+      "bytes": 1917833,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 32,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0032.hdf5",
+        "exists": true,
+        "z": 8.519850605215494,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36101639283,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36101639283,
+        "source_mtime_ns": 1749030070000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "70a42ee3b7de241b921bf90cbe04df8203b535ab0238026590adf08295f8dfcc"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b69ebaa54ba854143a8d6670ff4cbeb7cc22263dd712944cd8adb395070e6549"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "5b404feda63515ebf8e473bb8b08acccd7732da78140b20334335ba47dc67ab8"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f2ce9f3c51d363b96d3f1bdb12d80e6e7c396ce5e50c495b2202d0131cca903b"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "54381ade191c3faaf3aa800be6f1b153b2bc83330ed7cf5c2fe2e5a1a1bd348b"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ba3b13f5c5f783aa7ebf3a2ee37f172c6c8a807521af426396ee6ee0021d0e23"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "fb6cd980a07aacb8b2127bd2efab5255e2681646bcb1f0cfe4a8e91aae7a438f"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "aefed92f6a658322b3ea5161e6f0a119546abf1f73c7f7ea4562488a12b745c3"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 93379.640625,
+        "grid_max": 2090900.125,
+        "zero_pixels": 0,
+        "array_sha256": "9d0bb6e890d5383e82fae0637439b9de55461226f5e80834e1695b38c428b1da",
+        "cache_sha256": "b760aa6e76ace4de23f1275526c3152cbd7da54c3b5f8a3c4eee727769829b43",
+        "elapsed_seconds": 972.8662696229294,
+        "slurm_job": "2128718"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.970252513885498,
+        "log10_max": 6.320333480834961,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/PL-0040.png",
+      "sha256": "e9edd500a18f67b29972908f5b91cc490e69afe020e3d261beec47fa5b44ce48",
+      "bytes": 1997432,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 40,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0040.hdf5",
+        "exists": true,
+        "z": 3.4410805658271224,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36280511860,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36280511860,
+        "source_mtime_ns": 1748977439000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "203757fee5a6c34df8bdc704dabdd02716d22d6a90143bf44d74ca7678265854"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "e2ff6ad7aad591094d92f9b1956565560c8c9c6fbde9a6c84545daced23b1153"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c25fbb67b20084482824e5972727dfe5dc70a8ad71cea06b850ad210f9171657"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "5c07eeb8d240d82742ae23faf0e4bd587aa4c04c101ba220c16a61b80e4a28c1"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "e6e592a11ea1671cfaa7d0fd906783562dd3a0908b95a09bd276662e9e10697f"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8b3c111ac9c7341d3080816277546e52fb47a1fd696a8d84b62a832344a7f4b6"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "517b1998db2c9e8c7c3f752d572075255838ae881d601c550335a6e00bb8a804"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "49a9bb6b2f4d505a265c70cc4a5df0cc1113dbb6196af68f6da7d6bc256bfbca"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 58039.203125,
+        "grid_max": 16628999.0,
+        "zero_pixels": 0,
+        "array_sha256": "457e3c714d9883a30a3e3b7891cba597bf8f2468f4c79e3d2b053102ed0394cf",
+        "cache_sha256": "a1bb346b5f937bc7d81fc130607f690e134a34eb8b309541c23293b0e73a6584",
+        "elapsed_seconds": 944.1083552488126,
+        "slurm_job": "2128726"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.763721466064453,
+        "log10_max": 7.2208662033081055,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0040.png",
+      "sha256": "d456836199bc7dc015c9be6c08af3ef206edd0bed2ae1c402c44bfce477611eb",
+      "bytes": 2259476,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 40,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0040.hdf5",
+        "exists": true,
+        "z": 3.4410805658271224,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36522226229,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36522226229,
+        "source_mtime_ns": 1749612432000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "11b104d0ff58a5667d94584a00a35e0a11a93415280a34adda055c7f208a67e4"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "13c7ddbbd669cf74f5c5710fc97006234af4cc9dafc3142e83356f5ef49b25ae"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ef465016742e43489c9b1f66307bfe3d2f1cd18163dd89f3cca13050d14ac8e8"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "bb7711cc31b5ccf1c323a3ca53a6972d8e1b4f72b236705cd057d08e4c8b72c0"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f3e786996b98f35deffe2a766c949a10db598f980d23abd4332286f42311ae33"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6490176c8917caf05e8efbfa9fe4b88e6f1abcf638c0265282310c71c064583e"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0f9fad1a8e8966bc1bc9c87e27ec91218d2372e04c811952ce018fa14d1acdae"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7a748b6894dbc4989d3c39f9cd9058c41ff7939281b3ca65520e796471782187"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 35007.72265625,
+        "grid_max": 17052732.0,
+        "zero_pixels": 0,
+        "array_sha256": "a1fddad3074be0ae3d9dd9d865c26db3ceb8d68ea3331e60b1613ed5223f759a",
+        "cache_sha256": "62a280ad598d600286b7a1c9cadf9d0035dda7d3e468d306d0838595d152ef32",
+        "elapsed_seconds": 921.8908326262608,
+        "slurm_job": "2128728"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.544163703918457,
+        "log10_max": 7.2317938804626465,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0040.png",
+      "sha256": "f8a602ed8af04768ed1bf1c60a9106a60e5e6a8f4e0cd5aed301837207c65dcb",
+      "bytes": 2094255,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 40,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0040.hdf5",
+        "exists": true,
+        "z": 3.4410805658271224,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36483815819,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36483815819,
+        "source_mtime_ns": 1749676253000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "73b7ae2e38c6cb3f590081498524f4fc406645cf0168ed470acd8d37fd97cbe0"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "894f16fa0cc475c689bc9fbdb7b66463b98b80063608c7ebe7e63058de18f408"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "10b30466064b52c8c8802adfa7407c180fe3237cdaeb84fd28e50d387a551c6c"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "369dd60665294b5d5498b0944580b2caad5437aee86a9ce106ed6c9ed42b820a"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8eb749588cf5a65f0d6c2a0563169cc5cb08fd3304ee6b52b4339f13aa1bf455"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "96801887907a40b376390eb57564c5ef37793a59af2e3d1d9976f79543126255"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "00e46567ac96169c8e015cbc0b162b7f547a3926d1552c39317021093da74722"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f16faebd9514ab5d3cd6b3efd60117f6b11d884d9b8e46dfdfd56fff2c8fa760"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 53898.02734375,
+        "grid_max": 16588765.0,
+        "zero_pixels": 0,
+        "array_sha256": "ee9dfaae8f848939ab7983780ce76a76d86329f65a5a8a4735412b46a052d71e",
+        "cache_sha256": "56e7cf6bbfda6a3366d34a372b713c6bb088f05c096001b5e690357ebf7796b4",
+        "elapsed_seconds": 952.3918673302978,
+        "slurm_job": "2128729"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.731573104858398,
+        "log10_max": 7.219814300537109,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/PL-0044.png",
+      "sha256": "760d495622117073599071d8445fac46e6be92b2c4f5feb97a2ed04ed3e2e1ca",
+      "bytes": 2058939,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 44,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0044.hdf5",
+        "exists": true,
+        "z": 2.0333177828202462,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36385849790,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36385849790,
+        "source_mtime_ns": 1749111878000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "97b5317f0a25eca7e2011a84593819853f0025224ae14b112ad3f76b9b375a84"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "30c32754a745f80572d497b94046dd3cf63660573605545ba8ecbbc156b6c4a9"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "5e07bb59bbaf749ef20064d212fd31b769778de96d1a4b08739a8aa2c215105d"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "23b63f7a7450a7b1beab5712b29f55dc71782ddc4a6d25a9b93e81ff799dbf41"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b5fc22f42c5bbfcbcf28aacecdf73b8dc5918c8097f72ae692222c043f4fdffc"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "441c4ace0a5c242005f7e5231d2a7e237c7b26bdfb0360d2508d8e2893e685f5"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2470dd948037c1e783615e5df0e1870be70c30e4885c98cc6777e7b5dc65c9d4"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c3eae8707a125e9290559fd670abe89048ce475bfb7c4244033430eefd61d071"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 41561.1875,
+        "grid_max": 20169898.0,
+        "zero_pixels": 0,
+        "array_sha256": "94ea2c9c137db630743eb4a36b638adcc61cdb8dd5f71d75aa7fe2decf9a32b7",
+        "cache_sha256": "1b82d05710471752770e8994c70cea5f405387104cfdf7faf2aac3d93e1406d6",
+        "elapsed_seconds": 978.9690928240307,
+        "slurm_job": "2128740"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.618688106536865,
+        "log10_max": 7.304703712463379,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0044.png",
+      "sha256": "2ef66df138303d60c672516c81d7b59f0ac9609447553555ebe8551de1d3d054",
+      "bytes": 2261467,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 44,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0044.hdf5",
+        "exists": true,
+        "z": 2.0333177828202462,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36369338422,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36369338422,
+        "source_mtime_ns": 1749842194000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "06d0ae7344061f21a113cb0a56349f9db19be776ef80070473d48355c096dbf1"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "e978cf60a255f0e153a79579e198a214b1ef15769831aec29566bc55680b9256"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0f9e64a38ac7bdd55021b7358ac59eb57e9c057ae471d512df569307265439a6"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "038457e6783d5cce8b25df3833bba817d8ffc5fa05525403877eaf2c7901cb1b"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "138722edb70dd2c7b8a063c754186121e405b52cdc40925e2df6440898353949"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "04e33fd0b869e619942b99f59e184918b8f8e6798f50e192daf011d7213b5e81"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "64239171e4fad0c71246d351aaede1b98d4c3fe4c1b77d0f4aba16f716af61b4"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c3870ea8585b9dc0d51523de39c1bfc4fa955f6c2de85cfb9f49e611f87a9765"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 21817.361328125,
+        "grid_max": 27000764.0,
+        "zero_pixels": 0,
+        "array_sha256": "a5b453b8339011deb16edfd0514b030a4ab55716bc25803927997618cbe7a746",
+        "cache_sha256": "b9ce0fbdc20c3ec2c24916462b45e8c4d560c19c14a89072e55dec873110b11f",
+        "elapsed_seconds": 936.7478267443366,
+        "slurm_job": "2128741"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.338802814483643,
+        "log10_max": 7.4313764572143555,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0044.png",
+      "sha256": "c8208cd2cae731d9f21a2d450e528d2ebdac70764448055f4ec128d487e27fd0",
+      "bytes": 2135902,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 44,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0044.hdf5",
+        "exists": true,
+        "z": 2.0333177828202462,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36475874316,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36475874316,
+        "source_mtime_ns": 1749828425000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "016c22c9218bae0a5bd15c3c9d8e35e2bd2ec690af641af66290c69ac8d8febd"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "f2c30d410f499c626d817aa421c97bfce5d9bfe93ad21758ff612a04c260d0e3"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "3d5fc228d8d4aa2d83db9c00c6e238b1fda6b226a5c3771c51edc3ca591097dd"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7379741dba62cf06b123d648328a85a06f77ede9836dc698f93674b54ecbf0ea"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "de753998435017403370f0c669f97068d41e23c7ae20fdf4df1a7fdabd8ff47e"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "64646d3f0dbac8f35abd88b246419bd7ecd502a4e8fb7b7a77a5af29441fe049"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "edf1098b05b0402a969de6cf8812b3aad08d10acc1783ddd1551c77ca8b1571e"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "212a8c2e7d28c9ddc12677b1072c20eec28ff2367cdd1931e1900386723a9326"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 35212.203125,
+        "grid_max": 19225116.0,
+        "zero_pixels": 0,
+        "array_sha256": "7d346e5b29f7bb01b0be5d2f562a646acb1da8d0101ee669dc671143d7076728",
+        "cache_sha256": "a5601d92d818e0dd74a8a8691dc122cf134ccebb7648dddea4d8f0d218c97e15",
+        "elapsed_seconds": 947.4969891388901,
+        "slurm_job": "2128744"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.546693325042725,
+        "log10_max": 7.28386926651001,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/PL-0048.png",
+      "sha256": "2707db95e11277bc215e3d2adede898454a1750c7860b856e00818b47a284434",
+      "bytes": 2015694,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 48,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0048.hdf5",
+        "exists": true,
+        "z": 1.0717968600643704,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36413648123,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36413648123,
+        "source_mtime_ns": 1749288565000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8f4102a8546bb5def4c40897166d030e15cba7ffcce0497dcae4d325230881a4"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "cc71ee40e6c0d110dd32f50dbca625056e12938a2befde30bd8c987cadbe90cd"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "958665c575e47896750d2802d7a69fceecebcc302dd4b62d3eb32a451bbea624"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8d690c61ea0c38a941a7315be8ccffe1ccc71c7b8148206998035e8e63447d92"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c94a37f10a64f139835065341f67d5e0ac9afbe69a6eae878e1083fe6bf330a4"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4ded032a5b65f8768a3bd6d0fe047a7f061101f904ea2a054bbae99f887f9107"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "62c2c770a2de097268fde114863f1a78b75f3ecbecb122829fe28369b6947873"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "10d0ccd1c28cf06182211a37b1aeb7f9cdd3c2a613605907cb4ebf88d885f6c9"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 25088.3203125,
+        "grid_max": 45940480.0,
+        "zero_pixels": 0,
+        "array_sha256": "4b1f29975559de495a9db62b3a77a083ae2b9df0a06133b97097a5474c1bed03",
+        "cache_sha256": "72d2d35d87bcfb6de16b3697066436b1df0ed4304590d49cee46bca7de1e0212",
+        "elapsed_seconds": 1309.1686040828936,
+        "slurm_job": "2128749"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.399471759796143,
+        "log10_max": 7.662195682525635,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0048.png",
+      "sha256": "5adc34b60397be150d76a3c39a6af1038307badb901fcfbf81a32bfb50188c64",
+      "bytes": 2247646,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 48,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0048.hdf5",
+        "exists": true,
+        "z": 1.0717968600643704,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36227345088,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36227345088,
+        "source_mtime_ns": 1751364202000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b4345df84500561ff68224548ec224ee82861717293d8a8d35e55a4c9457743d"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "daa60d2609825247a6f1c7c7e15b08cbc7a113c4f552b11982f3f540422e26dd"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "37da60786774120457a58cb9ca76bf540468263194ef8c5b7b1c4e430d8827ed"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8309a0a4aa1f8af200c664682cb85aafe90d65597257a35a22c4b383e54cc1c0"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "fe7bd9d946f295e21771b67a014d8d7ccce50aae10b524b99653e767352df36b"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "07735ae70b2a0d4c0d58fb0c94abee691a71b8c20320ac8bdec9d55ed03633e1"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "8922927c8fc2f9b68594abbc7d89a5b305fb16a244d46c062164e9f5488afa7f"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "303fcef46ca0871d14e79f70c79ae96f096adbbceae2b9f5c222414434959ae2"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 14432.1787109375,
+        "grid_max": 57789112.0,
+        "zero_pixels": 0,
+        "array_sha256": "b1d6046d5f66436a5d2cda9f7e5e75847f528bdb463f9ef1a060d59f434c3b7b",
+        "cache_sha256": "1ec3a7501f238f7be33a02cedec0e85597b44a007d000fd94b003f05fd37523e",
+        "elapsed_seconds": 1017.5511260922067,
+        "slurm_job": "2128750"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.159332275390625,
+        "log10_max": 7.761846542358398,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0048.png",
+      "sha256": "089e0df88babf083a51b907923a734a375d55ecbb0dc1c4159d4bad039cb5932",
+      "bytes": 2112602,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 48,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0048.hdf5",
+        "exists": true,
+        "z": 1.0717968600643704,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36436178069,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36436178069,
+        "source_mtime_ns": 1750011857000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9dac765912ba24574a168b9c9bfb4c70c08ffd683ef92eb58c1bac78b5b5e4bc"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "6328506df82a76f7e9c6f7c310695e9837f2222eae66a1f11e35056e4c91075c"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4b1ae2c58d8f1710337e7f72b165619528f649ec43dc7aa74bbc60ac1414ae2a"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2e47111a21e6aa1bb159bedd240d1a5d6b53c9245d51be4ccd6bc46c57f54191"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "1265128a2a114e4dc4bef3a21508776ef933a12326d3d59c4e2e02720cf26549"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "465b9f25d1ed9f332007923c89b2949ec288e1699faf49d283f13f55d04c173d"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2297051da794374f2f474223201d43a11b765afed2150594f6d39f50b184c106"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "c228d10ee71b0f9781030b2cac52d0e3266d3d73476c56bd5780c1a4bd782c74"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 21540.017578125,
+        "grid_max": 41386580.0,
+        "zero_pixels": 0,
+        "array_sha256": "15e0bf91bad69826392ca68ef1f3b654ead14043324a13bc73d089ffdc43c5b9",
+        "cache_sha256": "5ae3ff6087e0409a6fb6820c2876b51829d814fbe880dc9fadc88c3fdfd1c5ba",
+        "elapsed_seconds": 943.6134758880362,
+        "slurm_job": "2128597"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.333246231079102,
+        "log10_max": 7.6168599128723145,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/PL-0056.png",
+      "sha256": "d29a8d3ae8a571353825077b5c847dc259f531f61cb7c356ce8fc02d28e5791f",
+      "bytes": 2000000,
+      "snapshot_source": {
+        "model": "PL",
+        "snapshot": 56,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_25_1024/PL_25_1024_0056.hdf5",
+        "exists": true,
+        "z": 0,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36276517058,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36276517058,
+        "source_mtime_ns": 1749671964000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "90e4edbc5ee4a84d2ddb38d3ab8e42de6e22090c8d5df96d953a76fe2177bbc8"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7e414f68688d056a9daf11174e1070bdb8fa064d1fc6d179312b583c46942a9b"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "d3e3b247bdfc9af4b807d9e5b7ec9ffc0c66b18911dbd3f387c545092fcfe667"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "de9991dd121592623a3de0ebc83a86ed0ddf1d065969907b7cd6301d2ca897dd"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "761e18ca9039f239346af8c21835eb3260a8421b7666e0d2392851b78707530d"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "41791121b5c589c6bc54f8f18ee1ca0496360427b35a9129c45968b5c35611b5"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4f3687fcccabf63992a564e6f87ba269f4118e4cd1751425c67b0b257daaa814"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "7f9bfb1b0cefb2fb20b23360bf8959fe881c3f17f49b543a05632c7328157cee"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 12891.849609375,
+        "grid_max": 127992160.0,
+        "zero_pixels": 0,
+        "array_sha256": "4850f8aff2527b9e203749748a5967fc1e56bc9df81beb7a97ee89bbf7a2a445",
+        "cache_sha256": "ab4503de0b8df604b9d604247c3e0f4985d261544fbdaa1c5f339ff4c585cc12",
+        "elapsed_seconds": 1440.6832227599807,
+        "slurm_job": "2128595"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.110315799713135,
+        "log10_max": 8.107184410095215,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp1-0056.png",
+      "sha256": "50951da6034816554159d62898ca6d71bc708b9c8b669a4f630b44f969c4850b",
+      "bytes": 2244889,
+      "snapshot_source": {
+        "model": "kp1",
+        "snapshot": 56,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_1_ms_1.5_25_1024/kp_1_ms_1.5_25_1024_0056.hdf5",
+        "exists": true,
+        "z": 0,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 35945578101,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 35945578101,
+        "source_mtime_ns": 1752157166000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "fe4ebf233940625ea29949c4a16e15318257fab94ef7243c76a0816f04cf7623"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "b8ee42e39617b47313a3a3cacca2fc6beb0b19c115d78783811e610c51c53620"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "34a45198e9b23cfa7dce9b2e2027f3bdfb23de8b82dc5f3bd0bbc3af3cfa5597"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "50fd9399ada8b0ac128c8e11749b2f9afaf7045921531e76d05b81aeb556492b"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "afea0c3a3be0d95d612ee6c74b705ddd4bf31b49748850aa24d5e840bc63f8cb"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "220c36373fe72ab28a71deac4b8d374d6ff8f566b2d4c79bb9a86d2a0b8aab34"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "2314d54ee38deb6b1a84a73500a064a3db00bea664435203babf72c9c16a4be3"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "0d1db19395c8a392784f860f29a9b700b4782e65096a342993d9b029fa74cd5a"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 6606.544921875,
+        "grid_max": 104149592.0,
+        "zero_pixels": 0,
+        "array_sha256": "3d69e9707a43e61e27859d9c2acbb0a464c2d45ccc2e61a3e5d62503edf005e6",
+        "cache_sha256": "4430983a5668eb7b1322f4dc22480059bc5246adc8770c0da37d77757ef9deda",
+        "elapsed_seconds": 924.0740711991675,
+        "slurm_job": "2128619"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 3.819974660873413,
+        "log10_max": 8.017658233642578,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/projections/kp10-0056.png",
+      "sha256": "04586105334bdb592cecba67100e337ed390f7a3c44b957eeeb38f927c029f21",
+      "bytes": 2124349,
+      "snapshot_source": {
+        "model": "kp10",
+        "snapshot": 56,
+        "file": "zenodo:10.5281/zenodo.24182716/snapshots/bluetilted/kp_10_ms_1.5_25_1024/kp_10_ms_1.5_25_1024_0056.hdf5",
+        "exists": true,
+        "z": 0,
+        "box": [
+          37.11401426970295,
+          37.11401426970295,
+          37.11401426970295
+        ],
+        "particles": 1073741824,
+        "dtype": "float64",
+        "chunks": [
+          1048576,
+          3
+        ],
+        "compression": "gzip",
+        "fields": [
+          "Coordinates",
+          "FOFGroupIDs",
+          "Masses",
+          "ParticleIDs",
+          "Potentials",
+          "Softenings",
+          "Velocities"
+        ],
+        "bytes": 36236495322,
+        "units": {
+          "Unit current in cgs (U_I)": "[1.]",
+          "Unit length in cgs (U_L)": "[3.08567758e+24]",
+          "Unit mass in cgs (U_M)": "[1.98841e+43]",
+          "Unit temperature in cgs (U_T)": "[1.]",
+          "Unit time in cgs (U_t)": "[3.08567758e+19]"
+        },
+        "cosmology": {
+          "Omega_b": "[0.0493]",
+          "Omega_m": "[0.3153]",
+          "h": "[0.6736]"
+        },
+        "source_bytes": 36236495322,
+        "source_mtime_ns": 1750455312000000000,
+        "paper_script_sha256": "ece2ecea3372f537fdfff2db6d2daf468acf9cf877a65b3579fb8e2b941e4201",
+        "method": "swiftsimio_paper_adaptive_1024",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        },
+        "swiftsimio_version": "8.0.1",
+        "grid": 1024,
+        "projection_axis": "z",
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "backend": "fast",
+        "periodic": true,
+        "project": "masses",
+        "region": null,
+        "parallel": true,
+        "threads": 64,
+        "scipy_version": "1.15.3",
+        "numba_version": "0.61.2",
+        "streams": [
+          {
+            "first": 0,
+            "last": 134217728,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "4adbdec26d38f8c74e71bc94b0efceee422fd10a82a72c9cec11e6466b9e9f0b"
+          },
+          {
+            "first": 134217728,
+            "last": 268435456,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "ac7aadf962153d3626ed2e74dbf56503c9e9dd67b8d0e7e4c15e1e9b149bbf81"
+          },
+          {
+            "first": 268435456,
+            "last": 402653184,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "85d9697024b8d29b39b52071c73c7eff5a49eadfdbbd1d9a643a4744d55c9a69"
+          },
+          {
+            "first": 402653184,
+            "last": 536870912,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "26532100059e8e9d77b952d4a33436f5d71f27c9560ed8fc8982e162c3a6a328"
+          },
+          {
+            "first": 536870912,
+            "last": 671088640,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "9e8e9c48b287cc8206395ae6a0e32326caee9b3cc7d0fc713364b77fa195709a"
+          },
+          {
+            "first": 671088640,
+            "last": 805306368,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "77a69bd18d2469346f776f596c4189f2aa6e3d9b0bda819fe899ab22b559ca37"
+          },
+          {
+            "first": 805306368,
+            "last": 939524096,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "bd0da8343ec703e7df5e6bde8bbd2b31fbac74fdf42407705f427f814f3b983b"
+          },
+          {
+            "first": 939524096,
+            "last": 1073741824,
+            "particles": 134217728,
+            "mass_sum_code": 25373.0234375,
+            "mass_min_code": 0.00018904375610873103,
+            "mass_max_code": 0.00018904375610873103,
+            "coordinate_mass_stream_sha256": "a76df9a0b3ad5f2599dada6c904e25176d516251dfa5c096f92829c0f5a00f72"
+          }
+        ],
+        "source_stream_verification": "Prior full-particle hashes; snapshot size and mtime match. All loaded coordinates are used without a mask.",
+        "mass_sum_code": 202984.1875,
+        "grid_min": 11732.19921875,
+        "grid_max": 130813272.0,
+        "zero_pixels": 0,
+        "array_sha256": "2b5cd249b5b47712337ac5669b240cbbd1afab9438fea2a83394c9c231a7dba1",
+        "cache_sha256": "6fcf28f9dcded54bf68a065f53c2bb29eec48165c275cd286f8bd6038b3a6c5c",
+        "elapsed_seconds": 860.2871204577386,
+        "slurm_job": "2128620"
+      },
+      "display": {
+        "quantity": "log10_projected_mass",
+        "normalization": "independent_per_panel",
+        "log10_min": 4.069379806518555,
+        "log10_max": 8.116652488708496,
+        "zero_replacement": 1e-10,
+        "percentile_clip": null,
+        "shared_across_models": false,
+        "shared_across_redshifts": false,
+        "horizontal_coordinate": "y",
+        "vertical_coordinate": "x",
+        "projection_axis": "z",
+        "colormap": "inferno",
+        "smoothing": {
+          "kernel_gamma": 1.8,
+          "neighbours": 57,
+          "speedup_fac": 2,
+          "dimension": 3
+        }
+      }
+    },
+    {
+      "file": "assets/animations/particle-rotation.gif",
+      "source": "zenodo:10.5281/zenodo.24455135",
+      "sha256": "a28563a4b82f688b0e055d28f1df75a7a7558b31d1d16fd3be69adf5c417f85f",
+      "bytes": 49249263,
+      "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
+      "kind": "rotation"
+    },
+    {
+      "file": "assets/animations/particle-evolution.gif",
+      "source": "zenodo:10.5281/zenodo.24455135",
+      "sha256": "32664cbe93e2021e0aa7f54bb6afcff44fb2ced18789a495833a582ff14d968d",
+      "bytes": 37421044,
+      "conversion": "Original GIF bytes preserved. Browser videos transcode the original sequence and timing; posters are extracted frames.",
+      "kind": "evolution"
+    }
+  ],
+  "animation_snapshot_headers": [
+    {
+      "snapshot": 0,
+      "z": 200.00000032762998,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0000.hdf5"
+    },
+    {
+      "snapshot": 1,
+      "z": 181.72727302511814,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0001.hdf5"
+    },
+    {
+      "snapshot": 2,
+      "z": 165.1157027501074,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0002.hdf5"
+    },
+    {
+      "snapshot": 3,
+      "z": 150.01427522737038,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0003.hdf5"
+    },
+    {
+      "snapshot": 4,
+      "z": 136.28570475215486,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0004.hdf5"
+    },
+    {
+      "snapshot": 5,
+      "z": 123.80518613832263,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0005.hdf5"
+    },
+    {
+      "snapshot": 6,
+      "z": 112.4592601257478,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0006.hdf5"
+    },
+    {
+      "snapshot": 7,
+      "z": 102.144781932498,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0007.hdf5"
+    },
+    {
+      "snapshot": 8,
+      "z": 92.76798357499818,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0008.hdf5"
+    },
+    {
+      "snapshot": 9,
+      "z": 84.24362143181649,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0009.hdf5"
+    },
+    {
+      "snapshot": 10,
+      "z": 76.49420130165134,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0010.hdf5"
+    },
+    {
+      "snapshot": 11,
+      "z": 69.44927391059213,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0011.hdf5"
+    },
+    {
+      "snapshot": 12,
+      "z": 63.04479446417467,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0012.hdf5"
+    },
+    {
+      "snapshot": 13,
+      "z": 57.22254042197697,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0013.hdf5"
+    },
+    {
+      "snapshot": 14,
+      "z": 51.92958220179724,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0014.hdf5"
+    },
+    {
+      "snapshot": 15,
+      "z": 47.11780200163385,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0015.hdf5"
+    },
+    {
+      "snapshot": 16,
+      "z": 42.743456365121666,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0016.hdf5"
+    },
+    {
+      "snapshot": 17,
+      "z": 38.766778513746964,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0017.hdf5"
+    },
+    {
+      "snapshot": 18,
+      "z": 35.15161683067906,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0018.hdf5"
+    },
+    {
+      "snapshot": 19,
+      "z": 31.86510620970823,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0019.hdf5"
+    },
+    {
+      "snapshot": 20,
+      "z": 28.87736928155293,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0020.hdf5"
+    },
+    {
+      "snapshot": 21,
+      "z": 26.16124480141175,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0021.hdf5"
+    },
+    {
+      "snapshot": 22,
+      "z": 23.692040728556133,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0022.hdf5"
+    },
+    {
+      "snapshot": 23,
+      "z": 21.44730975323285,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0023.hdf5"
+    },
+    {
+      "snapshot": 24,
+      "z": 19.40664523021168,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0024.hdf5"
+    },
+    {
+      "snapshot": 25,
+      "z": 17.551495663828796,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0025.hdf5"
+    },
+    {
+      "snapshot": 26,
+      "z": 15.864996058026179,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0026.hdf5"
+    },
+    {
+      "snapshot": 27,
+      "z": 14.331814598205613,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0027.hdf5"
+    },
+    {
+      "snapshot": 28,
+      "z": 12.938013271096011,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0028.hdf5"
+    },
+    {
+      "snapshot": 29,
+      "z": 11.670921155541825,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0029.hdf5"
+    },
+    {
+      "snapshot": 30,
+      "z": 10.51901923231075,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0030.hdf5"
+    },
+    {
+      "snapshot": 31,
+      "z": 9.471835665737043,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0031.hdf5"
+    },
+    {
+      "snapshot": 32,
+      "z": 8.519850605215494,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0032.hdf5"
+    },
+    {
+      "snapshot": 33,
+      "z": 7.654409641104996,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0033.hdf5"
+    },
+    {
+      "snapshot": 34,
+      "z": 6.867645128277267,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0034.hdf5"
+    },
+    {
+      "snapshot": 35,
+      "z": 6.152404662070242,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0035.hdf5"
+    },
+    {
+      "snapshot": 36,
+      "z": 5.502186056427491,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0036.hdf5"
+    },
+    {
+      "snapshot": 37,
+      "z": 4.9110782331159015,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0037.hdf5"
+    },
+    {
+      "snapshot": 38,
+      "z": 4.373707484650818,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0038.hdf5"
+    },
+    {
+      "snapshot": 39,
+      "z": 3.885188622409834,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0039.hdf5"
+    },
+    {
+      "snapshot": 40,
+      "z": 3.4410805658271224,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0040.hdf5"
+    },
+    {
+      "snapshot": 41,
+      "z": 3.0373459689337468,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0041.hdf5"
+    },
+    {
+      "snapshot": 42,
+      "z": 2.670314517212497,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0042.hdf5"
+    },
+    {
+      "snapshot": 43,
+      "z": 2.3366495611022704,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0043.hdf5"
+    },
+    {
+      "snapshot": 44,
+      "z": 2.0333177828202462,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0044.hdf5"
+    },
+    {
+      "snapshot": 45,
+      "z": 1.7575616207456761,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0045.hdf5"
+    },
+    {
+      "snapshot": 46,
+      "z": 1.506874200677888,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0046.hdf5"
+    },
+    {
+      "snapshot": 47,
+      "z": 1.2789765460708074,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0047.hdf5"
+    },
+    {
+      "snapshot": 48,
+      "z": 1.0717968600643704,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0048.hdf5"
+    },
+    {
+      "snapshot": 49,
+      "z": 0.8834516909676096,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0049.hdf5"
+    },
+    {
+      "snapshot": 50,
+      "z": 0.7122288099705543,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0050.hdf5"
+    },
+    {
+      "snapshot": 51,
+      "z": 0.5565716454277756,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0051.hdf5"
+    },
+    {
+      "snapshot": 52,
+      "z": 0.4150651322070684,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0052.hdf5"
+    },
+    {
+      "snapshot": 53,
+      "z": 0.2864228474609716,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0053.hdf5"
+    },
+    {
+      "snapshot": 54,
+      "z": 0.16947531587361064,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0054.hdf5"
+    },
+    {
+      "snapshot": 55,
+      "z": 0.06315937806691885,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0055.hdf5"
+    },
+    {
+      "snapshot": 56,
+      "z": 0,
+      "source": "zenodo:10.5281/zenodo.24182716/snapshots/PL/PL_256_512/PL_512_0056.hdf5"
+    }
+  ]
+}

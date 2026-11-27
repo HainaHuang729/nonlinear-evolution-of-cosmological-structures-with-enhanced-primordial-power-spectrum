@@ -1,0 +1,658 @@
+\documentclass[
+ reprint,
+ superscriptaddress,
+ nofootinbib,
+ nobibnotes,
+ amsmath,
+ amssymb,
+ aps,
+ prd,
+ floatfix,
+ longbibliography
+]{revtex4-2}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[mathlines]{lineno}
+\usepackage{multirow}
+\usepackage{xurl}
+\usepackage{xcolor}
+\DeclareRobustCommand{\change}[1]{\textcolor{blue}{#1}}
+\newcommand{\tabcell}[2]{\parbox[t]{#1}{\raggedright #2}}
+\usepackage{hyperref}
+\usepackage{orcidlink}
+
+\renewcommand{\arraystretch}{1.5}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.7}
+
+
+\hypersetup{
+    pdfnewwindow=true,    % links in new window
+    colorlinks=true,      % false: boxed links; true: colored links
+    linkcolor=black,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,       % color of file links
+    urlcolor=black         % color of external links
+}
+
+\def\apj{ApJ}
+\def\aap{A\& A}
+\def\apjl{ApJL}
+\def\apjs{ApJS}
+\def\mnras{MNRAS}
+\def\jcap{JCAP}
+\def\pasa{PASA}
+\def\aj{AJ}
+\def\araa{ARA\& A}
+\def\nat{Nature}
+\def\prd{Phys. Rev. D}
+\def\ssr{Space Sci. Rev.}
+\def\rmxaa{RMxAA}
+\def\na{New Astron}
+\def \jqsrt{J. Quant. Spec. Radiat. Transf.}
+\def \physrep{Phys. Rep.}
+\def \pasj{PASJ} % "Publ. Astron. Soc. Jpn."
+
+\newcommand\altaffilmark[1]{$^{#1}$}
+\newcommand\altaffiltext[1]{$^{#1}$}
+\newcommand\Jc[1]{{\color{cyan} \bf #1}}
+\newcommand\Tk[1]{{\color{red} \bf #1}}
+\DeclareRobustCommand{\BTKPone}{\ensuremath{\mathrm{BT}_{k_p=1}}}
+\DeclareRobustCommand{\BTKPten}{\ensuremath{\mathrm{BT}_{k_p=10}}}
+
+
+\begin{document}
+
+
+\title{Nonlinear Structure Formation with Enhanced Small-Scale Primordial Power Spectrum}
+
+\author{Haina Huang\orcidlink{0009-0004-4765-0358}}
+\email[Contact author: ]{hhuan155@link.cuhk.edu.hk}
+\affiliation{
+ Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China
+}
+\author{Tsang Keung Chan \orcidlink{0000-0003-2544-054X}}
+\email[Contact author: ]{tsangkeungchan@cuhk.edu.hk}
+\affiliation{
+ Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China
+}
+\author{Jianhao Wu \orcidlink{0009-0000-7431-7885}}
+\email[Contact author: ]{jianhao.wu@wisc.edu}
+\affiliation{
+ Department of Physics, University of Wisconsin-Madison, Madison, WI, USA
+}
+\affiliation{
+ Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China
+}
+
+\date{\today}
+
+
+% ===== Abstract ===== #
+\begin{abstract}
+The primordial power spectrum is well constrained on large scales but remains uncertain on small scales. We use dark-matter-only cosmological \(N\)-body simulations initialized with the same random phases to determine how enhanced small-scale power changes nonlinear structure formation. We compare a standard power-law (PL) model with two broken-power-law blue-tilted (BT) models whose spectra steepen above pivot wavenumbers \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\). We measure halo mass functions, \change{halo bias,} assembly histories, radial density profiles, concentration--mass relations, and nonlinear matter power spectra. Enhanced small-scale power increases the abundance of low-mass halos at high redshift, lowers the bias of fixed-mass halos at high redshift, shifts halo assembly earlier, and increases the concentrations of low-mass halos. The \(k_p=1\,h\,{\rm Mpc}^{-1}\) model also produces denser resolved inner halo profiles. These effects are stronger in the \(k_p=1\,h\,{\rm Mpc}^{-1}\) model than in the \(k_p=10\,h\,{\rm Mpc}^{-1}\) model and weaken toward higher halo masses and lower redshifts. The nonlinear matter power enhancement grows toward higher redshift and higher wavenumber. Published mass-function, concentration, and mass-assembly prescriptions reproduce the broad trends, but their agreement with the simulations varies with redshift and halo mass. These dark-matter-only results can be used in studies that include baryonic physics and observational selection.
+
+\end{abstract}
+
+\maketitle
+
+\section{Introduction\label{intro}}
+The standard \(\Lambda\)CDM model assumes cold dark matter, a cosmological constant, and a nearly scale-invariant primordial power spectrum, \(P_{\rm prim}(k)\propto k^{n_s}\) with \(n_s\simeq0.965\). This model agrees with measurements of the cosmic microwave background (CMB) \citep{Planck20CMB}, galaxy clustering \citep{Blanton17SDSSsurvey}, and the Lyman-\(\alpha\) forest \citep{Chabanier19LyalphaPS,Abolfathi18DR14}. However, the primordial power spectrum is less tightly constrained on scales much smaller than a megaparsec. Probes of these scales include CMB spectral distortions \citep{Chluba2012CMBSmallscalepowerspectrum}, satellite statistics and density profiles \citep{Wu25BT,Dekker25DwarfPPS,Esteban2024lumpyDM,Nadler2025enhanced}, strong-lensing flux-ratio and substructure measurements \citep{Gilman22SubgalacticPPS}, high-redshift galaxy counts \citep{Parashari23JWSTPPS,Hira24bluetilt}, ultra-compact minihalos \citep{Bringmann2026ultracompactminihaloonprimordialpowerspectrum}, and future 21-cm observations \citep{Munoz20SmallScale21cm}.
+
+Previous studies have examined enhanced small-scale power using high-redshift cosmological simulations \citep{Hirano15BlueTiltedPPS,Inman23EnhancedSmallScaledarkage} and zoom-in simulations of Milky Way--mass environments \citep{Wu25BT,Nadler2025enhanced}. Few studies have compared the nonlinear evolution produced by different primordial spectra in the same cosmological volume.
+
+
+Small-scale enhancements of the primordial power spectrum arise in several classes of early-universe models, including warm inflation \citep{Arya20WarmInflation}, axion models with curved field-space effects \citep{Sai26BlueTilt}, and multi-field or hybrid inflation models \citep{Linde94Hybridinflation,Wang24BTinflationtheory,Wang25HybridInflation}. A population of primordial black holes (PBHs) can also add small-scale matter power through an isocurvature component seeded by Poisson fluctuations \citep{Inman2019PBHBT}.
+
+We use broken-power-law blue-tilted spectra to study how enhanced small-scale primordial power changes nonlinear structure formation. Here, ``blue-tilted'' (BT) refers specifically to a broken-power-law enhancement whose small-scale slope is steeper than the PL slope, following previous small-scale-power studies \citep[e.g.][]{Hirano15BlueTiltedPPS,Parashari23JWSTPPS,Hira24bluetilt,Tkac24BumpyPPS,deKruijf25DarkAges,Dekker25DwarfPPS,Wu25BT}.
+
+
+\change{We follow three dark-matter-only cosmological \(N\)-body models with matched initial phases to \(z=0\), comparing a standard power-law spectrum with two BT spectra. Sections~\ref{sec:theory} and \ref{sec:numerical} describe the spectra and simulations. In Sec.~\ref{sec:results}, we measure the halo mass function (HMF), halo bias, assembly histories, radial density profiles, concentrations, and the nonlinear matter power spectrum. For the mass functions, concentrations, and assembly histories, we evaluate published prescriptions using each model's linear spectrum and the published parameters. Section~\ref{sec:discussion} discusses the physical trends, observational implications, and numerical limits.}
+
+\section{Power-Spectrum Models and Linear Matter Power}
+\label{sec:theory}
+\label{subsec:power_models}
+
+\change{In the power-law (PL) model, the primordial power spectrum scales as \(P_{\rm prim}(k)\propto k^{n_s}\), where \(k\) is the comoving wavenumber and \(n_s\simeq0.965\) is the scalar spectral index \citep{Planck20CMB}.}
+
+We model small-scale enhancements with blue-tilted (BT) primordial power-spectrum models \citep[e.g.][]{Hira24bluetilt,Dekker25DwarfPPS}. In these models, the spectrum follows the PL form up to \(k_p\) and becomes steeper above \(k_p\):
+\begin{equation}
+P_{\rm prim}^{\rm BT}(k)
+\propto
+\begin{cases}
+k^{n_s}, & k \le k_p,\\[4pt]
+k^{n_s}\left(k/k_p\right)^{m_s-n_s}, & k > k_p,
+\end{cases}
+\label{eq:bt_input_power}
+\end{equation}
+where \(k_p\) is the pivot wavenumber and \(m_s\) controls the high-\(k\) slope of the BT primordial power-spectrum model. This form reduces to the PL shape when \(m_s=n_s\), while \(m_s>n_s\) gives a blue-tilted enhancement above \(k_p\). The transfer function and normalization to the common \(\sigma_8\) target are applied when constructing the input linear matter spectrum at \(z_i=200\).
+
+The corresponding linear matter power spectrum can be written schematically as
+\begin{equation}
+P_{\rm lin}(k,z) \propto P_{\rm prim}(k)\,T^2(k)\,D^2(z),
+\label{eq:P_MD}
+\end{equation}
+where \(T(k)\) is the linear transfer function and \(D(z)\) is the linear growth factor.
+
+
+We compare a standard power-law primordial power spectrum, denoted PL, with two broken-power-law models, \BTKPone{} and \BTKPten{}. Both BT models use \(m_s=1.5\). \BTKPone{} has \(k_p=1\,h\,{\rm Mpc}^{-1}\), while \BTKPten{} has \(k_p=10\,h\,{\rm Mpc}^{-1}\). The lower pivot in \BTKPone{} enhances power over a broader range of resolved wavenumbers than the higher pivot in \BTKPten{}.
+
+To estimate the halo mass scale associated with each pivot, we follow \citet{Wu25BT} and define a comoving Lagrangian radius \(r_l=\pi/k_p\). The corresponding characteristic mass is
+\begin{equation}
+M_p=\frac{4\pi}{3}r_l^3\rho_{{\rm crit},0}\Omega_{{\rm m},0}.
+\label{eq:pivot_mass}
+\end{equation}
+Here, \(\rho_{{\rm crit},0}\) is the present-day critical density and \(\Omega_{{\rm m},0}\) is the present-day matter density parameter. For our cosmology, \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\) give \(M_p=1.69\times10^{13}\) and \(1.69\times10^{10}\,M_\odot\), respectively. The \BTKPone{} choice enhances linear power by \(\sim80\%\)--\(137\%\) at \(k=3\)--\(5\,h\,{\rm Mpc}^{-1}\), exceeding current Lyman-\(\alpha\) forest constraints, and therefore serves as a strong-perturbation benchmark to isolate physical trends and stress-test analytic prescriptions. By contrast, \BTKPten{} restricts the enhancement to subgalactic scales closer to current observational frontiers, with an implicit high-\(k\) ultraviolet cutoff assumed beyond the simulated scale range.
+
+\section{Numerical Methods}
+\label{sec:numerical}
+
+\subsection{Cosmological Parameters}
+\label{subsec:cosmo_params}
+
+All simulations use the following Planck 2018 background cosmology \citep{Planck20CMB}:
+
+\begin{enumerate}
+    \item Present-day density parameters: total matter \(\Omega_{\rm m}=0.3153\), baryons \(\Omega_{\rm b}=0.0493\), and the cosmological constant \(\Omega_\Lambda=0.6847\).
+    \item Hubble constant: \(H_0=67.36\,{\rm km\,s^{-1}\,Mpc^{-1}}\), corresponding to \(h\equiv H_0/(100\,{\rm km\,s^{-1}\,Mpc^{-1}})=0.6736\).
+    \item Scalar spectral index \(n_s = 0.9649\).
+    \item The PL and BT initial conditions use the same target normalization, \(\sigma_8 = 0.8111\), where \(\sigma_8\) is the root-mean-square linear density contrast at \(z=0\) in spheres of radius \(8\,h^{-1}{\rm Mpc}\).
+\end{enumerate}
+Table~\ref{tab:simulation_parameters} lists the cosmological and numerical parameters.
+
+
+\subsection{Initial Conditions}\label{sec:IC}
+\change{We generate the initial conditions at \(z_i=200\) with \textsc{Music2-MonofonIC} \citep{Hahn2020MUSIC2monofonIC,Michaux2021MUSIC2monofonIC} using third-order Lagrangian perturbation theory (3LPT). PL uses the Eisenstein \& Hu transfer function \citep{Eisenstein1998}. For each BT model, we modify the transfer function above \(k_p\). MonofonIC then applies a small model-dependent global normalization to reach the shared target \(\sigma_8=0.8111\). Below \(k_p\), the BT models retain the PL/Eisenstein shape. Over \(0.01\le k/(h\,{\rm Mpc}^{-1})\le0.1\), the input linear power is about \(0.033\%\) lower than PL for \BTKPone{} and about \(9\times10^{-6}\%\) lower for \BTKPten{}.}
+
+For each set of corresponding PL and BT runs, we keep the background cosmology, numerical settings, and MonofonIC random seed fixed. The main PL, \BTKPone{}, and \BTKPten{} \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) simulations therefore share the same initial random phases. Using the same phases reduces sample variance in the PL--BT comparisons.
+
+For the power-spectrum measurements (\S\ref{subsub:PS}), we use phase-paired simulations following \citet{Pontzen2016Inverted}. Each pair comprises the original simulation and a counterpart with the initial linear density contrast reversed, \(\delta_{\rm inv}(\boldsymbol{x},z_i)=-\delta_{\rm orig}(\boldsymbol{x},z_i)\), equivalent to shifting every initial Fourier phase by \(\pi\) while retaining its amplitude. At each redshift, we take the arithmetic mean of their measured power spectra before forming the BT/PL ratios. Averaging cancels contributions that are odd under the reversal of the initial density field, reducing phase-dependent fluctuations in the power-spectrum comparison within the finite simulation volume. The halo measurements use the original simulations.
+
+
+As an initial-condition consistency test, we compare the BT pivot scales with the particle-grid Nyquist wavenumber, \(k_{\rm Ny}=\pi N_{\rm side}/L_{\rm box}\), where \(N_{\rm side}\) is the number of particles along one dimension and \(L_{\rm box}\) is the comoving box length listed in Table~\ref{tab:simulation_parameters}. For the main \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs, \(k_{\rm Ny}\simeq128.7\,h\,{\rm Mpc}^{-1}\). The two pivots, \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\), are therefore well below the grid Nyquist scale. (For the auxiliary \(256\,h^{-1}{\rm Mpc}\), \(1024^3\) runs used for large-scale halo bias, \(k_{\rm Ny}\simeq12.6\,h\,{\rm Mpc}^{-1}\), which lies close to \(k_p=10\,h\,{\rm Mpc}^{-1}\) so only large-scale modes below the pivot are resolved.) Plotting the input spectra in the standard cosmological Fourier convention matching Fig.~\ref{fig:power_spectra_ratio_z0} and defining the dimensionless linear power as \(\Delta^2(k,z)=k^3P_{\rm lin}(k,z)/(2\pi^2)\), the largest dimensionless linear power at \(k\le k_{\rm Ny}\) is \(\Delta^2(k,z_i)\simeq1.4\times10^{-2}\) (root-mean-square contrast \(\simeq0.12\)) for \BTKPone{}, so the enhanced modes remain linear under 3LPT initialization at \(z_i=200\).
+
+\begin{figure}[tbp]
+    \centering
+    \includegraphics[width=\columnwidth]{input-power-spectrum.png}
+    \caption{Input linear matter power spectra at \(z_i=200\) used to generate the PL, \BTKPone{}, and \BTKPten{} initial conditions, shown in the standard cosmological \(P(k)\) convention matching Fig.~\ref{fig:power_spectra_ratio_z0}. PL is the standard power-law reference spectrum. The BT spectra use the same \(\sigma_8\) normalization and the same PL/Eisenstein shape below their pivot scales, up to the small global normalization applied by MonofonIC; above the pivot, they depart from PL. \BTKPone{} departs from PL over a broader range of resolved wavenumbers, whereas \BTKPten{} confines the modification to smaller scales. For the main \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs, \(k_{\rm Ny}\simeq129\,h\,{\rm Mpc}^{-1}\) (vertical dashed line), so the \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\) pivots (vertical dotted lines) are well below the particle-grid Nyquist scale. The lighter gray region spans \(0.5k_{\rm Ny}\le k\le k_{\rm Ny}\), where particle-grid resolution becomes increasingly important, and the darker region marks modes beyond \(k_{\rm Ny}\).}
+    \label{fig:power_spectrum_comparison}
+\end{figure}
+
+
+\subsection{Simulation Suite and Code}
+\label{subsec:simulation_suite}
+\label{subsec:Terminology}
+
+\change{We evolve the initial conditions with \textsc{SWIFT} \citep{Schaller2024SWIFT}\footnote{Publicly available at \url{https://swiftsim.com/}.}, which couples a fast multipole gravity solver \citep{Dehn00FMM} to a particle-mesh solver on large scales \citep{Hock88PM}.}
+
+\change{Table~\ref{tab:simulation_parameters} lists the simulations used for the main analysis.} The main comparison uses three \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) runs: PL, \BTKPone{}, and \BTKPten{}. They share the same mass resolution, force softening, initial random phases, and \textsc{SWIFT} settings, and differ only in the input linear matter spectrum generated by MonofonIC.
+
+
+
+
+\change{PL denotes the standard power-law primordial spectrum. Both BT models have \(m_s=1.5\), with \(k_p=1\,h\,{\rm Mpc}^{-1}\) for \BTKPone{} and \(k_p=10\,h\,{\rm Mpc}^{-1}\) for \BTKPten{}. We also use \(256\,h^{-1}{\rm Mpc}\) PL, \BTKPone{}, and \BTKPten{} runs for the halo bias measurement. The power-spectrum measurements from these runs are available in the auxiliary data. Figure~\ref{fig:power_spectra_ratio_z0} uses the \(25\,h^{-1}{\rm Mpc}\) runs. The particle masses in Table~\ref{tab:simulation_parameters} are given in \(h^{-1}M_\odot\). For \(h=0.6736\), the particle mass in the \(25\,h^{-1}{\rm Mpc}\) runs is \(1.89\times10^6\,M_\odot\). Halo masses and comoving number densities in the mass-function analysis are given in \(M_\odot\) and \({\rm Mpc}^{-3}\), respectively. The additional PL runs used for resolution and volume tests are described in Appendix~\ref{app:fof_hmf_resolution}. Appendix~\ref{app:trusted_ranges} and Table~\ref{tab:trusted_ranges} list the ranges used for quantitative statements.}
+
+
+\begin{table*}[t]
+\caption{\change{Parameters of the cosmological \(N\)-body simulations used in the main analysis. The \(k_p\) and \(m_s\) columns specify the primordial power-spectrum models (see \S\ref{sec:theory}); \(N_{\rm p}\) is the particle number; \(L_{\rm box}\) is the comoving box length; \(m_{\rm DM}\) is the dark matter particle mass; and \(\epsilon_{\rm Pl}\) is the Plummer-equivalent softening length in physical kpc at \(z=0\). Within each box size, the three runs share the same initial random phases. Additional PL simulations used for resolution and volume tests are described in Appendix~\ref{app:fof_hmf_resolution}.}}
+\label{tab:simulation_parameters}
+\label{tab:Params_all_models}
+\centering
+\begin{ruledtabular}
+\begin{tabular}{lcccccc}
+Model & \(k_p\) & \(m_s\) & \(N_{\rm p}\) & \(L_{\rm box}\) & \(m_{\rm DM}\) & \(\epsilon_{\rm Pl}\) \\
+ & \([h\,{\rm Mpc}^{-1}]\) & & & \([h^{-1}\,{\rm Mpc}]\) & \([h^{-1}M_\odot]\) & \([{\rm kpc}]\) \\
+\colrule
+PL & -- & -- & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 \\
+\BTKPone{} & 1 & 1.5 & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 \\
+\BTKPten{} & 10 & 1.5 & \(1024^3\) & 25 & \(1.27\times 10^6\) & 0.725 \\
+\colrule
+\change{PL} & \change{--} & \change{--} & \change{\(1024^3\)} & \change{256} & \change{\(1.37\times 10^9\)} & \change{7.42} \\
+\change{\BTKPone{}} & \change{1} & \change{1.5} & \change{\(1024^3\)} & \change{256} & \change{\(1.37\times 10^9\)} & \change{7.42} \\
+\change{\BTKPten{}} & \change{10} & \change{1.5} & \change{\(1024^3\)} & \change{256} & \change{\(1.37\times 10^9\)} & \change{7.42} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+
+\subsection{Halo Catalogs and Merger Trees}
+\label{subsec:halo_catalogs}
+
+\change{\textsc{SWIFT} identifies friends-of-friends (FOF) groups \citep{Davis1985FOF} using a linking length of \(0.2\) times the mean interparticle separation. The total dark matter mass of each group is \(M_{\rm FOF}\). We identify bound objects associated with these groups with \textsc{HBT-HERONS} \citep{Victor25HBTHERONS}, retaining candidates with at least 20 particles.}
+
+\change{\textsc{SOAP} \citep{McGibbon2025SOAP} measures spherical-overdensity (SO) properties around the most-bound \textsc{HBT-HERONS} particle. The mass within \(R_{200}\), the radius enclosing a mean density of \(200\rho_{\rm ref}(z)\), is}
+\begin{equation}
+M_{200}=\frac{4\pi}{3}\,200\rho_{\rm ref}(z)R_{200}^3.
+\end{equation}
+\change{The critical density \(\rho_{\rm crit}(z)\) defines \(M_{200c}\) and \(R_{200c}\), while the cosmic mean matter density \(\rho_{\rm m}(z)\) defines \(M_{200m}\) and \(R_{200m}\). The corresponding \textsc{SOAP} catalog fields are \texttt{SO/200\_crit} and \texttt{SO/200\_mean}.}
+%\Tk{You also use M200 below. Need to mention here.}
+
+We describe halo structure with the Navarro--Frenk--White (NFW) density profile \citep{Navarro1996NFW,Navarro1997NFW},
+\begin{equation}
+\label{eq:nfw_profile}
+\rho_{\rm NFW}(r)=
+\frac{\rho_s}{(r/r_s)(1+r/r_s)^2},
+\end{equation}
+where \(r_s\) is the scale radius and \(\rho_s\) is the characteristic density. The \(200c\) concentration is \(c_{200c}=R_{200c}/r_s\).
+
+\change{For the radial profiles, we use persistent halo identifiers to match the catalog entries to the positions of their most-bound particles and bin the dark matter in spherical shells around those positions. The \textsc{SOAP} values of \(M_{200m}\) and \(R_{200m}\) set the mass selection and radial scale.}
+
+The concentration analysis uses the \textsc{SOAP} \(c_{200c}\) value for the SO aperture centered on the most-bound-particle position supplied by \textsc{HBT-HERONS}. \textsc{SOAP} derives this concentration from the first radial moment of the mass distribution inside \(R_{200c}\), assuming an NFW profile. Particle radii smaller than the force-softening length are set to that length in this calculation.
+
+
+\textsc{HBT-HERONS} constructs the merger trees by tracking bound particles between snapshots. Each object has a persistent \texttt{TrackId} and a link to its descendant. For the half-mass redshift and median FOF assembly histories, we follow the same \texttt{TrackId} backward through the snapshots. This sequence defines the main progenitor branch used in those measurements.
+
+
+\section{Results}
+\label{sec:results}
+
+\subsection{\texorpdfstring{Projection}{Projection}}
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{projection.png}
+    \caption{Projected dark matter density fields for the PL, \BTKPone{}, and \BTKPten{} simulations. Columns correspond to the three primordial power-spectrum models, and rows show \(z=0\), \(z=2.03\), and \(z=8.52\). All three runs use a periodic box of \(25\,h^{-1}{\rm Mpc}\) with \(1024^3\) particles, \(m_{\rm DM}=1.89\times10^6\,M_\odot\), and \(\epsilon_{\rm Pl}=0.725\,{\rm kpc}\) at \(z=0\). Because the simulations use the same initial random phases, the same large-scale structures appear in corresponding panels. The BT enhancement is most visible at \(z=8.52\) and becomes less distinct toward \(z=0\). \BTKPone{} shows the clearest small-scale contrast because its lower pivot enhances a broader range of resolved modes and gives the largest small-scale input power.}
+    \label{fig:dark_matter_comparison}
+\end{figure*}
+
+
+\change{Figure~\ref{fig:dark_matter_comparison} shows the projected dark matter density at \(z=8.52\), \(2.03\), and \(0\). The large-scale structures appear in the same locations across the three phase-matched simulations. At \(z=8.52\), both BT runs show more small-scale clumping than PL, especially \BTKPone{}. The visual contrast is weaker by \(z=0\).}
+
+\subsection{Halo Mass Function\label{subsub:HMF}}
+
+Using the FOF groups defined in Sec.~\ref{subsec:halo_catalogs}, we measure the FOF halo mass function at representative snapshots from \(z=19.41\) to \(z=0\) (Fig.~\ref{fig:mass_function}). Before binning, we correct each FOF mass for low-particle sampling bias using
+\(M_{\rm corr}=M_{\rm FOF}[1-(M_{\rm FOF}/m_{\rm DM})^{-0.6}]\) \citep{Warren_2006,Lukic2007HMF}. We use logarithmic FOF mass bins of width \(\Delta\log_{10}M=1/6\) dex. The binned number density is \(dn/d\log_{10}M=N_{\rm h}/(V\,\Delta\log_{10}M)\), where \(V\) is the comoving simulation volume. For each non-empty bin, the plotted mass coordinate is the mean corrected halo mass,
+\(\bar M=\sum_i M_{{\rm corr},i}/N_{\rm h}\), where \(N_{\rm h}\) is the number of halos in the bin. We use \(\bar M\), rather than the bin midpoint, as the plotted mass coordinate \citep{Lukic2007HMF}. The HMF error bars show Poisson counting uncertainties. We compute the BT/PL ratios only in bins populated in both simulations and propagate the Poisson uncertainties from both measurements.
+
+We adopt the plotted catalog lower limit \(M_{\rm FOF}\ge10^8\,M_\odot\) listed in Table~\ref{tab:trusted_ranges}. Appendix~\ref{app:fof_hmf_resolution} tests this limit with lower-resolution PL runs and a larger PL box, showing sub-2\% agreement at \(z=0\) above the 50-particle scale of each comparison run and a \(7\)--\(19\%\) resolution suppression near 50 particles at \(z=8.52\); quoted high-redshift BT/PL enhancement ratios above \(\sim10^9\,M_\odot\) (\(\gtrsim500\) particles) are well above this threshold.
+
+
+\change{We compare the FOF measurements with the Reed et al. (2007, hereafter Reed07) mass function \citep{Reed_2007} in Fig.~\ref{fig:mass_function}. For the SOAP \(M_{200c}\) measurements, we use the dark-matter-only (\texttt{hydro=False}) fit of Bocquet et al. (2016, hereafter B16) \citep{Bocquet2016} in Fig.~\ref{fig:m200c_bocquet16_hmf}. For both prescriptions, we compute the linear variance with a spherical top-hat filter applied to each model's linear matter power spectrum and use the published fit parameters.}
+
+Within the resolved mass range, both blue-tilted models increase the low-mass FOF abundance relative to PL, with the largest enhancement in \BTKPone{}. The enhancement is largest at high redshift. For \BTKPone{}, the abundance ratio relative to PL is \(4.81\)--\(6.55\) over \(M_{\rm FOF}\simeq1.2\times10^9\)--\(1.2\times10^{10}\,M_\odot\) at \(z=8.52\). By \(z=0\), the ratio over the same mass range falls to \(1.42\)--\(1.48\). The BT/PL ratio decreases toward higher masses and lower redshifts.
+
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{mass-function.png}
+    \caption{FOF halo mass functions for the PL, \BTKPone{}, and \BTKPten{} simulations at representative redshifts. Upper panels show the measured $dn/d\log_{10} M_{\rm FOF}$ with Poisson error bars, together with the Reed et al. (2007) (Reed07) FOF prediction computed separately from each model's linear matter power spectrum. Middle panels show \(\BTKPone/\mathrm{PL}\) and \(\BTKPten/\mathrm{PL}\) mass-function ratios in the same FOF mass bins. The middle-panel y-axis range is set separately for each redshift row. Here \(f\equiv dn/d\log_{10}M_{\rm FOF}\). Bottom panels show \(\Delta f/f_{\rm Reed07}=(f_{\rm sim}-f_{\rm Reed07})/f_{\rm Reed07}\). Zero denotes agreement with Reed07. These panels use a symmetric logarithmic scale with a linear interval for \(|\Delta f/f_{\rm Reed07}|\le0.1\). The horizontal gray band marks this \(\pm10\%\) interval, and the y-axis range is set separately for each redshift row. Here \BTKPone{} denotes the model with $k_p=1\,h\,{\rm Mpc}^{-1}$ and $m_s=1.5$, while \BTKPten{} denotes the model with $k_p=10\,h\,{\rm Mpc}^{-1}$ and $m_s=1.5$. All simulations use a $25\,h^{-1}{\rm Mpc}$ box with $1024^3$ particles. The gray vertical band marks the interval between the nominal 20-particle halo threshold \(3.8\times10^7\,M_\odot\) and the adopted plotted catalog threshold \(M_{\rm FOF}=10^8\,M_\odot\), roughly the 50-particle scale.}
+    \label{fig:mass_function}
+\end{figure*}
+
+%The corresponding spherical-overdensity $M_{200c}$ comparison with Bocquet et al. (2016) is shown in Fig.~\ref{fig:m200c_bocquet16_hmf}.
+
+\change{We also measure the halo mass function using the spherical-overdensity mass definition \(M_{200c}\). Here the logarithmic mass bins have width \(\Delta\log_{10}M_{200c}=0.15\) dex, and the plotted mass coordinate is the geometric bin center, \(M_{\rm cen}=\sqrt{M_{\rm low}M_{\rm high}}\), where \(M_{\rm low}\) and \(M_{\rm high}\) are the bin edges. We obtain \(dn/d\ln M_{200c}\) by dividing the halo count by the comoving volume and the natural-log bin width, \(\Delta\ln M_{200c}=0.15\ln 10\). The simulation points are measured from the SOAP \texttt{SO/200\_crit} catalogs with a minimum of 100 dark matter particles per halo, corresponding to \(M_{200c}\simeq1.9\times10^8\,M_\odot\) in the main runs, and the plotted bins also impose \(M_{200c}\ge2.0\times10^8\,M_\odot\). We evaluate the Bocquet et al. (2016) \(M_{200c}\) mass function \citep{Bocquet2016} using the linear matter power spectrum of each model: PL, \BTKPone{}, and \BTKPten{}.}
+
+We quantify the agreement using the median simulation-to-model ratio across mass bins above the adopted mass limit and containing at least 20 halos. At \(z=0\) and \(z=3.44\), this median differs from unity by less than \(8\%\) for every model in both the Reed et al. (2007) FOF and Bocquet et al. (2016) \(M_{200c}\) comparisons, although individual B16 residuals exhibit a mass-dependent tilt from \(\sim-20\%\) at low mass to \(\sim+25\%\) at high mass. At \(z=8.52\), the median differences increase to \(2\)--\(22\%\) for Reed et al. (2007) and \(16\)--\(32\%\) for Bocquet et al. (2016). Extending into the extrapolated \(z=10.52\)--\(19.41\) snapshots, the simulation abundances diverge strongly from both fits, lying \(13\%\)--\(107\%\) above Reed07 in median ratio, while falling \(14\%\)--\(67\%\) below B16 for PL and \BTKPten{} at \(z\ge14.33\) yet remaining \(23\%\)--\(39\%\) above B16 for \BTKPone{}; note that B16 was calibrated on cluster-mass halos at \(z\le2\), so comparisons at \(M_{200c}\sim10^8\)--\(10^{11}\,M_\odot\) and \(z\ge3.44\) represent substantial extrapolations. Larger deviations also occur in sparsely populated high-mass bins.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{mass-function-m200c-bocquet16.png}
+    \caption{\change{Spherical-overdensity halo mass function comparison using \(M_{200c}\) masses and the dark-matter-only Bocquet et al. (2016) (B16) fitting function. Symbols show the measured SOAP \(M_{200c}\) mass functions for PL, \BTKPone{}, and \BTKPten{}, while lines show the corresponding Bocquet et al. (2016) predictions evaluated with each model's linear matter power spectrum generated from the PL or BT primordial power-spectrum model. The SOAP catalog threshold is \(N_{\rm DM}\ge100\), where \(N_{\rm DM}\) is the number of dark matter particles in a halo. The plotted bins require \(M_{200c}\ge2.0\times10^8\,M_\odot\), close to the 100-particle scale \(1.9\times10^8\,M_\odot\). The gray vertical band marks the low-mass region below this plotted completeness threshold. Middle panels show \(\BTKPone/\mathrm{PL}\) and \(\BTKPten/\mathrm{PL}\) mass-function ratios in the same \(M_{200c}\) bins, with the middle-panel y-axis range set separately for each redshift row. Here \(f\equiv dn/d\ln M_{200c}\). Bottom panels show \(\Delta f/f_{\rm B16}=(f_{\rm sim}-f_{\rm B16})/f_{\rm B16}\). Zero denotes agreement with B16. These panels use a symmetric logarithmic scale spanning \([-1,1]\) with a linear interval for \(|\Delta f/f_{\rm B16}|\le0.1\) (marked by the horizontal gray band and dotted lines).}}
+    \label{fig:m200c_bocquet16_hmf}
+\end{figure*}
+
+\subsection{Halo Bias\label{subsec:halo_bias}}
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{halo-bias-soap-tinker10.pdf}
+    \caption{\change{Halo bias of \textsc{HBT-HERONS} central halos binned by their \textsc{SOAP} masses \(M_{200m}\) at \(z=0\), \(1.07\), \(3.44\), and \(8.52\). Open circles show measurements from the \(256\,h^{-1}{\rm Mpc}\) boxes and open triangles show measurements from the \(25\,h^{-1}{\rm Mpc}\) boxes. Error bars show jackknife uncertainties obtained by omitting one independent Fourier mode at a time. The upper panels show measured bias and the Tinker et al. (2010) \protect\cite{Tinker2010HaloBias} prediction. The middle panels show \(b_{\rm BT}/b_{\rm PL}\), with measured ratios at the centers of mass bins shared by BT and PL in the same box. The lower panels show \(b_{\rm sim}/b_{\rm T10}-1\), with the prediction evaluated at each bin's median mass. Large-box points are included for all three models (PL, \BTKPone{}, and \BTKPten{}) through \(z=3.44\), while at \(z=8.52\) no mass bin in the \(256\,h^{-1}{\rm Mpc}\) box meets the \(\ge200\)-halo threshold.}}
+    \label{fig:halo_bias}
+\end{figure*}
+
+
+Halo bias is a measure of the excess clustering of halos over that of dark matter. To obtain halo bias, we compute the halo--matter cross-spectrum \(P_{\rm hm}\) and the matter auto-spectrum \(P_{\rm mm}\) on a \(256^3\) mesh. We use nearest-grid-point assignment with its window correction and estimate the bias in each mass bin as
+\begin{equation}
+    b_{\rm hm} = \frac{\sum_{\boldsymbol{k}} P_{\rm hm}(\boldsymbol{k})}
+                       {\sum_{\boldsymbol{k}} P_{\rm mm}(\boldsymbol{k})},
+    \label{eq:halo_matter_bias}
+\end{equation}
+where the sums run over independent Fourier modes in the selected \(k\) interval. \change{For the error bars on individual bias measurements, we recompute Eq.~\eqref{eq:halo_matter_bias} after omitting each mode in turn and take the jackknife standard error across these estimates. This measures mode sampling within a single simulation volume.} We use \(0.03\leq k/(h\,{\rm Mpc}^{-1})\leq0.15\) for the \(256\,h^{-1}{\rm Mpc}\) box and \(0.25\leq k/(h\,{\rm Mpc}^{-1})\leq0.60\) for the \(25\,h^{-1}{\rm Mpc}\) box. Each halo contains at least 100 dark matter particles, and each \(0.30\)-dex mass bin contains at least 200 halos. We plot the median mass in each bin. \change{Figure~\ref{fig:halo_bias} shows \textsc{HBT-HERONS} central halos \citep{Han2018HBTPlus,Victor25HBTHERONS}, using their \textsc{SOAP} mass \(M_{200m}\) enclosed at 200 times the mean matter density. Appendix~\ref{app:fof_bias} gives the corresponding FOF measurements.}
+
+\change{We evaluate the \citet{Tinker2010HaloBias} relation at \(\nu=\delta_{\rm c}/\sigma(M,z)\), with \(\delta_{\rm c}=1.686\), using the \(200\bar\rho_{\rm m}\) calibration. We compute \(\sigma(M,z)\) from each model's linear matter power spectrum with a spherical top-hat window whose comoving radius encloses mass \(M\) at the present mean matter density. }
+
+\change{Under peak-background split, enhanced small-scale power increases \(\sigma(M,z)\) and lowers the peak height \(\nu\) at fixed halo mass, reducing halo rarity and lowering the bias most strongly in \BTKPone{} at high redshift. At \(z=8.52\), the median \BTKPone{}/PL bias ratio is \(0.54\) across the five common mass bins in the smaller box. In the \(256\,h^{-1}{\rm Mpc}\) box over \(z=0\)--\(3.44\), \BTKPten{}/PL remains between \(0.988\) and \(1.009\) across all 23 paired bins. }
+
+\change{At \(z=0\), the \(256\,h^{-1}{\rm Mpc}\) \textsc{SOAP} central measurements lie \(10\%\)--\(18\%\) below Tinker10 over \(5\times10^{11}\lesssim M_{200m}/M_\odot\lesssim4\times10^{13}\) (before turning slightly positive near \(2.5\times10^{14}\,M_\odot\)). This offset is not a particle-resolution artifact (high-mass \(25\,h^{-1}{\rm Mpc}\) centrals with \(\sim10^5\) particles show the same negative offset), but reflects two physical and estimator effects: (i) \textsc{HBT-HERONS} classifies backsplash and outer-FOF halos near massive groups as satellites, excluding a strongly biased population (\(b\sim1.6\)) relative to distinct-SO halo finders on which Tinker10 was calibrated, and (ii) mode-count weighting in Eq.~\eqref{eq:halo_matter_bias} concentrates 73\% of the \(256\,h^{-1}{\rm Mpc}\) modes in \(0.10\le k/(h\,{\rm Mpc}^{-1})\le0.15\), where quasi-nonlinear scale dependence suppresses \(b_{\rm hm}(k)\) for low-\(\nu\) halos; similarly, in the \(25\,h^{-1}{\rm Mpc}\) box, \(0.25\le k\le0.60\,h\,{\rm Mpc}^{-1}\) spans only \(1.0\)--\(2.4\,k_{\rm f}\) (28 modes) and enters the nonlinear regime at \(z\le1.07\).} 
+
+%\change{Leave-one-mode-out jackknife uncertainties quantify within-box mode sampling and halo stochasticity under an independent-mode assumption; they omit cosmic realization variance, super-sample covariance, and residual scale dependence, and the uncertainty of the measured BT/PL ratios further depends on the covariance between the phase-matched runs. Comparisons at \(z=3.44\) and \(8.52\) extend beyond the Tinker calibration range of \(z\le2.5\).}
+
+\subsection{Half-Mass Redshift\label{subsub:HMR}}
+\change{The half-mass assembly redshift, \(z_{1/2}\), is the redshift at which a \(z=0\) halo first reaches half of its final FOF mass \(M_0\). We use the main progenitor branch defined in Sec.~\ref{subsec:halo_catalogs}. For each \(z=0\) FOF halo, we follow its persistent \textsc{HBT-HERONS} \texttt{TrackId} over 36 snapshots (0021--0056, extending above the \(z=19.41\) snapshot 0024 down to \(z=0\)) and record its Warren-corrected FOF mass. Pooling the final-mass bins with \(M_0\ge 10^9\,M_\odot\) separately for each model, we measure \(z_{1/2}\) for approximately \(98\%\) of the halos in each simulation. We determine \(z_{1/2}\) by linear interpolation between the first pair of consecutive snapshots in which the recorded FOF mass increases through \(M_0/2\). We estimate the uncertainty on the mean formation redshift from 4096 bootstrap resamples of the halos in each mass bin, separately for PL, \BTKPone{}, and \BTKPten{}.}
+
+We do not fill missing snapshots or force the recorded mass histories to increase monotonically. Temporary FOF bridging or splitting events can therefore remove a halo from the measurable sample or produce a temporary mass decrease.
+
+Figure~\ref{fig:half_mass_redshift} compares our measurements with the relations of \citet{BoylanKolchin2009MSII} (BK09) and \citet{Hellwing16cocoproject} (COCO/Hellwing16). BK09 measured the mean half-mass formation redshift in the Millennium-II simulation using virial masses. COCO/Hellwing16 used the same fitting form with FOF masses. We evaluate both published relations at the mean final mass in each of our FOF mass bins. The external simulations use different background cosmologies, and BK09 also uses a different halo-mass definition.
+
+For the 15 resolved PL bins spanning \(1.25\times10^9\le M_{\rm FOF}/M_\odot\le8.22\times10^{11}\), the mean absolute offset \(\langle|z_{1/2}^{\rm PL}-z_{1/2}^{\rm ref}|\rangle\) is \(0.053\) from BK09 and \(0.097\) from COCO/Hellwing16. The maximum absolute offsets are \(0.128\) and \(0.207\), respectively. Thus, the PL measurements follow both external relations to within about \(0.1\) in \(z_{1/2}\) on average.
+
+\change{At low final masses, halos in both blue-tilted models form earlier than PL halos, with the largest shift in \BTKPone{}. Around \(M_0\simeq1.25\times10^9\,M_\odot\), the mean \(z_{1/2}\) is \(2.28\) for PL, \(4.24\) for \BTKPone{}, and \(2.61\) for \BTKPten{}. The corresponding shifts relative to PL are \(\Delta z_{1/2}=1.96\) for \BTKPone{} and \(0.33\) for \BTKPten{}.}
+
+\change{Around \(M_0\simeq7.9\times10^9\,M_\odot\), the mean \(z_{1/2}\) values are \(1.95\), \(3.12\), and \(2.05\) for PL, \BTKPone{}, and \BTKPten{}, giving BT--PL shifts of \(1.17\) and \(0.10\). At \(M_0\simeq2.0\times10^{11}\,M_\odot\), the values are \(1.43\), \(1.78\), and \(1.39\), respectively. The model with the largest high-redshift HMF enhancement therefore also has the largest assembly-time shift, especially below \(\sim10^{10}\,M_\odot\).}
+
+\begin{figure}[tbp]
+    \centering
+    \includegraphics[width=\columnwidth]{halfmass-redshift-trackid-no-envelope.png}
+    \caption{Half-mass assembly redshift \(z_{1/2}\) as a function of final FOF mass \(M_{\rm FOF}\) at \(z=0\) for the PL, \BTKPone{}, and \BTKPten{} simulations. For each present-day FOF halo, its \textsc{HBT-HERONS} \texttt{TrackId} is used to follow the same object over snapshots 0021--0056. We determine \(z_{1/2}\) by linear interpolation at the first upward crossing of \(M_0/2\) between consecutive snapshots. Missing snapshots are not filled, and the recorded mass history is not forced to increase monotonically. The upper panel shows the mean \(z_{1/2}\) in each mass bin. Error bars give one halo-bootstrap standard error on the mean. The shaded bands span the 16th to 84th percentiles of the individual halo formation redshifts. The dark-gray dot-dashed and gray dashed curves show the BK09 and COCO/Hellwing16 external \(\Lambda\)CDM reference relations based on a standard power-law primordial spectrum, respectively \citep{BoylanKolchin2009MSII,Hellwing16cocoproject}. \change{The lower panel shows the ratio of the BT and PL mean \(z_{1/2}\) in each common mass bin, plotted at the geometric bin center. Its error bars give the standard deviation of 4096 bootstrap ratios, each obtained by independently resampling halos with replacement within the BT and PL mass bins.} The gray band marks the 20--100 particle mass interval, \(3.8\times10^7\)--\(1.9\times10^8\,M_\odot\), for the main runs. The quoted low-mass trends near \(10^9\,M_\odot\) are based on halos with \(\gtrsim5\times10^2\) particles at \(z=0\). Using these unsmoothed histories, PL remains close to the external relations while the blue-tilted models assemble earlier, with the strongest shift in \BTKPone{}.}
+    \label{fig:half_mass_redshift}
+\end{figure}
+
+\subsection{Median Mass-Assembly Histories\label{subsub:MAH}}
+
+Figure~\ref{fig:mass_assembly_history_correa} shows the median mass-assembly histories. We use \(M_0\) for the final FOF mass at the center of a selection window and \(M(z)\) for the corresponding main-progenitor FOF mass at redshift \(z\). We select halos at \(z=0\) in six Warren-corrected FOF mass windows with \(|\log_{10}[M_{\rm FOF}(z=0)/M_0]|\le0.1\). The windows are centered on \(M_0=10^9\), \(3\times10^9\), \(10^{10}\), \(3\times10^{10}\), \(10^{11}\), and \(3\times10^{11}\,M_\odot\). We follow the main progenitor of each selected halo through its persistent \texttt{TrackId} from \textsc{HBT-HERONS}. For visual clarity across the six mass windows, this comparison shows PL and \BTKPone{} (the intermediate \BTKPten{} model closely tracks PL at these masses).
+
+At each snapshot, only halos with an identified main progenitor contribute to the median \(M_{\rm FOF}(z)\). We do not interpolate across snapshots in which a progenitor is not identified. The number of contributing halos therefore decreases with redshift. We restrict the quantitative comparison to \(M_0\ge10^9\,M_\odot\) and \(z\le6\); for PL at \(M_0=10^9\,M_\odot\), the detected fraction is \(90.3\%\) at \(z=5.50\) and drops to \(83.6\%\) at \(z=6.15\) (and \(60.5\%\) at \(z=7.65\)), whereas for \BTKPone{} it remains \(>99\%\) at \(z\ge5.5\). Consequently, conditional medians for PL near \(M_0=10^9\,M_\odot\) and \(z\sim6\) are biased upward by left-truncation survivorship near the 20-particle detection floor.
+
+\change{We compare these histories with the \citet{Correa2015MAHI} mass-assembly model. This model is based on the extended Press--Schechter (EPS) framework \citep{Bond1991ExcursionSet,LaceyCole1993MergerRates}.}
+
+\begin{equation}
+\label{eq:correa2015_mah}
+M(z)=M_0(1+z)^{a f(M_0)}\exp[-f(M_0)z],
+\end{equation}
+\begin{equation}
+\label{eq:correa2015_fm0}
+f(M_0)=\left[S(M_0/q)-S(M_0)\right]^{-1/2},
+\end{equation}
+where \(S(M)=\sigma^2(M)\) is the variance of the linear density contrast at \(z=0\), smoothed with a spherical top-hat filter. Thus \(\sigma(M)\) is the root-mean-square density contrast on mass scale \(M\). The filter radius encloses mass \(M\) at the present mean matter density. We compute this variance from the corresponding PL or \BTKPone{} linear matter power spectrum.
+
+The published mass-dependent relations for \(\widetilde z_{\rm f}\) and \(q\) are
+\begin{equation}
+\begin{aligned}
+\widetilde z_{\rm f}&=-0.0064\left(\log_{10}\frac{M_0}{M_\odot}\right)^2
++0.0237\log_{10}\frac{M_0}{M_\odot}+1.8837,\\
+q&=4.137\,\widetilde z_{\rm f}^{-0.9476}.
+\end{aligned}
+\label{eq:correa_q_closure}
+\end{equation}
+\change{In the Correa model, the formation epoch is defined by \(M(\widetilde z_{\rm f})=M_0/q\), while the half-mass redshift satisfies \(M(z_{1/2})=M_0/2\).}
+
+For the Correa-EPS curves, we use the Planck 2018 cosmology in Sec.~\ref{subsec:cosmo_params} for linear growth, the mean matter density that sets the smoothing scale, and the normalization of the PL and \BTKPone{} linear matter power spectra, and adopt the WMAP5 relations for \(\widetilde z_{\rm f}(M_0)\) and \(q(\widetilde z_{\rm f})\) from \citet{Correa2015MAHI}. For the model curves, we evaluate \(a=1+1.686\sqrt{2/\pi}\,[\mathrm{d}D/\mathrm{d}z]_{z=0}=0.292\) using the Planck 2018 growth factor, normalized to \(D(0)=1\), and compute \(S(M)\) from each simulation model's linear spectrum. The parameter \(q\) sets the progenitor mass scale \(M_0/q\) in the EPS calculation. Across the six mass bins in Fig.~\ref{fig:mass_assembly_history_correa}, \(q\) ranges from 2.68 to 3.20. At fixed \(M_0\), we use the same \(q\), \(\widetilde z_{\rm f}\), and \(a\) for PL and \BTKPone{}. The two predictions differ only because their linear matter power spectra give different values of \(S(M_0/q)-S(M_0)\). None of these parameters is fitted to our simulations. We normalize each curve to the measured median final FOF mass of its own sample. The comparison therefore tests the shape of the assembly history with redshift. The WMAP5 relation supplies \(q\) through \(\widetilde z_{\rm f}\); we do not impose a crossing at \(M_0/q\) on the resulting curves. The prescription was calibrated for \(M_{200c}\), whereas the simulated histories use FOF masses.
+
+
+At fixed final FOF mass, both the simulations and the Correa-EPS calculation predict larger progenitor masses for \BTKPone{} than for PL. The difference increases with redshift, indicating earlier assembly in \BTKPone{}. With this fixed-parameter baseline, the Correa-EPS calculation lies closer to the simulated \BTKPone{} conditional medians than to PL, particularly near \(M_0=10^9\,M_\odot\) at \(z=6\) where PL suffers progenitor truncation. For \(10^9\le M_0/M_\odot\le10^{11}\), the maximum absolute difference \(\lvert M_{\rm sim}/M_{\rm Correa}-1\rvert\) at \(z=1,2,4,\) and \(6\) is \(46\%\) for PL and \(9\%\) for \BTKPone{}. At \(M_0=3\times10^{11}\,M_\odot\), the corresponding differences are \(23\%\) and \(16\%\), respectively.
+
+The same trend follows from Eqs.~(\ref{eq:correa2015_mah}) and (\ref{eq:correa2015_fm0}). The enhanced small-scale power in \BTKPone{} increases \(S(M_0/q)-S(M_0)\) and therefore reduces \(f(M_0)\). Since \(\ln[M(z)/M_0]=f(M_0)[a\ln(1+z)-z]\), a smaller \(f(M_0)\) causes \(M(z)/M_0\) to decrease more slowly with redshift.
+
+
+
+
+\begin{figure}[tbp]
+    \centering
+    \includegraphics[width=\columnwidth]{mass-assembly-history-correa.png}
+    \caption{\change{{\it Upper panel:} Median FOF mass-assembly histories for halos selected at \(z=0\). Open circles show PL simulation medians, and open triangles show \BTKPone{} medians. Colors indicate six final-mass windows centered on \(10^9\), \(3\times10^9\), \(10^{10}\), \(3\times10^{10}\), \(10^{11}\), and \(3\times10^{11}\,M_\odot\), each with a half-width of 0.1 dex. Halos are followed through their persistent \texttt{TrackId}, and each point is the median positive Warren-corrected FOF mass among the selected halos detected at that snapshot. Bands span the 16th--84th percentiles of detected halo masses. Error bars give one bootstrap standard error on the median from 4096 resamples of whole halo histories within each mass window and model. Dashed and dotted curves show the Correa-EPS calculations using the published \(q\) and \(\widetilde z_{\rm f}\) relations and the PL or \BTKPone{} linear matter power spectrum. Each curve is anchored to its sample median at \(z=0\) and provides a reference for the shape of the history. {\it Middle panel:} Ratio of each simulation median to the corresponding Correa-EPS curve at the same redshift. Error bars give the bootstrap standard error on the median divided by the fixed reference value. {\it Lower panel:} Ratio \(f_{\rm BT}/f_{\rm PL}\) of the normalized \BTKPone{} and PL simulation histories, where \(f=M/M_0\) in each final-mass window. For each bootstrap draw we normalize each model to its resampled median at \(z=0\) and recompute the ratio; error bars give its bootstrap standard deviation. Horizontal lines mark unity, and the vertical dashed line marks the \(z=6\) quantitative limit. Quantitative interpretation is restricted to \(M_0\ge10^9\,M_\odot\) and \(z\le6\).}}
+    \label{fig:mass_assembly_history_correa}
+\end{figure}
+
+\subsection{Halo Internal Structure}
+
+We next test whether earlier halo growth also changes internal structure. We use direct radial density profiles and the concentration--mass relation.
+
+\subsubsection{Radial Halo Density Profiles\label{subsub:DensityProfile}}
+
+We stack the \(z=0\) profiles centered on the most-bound particle in four \(M_{200m}\) bins (Sec.~\ref{subsec:halo_catalogs}). Figure~\ref{fig:halo_density_analysis} compares median profiles measured directly from simulation particles with NFW profiles (Eq.~\ref{eq:nfw_profile}) computed using the Diemer \& Joyce (2019, hereafter D19) concentration--mass relation for the corresponding PL and BT models \citep{Diemer2019}. \change{For each reference curve, we evaluate D19 at the bin's target mass \(M_{200m}\) to obtain \(c_{200m}\), then use that concentration in the NFW profile.} The error bars show bootstrap 16th--84th percentile intervals for the median profile in each bin.
+
+To identify the radial convergence limit, we follow \citet{Power2003} and calculate
+\begin{equation}
+\kappa(r)=\frac{N(<r)}{8\ln N(<r)}
+\left[\frac{200\rho_{{\rm m},0}}{\overline{\rho}(<r)}\right]^{1/2},
+\label{eq:power_kappa}
+\end{equation}
+where \(N(<r)\) is the enclosed dark matter particle count, \(\overline{\rho}(<r)\) is the mean enclosed density, and \(\rho_{{\rm m},0}\) is the present-day cosmic mean matter density. We define \(r_{\rm conv}\) as the smallest radius at which \(\kappa\ge0.6\) \citep{Power2003}. (Using \(200\rho_{{\rm m},0}\) rather than \(200\rho_{{\rm crit},0}\) in Eq.~\eqref{eq:power_kappa} makes \(\kappa\ge0.6\) more conservative than the original critical-density threshold by a factor of \(\Omega_{{\rm m},0}^{-1/2}\simeq1.78\).) At smaller radii, two-body relaxation can transfer energy to central particles and artificially flatten the measured density profile.
+
+At the innermost radius outside the shaded region in each mass bin, the \BTKPone{}/PL density ratio ranges from \(1.32\) to \(1.52\). The ratio decreases toward \(R_{200m}\), falling below unity (\(\sim0.7\)--\(0.8\)) in the outer halo because fixed \(M_{200m}\) requires mass conservation within \(R_{200m}\). The \BTKPten{}/PL ratio ranges from \(0.93\) to \(1.08\) across the resolved radii of the four mass bins.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{halo-density-radial-mb-corrected.png}
+    \caption{Spherically averaged dark matter density profiles at \(z=0\) for PL, \BTKPone{}, and \BTKPten{}, centered on the most-bound particle of each halo. The four panels have target masses \(\log_{10}(M_{200m}/M_\odot)=10.0,10.5,11.0,\) and \(11.5\). Open symbols show the median profiles for 100 halos per model and bin, except for \BTKPten{} in the highest mass bin, which has 98. Density error bars show the 16th--84th percentiles of 160 bootstrap medians. Lower panels show ratios of median profiles to PL, with error bars propagated from the corresponding profile bounds. Dashed curves show the NFW predictions obtained using the Diemer \& Joyce (2019) concentration--mass relation \citep{Diemer2019}. The dotted line in each panel marks the largest of the three model medians of \(r_{\rm conv}/R_{200m}\), computed using Eq.~\eqref{eq:power_kappa} \citep{Power2003}. Gray shading marks smaller radii.}
+    \label{fig:halo_density_analysis}
+\end{figure*}
+
+\subsubsection{Concentration-Mass Relation\label{subsub:concentration}}
+
+We quantify halo structure using \(c_{200c}\), defined in Sec.~\ref{subsec:halo_catalogs}. We retain halos with at least 100 dark matter particles, corresponding to \(M_{200c}\simeq1.9\times10^8\,M_\odot\) in the main runs, and require finite positive concentrations with \(c_{200c}<500\). \change{The concentration sample includes both relaxed and unrelaxed halos.}
+
+The simulation points in Fig.~\ref{fig:concentration_comparison_d19} show the median \(\log_{10}c_{200c}\) in 0.25-dex mass bins over \(8.0 \le \log_{10}(M_{200c}/M_{\odot}) \le 13.5\), with error bars given by the 16th--84th percentile scatter. The curves show the concentration--mass relation of \citet{Diemer2019}, hereafter D19. \change{We evaluate each concentration--mass prescription in Colossus~1.3.16 \citep{Diemer2018}, using the \(200c\) mass definition and the input linear matter power spectrum of the corresponding simulation. We compute the linear variance with a spherical top-hat filter and use the published parameters for each prescription.} Appendix~\ref{app:concentration_alternative_models} shows the prescriptions of \citet{Ishiyama2021}, hereafter I21, and \citet{Ludlow2016WDMConcentration}, hereafter L16. Note that \textsc{SOAP} derives \(c_{200c}\) from the first radial moment within \(R_{200c}\) (with \(r<\epsilon_{\rm Pl}\) clamped to \(\epsilon_{\rm Pl}\)), rather than from radial profile fitting outside \(r_{\rm conv}\).
+
+At \(z=0\), in the first resolved mass interval lying wholly above the 1000-particle scale (\(10^{9.5}\le M_{200c}/M_\odot\le10^{10}\), where \(r_s=R_{200c}/c_{200c}\simeq0.89\)--\(1.18\,{\rm kpc}>\epsilon_{\rm Pl}=0.725\,{\rm kpc}\) in \BTKPone{}), the median concentration exceeds PL by factors of \(2.71\) (\(2.74\) and \(2.68\) in the two 0.25-dex bins) for \BTKPone{} and \(1.19\) (\(1.21\) and \(1.16\)) for \BTKPten{}. Over the lower \(10^9\)--\(10^{9.5}\,M_\odot\) interval, which straddles the 1000-particle boundary and has \(r_s\lesssim\epsilon_{\rm Pl}\) in \BTKPone{}, the corresponding raw ratios are \(3.20\) and \(1.35\). The 16th--84th percentile ranges in Fig.~\ref{fig:concentration_comparison_d19} show substantial halo-to-halo scatter, with the largest scatter in the lowest-mass bins.
+
+
+The stronger concentration enhancement in \BTKPone{} follows the same ordering as the HMF and assembly-history changes. Its lower pivot enhances a broader range of resolved modes than in \BTKPten{}. Halo concentration is linked to formation history and responds to changes in the linear matter spectrum \citep{Ludlow2016WDMConcentration,Brown2020HaloPPS}.
+
+
+\change{The middle rows in Fig.~\ref{fig:concentration_comparison_d19} show \(c_{\rm sim}/c_{\rm D19}\) on a logarithmic scale. The bottom rows show \(c_{\rm BT}/c_{\rm PL}\), the ratio of the BT and PL median concentrations in each common mass bin.} \change{We compare the prescriptions in the 115 bins whose 0.25-dex mass intervals lie wholly above the 1000-particle scale, \(M_{200c}=1.89\times10^9\,M_\odot\), and contain at least 20 halos each. Across these bins, the median absolute fractional difference \(\lvert c_{\rm sim}/c_{\rm theory}-1\rvert\) is \(5.02\%\) for D19, \(5.96\%\) for the I21 all-halo fit, and \(11.24\%\) for L16 (noting that L16 is calibrated for relaxed halos, so this larger full-sample difference reflects sample mismatch rather than model inaccuracy; on L16-relaxed halos in Appendix~\ref{app:concentration_alternative_models}, L16 achieves \(4.86\%\)). The largest D19 difference is \(16.34\%\) for \BTKPten{} at \(z=1.07\) and \(\log_{10}(M_{200c}/M_\odot)=12.375\). We adopt D19 as the primary full-sample reference because it is calibrated for all halos and achieves the smallest full-sample median difference.}
+
+\change{For the full halo sample, the prescription with the smallest median difference varies with redshift. L16 gives the smallest median difference at \(z=0\) (\(3.47\%\)), and D19 gives the smallest at \(z=1.07\) (\(3.89\%\)). The I21 all-halo fit gives the smallest median difference at \(z=3.44\) (\(4.77\%\)) and \(z=8.52\) (\(2.91\%\)).}
+
+
+At \(z=0\), the concentration scatter \(\sigma_{68}(\log_{10}c)=0.5(P_{84}-P_{16})\) increases toward lower halo mass. Over \(10^{9.5}\le M_{200c}/M_\odot<10^{10}\), the median \(\sigma_{68}(\log_{10}c)\) is \(0.18\), \(0.24\), and \(0.19\) for PL, \BTKPone{}, and \BTKPten{}, respectively. Over \(10^{10.5}\le M_{200c}/M_\odot<10^{11.5}\), the corresponding values are \(0.15\), \(0.18\), and \(0.15\). \citet{Maccio2007ConcentrationScatter} studied \(z=0\) halos with virial masses over \(3\times10^9\lesssim M_{\rm vir}/(h^{-1}M_\odot)\lesssim3\times10^{13}\). They reported a total scatter of \(\sigma_{\ln c}=0.40\pm0.03\) and an intrinsic scatter of \(0.33\pm0.03\), corresponding to \(\sigma_{\log_{10}c}=0.174\pm0.013\) and \(0.143\pm0.013\), respectively. Their total scatter is close to our low-mass PL value, whereas their intrinsic scatter is close to our high-mass PL value. This comparison is approximate because the two studies use different halo-mass definitions and scatter estimators.
+
+A separate study (Wu, Chan, Lange, \& Huang, submitted) examines the Diemer \& Joyce relation in simulations spanning \(10^7\)--\(10^{10}\,M_\odot\), extending the mass range considered here.
+
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{concentration-qc-d19-relaxation.png}
+    \caption{\change{Concentration--mass relation for the full halo sample in PL, \BTKPone{}, and \BTKPten{}, compared with the D19 prediction for each input linear matter power spectrum. The upper rows show the median \(\log_{10}c_{200c}\) and its 16th--84th percentile halo-to-halo range. The middle rows show \(c_{\rm sim}/c_{\rm D19}\) on a logarithmic scale. The bottom rows show the BT-to-PL median concentration ratio \(c_{\rm BT}/c_{\rm PL}\) in common mass bins. Each BT-to-PL ratio requires at least 20 halos in both samples. Plotted bins contain at least 20 halos with \(N_{\rm DM}\ge100\). Gray shading marks masses below the 1000-particle scale.}}
+    \label{fig:concentration_comparison_d19}
+\end{figure*}
+
+\subsection{Power Spectrum\label{subsub:PS}}
+
+\change{We measure the nonlinear matter power spectrum from the full dark matter density field. For each snapshot, we assign particle masses to the nearest cells of a \(1024^3\) Cartesian mesh and compute the isotropically averaged spectrum with the \textsc{swiftsimio} power-spectrum utilities. We subtract the Poisson term \(P_{\rm shot}=L_{\rm box}^3/N_{\rm p}\), where \(N_{\rm p}\) is the total number of particles. The absolute spectra include smoothing by the nearest-grid-point window (amounting to \(\sim3\%\)--\(5\%\) near \(k\simeq20\)--\(32\,h\,{\rm Mpc}^{-1}\)). A common window factor cancels in the ratio of individual BT and PL modes. The ratios of shell-averaged spectra can still contain residual aliasing. We use the phase-pair-averaged spectra \citep{Pontzen2016Inverted} (see \S\ref{sec:IC} for details) for the \(25\,h^{-1}{\rm Mpc}\) runs and form the BT/PL ratios from these spectra.}
+
+\change{Figure~\ref{fig:power_spectra_ratio_z0} compares PL, \BTKPone{}, and \BTKPten{} at four redshifts. The displayed interval is \(10k_{\rm f}\le k\le0.25k_{\rm Ny}\), or \(2.51\lesssim k/(h\,{\rm Mpc}^{-1})\lesssim32.2\), where \(k_{\rm f}=2\pi/L_{\rm box}\) and \(k_{\rm Ny}=\pi N_{\rm mesh}/L_{\rm box}\), with \(N_{\rm mesh}=1024\). The BT and PL spectra in each ratio are measured within the same box. The finite box excludes long-wavelength modes and massive \(M\gtrsim10^{13}\,M_\odot\) 1-halo contributors at \(z=0\), which can shift the absolute power and relative low-redshift enhancement \citep{Takahashi2008FiniteModes}; Appendix~\ref{app:trusted_ranges} [Eq.~\eqref{eq:finite_mode_power_error}] summarizes the Gaussian finite-mode sampling diagnostic.}
+
+\BTKPone{} has more small-scale power than PL, with a larger enhancement at higher redshift and higher \(k\). At \(z=0\), the power exceeds PL by approximately \(5\%\), \(11\%\), and \(16\%\) near \(k=5\), \(10\), and \(20\,h\,{\rm Mpc}^{-1}\), respectively. At \(z=8.52\) and \(k\simeq20\,h\,{\rm Mpc}^{-1}\), the enhancement is approximately \(321\%\) (lower panels of Fig.~\ref{fig:power_spectra_ratio_z0}). At this point, \(P_{\rm PL}\simeq3.10\times10^{-3}\) and \(P_{\rm BT}\simeq1.30\times10^{-2}\) in units of \(h^{-3}\,{\rm Mpc}^3\), with \(k^3P_{\rm PL}/(2\pi^2)\simeq1.28\). The subtracted Poisson term is about \(0.5\%\) of \(P_{\rm PL}\). In contrast, \BTKPten{} remains within \(\lesssim1\%\) of PL at \(z=0\)--\(3.44\) (where the \(-0.3\%\) to \(-0.9\%\) excursion at \(z=0\) reflects residual finite-box realization variance rather than the \(9\times10^{-6}\%\) linear normalization offset) and shows a modest high-\(k\) enhancement above \(k_p=10\,h\,{\rm Mpc}^{-1}\) at \(z=8.52\).
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{power-spectrum-btpl.png}
+    \caption{Nonlinear matter power spectra and fractional differences relative to PL in the \(25\,h^{-1}{\rm Mpc}\), \(1024^3\) simulations at \(z=0\), \(1.07\), \(3.44\), and \(8.52\). Upper panels show the phase-pair-averaged PL, \BTKPone{}, and \BTKPten{} spectra. Lower panels show \(\Delta P/P_{\rm PL}=(P_{\rm BT}-P_{\rm PL})/P_{\rm PL}\) in percent on symmetric logarithmic axes, with a linear interval from \(-1\%\) to \(1\%\). Horizontal dotted lines mark zero. Both BT models use \(m_s=1.5\), with \(k_p=1\) and \(10\,h\,{\rm Mpc}^{-1}\), respectively. \change{The panels share a common \(k\) axis over \(10k_{\rm f}\le k\le0.25k_{\rm Ny}\).}}
+    \label{fig:power_spectra_ratio_z0}
+\end{figure*}
+
+\section{Discussion and Limitations}
+\label{sec:discussion}
+
+\subsection{Physical Interpretation of the Main Trends}
+
+Enhancing the primordial power spectrum above \(k_p\) increases the amplitude of the initial density fluctuations on those scales. Regions with larger overdensities collapse earlier. \change{At high redshift, the HMF enhancement is strongest below the characteristic mass \(M_p\) in Eq.~\eqref{eq:pivot_mass}.} At later times, the HMF difference decreases, while the assembly histories and central densities remain different from PL.
+
+\BTKPone{} produces the larger change because its lower pivot enhances a broader range of resolved modes. The higher pivot of \BTKPten{} restricts the added power to smaller scales, so the differences from PL decrease more rapidly with halo mass. Under peak-background split, increasing \(\sigma(M,z)\) reduces the peak height \(\nu=\delta_{\rm c}/\sigma(M,z)\) at fixed mass, lowering halo rarity and reducing the halo bias most strongly in \BTKPone{} at high redshift. Nonlinear growth and mergers further reduce the abundance contrast toward lower redshift.
+
+\subsection{Relation to Previous Work}
+
+Analytic and semi-analytic studies have examined halo abundances and structure for enhanced small-scale power. \citet{Parashari23JWSTPPS} used the Sheth--Tormen halo mass function to estimate high-redshift stellar mass densities. \citet{Esteban2024lumpyDM} modeled how enhanced small-scale power changes dwarf-halo concentrations and satellite kinematics. \citet{Dekker25DwarfPPS} combined a concentration model with existing \(\Lambda\)CDM merger trees and a galaxy-formation model. Our \(N\)-body simulations provide direct measurements of halo abundance and structure for comparison with published analytic models.
+
+Other studies ran cosmological simulations with modified power spectra. \citet{Hira24bluetilt} studied halo abundance and high-redshift galaxies for blue-tilted spectra. \citet{Tkac24BumpyPPS} measured halo mass functions for spectra with a Gaussian bump. These studies focused mainly on halo abundance at high redshift. We follow halos to \(z=0\) to determine whether the early abundance changes persist in their assembly histories and internal structure.
+
+\citet{Wu25BT} and \citet{Nadler2025enhanced} used zoom-in simulations of Milky Way--mass halos to study their subhalos. Our periodic-box simulations measure halo statistics as functions of mass across the simulation volume.
+
+
+\subsection{Connection to Observations}
+
+We found that enhanced small-scale primordial power increases the abundance of low-mass halos at high redshift and raises their concentrations. These changes could affect the abundance of high-redshift galaxies observed with the James Webb Space Telescope (JWST), although a quantitative comparison requires a galaxy-formation model.
+
+Dwarf-galaxy dynamics and strong-lensing perturbers provide complementary tests \citep{Dekker25DwarfPPS,Gilman22SubgalacticPPS}. Strong-lensing analyses have identified unusually dense low-mass perturbers in SDSS J0946+1006 and JVAS B1938+666 \citep{Minor2021HighConcentration,Tajalli2025DensePerturbers}. A separate study (Wu, Chan, Lange, \& Huang, submitted) examines whether BT models can account for these systems. Finally, the halo abundances and assembly histories measured here can be incorporated into source-population and reionization models to predict 21-cm signals \citep{Munoz20SmallScale21cm,deKruijf25DarkAges,Zhu26SKAPPS}.
+
+
+\subsection{Numerical and Modeling Limitations}
+
+The main limitations are the dark-matter-only setup, limited sampling of initial random phases, finite mass resolution, finite force resolution, and finite box size.
+
+First, the simulations are collisionless dark-matter-only runs. This setup isolates the gravitational effect of the modified primordial power-spectrum model, but it omits gas cooling, star formation, stellar and active galactic nucleus (AGN) feedback, and reionization. These processes can change halo density profiles, subhalo survival, and the connection between halos and galaxies.
+
+
+Second, the main halo comparisons use one initial realization per model. Using the same initial random phases reduces the uncertainty in PL--BT ratios, but it does not measure the variation among independent realizations. The HMF error bars include only Poisson counting uncertainties, while the concentration error bars show halo-to-halo scatter. Neither includes cosmic variance. The power spectra use phase-pair averages, which reduce phase-dependent fluctuations but do not establish convergence with box size.
+
+Third, finite resolution and box size set the ranges summarized in Table~\ref{tab:trusted_ranges}. The main FOF mass-function results are restricted to \(M_{\rm FOF}\ge10^8\,M_\odot\), and the assembly-history comparisons use halos with \(M_0\ge10^9\,M_\odot\) and \(z\le6\). The density profiles are not reliable for \(r<r_{\rm conv}\). The concentration-model comparisons are restricted to masses above the 1000-particle scale, \(M_{200c}=1.89\times10^9\,M_\odot\). The power-spectrum interval used for quantitative interpretation is \(2.51\le k/(h\,{\rm Mpc}^{-1})\le32.2\) for the \(25\,h^{-1}{\rm Mpc}\) box. Appendix~\ref{app:fof_hmf_resolution} separately tests the effects of mass resolution and box volume on the FOF mass function.
+
+\section{Conclusions}
+\label{sec:conclusion}
+
+
+We used dark-matter-only cosmological \(N\)-body simulations to quantify how enhanced small-scale primordial power affects nonlinear structure formation. We compared a standard power-law (PL) model with two broken-power-law blue-tilted (BT) models defined by Eq.~\eqref{eq:bt_input_power}. Both BT models have an enhanced power spectrum index \(m_s=1.5\) above a pivot wavenumber \(k_p\): \BTKPone{} has \(k_p=1\,h\,{\rm Mpc}^{-1}\), and \BTKPten{} has \(k_p=10\,h\,{\rm Mpc}^{-1}\).
+
+
+The main conclusions are as follows:
+\begin{enumerate}
+    \item \change{Enhanced small-scale primordial power increases halo abundance most strongly at low mass and high redshift (Sec.~\ref{subsub:HMF}). At a friends-of-friends halo mass \(M_{\rm FOF}\simeq1.21\times10^9\,M_\odot\), the \BTKPone{}/PL ratio decreases from \(4.81\) at \(z=8.52\) to \(1.42\) at \(z=0\), while \BTKPten{} produces a smaller change. The \(M_{200c}\) spherical-overdensity mass function shows the same trend (Fig.~\ref{fig:m200c_bocquet16_hmf}).}
+
+    The median differences between the simulations and analytic models of Reed et al. (2007) \citep{Reed_2007} and Bocquet et al. (2016) \citep{Bocquet2016} are below \(8\%\) at \(z=0\) and \(3.44\) and reach \(32\%\) at \(z=8.52\), while diverging substantially in the extrapolated \(z=10.52\)--\(19.41\) regime (up to \(+107\%\) above Reed07 and down to \(-67\%\) below B16 in PL).
+
+    \item \change{At \(z=8.52\) in the \(25\,h^{-1}{\rm Mpc}\) box, the median \BTKPone{}/PL halo bias ratio across the five common mass bins is \(0.54\) for SOAP \(M_{200m}\) centrals, whereas in the \(256\,h^{-1}{\rm Mpc}\) box at \(z=0\)--\(3.44\), \BTKPten{}/PL remains \(0.988\)--\(1.009\) across all 23 paired bins (Sec.~\ref{subsec:halo_bias}).}
+
+    \item \change{Enhanced small-scale primordial power shifts halo assembly earlier (Sec.~\ref{subsub:HMR}). For halos with a present-day halo mass \(M_0\simeq1.25\times10^9\,M_\odot\), the half-mass assembly redshift \(z_{1/2}\) increases from \(2.28\) in PL to \(4.24\) in \BTKPone{} and \(2.61\) in \BTKPten{}. The full mass-assembly histories also show earlier assembly in \BTKPone{} than in PL (Sec.~\ref{subsub:MAH}).}
+
+    \change{Across \(10^9\le M_0/M_\odot\le10^{11}\), the fixed-parameter Correa et al. (2015) curves \citep{Correa2015MAHI} agree with the conditional median histories at \(z=1,2,4,\) and \(6\) to within \(46\%\) for PL (affected at \(M_0=10^9\,M_\odot, z\sim6\) by progenitor detection truncation) and \(9\%\) for \BTKPone{}, and to within \(23\%\) and \(16\%\), respectively, at \(M_0=3\times10^{11}\,M_\odot\).}
+
+    \item The \BTKPone{} run has denser resolved inner profiles, while the \BTKPten{}/PL density ratio stays between \(0.93\) and \(1.08\) outside the shaded convergence limits (Sec.~\ref{subsub:DensityProfile}). Both blue-tilted runs have higher concentrations at low halo mass (Sec.~\ref{subsub:concentration}). At \(z=0\), the median \(c_{200c}\) in the first wholly resolved \(10^{9.5}\)--\(10^{10}\,M_\odot\) interval (\(>1000\) particles and \(r_s>\epsilon_{\rm Pl}\)) exceeds PL by factors of \(2.71\) for \BTKPone{} and \(1.19\) for \BTKPten{} (and by \(3.20\) and \(1.35\) over the lower \(10^9\)--\(10^{9.5}\,M_\odot\) interval where \(r_s\lesssim\epsilon_{\rm Pl}\) in \BTKPone{}).
+
+
+    For the \(0.25\)-dex mass bins lying wholly above \(M_{200c}=1.89\times10^9\,M_\odot\) and containing at least 20 halos, the Diemer \& Joyce (2019) concentration-mass relation agrees with the simulation medians within \(20\%\) for PL, \BTKPone{}, and \BTKPten{} at all four redshifts (Sec.~\ref{subsub:concentration}) \citep{Diemer2019}.
+
+
+    \item \change{\BTKPone{} increases the nonlinear matter power at high \(k\), with a larger enhancement at higher redshift. At \(k\simeq20\,h\,{\rm Mpc}^{-1}\), \BTKPone{} has approximately 16\% and 321\% more power than PL at \(z=0\) and \(z=8.52\), respectively. The \BTKPten{} power spectrum remains close to PL (Sec.~\ref{subsub:PS}; Fig.~\ref{fig:power_spectra_ratio_z0}).}
+\end{enumerate}
+
+
+Future work should test other enhanced primordial spectra, including localized Gaussian bumps \citep{Tkac24BumpyPPS} and smooth blue tilts \citep{2026arXiv260522161K}, against the same analytic models. Simulations with independent random phases and different box sizes are needed to quantify variation among realizations and finite-volume effects. Connecting these models to observations will also require semi-analytic or hydrodynamic galaxy-formation models. Dwarf galaxies, strong-lensing systems (Wu, Chan, Lange, \& Huang, submitted), high-redshift galaxy counts, and 21-cm observations (Yang, Chan, Huang, Theuns, Richings, in prep.) can probe the primordial power spectrum on subgalactic scales.
+
+\section*{Data Availability}
+
+
+\change{The reduced measurements, compact halo catalogs, and figure reproduction materials are available in the Zenodo v1.2.0 release\footnote{\url{https://doi.org/10.5281/zenodo.24455135}}. The accompanying GitHub repository\footnote{\url{https://github.com/HainaHuang729/nonlinear-evolution-of-cosmological-structures-with-enhanced-primordial-power-spectrum}} contains the manuscript source, analysis scripts, and reduced measurements, including the halo bias table and the updated radial profiles. The particle snapshots and full \textsc{HBT-HERONS}/\textsc{SOAP} catalogs are excluded because of their size.}
+
+\begin{acknowledgments}
+
+
+\change{The research in this paper used version 1.0.0 of the {\small SWIFT} open-source simulation code \citep{Schaller2024SWIFT} (available at \url{https://www.swiftsim.com}), {\small MonofonIC} \citep{Hahn2020MUSIC2monofonIC,Michaux2021MUSIC2monofonIC}, {\small HBT-HERONS} \citep{Victor25HBTHERONS}, {\small SOAP} \citep{McGibbon2025SOAP}, and {\small COLOSSUS} \citep{Diemer2018}. This work also used matplotlib \citep{Hunt07matplotlib}, numpy \citep{vand11numpy}, scipy \citep{Virt20scipy}, and NASA's Astrophysics Data System.}
+
+
+TKC is supported by the `Improvement on Competitiveness in Hiring New Faculties' Funding Scheme (4937210-4937211-4937212), the Direct Grant projects (4053662,4443786,4053719) from the Chinese University of Hong Kong, and the Research Grants Council (RGC) Early Career Scheme (24301524).
+
+The calculations were performed on the Chinese University of Hong Kong (CUHK) Central High-Performance Computing Cluster. We thank Edward So, Helen Chan, Anny Cheung, and Nicky Leung for their assistance.
+
+\end{acknowledgments}
+
+\clearpage
+
+\appendix
+
+\section{\texorpdfstring{Numerical Limits}{Numerical Limits}}
+\label{app:trusted_ranges}
+
+
+Table~\ref{tab:trusted_ranges} summarizes the mass, redshift, radius, and wavenumber ranges used for quantitative comparisons. These ranges are set by particle counts, progenitor completeness, radial convergence, finite box size, and mesh resolution.
+
+\begin{table*}[t]
+\caption{Mass, redshift, radial, and wavenumber ranges used for quantitative comparisons. Numerical statements use the listed ranges; some figures also show measurements outside them.}
+\label{tab:trusted_ranges}
+\centering
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\tabcell{0.18\textwidth}{Statistic} & \tabcell{0.17\textwidth}{Quantity} & \tabcell{0.20\textwidth}{Quantitative range} & \tabcell{0.36\textwidth}{Interpretation note} \\
+\midrule
+\tabcell{0.18\textwidth}{FOF halo mass function} & \tabcell{0.17\textwidth}{\(M_{\rm FOF}\)} & \tabcell{0.20\textwidth}{\(M_{\rm FOF}\ge10^8\,M_\odot\)} & \tabcell{0.36\textwidth}{About 50 particles in the fiducial runs; the gray band marks the interval down to the nominal 20-particle threshold. Appendix~\ref{app:fof_hmf_resolution} gives the PL resolution and volume test.} \\
+\tabcell{0.18\textwidth}{\(M_{200c}\) mass-function comparison} & \tabcell{0.17\textwidth}{\(M_{200c}\)} & \tabcell{0.20\textwidth}{\(M_{200c}\ge2.0\times10^8\,M_\odot\)} & \tabcell{0.36\textwidth}{SOAP \texttt{SO/200\_crit} catalogs require a per-halo dark matter particle count \(N_{\rm DM}\ge100\), close to \(1.9\times10^8\,M_\odot\).} \\
+\tabcell{0.18\textwidth}{\change{Halo bias}} & \tabcell{0.17\textwidth}{\change{\(b_{\rm hm}\), \(M_{\rm FOF}\) or \(M_{200m}\)}} & \tabcell{0.20\textwidth}{\change{\(k=0.25\)--\(0.60\) (25 box) and \(0.03\)--\(0.15\) (256 box), in \(h\,{\rm Mpc}^{-1}\)}} & \tabcell{0.36\textwidth}{\change{At least 100 particles per halo and 200 halos per 0.30-dex bin. The lowest retained bin edges are about \(3.7\times10^8\,M_\odot\) (25 box) and \(3.7\times10^{11}\,M_\odot\) (256 box). See Sec.~\ref{subsec:halo_bias}.}} \\
+\tabcell{0.18\textwidth}{Half-mass assembly} & \tabcell{0.17\textwidth}{\(M_{\rm FOF}(z=0)\), \(z_{1/2}\)} & \tabcell{0.20\textwidth}{Quoted trends use \(M_{\rm FOF}(z=0)\gtrsim10^9\,M_\odot\)} & \tabcell{0.36\textwidth}{Each halo is followed through its \texttt{TrackId}. Missing snapshots are not filled, and the recorded FOF mass history is not forced to increase monotonically.} \\
+\tabcell{0.18\textwidth}{Median mass-assembly history} & \tabcell{0.17\textwidth}{\(M_{\rm FOF}(z=0)\), median \(M_{\rm FOF}(z)\)} & \tabcell{0.20\textwidth}{Quantitative use: \(M_0\ge10^9\,M_\odot\), \(z\le6\)} & \tabcell{0.36\textwidth}{Halos are selected at \(z=0\) and followed through \texttt{TrackId}. Only finite positive detections enter each median. At least 90 per cent of each selected sample is detected up to \(z=5.50\) (\(83.6\%\) for PL at \(z=6.15\)).} \\
+\tabcell{0.18\textwidth}{Direct radial halo density profiles} & \tabcell{0.17\textwidth}{Particle radial profiles in \(M_{200m}\) bins} & \tabcell{0.20\textwidth}{Plotted bins use \(10^{10}\)--\(10^{11.5}\,M_\odot\)} & \tabcell{0.36\textwidth}{Profiles are measured directly from simulation particles and compared with NFW profiles whose concentrations are set by the Diemer \& Joyce (2019) relation; the gray region marks radii that do not satisfy the plotted convergence criterion.} \\
+\tabcell{0.18\textwidth}{Concentration--mass relation} & \tabcell{0.17\textwidth}{\(M_{200c}\), \(c_{200c}\)} & \tabcell{0.20\textwidth}{Plotted points require \(N_{\rm DM}\ge100\); model comparisons use bins wholly above \(1000\) particles (\(1.89\times10^9\,M_\odot\))} & \tabcell{0.36\textwidth}{Concentrations must be finite and positive, with \(c_{200c}<500\). Quoted resolved low-mass ratios use \(10^{9.5}\)--\(10^{10}\,M_\odot\) (where \(r_s>\epsilon_{\rm Pl}\) in \BTKPone{}); \(10^9\)--\(10^{9.5}\,M_\odot\) straddles the 1000-particle scale.} \\
+\tabcell{0.18\textwidth}{Nonlinear matter power spectrum} & \tabcell{0.17\textwidth}{\(P(k)\), \(P_{\rm BT}/P_{\rm PL}\)} & \tabcell{0.20\textwidth}{\(2.51\lesssim k/(h\,{\rm Mpc}^{-1})\lesssim32.2\) in the 25 box} & \tabcell{0.36\textwidth}{Phase-pair-averaged spectra; BT/PL is formed within the same box. The displayed interval is \(10k_{\rm f}\le k\le0.25k_{\rm Ny}\), with \(k_{\rm f}=2\pi/L_{\rm box}\).} \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table*}
+
+We estimate the Gaussian finite-mode uncertainty using \citeauthor{Takahashi2008FiniteModes}'s mode-count approximation \citep{Takahashi2008FiniteModes},
+\begin{equation}
+N_{\rm mode}(k)=\frac{L_{\rm box}^{3}k^2\Delta k}{2\pi^2},
+\qquad
+\frac{\sigma_P}{P}=\left(\frac{2}{N_{\rm mode}N_{\rm real}}\right)^{1/2}.
+\label{eq:finite_mode_power_error}
+\end{equation}
+Here, \(\Delta k\) is the bin width, \(N_{\rm mode}\) is the estimated number of Fourier modes, and \(N_{\rm real}\) is the number of independent realizations. For an individual realization, \(N_{\rm real}=1\). The quantity \(\sigma_P/P\) is the fractional \(1\sigma\) uncertainty. This continuum approximation is least accurate near the fundamental mode \(k_{\rm f}=2\pi/L_{\rm box}\). It is a sampling diagnostic for an absolute spectrum; the correlated PL and BT measurements require a covariance estimate to assign uncertainties to BT/PL.
+
+\section{FOF Mass-Function Resolution and Volume Check}
+\label{app:fof_hmf_resolution}
+
+This appendix tests the FOF halo-mass-function range against changes in mass resolution and box volume. Figure~\ref{fig:fof_hmf_resolution} compares four PL runs at \(z=0\) and \(z=8.52\). The fiducial run has \(L_{\rm box}=25\,h^{-1}{\rm Mpc}\) and \(1024^3\) particles. The same-volume resolution tests use \(512^3\) and \(256^3\) particles, while the volume test uses a \(50\,h^{-1}{\rm Mpc}\), \(512^3\) run. The \(25\,h^{-1}{\rm Mpc}\), \(256^3\) and \(50\,h^{-1}{\rm Mpc}\), \(512^3\) runs have the same particle mass, allowing a volume comparison at fixed mass resolution.
+
+We use the same logarithmic bins, Poisson uncertainties, and Warren correction as in the main FOF mass-function analysis. \change{The Reed07 reference in Sec.~\ref{subsub:HMF} uses the linear variance computed with a spherical top-hat filter.} Vertical dotted lines mark the 50-particle mass for each resolution, and the lower panels show ratios to PL-25-\(1024^3\). The reduced data and plotting script are included in the accompanying GitHub and Zenodo public-data release.
+
+At \(z=0\), the same-volume tests agree well above each comparison run's 50-particle mass. Over the common bins with at least 20 objects in both catalogs, PL-25-\(512^3\) has a median ratio of \(0.986\) to PL-25-\(1024^3\) over \(10^{8.92}\)--\(10^{12.25}\,M_\odot\). PL-25-\(256^3\) gives \(0.987\) over \(10^{9.92}\)--\(10^{12.25}\,M_\odot\). The corresponding 16th--84th percentile ranges are \(0.963\)--\(1.029\) and \(0.952\)--\(1.070\).
+
+The \(50\,h^{-1}{\rm Mpc}\), \(512^3\) volume test gives a median ratio of \(0.945\) over \(10^{9.92}\)--\(10^{12.25}\,M_\odot\), with a 16th--84th percentile range of \(0.917\)--\(1.051\). The wider interval reflects finite-volume effects and differences in the random phases.
+
+At \(z=8.52\), the same-volume \(512^3\) run remains close to the fiducial measurement above its 50-particle mass. Its median ratio is \(0.935\) over \(10^{8.92}\)--\(10^{10.58}\,M_\odot\), with a 16th--84th percentile range of \(0.900\)--\(0.979\).
+
+The \(256^3\) same-volume run and the \(50\,h^{-1}{\rm Mpc}\), \(512^3\) volume test cover only five common bins above their \(6.0\times10^9\,M_\odot\) 50-particle scale. Their median ratios are \(0.813\) and \(0.871\), respectively. The \(10^8\,M_\odot\) catalog threshold corresponds to about 50 particles in the fiducial \(1024^3\) run. The cross-resolution comparisons cover the higher mass intervals quoted above. Lower-resolution boxes lose high-redshift low-mass halos when their 50-particle limits enter the plotted mass range.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{fof-hmf-resolution-volume.png}
+    \caption{FOF halo-mass-function resolution and volume test for the PL simulations. Upper panels show the Warren-corrected FOF mass functions at \(z=0\) and \(z=8.52\) for the fiducial PL-25-\(1024^3\) run, same-volume lower-resolution PL-25-\(512^3\) and PL-25-\(256^3\) runs, and the larger PL-50-\(512^3\) run. Lower panels show ratios to PL-25-\(1024^3\) in the same mass bins. Vertical dotted lines mark the 50-particle FOF mass for each resolution; the PL-25-\(256^3\) and PL-50-\(512^3\) lines coincide because the two runs have the same particle mass. The gray ratio band marks \(\pm10\%\). The same-volume comparisons test mass resolution, while the PL-50-\(512^3\) comparison gives a fixed-particle-mass volume test.}
+    \label{fig:fof_hmf_resolution}
+\end{figure*}
+
+\section{Alternative Concentration Prescriptions}
+\label{app:concentration_alternative_models}
+
+\change{Figures~\ref{fig:concentration_comparison_i21_fit} and \ref{fig:concentration_comparison_l16} compare our relaxed halo samples with the I21 relaxed NFW-fit and L16 predictions, respectively. For the L16 selection, we require a normalized offset below \(0.1\) between the center of mass inside \(R_{200c}\) and the most-bound particle. We also require that the lookback time to half-mass assembly satisfy \(t_{50}\ge1.25\,t_{\rm cross}\), where \(t_{\rm cross}=2R_{200c}/V_{200c}\) and \(V_{200c}=(GM_{200c}/R_{200c})^{1/2}\) \citep{Ludlow2016WDMConcentration}. We measure \(t_{50}\) from the first half-mass crossing along the most massive progenitor branch in \(M_{200c}\).}
+
+\change{For the I21 selection we apply \(X_{\rm off}<0.07\), Peebles spin \(\lambda<0.07\), and \(2K/|W|<1.5\) \citep{Ishiyama2021}. We reconstruct virial apertures from the simulation particles around the SOAP halo centers and use a spherical-shell estimate for the potential energy. We estimate the membership of the self-bound halo by removing particles whose kinetic energy exceeds their binding energy in the spherical potential.}
+
+\change{Of the 96 bins above the 1000-particle scale with at least 20 L16-selected halos, 95 also contain at least 20 I21-selected halos. The remaining \BTKPone{} bin at \(z=0\) and \(\log_{10}(M_{200c}/M_\odot)=12.375\) contains 18 I21-selected halos. On the 95 common bins, the median absolute fractional differences for D19, I21 relaxed, and L16 are \(5.16\%\), \(5.74\%\), and \(4.86\%\), respectively, for the L16 selection. They are \(5.31\%\), \(4.90\%\), and \(6.84\%\) for the I21 selection. The I21 relaxed fit also gives the smallest median difference when all particles in the virial aperture enter the relaxation calculation.}
+
+\change{For the full halo sample at \(z=0\), the median of the binned ratios to the I21 all-halo NFW fit over \(10^9\le M_{200c}/M_\odot<10^{9.5}\) is \(0.96\) for PL, \(1.23\) for \BTKPone{}, and \(1.12\) for \BTKPten{}.}
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{concentration-qc-i21-relaxed-fit-relaxation.png}
+    \caption{\change{Concentration--mass relation for halos selected by the I21 relaxation criteria. Dashed curves show the I21 NFW-fit calibration for relaxed halos evaluated with each simulation's input linear matter power spectrum. The upper rows show the median \(\log_{10}c_{200c}\) and its 16th--84th percentile halo-to-halo range. The middle rows show the median concentration divided by the I21 relaxed prediction on a logarithmic scale. The bottom rows show \(c_{\rm BT}/c_{\rm PL}\) for the I21-selected halos, with at least 20 selected halos in each sample. At \(z=8.52\), the comparison set has no PL bin meeting this requirement. Symbols show the 95 comparison bins with at least 20 halos passing both the 1000-particle scale requirement (omitting the lower-mass gray-shaded region) and the I21 relaxation selection. Gray shading marks masses below the 1000-particle scale.}}
+    \label{fig:concentration_comparison_i21_fit}
+\end{figure*}
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{concentration-qc-l16-relaxation.png}
+    \caption{\change{Concentration--mass relation for halos selected by the L16 relaxation criteria. Dashed curves show the L16 prediction for each input linear matter power spectrum. The upper rows show the median \(\log_{10}c_{200c}\) and its 16th--84th percentile halo-to-halo range. The middle rows show \(c_{\rm sim}/c_{\rm L16}\) on a logarithmic scale. The bottom rows show \(c_{\rm BT}/c_{\rm PL}\) for the L16-selected halos, with at least 20 selected halos in each sample. Symbols show bins with at least 20 halos passing both the minimum particle-count requirement and the L16 relaxation selection. Gray shading marks masses below the 1000-particle scale.}}
+    \label{fig:concentration_comparison_l16}
+\end{figure*}
+
+
+\section{FOF Halo Bias}
+\label{app:fof_bias}
+
+\change{We apply the estimator and selection cuts in Sec.~\ref{subsec:halo_bias} to the FOF group catalogs. Figure~\ref{fig:halo_bias_fof} compares these measurements with the \citet{ShethTormen1999Bias} prediction, using the FOF catalog mass to compute \(\nu\). At \(z=8.52\) only one FOF bin in the larger box passes the cuts, for \BTKPone{}. Across 170 mass bins shared by the two catalogs at fixed redshift, model, and box size, the median absolute fractional residual is \(6.19\%\) for \textsc{SOAP} compared with Tinker et al. (2010) and \(7.83\%\) for FOF compared with Sheth--Tormen (1999). At \(z=8.52\), the 17 shared bins all come from the smaller box, and the corresponding residuals are \(8.26\%\) and \(2.96\%\). These comparisons involve different halo mass definitions and reference relations.}
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{halo-bias-fof-st99.pdf}
+    \caption{\change{Halo bias of FOF groups at the redshifts shown in Fig.~\ref{fig:halo_bias}. Open circles and triangles show the \(256\) and \(25\,h^{-1}{\rm Mpc}\) boxes, respectively. Dashed curves show the Sheth--Tormen (1999) prediction. The middle panels show BT/PL bias ratios in shared mass bins within each box, together with the theoretical ratio curves. The lower panels show \(b_{\rm sim}/b_{\rm ST99}-1\) using each bin's median FOF mass. Error bars are jackknife uncertainties obtained by omitting one independent Fourier mode at a time.}}
+    \label{fig:halo_bias_fof}
+\end{figure*}
+
+% ====== bib ====== %
+%\input{main.bbl}
+
+% ====== bib ====== %
+\bibliographystyle{apsrev4-1-JHEPfix}
+\bibliography{main}
+
+
+\end{document}
