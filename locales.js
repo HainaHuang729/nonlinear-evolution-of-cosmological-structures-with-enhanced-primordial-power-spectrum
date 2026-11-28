@@ -215,7 +215,17 @@ window.ARTICLE_EN = {
   '点击上方图例或下方按钮恢复显示。':'Click the legend above or the button below to restore.','恢复全部曲线':'Restore all series',
   '上一个更高红移':'Previous (higher) redshift','下一个更低红移':'Next (lower) redshift',
   '上一个红移（更高 z）':'Previous redshift (higher z)','下一个红移（更低 z）':'Next redshift (lower z)',
-  '重置缩放':'Reset zoom','导出 SVG':'Export SVG','导出当前视图矢量 SVG':'Export current view as vector SVG'
+  '重置缩放':'Reset zoom','导出 SVG':'Export SVG','导出当前视图矢量 SVG':'Export current view as vector SVG',
+  '半质量红移 z₁/₂':'Half-mass redshift z₁/₂','z₁/₂ · BT / PL':'z₁/₂ · BT / PL','对比文献基准 (BK09 / COCO)':'Compare literature (BK09 / COCO)',
+  '半质量形成红移 BT / PL':'Half-mass redshift BT / PL','半质量红移与文献基准对比':'Half-mass redshift vs. literature',
+  '跨 6 个最终质量档 · 归一化组装历史小倍数':'Across 6 final mass bins · Normalized MAH small multiples',
+  '同屏对照所有最终质量窗口（PL vs BT kₚ=1）；点击任意面板可同步切换上方主图质量档。':'Compare all 6 final mass windows at once (PL vs BT kₚ=1); click any panel to switch the main chart above.',
+  '归一化 M(z)/M₀':'Normalized M(z)/M₀','当前主图':'Active',
+  '松弛态占比 f_relaxed':'Relaxed fraction f_relaxed','松弛态 vs 非松弛态 c₂₀₀c':'Relaxed vs. unrelaxed c₂₀₀c',
+  '动力学松弛态占比 f_relaxed':'Dynamical relaxed fraction f_relaxed','松弛态 vs 非松弛态浓度':'Relaxed vs. unrelaxed concentration',
+  '跨 4 个质量档 · z = 0 径向密度剖面小倍数':'Across 4 mass bins · z = 0 radial density small multiples',
+  '同屏比较不同质量晕的内部密度分布与 BT/PL 比值（灰区为 Power 收敛半径以内）；点击任意面板切换上方主图。':'Compare radial profiles and BT/PL ratios across all 4 mass bins (grey: inside Power convergence radius); click any panel to switch the main chart.',
+  '径向密度 ρ(r)':'Density ρ(r)','BT / PL 比值':'BT / PL ratio','三模型配对修正幅度 P_pair / P_single':'Phase-pair correction P_pair / P_single across models'
 };
 
 window.ARTICLE_EN_PATTERNS = [

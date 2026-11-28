@@ -2,6 +2,7 @@
 (() => {
   'use strict';
   const D = window.ARTICLE_DATA;
+  const E = window.ARTICLE_EXTRA || {};
   const M = window.ARTICLE_MEDIA;
   const $ = id => document.getElementById(id);
   if (!D) {
@@ -97,7 +98,7 @@
     });
     document.getElementById('topic-sections').append(section);
     const $=id=>section.querySelector('[data-local-id="'+id+'"]')||document.getElementById(id);
-    const S={tab:topic,statsZ:projectionFrames()[projectionState.frame].z,following:true,definition:'fof',biasDefinition:'M200m',biasBox:'all',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25,hiddenModels:new Set(),showTheory:true,showIntervals:true,zoom:{}};
+    const S={tab:topic,statsZ:projectionFrames()[projectionState.frame].z,following:true,definition:'fof',biasDefinition:'M200m',biasBox:'all',box:25,powerComparison:'ratio',mass:1e10,halfmassView:'zhalf',mahGridMode:'frac',profileMass:1e10,concentrationReference:'none',profileView:'density',profileGridMode:'density',phaseModel:'PL',meshBox:25,hiddenModels:new Set(),showTheory:true,showIntervals:true,zoom:{}};
     let downloadRows=[];
     let currentAvailableZ=[];
     const chartHandles={};
@@ -531,8 +532,57 @@
     const note=document.createElement('span');note.id=topic+'-legend-note';note.dataset.localId='legend-note';note.className='legend-note';
     $('model-legend').replaceChildren(...items,note);
   }
+  function miniChart(series, config={}) {
+    const W=270,H=164,L=44,R=10,T=12,B=34;
+    const xLog=!!config.xLog, yLog=!!config.yLog;
+    const good=p=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&(!xLog||p.x>0)&&(!yLog||p.y>0);
+    const tx=n=>xLog?Math.log10(n):n, ty=n=>yLog?Math.log10(n):n;
+    const xmin=tx(config.xDomain[0]), xmax=tx(config.xDomain[1]);
+    const ymin=ty(config.yDomain[0]), ymax=ty(config.yDomain[1]);
+    const x=n=>L+(tx(n)-xmin)/(xmax-xmin)*(W-L-R);
+    const y=n=>H-B-(ty(n)-ymin)/(ymax-ymin)*(H-T-B);
+    const svg=elem('svg',{viewBox:`0 0 ${W} ${H}`,class:'mini-svg'});
+    const clipId='mclip-'+Math.random().toString(36).slice(2,8);
+    const defs=elem('defs');const clip=elem('clipPath',{id:clipId});clip.append(elem('rect',{x:L,y:T,width:W-L-R,height:H-T-B}));defs.append(clip);svg.append(defs);
+    const plot=elem('g',{'clip-path':`url(#${clipId})`});
+    (config.yTicks||[]).forEach(v=>{
+      if(ty(v)<ymin-1e-6||ty(v)>ymax+1e-6)return;
+      const py=y(v);
+      svg.append(elem('line',{x1:L,y1:py,x2:W-R,y2:py,stroke:'#d7dad1','stroke-width':.65,'pointer-events':'none'}));
+      svg.append(elem('line',{x1:L,y1:py,x2:L+4,y2:py,stroke:'#2b2e2a','stroke-width':1,'pointer-events':'none'}));
+      const lbl=config.yTickFmt?config.yTickFmt(v):fmt(v,2);
+      svg.append(elem('text',{x:L-5,y:py+3.5,'text-anchor':'end',class:'mini-tick'},lbl));
+    });
+    (config.xTicks||[]).forEach(v=>{
+      const px=x(v);
+      svg.append(elem('line',{x1:px,y1:H-B-4,x2:px,y2:H-B,stroke:'#2b2e2a','stroke-width':1,'pointer-events':'none'}));
+      const lbl=config.xTickFmt?config.xTickFmt(v):String(v);
+      svg.append(elem('text',{x:px,y:H-B+13,'text-anchor':'middle',class:'mini-tick'},lbl));
+    });
+    if(config.trusted){
+      const [lo,hi]=config.trusted;
+      const a=Math.max(L,x(lo));
+      if(a>L)plot.append(elem('rect',{x:L,y:T,width:Math.min(W-R,a)-L,height:H-T-B,fill:'#e3e4dc',opacity:.85,'pointer-events':'none'}));
+    }
+    if(config.baseline!==undefined){
+      const by=y(config.baseline);
+      plot.append(elem('line',{x1:L,y1:by,x2:W-R,y2:by,stroke:'#2f332e','stroke-dasharray':'3 2.5','stroke-width':1.1,opacity:.8,'pointer-events':'none'}));
+    }
+    series.forEach(s=>{
+      const pts=s.points.filter(good).sort((a,b)=>a.x-b.x);
+      if(!pts.length)return;
+      const path=pts.map((p,i)=>`${i?'L':'M'}${x(p.x).toFixed(1)},${y(p.y).toFixed(1)}`).join(' ');
+      plot.append(elem('path',{d:path,fill:'none',stroke:s.color,'stroke-width':s.dash?1.3:1.9,'stroke-dasharray':s.dash?'4 3':'',opacity:s.dash?.8:1,'pointer-events':'none'}));
+    });
+    svg.append(plot);
+    svg.append(elem('rect',{x:L,y:T,width:W-L-R,height:H-T-B,fill:'none',stroke:'#2b2e2a','stroke-width':1.2,'pointer-events':'none'}));
+    if(config.xLabel)svg.append(elem('text',{x:(L+W-R)/2,y:H-6,'text-anchor':'middle',class:'mini-axis'},config.xLabel));
+    return svg;
+  }
   function renderStats() {
     $('tooltip').hidden=true;
+    const extraHost=$('topic-extra');
+    if(extraHost){extraHost.replaceChildren();extraHost.hidden=true;}
     const projectionZ=projectionFrames()[projectionState.frame].z;
     TABS.forEach(tab=>{
       $(tab+'-control').hidden=S.tab!==tab;
@@ -609,26 +659,131 @@
     } else if(S.tab==='assembly') {
       const rows=D.assembly.filter(r=>r.mass===S.mass);
       const theory=(D.assemblyTheory||[]).filter(r=>r.mass===S.mass);
+      const hmExtra=E.halfmassExtra||[];
       $('science-question').textContent='今天质量相近的 halo，过去怎样组装，又在何时达到一半质量？';
-      $('legend-note').textContent='阴影：halo 间 16–84% 分位区间；虚线：Correa-EPS';
+      $('legend-note').textContent=S.halfmassView==='ratio'?'左阴影：halo 16–84%；右误差：bootstrap ±1σ':S.halfmassView==='literature'?'左阴影：halo 16–84%；右虚线：BK09 / COCO 文献基准':'阴影：halo 间 16–84% 分位区间；虚线：Correa-EPS';
       setHeading('a','质量组装历史',`M₀ ≈ ${fmt(S.mass)} M☉`,'PL 与 BT kₚ=1 的相同最终质量窗口样本；显示 Warren 修正后正质量样本的 M_FOF(z) 中位数、halo 间 16–84% 分位数与 Correa-EPS 预测，单位为 M☉。');
-      setHeading('b','半质量形成红移','z = 0 选样','按最终 FOF 质量分组，按论文显示 z₁/₂ 均值与 halo 间 16–84% 分位数。该面板不随当前投影红移改写样本。');
       chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Correa-EPS'}))],{title:'质量组装历史',xLabel:'红移 z',yLabel:'median M_FOF(z) [M☉]',xLog:false,bands:true,marker:projectionZ,intervalLabel:'halo 16–84%'});
-      chart('chart-b',grouped(D.halfmass),{title:'半质量形成红移',xLabel:'最终 M_FOF [M☉]',yLabel:'z₁/₂',yLog:false,bands:true,intervalLabel:'halo 16–84%'});
+      if(S.halfmassView==='ratio'&&hmExtra.length){
+        const rRows=hmExtra.filter(r=>r.model!=='PL'&&Number.isFinite(r.ratio)).map(r=>({model:r.model,x:r.x,y:r.ratio,lo:r.ratioLo,hi:r.ratioHi,count:r.count}));
+        setHeading('b','半质量形成红移 BT / PL','z = 0 · bootstrap ±1σ','BT 相对于 PL 的半质量形成红移比值 z₁/₂(BT) / z₁/₂(PL)，误差棒为 bootstrap ±1σ；可见小质量端 BT 形成显著提前。');
+        chart('chart-b',grouped(rRows),{title:'半质量形成红移 BT/PL 比值',xLabel:'最终 M_FOF [M☉]',yLabel:'z₁/₂(BT) / z₁/₂(PL)',yLog:false,baseline:1,errors:true,intervalLabel:'bootstrap ±1σ'});
+      } else if(S.halfmassView==='literature'&&hmExtra.length){
+        const plPts=hmExtra.filter(r=>r.model==='PL');
+        const bkSeries={model:'BK09',label:'BK09 (Millennium-II)',color:'#937633',dash:true,points:plPts.filter(r=>Number.isFinite(r.bk09)).map(r=>({x:r.x,y:r.bk09}))};
+        const cocoSeries={model:'COCO',label:'COCO (Hellwing+16)',color:'#4D8F9C',dash:true,points:plPts.filter(r=>Number.isFinite(r.coco)).map(r=>({x:r.x,y:r.coco}))};
+        setHeading('b','半质量红移与文献基准对比','PL & BT vs. BK09 / COCO','实线为本模拟三个模型的 z₁/₂ 均值与 16–84% 散布，虚线为标准 ΛCDM 文献基准 Boylan-Kolchin+09 (BK09) 与 COCO (Hellwing+16)。');
+        chart('chart-b',[...grouped(D.halfmass),bkSeries,cocoSeries],{title:'半质量形成红移与文献基准',xLabel:'最终 M_FOF [M☉]',yLabel:'z₁/₂',yLog:false,bands:true,intervalLabel:'halo 16–84%'});
+      } else {
+        setHeading('b','半质量形成红移','z = 0 选样','按最终 FOF 质量分组，按论文显示 z₁/₂ 均值与 halo 间 16–84% 分位数。该面板不随当前投影红移改写样本。');
+        chart('chart-b',grouped(D.halfmass),{title:'半质量形成红移',xLabel:'最终 M_FOF [M☉]',yLabel:'z₁/₂',yLog:false,bands:true,intervalLabel:'halo 16–84%'});
+      }
+      if(extraHost&&(E.mahRatio||[]).length){
+        extraHost.hidden=false;
+        const masses=[...new Set(E.mahRatio.map(r=>r.mass))].sort((a,b)=>a-b);
+        const head=document.createElement('div');head.className='extra-header';
+        const titleBox=document.createElement('div');
+        const h4=document.createElement('h4');h4.textContent='跨 6 个最终质量档 · 归一化组装历史小倍数';
+        const sub=document.createElement('p');sub.className='extra-sub';sub.textContent='同屏对照所有最终质量窗口（PL vs BT kₚ=1）；点击任意面板可同步切换上方主图质量档。';
+        titleBox.append(h4,sub);
+        const modeBar=document.createElement('div');modeBar.className='extra-modes';
+        [['frac','归一化 M(z)/M₀'],['ratio','BT / PL 比值']].forEach(([val,lbl])=>{
+          const b=document.createElement('button');b.type='button';b.className='extra-mode-btn'+(S.mahGridMode===val?' is-active':'');b.textContent=lbl;
+          b.addEventListener('click',()=>{S.mahGridMode=val;renderStats();});
+          modeBar.append(b);
+        });
+        head.append(titleBox,modeBar);
+        const grid=document.createElement('div');grid.className='small-multiples-grid cols-3';
+        masses.forEach(m=>{
+          const mRows=E.mahRatio.filter(r=>r.mass===m).sort((a,b)=>a.x-b.x);
+          const card=document.createElement('button');card.type='button';
+          card.className='mini-card'+(m===S.mass?' is-selected':'');
+          const top=document.createElement('div');top.className='mini-card-head';
+          const mLbl=document.createElement('strong');mLbl.textContent=`M₀ = ${fmt(m)} M☉`;
+          const z2=mRows.find(r=>Math.abs(r.x-2.03)<0.15);
+          const tag=document.createElement('span');
+          tag.textContent=m===S.mass?'当前主图':(z2&&Number.isFinite(z2.y)?`z≈2: ${z2.y.toFixed(2)}×`:'');
+          top.append(mLbl,tag);
+          let svg;
+          if(S.mahGridMode==='ratio'){
+            svg=miniChart([{color:COLORS.kp1,points:mRows.map(r=>({x:r.x,y:r.y}))}],{xDomain:[0,7.7],yDomain:[0.7,4.2],xTicks:[0,2,4,6],yTicks:[1,2,3,4],baseline:1,xLabel:'z'});
+          } else {
+            svg=miniChart([
+              {color:COLORS.PL,points:mRows.map(r=>({x:r.x,y:r.plFrac}))},
+              {color:COLORS.kp1,points:mRows.map(r=>({x:r.x,y:r.btFrac}))}
+            ],{xDomain:[0,7.7],yDomain:[0.008,1.15],yLog:true,xTicks:[0,2,4,6],yTicks:[0.01,0.1,1],yTickFmt:v=>v===1?'1':v===0.1?'10⁻¹':'10⁻²',xLabel:'z'});
+          }
+          card.append(top,svg);
+          card.addEventListener('click',()=>{S.mass=m;$('final-mass').value=String(m);clearZoom();renderStats();});
+          grid.append(card);
+        });
+        extraHost.append(head,grid);
+      }
       downloadRows=[...rows.map(r=>({...r,series:'assembly'})),...D.halfmass.map(r=>({...r,series:'half_mass_redshift'}))];
     } else if(S.tab==='structure') {
-      const theoryMode=S.concentrationReference!=='none';
-      const rows=theoryMode?atZ(D.concentrationTheory).filter(r=>r.reference===S.concentrationReference):atZ(D.concentration);
+      const relaxMode=S.concentrationReference==='relax_frac'||S.concentrationReference==='relax_split';
+      const theoryMode=!relaxMode&&S.concentrationReference!=='none';
+      const rows=relaxMode?atZ(E.relaxation||[]):theoryMode?atZ(D.concentrationTheory).filter(r=>r.reference===S.concentrationReference):atZ(D.concentration);
       const originalProfiles=D.profiles.filter(r=>r.mass===S.profileMass);
       const profiles=(S.profileView==='ratio'?D.profileRatios:D.profiles).filter(r=>r.mass===S.profileMass);
       const convergence=Math.max(...originalProfiles.map(r=>r.convergence));
-      $('science-question').textContent='halo 的内部密度分布与浓度，是否随输入功率模型改变？';
-      $('legend-note').textContent=S.profileView==='ratio'?'浓度阴影：halo 散布；密度比区间：由 bootstrap 边界构造':'浓度阴影：halo 散布；剖面阴影：bootstrap';
-      setHeading('a',theoryMode?'浓度 / '+THEORY_LABELS[S.concentrationReference]:'浓度–质量关系',zr,theoryMode?'模拟中位浓度与所选理论值的比值；新增红移按论文设置重新计算理论。阴影为 halo 分位区间除以同一参考值，灰区为 1000 粒子尺度以下。':'SOAP c₂₀₀c 的中位数及 halo 间 16–84% 散布；缺失红移从对应 SOAP 目录按论文筛选补算。灰区标出 1000 粒子尺度以下。');
+      const relaxAvail=unique((E.relaxation||[]).map(r=>r.z));
+      $('science-question').textContent='halo 的内部密度分布、浓度与动力学松弛态，是否随输入功率模型改变？';
+      $('legend-note').textContent=S.concentrationReference==='relax_split'?'实线：松弛态 c₂₀₀c；虚线：非松弛态 c₂₀₀c':S.concentrationReference==='relax_frac'?'已分类样本中的松弛态比例（四主稿红移）':S.profileView==='ratio'?'浓度阴影：halo 散布；密度比区间：由 bootstrap 边界构造':'浓度阴影：halo 散布；剖面阴影：bootstrap';
+      if(S.concentrationReference==='relax_frac'){
+        const fracRows=rows.filter(r=>Number.isFinite(r.fracClassified)).map(r=>({model:r.model,x:r.x,y:r.fracClassified,count:r.nAll}));
+        setHeading('a','动力学松弛态占比 f_relaxed',zr,'已分类 halo 中的松弛态比例（依据 concentration_prescription_comparison.csv，覆盖 z = 8.52, 3.44, 1.07, 0 四个主稿红移）。灰区为 1000 粒子以下。');
+        chart('chart-a',grouped(fracRows),{title:'松弛态占比',xLabel:'M₂₀₀c [M☉]',yLabel:'f_relaxed',yLog:false,yDomain:[0,1.02],trusted:[1.89e9,1e15],available:relaxAvail});
+      } else if(S.concentrationReference==='relax_split'){
+        const relRows=rows.filter(r=>Number.isFinite(r.cRelaxed)).map(r=>({model:r.model,x:r.x,y:r.cRelaxed,lo:r.cRelaxedLo,hi:r.cRelaxedHi,count:r.nRelaxed}));
+        const unrRows=rows.filter(r=>Number.isFinite(r.cUnrelaxed)).map(r=>({model:r.model,x:r.x,y:r.cUnrelaxed,count:r.nUnrelaxed}));
+        setHeading('a','松弛态 vs 非松弛态浓度',zr,'实线为松弛态 halo 中位 c₂₀₀c（阴影 16–84%），虚线为非松弛态中位 c₂₀₀c；松弛态晕普遍更集中且更贴近理论预测。');
+        chart('chart-a',[...grouped(relRows),...grouped(unrRows,{dash:true}).map(s=>({...s,label:s.label+' · 非松弛态'}))],{title:'松弛态与非松弛态浓度对比',xLabel:'M₂₀₀c [M☉]',yLabel:'c₂₀₀c',bands:true,trusted:[1.89e9,1e15],available:relaxAvail,intervalLabel:'松弛态 16–84%'});
+      } else {
+        setHeading('a',theoryMode?'浓度 / '+THEORY_LABELS[S.concentrationReference]:'浓度–质量关系',zr,theoryMode?'模拟中位浓度与所选理论值的比值；新增红移按论文设置重新计算理论。阴影为 halo 分位区间除以同一参考值，灰区为 1000 粒子尺度以下。':'SOAP c₂₀₀c 的中位数及 halo 间 16–84% 散布；缺失红移从对应 SOAP 目录按论文筛选补算。灰区标出 1000 粒子尺度以下。');
+        chart('chart-a',grouped(rows),{title:theoryMode?'浓度与理论参考的比值':'浓度与质量',xLabel:'M₂₀₀c [M☉]',yLabel:theoryMode?'c_sim / c_theory':'c₂₀₀c',bands:true,baseline:theoryMode?1:undefined,trusted:[1.89e9,1e15],available,intervalLabel:theoryMode?'halo 分位数 / 理论值':'halo 16–84%'});
+      }
       setHeading('b',S.profileView==='ratio'?'相对于 PL 的径向密度':'直接粒子密度剖面',`固定 z = 0 · ${fmt(S.profileMass)} M☉`,S.profileView==='ratio'?'直接读取发布的 BT/PL 密度比；阴影由两组剖面的 bootstrap 边界构造，并非比值的配对 bootstrap 区间。灰区沿用保守 Power 收敛半径。':'粒子计数得到的中位径向密度；阴影为中位数的 bootstrap 16–84% 区间。左侧灰区采用三个模型中最大的 Power 收敛半径。');
-      chart('chart-a',grouped(rows),{title:theoryMode?'浓度与理论参考的比值':'浓度与质量',xLabel:'M₂₀₀c [M☉]',yLabel:theoryMode?'c_sim / c_theory':'c₂₀₀c',bands:true,baseline:theoryMode?1:undefined,trusted:[1.89e9,1e15],available,intervalLabel:theoryMode?'halo 分位数 / 理论值':'halo 16–84%'});
       chart('chart-b',grouped(profiles),{title:S.profileView==='ratio'?'z=0 BT/PL 密度比':'z=0 直接粒子密度剖面',xLabel:'r / R₂₀₀m',yLabel:S.profileView==='ratio'?'ρ_BT / ρ_PL':'ρ [M☉ kpc⁻³]',bands:true,baseline:S.profileView==='ratio'?1:undefined,trusted:[convergence,10],intervalLabel:S.profileView==='ratio'?'bootstrap 边界构造区间':'bootstrap 16–84%'});
-      downloadRows=[...rows.map(r=>({...r,series:theoryMode?'concentration_over_theory':'concentration'})),...profiles.map(r=>({...r,series:S.profileView==='ratio'?'density_BT_over_PL':'density_profile'}))];
+      if(extraHost&&D.profiles.length){
+        extraHost.hidden=false;
+        const pMasses=[...new Set(D.profiles.map(r=>r.mass))].sort((a,b)=>a-b);
+        const head=document.createElement('div');head.className='extra-header';
+        const titleBox=document.createElement('div');
+        const h4=document.createElement('h4');h4.textContent='跨 4 个质量档 · z = 0 径向密度剖面小倍数';
+        const sub=document.createElement('p');sub.className='extra-sub';sub.textContent='同屏比较不同质量晕的内部密度分布与 BT/PL 比值（灰区为 Power 收敛半径以内）；点击任意面板切换上方主图。';
+        titleBox.append(h4,sub);
+        const modeBar=document.createElement('div');modeBar.className='extra-modes';
+        [['density','径向密度 ρ(r)'],['ratio','BT / PL 比值']].forEach(([val,lbl])=>{
+          const b=document.createElement('button');b.type='button';b.className='extra-mode-btn'+(S.profileGridMode===val?' is-active':'');b.textContent=lbl;
+          b.addEventListener('click',()=>{S.profileGridMode=val;renderStats();});
+          modeBar.append(b);
+        });
+        head.append(titleBox,modeBar);
+        const grid=document.createElement('div');grid.className='small-multiples-grid cols-4';
+        pMasses.forEach(m=>{
+          const orig=D.profiles.filter(r=>r.mass===m);
+          const conv=Math.max(...orig.map(r=>r.convergence));
+          const card=document.createElement('button');card.type='button';
+          card.className='mini-card'+(m===S.profileMass?' is-selected':'');
+          const top=document.createElement('div');top.className='mini-card-head';
+          const mLbl=document.createElement('strong');mLbl.textContent=`${fmt(m)} M☉`;
+          const tag=document.createElement('span');tag.textContent=m===S.profileMass?'当前主图':`r_conv=${conv.toFixed(2)}`;
+          top.append(mLbl,tag);
+          let svg;
+          if(S.profileGridMode==='ratio'){
+            const rPts=D.profileRatios.filter(r=>r.mass===m);
+            svg=miniChart(grouped(rPts),{xDomain:[0.01,1.1],yDomain:[0.55,3.2],xLog:true,yLog:true,xTicks:[0.01,0.1,1],xTickFmt:v=>v===1?'1':v===0.1?'0.1':'0.01',yTicks:[1,2,3],baseline:1,trusted:[conv,10],xLabel:'r / R₂₀₀m'});
+          } else {
+            svg=miniChart(grouped(orig),{xDomain:[0.01,1.1],yDomain:[1e3,4e8],xLog:true,yLog:true,xTicks:[0.01,0.1,1],xTickFmt:v=>v===1?'1':v===0.1?'0.1':'0.01',yTicks:[1e4,1e6,1e8],yTickFmt:v=>v===1e8?'10⁸':v===1e6?'10⁶':'10⁴',trusted:[conv,10],xLabel:'r / R₂₀₀m'});
+          }
+          card.append(top,svg);
+          card.addEventListener('click',()=>{S.profileMass=m;$('profile-mass').value=String(m);clearZoom();renderStats();});
+          grid.append(card);
+        });
+        extraHost.append(head,grid);
+      }
+      downloadRows=[...rows.map(r=>({...r,series:relaxMode?S.concentrationReference:theoryMode?'concentration_over_theory':'concentration'})),...profiles.map(r=>({...r,series:S.profileView==='ratio'?'density_BT_over_PL':'density_profile'}))];
     } else if(S.tab==='input') {
       const rows=D.inputPower.filter(r=>r.x>=1e-3&&r.x<=1e3),ratios=D.inputRatios.filter(r=>r.x>=1e-3&&r.x<=1e3);
       const pivots=[{value:1,label:'kₚ = 1'},{value:10,label:'kₚ = 10'}];
@@ -649,6 +804,53 @@
       setHeading('b','功率谱网格收敛',`固定 z = 0 · L = ${S.meshBox}`,'相同 PL 模拟分别使用 512³ 和 1024³ 功率谱网格；显示源表中的 P₅₁₂/P₁₀₂₄。此处改变的是测量网格，灰区标出论文采用的 k 范围之外。');
       chart('chart-a',series,{title:'FOF 分辨率和体积检查',xLabel:'M_FOF [M☉]',yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,available,intervalLabel:'Poisson ±1σ'});
       chart('chart-b',[{model:'PL',label:'PL · 网格 512³ / 1024³',color:COLORS.PL,points:mesh}],{title:'PL 功率谱网格收敛',xLabel:'k [h Mpc⁻¹]',yLabel:'P_mesh512 / P_mesh1024',yLog:false,baseline:1,trusted});
+      if(extraHost&&(E.phasePair||[]).length){
+        extraHost.hidden=false;
+        const ppZs=unique(E.phasePair.map(r=>r.z));
+        const ppZ=ppZs.some(z=>nearly(z,S.statsZ))?S.statsZ:ppZs.reduce((best,z)=>Math.abs(z-S.statsZ)<Math.abs(best-S.statsZ)?z:best,ppZs[0]);
+        const ppRows=E.phasePair.filter(r=>nearly(r.z,ppZ));
+        const ppTrusted=[10*2*Math.PI/25,.25*Math.PI*1024/25];
+        const head=document.createElement('div');head.className='extra-header';
+        const titleBox=document.createElement('div');
+        const h4=document.createElement('h4');h4.textContent=`25 h⁻¹ Mpc 相位反转配对抵消大尺度方差（z = ${ztext(ppZ)}）`;
+        const sub=document.createElement('p');sub.className='extra-sub';sub.textContent='左图对比单实现（虚线）与相位反转配对平均（实线）相对 HMcode2020 的偏离；右图显示三个模型的配对/单实现比值 P_pair / P_single。灰区为 10k_f 以下。';
+        titleBox.append(h4,sub);
+        const modeBar=document.createElement('div');modeBar.className='extra-modes';
+        MODELS.forEach(m=>{
+          const b=document.createElement('button');b.type='button';b.className='extra-mode-btn'+(S.phaseModel===m?' is-active':'');b.textContent=LABELS[m];
+          b.addEventListener('click',()=>{S.phaseModel=m;renderStats();});
+          modeBar.append(b);
+        });
+        head.append(titleBox,modeBar);
+        const grid=document.createElement('div');grid.className='small-multiples-grid cols-2';
+        const cardA=document.createElement('div');cardA.className='mini-card is-static';
+        const topA=document.createElement('div');topA.className='mini-card-head';
+        const lblA=document.createElement('strong');lblA.textContent=`${LABELS[S.phaseModel]} · P_sim / P_HMcode2020（实线配对 vs 虚线单实现）`;
+        const tagA=document.createElement('span');tagA.textContent=`z = ${ztext(ppZ)}`;
+        topA.append(lblA,tagA);
+        const mRows=ppRows.filter(r=>r.model===S.phaseModel);
+        const valsA=mRows.flatMap(r=>[r.singleOverHm,r.pairOverHm]).filter(Number.isFinite);
+        const minA=Math.min(0.8,...valsA)*0.94, maxA=Math.max(1.2,...valsA)*1.06;
+        const niceTicks=(lo,hi)=>{const raw=(hi-lo)/4,p=10**Math.floor(Math.log10(raw)),st=[1,2,2.5,5,10].find(s=>s*p>=raw)*p,out=[];for(let v=Math.ceil(lo/st)*st;v<=hi+1e-6;v+=st)out.push(Number(v.toFixed(2)));return out;};
+        const svgA=miniChart([
+          {color:COLORS[S.phaseModel],dash:true,points:mRows.map(r=>({x:r.x,y:r.singleOverHm}))},
+          {color:COLORS[S.phaseModel],points:mRows.map(r=>({x:r.x,y:r.pairOverHm}))}
+        ],{xDomain:[2.2,35],yDomain:[minA,maxA],xLog:true,xTicks:[3,5,10,20,30],xTickFmt:v=>String(v),yTicks:niceTicks(minA,maxA),baseline:1,trusted:ppTrusted,xLabel:'k [h Mpc⁻¹]'});
+        cardA.append(topA,svgA);
+
+        const cardB=document.createElement('div');cardB.className='mini-card is-static';
+        const topB=document.createElement('div');topB.className='mini-card-head';
+        const lblB=document.createElement('strong');lblB.textContent='三模型配对修正幅度 P_pair / P_single';
+        const tagB=document.createElement('span');tagB.textContent='L = 25 h⁻¹ Mpc';
+        topB.append(lblB,tagB);
+        const valsB=ppRows.map(r=>r.pairOverSingle).filter(Number.isFinite);
+        const minB=Math.min(0.85,...valsB)*0.94, maxB=Math.max(1.15,...valsB)*1.06;
+        const ratioSeries=MODELS.map(m=>({color:COLORS[m],points:ppRows.filter(r=>r.model===m).map(r=>({x:r.x,y:r.pairOverSingle}))}));
+        const svgB=miniChart(ratioSeries,{xDomain:[2.2,35],yDomain:[minB,maxB],xLog:true,xTicks:[3,5,10,20,30],xTickFmt:v=>String(v),yTicks:niceTicks(minB,maxB),baseline:1,trusted:ppTrusted,xLabel:'k [h Mpc⁻¹]'});
+        cardB.append(topB,svgB);
+        grid.append(cardA,cardB);
+        extraHost.append(head,grid);
+      }
       downloadRows=[...rows.map(r=>({...r,series:'fof_resolution'})),...mesh.map(r=>({...r,series:'power_mesh_convergence'}))];
     }
     $('download-data').textContent=downloadRows.length?'下载本主题数据 ↓':'当前无可下载数据';
@@ -700,7 +902,7 @@
   $('bias-definition').addEventListener('change',event=>{clearZoom();S.biasDefinition=event.target.value;renderStats();});
   $('bias-box').addEventListener('change',event=>{clearZoom();S.biasBox=event.target.value;renderStats();});
   $('box-size').addEventListener('change',event=>{clearZoom();S.box=Number(event.target.value);renderStats();});
-  for(const [id,key] of [['power-comparison','powerComparison'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id).addEventListener('change',event=>{clearZoom();S[key]=event.target.value;renderStats();});
+  for(const [id,key] of [['power-comparison','powerComparison'],['halfmass-view','halfmassView'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id)?.addEventListener('change',event=>{clearZoom();S[key]=event.target.value;renderStats();});
   $('mesh-box').addEventListener('change',event=>{clearZoom();S.meshBox=Number(event.target.value);renderStats();});
   for(const [id,rows,key,stateKey] of [['final-mass',D.assembly,'mass','mass'],['profile-mass',D.profiles,'mass','profileMass']]) {
     $(id).replaceChildren(...[...new Set(rows.map(r=>r[key]))].sort((a,b)=>a-b).map(m=>{const option=document.createElement('option');option.value=m;option.textContent=fmt(m)+' M☉';option.selected=m===S[stateKey];return option;}));
