@@ -207,7 +207,15 @@ window.ARTICLE_EN = {
   '快照':'Snapshot','视角旋转':'rotating view','封面 z':'Poster z','播放从 z':'playback starts at z',
   '开始':'','固定 z':'Fixed z','红移':'Redshift','网格':'Mesh','粒子':'particles',
   '下载视频':'Download video','打开视频':'Open video','原 GIF':'Original GIF','下载':'Download','打开':'Open',
-  '查看':'View','数据打包':'Data packaged','离线可用':'offline ready','秒':'s'
+  '查看':'View','数据打包':'Data packaged','离线可用':'offline ready','秒':'s',
+  '采用区间外':'Outside adopted range','点击切换显隐 · 双击单独聚焦':'Click to toggle · Double-click to isolate',
+  'Reed07 理论':'Reed07 theory','Tinker10 理论':'Tinker10 theory','ST99 理论':'ST99 theory','HMcode2020 理论':'HMcode2020 theory','Correa-EPS 理论':'Correa-EPS theory',
+  'Poisson 误差':'Poisson error','jackknife 误差':'Jackknife error','16–84% 区间':'16–84% interval','散布 / bootstrap 区间':'Scatter / bootstrap',
+  '重置图例':'Reset legend','当前已隐藏本图对应曲线':'Series for this panel are hidden',
+  '点击上方图例或下方按钮恢复显示。':'Click the legend above or the button below to restore.','恢复全部曲线':'Restore all series',
+  '上一个更高红移':'Previous (higher) redshift','下一个更低红移':'Next (lower) redshift',
+  '上一个红移（更高 z）':'Previous redshift (higher z)','下一个红移（更低 z）':'Next redshift (lower z)',
+  '重置缩放':'Reset zoom','导出 SVG':'Export SVG','导出当前视图矢量 SVG':'Export current view as vector SVG'
 };
 
 window.ARTICLE_EN_PATTERNS = [

@@ -52,14 +52,41 @@
   function grouped(rows, options={}) {
     return MODELS.map(model=>({model,label:LABELS[model],color:COLORS[model],points:rows.filter(r=>r.model===model).sort((a,b)=>a.x-b.x),...options})).filter(s=>s.points.length);
   }
-  function tooltip(text, target, event) {
+  function tooltip(content, target, event) {
     const el=$('tooltip');
-    el.textContent=text; el.hidden=false;
+    if(typeof content==='string'){
+      el.classList.remove('tooltip-rich');
+      el.textContent=content;
+    } else {
+      el.classList.add('tooltip-rich');
+      const frag=document.createDocumentFragment();
+      const head=document.createElement('div');head.className='tooltip-head';
+      const headTitle=document.createElement('span');headTitle.textContent=content.header;head.append(headTitle);
+      if(content.badge){const badge=document.createElement('span');badge.className='tooltip-badge';badge.textContent=content.badge;head.append(badge);}
+      frag.append(head);
+      const list=document.createElement('div');list.className='tooltip-rows';
+      content.rows.forEach(row=>{
+        const item=document.createElement('div');item.className='tooltip-row'+(row.dash?' is-theory':'')+(row.outside?' is-outside':'');
+        const sw=document.createElement('span');sw.className='tooltip-swatch'+(row.dash?' is-dash':'')+(row.open?' is-open':'');
+        sw.style.setProperty('--swatch-color',row.color);
+        const lbl=document.createElement('span');lbl.className='tooltip-label';lbl.textContent=row.label;
+        const val=document.createElement('span');val.className='tooltip-val';val.textContent=row.value;
+        item.append(sw,lbl,val);
+        if(row.detail){const det=document.createElement('span');det.className='tooltip-detail';det.textContent=row.detail;item.append(det);}
+        list.append(item);
+      });
+      frag.append(list);
+      el.replaceChildren(frag);
+    }
+    el.hidden=false;
     const rect=target.getBoundingClientRect();
-    const x=event?.clientX ?? rect.right;
-    const y=event?.clientY ?? rect.top;
-    el.style.left=Math.min(Math.max(8,x+14),window.innerWidth-el.offsetWidth-8)+'px';
-    el.style.top=Math.min(Math.max(8,y+12),window.innerHeight-el.offsetHeight-8)+'px';
+    const cx=event?.clientX ?? rect.right;
+    const cy=event?.clientY ?? rect.top;
+    const w=el.offsetWidth, h=el.offsetHeight;
+    const left=(cx+16+w<=window.innerWidth-8)?cx+16:Math.max(8,cx-w-16);
+    const top=Math.min(Math.max(8,cy+12),window.innerHeight-h-8);
+    el.style.left=left+'px';
+    el.style.top=top+'px';
   }
   function createTopic(topic) {
     const section=document.getElementById('stats-topic-template').content.firstElementChild.cloneNode(true);
@@ -70,16 +97,40 @@
     });
     document.getElementById('topic-sections').append(section);
     const $=id=>section.querySelector('[data-local-id="'+id+'"]')||document.getElementById(id);
-    const S={tab:topic,statsZ:projectionFrames()[projectionState.frame].z,following:true,definition:'fof',biasDefinition:'M200m',biasBox:'all',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25};
+    const S={tab:topic,statsZ:projectionFrames()[projectionState.frame].z,following:true,definition:'fof',biasDefinition:'M200m',biasBox:'all',box:25,powerComparison:'ratio',mass:1e10,profileMass:1e10,concentrationReference:'none',profileView:'density',meshBox:25,hiddenModels:new Set(),showTheory:true,showIntervals:true,zoom:{}};
     let downloadRows=[];
+    let currentAvailableZ=[];
+    const chartHandles={};
     $('topic-title').textContent='03.'+(TABS.indexOf(topic)+1)+'  '+TOPICS[topic];
   function chart(id, series, config={}) {
+    const side=id.endsWith('-a')?'a':'b';
+    const resetBtn=$('chart-reset-'+side);
+    const exportBtn=$('chart-export-'+side);
+    const zState=S.zoom[id];
+    if(resetBtn)resetBtn.hidden=!zState;
+    if(exportBtn)exportBtn.hidden=true;
+    if(zState)config={...config,xDomain:zState.xDomain||config.xDomain,yDomain:zState.yDomain||config.yDomain};
     const host=$(id); host.replaceChildren();
-    const W=620,H=338,L=70,R=20,T=25,B=53;
+    delete chartHandles[id];
+    const W=620,H=350,L=76,R=20,T=24,B=58;
     const xLog=config.xLog!==false, yLog=config.yLog!==false;
     const good = p=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&(!xLog||p.x>0)&&(!yLog||p.y>0);
-    const all=series.flatMap(s=>s.points.filter(good));
-    if(!all.length) { empty(id,config.available??[]); return; }
+    const rawAll=series.flatMap(s=>s.points.filter(good));
+    if(!rawAll.length) { empty(id,config.available??[]); return; }
+    const visibleSeries=series.filter(s=>!(s.model&&S.hiddenModels.has(s.model))&&!(s.dash&&!S.showTheory));
+    const all=visibleSeries.flatMap(s=>s.points.filter(good));
+    if(!all.length) {
+      const box=document.createElement('div');box.className='chart-empty';
+      const icon=document.createElement('span');icon.className='empty-icon';icon.textContent='◌';
+      const title=document.createElement('strong');title.textContent='当前已隐藏本图对应曲线';
+      const note=document.createElement('span');note.textContent='点击上方图例或下方按钮恢复显示。';
+      const choices=document.createElement('div');choices.className='choices';
+      const btn=document.createElement('button');btn.type='button';btn.textContent='恢复全部曲线';
+      btn.addEventListener('click',()=>{S.hiddenModels.clear();S.showTheory=true;renderStats();});
+      choices.append(btn);box.append(icon,title,note,choices);host.replaceChildren(box);
+      return;
+    }
+    series=visibleSeries;
     const tx=n=>xLog?Math.log10(n):n, ty=n=>yLog?Math.log10(n):n;
     const xs=all.map(p=>tx(p.x));
     const ys=all.flatMap(p=>[p.y,p.lo,p.hi].filter(v=>Number.isFinite(v)&&(!yLog||v>0)).map(ty));
@@ -128,67 +179,277 @@
     };
     const yTickList=ticks(ymin,ymax,yLog), yStep=yTickList.length>1?Math.abs((yLog?10**yTickList[1]-10**yTickList[0]:yTickList[1]-yTickList[0])):undefined;
     const seenY=new Set();
-    yTickList.forEach(v=>{const py=H-B-(v-ymin)/(ymax-ymin)*(H-T-B);svg.append(elem('line',{x1:L,y1:py,x2:W-R,y2:py,stroke:'#e8ece5','stroke-width':.7,'pointer-events':'none'}));const lbl=tickLabel(v,yLog,ymax-ymin,yStep);if(!seenY.has(lbl)){seenY.add(lbl);svg.append(elem('text',{x:L-12,y:py+4,'text-anchor':'end',fill:'#899285','font-size':11},lbl));}});
+    yTickList.forEach(v=>{
+      const py=H-B-(v-ymin)/(ymax-ymin)*(H-T-B);
+      svg.append(elem('line',{x1:L,y1:py,x2:W-R,y2:py,stroke:'#cfd2c8','stroke-width':.8,'pointer-events':'none'}));
+      svg.append(elem('line',{x1:L,y1:py,x2:L+6.5,y2:py,stroke:'#2b2e2a','stroke-width':1.3,'pointer-events':'none'}));
+      svg.append(elem('line',{x1:W-R-6.5,y1:py,x2:W-R,y2:py,stroke:'#2b2e2a','stroke-width':1.3,'pointer-events':'none'}));
+      const lbl=tickLabel(v,yLog,ymax-ymin,yStep);
+      if(!seenY.has(lbl)){seenY.add(lbl);svg.append(elem('text',{x:L-10,y:py+4,'text-anchor':'end',class:'chart-tick'},lbl));}
+    });
+    if(yLog&&(ymax-ymin)>=0.8&&(ymax-ymin)<=9){
+      for(let p=Math.floor(ymin);p<=Math.ceil(ymax);p++){
+        for(let m=2;m<=9;m++){
+          const v=p+Math.log10(m);
+          if(v<=ymin||v>=ymax)continue;
+          const py=H-B-(v-ymin)/(ymax-ymin)*(H-T-B);
+          svg.append(elem('line',{x1:L,y1:py,x2:L+3.8,y2:py,stroke:'#474b45','stroke-width':.95,opacity:.75,'pointer-events':'none'}));
+          svg.append(elem('line',{x1:W-R-3.8,y1:py,x2:W-R,y2:py,stroke:'#474b45','stroke-width':.95,opacity:.75,'pointer-events':'none'}));
+        }
+      }
+    }
     const xTickList=ticks(xmin,xmax,xLog), xStep=xTickList.length>1?Math.abs((xLog?10**xTickList[1]-10**xTickList[0]:xTickList[1]-xTickList[0])):undefined;
     const seenX=new Set();
-    xTickList.forEach(v=>{const px=L+(v-xmin)/(xmax-xmin)*(W-L-R);svg.append(elem('line',{x1:px,y1:H-B,x2:px,y2:H-B+5,stroke:'#bcc6b6','pointer-events':'none'}));const lbl=tickLabel(v,xLog,xmax-xmin,xStep);if(!seenX.has(lbl)){seenX.add(lbl);svg.append(elem('text',{x:px,y:H-B+22,'text-anchor':'middle',fill:'#899285','font-size':11},lbl));}});
-    if(config.trusted){const [lo,hi]=config.trusted;
-      for(const [a,b] of [[L,Math.min(W-R,x(lo))],[Math.max(L,x(hi)),W-R]])if(b>a)plot.append(elem('rect',{x:a,y:T,width:b-a,height:H-T-B,fill:'#e9eae5',opacity:.75,'pointer-events':'none'}));
-      [lo,hi].forEach(v=>plot.append(elem('line',{x1:x(v),y1:T,x2:x(v),y2:H-B,stroke:'#a2ad9c','stroke-dasharray':'3 4','stroke-width':.8,'pointer-events':'none'})));
+    xTickList.forEach(v=>{
+      const px=L+(v-xmin)/(xmax-xmin)*(W-L-R);
+      svg.append(elem('line',{x1:px,y1:T,x2:px,y2:H-B,stroke:'#cfd2c8','stroke-width':.7,opacity:.78,'pointer-events':'none'}));
+      svg.append(elem('line',{x1:px,y1:H-B-6.5,x2:px,y2:H-B,stroke:'#2b2e2a','stroke-width':1.3,'pointer-events':'none'}));
+      svg.append(elem('line',{x1:px,y1:T,x2:px,y2:T+6.5,stroke:'#2b2e2a','stroke-width':1.3,'pointer-events':'none'}));
+      const lbl=tickLabel(v,xLog,xmax-xmin,xStep);
+      if(!seenX.has(lbl)){seenX.add(lbl);svg.append(elem('text',{x:px,y:H-B+20,'text-anchor':'middle',class:'chart-tick'},lbl));}
+    });
+    if(xLog&&(xmax-xmin)>=0.8&&(xmax-xmin)<=9){
+      for(let p=Math.floor(xmin);p<=Math.ceil(xmax);p++){
+        for(let m=2;m<=9;m++){
+          const v=p+Math.log10(m);
+          if(v<=xmin||v>=xmax)continue;
+          const px=L+(v-xmin)/(xmax-xmin)*(W-L-R);
+          svg.append(elem('line',{x1:px,y1:H-B-3.8,x2:px,y2:H-B,stroke:'#474b45','stroke-width':.95,opacity:.75,'pointer-events':'none'}));
+          svg.append(elem('line',{x1:px,y1:T,x2:px,y2:T+3.8,stroke:'#474b45','stroke-width':.95,opacity:.75,'pointer-events':'none'}));
+        }
+      }
     }
-    if(config.baseline!==undefined)plot.append(elem('line',{x1:L,y1:y(config.baseline),x2:W-R,y2:y(config.baseline),stroke:'#abb5a3','stroke-dasharray':'4 4','pointer-events':'none'}));
-    (config.vlines||[]).forEach(({value,label,color='#a08c6c'})=>{
+    if(config.trusted){const [lo,hi]=config.trusted;
+      for(const [a,b] of [[L,Math.min(W-R,x(lo))],[Math.max(L,x(hi)),W-R]])if(b>a)plot.append(elem('rect',{x:a,y:T,width:b-a,height:H-T-B,fill:'#e9eae5',opacity:.78,'pointer-events':'none'}));
+      [lo,hi].forEach(v=>plot.append(elem('line',{x1:x(v),y1:T,x2:x(v),y2:H-B,stroke:'#6f756b','stroke-dasharray':'4 3','stroke-width':1.1,'pointer-events':'none'})));
+    }
+    if(config.baseline!==undefined){
+      const by=y(config.baseline);
+      plot.append(elem('line',{x1:L,y1:by,x2:W-R,y2:by,stroke:'#2f332e','stroke-dasharray':'5 3.5','stroke-width':1.35,opacity:.85,'pointer-events':'none'}));
+      if(by>T+16&&by<H-B-8){
+        plot.append(elem('text',{x:W-R-6,y:by-5,'text-anchor':'end',class:'chart-ref-label'},config.baseline===1?'y = 1':String(config.baseline)));
+      }
+    }
+    const drawVLinePill=(px,label,color,yOffset=0)=>{
+      const w=Math.max(46,label.length*7.4+16), h=20;
+      const rx=(px+6+w<=W-R-4)?px+6:Math.max(L+4,px-6-w);
+      const ry=T+7+yOffset;
+      plot.append(elem('rect',{x:rx,y:ry,width:w,height:h,rx:1.5,fill:'var(--surface)','fill-opacity':.94,stroke:color,'stroke-opacity':.75,'stroke-width':1.15,'pointer-events':'none'}));
+      plot.append(elem('text',{x:rx+w/2,y:ry+14,'text-anchor':'middle',class:'chart-vline-label',style:`fill:${color}`},label));
+      return {rx,right:rx+w,ry};
+    };
+    let lastPillRight=-Infinity, lastPillY=0;
+    (config.vlines||[]).forEach(({value,label,color='#5e4929'})=>{
       if(tx(value)<xmin||tx(value)>xmax)return;
-      plot.append(elem('line',{x1:x(value),y1:T,x2:x(value),y2:H-B,stroke:color,'stroke-dasharray':'3 4','stroke-width':.8,'pointer-events':'none'}));
-      plot.append(elem('text',{x:x(value)+5,y:T+12,fill:color,'font-size':10,'pointer-events':'none'},label));
+      const px=x(value);
+      plot.append(elem('line',{x1:px,y1:T,x2:px,y2:H-B,stroke:color,'stroke-dasharray':'4 3.5','stroke-width':1.25,opacity:.88,'pointer-events':'none'}));
+      const yOff=(px-4<lastPillRight)?(lastPillY===0?24:0):0;
+      const box=drawVLinePill(px,label,color,yOff);
+      lastPillRight=box.right; lastPillY=yOff;
     });
     if(config.marker!==undefined&&config.marker>= (xLog?10**xmin:xmin)&&config.marker<=(xLog?10**xmax:xmax)) {
-      plot.append(elem('line',{x1:x(config.marker),y1:T,x2:x(config.marker),y2:H-B,stroke:'#b48b50','stroke-dasharray':'4 4','pointer-events':'none'}));
-      plot.append(elem('text',{x:x(config.marker)+5,y:T+11,fill:'#9b783e','font-size':10,'pointer-events':'none'},'投影 z='+ztext(config.marker)));
+      const px=x(config.marker);
+      plot.append(elem('line',{x1:px,y1:T,x2:px,y2:H-B,stroke:'#9e6b21','stroke-dasharray':'4 3.5','stroke-width':1.3,'pointer-events':'none'}));
+      drawVLinePill(px,'投影 z='+ztext(config.marker),'#7d5314',0);
     }
     const pointsLayer=elem('g',{class:'points-layer'});
+    const seriesEntries=[];
     series.forEach(s=>{
       const points=s.points.filter(good).sort((a,b)=>a.x-b.x);
       if(!points.length)return;
       const color=s.color||COLORS[s.model];
+      seriesEntries.push({series:s,points,color,txs:points.map(p=>tx(p.x))});
       const band=points.filter(p=>Number.isFinite(p.lo)&&Number.isFinite(p.hi)&&(!yLog||p.hi>0));
-      if(config.bands && band.length>1){
+      if(config.bands && S.showIntervals && band.length>1){
         const floor=yLog?10**ymin:ymin;
         const coords=band.map(p=>`${x(p.x)},${y(Math.max(floor,p.hi))}`).concat([...band].reverse().map(p=>`${x(p.x)},${y(Math.max(floor,p.lo))}`)).join(' ');
         plot.append(elem('polygon',{points:coords,fill:color,opacity:.10,'pointer-events':'none'}));
       }
       const path=points.map((p,i)=>`${i?'L':'M'}${x(p.x).toFixed(2)},${y(p.y).toFixed(2)}`).join(' ');
-      plot.append(elem('path',{d:path,fill:'none',stroke:color,'stroke-width':s.dash?1.2:1.65,'stroke-dasharray':s.dash?'5 4':'','data-series':s.label,opacity:s.dash?.65:1,'pointer-events':'none'}));
+      plot.append(elem('path',{d:path,fill:'none',stroke:color,'stroke-width':s.dash?1.65:2.25,'stroke-dasharray':s.dash?'5 4':'','data-series':s.label,opacity:s.dash?.82:1,'pointer-events':'none'}));
       if(s.dash)return;
       const stride=Math.max(1,Math.ceil(points.length/55));
       points.forEach((p,i)=>{
         if(i%stride!==0&&i!==points.length-1)return;
         const outside=(config.trusted&&(p.x<config.trusted[0]||p.x>config.trusted[1]))||(s.trusted&&(p.x<s.trusted[0]||p.x>s.trusted[1]));
-        if(config.errors&&Number.isFinite(p.lo)&&Number.isFinite(p.hi)) {
+        if(config.errors && S.showIntervals && Number.isFinite(p.lo)&&Number.isFinite(p.hi)) {
           const low=yLog?Math.max(10**ymin,p.lo):p.lo;
-          plot.append(elem('line',{x1:x(p.x),y1:y(low),x2:x(p.x),y2:y(p.hi),stroke:color,'stroke-width':.8,opacity:.5,'pointer-events':'none'}));
+          plot.append(elem('line',{x1:x(p.x),y1:y(low),x2:x(p.x),y2:y(p.hi),stroke:color,'stroke-width':1.15,opacity:.68,'pointer-events':'none'}));
         }
         let tip=`${s.label}\n${config.xLabel}: ${fmt(p.x,5)}\n${config.yLabel}: ${fmt(p.y,5)}`;
         if(Number.isFinite(p.lo)&&Number.isFinite(p.hi))tip+=`\n${config.intervalLabel||'区间'}: ${fmt(p.lo,4)} – ${fmt(p.hi,4)}`;
         if(p.count!==undefined)tip+=`\nN = ${p.count.toLocaleString('en-US')}`;
         if(p.countPL!==undefined)tip+=`；N(PL) = ${p.countPL.toLocaleString('en-US')}`;
         if(outside)tip+='\n在采用的定量解释区间之外';
-        const dot=elem('circle',{cx:x(p.x),cy:y(p.y),r:s.open?2.6:2.6,fill:(outside||s.open)?'#fff':color,stroke:color,'stroke-width':1.05,opacity:outside?.55:1,tabindex:0,class:'point','aria-label':tip,'data-x':p.x,'data-y':p.y,'data-model':s.model});
+        const dot=elem('circle',{cx:x(p.x),cy:y(p.y),r:3.1,fill:(outside||s.open)?'#fff':color,stroke:color,'stroke-width':1.35,opacity:outside?.6:1,tabindex:0,class:'point','aria-label':tip,'data-x':p.x,'data-y':p.y,'data-model':s.model});
         dot.append(elem('title',{},tip));
-        dot.addEventListener('pointerenter',event=>tooltip(tip,dot,event));
-        dot.addEventListener('pointermove',event=>tooltip(tip,dot,event));
-        dot.addEventListener('pointerleave',()=>{$('tooltip').hidden=true;});
         dot.addEventListener('focus',()=>tooltip(tip,dot));
         dot.addEventListener('blur',()=>{$('tooltip').hidden=true;});
         pointsLayer.append(dot);
       });
     });
-    plot.append(pointsLayer);
+    const crosshairLayer=elem('g',{class:'crosshair-layer','pointer-events':'none'});
+    const crosshairLine=elem('line',{x1:L,y1:T,x2:L,y2:H-B,stroke:'var(--orange)','stroke-width':1,'stroke-dasharray':'3 3',opacity:.85,visibility:'hidden'});
+    const zoomRect=elem('rect',{class:'zoom-selection',x:L,y:T,width:0,height:0,fill:'rgba(223,90,46,.12)',stroke:'var(--orange)','stroke-width':1.2,'stroke-dasharray':'4 3',visibility:'hidden'});
+    crosshairLayer.append(crosshairLine,zoomRect);
+    const ringNodes=seriesEntries.map(entry=>{
+      const ring=elem('circle',{r:entry.series.dash?3.4:4.5,fill:'var(--surface)',stroke:entry.color,'stroke-width':entry.series.dash?1.5:2,'stroke-dasharray':entry.series.dash?'2 1.5':'',visibility:'hidden'});
+      crosshairLayer.append(ring);
+      return ring;
+    });
+    plot.append(pointsLayer,crosshairLayer);
     svg.append(plot);
-    svg.append(elem('line',{x1:L,y1:H-B,x2:W-R,y2:H-B,stroke:'#aeb9a7','stroke-width':.8,'pointer-events':'none'}));
-    svg.append(elem('text',{x:(L+W-R)/2,y:H-9,'text-anchor':'middle',fill:'#65765e','font-size':12},config.xLabel));
-    svg.append(elem('text',{x:16,y:(T+H-B)/2,transform:`rotate(-90 16 ${(T+H-B)/2})`,'text-anchor':'middle',fill:'#65765e','font-size':12},config.yLabel));
-    host.append(svg);
+    svg.append(elem('rect',{x:L,y:T,width:W-L-R,height:H-T-B,fill:'none',stroke:'#2b2e2a','stroke-width':1.45,'pointer-events':'none'}));
+    svg.append(elem('text',{x:(L+W-R)/2,y:H-10,'text-anchor':'middle',class:'chart-axis-label'},config.xLabel));
+    svg.append(elem('text',{x:18,y:(T+H-B)/2,transform:`rotate(-90 18 ${(T+H-B)/2})`,'text-anchor':'middle',class:'chart-axis-label'},config.yLabel));
+    const syncReadout=document.createElement('div');
+    syncReadout.className='chart-sync-readout';
+    syncReadout.hidden=true;
+    host.append(svg,syncReadout);
+    if(exportBtn)exportBtn.hidden=false;
+    const nearestIndex=(arr,target)=>{
+      let lo=0,hi=arr.length-1;
+      while(lo<hi){const mid=(lo+hi)>>1;if(arr[mid]<target)lo=mid+1;else hi=mid;}
+      if(lo>0&&Math.abs(arr[lo-1]-target)<Math.abs(arr[lo]-target))return lo-1;
+      return lo;
+    };
+    const clear=(syncPeer=false)=>{
+      crosshairLine.setAttribute('visibility','hidden');
+      ringNodes.forEach(r=>r.setAttribute('visibility','hidden'));
+      syncReadout.hidden=true;
+      if(syncPeer){
+        $('tooltip').hidden=true;
+        if(config.linkX){
+          const peerId=id==='chart-a'?'chart-b':'chart-a';
+          chartHandles[peerId]?.clear(false);
+        }
+      }
+    };
+    const inspectAt=(targetTx,opts={})=>{
+      const rawPx=L+(targetTx-xmin)/(xmax-xmin)*(W-L-R);
+      if(!Number.isFinite(rawPx)||rawPx<L-2||rawPx>W-R+2){clear(opts.syncPeer);return;}
+      const clampedPx=Math.max(L,Math.min(W-R,rawPx));
+      const matches=[];
+      seriesEntries.forEach((entry,idx)=>{
+        const i=nearestIndex(entry.txs,targetTx);
+        const p=entry.points[i];
+        const px=x(p.x), py=y(p.y);
+        if(Math.abs(px-clampedPx)<=26&&py>=T-8&&py<=H-B+8){
+          ringNodes[idx].setAttribute('cx',px.toFixed(2));
+          ringNodes[idx].setAttribute('cy',py.toFixed(2));
+          ringNodes[idx].setAttribute('visibility','visible');
+          matches.push({entry,p,px,dist:Math.abs(px-clampedPx)});
+        } else {
+          ringNodes[idx].setAttribute('visibility','hidden');
+        }
+      });
+      if(!matches.length){clear(opts.syncPeer);return;}
+      const solidMatches=matches.filter(m=>!m.entry.series.dash);
+      const anchor=(solidMatches.length?solidMatches:matches).reduce((best,m)=>m.dist<best.dist?m:best);
+      const lineX=anchor.px;
+      crosshairLine.setAttribute('x1',lineX.toFixed(2));
+      crosshairLine.setAttribute('x2',lineX.toFixed(2));
+      crosshairLine.setAttribute('visibility','visible');
+      const anchorX=anchor.p.x;
+      const anyOutside=config.trusted&&(anchorX<config.trusted[0]||anchorX>config.trusted[1]);
+      if(opts.showTooltip){
+        syncReadout.hidden=true;
+        const rows=matches.map(({entry,p})=>{
+          const outside=(config.trusted&&(p.x<config.trusted[0]||p.x>config.trusted[1]))||(entry.series.trusted&&(p.x<entry.series.trusted[0]||p.x>entry.series.trusted[1]));
+          const parts=[];
+          if(Number.isFinite(p.lo)&&Number.isFinite(p.hi))parts.push(`${fmt(p.lo,3)}–${fmt(p.hi,3)}`);
+          if(p.count!==undefined)parts.push(`N=${p.count.toLocaleString('en-US')}`);
+          if(p.countPL!==undefined)parts.push(`PL:${p.countPL.toLocaleString('en-US')}`);
+          return {color:entry.color,dash:!!entry.series.dash,open:!!entry.series.open||outside,outside,label:entry.series.label,value:fmt(p.y,4),detail:parts.join(' · ')};
+        });
+        tooltip({header:`${config.xLabel}: ${fmt(anchorX,5)}`,badge:anyOutside?'采用区间外':'',rows},svg,opts.event);
+      } else {
+        const displayMatches=(solidMatches.length?solidMatches:matches).slice(0,4);
+        const frag=document.createDocumentFragment();
+        const xSpan=document.createElement('span');xSpan.className='sync-x';xSpan.textContent=fmt(anchorX,4);frag.append(xSpan);
+        displayMatches.forEach(({entry,p})=>{
+          const item=document.createElement('span');item.className='sync-item';
+          const dot=document.createElement('i');dot.style.background=entry.color;
+          item.append(dot,document.createTextNode(`${entry.series.label}: ${fmt(p.y,3)}`));
+          frag.append(item);
+        });
+        syncReadout.replaceChildren(frag);
+        syncReadout.hidden=false;
+      }
+      if(opts.syncPeer&&config.linkX){
+        const peerId=id==='chart-a'?'chart-b':'chart-a';
+        chartHandles[peerId]?.inspectAtValue(anchorX);
+      }
+    };
+    const inspectAtValue=val=>{
+      if(!Number.isFinite(val)||(xLog&&val<=0)){clear(false);return;}
+      inspectAt(tx(val),{showTooltip:false,syncPeer:false});
+    };
+    chartHandles[id]={clear,inspectAtValue};
+    svg.classList.add('chart-interactive');
+    let dragZoom=null;
+    const svgCoords=event=>{
+      const rect=svg.getBoundingClientRect();
+      if(!rect.width||!rect.height)return null;
+      return {sx:(event.clientX-rect.left)/rect.width*W, sy:(event.clientY-rect.top)/rect.height*H};
+    };
+    svg.addEventListener('pointerdown',event=>{
+      if(event.button!==0)return;
+      const pt=svgCoords(event);
+      if(!pt||pt.sx<L||pt.sx>W-R||pt.sy<T||pt.sy>H-B)return;
+      dragZoom={x0:pt.sx,y0:pt.sy,x1:pt.sx,y1:pt.sy};
+      try{svg.setPointerCapture(event.pointerId);}catch{}
+      clear(true);
+    });
+    svg.addEventListener('pointermove',event=>{
+      const pt=svgCoords(event);
+      if(!pt)return;
+      if(dragZoom){
+        dragZoom.x1=Math.max(L,Math.min(W-R,pt.sx));
+        dragZoom.y1=Math.max(T,Math.min(H-B,pt.sy));
+        const rx=Math.min(dragZoom.x0,dragZoom.x1), ry=Math.min(dragZoom.y0,dragZoom.y1);
+        const rw=Math.abs(dragZoom.x1-dragZoom.x0), rh=Math.abs(dragZoom.y1-dragZoom.y0);
+        zoomRect.setAttribute('x',rx.toFixed(1));zoomRect.setAttribute('y',ry.toFixed(1));
+        zoomRect.setAttribute('width',rw.toFixed(1));zoomRect.setAttribute('height',rh.toFixed(1));
+        zoomRect.setAttribute('visibility',(rw>4||rh>4)?'visible':'hidden');
+        return;
+      }
+      if(pt.sx<L-6||pt.sx>W-R+6||pt.sy<T-6||pt.sy>H-B+6){clear(true);return;}
+      const clampedX=Math.max(L,Math.min(W-R,pt.sx));
+      const targetTx=xmin+(clampedX-L)/(W-L-R)*(xmax-xmin);
+      inspectAt(targetTx,{showTooltip:true,event,syncPeer:true});
+    });
+    const finishDrag=event=>{
+      if(!dragZoom)return;
+      const d=dragZoom; dragZoom=null;
+      zoomRect.setAttribute('visibility','hidden');
+      try{if(event?.pointerId!==undefined)svg.releasePointerCapture(event.pointerId);}catch{}
+      const rx0=Math.min(d.x0,d.x1), rx1=Math.max(d.x0,d.x1);
+      const ry0=Math.min(d.y0,d.y1), ry1=Math.max(d.y0,d.y1);
+      if(rx1-rx0>=14&&ry1-ry0>=14){
+        const tx0=xmin+(rx0-L)/(W-L-R)*(xmax-xmin);
+        const tx1=xmin+(rx1-L)/(W-L-R)*(xmax-xmin);
+        const tyHi=ymin+(H-B-ry0)/(H-T-B)*(ymax-ymin);
+        const tyLo=ymin+(H-B-ry1)/(H-T-B)*(ymax-ymin);
+        const xDom=[xLog?10**tx0:tx0, xLog?10**tx1:tx1];
+        const yDom=[yLog?10**tyLo:tyLo, yLog?10**tyHi:tyHi];
+        S.zoom[id]={xDomain:xDom,yDomain:yDom};
+        if(config.linkX){
+          const peerId=id==='chart-a'?'chart-b':'chart-a';
+          S.zoom[peerId]={xDomain:xDom};
+        }
+        renderStats();
+      }
+    };
+    svg.addEventListener('pointerup',finishDrag);
+    svg.addEventListener('pointercancel',()=>{dragZoom=null;zoomRect.setAttribute('visibility','hidden');});
+    svg.addEventListener('dblclick',()=>{
+      if(!S.zoom[id])return;
+      delete S.zoom[id];
+      if(config.linkX)delete S.zoom[id==='chart-a'?'chart-b':'chart-a'];
+      renderStats();
+    });
+    svg.addEventListener('pointerleave',()=>{if(!dragZoom)clear(true);});
   }
   function empty(id,available) {
     const box=document.createElement('div');box.className='chart-empty';
@@ -202,10 +463,73 @@
   function setHeading(side,title,meta,caption) {
     $('chart-title-'+side).textContent=title;$('chart-meta-'+side).textContent=meta;$('chart-caption-'+side).textContent=caption;
   }
-  function legend(entries=MODELS.map(model=>({label:LABELS[model],color:COLORS[model]}))) {
-    const labels=entries.map(entry=>{const span=document.createElement('span');const dot=document.createElement('i');dot.style.background=entry.color;span.append(dot,document.createTextNode(entry.label));return span;});
+  function legend(entries=MODELS.map(model=>({key:model,label:LABELS[model],color:COLORS[model]})), options={}) {
+    const allKeys=entries.map(e=>e.key);
+    const nodes=entries.map(entry=>{
+      const active=!S.hiddenModels.has(entry.key);
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='legend-toggle'+(active?'':' is-off');
+      btn.setAttribute('aria-pressed',String(active));
+      btn.title='点击切换显隐 · 双击单独聚焦';
+      const swatch=document.createElement('i');swatch.style.background=entry.color;
+      btn.append(swatch,document.createTextNode(entry.label));
+      btn.addEventListener('click',event=>{
+        if(event.altKey){
+          const onlyThis=allKeys.every(k=>k===entry.key?!S.hiddenModels.has(k):S.hiddenModels.has(k));
+          S.hiddenModels.clear();
+          if(!onlyThis)allKeys.forEach(k=>{if(k!==entry.key)S.hiddenModels.add(k);});
+        } else {
+          if(S.hiddenModels.has(entry.key))S.hiddenModels.delete(entry.key);
+          else {
+            S.hiddenModels.add(entry.key);
+            if(allKeys.every(k=>S.hiddenModels.has(k)))S.hiddenModels.clear();
+          }
+        }
+        renderStats();
+      });
+      btn.addEventListener('dblclick',()=>{
+        const onlyThis=allKeys.every(k=>k===entry.key?!S.hiddenModels.has(k):S.hiddenModels.has(k));
+        S.hiddenModels.clear();
+        if(!onlyThis)allKeys.forEach(k=>{if(k!==entry.key)S.hiddenModels.add(k);});
+        renderStats();
+      });
+      return btn;
+    });
+    const aux=[];
+    if(options.theoryLabel){
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='legend-toggle legend-aux'+(S.showTheory?'':' is-off');
+      btn.setAttribute('aria-pressed',String(S.showTheory));
+      const sw=document.createElement('i');sw.className='swatch-dash';
+      btn.append(sw,document.createTextNode(options.theoryLabel));
+      btn.addEventListener('click',()=>{S.showTheory=!S.showTheory;renderStats();});
+      aux.push(btn);
+    }
+    if(options.intervalLabel){
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='legend-toggle legend-aux'+(S.showIntervals?'':' is-off');
+      btn.setAttribute('aria-pressed',String(S.showIntervals));
+      const sw=document.createElement('i');sw.className=options.intervalKind==='band'?'swatch-band':'swatch-err';
+      btn.append(sw,document.createTextNode(options.intervalLabel));
+      btn.addEventListener('click',()=>{S.showIntervals=!S.showIntervals;renderStats();});
+      aux.push(btn);
+    }
+    if(S.hiddenModels.size>0||!S.showTheory||!S.showIntervals){
+      const reset=document.createElement('button');
+      reset.type='button';reset.className='legend-reset';reset.textContent='重置图例';
+      reset.addEventListener('click',()=>{S.hiddenModels.clear();S.showTheory=true;S.showIntervals=true;renderStats();});
+      aux.push(reset);
+    }
+    const items=[...nodes];
+    if(aux.length){
+      const div=document.createElement('span');div.className='legend-divider';div.setAttribute('aria-hidden','true');
+      items.push(div,...aux);
+    }
     const note=document.createElement('span');note.id=topic+'-legend-note';note.dataset.localId='legend-note';note.className='legend-note';
-    $('model-legend').replaceChildren(...labels,note);
+    $('model-legend').replaceChildren(...items,note);
   }
   function renderStats() {
     $('tooltip').hidden=true;
@@ -216,15 +540,20 @@
     $('redshift-control').hidden=['assembly','input'].includes(S.tab);
     const source=S.tab==='hmf'?D.hmf[S.definition]:S.tab==='bias'?(D.bias||[]):S.tab==='power'?D.power:S.tab==='reliability'?D.resolution:D.concentration;
     const available=unique(source.map(r=>r.z));
+    currentAvailableZ=available;
     const choices=available.some(z=>nearly(z,S.statsZ))?available:[S.statsZ,...available].sort((a,b)=>b-a);
     $('stats-redshift').replaceChildren(...choices.map(z=>{
       const option=document.createElement('option');option.value=z;option.textContent='z = '+ztext(z)+(available.some(a=>nearly(a,z))?'':' · 暂无统计');option.selected=nearly(z,S.statsZ);return option;
     }));
+    const curZIdx=available.findIndex(z=>nearly(z,S.statsZ));
+    if($('redshift-prev'))$('redshift-prev').disabled=!available.length||(curZIdx===0);
+    if($('redshift-next'))$('redshift-next').disabled=!available.length||(curZIdx===available.length-1);
     $('sync-status').classList.toggle('is-independent',!S.following);
     $('follow-projection').setAttribute('aria-pressed',String(S.following));
     $('sync-status').textContent=S.tab==='input'?'输入模型 · 不随投影快照变化':S.tab==='assembly'?'完整形成历史 · 选定最终质量样本':S.following?'跟随投影 · z = '+ztext(projectionZ):`独立统计 z = ${ztext(S.statsZ)} · 投影 z = ${ztext(projectionZ)}`;
     if(S.tab==='input'||S.tab==='assembly')$('sync-status').classList.remove('is-independent');
-    legend(S.tab==='reliability'?Object.entries(RUN_COLORS).map(([label,color])=>({label,color})):undefined);
+    const legendOpts=S.tab==='hmf'?{theoryLabel:S.definition==='fof'?'Reed07 理论':'',intervalLabel:'Poisson 误差',intervalKind:'err'}:S.tab==='bias'?{theoryLabel:(S.biasDefinition==='M200m'?'Tinker10':'ST99')+' 理论',intervalLabel:'jackknife 误差',intervalKind:'err'}:S.tab==='power'?{theoryLabel:'HMcode2020 理论'}:S.tab==='assembly'?{theoryLabel:'Correa-EPS 理论',intervalLabel:'16–84% 区间',intervalKind:'band'}:S.tab==='structure'?{intervalLabel:'散布 / bootstrap 区间',intervalKind:'band'}:S.tab==='reliability'?{intervalLabel:'Poisson 误差',intervalKind:'err'}:{};
+    legend(S.tab==='reliability'?Object.entries(RUN_COLORS).map(([key,color])=>({key,label:key,color})):undefined,legendOpts);
     const atZ=rows=>rows.filter(r=>nearly(r.z,S.statsZ));
     const zr='z = '+ztext(S.statsZ);
     if(S.tab==='hmf') {
@@ -236,8 +565,8 @@
       $('legend-note').textContent=S.definition==='fof'?'虚线：Reed07 理论参考；误差：Poisson':'误差：Poisson 计数不确定性';
       setHeading('a',S.definition==='fof'?'FOF halo 质量函数':'M₂₀₀c halo 质量函数',zr,`保留论文数值点，缺失红移按同一方法从真实 halo 目录补算。质量下限 ${fmt(threshold)} M☉；横轴沿用论文的质量坐标定义。`);
       setHeading('b','相对于 PL 的丰度',zr,'沿用论文的质量分箱与匹配方式计算 BT/PL；FOF 使用配对分箱的几何平均质量，M₂₀₀c 匹配相同质量中心。误差由双方的 Poisson 不确定性传播。');
-      chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Reed07'}))],{title:'Halo 质量函数',xLabel:massLabel,yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,intervalLabel:'Poisson ±1σ',available});
-      chart('chart-b',grouped(ratio),{title:'论文质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z))});
+      chart('chart-a',[...grouped(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · Reed07'}))],{title:'Halo 质量函数',xLabel:massLabel,yLabel:'dn / dlog₁₀M [Mpc⁻³]',errors:true,intervalLabel:'Poisson ±1σ',available,linkX:true});
+      chart('chart-b',grouped(ratio),{title:'论文质量分箱的 BT/PL 丰度比',xLabel:massLabel,yLabel:'n_BT / n_PL',baseline:1,errors:true,intervalLabel:'传播的 Poisson ±1σ',available:unique(D.hmfRatios[S.definition].map(r=>r.z)),linkX:true});
       downloadRows=[...rows.map(r=>({...r,series:'published_hmf'})),...ratio.map(r=>({...r,series:'paper_bin_BT_over_PL'}))];
     } else if(S.tab==='bias') {
       const boxVal=S.biasBox==='all'?null:Number(S.biasBox);
@@ -262,8 +591,8 @@
       $('legend-note').textContent=`实心点：256 h⁻¹ Mpc；空心点：25 h⁻¹ Mpc；虚线：${refName}；误差：jackknife`;
       setHeading('a',S.biasDefinition==='M200m'?'SOAP M₂₀₀m 晕–物质偏置':'FOF 晕–物质偏置',zr,`按论文在 256 与 25 h⁻¹ Mpc 盒子中分别测量的 b_hm = ΣP_hm/ΣP_mm（k 窗口：256 盒 0.03–0.15，25 盒 0.25–0.60 h Mpc⁻¹），虚线为 ${refName} 理论参考。`);
       setHeading('b','相对于 PL 的偏置比值',zr,'在相同盒子、相同质量分箱中配对计算 b_BT / b_PL；误差由双方的模态 jackknife 不确定性传播。');
-      chart('chart-a',[...boxSeries(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · '+refName}))],{title:'晕–物质偏置',xLabel:massLabel,yLabel:'b_hm',errors:true,intervalLabel:'jackknife ±1σ',available});
-      chart('chart-b',boxSeries(ratio),{title:'配对分箱 BT/PL 偏置比值',xLabel:massLabel,yLabel:'b_BT / b_PL',baseline:1,errors:true,yLog:false,intervalLabel:'传播的 jackknife ±1σ',available:unique((D.biasRatios||[]).map(r=>r.z))});
+      chart('chart-a',[...boxSeries(rows),...grouped(theory,{dash:true}).map(s=>({...s,label:s.label+' · '+refName}))],{title:'晕–物质偏置',xLabel:massLabel,yLabel:'b_hm',errors:true,intervalLabel:'jackknife ±1σ',available,linkX:true});
+      chart('chart-b',boxSeries(ratio),{title:'配对分箱 BT/PL 偏置比值',xLabel:massLabel,yLabel:'b_BT / b_PL',baseline:1,errors:true,yLog:false,intervalLabel:'传播的 jackknife ±1σ',available:unique((D.biasRatios||[]).map(r=>r.z)),linkX:true});
       downloadRows=[...rows.map(r=>({...r,series:'halo_bias'})),...ratio.map(r=>({...r,series:'bias_BT_over_PL'}))];
     } else if(S.tab==='power') {
       const rows=atZ(D.power).filter(r=>r.box===S.box),ratio=atZ(D.powerRatios).filter(r=>r.box===S.box);
@@ -274,8 +603,8 @@
       $('legend-note').textContent='虚线：HMcode2020；灰区：采用范围之外';
       setHeading('a','非线性物质功率谱',`${zr} · L = ${S.box}`,`L = ${S.box} h⁻¹ Mpc${S.box===25?'（主稿红移采用相位反转配对平均）':''}。采用区间 ${trusted[0].toFixed(2)} ≤ k ≤ ${trusted[1].toFixed(2)} h Mpc⁻¹（${kMult}k_f 至 0.25k_Ny）；HMcode2020 为理论参考。`);
       setHeading('b',S.powerComparison==='ratio'?'相对于 PL 的功率':'模拟与 HMcode2020 的比较',zr,S.powerComparison==='ratio'?'同盒子 BT/PL 测量；25 h⁻¹ Mpc 主稿红移采用相位配对平均与 10k_f 起算口径，舍去 k > 0.25 k_Ny 的点；低 k 灰区保留供检查。':'模拟 / HMcode2020 残差分箱与比值，舍去 k > 0.25 k_Ny 的点。25 h⁻¹ Mpc 主稿红移使用相位配对平均谱。');
-      chart('chart-a',[...grouped(rows),...grouped(atZ(D.powerTheory),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available});
-      chart('chart-b',grouped(comparison),{title:S.powerComparison==='ratio'?'同盒子 BT/PL 功率比':'模拟与 HMcode2020 的功率比',xLabel:'k [h Mpc⁻¹]',yLabel:S.powerComparison==='ratio'?'P_BT / P_PL':'P_sim / P_HMcode2020',baseline:1,trusted,available});
+      chart('chart-a',[...grouped(rows),...grouped(atZ(D.powerTheory),{dash:true}).map(s=>({...s,label:s.label+' · HMcode2020'}))],{title:'非线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P(k) [(Mpc/h)³]',trusted,available,linkX:true});
+      chart('chart-b',grouped(comparison),{title:S.powerComparison==='ratio'?'同盒子 BT/PL 功率比':'模拟与 HMcode2020 的功率比',xLabel:'k [h Mpc⁻¹]',yLabel:S.powerComparison==='ratio'?'P_BT / P_PL':'P_sim / P_HMcode2020',baseline:1,trusted,available,linkX:true});
       downloadRows=[...rows.map(r=>({...r,series:'power'})),...comparison.map(r=>({...r,series:S.powerComparison==='ratio'?'BT_over_PL':'sim_over_HMcode2020'}))];
     } else if(S.tab==='assembly') {
       const rows=D.assembly.filter(r=>r.mass===S.mass);
@@ -307,8 +636,8 @@
       $('legend-note').textContent='竖线：两个 BT 转折尺度；保留源表归一化';
       setHeading('a','输入线性物质功率谱','输入模型','使用论文发布的输入线性物质谱及原始归一化，显示 10⁻³ ≤ k ≤ 10³ h Mpc⁻¹。这里的输入谱不随投影红移滑块改变。');
       setHeading('b','输入谱相对于 PL 的增强','相同 k 采样点','在源表完全相同的 k 采样点计算 BT/PL，没有插值或外推。kₚ = 1 与 10 h Mpc⁻¹，两个 BT 模型均采用 mₛ = 1.5。');
-      chart('chart-a',grouped(rows),{title:'输入线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P_input(k) [(Mpc/h)³]',vlines:pivots});
-      chart('chart-b',grouped(ratios),{title:'输入谱 BT/PL',xLabel:'k [h Mpc⁻¹]',yLabel:'P_input,BT / P_input,PL',baseline:1,vlines:pivots});
+      chart('chart-a',grouped(rows),{title:'输入线性物质功率谱',xLabel:'k [h Mpc⁻¹]',yLabel:'P_input(k) [(Mpc/h)³]',vlines:pivots,linkX:true});
+      chart('chart-b',grouped(ratios),{title:'输入谱 BT/PL',xLabel:'k [h Mpc⁻¹]',yLabel:'P_input,BT / P_input,PL',baseline:1,vlines:pivots,linkX:true});
       downloadRows=[...rows.map(r=>({...r,series:'input_linear_power'})),...ratios.map(r=>({...r,series:'input_BT_over_PL'}))];
     } else if(S.tab==='reliability') {
       const rows=atZ(D.resolution),mesh=D.meshConvergence.filter(r=>r.box===S.meshBox);
@@ -326,17 +655,56 @@
     $('download-data').setAttribute('aria-disabled',String(!downloadRows.length));
     $('download-data').hidden=!downloadRows.length;
   }
+  const stepRedshift=delta=>{
+    if(!currentAvailableZ.length)return;
+    stop();
+    let idx=currentAvailableZ.findIndex(z=>nearly(z,S.statsZ));
+    if(idx<0)idx=currentAvailableZ.reduce((best,z,i)=>Math.abs(z-S.statsZ)<Math.abs(currentAvailableZ[best]-S.statsZ)?i:best,0);
+    else idx=Math.max(0,Math.min(currentAvailableZ.length-1,idx+delta));
+    S.statsZ=currentAvailableZ[idx];S.following=false;renderStats();
+  };
+  $('redshift-prev')?.addEventListener('click',()=>stepRedshift(-1));
+  $('redshift-next')?.addEventListener('click',()=>stepRedshift(1));
+  const exportChartSvg=side=>{
+    const svg=$('chart-'+side)?.querySelector('svg');
+    if(!svg)return;
+    const clone=svg.cloneNode(true);
+    clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+    clone.setAttribute('width','620');
+    clone.setAttribute('height','350');
+    clone.querySelector('.crosshair-layer')?.remove();
+    const bg=elem('rect',{x:0,y:0,width:620,height:350,fill:color('--surface','#f0efe8')});
+    clone.insertBefore(bg,clone.firstChild);
+    const styleEl=elem('style',{},'text{font-family:"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#111311}.chart-tick{font-size:12.5px;font-weight:700;fill:#181a19}.chart-axis-label{font-size:14px;font-weight:700;fill:#111311}.chart-ref-label,.chart-vline-label{font-size:11.5px;font-weight:700}');
+    (clone.querySelector('defs')||clone).prepend(styleEl);
+    let raw=new XMLSerializer().serializeToString(clone);
+    const vars={'--surface':color('--surface','#f0efe8'),'--background':color('--background','#e8e7df'),'--ink':color('--ink','#181a19'),'--ink-muted':color('--ink-muted','#73766e'),'--chart-grid':color('--chart-grid','#d9dad1'),'--chart-axis':color('--chart-axis','#8c9086'),'--orange':color('--orange','#df5a2e')};
+    Object.entries(vars).forEach(([k,v])=>{raw=raw.replaceAll(`var(${k})`,v);});
+    const scope=S.tab==='assembly'?'history':S.tab==='input'?'input-models':'z'+ztext(S.statsZ);
+    const url=URL.createObjectURL(new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n'+raw],{type:'image/svg+xml;charset=utf-8'}));
+    const a=document.createElement('a');a.href=url;a.download=`article-${S.tab}-${side}-${scope}.svg`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  };
+  for(const side of ['a','b']){
+    $('chart-reset-'+side)?.addEventListener('click',()=>{
+      const id='chart-'+side;
+      delete S.zoom[id];
+      if(['input','hmf','bias','power'].includes(S.tab))delete S.zoom[side==='a'?'chart-b':'chart-a'];
+      renderStats();
+    });
+    $('chart-export-'+side)?.addEventListener('click',()=>exportChartSvg(side));
+  }
+  const clearZoom=()=>{S.zoom={};};
   $('stats-redshift').addEventListener('change',event=>{stop();S.statsZ=Number(event.target.value);S.following=false;renderStats();});
   $('follow-projection').addEventListener('click',()=>{S.following=true;S.statsZ=projectionFrames()[projectionState.frame].z;renderStats();});
-  $('mass-definition').addEventListener('change',event=>{S.definition=event.target.value;renderStats();});
-  $('bias-definition').addEventListener('change',event=>{S.biasDefinition=event.target.value;renderStats();});
-  $('bias-box').addEventListener('change',event=>{S.biasBox=event.target.value;renderStats();});
-  $('box-size').addEventListener('change',event=>{S.box=Number(event.target.value);renderStats();});
-  for(const [id,key] of [['power-comparison','powerComparison'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id).addEventListener('change',event=>{S[key]=event.target.value;renderStats();});
-  $('mesh-box').addEventListener('change',event=>{S.meshBox=Number(event.target.value);renderStats();});
+  $('mass-definition').addEventListener('change',event=>{clearZoom();S.definition=event.target.value;renderStats();});
+  $('bias-definition').addEventListener('change',event=>{clearZoom();S.biasDefinition=event.target.value;renderStats();});
+  $('bias-box').addEventListener('change',event=>{clearZoom();S.biasBox=event.target.value;renderStats();});
+  $('box-size').addEventListener('change',event=>{clearZoom();S.box=Number(event.target.value);renderStats();});
+  for(const [id,key] of [['power-comparison','powerComparison'],['concentration-reference','concentrationReference'],['profile-view','profileView']])$(id).addEventListener('change',event=>{clearZoom();S[key]=event.target.value;renderStats();});
+  $('mesh-box').addEventListener('change',event=>{clearZoom();S.meshBox=Number(event.target.value);renderStats();});
   for(const [id,rows,key,stateKey] of [['final-mass',D.assembly,'mass','mass'],['profile-mass',D.profiles,'mass','profileMass']]) {
     $(id).replaceChildren(...[...new Set(rows.map(r=>r[key]))].sort((a,b)=>a-b).map(m=>{const option=document.createElement('option');option.value=m;option.textContent=fmt(m)+' M☉';option.selected=m===S[stateKey];return option;}));
-    $(id).addEventListener('change',event=>{S[stateKey]=Number(event.target.value);renderStats();});
+    $(id).addEventListener('change',event=>{clearZoom();S[stateKey]=Number(event.target.value);renderStats();});
   }
   $('download-data').addEventListener('click',event=>{
     event.preventDefault();
