@@ -18,9 +18,9 @@
         "snapshot": 24,
         "z": 19.40664523021168,
         "images": {
-          "PL": "assets/projections/PL-0024.png",
-          "kp1": "assets/projections/kp1-0024.png",
-          "kp10": "assets/projections/kp10-0024.png"
+          "PL": "assets/projections/PL-0024.webp",
+          "kp1": "assets/projections/kp1-0024.webp",
+          "kp10": "assets/projections/kp10-0024.webp"
         },
         "panel_scales": {
           "PL": {
@@ -41,9 +41,9 @@
         "snapshot": 27,
         "z": 14.331814598205613,
         "images": {
-          "PL": "assets/projections/PL-0027.png",
-          "kp1": "assets/projections/kp1-0027.png",
-          "kp10": "assets/projections/kp10-0027.png"
+          "PL": "assets/projections/PL-0027.webp",
+          "kp1": "assets/projections/kp1-0027.webp",
+          "kp10": "assets/projections/kp10-0027.webp"
         },
         "panel_scales": {
           "PL": {
@@ -64,9 +64,9 @@
         "snapshot": 30,
         "z": 10.51901923231075,
         "images": {
-          "PL": "assets/projections/PL-0030.png",
-          "kp1": "assets/projections/kp1-0030.png",
-          "kp10": "assets/projections/kp10-0030.png"
+          "PL": "assets/projections/PL-0030.webp",
+          "kp1": "assets/projections/kp1-0030.webp",
+          "kp10": "assets/projections/kp10-0030.webp"
         },
         "panel_scales": {
           "PL": {
@@ -87,9 +87,9 @@
         "snapshot": 32,
         "z": 8.519850605215494,
         "images": {
-          "PL": "assets/projections/PL-0032.png",
-          "kp1": "assets/projections/kp1-0032.png",
-          "kp10": "assets/projections/kp10-0032.png"
+          "PL": "assets/projections/PL-0032.webp",
+          "kp1": "assets/projections/kp1-0032.webp",
+          "kp10": "assets/projections/kp10-0032.webp"
         },
         "panel_scales": {
           "PL": {
@@ -110,9 +110,9 @@
         "snapshot": 40,
         "z": 3.4410805658271224,
         "images": {
-          "PL": "assets/projections/PL-0040.png",
-          "kp1": "assets/projections/kp1-0040.png",
-          "kp10": "assets/projections/kp10-0040.png"
+          "PL": "assets/projections/PL-0040.webp",
+          "kp1": "assets/projections/kp1-0040.webp",
+          "kp10": "assets/projections/kp10-0040.webp"
         },
         "panel_scales": {
           "PL": {
@@ -133,9 +133,9 @@
         "snapshot": 44,
         "z": 2.0333177828202462,
         "images": {
-          "PL": "assets/projections/PL-0044.png",
-          "kp1": "assets/projections/kp1-0044.png",
-          "kp10": "assets/projections/kp10-0044.png"
+          "PL": "assets/projections/PL-0044.webp",
+          "kp1": "assets/projections/kp1-0044.webp",
+          "kp10": "assets/projections/kp10-0044.webp"
         },
         "panel_scales": {
           "PL": {
@@ -156,9 +156,9 @@
         "snapshot": 48,
         "z": 1.0717968600643704,
         "images": {
-          "PL": "assets/projections/PL-0048.png",
-          "kp1": "assets/projections/kp1-0048.png",
-          "kp10": "assets/projections/kp10-0048.png"
+          "PL": "assets/projections/PL-0048.webp",
+          "kp1": "assets/projections/kp1-0048.webp",
+          "kp10": "assets/projections/kp10-0048.webp"
         },
         "panel_scales": {
           "PL": {
@@ -179,9 +179,9 @@
         "snapshot": 56,
         "z": 0,
         "images": {
-          "PL": "assets/projections/PL-0056.png",
-          "kp1": "assets/projections/kp1-0056.png",
-          "kp10": "assets/projections/kp10-0056.png"
+          "PL": "assets/projections/PL-0056.webp",
+          "kp1": "assets/projections/kp1-0056.webp",
+          "kp10": "assets/projections/kp10-0056.webp"
         },
         "panel_scales": {
           "PL": {
