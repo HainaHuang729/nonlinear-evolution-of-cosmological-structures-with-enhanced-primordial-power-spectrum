@@ -36,8 +36,8 @@ window.ARTICLE_EN = {
   '投影快照，从高红移到低红移':'Projection snapshots, from high to low redshift','每帧停留':'Time per frame',
   '下载论文投影原图 ↓':'Download paper projection ↓','媒体来源记录 ↓':'Media provenance ↓',
   '换一个视角，':'Change the view,','继续观察。':'keep exploring.',
-  '全粒子投影旋转与红移演化':'Full-particle rotation and redshift evolution',
-  '两个原有 3D GIF · 可暂停、拖动':'Two original 3D GIFs · pause and seek',
+  '全粒子 3D 斜视红移演化':'Full-particle 3D oblique redshift evolution',
+  '57 个快照 · 30 fps 高清视频 · 可暂停、拖动':'57 snapshots · 30 fps HD video · pause and seek',
   '补充可视化来自 PL 的 256 h⁻¹ Mpc、512³ 粒子模拟。上方三个模型的主比较采用 25 h⁻¹ Mpc、1024³；两组图像的盒子与分辨率不同。动画沿用原有显示方式，用于观察形态。':'These supplementary views use the PL simulation with a 256 h⁻¹ Mpc box and 512³ particles. The main three-model comparison above uses 25 h⁻¹ Mpc and 1024³ particles. The box sizes and resolutions differ. These animations retain their original display conventions for exploring morphology.',
   '用数据，':'Measure.','理解差异。':'Compare.',
   '六个交互主题，独立选择参数。':'Six interactive topics, with independent controls.',
@@ -144,7 +144,7 @@ window.ARTICLE_EN = {
   '全粒子投影旋转':'Full-particle projection rotation',
   '斜视投影随红移演化':'Oblique projection across redshift',
   '固定 z = 0，旋转观察全部粒子的柱密度投影。':'Rotate the full-particle column-density projection at fixed z = 0.',
-  '固定斜视角，按真实快照播放全粒子投影；沿用原动画的显示尺度。':'A fixed oblique view of full-particle projections through real snapshots, retaining the original animation’s display scales.',
+  '固定 3D 斜视角（35°/20°），全粒子 CIC 投影与射线厚度归一化，57 个真实快照平滑插值至 30 fps 呈现从 z = 200 到 z = 0 的暗物质结构演化。':'Fixed 3D oblique view (35°/20°) with CIC full-particle projection and ray-length normalization across 57 snapshots interpolated to 30 fps from z = 200 to z = 0.',
   '视频未能播放，可以下载原 GIF 查看。':'The video could not be played. Download the original GIF to view it.',
 
   /* Reusable phrases within dynamic labels, units and accessible descriptions. */
